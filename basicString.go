@@ -1,4 +1,4 @@
-package basics
+package cardobject
 
 type Tag struct{
 	tag string

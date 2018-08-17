@@ -1,4 +1,4 @@
-package basics
+package cardobject
 
 type Damage struct{
 	damage int
