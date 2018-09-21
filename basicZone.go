@@ -1,8 +1,5 @@
 package cardobject
 
-import "strconv"
-import "fmt"
-
 type protectedZoneID int
 type moveZoneID int
 
@@ -16,39 +13,29 @@ const (
 )
 
 type Zone interface {
-	ZoneID() int
+	ZoneID()
 }
 
 type MoveZone interface {
-	MoveZoneID() int
+	MoveZoneID()
 }
 
 type ProtectedZone interface {
-	ProtectedZoneID() int
+	ProtectedZoneID()
 }
 
-func (z moveZoneID) ZoneID() int {
-	return z.MoveZoneID()
+func (z moveZoneID) ZoneID() {
+
 }
 
-func (z protectedZoneID) ZoneID() int {
-	return z.ProtectedZoneID()
+func (z protectedZoneID) ZoneID() {
+
 }
 
-func (z moveZoneID) MoveZoneID() int {
-	i, err := strconv.Atoi(string(z))
-	if err != nil {
+func (z moveZoneID) MoveZoneID() {
 
-	}
-	fmt.Println(z)
-	return i
 }
 
-func (z protectedZoneID) ProtectedZoneID() int {
-	i, err := strconv.Atoi(string(z))
-	if err != nil {
-		
-	}
-	fmt.Println(z)
-	return i
+func (z protectedZoneID) ProtectedZoneID() {
+
 }

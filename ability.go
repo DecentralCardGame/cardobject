@@ -11,5 +11,5 @@ type ActivatedAbility struct {
 
 type TriggeredAbility struct {
 	*Ability
-	//condition
+	//event
 }
