@@ -9,7 +9,7 @@ const (
 	FIELD
 	HAND
 	EXILE	 protectedZoneID = iota
-	STACK
+	QUEUE
 )
 
 type Zone interface {

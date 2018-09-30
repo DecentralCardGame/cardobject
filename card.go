@@ -22,5 +22,5 @@ type Location struct{
 
 type Action struct{
 	*Card
-	//effect
+	effect Effect
 }

@@ -1,24 +1,17 @@
 package cardobject
 
 type Selector struct {
-	mode SelectorMode
-}
-
-type PlayerSelector struct {
-	*Selector
-	//property + wert
-}
-
-type CardSelector struct {
-	*Selector
-	//property + wert
+	playerMode SelectorMode
+	zone Zone
+	playerCondition Condition
+	cardMode SelectorMode
+	cardCondition Condition
 }
 
 type selectorModes int
 
 const (
 	ALL selectorModes = iota
-	RANDOM
 	TARGET
 	OPPONENTCHOICE
 )

@@ -1,6 +1,6 @@
 package cardobject
 
 type ZoneChange struct {
-	selection CardSelector
+	selection Selector
 	destination Zone
 }

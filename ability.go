@@ -1,7 +1,7 @@
 package cardobject
 
 type Ability struct {
-	//effect
+	effect Effect
 }
 
 type ActivatedAbility struct {
