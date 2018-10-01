@@ -16,6 +16,7 @@ type Entity struct{
 
 type Location struct{
 	*Card
+	storage []Ressource
 	ability Ability
 	life Life
 }
