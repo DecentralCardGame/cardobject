@@ -3,12 +3,12 @@ package cardobject
 type ressources int
 
 const (
-	FOOD ressources = iota
+	ENERGY ressources = iota
+	FOOD
 	GENERIC
 	LUMBER
 	MANA
 	METAL
-	POWER
 )
 
 type Ressource interface {

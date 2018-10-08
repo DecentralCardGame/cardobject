@@ -1,24 +1,28 @@
 package cardobject
 
-type Condition struct {
-	property string
-	value int
-	comparator Comparator
+type Condition struct {}
+
+type CardCondition interface {
+	GetCardProperty() CardProperty
 }
 
-type comparators int
+type PlayerCondition interface {
 
-const (
-	EQUAL comparators = iota
-	GREATER
-	SMALLER
-	
-)
-
-type Comparator interface {
-	Comparators() comparators
 }
 
-func (s comparators) Comparators() comparators {
-	return s
+type cardCondition struct {
+	Property CardProperty
+}
+func (cc *cardCondition) GetCardProperty() CardProperty{
+	return cc.Property
+}
+
+type CardConditionInt struct{
+	*cardCondition
+	Property CardIntProperty
+	Comparator Comparator
+}
+
+type CardConditionString struct{
+	Property CardStringProperty
 }

@@ -1,15 +1,6 @@
 package cardobject
 
-type events int
+type Event struct {
 
-const (
-	TODO events = iota
-)
-
-type Event interface {
-	Events() events
 }
 
-func (r events) Events() events {
-	return r
-}
