@@ -7,9 +7,10 @@ type Ability struct {
 type ActivatedAbility struct {
 	*Ability
 	cost Cost
+	multipleUse bool
 }
 
 type TriggeredAbility struct {
 	*Ability
-	//event
+	Cause EventListener 
 }

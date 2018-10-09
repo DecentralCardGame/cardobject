@@ -19,6 +19,7 @@ type Location struct{
 	storage []Ressource
 	ability Ability
 	life Life
+	inhabitants []Entity
 }
 
 type Action struct{
