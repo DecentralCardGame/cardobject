@@ -13,31 +13,31 @@ type PlayerProperty interface {
 }
 
 type IntProperty interface {
-	GetIntValue() int
+	ExtractIntProp() int
 }
 
 type StringProperty interface {
-	GetStringValue() string
+	ExtractStringProp() string
 }
 
 type CardIntProperty interface {
 	IsCardProperty() bool
-	GetIntValue() int
+	ExtractIntProp() int
 }
 
 type CardStringProperty interface {
 	IsCardProperty() bool
-	GetStringValue() string
+	ExtractStringProp() string
 }
 
 type PlayerIntProperty interface {
 	IsPlayerProperty() bool
-	GetIntValue() int
+	ExtractIntProp() int
 }
 
 type PlayerStringProperty interface {
 	IsPlayerProperty() bool
-	GetStringValue() string
+	ExtractStringProp() string
 }
 
 
