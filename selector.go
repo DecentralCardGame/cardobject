@@ -1,11 +1,15 @@
 package cardobject
 
-type Selector struct {
+type Selector interface {
+	IsSelector() bool
+}
+
+type basicSelector struct {
 	playerMode SelectorMode
-	zone Zone
-	playerCondition Condition
+	playerCondition PlayerCondition
 	cardMode SelectorMode
-	cardCondition Condition
+	cardCondition CardCondition
+	location CardLocation
 }
 
 type selectorModes int
