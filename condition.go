@@ -85,6 +85,10 @@ type playerStringCondition struct {
 	value string
 }
 
+type noneCondition int
+
+const NOCODITION noneCondition = 1
+
 func (c *condition) GetComparator() Comparator {
 	return c.comparator
 }
@@ -94,6 +98,14 @@ func (cc *cardCondition) IsCardCondition() bool {
 }
 
 func (pc *playerCondition) IsPlayerCondition() bool {
+	return true
+}
+
+func (nc *noneCondition) IsCardCondition() bool {
+	return true
+}
+
+func (nc *noneCondition) IsPlayerCondition() bool {
 	return true
 }
 

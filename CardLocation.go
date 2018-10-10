@@ -8,6 +8,7 @@ type CardLocation interface {
 }
 
 type DynamicCardLocation interface {
+	GetLocation() Zone
 	GetDynamicLocation() DynamicZone
 }
 
