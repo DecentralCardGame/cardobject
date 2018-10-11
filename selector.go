@@ -8,12 +8,12 @@ type SafeSelector interface {
 	IsSafe() bool
 }
 
-func NewBasicSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, l CardLocation) Selector {
-	return &basicSelector{pm, pc, cm, cc, l}
+func NewBasicSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, z Zone) Selector {
+	return &basicSelector{pm, pc, cm, cc, z}
 }
 
-func NewSafeSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, dl DynamicCardLocation) SafeSelector{
-	bs := NewBasicSelector(pm, pc, cm, cc, dl)
+func NewSafeSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, dz DynamicZone) SafeSelector{
+	bs := NewBasicSelector(pm, pc, cm, cc, dz)
 	return bs.(SafeSelector)
 }
 
@@ -23,7 +23,7 @@ type basicSelector struct {
 	playerCondition PlayerCondition
 	cardMode SelectorMode
 	cardCondition CardCondition
-	location CardLocation
+	zone Zone
 }
 
 type safeSelector struct {

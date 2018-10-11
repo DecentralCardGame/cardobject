@@ -1,17 +1,5 @@
 package cardobject
 
-import "reflect"
-import "errors"
-
-type CardLocation interface {
-	GetLocation() Zone
-}
-
-type DynamicCardLocation interface {
-	GetLocation() Zone
-	GetDynamicLocation() DynamicZone
-}
-
 type Zone interface {
 	IsZone() bool
 }
@@ -21,40 +9,8 @@ type DynamicZone interface {
 	IsDynamic() bool
 }
 
-func NewCardLocation(z Zone) (CardLocation, error){
-	szType := reflect.TypeOf(FIELD)
-	pzType := reflect.TypeOf(EXILE)
-	dzType := reflect.TypeOf(DECK{0})
-
-	zType := reflect.TypeOf(z)
-
-	switch zType {
-		case szType: return &dynamicCardLocation{&cardLocation{z.(simpleZoneID)}}, nil
-		case pzType: return &cardLocation{z.(protectedZoneID)}, nil
-		case dzType: return &dynamicCardLocation{&cardLocation{z.(DECK)}}, nil
-		default: return &cardLocation{}, errors.New("unknown Type")
-	}
-}
-
-func NewDynamicCardLocation(z DynamicZone) (DynamicCardLocation, error){
-	l, err :=NewCardLocation(z)
-	return l.(DynamicCardLocation), err
-}
-
-type cardLocation struct {
-	zone Zone 
-}
-
-type dynamicCardLocation struct {
-	*cardLocation
-}
-
-func (cl *cardLocation) GetLocation() Zone {
-	return cl.zone
-}
-
-func (dcl *dynamicCardLocation) GetDynamicLocation() DynamicZone {
-	return dcl.zone.(DynamicZone)
+func DECK() *deck {
+	return &deck{0}
 }
 
 type simpleZoneID int
@@ -71,7 +27,7 @@ const (
 	EXILE protectedZoneID = iota
 )
 
-type DECK struct {
+type deck struct {
 	cardPosition int
 } 
 
@@ -83,8 +39,16 @@ func (pz protectedZoneID) IsZone() bool {
 	return true
 }
 
-func (d DECK) IsZone() bool{
+func (d deck) IsZone() bool{
 	return true	
+}
+
+func (sz simpleZoneID) IsDynamic() bool {
+	return true
+}
+
+func (d deck) IsDynamic() bool {
+	return true
 }
 
 
