@@ -1,7 +1,5 @@
 package cardobject
 
-type comparators int
-
 const (
 	EQUAL comparators = iota
 	GREATER
@@ -11,6 +9,9 @@ const (
 type Comparator interface {
 	Comparators() comparators
 }
+
+
+type comparators int
 
 func (s comparators) Comparators() comparators {
 	return s

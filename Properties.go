@@ -1,11 +1,11 @@
 package cardobject
 
-type Damage struct {
+type Attack struct {
 	*cardIntProperty
 }
 
-func NewDamage(i int) *Damage{
-	return &Damage{&cardIntProperty{&cardProperty{}, i}}
+func NewAttack(i int) *Attack{
+	return &Attack{&cardIntProperty{&cardProperty{}, i}}
 }
 
 type HandSize struct {
@@ -16,12 +16,12 @@ func NewHandsize(i int) *HandSize {
 	return &HandSize{&playerIntProperty{&playerProperty{}, i}}
 }
 
-type Life struct {
+type Health struct {
 	*cardIntProperty
 }
 
-func NewLife(i int) *Life {
-	return &Life{&cardIntProperty{&cardProperty{}, i}}
+func NewHealth(i int) *Health {
+	return &Health{&cardIntProperty{&cardProperty{}, i}}
 }
 
 type Speedmodifier struct {

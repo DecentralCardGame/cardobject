@@ -32,6 +32,7 @@ func NewStringManipulation(s Selector, v string, p StringProperty) StringManipul
 	return &stringManipulation{&manipulation{s}, v, p}
 }
 
+
 type manipulation struct {
 	selector Selector
 }
@@ -47,6 +48,7 @@ type stringManipulation struct {
 	value string
 	property StringProperty
 }
+
 
 func (m *manipulation) GetSelector() Selector {
 	return m.selector

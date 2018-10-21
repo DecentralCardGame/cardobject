@@ -5,6 +5,7 @@ type Selector interface {
 }
 
 type SafeSelector interface {
+	Selector
 	IsSafe() bool
 }
 
@@ -35,6 +36,7 @@ type simpleSelectorID int
 const (
 	THIS simpleSelectorID = iota
 )
+
 
 func (bs *basicSelector) IsSelector() bool {
 	return true

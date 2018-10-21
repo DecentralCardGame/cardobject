@@ -10,7 +10,7 @@ type eventListener struct {
 
 type ReturningEventListener interface {
 	EventListener
-	GetCard(Event) *Card
+	GetCard(Event) Card
 }
 
 type returningEventListener struct {
@@ -21,9 +21,7 @@ func (el *eventListener) CheckEvent(Event) bool {
 	return false
 }
 
-func (el *eventListener) GetCard(Event) *Card {
-	return &Card{}
-}
+
 
 type ZoneChangeListener struct {
 	*returningEventListener

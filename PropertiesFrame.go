@@ -69,6 +69,7 @@ type playerStringProperty struct {
 	playerStringValue string
 }
 
+
 func (p *property) IsProperty() bool {
 	return true
 }

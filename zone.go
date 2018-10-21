@@ -5,16 +5,13 @@ type Zone interface {
 }
 
 type DynamicZone interface {
-	IsZone() bool
+	Zone
 	IsDynamic() bool
 }
 
 func DECK() *deck {
 	return &deck{0}
 }
-
-type simpleZoneID int
-type protectedZoneID int
 
 const (
 	DUSTPILE simpleZoneID = iota
@@ -27,9 +24,14 @@ const (
 	EXILE protectedZoneID = iota
 )
 
+type simpleZoneID int
+
+type protectedZoneID int
+
 type deck struct {
 	cardPosition int
 } 
+
 
 func (sz simpleZoneID) IsZone() bool {
 	return true

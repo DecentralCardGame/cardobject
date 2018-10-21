@@ -1,7 +1,5 @@
 package cardobject
 
-type ressources int
-
 const (
 	ENERGY ressources = iota
 	FOOD
@@ -14,6 +12,9 @@ const (
 type Ressource interface {
 	Ressources() ressources
 }
+
+
+type ressources int
 
 func (r ressources) Ressources() ressources {
 	return r

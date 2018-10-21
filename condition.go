@@ -8,23 +8,23 @@ type Condition interface {
 }
 
 type CardCondition interface {
-	GetComparator() Comparator
+	Condition
 	IsCardCondition() bool
 }
 
 type PlayerCondition interface {
-	GetComparator() Comparator
+	Condition
 	IsPlayerCondition() bool
 }
 
 type IntCondition interface {
-	GetComparator() Comparator
+	Condition
 	ExtractIntCond() int
 	ExtractIntProp() int
 }
 
 type StringCondition interface {
-	GetComparator() Comparator
+	Condition
 	ExtractStringCond() string
 	ExtractStringProp() string
 }
@@ -52,6 +52,7 @@ func NewStringCondition(prop StringProperty, val string) (StringCondition, error
 		default: return &cardStringCondition{}, errors.New("unknown Type")
 	}
 }
+
 
 type condition struct {
 	comparator Comparator
@@ -88,6 +89,7 @@ type playerStringCondition struct {
 type noneCondition int
 
 const NOCODITION noneCondition = 1
+
 
 func (c *condition) GetComparator() Comparator {
 	return c.comparator
