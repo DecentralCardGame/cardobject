@@ -5,38 +5,42 @@ type Property interface {
 }
 
 type CardProperty interface {
+	Property
 	IsCardProperty() bool
 }
 
 type PlayerProperty interface {
+	Property
 	IsPlayerProperty() bool
 }
 
 type IntProperty interface {
+	Property
 	ExtractIntProp() int
 }
 
 type StringProperty interface {
+	Property
 	ExtractStringProp() string
 }
 
 type CardIntProperty interface {
-	IsCardProperty() bool
+	CardProperty
 	ExtractIntProp() int
 }
 
 type CardStringProperty interface {
-	IsCardProperty() bool
+	CardProperty
 	ExtractStringProp() string
 }
 
 type PlayerIntProperty interface {
-	IsPlayerProperty() bool
+	PlayerProperty
 	ExtractIntProp() int
 }
 
 type PlayerStringProperty interface {
-	IsPlayerProperty() bool
+	PlayerProperty
 	ExtractStringProp() string
 }
 
