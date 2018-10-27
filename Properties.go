@@ -4,16 +4,16 @@ type Attack struct {
 	*cardIntProperty
 }
 
-func NewAttack(i int) *Attack{
+func NewAttack(i int) *Attack {
 	return &Attack{&cardIntProperty{&cardProperty{}, i}}
 }
 
-type HandSize struct {
-	*playerIntProperty
+type CostSum struct {
+	*cardIntProperty
 }
 
-func NewHandsize(i int) *HandSize {
-	return &HandSize{&playerIntProperty{&playerProperty{}, i}}
+func NewCostSum(i int) *CostSum {
+	return &CostSum{&cardIntProperty{&cardProperty{}, i}}
 }
 
 type Health struct {
@@ -46,4 +46,45 @@ type Text struct {
 
 func NewText(s string) *Text {
 	return &Text{&cardStringProperty{&cardProperty{}, s}}
+}
+
+
+type EntitiesOnBoard struct {
+	*playerIntProperty
+}
+
+func NewEntitiesOnBoard(i int) *EntitiesOnBoard {
+	return &EntitiesOnBoard{&playerIntProperty{&playerProperty{}, i}}
+}
+
+type DeckSize struct {
+	*playerIntProperty
+}
+
+func NewDeckSize(i int) *DeckSize {
+	return &DeckSize{&playerIntProperty{&playerProperty{}, i}}
+}
+
+type DustpileSize struct {
+	*playerIntProperty
+}
+
+func NewDustpileSize(i int) *DustpileSize {
+	return &DustpileSize{&playerIntProperty{&playerProperty{}, i}}
+}
+
+type FieldsOnBoard struct {
+	*playerIntProperty
+}
+
+func NewFieldsOnBoard(i int) *FieldsOnBoard {
+	return &FieldsOnBoard{&playerIntProperty{&playerProperty{}, i}}
+}
+
+type HandSize struct {
+	*playerIntProperty
+}
+
+func NewHandSize(i int) *HandSize {
+	return &HandSize{&playerIntProperty{&playerProperty{}, i}}
 }
