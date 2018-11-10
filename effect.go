@@ -24,11 +24,11 @@ type StringManipulation interface {
 	GetTargetStringProperty() StringProperty
 }
 
-func NewIntManipulation(s Selector, v int, p IntProperty) IntManipulation {
+func NewIntManipulation(s Selector, v IntInserter, p IntProperty) IntManipulation {
 	return &intManipulation{&manipulation{s}, v, p}
 }
 
-func NewStringManipulation(s Selector, v string, p StringProperty) StringManipulation {
+func NewStringManipulation(s Selector, v StringInserter, p StringProperty) StringManipulation {
 	return &stringManipulation{&manipulation{s}, v, p}
 }
 
@@ -39,13 +39,13 @@ type manipulation struct {
 
 type intManipulation struct {
 	*manipulation
-	value int
+	value IntInserter
 	property IntProperty
 }
 
 type stringManipulation struct {
 	*manipulation
-	value string
+	value StringInserter
 	property StringProperty
 }
 
@@ -71,11 +71,11 @@ func (sm *stringManipulation) GetTargetProperty() Property {
 }
 
 func (im *intManipulation) GetIntManipulationValue() int {
-	return im.value
+	return im.value.RetrieveInt()
 }
 
 func (sm *stringManipulation) GetStringManipulationValue() string {
-	return sm.value
+	return sm.value.RetrieveString()
 }
 
 func (im *intManipulation) GetTargetIntProperty() IntProperty {
