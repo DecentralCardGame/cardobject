@@ -1,144 +1,122 @@
 package cardobject
 
-import "reflect"
-import "errors"
-
 type Condition interface {
 	GetComparator() Comparator
 }
 
 type CardCondition interface {
 	Condition
-	IsCardCondition() bool
+	GetCardPropertyId() CardPropertyId
 }
 
 type PlayerCondition interface {
 	Condition
-	IsPlayerCondition() bool
+	GetPlayerPropertyId() PlayerPropertyId
 }
 
 type IntCondition interface {
 	Condition
-	ExtractIntCond() int
-	ExtractIntProp() int
+	GetCompVal() int
+	GetIntPropertyId() IntPropertyId
 }
 
 type StringCondition interface {
 	Condition
-	ExtractStringCond() string
-	ExtractStringProp() string
+	GetCompVal() string
+	GetStringPropertyId() StringPropertyId
 }
 
-func NewIntCondition(prop IntProperty, comp Comparator, val int) (IntCondition, error) {
-	cpType := reflect.TypeOf((*CardIntProperty)(nil)).Elem()
-	ppType := reflect.TypeOf((*PlayerIntProperty)(nil)).Elem()
-	t := reflect.TypeOf(prop)
-
-	switch {
-		case t.Implements(cpType): return &cardIntCondition{&cardCondition{&condition{comp}}, prop, val}, nil
-		case t.Implements(ppType): return &playerIntCondition{&playerCondition{&condition{comp}}, prop, val}, nil
-		default: return &cardIntCondition{}, errors.New("unknown Type")
-	}
+func NewCardIntCondition(c Comparator, v int, p CardIntPropertyId) IntCondition {
+	return &cardIntCondition{&intCondition{&condition{c}, v}, p}
 }
 
-func NewStringCondition(prop StringProperty, val string) (StringCondition, error) {
-	cpType := reflect.TypeOf((*CardStringProperty)(nil)).Elem()
-	ppType := reflect.TypeOf((*PlayerStringProperty)(nil)).Elem()
-	t := reflect.TypeOf(prop)
-
-	switch {
-		case t.Implements(cpType): return &cardStringCondition{&cardCondition{&condition{EQUAL}}, prop, val}, nil
-		case t.Implements(ppType): return &playerStringCondition{&playerCondition{&condition{EQUAL}}, prop, val}, nil
-		default: return &cardStringCondition{}, errors.New("unknown Type")
-	}
+func NewCardStringCondition(v string, p CardStringPropertyId) StringCondition {
+	return &cardStringCondition{&stringCondition{&condition{EQUAL}, v}, p}
 }
 
+func NewPlayerIntCondition(c Comparator, v int, p PlayerIntPropertyId) IntCondition {
+	return &playerIntCondition{&intCondition{&condition{c}, v}, p}
+}
+
+func NewPlayerStringCondition(v string, p PlayerStringPropertyId) StringCondition {
+	return &playerStringCondition{&stringCondition{&condition{EQUAL}, v}, p}
+}
 
 type condition struct {
 	comparator Comparator
 }
 
-type cardCondition struct {
+type intCondition struct{
 	*condition
+	value int
 }
-type playerCondition struct {
+
+type stringCondition struct{
 	*condition
+	value string
 }
 
 type cardIntCondition struct {
-	*cardCondition
-	prop IntProperty
-	value int
+	*intCondition
+	prop CardIntPropertyId
 }
+
 type cardStringCondition struct {
-	*cardCondition
-	prop StringProperty
-	value string
+	*stringCondition
+	prop CardStringPropertyId
 }
+
 type playerIntCondition struct {
-	*playerCondition
-	prop IntProperty
-	value int
+	*intCondition
+	prop PlayerIntPropertyId
 }
+
 type playerStringCondition struct {
-	*playerCondition
-	prop StringProperty
-	value string
+	*stringCondition
+	prop PlayerStringPropertyId
 }
-
-type noneCondition int
-
-const NOCODITION noneCondition = 1
 
 
 func (c *condition) GetComparator() Comparator {
 	return c.comparator
 }
 
-func (cc *cardCondition) IsCardCondition() bool {
-	return true
+func (ic *intCondition) GetCompVal() int {
+	return ic.value
 }
 
-func (pc *playerCondition) IsPlayerCondition() bool {
-	return true
+func (sc *stringCondition) GetCompVal() string {
+	return sc.value
 }
 
-func (nc *noneCondition) IsCardCondition() bool {
-	return true
+func (cic *cardIntCondition) GetCardPropertyId() CardPropertyId {
+	return cic.prop
 }
 
-func (nc *noneCondition) IsPlayerCondition() bool {
-	return true
+func (cic *cardIntCondition) GetIntPropertyId() IntPropertyId {
+	return cic.prop
 }
 
-func (cic *cardIntCondition) ExtractIntCond() int {
-	return cic.value
+func (pic *playerIntCondition) GetPlayerPropertyId() PlayerPropertyId {
+	return pic.prop
 }
 
-func (pic *playerIntCondition) ExtractIntCond() int {
-	return pic.value
+func (pic *playerIntCondition) GetIntPropertyId() IntPropertyId {
+	return pic.prop
 }
 
-func (csc *cardStringCondition) ExtractStringCond() string {
-	return csc.value
+func (csc *cardStringCondition) GetCardPropertyId() CardPropertyId {
+	return csc.prop
 }
 
-func (psc *playerStringCondition) ExtractStringCond() string {
-	return psc.value
+func (csc *cardStringCondition) GetStringPropertyId() StringPropertyId {
+	return csc.prop
 }
 
-func (cic *cardIntCondition) ExtractIntProp() int {
-	return cic.prop.ExtractIntProp()
+func (psc *playerStringCondition) GetPlayerPropertyId() PlayerPropertyId {
+	return psc.prop
 }
 
-func (pic *playerIntCondition) ExtractIntProp() int {
-	return pic.prop.ExtractIntProp()
-}
-
-func (csc *cardStringCondition) ExtractStringProp() string {
-	return csc.prop.ExtractStringProp()
-}
-
-func (psc *playerStringCondition) ExtractStringProp() string {
-	return psc.prop.ExtractStringProp()
+func (psc *playerStringCondition) GetStringPropertyId() StringPropertyId {
+	return psc.prop
 }

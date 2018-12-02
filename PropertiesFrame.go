@@ -1,102 +1,157 @@
 package cardobject
 
 type Property interface {
-	IsProperty() bool
+	PropertyId() PropertyId
 }
 
 type CardProperty interface {
 	Property
-	IsCardProperty() bool
+	CardPropertyId() CardPropertyId
 }
 
 type PlayerProperty interface {
 	Property
-	IsPlayerProperty() bool
+	PlayerPropertyId() PlayerPropertyId
 }
 
 type IntProperty interface {
 	Property
-	ExtractIntProp() int
+	IntPropertyId() IntPropertyId
+	GetIntVal() int
 }
 
 type StringProperty interface {
 	Property
-	ExtractStringProp() string
+	StringPropertyId() StringPropertyId
+	GetStringVal() string
 }
 
 type CardIntProperty interface {
-	CardProperty
-	ExtractIntProp() int
+	IntProperty
+	CardPropertyId() CardPropertyId
+	CardIntPropertyId() CardIntPropertyId
 }
 
 type CardStringProperty interface {
-	CardProperty
-	ExtractStringProp() string
+	StringProperty
+	CardPropertyId() CardPropertyId
+	CardStringPropertyId() CardStringPropertyId
 }
 
 type PlayerIntProperty interface {
-	PlayerProperty
-	ExtractIntProp() int
+	IntProperty
+	PlayerPropertyId() PlayerPropertyId
+	PlayerIntPropertyId() PlayerIntPropertyId
 }
 
 type PlayerStringProperty interface {
-	PlayerProperty
-	ExtractStringProp() string
+	StringProperty
+	PlayerPropertyId() PlayerPropertyId
+	PlayerStringPropertyId() PlayerStringPropertyId
 }
 
 
-type property struct {}
-type cardProperty struct {*property}
-type playerProperty struct {*property}
+type intProperty struct {
+	val int
+}
+
+type stringProperty struct {
+	val string
+}
 
 type cardIntProperty struct {
-	*cardProperty
-	cardIntValue int
+	*intProperty
+	id CardIntPropertyId
 }
 
 type cardStringProperty struct {
-	*cardProperty
-	cardStringValue string
+	*stringProperty
+	id CardStringPropertyId
 }
 
 type playerIntProperty struct {
-	*playerProperty
-	playerIntValue int
+	*intProperty
+	id PlayerIntPropertyId
 }
 
 type playerStringProperty struct {
-	*playerProperty
-	playerStringValue string
+	*stringProperty
+	id PlayerStringPropertyId
 }
 
 
-func (p *property) IsProperty() bool {
-	return true
+func (ip *intProperty) GetIntVal() int {
+	return ip.val
 }
 
-func (cp *cardProperty) IsCardProperty() bool {
-	return true
+func (sp *stringProperty) GetStringVal() string {
+	return sp.val
 }
 
-func (cp *playerProperty) IsPlayerProperty() bool {
-	return true
+func (cip *cardIntProperty) CardIntPropertyId() CardIntPropertyId {
+	return cip.id
 }
 
-func (cip *cardIntProperty) ExtractIntProp() int {
-	return cip.cardIntValue
+func (cip *cardIntProperty) CardPropertyId() CardPropertyId {
+	return cip.CardIntPropertyId()
 }
 
-func (csp *cardStringProperty) ExtractStringProp() string {
-	return csp.cardStringValue
+func (cip *cardIntProperty) IntPropertyId() IntPropertyId {
+	return cip.CardIntPropertyId()
 }
 
-func (pip *playerIntProperty) ExtractIntProp() int {
-	return pip.playerIntValue
+func (cip *cardIntProperty) PropertyId() PropertyId {
+	return cip.CardIntPropertyId()
 }
 
-func (psp *playerStringProperty) ExtractStringProp() string {
-	return psp.playerStringValue
+func (csp *cardStringProperty) CardStringPropertyId() CardStringPropertyId {
+	return csp.id
 }
+
+func (csp *cardStringProperty) CardPropertyId() CardPropertyId {
+	return csp.CardStringPropertyId()
+}
+
+func (csp *cardStringProperty) StringPropertyId() StringPropertyId {
+	return csp.CardStringPropertyId()
+}
+
+func (csp *cardStringProperty) PropertyId() PropertyId {
+	return csp.CardStringPropertyId()
+}
+
+func (pip *playerIntProperty) PlayerIntPropertyId() PlayerIntPropertyId {
+	return pip.id
+}
+
+func (pip *playerIntProperty) PlayerPropertyId() PlayerPropertyId {
+	return pip.PlayerIntPropertyId()
+}
+
+func (pip *playerIntProperty) IntPropertyId() IntPropertyId {
+	return pip.PlayerIntPropertyId()
+}
+
+func (pip *playerIntProperty) PropertyId() PropertyId {
+	return pip.PlayerIntPropertyId()
+}
+
+func (psp *playerStringProperty) PlayerStringPropertyId() PlayerStringPropertyId {
+	return psp.id
+}
+
+func (psp *playerStringProperty) PlayerPropertyId() PlayerPropertyId {
+	return psp.PlayerStringPropertyId()
+}
+
+func (psp *playerStringProperty) StringPropertyId() StringPropertyId {
+	return psp.PlayerStringPropertyId()
+}
+
+func (psp *playerStringProperty) PropertyId() PropertyId {
+	return psp.PlayerStringPropertyId()
+}
+
 
 
 

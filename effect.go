@@ -8,27 +8,27 @@ type Effect struct {
 
 type Manipulation interface {
 	GetSelector() Selector
-	GetManipulationValue() interface{}
-	GetTargetProperty() Property
+	GetManipulation() interface{}
+	GetTargetPropertyId() PropertyId
 }
 
 type IntManipulation interface {
 	Manipulation
-	GetIntManipulationValue() int
-	GetTargetIntProperty() IntProperty
+	GetIntManipulation() IntInserter
+	GetTargetIntPropertyId() IntPropertyId
 }
 
 type StringManipulation interface {
 	Manipulation
-	GetStringManipulationValue() string
-	GetTargetStringProperty() StringProperty
+	GetStringManipulation() StringInserter
+	GetTargetStringPropertyId() StringPropertyId
 }
 
-func NewIntManipulation(s Selector, v IntInserter, p IntProperty) IntManipulation {
+func NewIntManipulation(s Selector, v IntInserter, p IntPropertyId) IntManipulation {
 	return &intManipulation{&manipulation{s}, v, p}
 }
 
-func NewStringManipulation(s Selector, v StringInserter, p StringProperty) StringManipulation {
+func NewStringManipulation(s Selector, v StringInserter, p StringPropertyId) StringManipulation {
 	return &stringManipulation{&manipulation{s}, v, p}
 }
 
@@ -39,14 +39,14 @@ type manipulation struct {
 
 type intManipulation struct {
 	*manipulation
-	value IntInserter
-	property IntProperty
+	val IntInserter
+	prop IntPropertyId
 }
 
 type stringManipulation struct {
 	*manipulation
-	value StringInserter
-	property StringProperty
+	val StringInserter
+	prop StringPropertyId
 }
 
 
@@ -54,35 +54,35 @@ func (m *manipulation) GetSelector() Selector {
 	return m.selector
 }
 
-func (im *intManipulation) GetManipulationValue() interface{} {
-	return im.GetIntManipulationValue()
+func (im *intManipulation) GetManipulation() interface{} {
+	return im.GetIntManipulation()
 }
 
-func (sm *stringManipulation) GetManipulationValue() interface{} {
-	return sm.GetStringManipulationValue()
+func (sm *stringManipulation) GetManipulation() interface{} {
+	return sm.GetStringManipulation()
 }
 
-func (im *intManipulation) GetTargetProperty() Property {
-	return im.GetTargetIntProperty()
+func (im *intManipulation) GetTargetPropertyId() PropertyId {
+	return im.GetTargetIntPropertyId()
 }
 
-func (sm *stringManipulation) GetTargetProperty() Property {
-	return sm.GetTargetStringProperty()
+func (sm *stringManipulation) GetTargetPropertyId() PropertyId {
+	return sm.GetTargetStringPropertyId()
 }
 
-func (im *intManipulation) GetIntManipulationValue() int {
-	return im.value.RetrieveInt()
+func (im *intManipulation) GetIntManipulation() IntInserter {
+	return im.val
 }
 
-func (sm *stringManipulation) GetStringManipulationValue() string {
-	return sm.value.RetrieveString()
+func (sm *stringManipulation) GetStringManipulation() StringInserter {
+	return sm.val
 }
 
-func (im *intManipulation) GetTargetIntProperty() IntProperty {
-	return im.property
+func (im *intManipulation) GetTargetIntPropertyId() IntPropertyId {
+	return im.prop
 }
 
-func (sm *stringManipulation) GetTargetStringProperty() StringProperty {
-	return sm.property
+func (sm *stringManipulation) GetTargetStringPropertyId() StringPropertyId {
+	return sm.prop
 }
 

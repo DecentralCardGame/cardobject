@@ -1,11 +1,27 @@
 package cardobject
 
+const (
+	ATTACK cardIntPropertyId = iota
+	COSTSUM
+	HEALTH
+	SPEEDMODIFIER
+
+	TAG cardStringPropertyId = iota
+	TEXT
+
+	ENTITIESONBOARD playerIntPropertyId = iota
+	DECKSIZE
+	DUSTPILESIZE
+	FIELDSONBOARD
+	HANDSIZE
+)
+
 type Attack struct {
 	*cardIntProperty
 }
 
 func NewAttack(i int) *Attack {
-	return &Attack{&cardIntProperty{&cardProperty{}, i}}
+	return &Attack{&cardIntProperty{&intProperty{i}, ATTACK}}
 }
 
 type CostSum struct {
@@ -13,7 +29,7 @@ type CostSum struct {
 }
 
 func NewCostSum(i int) *CostSum {
-	return &CostSum{&cardIntProperty{&cardProperty{}, i}}
+	return &CostSum{&cardIntProperty{&intProperty{i}, COSTSUM}}
 }
 
 type Health struct {
@@ -21,7 +37,7 @@ type Health struct {
 }
 
 func NewHealth(i int) *Health {
-	return &Health{&cardIntProperty{&cardProperty{}, i}}
+	return &Health{&cardIntProperty{&intProperty{i}, HEALTH}}
 }
 
 type Speedmodifier struct {
@@ -29,7 +45,7 @@ type Speedmodifier struct {
 }
 
 func NewSpeedmodifier(i int) *Speedmodifier {
-	return &Speedmodifier{&cardIntProperty{&cardProperty{}, i}}
+	return &Speedmodifier{&cardIntProperty{&intProperty{i}, SPEEDMODIFIER}}
 }
 
 type Tag struct {
@@ -37,7 +53,7 @@ type Tag struct {
 }
 
 func NewTag(s string) *Tag {
-	return &Tag{&cardStringProperty{&cardProperty{}, s}}
+	return &Tag{&cardStringProperty{&stringProperty{s}, TAG}}
 }
 
 type Text struct {
@@ -45,7 +61,7 @@ type Text struct {
 }
 
 func NewText(s string) *Text {
-	return &Text{&cardStringProperty{&cardProperty{}, s}}
+	return &Text{&cardStringProperty{&stringProperty{s}, TEXT}}
 }
 
 
@@ -54,7 +70,7 @@ type EntitiesOnBoard struct {
 }
 
 func NewEntitiesOnBoard(i int) *EntitiesOnBoard {
-	return &EntitiesOnBoard{&playerIntProperty{&playerProperty{}, i}}
+	return &EntitiesOnBoard{&playerIntProperty{&intProperty{i}, ENTITIESONBOARD}}
 }
 
 type DeckSize struct {
@@ -62,7 +78,7 @@ type DeckSize struct {
 }
 
 func NewDeckSize(i int) *DeckSize {
-	return &DeckSize{&playerIntProperty{&playerProperty{}, i}}
+	return &DeckSize{&playerIntProperty{&intProperty{i}, DECKSIZE}}
 }
 
 type DustpileSize struct {
@@ -70,7 +86,7 @@ type DustpileSize struct {
 }
 
 func NewDustpileSize(i int) *DustpileSize {
-	return &DustpileSize{&playerIntProperty{&playerProperty{}, i}}
+	return &DustpileSize{&playerIntProperty{&intProperty{i}, DUSTPILESIZE}}
 }
 
 type FieldsOnBoard struct {
@@ -78,7 +94,7 @@ type FieldsOnBoard struct {
 }
 
 func NewFieldsOnBoard(i int) *FieldsOnBoard {
-	return &FieldsOnBoard{&playerIntProperty{&playerProperty{}, i}}
+	return &FieldsOnBoard{&playerIntProperty{&intProperty{i}, FIELDSONBOARD}}
 }
 
 type HandSize struct {
@@ -86,5 +102,5 @@ type HandSize struct {
 }
 
 func NewHandSize(i int) *HandSize {
-	return &HandSize{&playerIntProperty{&playerProperty{}, i}}
+	return &HandSize{&playerIntProperty{&intProperty{i}, HANDSIZE}}
 }

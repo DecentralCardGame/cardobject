@@ -1,18 +1,12 @@
 package cardobject
 
 type IntInserter interface {
-	RetrieveInt() int
+	IsIntRetriever() bool
 }
 type StringInserter interface {
-	RetrieveString() string
+	IsStringRetriever() bool
 }
 
-func NewIntRetriever(cip CardIntProperty) IntInserter {
-	return &intRetriever{cip}
-}
-func NewStringRetriever(csp CardStringProperty) StringInserter {
-	return &stringRetriever{csp}
-}
 
 func NewIntConst(i int) IntInserter {
 	return &intConst{i}
@@ -24,11 +18,11 @@ func NewStringConst(s string) StringInserter {
 
 
 type intRetriever struct {
-	prop CardIntProperty
+	prop IntPropertyId
 }
 
 type stringRetriever struct {
-	prop CardStringProperty
+	prop StringPropertyId
 }
 
 type intConst struct {
@@ -40,18 +34,26 @@ type stringConst struct {
 }
 
 
-func (ir *intRetriever) RetrieveInt() int {
-	return ir.prop.ExtractIntProp()
+func (ir *cardIntPropertyId) IsIntRetriever() bool {
+	return true
 }
 
-func (sr *stringRetriever) RetrieveString() string {
-	return sr.prop.ExtractStringProp()
+func (ir *playerIntPropertyId) IsIntRetriever() bool {
+	return true
 }
 
-func (ic *intConst) RetrieveInt() int {
-	return ic.i
+func (sr cardStringPropertyId) IsStringRetriever() bool {
+	return true
 }
 
-func (sc *stringConst) RetrieveString() string {
-	return sc.s
+func (sr playerStringPropertyId) IsStringRetriever() bool {
+	return true
+}
+
+func (ic *intConst) IsIntRetriever() bool {
+	return true
+}
+
+func (sc *stringConst) IsStringRetriever() bool {
+	return true
 }

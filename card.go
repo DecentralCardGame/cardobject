@@ -1,9 +1,13 @@
 package cardobject
 
+import "fmt"
+import "encoding/json"
+
 type Card interface {
 	GetCost() Cost
 	GetSpeed() Speedmodifier
 	GetTags() []Tag
+	Serialize() string
 }
 
 type Action interface {
@@ -80,6 +84,15 @@ func (c *card) GetSpeed() Speedmodifier {
 
 func (c *card) GetTags() []Tag {
 	return c.tag
+}
+
+func (c *card) Serialize() string {
+	bytes, err := json.Marshal(c)
+    if err != nil {
+        fmt.Println("Can't serialize", c)
+        return "Can't serialize"
+    }
+    return string(bytes)
 }
 
 func (a *action) GetEffect() Effect {
