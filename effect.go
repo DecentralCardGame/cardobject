@@ -7,7 +7,7 @@ type Effect struct {
 }
 
 type Manipulation interface {
-	GetSelector() Selector
+	GetCardSelector() CardSelector
 	GetManipulation() interface{}
 	GetTargetPropertyId() PropertyId
 }
@@ -24,17 +24,17 @@ type StringManipulation interface {
 	GetTargetStringPropertyId() StringPropertyId
 }
 
-func NewIntManipulation(s Selector, v IntInserter, p IntPropertyId) IntManipulation {
-	return &intManipulation{&manipulation{s}, v, p}
+func NewIntManipulation(cs CardSelector, v IntInserter, p IntPropertyId) IntManipulation {
+	return &intManipulation{&manipulation{cs}, v, p}
 }
 
-func NewStringManipulation(s Selector, v StringInserter, p StringPropertyId) StringManipulation {
-	return &stringManipulation{&manipulation{s}, v, p}
+func NewStringManipulation(cs CardSelector, v StringInserter, p StringPropertyId) StringManipulation {
+	return &stringManipulation{&manipulation{cs}, v, p}
 }
 
 
 type manipulation struct {
-	selector Selector
+	selector CardSelector
 }
 
 type intManipulation struct {
@@ -50,7 +50,7 @@ type stringManipulation struct {
 }
 
 
-func (m *manipulation) GetSelector() Selector {
+func (m *manipulation) GetCardSelector() CardSelector {
 	return m.selector
 }
 

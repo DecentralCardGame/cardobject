@@ -1,21 +1,29 @@
 package cardobject
 
-type Selector interface {
-	IsSelector() bool
+type CardSelector interface {
+	IsCardSelector() bool
 }
 
-type SafeSelector interface {
-	Selector
-	IsSafe() bool
+type CardSelectorCond interface {
+	CardSelector
+	PlayerSelectorMode() SelectorMode
+	PlayerCondition() PlayerCondition
+	CardSelectorMode() SelectorMode
+	CardCondition() CardCondition
+	Zone() Zone
 }
 
-func NewBasicSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, z Zone) Selector {
+type CardSelectorSafeCond interface {
+	CardSelector
+	DynamicZone() DynamicZone
+}
+
+func NewBasicSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, z Zone) CardSelectorCond {
 	return &basicSelector{pm, pc, cm, cc, z}
 }
 
-func NewSafeSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, dz DynamicZone) SafeSelector{
-	bs := NewBasicSelector(pm, pc, cm, cc, dz)
-	return bs.(SafeSelector)
+func NewSafeSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, dz DynamicZone) CardSelectorSafeCond {
+	return &safeSelector{&basicSelector{pm, pc, cm, cc, dz}, dz}
 }
 
 
@@ -29,6 +37,7 @@ type basicSelector struct {
 
 type safeSelector struct {
 	*basicSelector
+	safeZone DynamicZone
 }
 
 type simpleSelectorID int 
@@ -38,12 +47,36 @@ const (
 )
 
 
-func (bs *basicSelector) IsSelector() bool {
+func (bs *basicSelector) IsCardSelector() bool {
 	return true
 }
 
-func (ss *simpleSelectorID) IsSelector() bool {
+func (ss *simpleSelectorID) IsCardSelector() bool {
 	return true
+}
+
+func (bs *basicSelector) PlayerSelectorMode() SelectorMode {
+	return bs.playerMode
+}
+
+func (bs *basicSelector) PlayerCondition() PlayerCondition {
+	return bs.playerCondition
+}
+
+func (bs *basicSelector) CardSelectorMode() SelectorMode {
+	return bs.cardMode
+}
+
+func (bs *basicSelector) CardCondition() CardCondition {
+	return bs.cardCondition
+}
+
+func (bs *basicSelector) Zone() Zone {
+	return bs.zone
+}
+
+func (ss *safeSelector) DynamicZone() DynamicZone {
+	return ss.safeZone
 }
 
 type selectorModes int
