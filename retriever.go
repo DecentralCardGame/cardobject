@@ -7,23 +7,36 @@ type StringInserter interface {
 	IsStringRetriever() bool
 }
 
+type IntInserterConst interface {
+	IntInserter
+	GetIntVal() int
+}
 
-func NewIntConst(i int) IntInserter {
+type StringInserterConst interface {
+	StringInserter
+	GetStringVal() string
+}
+
+type IntInserterPropId interface {
+	IntInserter
+	GetIntPropertyId() IntPropertyId
+}
+
+type StringInserterPropId interface {
+	StringInserter
+	GetStringPropertyId() StringPropertyId
+}
+
+
+
+func NewIntConst(i int) IntInserterConst {
 	return &intConst{i}
 }
 
-func NewStringConst(s string) StringInserter {
+func NewStringConst(s string) StringInserterConst {
 	return &stringConst{s}
 }
 
-
-type intRetriever struct {
-	prop IntPropertyId
-}
-
-type stringRetriever struct {
-	prop StringPropertyId
-}
 
 type intConst struct {
 	i int
@@ -34,19 +47,19 @@ type stringConst struct {
 }
 
 
-func (ir *cardIntPropertyId) IsIntRetriever() bool {
+func (cipi cardIntPropertyId) IsIntRetriever() bool {
 	return true
 }
 
-func (ir *playerIntPropertyId) IsIntRetriever() bool {
+func (pipi playerIntPropertyId) IsIntRetriever() bool {
 	return true
 }
 
-func (sr cardStringPropertyId) IsStringRetriever() bool {
+func (cspi cardStringPropertyId) IsStringRetriever() bool {
 	return true
 }
 
-func (sr playerStringPropertyId) IsStringRetriever() bool {
+func (pspi playerStringPropertyId) IsStringRetriever() bool {
 	return true
 }
 
@@ -56,4 +69,28 @@ func (ic *intConst) IsIntRetriever() bool {
 
 func (sc *stringConst) IsStringRetriever() bool {
 	return true
+}
+
+func (cipi cardIntPropertyId) GetIntPropertyId() cardIntPropertyId {
+	return cipi
+}
+
+func (cspi cardStringPropertyId) GetStringPropertyId() cardStringPropertyId {
+	return cspi
+}
+
+func (pipi playerIntPropertyId) GetIntPropertyId() playerIntPropertyId {
+	return pipi
+}
+
+func (pspi playerStringPropertyId) GetStringPropertyId() playerStringPropertyId {
+	return pspi
+}
+
+func (ic *intConst) GetIntVal() int {
+	return ic.i
+}
+
+func (sc *stringConst) GetStringVal() string {
+	return sc.s
 }
