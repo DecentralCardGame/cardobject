@@ -4,30 +4,16 @@ type CardSelector interface {
 	IsCardSelector() bool
 }
 
-type CardSelectorCond interface {
-	CardSelector
-	PlayerSelectorMode() SelectorMode
-	PlayerCondition() PlayerCondition
-	CardSelectorMode() SelectorMode
-	CardCondition() CardCondition
-	Zone() Zone
+func NewBasicSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, z Zone) *CardSelectorCond {
+	return &CardSelectorCond{pm, pc, cm, cc, z}
 }
 
-type CardSelectorSafeCond interface {
-	CardSelector
-	DynamicZone() DynamicZone
-}
-
-func NewBasicSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, z Zone) CardSelectorCond {
-	return &basicSelector{pm, pc, cm, cc, z}
-}
-
-func NewSafeSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, dz DynamicZone) CardSelectorSafeCond {
-	return &safeSelector{&basicSelector{pm, pc, cm, cc, dz}, dz}
+func NewSafeSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, dz DynamicZone) *CardSelectorSafeCond {
+	return &CardSelectorSafeCond{&CardSelectorCond{pm, pc, cm, cc, dz}, dz}
 }
 
 
-type basicSelector struct {
+type CardSelectorCond struct {
 	playerMode SelectorMode
 	playerCondition PlayerCondition
 	cardMode SelectorMode
@@ -35,8 +21,8 @@ type basicSelector struct {
 	zone Zone
 }
 
-type safeSelector struct {
-	*basicSelector
+type CardSelectorSafeCond struct {
+	*CardSelectorCond
 	safeZone DynamicZone
 }
 
@@ -47,7 +33,7 @@ const (
 )
 
 
-func (bs *basicSelector) IsCardSelector() bool {
+func (bs *CardSelectorCond) IsCardSelector() bool {
 	return true
 }
 
@@ -55,27 +41,27 @@ func (ss *simpleSelectorID) IsCardSelector() bool {
 	return true
 }
 
-func (bs *basicSelector) PlayerSelectorMode() SelectorMode {
+func (bs *CardSelectorCond) PlayerSelectorMode() SelectorMode {
 	return bs.playerMode
 }
 
-func (bs *basicSelector) PlayerCondition() PlayerCondition {
+func (bs *CardSelectorCond) PlayerCondition() PlayerCondition {
 	return bs.playerCondition
 }
 
-func (bs *basicSelector) CardSelectorMode() SelectorMode {
+func (bs *CardSelectorCond) CardSelectorMode() SelectorMode {
 	return bs.cardMode
 }
 
-func (bs *basicSelector) CardCondition() CardCondition {
+func (bs *CardSelectorCond) CardCondition() CardCondition {
 	return bs.cardCondition
 }
 
-func (bs *basicSelector) Zone() Zone {
+func (bs *CardSelectorCond) Zone() Zone {
 	return bs.zone
 }
 
-func (ss *safeSelector) DynamicZone() DynamicZone {
+func (ss *CardSelectorSafeCond) DynamicZone() DynamicZone {
 	return ss.safeZone
 }
 
