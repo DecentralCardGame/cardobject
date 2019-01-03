@@ -24,76 +24,56 @@ type StringPropertyId interface {
 	IsStringPropertyId() bool
 }
 
-type CardIntPropertyId interface {
-	CardPropertyId
-	IsIntPropertyId() bool
-}
-
-type CardStringPropertyId interface {
-	CardPropertyId
-	IsStringPropertyId() bool
-}
-
-type PlayerIntPropertyId interface {
-	PlayerPropertyId
-	IsIntPropertyId() bool
-}
-
-type PlayerStringPropertyId interface {
-	PlayerPropertyId
-	IsStringPropertyId() bool
-}
-
-type cardIntPropertyId int
-type cardStringPropertyId int
-type playerIntPropertyId int
-type playerStringPropertyId int
+type CardIntPropertyId int
+type CardStringPropertyId int
+type PlayerIntPropertyId int
+type PlayerStringPropertyId int
 
 
-func (cipi cardIntPropertyId) IsCardPropertyId() bool {
+func (cipi CardIntPropertyId) IsCardPropertyId() bool {
 	return true
 }
 
-func (cipi cardIntPropertyId) IsIntPropertyId() bool {
+func (cipi CardIntPropertyId) IsIntPropertyId() bool {
 	return true
 }
 
-func(cspi cardStringPropertyId) IsCardPropertyId() bool {
+func (cspi CardStringPropertyId) IsCardPropertyId() bool {
 	return true
 }
 
-func(cspi cardStringPropertyId) IsStringPropertyId() bool {
+func (cspi CardStringPropertyId) IsStringPropertyId() bool {
 	return true
 }
 
-func (pipi playerIntPropertyId) IsPlayerPropertyId() bool {
+func (pipi PlayerIntPropertyId) IsPlayerPropertyId() bool {
 	return true
 }
 
-func (pipi playerIntPropertyId) IsIntPropertyId() bool {
+func (pipi PlayerIntPropertyId) IsIntPropertyId() bool {
 	return true
 }
 
-func (pspi playerStringPropertyId) IsPlayerPropertyId() bool {
+func (pspi PlayerStringPropertyId) IsPlayerPropertyId() bool {
 	return true
 }
 
-func (pspi playerStringPropertyId) IsStringPropertyId() bool {
+func (pspi PlayerStringPropertyId) IsStringPropertyId() bool {
 	return true
 }
 
-func (cipi cardIntPropertyId) IsPropertyId() bool {
+func (cipi CardIntPropertyId) IsPropertyId() bool {
 	return true
 }
 
-func (cipi cardStringPropertyId) IsPropertyId() bool {
+func (cipi CardStringPropertyId) IsPropertyId() bool {
 	return true
 }
 
-func (cipi playerIntPropertyId) IsPropertyId() bool {
+func (cipi PlayerIntPropertyId) IsPropertyId() bool {
 	return true
 }
 
-func (cipi playerStringPropertyId) IsPropertyId() bool {
+func (cipi PlayerStringPropertyId) IsPropertyId() bool {
 	return true
 }
