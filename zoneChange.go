@@ -1,25 +1,19 @@
 package cardobject
 
-type ZoneChange interface {
-	GetSelection() CardSelectorSafeCond
-	GetDestination() Zone
+func NewZoneChange(s CardSelectorSafeCond, z Zone) *ZoneChange {
+	return &ZoneChange{s, z}
 }
 
-func NewZoneChange(s CardSelectorSafeCond, z Zone) ZoneChange {
-	return &zoneChange{s, z}
-}
-
-
-type zoneChange struct {
+type ZoneChange struct {
 	selection CardSelectorSafeCond
 	destination Zone
 }
 
 
-func (zc *zoneChange) GetSelection() CardSelectorSafeCond {
+func (zc *ZoneChange) GetSelection() CardSelectorSafeCond {
 	return zc.selection
 }
 
-func (zc *zoneChange) GetDestination() Zone {
+func (zc *ZoneChange) GetDestination() Zone {
 	return zc.destination
 }
