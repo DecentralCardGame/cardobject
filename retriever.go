@@ -7,16 +7,6 @@ type StringInserter interface {
 	IsStringRetriever() bool
 }
 
-type IntInserterConst interface {
-	IntInserter
-	GetIntVal() int
-}
-
-type StringInserterConst interface {
-	StringInserter
-	GetStringVal() string
-}
-
 type IntInserterPropId interface {
 	IntInserter
 	GetIntPropertyId() IntPropertyId
@@ -29,68 +19,68 @@ type StringInserterPropId interface {
 
 
 
-func NewIntConst(i int) IntInserterConst {
-	return &intConst{i}
+func NewIntConst(i int) *IntInserterConst {
+	return &IntInserterConst{i}
 }
 
-func NewStringConst(s string) StringInserterConst {
-	return &stringConst{s}
+func NewStringConst(s string) *StringInserterConst {
+	return &StringInserterConst{s}
 }
 
 
-type intConst struct {
+type IntInserterConst struct {
 	i int
 }
 
-type stringConst struct {
+type StringInserterConst struct {
 	s string
 }
 
 
-func (cipi cardIntPropertyId) IsIntRetriever() bool {
+func (cipi CardIntPropertyId) IsIntRetriever() bool {
 	return true
 }
 
-func (pipi playerIntPropertyId) IsIntRetriever() bool {
+func (pipi PlayerIntPropertyId) IsIntRetriever() bool {
 	return true
 }
 
-func (cspi cardStringPropertyId) IsStringRetriever() bool {
+func (cspi CardStringPropertyId) IsStringRetriever() bool {
 	return true
 }
 
-func (pspi playerStringPropertyId) IsStringRetriever() bool {
+func (pspi PlayerStringPropertyId) IsStringRetriever() bool {
 	return true
 }
 
-func (ic *intConst) IsIntRetriever() bool {
+func (ic *IntInserterConst) IsIntRetriever() bool {
 	return true
 }
 
-func (sc *stringConst) IsStringRetriever() bool {
+func (sc *StringInserterConst) IsStringRetriever() bool {
 	return true
 }
 
-func (cipi cardIntPropertyId) GetIntPropertyId() cardIntPropertyId {
+func (cipi CardIntPropertyId) GetIntPropertyId() CardIntPropertyId {
 	return cipi
 }
 
-func (cspi cardStringPropertyId) GetStringPropertyId() cardStringPropertyId {
+func (cspi CardStringPropertyId) GetStringPropertyId() CardStringPropertyId {
 	return cspi
 }
 
-func (pipi playerIntPropertyId) GetIntPropertyId() playerIntPropertyId {
+func (pipi PlayerIntPropertyId) GetIntPropertyId() PlayerIntPropertyId {
 	return pipi
 }
 
-func (pspi playerStringPropertyId) GetStringPropertyId() playerStringPropertyId {
+func (pspi PlayerStringPropertyId) GetStringPropertyId() PlayerStringPropertyId {
 	return pspi
 }
 
-func (ic *intConst) GetIntVal() int {
+func (ic *IntInserterConst) GetIntVal() int {
 	return ic.i
 }
 
-func (sc *stringConst) GetStringVal() string {
+func (sc *StringInserterConst) GetStringVal() string {
 	return sc.s
 }
