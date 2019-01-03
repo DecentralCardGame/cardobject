@@ -10,37 +10,22 @@ type Card interface {
 	Serialize() string
 }
 
-type Action interface {
-	Card
-	GetEffect() Effect
-}
-
 type Permanent interface {
 	Card
 	GetAbility() Ability
 	GetHealth() Health
 }
 
-type Entity interface {
-	Permanent
-	GetAttack() Attack
+func NewAction(c Cost, s Speedmodifier, ts []Tag, t Text, e Effect) *Action {
+	return &Action{&card{c, s, ts, t}, e}
 }
 
-type Field interface {
-	Permanent
-	GetStorage() []Ressource
+func NewEntity(c Cost, s Speedmodifier, ts []Tag, t Text, a Ability, h Health, at Attack) *Entity {
+	return &Entity{&permanent{&card{c, s, ts, t}, a, h}, at}
 }
 
-func NewAction(c Cost, s Speedmodifier, ts []Tag, t Text, e Effect) Action {
-	return &action{&card{c, s, ts, t}, e}
-}
-
-func NewEntity(c Cost, s Speedmodifier, ts []Tag, t Text, a Ability, h Health, at Attack) Entity {
-	return &entity{&permanent{&card{c, s, ts, t}, a, h}, at}
-}
-
-func NewField(c Cost, s Speedmodifier, ts []Tag, t Text, a Ability, h Health, st []Ressource) Field {
-	return &field{&permanent{&card{c, s, ts, t}, a, h}, st, nil}
+func NewField(c Cost, s Speedmodifier, ts []Tag, t Text, a Ability, h Health, st []Ressource) *Field {
+	return &Field{&permanent{&card{c, s, ts, t}, a, h}, st, nil}
 }
 
 
@@ -51,7 +36,7 @@ type card struct{
 	text Text
 }
 
-type action struct{
+type Action struct{
 	*card
 	effect Effect
 }
@@ -62,12 +47,12 @@ type permanent struct {
 	health Health
 }
 
-type entity struct{
+type Entity struct{
 	*permanent
 	attack Attack
 }
 
-type field struct{
+type Field struct{
 	*permanent
 	storage []Ressource
 	inhabitants []Entity
@@ -95,7 +80,7 @@ func (c *card) Serialize() string {
     return string(bytes)
 }
 
-func (a *action) GetEffect() Effect {
+func (a *Action) GetEffect() Effect {
 	return a.effect
 }
 
@@ -107,10 +92,10 @@ func (p *permanent) GetHealth() Health {
 	return p.health
 }
 
-func (e entity) GetAttack() Attack {
+func (e Entity) GetAttack() Attack {
 	return e.attack
 }
 
-func (f *field) GetStorage() []Ressource {
+func (f *Field) GetStorage() []Ressource {
 	return f.storage
 }
