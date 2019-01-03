@@ -4,16 +4,6 @@ type Condition interface {
 	GetComparator() Comparator
 }
 
-type CardCondition interface {
-	Condition
-	GetCardPropertyId() CardPropertyId
-}
-
-type PlayerCondition interface {
-	Condition
-	GetPlayerPropertyId() PlayerPropertyId
-}
-
 type IntCondition interface {
 	Condition
 	GetCompVal() int
@@ -26,97 +16,107 @@ type StringCondition interface {
 	GetStringPropertyId() StringPropertyId
 }
 
-func NewCardIntCondition(c Comparator, v int, p CardIntPropertyId) IntCondition {
-	return &cardIntCondition{&intCondition{&condition{c}, v}, p}
+type CardCondition interface {
+	Condition
+	GetCardPropertyId() CardPropertyId
 }
 
-func NewCardStringCondition(v string, p CardStringPropertyId) StringCondition {
-	return &cardStringCondition{&stringCondition{&condition{EQUAL}, v}, p}
+type PlayerCondition interface {
+	Condition
+	GetPlayerPropertyId() PlayerPropertyId
 }
 
-func NewPlayerIntCondition(c Comparator, v int, p PlayerIntPropertyId) IntCondition {
-	return &playerIntCondition{&intCondition{&condition{c}, v}, p}
+func NewCardIntCondition(c Comparator, v int, p CardIntPropertyId) *CardIntCondition {
+	return &CardIntCondition{&intCondition{&condition{c}, v}, p}
 }
 
-func NewPlayerStringCondition(v string, p PlayerStringPropertyId) StringCondition {
-	return &playerStringCondition{&stringCondition{&condition{EQUAL}, v}, p}
+func NewCardStringCondition(v string, p CardStringPropertyId) *CardStringCondition {
+	return &CardStringCondition{&stringCondition{&condition{EQUAL}, v}, p}
+}
+
+func NewPlayerIntCondition(c Comparator, v int, p PlayerIntPropertyId) *PlayerIntCondition {
+	return &PlayerIntCondition{&intCondition{&condition{c}, v}, p}
+}
+
+func NewPlayerStringCondition(v string, p PlayerStringPropertyId) *PlayerStringCondition {
+	return &PlayerStringCondition{&stringCondition{&condition{EQUAL}, v}, p}
 }
 
 type condition struct {
-	comparator Comparator
+	Comparator Comparator
 }
 
 type intCondition struct{
 	*condition
-	value int
+	Value int
 }
 
 type stringCondition struct{
 	*condition
-	value string
+	Value string
 }
 
-type cardIntCondition struct {
+type CardIntCondition struct {
 	*intCondition
-	prop CardIntPropertyId
+	Prop CardIntPropertyId
 }
 
-type cardStringCondition struct {
+type CardStringCondition struct {
 	*stringCondition
-	prop CardStringPropertyId
+	Prop CardStringPropertyId
 }
 
-type playerIntCondition struct {
+type PlayerIntCondition struct {
 	*intCondition
-	prop PlayerIntPropertyId
+	Prop PlayerIntPropertyId
 }
 
-type playerStringCondition struct {
+type PlayerStringCondition struct {
 	*stringCondition
-	prop PlayerStringPropertyId
+	Prop PlayerStringPropertyId
 }
 
 
 func (c *condition) GetComparator() Comparator {
-	return c.comparator
+	return c.Comparator
 }
 
 func (ic *intCondition) GetCompVal() int {
-	return ic.value
+	return ic.Value
 }
 
 func (sc *stringCondition) GetCompVal() string {
-	return sc.value
+	return sc.Value
 }
 
-func (cic *cardIntCondition) GetCardPropertyId() CardPropertyId {
-	return cic.prop
+func (cic *CardIntCondition) GetCardPropertyId() CardPropertyId {
+	return cic.Prop
 }
 
-func (cic *cardIntCondition) GetIntPropertyId() IntPropertyId {
-	return cic.prop
+func (cic *CardIntCondition) GetIntPropertyId() IntPropertyId {
+	return cic.Prop
 }
 
-func (pic *playerIntCondition) GetPlayerPropertyId() PlayerPropertyId {
-	return pic.prop
+func (pic *PlayerIntCondition) GetPlayerPropertyId() PlayerPropertyId {
+	return pic.Prop
 }
 
-func (pic *playerIntCondition) GetIntPropertyId() IntPropertyId {
-	return pic.prop
+func (pic *PlayerIntCondition) GetIntPropertyId() IntPropertyId {
+	return pic.Prop
 }
 
-func (csc *cardStringCondition) GetCardPropertyId() CardPropertyId {
-	return csc.prop
+func (csc *CardStringCondition) GetCardPropertyId() CardPropertyId {
+	return csc.Prop
 }
 
-func (csc *cardStringCondition) GetStringPropertyId() StringPropertyId {
-	return csc.prop
+func (csc *CardStringCondition) GetStringPropertyId() StringPropertyId {
+	return csc.Prop
 }
 
-func (psc *playerStringCondition) GetPlayerPropertyId() PlayerPropertyId {
-	return psc.prop
+func (psc *PlayerStringCondition) GetPlayerPropertyId() PlayerPropertyId {
+	return psc.Prop
 }
 
-func (psc *playerStringCondition) GetStringPropertyId() StringPropertyId {
-	return psc.prop
+func (psc *PlayerStringCondition) GetStringPropertyId() StringPropertyId {
+	return psc.Prop
 }
