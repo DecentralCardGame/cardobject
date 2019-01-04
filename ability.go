@@ -12,7 +12,7 @@ type ActivatedAbility interface {
 
 type TriggeredAbility interface {
 	Ability
-	GetEventlistener() EventListener
+	GetEventListener() EventListener
 }
 
 func NewActivatedAbility(e Effect, c Cost, u bool) ActivatedAbility {
@@ -52,6 +52,6 @@ func (aa *activatedAbility) IsMultipleUse() bool {
 	return aa.multipleUse	
 }
 
-func (ta *triggeredAbility) GetEventlistener() EventListener {
+func (ta *triggeredAbility) GetEventListener() EventListener {
 	return ta.cause
 }
