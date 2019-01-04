@@ -9,32 +9,48 @@ type ReturningEventListener interface {
 	ReturnsCardPointerArray() bool
 }
 
-func NewTimeEventListener(te TimeEvent) *TimeEventListener {
-	return &TimeEventListener{&eventListener{}, te}
+type TimeEventListener interface {
+	EventListener
+	TimeEvent() TimeEvent
 }
 
-func NewManipulationEventListener(pi CardPropertyId) *ManipulationEventListener {
-	return &ManipulationEventListener{&eventListener{}, pi}
+type ManipulationEventListener interface {
+	ReturningEventListener
+	PropertyId() CardPropertyId
 }
 
-func NewZoneChangeEvenListener(d DynamicZone, s Zone) *ZoneChangeEventListener {
-	return &ZoneChangeEventListener{&eventListener{}, d, s}
+type ZoneChangeEvenListener interface {
+	ReturningEventListener
+	Source() DynamicZone
+	Destination() Zone
+}
+
+func NewTimeEventListener(te TimeEvent) TimeEventListener {
+	return &timeEventListener{&eventListener{}, te}
+}
+
+func NewManipulationEventListener(pi CardPropertyId) ManipulationEventListener {
+	return &manipulationEventListener{&eventListener{}, pi}
+}
+
+func NewZoneChangeEvenListener(d DynamicZone, s Zone) ZoneChangeEvenListener {
+	return &zoneChangeEventListener{&eventListener{}, d, s}
 }
 
 
 type eventListener struct {}
 
-type TimeEventListener struct {
+type timeEventListener struct {
 	*eventListener
 	event TimeEvent
 }
 
-type ManipulationEventListener struct {
+type manipulationEventListener struct {
 	*eventListener
 	propertyId CardPropertyId
 }
 
-type ZoneChangeEventListener struct {
+type zoneChangeEventListener struct {
 	*eventListener
 	source DynamicZone
 	destination Zone
@@ -45,26 +61,26 @@ func (el *eventListener) IsEventListener() bool {
 	return true
 }
 
-func (mel *ManipulationEventListener) ReturnsCardPointerArray() bool {
+func (mel *manipulationEventListener) ReturnsCardPointerArray() bool {
 	return true
 }
 
-func (zel *ZoneChangeEventListener) ReturnsCardPointerArray() bool {
+func (zel *zoneChangeEventListener) ReturnsCardPointerArray() bool {
 	return true
 }
 
-func (tel *TimeEventListener) TimeEvent() TimeEvent {
+func (tel *timeEventListener) TimeEvent() TimeEvent {
 	return tel.event
 }
 
-func (mel *ManipulationEventListener) PropertyId() CardPropertyId {
+func (mel *manipulationEventListener) PropertyId() CardPropertyId {
 	return mel.propertyId
 }
 
-func (zel *ZoneChangeEventListener) Source() DynamicZone {
+func (zel *zoneChangeEventListener) Source() DynamicZone {
 	return zel.source
 }
 
-func (zel *ZoneChangeEventListener) Destination() Zone {
+func (zel *zoneChangeEventListener) Destination() Zone {
 	return zel.destination
 }
