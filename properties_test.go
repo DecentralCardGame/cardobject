@@ -38,15 +38,15 @@ func TestHealth(t *testing.T) {
 	success("Health")
 }
 
-func TestSpeedmodifier(t *testing.T) {
-	x := createSpeedmodifier()
+func TestSpeedModifier(t *testing.T) {
+	x := createSpeedModifier()
 	if (x.CardIntPropertyId() != SPEEDMODIFIER) {
-		t.Errorf("SpeedmodifierId was incorrect")
+		t.Errorf("SpeedModifierId was incorrect")
 	}
 	if (x.GetIntVal() != testPropIdInt) {
-		t.Errorf("SpeedmodifierVal was incorrect")
+		t.Errorf("SpeedModifierVal was incorrect")
 	}
-	success("Speedmodifier")
+	success("SpeedModifier")
 }
 
 func TestTag(t *testing.T) {
@@ -71,26 +71,26 @@ func TestText(t *testing.T) {
 	success("Text")
 }
 
-func createAttack() *Attack {
+func createAttack() Attack {
 	return NewAttack(testPropIdInt)
 }
 
-func createCostSum() *CostSum {
+func createCostSum() CostSum {
 	return NewCostSum(testPropIdInt)
 }
 
-func createHealth() *Health {
+func createHealth() Health {
 	return NewHealth(testPropIdInt)
 }
 
-func createSpeedmodifier() *Speedmodifier {
-	return NewSpeedmodifier(testPropIdInt)
+func createSpeedModifier() SpeedModifier {
+	return NewSpeedModifier(testPropIdInt)
 }
 
-func createTag() *Tag {
+func createTag() Tag {
 	return NewTag(testPropIdString)
 }
 
-func createText() *Text {
+func createText() Text {
 	return NewText(testPropIdString)
 }
