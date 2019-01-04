@@ -5,8 +5,9 @@ import "encoding/json"
 
 type Card interface {
 	GetCost() Cost
-	GetSpeed() Speedmodifier
+	GetSpeedModifier() SpeedModifier
 	GetTags() []Tag
+	GetText() Text
 	Serialize() string
 }
 
@@ -28,25 +29,24 @@ type Entity interface {
 
 type Field interface {
 	Permanent
-	GetStorage() []Ressource
 }
 
-func NewAction(c Cost, s Speedmodifier, ts []Tag, t Text, e Effect) Action {
+func NewAction(c Cost, s SpeedModifier, ts []Tag, t Text, e Effect) Action {
 	return &action{&card{c, s, ts, t}, e}
 }
 
-func NewEntity(c Cost, s Speedmodifier, ts []Tag, t Text, a Ability, h Health, at Attack) Entity {
+func NewEntity(c Cost, s SpeedModifier, ts []Tag, t Text, a Ability, h Health, at Attack) Entity {
 	return &entity{&permanent{&card{c, s, ts, t}, a, h}, at}
 }
 
-func NewField(c Cost, s Speedmodifier, ts []Tag, t Text, a Ability, h Health, st []Ressource) Field {
-	return &field{&permanent{&card{c, s, ts, t}, a, h}, st, nil}
+func NewField(c Cost, s SpeedModifier, ts []Tag, t Text, a Ability, h Health) Field {
+	return &field{&permanent{&card{c, s, ts, t}, a, h}}
 }
 
 
 type card struct{
 	cost Cost
-	speedmodifier Speedmodifier
+	speedmodifier SpeedModifier
 	tag []Tag
 	text Text
 }
@@ -69,8 +69,6 @@ type entity struct{
 
 type field struct{
 	*permanent
-	storage []Ressource
-	inhabitants []Entity
 }
 
 
@@ -78,12 +76,16 @@ func (c *card) GetCost() Cost {
 	return c.cost
 }
 
-func (c *card) GetSpeed() Speedmodifier {
+func (c *card) GetSpeedModifier() SpeedModifier {
 	return c.speedmodifier
 }
 
 func (c *card) GetTags() []Tag {
 	return c.tag
+}
+
+func (c *card) GetText() Text {
+	return c.text
 }
 
 func (c *card) Serialize() string {
@@ -109,8 +111,4 @@ func (p *permanent) GetHealth() Health {
 
 func (e entity) GetAttack() Attack {
 	return e.attack
-}
-
-func (f *field) GetStorage() []Ressource {
-	return f.storage
 }
