@@ -14,7 +14,7 @@ type CardSelectorCond interface {
 }
 
 type CardSelectorSafeCond interface {
-	CardSelector
+	CardSelectorCond
 	GetDynamicZone() DynamicZone
 }
 
