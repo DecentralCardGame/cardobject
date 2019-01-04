@@ -11,18 +11,18 @@ type ReturningEventListener interface {
 
 type TimeEventListener interface {
 	EventListener
-	TimeEvent() TimeEvent
+	GetTimeEvent() TimeEvent
 }
 
 type ManipulationEventListener interface {
 	ReturningEventListener
-	PropertyId() CardPropertyId
+	GetPropertyId() CardPropertyId
 }
 
-type ZoneChangeEvenListener interface {
+type ZoneChangeEventListener interface {
 	ReturningEventListener
-	Source() DynamicZone
-	Destination() Zone
+	GetSource() DynamicZone
+	GetDestination() Zone
 }
 
 func NewTimeEventListener(te TimeEvent) TimeEventListener {
@@ -33,7 +33,7 @@ func NewManipulationEventListener(pi CardPropertyId) ManipulationEventListener {
 	return &manipulationEventListener{&eventListener{}, pi}
 }
 
-func NewZoneChangeEvenListener(d DynamicZone, s Zone) ZoneChangeEvenListener {
+func NewZoneChangeEventListener(d DynamicZone, s Zone) ZoneChangeEventListener {
 	return &zoneChangeEventListener{&eventListener{}, d, s}
 }
 
@@ -69,18 +69,18 @@ func (zel *zoneChangeEventListener) ReturnsCardPointerArray() bool {
 	return true
 }
 
-func (tel *timeEventListener) TimeEvent() TimeEvent {
+func (tel *timeEventListener) GetTimeEvent() TimeEvent {
 	return tel.event
 }
 
-func (mel *manipulationEventListener) PropertyId() CardPropertyId {
+func (mel *manipulationEventListener) GetPropertyId() CardPropertyId {
 	return mel.propertyId
 }
 
-func (zel *zoneChangeEventListener) Source() DynamicZone {
+func (zel *zoneChangeEventListener) GetSource() DynamicZone {
 	return zel.source
 }
 
-func (zel *zoneChangeEventListener) Destination() Zone {
+func (zel *zoneChangeEventListener) GetDestination() Zone {
 	return zel.destination
 }
