@@ -12,12 +12,24 @@ type Manipulation interface {
 	GetTargetPropertyId() PropertyId
 }
 
-func NewIntManipulation(cs CardSelector, v IntInserter, p IntPropertyId) *IntManipulation {
-	return &IntManipulation{&manipulation{cs}, v, p}
+type IntManipulation interface {
+	Manipulation
+	GetIntManipulation() IntInserter
+	GetTargetIntPropertyId() IntPropertyId
 }
 
-func NewStringManipulation(cs CardSelector, v StringInserter, p StringPropertyId) *StringManipulation {
-	return &StringManipulation{&manipulation{cs}, v, p}
+type StringManipulation interface {
+	Manipulation
+	GetStringManipulation() StringInserter
+	GetTargetStringPropertyId() StringPropertyId
+}
+
+func NewIntManipulation(cs CardSelector, v IntInserter, p IntPropertyId) IntManipulation {
+	return &intManipulation{&manipulation{cs}, v, p}
+}
+
+func NewStringManipulation(cs CardSelector, v StringInserter, p StringPropertyId) StringManipulation {
+	return &stringManipulation{&manipulation{cs}, v, p}
 }
 
 
@@ -25,13 +37,13 @@ type manipulation struct {
 	selector CardSelector
 }
 
-type IntManipulation struct {
+type intManipulation struct {
 	*manipulation
 	val IntInserter
 	prop IntPropertyId
 }
 
-type StringManipulation struct {
+type stringManipulation struct {
 	*manipulation
 	val StringInserter
 	prop StringPropertyId
@@ -42,35 +54,35 @@ func (m *manipulation) GetCardSelector() CardSelector {
 	return m.selector
 }
 
-func (im *IntManipulation) GetManipulation() interface{} {
+func (im *intManipulation) GetManipulation() interface{} {
 	return im.GetIntManipulation()
 }
 
-func (sm *StringManipulation) GetManipulation() interface{} {
+func (sm *stringManipulation) GetManipulation() interface{} {
 	return sm.GetStringManipulation()
 }
 
-func (im *IntManipulation) GetTargetPropertyId() PropertyId {
+func (im *intManipulation) GetTargetPropertyId() PropertyId {
 	return im.GetTargetIntPropertyId()
 }
 
-func (sm *StringManipulation) GetTargetPropertyId() PropertyId {
+func (sm *stringManipulation) GetTargetPropertyId() PropertyId {
 	return sm.GetTargetStringPropertyId()
 }
 
-func (im *IntManipulation) GetIntManipulation() IntInserter {
+func (im *intManipulation) GetIntManipulation() IntInserter {
 	return im.val
 }
 
-func (sm *StringManipulation) GetStringManipulation() StringInserter {
+func (sm *stringManipulation) GetStringManipulation() StringInserter {
 	return sm.val
 }
 
-func (im *IntManipulation) GetTargetIntPropertyId() IntPropertyId {
+func (im *intManipulation) GetTargetIntPropertyId() IntPropertyId {
 	return im.prop
 }
 
-func (sm *StringManipulation) GetTargetStringPropertyId() StringPropertyId {
+func (sm *stringManipulation) GetTargetStringPropertyId() StringPropertyId {
 	return sm.prop
 }
 
