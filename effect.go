@@ -1,14 +1,14 @@
 package cardobject
 
-type Effect struct {
-	zoneChanges []ZoneChange
-	manipulations []Manipulation
-	production []Ressource
+type Effect interface {
+	GetZoneChanges() []ZoneChange
+	GetManipulations() []Manipulation
+	GetProduction() []Ressource
 }
 
 type Manipulation interface {
 	GetCardSelector() CardSelector
-	GetManipulation() interface{}
+	GetManipulation() Inserter
 	GetTargetPropertyId() PropertyId
 }
 
@@ -24,6 +24,10 @@ type StringManipulation interface {
 	GetTargetStringPropertyId() StringPropertyId
 }
 
+func NewEffect(zc []ZoneChange, m []Manipulation, p []Ressource) Effect {
+	return &effect{zc, m, p}	
+}
+
 func NewIntManipulation(cs CardSelector, v IntInserter, p IntPropertyId) IntManipulation {
 	return &intManipulation{&manipulation{cs}, v, p}
 }
@@ -32,6 +36,11 @@ func NewStringManipulation(cs CardSelector, v StringInserter, p StringPropertyId
 	return &stringManipulation{&manipulation{cs}, v, p}
 }
 
+type effect struct {
+	ZoneChanges []ZoneChange
+	Manipulations []Manipulation
+	Production []Ressource
+}
 
 type manipulation struct {
 	selector CardSelector
@@ -49,16 +58,27 @@ type stringManipulation struct {
 	prop StringPropertyId
 }
 
+func (e *effect) GetZoneChanges() []ZoneChange {
+	return e.ZoneChanges
+}
+
+func (e *effect) GetManipulations() []Manipulation {
+	return e.Manipulations
+}
+
+func (e *effect) GetProduction() []Ressource {
+	return e.Production
+}
 
 func (m *manipulation) GetCardSelector() CardSelector {
 	return m.selector
 }
 
-func (im *intManipulation) GetManipulation() interface{} {
+func (im *intManipulation) GetManipulation() Inserter {
 	return im.GetIntManipulation()
 }
 
-func (sm *stringManipulation) GetManipulation() interface{} {
+func (sm *stringManipulation) GetManipulation() Inserter {
 	return sm.GetStringManipulation()
 }
 
