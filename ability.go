@@ -1,6 +1,7 @@
 package cardobject
 
 type Ability interface {
+	GetSpeedModifier() SpeedModifier
 	GetEffect() Effect
 }
 
@@ -15,16 +16,17 @@ type TriggeredAbility interface {
 	GetEventListener() EventListener
 }
 
-func NewActivatedAbility(e Effect, c Cost, u bool) ActivatedAbility {
-	return &activatedAbility{&ability{e}, c, u}
+func NewActivatedAbility(s SpeedModifier, e Effect, c Cost, u bool) ActivatedAbility {
+	return &activatedAbility{&ability{s, e}, c, u}
 }
 
-func NewTriggeredAbility(e Effect, c EventListener) TriggeredAbility {
-	return &triggeredAbility{&ability{e}, c}
+func NewTriggeredAbility(s SpeedModifier, e Effect, c EventListener) TriggeredAbility {
+	return &triggeredAbility{&ability{s, e}, c}
 }
 
 
 type ability struct {
+	SpeedModifier SpeedModifier
 	effect Effect
 }
 
@@ -39,6 +41,9 @@ type triggeredAbility struct {
 	cause EventListener 
 }
 
+func (a *ability) GetSpeedModifier() SpeedModifier {
+	return a.SpeedModifier
+}
 
 func (a *ability) GetEffect() Effect {
 	return a.effect
