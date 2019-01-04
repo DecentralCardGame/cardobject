@@ -26,6 +26,31 @@ type StringProperty interface {
 	GetStringVal() string
 }
 
+type CardIntProperty interface {
+	IntProperty
+	CardPropertyId() CardPropertyId
+	CardIntPropertyId() CardIntPropertyId
+}
+
+type CardStringProperty interface {
+	StringProperty
+	CardPropertyId() CardPropertyId
+	CardStringPropertyId() CardStringPropertyId
+}
+
+type PlayerIntProperty interface {
+	IntProperty
+	PlayerPropertyId() PlayerPropertyId
+	PlayerIntPropertyId() PlayerIntPropertyId
+}
+
+type PlayerStringProperty interface {
+	StringProperty
+	PlayerPropertyId() PlayerPropertyId
+	PlayerStringPropertyId() PlayerStringPropertyId
+}
+
+
 type intProperty struct {
 	val int
 }
@@ -34,22 +59,22 @@ type stringProperty struct {
 	val string
 }
 
-type CardIntProperty struct {
+type cardIntProperty struct {
 	*intProperty
 	id CardIntPropertyId
 }
 
-type CardStringProperty struct {
+type cardStringProperty struct {
 	*stringProperty
 	id CardStringPropertyId
 }
 
-type PlayerIntProperty struct {
+type playerIntProperty struct {
 	*intProperty
 	id PlayerIntPropertyId
 }
 
-type PlayerStringProperty struct {
+type playerStringProperty struct {
 	*stringProperty
 	id PlayerStringPropertyId
 }
@@ -63,67 +88,67 @@ func (sp *stringProperty) GetStringVal() string {
 	return sp.val
 }
 
-func (cip *CardIntProperty) CardIntPropertyId() CardIntPropertyId {
+func (cip *cardIntProperty) CardIntPropertyId() CardIntPropertyId {
 	return cip.id
 }
 
-func (cip *CardIntProperty) CardPropertyId() CardPropertyId {
+func (cip *cardIntProperty) CardPropertyId() CardPropertyId {
 	return cip.CardIntPropertyId()
 }
 
-func (cip *CardIntProperty) IntPropertyId() IntPropertyId {
+func (cip *cardIntProperty) IntPropertyId() IntPropertyId {
 	return cip.CardIntPropertyId()
 }
 
-func (cip *CardIntProperty) PropertyId() PropertyId {
+func (cip *cardIntProperty) PropertyId() PropertyId {
 	return cip.CardIntPropertyId()
 }
 
-func (csp *CardStringProperty) CardStringPropertyId() CardStringPropertyId {
+func (csp *cardStringProperty) CardStringPropertyId() CardStringPropertyId {
 	return csp.id
 }
 
-func (csp *CardStringProperty) CardPropertyId() CardPropertyId {
+func (csp *cardStringProperty) CardPropertyId() CardPropertyId {
 	return csp.CardStringPropertyId()
 }
 
-func (csp *CardStringProperty) StringPropertyId() StringPropertyId {
+func (csp *cardStringProperty) StringPropertyId() StringPropertyId {
 	return csp.CardStringPropertyId()
 }
 
-func (csp *CardStringProperty) PropertyId() PropertyId {
+func (csp *cardStringProperty) PropertyId() PropertyId {
 	return csp.CardStringPropertyId()
 }
 
-func (pip *PlayerIntProperty) PlayerIntPropertyId() PlayerIntPropertyId {
+func (pip *playerIntProperty) PlayerIntPropertyId() PlayerIntPropertyId {
 	return pip.id
 }
 
-func (pip *PlayerIntProperty) PlayerPropertyId() PlayerPropertyId {
+func (pip *playerIntProperty) PlayerPropertyId() PlayerPropertyId {
 	return pip.PlayerIntPropertyId()
 }
 
-func (pip *PlayerIntProperty) IntPropertyId() IntPropertyId {
+func (pip *playerIntProperty) IntPropertyId() IntPropertyId {
 	return pip.PlayerIntPropertyId()
 }
 
-func (pip *PlayerIntProperty) PropertyId() PropertyId {
+func (pip *playerIntProperty) PropertyId() PropertyId {
 	return pip.PlayerIntPropertyId()
 }
 
-func (psp *PlayerStringProperty) PlayerStringPropertyId() PlayerStringPropertyId {
+func (psp *playerStringProperty) PlayerStringPropertyId() PlayerStringPropertyId {
 	return psp.id
 }
 
-func (psp *PlayerStringProperty) PlayerPropertyId() PlayerPropertyId {
+func (psp *playerStringProperty) PlayerPropertyId() PlayerPropertyId {
 	return psp.PlayerStringPropertyId()
 }
 
-func (psp *PlayerStringProperty) StringPropertyId() StringPropertyId {
+func (psp *playerStringProperty) StringPropertyId() StringPropertyId {
 	return psp.PlayerStringPropertyId()
 }
 
-func (psp *PlayerStringProperty) PropertyId() PropertyId {
+func (psp *playerStringProperty) PropertyId() PropertyId {
 	return psp.PlayerStringPropertyId()
 }
 

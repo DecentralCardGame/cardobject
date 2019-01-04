@@ -1,15 +1,15 @@
 package cardobject
 
 const (
-	ATTACK CardIntPropertyId = iota
+	ATTACK cardIntPropertyId = iota
 	COSTSUM
 	HEALTH
 	SPEEDMODIFIER
 
-	TAG CardStringPropertyId = iota
+	TAG cardStringPropertyId = iota
 	TEXT
 
-	ENTITIESONBOARD PlayerIntPropertyId = iota
+	ENTITIESONBOARD playerIntPropertyId = iota
 	DECKSIZE
 	DUSTPILESIZE
 	FIELDSONBOARD
@@ -17,49 +17,49 @@ const (
 )
 
 type Attack struct {
-	*CardIntProperty
+	*cardIntProperty
 }
 
 func NewAttack(i int) *Attack {
-	return &Attack{&CardIntProperty{&intProperty{i}, ATTACK}}
+	return &Attack{&cardIntProperty{&intProperty{i}, ATTACK}}
 }
 
 type CostSum struct {
-	*CardIntProperty
+	*cardIntProperty
 }
 
 func NewCostSum(i int) *CostSum {
-	return &CostSum{&CardIntProperty{&intProperty{i}, COSTSUM}}
+	return &CostSum{&cardIntProperty{&intProperty{i}, COSTSUM}}
 }
 
 type Health struct {
-	*CardIntProperty
+	*cardIntProperty
 }
 
 func NewHealth(i int) *Health {
-	return &Health{&CardIntProperty{&intProperty{i}, HEALTH}}
+	return &Health{&cardIntProperty{&intProperty{i}, HEALTH}}
 }
 
 type Speedmodifier struct {
-	*CardIntProperty
+	*cardIntProperty
 }
 
 func NewSpeedmodifier(i int) *Speedmodifier {
-	return &Speedmodifier{&CardIntProperty{&intProperty{i}, SPEEDMODIFIER}}
+	return &Speedmodifier{&cardIntProperty{&intProperty{i}, SPEEDMODIFIER}}
 }
 
 type Tag struct {
-	*CardStringProperty
+	*cardStringProperty
 }
 
 func NewTag(s string) *Tag {
-	return &Tag{&CardStringProperty{&stringProperty{s}, TAG}}
+	return &Tag{&cardStringProperty{&stringProperty{s}, TAG}}
 }
 
 type Text struct {
-	*CardStringProperty
+	*cardStringProperty
 }
 
 func NewText(s string) *Text {
-	return &Text{&CardStringProperty{&stringProperty{s}, TEXT}}
+	return &Text{&cardStringProperty{&stringProperty{s}, TEXT}}
 }
