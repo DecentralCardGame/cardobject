@@ -4,12 +4,23 @@ type Ability interface {
 	GetEffect() Effect
 }
 
-func NewActivatedAbility(e Effect, c Cost, u bool) *ActivatedAbility {
-	return &ActivatedAbility{&ability{e}, c, u}
+type ActivatedAbility interface {
+	Ability
+	GetCost() Cost
+	IsMultipleUse() bool
 }
 
-func NewTriggeredAbility(e Effect, c EventListener) *TriggeredAbility {
-	return &TriggeredAbility{&ability{e}, c}
+type TriggeredAbility interface {
+	Ability
+	GetEventlistener() EventListener
+}
+
+func NewActivatedAbility(e Effect, c Cost, u bool) ActivatedAbility {
+	return &activatedAbility{&ability{e}, c, u}
+}
+
+func NewTriggeredAbility(e Effect, c EventListener) TriggeredAbility {
+	return &triggeredAbility{&ability{e}, c}
 }
 
 
@@ -17,13 +28,13 @@ type ability struct {
 	effect Effect
 }
 
-type ActivatedAbility struct {
+type activatedAbility struct {
 	*ability
 	cost Cost
 	multipleUse bool
 }
 
-type TriggeredAbility struct {
+type triggeredAbility struct {
 	*ability
 	cause EventListener 
 }
@@ -33,14 +44,14 @@ func (a *ability) GetEffect() Effect {
 	return a.effect
 }
 
-func (aa *ActivatedAbility) GetCost() Cost {
+func (aa *activatedAbility) GetCost() Cost {
 	return aa.cost
 }
 
-func (aa *ActivatedAbility) IsMultipleUse() bool {
+func (aa *activatedAbility) IsMultipleUse() bool {
 	return aa.multipleUse	
 }
 
-func (ta *TriggeredAbility) GetEventlistener() EventListener {
+func (ta *triggeredAbility) GetEventlistener() EventListener {
 	return ta.cause
 }
