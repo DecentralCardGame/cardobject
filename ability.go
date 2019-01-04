@@ -27,18 +27,18 @@ func NewTriggeredAbility(s SpeedModifier, e Effect, c EventListener) TriggeredAb
 
 type ability struct {
 	SpeedModifier SpeedModifier
-	effect Effect
+	Effect Effect
 }
 
 type activatedAbility struct {
 	*ability
-	cost Cost
-	multipleUse bool
+	Cost Cost
+	MultipleUse bool
 }
 
 type triggeredAbility struct {
 	*ability
-	cause EventListener 
+	Cause EventListener 
 }
 
 func (a *ability) GetSpeedModifier() SpeedModifier {
@@ -46,17 +46,17 @@ func (a *ability) GetSpeedModifier() SpeedModifier {
 }
 
 func (a *ability) GetEffect() Effect {
-	return a.effect
+	return a.Effect
 }
 
 func (aa *activatedAbility) GetCost() Cost {
-	return aa.cost
+	return aa.Cost
 }
 
 func (aa *activatedAbility) IsMultipleUse() bool {
-	return aa.multipleUse	
+	return aa.MultipleUse	
 }
 
 func (ta *triggeredAbility) GetEventListener() EventListener {
-	return ta.cause
+	return ta.Cause
 }

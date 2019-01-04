@@ -1,14 +1,10 @@
 package cardobject
 
-import "fmt"
-import "encoding/json"
-
 type Card interface {
 	GetCost() Cost
 	GetSpeedModifier() SpeedModifier
 	GetTags() []Tag
 	GetText() Text
-	Serialize() string
 }
 
 type Action interface {
@@ -45,26 +41,26 @@ func NewField(c Cost, s SpeedModifier, ts []Tag, t Text, a Ability, h Health) Fi
 
 
 type card struct{
-	cost Cost
-	speedmodifier SpeedModifier
-	tag []Tag
-	text Text
+	Cost Cost
+	Speedmodifier SpeedModifier
+	Tag []Tag
+	Text Text
 }
 
 type action struct{
 	*card
-	effect Effect
+	Effect Effect
 }
 
 type permanent struct {
 	*card
-	ability Ability
-	health Health
+	Ability Ability
+	Health Health
 }
 
 type entity struct{
 	*permanent
-	attack Attack
+	Attack Attack
 }
 
 type field struct{
@@ -73,42 +69,33 @@ type field struct{
 
 
 func (c *card) GetCost() Cost {
-	return c.cost
+	return c.Cost
 }
 
 func (c *card) GetSpeedModifier() SpeedModifier {
-	return c.speedmodifier
+	return c.Speedmodifier
 }
 
 func (c *card) GetTags() []Tag {
-	return c.tag
+	return c.Tag
 }
 
 func (c *card) GetText() Text {
-	return c.text
-}
-
-func (c *card) Serialize() string {
-	bytes, err := json.Marshal(c)
-    if err != nil {
-        fmt.Println("Can't serialize", c)
-        return "Can't serialize"
-    }
-    return string(bytes)
+	return c.Text
 }
 
 func (a *action) GetEffect() Effect {
-	return a.effect
+	return a.Effect
 }
 
 func (p *permanent) GetAbility() Ability {
-	return p.ability
+	return p.Ability
 }
 
 func (p *permanent) GetHealth() Health {
-	return p.health
+	return p.Health
 }
 
 func (e entity) GetAttack() Attack {
-	return e.attack
+	return e.Attack
 }

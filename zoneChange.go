@@ -11,15 +11,15 @@ func NewZoneChange(s CardSelectorSafeCond, z Zone) ZoneChange {
 
 
 type zoneChange struct {
-	selection CardSelectorSafeCond
-	destination Zone
+	Selection CardSelectorSafeCond
+	Destination Zone
 }
 
 
 func (zc *zoneChange) GetSelection() CardSelectorSafeCond {
-	return zc.selection
+	return zc.Selection
 }
 
 func (zc *zoneChange) GetDestination() Zone {
-	return zc.destination
+	return zc.Destination
 }

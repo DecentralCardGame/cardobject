@@ -29,8 +29,8 @@ type simpleZoneID int
 type protectedZoneID int
 
 type deckRange struct {
-	start int
-	end int
+	Start int
+	End int
 } 
 
 

@@ -11,14 +11,14 @@ func NewCost(r []Ressource, z []ZoneChange) Cost {
 
 
 type cost struct{
-	ressourceCost []Ressource
-	zoneChangeCost []ZoneChange
+	RessourceCost []Ressource
+	ZoneChangeCost []ZoneChange
 }
 
 func (c *cost) GetRessources() []Ressource {
-	return c.ressourceCost
+	return c.RessourceCost
 }
 
 func (c *cost) GetZoneChanges() []ZoneChange {
-	return c.zoneChangeCost
+	return c.ZoneChangeCost
 }

@@ -43,19 +43,19 @@ type effect struct {
 }
 
 type manipulation struct {
-	selector CardSelector
+	Selector CardSelector
 }
 
 type intManipulation struct {
 	*manipulation
-	val IntInserter
-	prop IntPropertyId
+	Val IntInserter
+	Prop IntPropertyId
 }
 
 type stringManipulation struct {
 	*manipulation
-	val StringInserter
-	prop StringPropertyId
+	Val StringInserter
+	Prop StringPropertyId
 }
 
 func (e *effect) GetZoneChanges() []ZoneChange {
@@ -71,7 +71,7 @@ func (e *effect) GetProduction() []Ressource {
 }
 
 func (m *manipulation) GetCardSelector() CardSelector {
-	return m.selector
+	return m.Selector
 }
 
 func (im *intManipulation) GetManipulation() Inserter {
@@ -91,18 +91,18 @@ func (sm *stringManipulation) GetTargetPropertyId() PropertyId {
 }
 
 func (im *intManipulation) GetIntManipulation() IntInserter {
-	return im.val
+	return im.Val
 }
 
 func (sm *stringManipulation) GetStringManipulation() StringInserter {
-	return sm.val
+	return sm.Val
 }
 
 func (im *intManipulation) GetTargetIntPropertyId() IntPropertyId {
-	return im.prop
+	return im.Prop
 }
 
 func (sm *stringManipulation) GetTargetStringPropertyId() StringPropertyId {
-	return sm.prop
+	return sm.Prop
 }
 

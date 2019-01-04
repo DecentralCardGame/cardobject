@@ -45,11 +45,11 @@ func NewStringConst(s string) StringInserterConst {
 
 
 type intConst struct {
-	i int
+	Val int
 }
 
 type stringConst struct {
-	s string
+	Val string
 }
 
 func (cipi cardIntPropertyId) IsRetriever() bool {
@@ -117,9 +117,9 @@ func (pspi playerStringPropertyId) GetStringPropertyId() playerStringPropertyId 
 }
 
 func (ic *intConst) GetIntVal() int {
-	return ic.i
+	return ic.Val
 }
 
 func (sc *stringConst) GetStringVal() string {
-	return sc.s
+	return sc.Val
 }

@@ -52,44 +52,44 @@ type PlayerStringProperty interface {
 
 
 type intProperty struct {
-	val int
+	Val int
 }
 
 type stringProperty struct {
-	val string
+	Val string
 }
 
 type cardIntProperty struct {
 	*intProperty
-	id CardIntPropertyId
+	Id CardIntPropertyId
 }
 
 type cardStringProperty struct {
 	*stringProperty
-	id CardStringPropertyId
+	Id CardStringPropertyId
 }
 
 type playerIntProperty struct {
 	*intProperty
-	id PlayerIntPropertyId
+	Id PlayerIntPropertyId
 }
 
 type playerStringProperty struct {
 	*stringProperty
-	id PlayerStringPropertyId
+	Id PlayerStringPropertyId
 }
 
 
 func (ip *intProperty) GetIntVal() int {
-	return ip.val
+	return ip.Val
 }
 
 func (sp *stringProperty) GetStringVal() string {
-	return sp.val
+	return sp.Val
 }
 
 func (cip *cardIntProperty) CardIntPropertyId() CardIntPropertyId {
-	return cip.id
+	return cip.Id
 }
 
 func (cip *cardIntProperty) CardPropertyId() CardPropertyId {
@@ -105,7 +105,7 @@ func (cip *cardIntProperty) PropertyId() PropertyId {
 }
 
 func (csp *cardStringProperty) CardStringPropertyId() CardStringPropertyId {
-	return csp.id
+	return csp.Id
 }
 
 func (csp *cardStringProperty) CardPropertyId() CardPropertyId {
@@ -121,7 +121,7 @@ func (csp *cardStringProperty) PropertyId() PropertyId {
 }
 
 func (pip *playerIntProperty) PlayerIntPropertyId() PlayerIntPropertyId {
-	return pip.id
+	return pip.Id
 }
 
 func (pip *playerIntProperty) PlayerPropertyId() PlayerPropertyId {
@@ -137,7 +137,7 @@ func (pip *playerIntProperty) PropertyId() PropertyId {
 }
 
 func (psp *playerStringProperty) PlayerStringPropertyId() PlayerStringPropertyId {
-	return psp.id
+	return psp.Id
 }
 
 func (psp *playerStringProperty) PlayerPropertyId() PlayerPropertyId {

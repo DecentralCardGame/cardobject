@@ -42,18 +42,18 @@ type eventListener struct {}
 
 type timeEventListener struct {
 	*eventListener
-	event TimeEvent
+	Event TimeEvent
 }
 
 type manipulationEventListener struct {
 	*eventListener
-	propertyId CardPropertyId
+	PropertyId CardPropertyId
 }
 
 type zoneChangeEventListener struct {
 	*eventListener
-	source DynamicZone
-	destination Zone
+	Source DynamicZone
+	Destination Zone
 }
 
 
@@ -70,17 +70,17 @@ func (zel *zoneChangeEventListener) ReturnsCardPointerArray() bool {
 }
 
 func (tel *timeEventListener) GetTimeEvent() TimeEvent {
-	return tel.event
+	return tel.Event
 }
 
 func (mel *manipulationEventListener) GetPropertyId() CardPropertyId {
-	return mel.propertyId
+	return mel.PropertyId
 }
 
 func (zel *zoneChangeEventListener) GetSource() DynamicZone {
-	return zel.source
+	return zel.Source
 }
 
 func (zel *zoneChangeEventListener) GetDestination() Zone {
-	return zel.destination
+	return zel.Destination
 }
