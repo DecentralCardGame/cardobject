@@ -26,97 +26,117 @@ type StringCondition interface {
 	GetStringPropertyId() StringPropertyId
 }
 
-func NewCardIntCondition(c Comparator, v int, p CardIntPropertyId) IntCondition {
+type CardIntCondition interface {
+	GetCardPropertyId() CardPropertyId
+	IntCondition
+}
+
+type CardStringCondition interface {
+	GetCardPropertyId() CardPropertyId
+	StringCondition
+}
+
+type PlayerIntCondition interface {
+	GetPlayerPropertyId() PlayerPropertyId
+	IntCondition
+}
+
+type PlayerStringCondition interface {
+	GetPlayerPropertyId() PlayerPropertyId
+	StringCondition
+}
+
+func NewCardIntCondition(c Comparator, v int, p CardIntPropertyId) CardIntCondition {
 	return &cardIntCondition{&intCondition{&condition{c}, v}, p}
 }
 
-func NewCardStringCondition(v string, p CardStringPropertyId) StringCondition {
+func NewCardStringCondition(v string, p CardStringPropertyId) CardStringCondition {
 	return &cardStringCondition{&stringCondition{&condition{EQUAL}, v}, p}
 }
 
-func NewPlayerIntCondition(c Comparator, v int, p PlayerIntPropertyId) IntCondition {
+func NewPlayerIntCondition(c Comparator, v int, p PlayerIntPropertyId) PlayerIntCondition {
 	return &playerIntCondition{&intCondition{&condition{c}, v}, p}
 }
 
-func NewPlayerStringCondition(v string, p PlayerStringPropertyId) StringCondition {
+func NewPlayerStringCondition(v string, p PlayerStringPropertyId) PlayerStringCondition {
 	return &playerStringCondition{&stringCondition{&condition{EQUAL}, v}, p}
 }
 
 type condition struct {
-	comparator Comparator
+	Comparator Comparator
 }
 
 type intCondition struct{
 	*condition
-	value int
+	Value int
 }
 
 type stringCondition struct{
 	*condition
-	value string
+	Value string
 }
 
 type cardIntCondition struct {
 	*intCondition
-	prop CardIntPropertyId
+	Prop CardIntPropertyId
 }
 
 type cardStringCondition struct {
 	*stringCondition
-	prop CardStringPropertyId
+	Prop CardStringPropertyId
 }
 
 type playerIntCondition struct {
 	*intCondition
-	prop PlayerIntPropertyId
+	Prop PlayerIntPropertyId
 }
 
 type playerStringCondition struct {
 	*stringCondition
-	prop PlayerStringPropertyId
+	Prop PlayerStringPropertyId
 }
 
 
 func (c *condition) GetComparator() Comparator {
-	return c.comparator
+	return c.Comparator
 }
 
 func (ic *intCondition) GetCompVal() int {
-	return ic.value
+	return ic.Value
 }
 
 func (sc *stringCondition) GetCompVal() string {
-	return sc.value
+	return sc.Value
 }
 
 func (cic *cardIntCondition) GetCardPropertyId() CardPropertyId {
-	return cic.prop
+	return cic.Prop
 }
 
 func (cic *cardIntCondition) GetIntPropertyId() IntPropertyId {
-	return cic.prop
+	return cic.Prop
 }
 
 func (pic *playerIntCondition) GetPlayerPropertyId() PlayerPropertyId {
-	return pic.prop
+	return pic.Prop
 }
 
 func (pic *playerIntCondition) GetIntPropertyId() IntPropertyId {
-	return pic.prop
+	return pic.Prop
 }
 
 func (csc *cardStringCondition) GetCardPropertyId() CardPropertyId {
-	return csc.prop
+	return csc.Prop
 }
 
 func (csc *cardStringCondition) GetStringPropertyId() StringPropertyId {
-	return csc.prop
+	return csc.Prop
 }
 
 func (psc *playerStringCondition) GetPlayerPropertyId() PlayerPropertyId {
-	return psc.prop
+	return psc.Prop
 }
 
 func (psc *playerStringCondition) GetStringPropertyId() StringPropertyId {
-	return psc.prop
+	return psc.Prop
 }
