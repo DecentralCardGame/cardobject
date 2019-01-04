@@ -6,16 +6,16 @@ type CardSelector interface {
 
 type CardSelectorCond interface {
 	CardSelector
-	PlayerSelectorMode() SelectorMode
-	PlayerCondition() PlayerCondition
-	CardSelectorMode() SelectorMode
-	CardCondition() CardCondition
-	Zone() Zone
+	GetPlayerSelectorMode() SelectorMode
+	GetPlayerCondition() PlayerCondition
+	GetCardSelectorMode() SelectorMode
+	GetCardCondition() CardCondition
+	GetZone() Zone
 }
 
 type CardSelectorSafeCond interface {
 	CardSelector
-	DynamicZone() DynamicZone
+	GetDynamicZone() DynamicZone
 }
 
 func NewBasicSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc CardCondition, z Zone) CardSelectorCond {
@@ -28,16 +28,16 @@ func NewSafeSelector(pm SelectorMode, pc PlayerCondition, cm SelectorMode, cc Ca
 
 
 type basicSelector struct {
-	playerMode SelectorMode
-	playerCondition PlayerCondition
-	cardMode SelectorMode
-	cardCondition CardCondition
-	zone Zone
+	PlayerMode SelectorMode
+	PlayerCondition PlayerCondition
+	CardMode SelectorMode
+	CardCondition CardCondition
+	Zone Zone
 }
 
 type safeSelector struct {
 	*basicSelector
-	safeZone DynamicZone
+	SafeZone DynamicZone
 }
 
 type simpleSelectorID int 
@@ -55,28 +55,28 @@ func (ss *simpleSelectorID) IsCardSelector() bool {
 	return true
 }
 
-func (bs *basicSelector) PlayerSelectorMode() SelectorMode {
-	return bs.playerMode
+func (bs *basicSelector) GetPlayerSelectorMode() SelectorMode {
+	return bs.PlayerMode
 }
 
-func (bs *basicSelector) PlayerCondition() PlayerCondition {
-	return bs.playerCondition
+func (bs *basicSelector) GetPlayerCondition() PlayerCondition {
+	return bs.PlayerCondition
 }
 
-func (bs *basicSelector) CardSelectorMode() SelectorMode {
-	return bs.cardMode
+func (bs *basicSelector) GetCardSelectorMode() SelectorMode {
+	return bs.CardMode
 }
 
-func (bs *basicSelector) CardCondition() CardCondition {
-	return bs.cardCondition
+func (bs *basicSelector) GetCardCondition() CardCondition {
+	return bs.CardCondition
 }
 
-func (bs *basicSelector) Zone() Zone {
-	return bs.zone
+func (bs *basicSelector) GetZone() Zone {
+	return bs.Zone
 }
 
-func (ss *safeSelector) DynamicZone() DynamicZone {
-	return ss.safeZone
+func (ss *safeSelector) GetDynamicZone() DynamicZone {
+	return ss.SafeZone
 }
 
 type selectorModes int
