@@ -22,4 +22,4 @@ func (zc *zoneChange) GetSelection() CardSelectorSafeCond {
 
 func (zc *zoneChange) GetDestination() Zone {
 	return zc.Destination
-}
+}dfuzdvfuzv
