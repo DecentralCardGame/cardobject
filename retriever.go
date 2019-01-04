@@ -1,9 +1,15 @@
 package cardobject
 
+type Inserter interface {
+	IsRetriever() bool
+}
+
 type IntInserter interface {
+	Inserter
 	IsIntRetriever() bool
 }
 type StringInserter interface {
+	Inserter
 	IsStringRetriever() bool
 }
 
@@ -46,6 +52,29 @@ type stringConst struct {
 	s string
 }
 
+func (cipi cardIntPropertyId) IsRetriever() bool {
+	return true
+}
+
+func (pipi playerIntPropertyId) IsRetriever() bool {
+	return true
+}
+
+func (cspi cardStringPropertyId) IsRetriever() bool {
+	return true
+}
+
+func (pspi playerStringPropertyId) IsRetriever() bool {
+	return true
+}
+
+func (ic *intConst) IsRetriever() bool {
+	return true
+}
+
+func (sc *stringConst) IsRetriever() bool {
+	return true
+}
 
 func (cipi cardIntPropertyId) IsIntRetriever() bool {
 	return true
