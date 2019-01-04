@@ -20,46 +20,46 @@ type Attack struct {
 	*cardIntProperty
 }
 
-func NewAttack(i int) *Attack {
-	return &Attack{&cardIntProperty{&intProperty{i}, ATTACK}}
+func NewAttack(i int) Attack {
+	return Attack{&cardIntProperty{&intProperty{i}, ATTACK}}
 }
 
 type CostSum struct {
 	*cardIntProperty
 }
 
-func NewCostSum(i int) *CostSum {
-	return &CostSum{&cardIntProperty{&intProperty{i}, COSTSUM}}
+func NewCostSum(i int) CostSum {
+	return CostSum{&cardIntProperty{&intProperty{i}, COSTSUM}}
 }
 
 type Health struct {
 	*cardIntProperty
 }
 
-func NewHealth(i int) *Health {
-	return &Health{&cardIntProperty{&intProperty{i}, HEALTH}}
+func NewHealth(i int) Health {
+	return Health{&cardIntProperty{&intProperty{i}, HEALTH}}
 }
 
-type Speedmodifier struct {
+type SpeedModifier struct {
 	*cardIntProperty
 }
 
-func NewSpeedmodifier(i int) *Speedmodifier {
-	return &Speedmodifier{&cardIntProperty{&intProperty{i}, SPEEDMODIFIER}}
+func NewSpeedModifier(i int) SpeedModifier {
+	return SpeedModifier{&cardIntProperty{&intProperty{i}, SPEEDMODIFIER}}
 }
 
 type Tag struct {
 	*cardStringProperty
 }
 
-func NewTag(s string) *Tag {
-	return &Tag{&cardStringProperty{&stringProperty{s}, TAG}}
+func NewTag(s string) Tag {
+	return Tag{&cardStringProperty{&stringProperty{s}, TAG}}
 }
 
 type Text struct {
 	*cardStringProperty
 }
 
-func NewText(s string) *Text {
-	return &Text{&cardStringProperty{&stringProperty{s}, TEXT}}
+func NewText(s string) Text {
+	return Text{&cardStringProperty{&stringProperty{s}, TEXT}}
 }
