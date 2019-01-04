@@ -1,19 +1,24 @@
 package cardobject
 
-func NewCost(r []Ressource, z []ZoneChange) *Cost {
-	return &Cost{r, z}
+type Cost interface {
+	GetRessources() []Ressource
+	GetZoneChanges() []ZoneChange
+}
+
+func NewCost(r []Ressource, z []ZoneChange) Cost {
+	return &cost{r, z}
 }
 
 
-type Cost struct{
+type cost struct{
 	ressourceCost []Ressource
 	zoneChangeCost []ZoneChange
 }
 
-func (c *Cost) GetRessources() []Ressource {
+func (c *cost) GetRessources() []Ressource {
 	return c.ressourceCost
 }
 
-func (c *Cost) GetZoneChanges() []ZoneChange {
+func (c *cost) GetZoneChanges() []ZoneChange {
 	return c.zoneChangeCost
 }
