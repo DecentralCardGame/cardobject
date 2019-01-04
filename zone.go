@@ -9,8 +9,8 @@ type DynamicZone interface {
 	IsDynamic() bool
 }
 
-func NewDeckRange(s int, e int) *DeckRange {
-	return &DeckRange{s, e}
+func DECKRANGE(s int, e int) *deckRange {
+	return &deckRange{s, e}
 }
 
 const (
@@ -28,9 +28,9 @@ type simpleZoneID int
 
 type protectedZoneID int
 
-type DeckRange struct {
-	Start int
-	End int
+type deckRange struct {
+	start int
+	end int
 } 
 
 
@@ -42,7 +42,7 @@ func (pz protectedZoneID) IsZone() bool {
 	return true
 }
 
-func (d DeckRange) IsZone() bool{
+func (d deckRange) IsZone() bool{
 	return true	
 }
 
@@ -50,7 +50,7 @@ func (sz simpleZoneID) IsDynamic() bool {
 	return true
 }
 
-func (d DeckRange) IsDynamic() bool {
+func (d deckRange) IsDynamic() bool {
 	return true
 }
 
