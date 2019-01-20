@@ -11,3 +11,7 @@ func SerializeCard(c Card) string {
     }
     return string(bytes)
 }
+
+func CreateAction() Action {
+	return &action{}
+}
