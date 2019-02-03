@@ -4,6 +4,6 @@ import "testing"
 import "fmt"
 
 func TestCardSerialization(t *testing.T) {
-	x := CreateAction()
+	x := createAction()
 	fmt.Println(SerializeCard(x))
 }
