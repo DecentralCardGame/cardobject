@@ -9,12 +9,9 @@ func TestCost(t *testing.T) {
 	if(!reflect.DeepEqual(x.GetRessources(), []Ressource{MANA})) {
 		t.Errorf(testedInterface + " doesn't return Ressources")
 	}
-	if(!reflect.DeepEqual(x.GetZoneChanges(), []ZoneChange{createZoneChange()})) {
-		t.Errorf(testedInterface + " doesn't return ZoneChanges")
-	}
 	success(testedInterface)
 }
 
 func createCost() Cost {
-	return NewCost([]Ressource{MANA}, []ZoneChange{createZoneChange()})
+	return NewCost([]Ressource{MANA})
 }
