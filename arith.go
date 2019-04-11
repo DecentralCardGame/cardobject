@@ -3,7 +3,8 @@ package cardobject
 type arithOperator int
 
 const (
-	ADD arithOperator = iota
+	Set arithOperator = iota
+	ADD
 	SUB
 )
 
