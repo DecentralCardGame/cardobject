@@ -15,6 +15,7 @@ type Manipulation interface {
 type IntManipulation interface {
 	Manipulation
 	GetIntManipulation() IntInserter
+	GetArithOperator() ArithOperator
 	GetTargetIntPropertyId() IntPropertyId
 }
 
@@ -28,8 +29,8 @@ func NewEffect(zc []ZoneChange, m []Manipulation, p []Ressource) Effect {
 	return &effect{zc, m, p}	
 }
 
-func NewIntManipulation(cs CardSelector, v IntInserter, p IntPropertyId) IntManipulation {
-	return &intManipulation{&manipulation{cs}, v, p}
+func NewIntManipulation(cs CardSelector, v IntInserter, a ArithOperator, p IntPropertyId) IntManipulation {
+	return &intManipulation{&manipulation{cs}, v, a, p}
 }
 
 func NewStringManipulation(cs CardSelector, v StringInserter, p StringPropertyId) StringManipulation {
@@ -49,6 +50,7 @@ type manipulation struct {
 type intManipulation struct {
 	*manipulation
 	Val IntInserter
+	Operator ArithOperator
 	Prop IntPropertyId
 }
 
@@ -104,5 +106,9 @@ func (im *intManipulation) GetTargetIntPropertyId() IntPropertyId {
 
 func (sm *stringManipulation) GetTargetStringPropertyId() StringPropertyId {
 	return sm.Prop
+}
+
+func (im *intManipulation) GetArithOperator() ArithOperator {
+	return im.Operator
 }
 

@@ -49,7 +49,7 @@ func TestEffect(t *testing.T) {
 }
 
 func createIntManipulation() IntManipulation {
-	return NewIntManipulation(createBasicSelector(), createIntConst(), ATTACK)
+	return NewIntManipulation(createBasicSelector(), createIntConst(), ADD, ATTACK)
 }
 
 func createStringManipulation() StringManipulation {

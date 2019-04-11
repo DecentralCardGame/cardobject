@@ -34,7 +34,6 @@ type StringInserterPropId interface {
 }
 
 
-
 func NewIntConst(i int) IntInserterConst {
 	return &intConst{i}
 }
