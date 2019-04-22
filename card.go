@@ -1,6 +1,7 @@
 package cardobject
 
 type Card interface {
+	GetName() Name
 	GetCost() Cost
 	GetSpeedModifier() SpeedModifier
 	GetTags() []Tag
@@ -27,20 +28,21 @@ type Field interface {
 	Permanent
 }
 
-func NewAction(c Cost, s SpeedModifier, ts []Tag, t Text, e Effect) Action {
-	return &action{&card{c, s, ts, t}, e}
+func NewAction(n Name, c Cost, s SpeedModifier, ts []Tag, t Text, e Effect) Action {
+	return &action{&card{n, c, s, ts, t}, e}
 }
 
-func NewEntity(c Cost, s SpeedModifier, ts []Tag, t Text, a Ability, h Health, at Attack) Entity {
-	return &entity{&permanent{&card{c, s, ts, t}, a, h}, at}
+func NewEntity(n Name, c Cost, s SpeedModifier, ts []Tag, t Text, a Ability, h Health, at Attack) Entity {
+	return &entity{&permanent{&card{n, c, s, ts, t}, a, h}, at}
 }
 
-func NewField(c Cost, s SpeedModifier, ts []Tag, t Text, a Ability, h Health) Field {
-	return &field{&permanent{&card{c, s, ts, t}, a, h}}
+func NewField(n Name, c Cost, s SpeedModifier, ts []Tag, t Text, a Ability, h Health) Field {
+	return &field{&permanent{&card{n, c, s, ts, t}, a, h}}
 }
 
 
 type card struct{
+	Name Name
 	Cost Cost
 	Speedmodifier SpeedModifier
 	Tag []Tag
@@ -67,6 +69,9 @@ type field struct{
 	*permanent
 }
 
+func (c *card) GetName() Name {
+	return c.Name
+}
 
 func (c *card) GetCost() Cost {
 	return c.Cost

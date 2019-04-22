@@ -38,6 +38,17 @@ func TestHealth(t *testing.T) {
 	success("Health")
 }
 
+func TestName(t *testing.T) {
+	x := createName()
+	if (x.CardStringPropertyId() != NAME) {
+		t.Errorf("NameId was incorrect")
+	}
+	if (x.GetStringVal() != testPropIdString) {
+		t.Errorf("NameVal was incorrect")
+	}
+	success("Name")
+}
+
 func TestSpeedModifier(t *testing.T) {
 	x := createSpeedModifier()
 	if (x.CardIntPropertyId() != SPEEDMODIFIER) {
@@ -81,6 +92,10 @@ func createCostSum() CostSum {
 
 func createHealth() Health {
 	return NewHealth(testPropIdInt)
+}
+
+func createName() Name {
+	return NewName(testPropIdString)
 }
 
 func createSpeedModifier() SpeedModifier {

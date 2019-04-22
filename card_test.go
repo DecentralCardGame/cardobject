@@ -7,6 +7,9 @@ import "fmt"
 func TestAction(t *testing.T) {
 	testedInterface := "Action"
 	x := createAction()
+	if(!reflect.DeepEqual(x.GetName(), createName())) {
+		t.Errorf(testedInterface + " doesn't return Name")
+	}
 	if(!reflect.DeepEqual(x.GetCost(), createCost())) {
 		t.Errorf(testedInterface + " doesn't return Cost")
 	}
@@ -28,6 +31,9 @@ func TestAction(t *testing.T) {
 func TestEntity(t *testing.T) {
 	testedInterface := "Entity"
 	x := createEntity()
+	if(!reflect.DeepEqual(x.GetName(), createName())) {
+		t.Errorf(testedInterface + " doesn't return Name")
+	}
 	if(!reflect.DeepEqual(x.GetCost(), createCost())) {
 		t.Errorf(testedInterface + " doesn't return Cost")
 	}
@@ -55,6 +61,9 @@ func TestEntity(t *testing.T) {
 func TestField(t *testing.T) {
 	testedInterface := "Field"
 	x := createField()
+	if(!reflect.DeepEqual(x.GetName(), createName())) {
+		t.Errorf(testedInterface + " doesn't return Name")
+	}
 	if(!reflect.DeepEqual(x.GetCost(), createCost())) {
 		t.Errorf(testedInterface + " doesn't return Cost")
 	}
@@ -77,15 +86,15 @@ func TestField(t *testing.T) {
 }
 
 func createAction() Action {
-	return NewAction(createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createEffect())
+	return NewAction(createName(), createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createEffect())
 }
 
 func createEntity() Entity {
-	return NewEntity(createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createActivatedAbility(), createHealth(), createAttack())
+	return NewEntity(createName(), createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createActivatedAbility(), createHealth(), createAttack())
 }
 
 func createField() Field {
-	return NewField(createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createActivatedAbility(), createHealth())
+	return NewField(createName(), createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createActivatedAbility(), createHealth())
 }
 
 

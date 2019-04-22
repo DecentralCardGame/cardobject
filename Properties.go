@@ -6,9 +6,10 @@ const (
 	HEALTH
 	SPEEDMODIFIER
 
-	TAG cardStringPropertyId = iota
+	NAME cardStringPropertyId = iota
+	TAG 
 	TEXT
-
+	
 	ENTITIESONBOARD playerIntPropertyId = iota
 	DECKSIZE
 	DUSTPILESIZE
@@ -62,4 +63,12 @@ type Text struct {
 
 func NewText(s string) Text {
 	return Text{&cardStringProperty{&stringProperty{s}, TEXT}}
+}
+
+type Name struct {
+	*cardStringProperty
+}
+
+func NewName(s string) Name {
+	return Name{&cardStringProperty{&stringProperty{s}, NAME}}
 }
