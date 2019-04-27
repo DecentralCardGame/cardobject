@@ -10,7 +10,7 @@ func TestAttack(t *testing.T) {
 	if (x.CardIntPropertyId() != ATTACK) {
 		t.Errorf("AttackId was incorrect")
 	}
-	if (x.GetIntVal() != testPropIdInt) {
+	if (x.GetAttackVal() != testPropIdInt) {
 		t.Errorf("AttackVal was incorrect")
 	}
 	success("Attack")
@@ -21,7 +21,7 @@ func TestCostSum(t *testing.T) {
 	if (x.CardIntPropertyId() != COSTSUM) {
 		t.Errorf("CostSumId was incorrect")
 	}
-	if (x.GetIntVal() != testPropIdInt) {
+	if (x.GetCostSumVal() != testPropIdInt) {
 		t.Errorf("CostSumVal was incorrect")
 	}
 	success("CostSum")
@@ -32,7 +32,7 @@ func TestHealth(t *testing.T) {
 	if (x.CardIntPropertyId() != HEALTH) {
 		t.Errorf("HealthId was incorrect")
 	}
-	if (x.GetIntVal() != testPropIdInt) {
+	if (x.GetHealthVal() != testPropIdInt) {
 		t.Errorf("HealthVal was incorrect")
 	}
 	success("Health")
@@ -43,7 +43,7 @@ func TestName(t *testing.T) {
 	if (x.CardStringPropertyId() != NAME) {
 		t.Errorf("NameId was incorrect")
 	}
-	if (x.GetStringVal() != testPropIdString) {
+	if (x.GetNameVal() != testPropIdString) {
 		t.Errorf("NameVal was incorrect")
 	}
 	success("Name")
@@ -54,7 +54,7 @@ func TestSpeedModifier(t *testing.T) {
 	if (x.CardIntPropertyId() != SPEEDMODIFIER) {
 		t.Errorf("SpeedModifierId was incorrect")
 	}
-	if (x.GetIntVal() != testPropIdInt) {
+	if (x.GetSpeedModifierVal() != testPropIdInt) {
 		t.Errorf("SpeedModifierVal was incorrect")
 	}
 	success("SpeedModifier")
@@ -65,7 +65,7 @@ func TestTag(t *testing.T) {
 	if (x.CardStringPropertyId() != TAG) {
 		t.Errorf("TagId was incorrect")
 	}
-	if (x.GetStringVal() != testPropIdString) {
+	if (x.GetTagVal() != testPropIdString) {
 		t.Errorf("TagVal was incorrect")
 	}
 	success("Tag")
@@ -76,7 +76,7 @@ func TestText(t *testing.T) {
 	if (x.CardStringPropertyId() != TEXT) {
 		t.Errorf("TextId was incorrect")
 	}
-	if (x.GetStringVal() != testPropIdString) {
+	if (x.GetTextVal() != testPropIdString) {
 		t.Errorf("TextVal was incorrect")
 	}
 	success("Text")
@@ -87,7 +87,7 @@ func TestUniqueName(t *testing.T) {
 	if (x.CardStringPropertyId() != UNIQUENAME) {
 		t.Errorf("UniqueNameId was incorrect")
 	}
-	if (x.GetStringVal() != (testPropIdString + ", the " + testPropIdString)) {
+	if (x.GetUniqueNameVal() != (testPropIdString + ", the " + testPropIdString)) {
 		t.Errorf("UniqueNameVal was incorrect")
 	}
 	success("UniqueName")

@@ -18,67 +18,146 @@ const (
 	HANDSIZE
 )
 
-type Attack struct {
+type Attack interface {
+	CardIntProperty
+	GetAttackVal() int
+}
+
+type attack struct {
 	*cardIntProperty
 }
 
 func NewAttack(i int) Attack {
-	return Attack{&cardIntProperty{&intProperty{i}, ATTACK}}
+	return attack{&cardIntProperty{&intProperty{i}, ATTACK}}
 }
 
-type CostSum struct {
+func (a attack) GetAttackVal() int {
+	return a.GetIntVal()
+}
+
+
+type CostSum interface {
+	CardIntProperty
+	GetCostSumVal() int
+}
+
+type costSum struct {
 	*cardIntProperty
 }
 
 func NewCostSum(i int) CostSum {
-	return CostSum{&cardIntProperty{&intProperty{i}, COSTSUM}}
+	return costSum{&cardIntProperty{&intProperty{i}, COSTSUM}}
 }
 
-type Health struct {
+func (cs costSum) GetCostSumVal() int {
+	return cs.GetIntVal()
+}
+
+
+type Health interface {
+	CardIntProperty
+	GetHealthVal() int
+}
+
+type health struct {
 	*cardIntProperty
 }
 
 func NewHealth(i int) Health {
-	return Health{&cardIntProperty{&intProperty{i}, HEALTH}}
+	return health{&cardIntProperty{&intProperty{i}, HEALTH}}
 }
 
-type Name struct {
+func (h health) GetHealthVal() int {
+	return h.GetIntVal()
+}
+
+
+type Name interface {
+	CardStringProperty
+	GetNameVal() string
+}
+
+type name struct {
 	*cardStringProperty
 }
 
 func NewName(s string) Name {
-	return Name{&cardStringProperty{&stringProperty{s}, NAME}}
+	return name{&cardStringProperty{&stringProperty{s}, NAME}}
 }
 
-type SpeedModifier struct {
+func (n name) GetNameVal() string {
+	return n.GetStringVal()
+}
+
+
+type SpeedModifier interface {
+	CardIntProperty
+	GetSpeedModifierVal() int
+}
+
+type speedModifier struct {
 	*cardIntProperty
 }
 
 func NewSpeedModifier(i int) SpeedModifier {
-	return SpeedModifier{&cardIntProperty{&intProperty{i}, SPEEDMODIFIER}}
+	return speedModifier{&cardIntProperty{&intProperty{i}, SPEEDMODIFIER}}
 }
 
-type Tag struct {
+func (sm speedModifier) GetSpeedModifierVal() int {
+	return sm.GetIntVal()
+}
+
+
+type Tag interface {
+	CardStringProperty
+	GetTagVal() string
+}
+
+type tag struct {
 	*cardStringProperty
 }
 
 func NewTag(s string) Tag {
-	return Tag{&cardStringProperty{&stringProperty{s}, TAG}}
+	return tag{&cardStringProperty{&stringProperty{s}, TAG}}
 }
 
-type Text struct {
+func (t tag) GetTagVal() string {
+	return t.GetStringVal()
+}
+
+
+type Text interface {
+	CardStringProperty
+	GetTextVal() string
+}
+
+type text struct {
 	*cardStringProperty
 }
 
 func NewText(s string) Text {
-	return Text{&cardStringProperty{&stringProperty{s}, TEXT}}
+	return text{&cardStringProperty{&stringProperty{s}, TEXT}}
 }
 
-type UniqueName struct {
-	*Name
+func (t text) GetTextVal() string {
+	return t.GetStringVal()
 }
 
-func NewUniqueName(name string, description string) UniqueName {
-	return UniqueName{&Name{&cardStringProperty{&stringProperty{name + ", the " + description}, UNIQUENAME}}}
+
+type UniqueName interface {
+	CardStringProperty
+	GetUniqueNameVal() string
+}
+
+type uniqueName struct {
+	*name
+}
+
+func NewUniqueName(n string, d string) UniqueName {
+	return uniqueName{&name{&cardStringProperty{&stringProperty{n + ", the " + d}, UNIQUENAME}}}
+}
+
+func (un uniqueName) GetUniqueNameVal() string {
+	return un.GetStringVal()
 }
 
