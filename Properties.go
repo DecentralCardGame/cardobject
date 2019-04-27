@@ -9,7 +9,8 @@ const (
 	NAME cardStringPropertyId = iota
 	TAG 
 	TEXT
-	
+	UNIQUENAME
+
 	ENTITIESONBOARD playerIntPropertyId = iota
 	DECKSIZE
 	DUSTPILESIZE
@@ -41,6 +42,14 @@ func NewHealth(i int) Health {
 	return Health{&cardIntProperty{&intProperty{i}, HEALTH}}
 }
 
+type Name struct {
+	*cardStringProperty
+}
+
+func NewName(s string) Name {
+	return Name{&cardStringProperty{&stringProperty{s}, NAME}}
+}
+
 type SpeedModifier struct {
 	*cardIntProperty
 }
@@ -65,10 +74,11 @@ func NewText(s string) Text {
 	return Text{&cardStringProperty{&stringProperty{s}, TEXT}}
 }
 
-type Name struct {
-	*cardStringProperty
+type UniqueName struct {
+	*Name
 }
 
-func NewName(s string) Name {
-	return Name{&cardStringProperty{&stringProperty{s}, NAME}}
+func NewUniqueName(name string, description string) UniqueName {
+	return UniqueName{&Name{&cardStringProperty{&stringProperty{name + ", the " + description}, UNIQUENAME}}}
 }
+

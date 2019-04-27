@@ -13,7 +13,7 @@ func TestAction(t *testing.T) {
 	if(!reflect.DeepEqual(x.GetCost(), createCost())) {
 		t.Errorf(testedInterface + " doesn't return Cost")
 	}
-	if(!reflect.DeepEqual(x.GetSpeedModifier(), createSpeedModifier())) {
+	if(!reflect.DeepEqual(x.GetCastSpeed(), createSpeedModifier())) {
 		t.Errorf(testedInterface + " doesn't return SpeedModifier")
 	}
 	if(!reflect.DeepEqual(x.GetTags(), []Tag{createTag()})) {
@@ -37,7 +37,7 @@ func TestEntity(t *testing.T) {
 	if(!reflect.DeepEqual(x.GetCost(), createCost())) {
 		t.Errorf(testedInterface + " doesn't return Cost")
 	}
-	if(!reflect.DeepEqual(x.GetSpeedModifier(), createSpeedModifier())) {
+	if(!reflect.DeepEqual(x.GetCastSpeed(), createSpeedModifier())) {
 		t.Errorf(testedInterface + " doesn't return SpeedModifier")
 	}
 	if(!reflect.DeepEqual(x.GetTags(), []Tag{createTag()})) {
@@ -48,6 +48,9 @@ func TestEntity(t *testing.T) {
 	}
 	if(!reflect.DeepEqual(x.GetAbility(), createActivatedAbility())) {
 		t.Errorf(testedInterface + " doesn't return Ability")
+	}
+	if(!reflect.DeepEqual(x.GetAbilitySpeed(), createSpeedModifier())) {
+		t.Errorf(testedInterface + " doesn't return AbilitySpeed")
 	}
 	if(!reflect.DeepEqual(x.GetHealth(), createHealth())) {
 		t.Errorf(testedInterface + " doesn't return Health")
@@ -67,7 +70,7 @@ func TestField(t *testing.T) {
 	if(!reflect.DeepEqual(x.GetCost(), createCost())) {
 		t.Errorf(testedInterface + " doesn't return Cost")
 	}
-	if(!reflect.DeepEqual(x.GetSpeedModifier(), createSpeedModifier())) {
+	if(!reflect.DeepEqual(x.GetCastSpeed(), createSpeedModifier())) {
 		t.Errorf(testedInterface + " doesn't return SpeedModifier")
 	}
 	if(!reflect.DeepEqual(x.GetTags(), []Tag{createTag()})) {
@@ -78,6 +81,36 @@ func TestField(t *testing.T) {
 	}
 	if(!reflect.DeepEqual(x.GetAbility(), createActivatedAbility())) {
 		t.Errorf(testedInterface + " doesn't return Ability")
+	}
+	if(!reflect.DeepEqual(x.GetAbilitySpeed(), createSpeedModifier())) {
+		t.Errorf(testedInterface + " doesn't return AbilitySpeed")
+	}
+	if(!reflect.DeepEqual(x.GetHealth(), createHealth())) {
+		t.Errorf(testedInterface + " doesn't return Health")
+	}
+	success(testedInterface)
+}
+
+func TestHeadquarter(t *testing.T) {
+	testedInterface := "Headquarter"
+	x := createHeadquarter()
+	if(!reflect.DeepEqual(x.GetUniqueName(), createUniqueName())) {
+		t.Errorf(testedInterface + " doesn't return Name")
+	}
+	if(!reflect.DeepEqual(x.GetName(), NewName(createUniqueName().GetStringVal()))) {
+		t.Errorf(testedInterface + " doesn't return Name")
+	}
+	if(!reflect.DeepEqual(x.GetTags(), []Tag{createTag()})) {
+		t.Errorf(testedInterface + " doesn't return Tags")
+	}
+	if(!reflect.DeepEqual(x.GetText(), createText())) {
+		t.Errorf(testedInterface + " doesn't return Text")
+	}
+	if(!reflect.DeepEqual(x.GetAbility(), createActivatedAbility())) {
+		t.Errorf(testedInterface + " doesn't return Ability")
+	}
+	if(!reflect.DeepEqual(x.GetAbilitySpeed(), createSpeedModifier())) {
+		t.Errorf(testedInterface + " doesn't return AbilitySpeed")
 	}
 	if(!reflect.DeepEqual(x.GetHealth(), createHealth())) {
 		t.Errorf(testedInterface + " doesn't return Health")
@@ -90,11 +123,15 @@ func createAction() Action {
 }
 
 func createEntity() Entity {
-	return NewEntity(createName(), createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createActivatedAbility(), createHealth(), createAttack())
+	return NewEntity(createName(), createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createActivatedAbility(), createSpeedModifier(), createHealth(), createAttack())
 }
 
 func createField() Field {
-	return NewField(createName(), createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createActivatedAbility(), createHealth())
+	return NewField(createName(), createCost(), createSpeedModifier(), []Tag{createTag()}, createText(), createActivatedAbility(), createSpeedModifier(), createHealth())
+}
+
+func createHeadquarter() Headquarter {
+	return NewHeadquarter(createUniqueName(), []Tag{createTag()}, createText(), createActivatedAbility(), createSpeedModifier(), createHealth())
 }
 
 

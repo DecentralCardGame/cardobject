@@ -82,6 +82,17 @@ func TestText(t *testing.T) {
 	success("Text")
 }
 
+func TestUniqueName(t *testing.T) {
+	x := createUniqueName()
+	if (x.CardStringPropertyId() != UNIQUENAME) {
+		t.Errorf("UniqueNameId was incorrect")
+	}
+	if (x.GetStringVal() != (testPropIdString + ", the " + testPropIdString)) {
+		t.Errorf("UniqueNameVal was incorrect")
+	}
+	success("UniqueName")
+}
+
 func createAttack() Attack {
 	return NewAttack(testPropIdInt)
 }
@@ -108,4 +119,8 @@ func createTag() Tag {
 
 func createText() Text {
 	return NewText(testPropIdString)
+}
+
+func createUniqueName() UniqueName {
+	return NewUniqueName(testPropIdString, testPropIdString)
 }
