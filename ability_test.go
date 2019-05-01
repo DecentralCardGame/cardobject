@@ -31,9 +31,9 @@ func TestTriggeredAbility(t *testing.T) {
 }
 
 func createActivatedAbility() ActivatedAbility {
-	return NewActivatedAbility(createSpeedModifier(), createEffect(), createCost(), false)
+	return NewActivatedAbility(createEffect(), createCost(), false)
 }
 
 func createTriggeredAbility() TriggeredAbility {
-	return NewTriggeredAbility(createSpeedModifier(), createEffect(), createTimeEventListener())
+	return NewTriggeredAbility(createEffect(), createTimeEventListener())
 }
