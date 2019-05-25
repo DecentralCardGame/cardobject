@@ -1,5 +1,26 @@
 {
   "definitions": {
+    "action": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/castable"
+        },
+        {
+          "$ref": "#/definitions/cardAttributes"
+        }
+      ],
+      "properties": {
+        "effect": {
+          "$ref": "effectschema.json"
+        },
+        "cardType": {
+          "type": "string",
+          "pattern": "^action$"
+        }
+      },
+      "required": ["effect","cardType"]
+    },
     "entity": {
       "type": "object",
       "allOf": [
@@ -23,6 +44,48 @@
         }
       },
       "required": ["attack","cardType"]
+    },
+    "field": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/castable"
+        },
+        {
+          "$ref": "#/definitions/cardAttributes"
+        },
+        {
+          "$ref": "#/definitions/permanent"
+        }
+      ],
+      "properties": {
+        "cardType": {
+          "type": "string",
+          "pattern": "^field$"
+        }
+      },
+      "required": ["cardType"]
+    },
+    "headquarter": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/cardAttributes"
+        },
+        {
+          "$ref": "#/definitions/permanent"
+        }
+      ],
+      "properties": {
+        "uniqueName": {
+          "$ref": "propertyschema.json#/uniqueName"
+        },
+        "cardType": {
+          "type": "string",
+          "pattern": "^field$"
+        }
+      },
+      "required": ["uniqueName","cardType"]
     },
     "cardAttributes": {
       "type": "object",
@@ -78,6 +141,9 @@
     }
   },
   "anyOf": [
+    {
+      "$ref": "#/definitions/action"
+    },
     {
       "$ref": "#/definitions/entity"
     }
