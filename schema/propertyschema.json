@@ -1,0 +1,34 @@
+{
+	"attack": {
+		"type": "integer",
+		"minimum": 1,
+		"maximum": 10
+	},
+	"costSum": {
+		"type": "integer",
+		"minimum": 1,
+		"maximum": 10
+	},
+	"health": {
+		"type": "integer",
+		"minimum": 1,
+		"maximum": 10
+	},
+	"name": {
+		"type": "string"
+	},
+	"speedModifier": {
+		"type": "integer",
+		"minimum": 1,
+		"maximum": 10
+	},
+	"tag": {
+		"type": "string"
+	},
+	"text": {
+		"type": "string"
+	},
+	"uniqueName": {
+		"type": "string"
+	}
+}

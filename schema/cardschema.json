@@ -1,0 +1,85 @@
+{
+  "definitions": {
+    "entity": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/castable"
+        },
+        {
+          "$ref": "#/definitions/cardAttributes"
+        },
+        {
+          "$ref": "#/definitions/permanent"
+        }
+      ],
+      "properties": {
+        "attack": {
+          "$ref": "propertyschema.json#/attack"
+        },
+        "cardType": {
+          "type": "string",
+          "pattern": "^entity$"
+        }
+      },
+      "required": ["attack","cardType"]
+    },
+    "cardAttributes": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "propertyschema.json#/name"
+        },
+        "tags": {
+          "$ref": "propertyschema.json#/tag"
+        },
+        "text": {
+          "$ref": "propertyschema.json#/text"
+        }
+      },
+      "required": ["name","tags","text"]
+    },
+    "castable": {
+      "type": "object",
+      "properties": {
+        "cost": {
+          "type": "array",
+          "items": {
+            "$ref": "costschema.json"
+          }
+        },
+        "castSpeed": {
+          "$ref": "propertyschema.json#/speedModifier"
+        }
+      },
+      "required": [
+        "cost",
+        "castSpeed"
+      ]
+    },
+    "permanent": {
+      "type": "object",
+      "properties": {
+        "ability": {
+          "$ref": "abilityschema.json"
+        },
+        "abilitySpeed": {
+          "$ref": "propertyschema.json#/speedModifier"
+        },
+        "health": {
+          "$ref": "propertyschema.json#/health"
+        }
+      },
+      "required": [
+        "ability",
+        "abilitySpeed",
+        "health"
+      ]
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/definitions/entity"
+    }
+  ]
+}
