@@ -146,6 +146,12 @@
     },
     {
       "$ref": "#/definitions/entity"
+    },
+    {
+      "$ref": "#/definitions/field"
+    },
+    {
+      "$ref": "#/definitions/headquarter"
     }
   ]
 }
