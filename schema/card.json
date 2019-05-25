@@ -4,11 +4,19 @@
   "text": "run",
   "cost": ["FOOD"],
   "castSpeed": 1,
-  "ability": {
-  	"effect": "",
-  	"cost": ["ENERGY"],
-  	"multipleUse": false
-  },
+  "abilities": [
+  		{
+  			"effect": "",
+  			"cost": ["ENERGY"],
+  			"multipleUse": false
+  		},
+  		{
+  			"effect": "",
+  			"cause": {
+  				"timeEvent": "TICKEND"
+  			}
+  		}
+	],
   "abilitySpeed": 1,
   "health": 1,
   "attack": 1,

@@ -1,1 +1,20 @@
-{}
+{
+	"definitions": {
+		"timeEventListener": {
+			"type": "object",
+			"properties": {
+				"timeEvent": {
+					"type": "string",
+					"enum": ["TICKEND","TICKSTART"]
+				}
+			},
+			"required": ["timeEvent"]
+		}
+	},
+	"type": "object",
+	"oneOf": [
+		{
+			"$ref": "#/definitions/timeEventListener"
+		}
+	]
+}

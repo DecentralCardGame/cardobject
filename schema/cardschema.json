@@ -123,8 +123,11 @@
     "permanent": {
       "type": "object",
       "properties": {
-        "ability": {
-          "$ref": "abilityschema.json"
+        "abilities": {
+          "type": "array",
+          "items": {
+            "$ref": "abilityschema.json"
+          }
         },
         "abilitySpeed": {
           "$ref": "propertySchema.json#/speedModifier"
@@ -134,7 +137,7 @@
         }
       },
       "required": [
-        "ability",
+        "abilities",
         "abilitySpeed",
         "health"
       ]
