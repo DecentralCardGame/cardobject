@@ -5,7 +5,7 @@ import "github.com/xeipuuv/gojsonschema"
 
 func main() {
 
-    schemaLoader := gojsonschema.NewReferenceLoader("file://C:/Users/marius/Documents/goworkspace/src/github.com/DecentralCardGame/cardobject/schema/cardschema.json")
+    schemaLoader := gojsonschema.NewReferenceLoader("file://C:/Users/marius/Documents/goworkspace/src/github.com/DecentralCardGame/cardobject/schema/cardSchema.json")
     documentLoader := gojsonschema.NewReferenceLoader("file://C:/Users/marius/Documents/goworkspace/src/github.com/DecentralCardGame/cardobject/schema/card.json")
 
     result, err := gojsonschema.Validate(schemaLoader, documentLoader)

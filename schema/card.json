@@ -2,9 +2,13 @@
   "name": "hans",
   "tags": "human",
   "text": "run",
-  "cost": ["MANA","FOOD","ENERGY"],
+  "cost": ["FOOD"],
   "castSpeed": 1,
-  "ability": "",
+  "ability": {
+  	"effect": "",
+  	"cost": ["ENERGY"],
+  	"multipleUse": false
+  },
   "abilitySpeed": 1,
   "health": 1,
   "attack": 1,

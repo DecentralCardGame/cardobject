@@ -12,7 +12,7 @@
       ],
       "properties": {
         "effect": {
-          "$ref": "effectschema.json"
+          "$ref": "effectSchema.json"
         },
         "cardType": {
           "type": "string",
@@ -36,7 +36,7 @@
       ],
       "properties": {
         "attack": {
-          "$ref": "propertyschema.json#/attack"
+          "$ref": "propertySchema.json#/attack"
         },
         "cardType": {
           "type": "string",
@@ -78,7 +78,7 @@
       ],
       "properties": {
         "uniqueName": {
-          "$ref": "propertyschema.json#/uniqueName"
+          "$ref": "propertySchema.json#/uniqueName"
         },
         "cardType": {
           "type": "string",
@@ -91,13 +91,13 @@
       "type": "object",
       "properties": {
         "name": {
-          "$ref": "propertyschema.json#/name"
+          "$ref": "propertySchema.json#/name"
         },
         "tags": {
-          "$ref": "propertyschema.json#/tag"
+          "$ref": "propertySchema.json#/tag"
         },
         "text": {
-          "$ref": "propertyschema.json#/text"
+          "$ref": "propertySchema.json#/text"
         }
       },
       "required": ["name","tags","text"]
@@ -108,11 +108,11 @@
         "cost": {
           "type": "array",
           "items": {
-            "$ref": "costschema.json"
+            "$ref": "ressourceSchema.json"
           }
         },
         "castSpeed": {
-          "$ref": "propertyschema.json#/speedModifier"
+          "$ref": "propertySchema.json#/speedModifier"
         }
       },
       "required": [
@@ -127,10 +127,10 @@
           "$ref": "abilityschema.json"
         },
         "abilitySpeed": {
-          "$ref": "propertyschema.json#/speedModifier"
+          "$ref": "propertySchema.json#/speedModifier"
         },
         "health": {
-          "$ref": "propertyschema.json#/health"
+          "$ref": "propertySchema.json#/health"
         }
       },
       "required": [
@@ -140,7 +140,7 @@
       ]
     }
   },
-  "anyOf": [
+  "oneOf": [
     {
       "$ref": "#/definitions/action"
     },

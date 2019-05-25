@@ -1,1 +1,43 @@
-{}
+{
+	"definitions": {
+		"activated": {
+			"type": "object",
+			"properties": {
+				"cost": {
+          			"type": "array",
+          			"items": {
+            			"$ref": "ressourceSchema.json"
+          			}
+        		},
+        		"multipleUse": {
+        			"type": "boolean" 
+        		}
+			},
+			"required": ["cost","multipleUse"]
+		},
+		"triggered": {
+			"type": "object",
+			"properties": {
+				"cause": {
+          			"$ref": "eventListenerSchema.json"
+        		}
+			},
+			"required": ["cause"]
+		}
+	},
+	"type": "object",
+	"oneOf": [
+		{
+			"$ref": "#/definitions/activated"
+		},
+		{
+			"$ref": "#/definitions/triggered"
+		}
+	],
+	"properties": {
+		"effect": {
+			"$ref": "effectSchema.json"
+		}
+	},
+	"required": ["effect"]
+}
