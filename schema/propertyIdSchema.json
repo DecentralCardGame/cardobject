@@ -1,0 +1,21 @@
+{
+	"cardIntPropertyId": {
+		"type": "string",
+		"enum": ["ATTACK","COSTSUM","HEALTH","SPEEDMODIFIER"]
+	},
+	"cardStringPropertyId": {
+		"type": "string",
+		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
+	},
+	"cardPropertyId": {
+		"type": "string",
+		"anyOf": [
+			{
+				"$ref": "#/cardIntPropertyId"
+			},
+			{
+				"$ref": "#/cardStringPropertyId"
+			}
+		]
+	}
+}

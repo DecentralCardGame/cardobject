@@ -4,17 +4,43 @@
 			"type": "object",
 			"properties": {
 				"timeEvent": {
-					"type": "string",
-					"enum": ["TICKEND","TICKSTART"]
+					"$ref": "timeEventSchema.json"
 				}
 			},
 			"required": ["timeEvent"]
+		},
+		"manipulationEventListener": {
+			"type": "object",
+			"properties": {
+				"property": {
+					"$ref": "propertyIdSchema.json#/cardPropertyId"
+				}
+			},
+			"required": ["property"]
+		},
+		"zoneChangeEventListener": {
+			"type": "object",
+			"properties": {
+				"source": {
+					"$ref": "zoneSchema.json#/dynamicZoneId"
+				},
+				"destination": {
+					"$ref": "zoneSchema.json#/zoneId"
+				}
+			},
+			"required": ["source","destination"]
 		}
 	},
 	"type": "object",
 	"oneOf": [
 		{
 			"$ref": "#/definitions/timeEventListener"
+		},
+		{
+			"$ref": "#/definitions/manipulationEventListener"
+		},
+		{
+			"$ref": "#/definitions/zoneChangeEventListener"
 		}
 	]
 }

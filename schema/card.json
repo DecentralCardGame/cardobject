@@ -2,18 +2,21 @@
   "name": "hans",
   "tags": "human",
   "text": "run",
-  "cost": ["FOOD"],
+  "cost": ["FOOD", "FOOD"],
   "castSpeed": 1,
   "abilities": [
   		{
-  			"effect": "",
+  			"effect": {
+          "production": ["MANA"]
+        },
   			"cost": ["ENERGY"],
   			"multipleUse": false
   		},
   		{
   			"effect": "",
   			"cause": {
-  				"timeEvent": "TICKEND"
+  				"source": "HAND",
+          "destination": "EXILE"
   			}
   		}
 	],

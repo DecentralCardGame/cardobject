@@ -1,1 +1,9 @@
-{}
+{
+	"production": {
+		"type": "array",
+        "items": {
+        	"$ref": "ressourceSchema.json"
+        }
+	}
+	"zoneChange"
+}
