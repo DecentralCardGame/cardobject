@@ -1,11 +1,55 @@
 {
-	"cardIntPropertyId": {
+	"actionIntPropertyId": {
+		"type": "string",
+		"enum": ["COSTSUM","SPEEDMODIFIER"]
+	},
+	"locationIntPropertyId": {
+		"type": "string",
+		"enum": ["COSTSUM","HEALTH","SPEEDMODIFIER"]
+	},
+	"entityIntPropertyId": {
 		"type": "string",
 		"enum": ["ATTACK","COSTSUM","HEALTH","SPEEDMODIFIER"]
 	},
-	"cardStringPropertyId": {
+	"cardIntPropertyId": {
+		"type": "string",
+		"anyOf": [
+			{
+				"$ref": "#/actionIntPropertyId"
+			},
+			{
+				"$ref": "#/locationIntPropertyId"
+			},
+			{
+				"$ref": "#/entityIntPropertyId"
+			}
+		]
+	},
+	"actionStringPropertyId": {
 		"type": "string",
 		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
+	},
+	"locationStringPropertyId": {
+		"type": "string",
+		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
+	},
+	"entityStringPropertyId": {
+		"type": "string",
+		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
+	},
+	"cardStringPropertyId": {
+		"type": "string",
+		"anyOf": [
+			{
+				"$ref": "#/actionStringPropertyId"
+			},
+			{
+				"$ref": "#/locationStringPropertyId"
+			},
+			{
+				"$ref": "#/entityStringPropertyId"
+			}
+		]
 	},
 	"cardPropertyId": {
 		"type": "string",

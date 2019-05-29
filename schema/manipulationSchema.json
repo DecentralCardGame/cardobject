@@ -1,0 +1,142 @@
+{
+	"defintions": {
+		"intManipulation": {
+			"type": "object",
+			"properties": {
+				"value": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 10
+				},
+				"operator": {
+					"$ref": "arithOperatorSchema.json"
+				},
+				"property": {
+					"$ref": "propertyIdSchema.json#/cardIntPropertyId"
+				}
+			},
+			"anyOf": [
+				{
+					"if": {
+						"properties": {
+							"property": {
+								"$ref": "propertyIdSchema.json#/actionIntPropertyId"
+							}
+						}
+					},
+					"then": {
+						"properties": {
+							"selector": {
+								"$ref": "selectorSchema.json#/actionSelector"
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"property": {
+								"$ref": "propertyIdSchema.json#/entityIntPropertyId"
+							}
+						}
+					},
+					"then": {
+						"properties": {
+							"selector": {
+								"$ref": "selectorSchema.json#/entitySelector"
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"property": {
+								"$ref": "propertyIdSchema.json#/locationIntPropertyId"
+							}
+						}
+					},
+					"then": {
+						"properties": {
+							"selector": {
+								"$ref": "selectorSchema.json#/locationSelector"
+							}
+						}
+					}
+				}
+			],
+			"required": ["value","operator","property","selector"]
+		},
+		"stringManipulation": {
+			"type": "object",
+			"properties": {
+				"value": {
+					"type": "string"
+				},
+				"property": {
+					"$ref": "propertyIdSchema.json#/cardStringPropertyId"
+				}
+			},
+			"anyOf": [
+				{
+					"if": {
+						"properties": {
+							"property": {
+								"$ref": "propertyIdSchema.json#/actionStringPropertyId"
+							}
+						}
+					},
+					"then": {
+						"properties": {
+							"selector": {
+								"$ref": "selectorSchema.json#/actionSelector"
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"property": {
+								"$ref": "propertyIdSchema.json#/entityStringPropertyId"
+							}
+						}
+					},
+					"then": {
+						"properties": {
+							"selector": {
+								"$ref": "selectorSchema.json#/entitySelector"
+							}
+						}
+					}
+				},
+				{
+					"if": {
+						"properties": {
+							"property": {
+								"$ref": "propertyIdSchema.json#/locationStringPropertyId"
+							}
+						}
+					},
+					"then": {
+						"properties": {
+							"selector": {
+								"$ref": "selectorSchema.json#/locationSelector"
+							}
+						}
+					}
+				}
+			],
+			"required": ["value","property","selector"]
+		}
+	},
+	"type": "object",
+	"oneOf": [
+		{
+			"$ref": "#/defintions/intManipulation"
+		},
+		{
+			"$ref": "#/defintions/stringManipulation"
+		}
+	]
+}

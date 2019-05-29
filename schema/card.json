@@ -7,13 +7,31 @@
   "abilities": [
   		{
   			"effect": {
-          "production": ["MANA"]
+          "production": ["MANA"],
+          "manipulation": [
+            {
+              "value": 10,
+              "operator": "ADD",
+              "property": "ATTACK",
+              "selector": {}
+            },
+            {
+              "value": "Mutant",
+              "property": "TAG",
+              "selector": {}
+            }
+          ],
+          "zoneChange": ["test"]
         },
   			"cost": ["ENERGY"],
   			"multipleUse": false
   		},
   		{
-  			"effect": "",
+  			"effect": {
+          "production": [],
+          "manipulation": [],
+          "zoneChange": []
+        },
   			"cause": {
   				"source": "HAND",
           "destination": "EXILE"
