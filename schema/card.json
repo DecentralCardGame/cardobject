@@ -12,13 +12,35 @@
             {
               "value": 10,
               "operator": "ADD",
-              "property": "ATTACK",
-              "selector": {}
+              "property": "HEALTH",
+              "selector": {
+                "playerMode": "TARGET",
+                "playerCondition": {},
+                "cardMode": "ALL",
+                "zone": "HAND",
+                "cardType": "location",
+                "cardCondition": {
+                  "property": "COSTSUM",
+                  "value": 5,
+                  "comparator": "EQUAL"
+                }
+              }
             },
             {
               "value": "Mutant",
               "property": "TAG",
-              "selector": {}
+              "selector": {               
+                "playerMode": "TARGET",
+                "playerCondition": {},
+                "cardMode": "ALL",
+                "zone": "DECK",
+                "cardType": "entity",
+                "cardCondition": {                
+                  "property": "ATTACK",
+                  "value": 5,
+                  "comparator": "EQUAL"
+                }
+              }
             }
           ],
           "zoneChange": ["test"]

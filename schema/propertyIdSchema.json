@@ -51,6 +51,39 @@
 			}
 		]
 	},
+	"actionPropertyId": {
+		"type": "string",
+		"oneOf": [
+			{
+				"$ref": "#/actionIntPropertyId"
+			},
+			{
+				"$ref": "#/actionStringPropertyId"
+			}
+		]
+	},
+	"entityPropertyId": {
+		"type": "string",
+		"oneOf": [
+			{
+				"$ref": "#/entityIntPropertyId"
+			},
+			{
+				"$ref": "#/entityStringPropertyId"
+			}
+		]
+	},
+	"locationPropertyId": {
+		"type": "string",
+		"oneOf": [
+			{
+				"$ref": "#/locationIntPropertyId"
+			},
+			{
+				"$ref": "#/locationStringPropertyId"
+			}
+		]
+	},
 	"cardPropertyId": {
 		"type": "string",
 		"anyOf": [

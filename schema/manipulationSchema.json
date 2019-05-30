@@ -13,53 +13,56 @@
 				},
 				"property": {
 					"$ref": "propertyIdSchema.json#/cardIntPropertyId"
+				},
+				"selector": {
+					"$ref": "selectorSchema.json#/selector"
 				}
 			},
-			"anyOf": [
+			"allOf": [
 				{
 					"if": {
-						"properties": {
-							"property": {
-								"$ref": "propertyIdSchema.json#/actionIntPropertyId"
-							}
-						}
-					},
-					"then": {
 						"properties": {
 							"selector": {
 								"$ref": "selectorSchema.json#/actionSelector"
 							}
 						}
+					},
+					"then": {
+						"properties": {
+							"property": {
+								"$ref": "propertyIdSchema.json#/actionIntPropertyId"
+							}
+						}
 					}
 				},
 				{
 					"if": {
-						"properties": {
-							"property": {
-								"$ref": "propertyIdSchema.json#/entityIntPropertyId"
-							}
-						}
-					},
-					"then": {
 						"properties": {
 							"selector": {
 								"$ref": "selectorSchema.json#/entitySelector"
 							}
 						}
+					},
+					"then": {
+						"properties": {
+							"property": {							
+								"$ref": "propertyIdSchema.json#/entityIntPropertyId"
+							}
+						}
 					}
 				},
 				{
 					"if": {
 						"properties": {
-							"property": {
-								"$ref": "propertyIdSchema.json#/locationIntPropertyId"
+							"selector": {
+								"$ref": "selectorSchema.json#/locationSelector"
 							}
 						}
 					},
 					"then": {
 						"properties": {
-							"selector": {
-								"$ref": "selectorSchema.json#/locationSelector"
+							"property": {					
+								"$ref": "propertyIdSchema.json#/locationIntPropertyId"
 							}
 						}
 					}
@@ -77,51 +80,51 @@
 					"$ref": "propertyIdSchema.json#/cardStringPropertyId"
 				}
 			},
-			"anyOf": [
+			"allOf": [
 				{
 					"if": {
-						"properties": {
-							"property": {
-								"$ref": "propertyIdSchema.json#/actionStringPropertyId"
-							}
-						}
-					},
-					"then": {
 						"properties": {
 							"selector": {
 								"$ref": "selectorSchema.json#/actionSelector"
 							}
 						}
+					},
+					"then": {
+						"properties": {
+							"property": {
+								"$ref": "propertyIdSchema.json#/actionStringPropertyId"
+							}
+						}
 					}
 				},
 				{
 					"if": {
+						"properties": {
+							"selector": {
+								"$ref": "selectorSchema.json#/entitySelector"							
+							}
+						}
+					},
+					"then": {
 						"properties": {
 							"property": {
 								"$ref": "propertyIdSchema.json#/entityStringPropertyId"
 							}
 						}
-					},
-					"then": {
-						"properties": {
-							"selector": {
-								"$ref": "selectorSchema.json#/entitySelector"
-							}
-						}
 					}
 				},
 				{
 					"if": {
 						"properties": {
-							"property": {
-								"$ref": "propertyIdSchema.json#/locationStringPropertyId"
+							"selector": {
+								"$ref": "selectorSchema.json#/locationSelector"
 							}
 						}
 					},
 					"then": {
 						"properties": {
-							"selector": {
-								"$ref": "selectorSchema.json#/locationSelector"
+							"property": {								
+								"$ref": "propertyIdSchema.json#/locationStringPropertyId"
 							}
 						}
 					}

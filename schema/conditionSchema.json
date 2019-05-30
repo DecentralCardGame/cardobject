@@ -1,0 +1,127 @@
+{
+	"actionCondition": {
+		"type": "object",
+		"properties": {
+			"property": {
+				"$ref": "propertyIdSchema.json#/actionPropertyId"
+			}
+		},
+		"allOf": [
+			{
+				"if": {
+					"properties": {
+						"property": {
+							"$ref": "propertyIdSchema.json#/actionIntPropertyId"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"value": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 100
+						}
+					}
+				},
+				"if": {
+					"properties": {
+						"property": {
+							"$ref": "propertyIdSchema.json#/actionStringPropertyId"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"value": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		],
+		"required":["property","value","comparator"]
+	},
+	"entityCondition": {"type": "object",
+		"properties": {
+			"property": {
+				"$ref": "propertyIdSchema.json#/entityPropertyId"
+			}
+		},
+		"allOf": [
+			{
+				"if": {
+					"properties": {
+						"property": {
+							"$ref": "propertyIdSchema.json#/entityIntPropertyId"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"value": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 100
+						}
+					}
+				},
+				"if": {
+					"properties": {
+						"property": {
+							"$ref": "propertyIdSchema.json#/entityStringPropertyId"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"value": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		],
+		"required":["property","value","comparator"]},
+	"locationCondition": {"type": "object",
+		"properties": {
+			"property": {
+				"$ref": "propertyIdSchema.json#/locationPropertyId"
+			}
+		},
+		"allOf": [
+			{
+				"if": {
+					"properties": {
+						"property": {
+							"$ref": "propertyIdSchema.json#/locationIntPropertyId"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"value": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 100
+						}
+					}
+				},
+				"if": {
+					"properties": {
+						"property": {
+							"$ref": "propertyIdSchema.json#/locationStringPropertyId"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"value": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		],
+		"required":["property","value","comparator"]}
+}

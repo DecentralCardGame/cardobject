@@ -1,5 +1,94 @@
 {
-	"actionSelector": {},
-	"entitySelector": {},
-	"locationSelector": {}
+	"definitions": {
+		"selectorMode": {
+			"type": "string",
+			"enum": ["ALL","TARGET","OPPONENTCHOICE"]
+		},
+		"selectorBasics": {
+			"type": "object",
+			"properties": {
+				"playerMode": {
+					"$ref": "#/definitions/selectorMode"
+				},
+				"playerCondition": {
+					"$ref": ""
+				},
+				"cardMode": {
+					"$ref": "#/definitions/selectorMode"
+				},
+				"zone": {
+					"$ref": "zoneSchema.json#/dynamicZoneId"
+				}
+			},
+			"required": ["playerMode","playerCondition","cardMode","zone"]
+		}
+	},
+	"actionSelector": {
+		"type": "object",
+		"properties": {
+			"cardCondition": {
+				"$ref": "conditionSchema.json#/actionCondition"
+			},
+			"cardType": {
+				"type": "string",
+				"const": "action"
+			}
+		},
+		"oneOf": [
+			{
+				"$ref": "#/definitions/selectorBasics"
+			}
+		],
+		"required": ["cardCondition","cardType"]
+	},
+	"entitySelector": {
+		"type": "object",
+		"properties": {
+			"cardCondition": {
+				"$ref": "conditionSchema.json#/entityCondition"
+			},
+			"cardType": {
+				"type": "string",
+				"const": "entity"
+			}
+		},
+		"oneOf": [
+			{
+				"$ref": "#/definitions/selectorBasics"
+			}
+		],
+		"required": ["cardCondition","cardType"]
+	},
+	"locationSelector": {
+		"type": "object",
+		"properties": {
+			"cardCondition": {
+				"$ref": "conditionSchema.json#/locationCondition"
+			},
+			"cardType": {
+				"type": "string",
+				"const": "location"
+			}
+		},
+		"oneOf": [
+			{
+				"$ref": "#/definitions/selectorBasics"
+			}
+		],
+		"required": ["cardCondition","cardType"]
+	},
+	"selector": {
+		"type": "object",
+		"oneOf": [
+			{
+				"$ref": "#/actionSelector"
+			},
+			{
+				"$ref": "#/entitySelector"
+			},
+			{
+				"$ref": "#/locationSelector"
+			}
+		]
+	}
 }
