@@ -77,6 +77,16 @@
 		],
 		"required": ["cardCondition","cardType"]
 	},
+	"selfSelector": {
+		"type": "object",
+		"properties": {
+			"target": {
+				"type": "string",
+				"const": "THIS"
+			}
+		},
+		"required": ["target"]
+	},
 	"selector": {
 		"type": "object",
 		"oneOf": [
@@ -88,6 +98,9 @@
 			},
 			{
 				"$ref": "#/locationSelector"
+			},
+			{
+				"$ref": "#/selfSelector"
 			}
 		]
 	}

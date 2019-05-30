@@ -30,20 +30,18 @@
               "value": "Mutant",
               "property": "TAG",
               "selector": {               
-                "playerMode": "TARGET",
-                "playerCondition": {},
-                "cardMode": "ALL",
-                "zone": "DECK",
-                "cardType": "entity",
-                "cardCondition": {                
-                  "property": "ATTACK",
-                  "value": 5,
-                  "comparator": "EQUAL"
-                }
+                "target": "THIS"
               }
             }
           ],
-          "zoneChange": ["test"]
+          "zoneChange": [
+            {
+              "selector": {
+                "target": "THIS"
+              },
+              "destination": "EXILE"
+            }
+          ]
         },
   			"cost": ["ENERGY"],
   			"multipleUse": false

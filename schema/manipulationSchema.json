@@ -78,6 +78,9 @@
 				},
 				"property": {
 					"$ref": "propertyIdSchema.json#/cardStringPropertyId"
+				},
+				"selector": {
+					"$ref": "selectorSchema.json#/selector"
 				}
 			},
 			"allOf": [
