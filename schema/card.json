@@ -13,6 +13,7 @@
               "value": 10,
               "operator": "ADD",
               "property": "HEALTH",
+              "duration": "ENDOFTICK",
               "selector": {
                 "playerMode": "TARGET",
                 "playerCondition": {},
@@ -29,6 +30,7 @@
             {
               "value": "Mutant",
               "property": "TAG",
+              "duration": "PERMANENT",
               "selector": {               
                 "target": "THIS"
               }

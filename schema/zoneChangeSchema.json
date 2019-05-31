@@ -7,5 +7,6 @@
 		"destination": {
 			"$ref": "zoneSchema.json#/zoneId"
 		}
-	}
+	},
+	"required": ["selector","destination"]
 }

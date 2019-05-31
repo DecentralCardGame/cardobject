@@ -137,6 +137,12 @@
 		}
 	},
 	"type": "object",
+	"properties": {
+		"duration": {
+			"type": "string",
+			"enum": ["ENDOFTICK","PERMANENT"]
+		}
+	},
 	"oneOf": [
 		{
 			"$ref": "#/defintions/intManipulation"
@@ -144,5 +150,6 @@
 		{
 			"$ref": "#/defintions/stringManipulation"
 		}
-	]
+	],
+	"required": ["duration"]
 }
