@@ -5,7 +5,7 @@
 	},
 	"dynamicZoneId": {
 		"type": "string",
-		"enum": ["DECK","DUSTPILE","FIELD","HAND","QUEUE"]
+		"enum": ["DECK","DUSTPILE","FIELD","HAND","QUEUE","TOPDECK"]
 	},
 	"zoneId": {
 		"type": "string",

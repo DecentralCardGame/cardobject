@@ -1,0 +1,70 @@
+{
+	"type": "entity",
+	"value": {
+  "name": "hans",
+  "tags": "human",
+  "text": "run",
+  "cost": ["FOOD", "FOOD"],
+  "castSpeed": 1,
+  "abilities": [
+  		{
+  			"effect": {
+          "production": ["MANA"],
+          "manipulation": [
+            {
+              "value": 10,
+              "operator": "ADD",
+              "property": "HEALTH",
+              "duration": "ENDOFTICK",
+              "selector": {
+                "playerMode": "TARGET",
+                "playerCondition": {},
+                "cardMode": "ALL",
+                "zone": "HAND",
+                "cardType": "location",
+                "cardCondition": {
+                  "property": "COSTSUM",
+                  "value": 5,
+                  "comparator": "EQUAL"
+                }
+              }
+            },
+            {
+              "value": "Mutant",
+              "property": "TAG",
+              "duration": "PERMANENT",
+              "selector": {               
+                "target": "THIS"
+              }
+            }
+          ],
+          "zoneChange": [
+            {
+              "selector": {
+                "target": "THIS"
+              },
+              "destination": "EXILE"
+            }
+          ]
+        },
+  			"cost": ["ENERGY"],
+  			"multipleUse": false
+  		},
+  		{
+  			"effect": {
+          "production": [],
+          "manipulation": [],
+          "zoneChange": []
+        },
+  			"cause": {
+  				"source": "HAND",
+          "destination": "EXILE"
+  			}
+  		}
+	],
+  "abilitySpeed": 1,
+  "health": 1,
+  "attack": 1,
+  "cardType": "entity"
+}
+}
