@@ -1,25 +1,25 @@
 {
 	"type": "object",
 	"properties": {
-		"production": {
+		"Production": {
 			"type": "array",
         	"items": {
         		"$ref": "ressourceSchema.json"
         	}
 		},
-		"manipulation": {
+		"Manipulation": {
 			"type": "array",
         	"items": {
         		"$ref": "manipulationSchema.json"
         	},
         	"additionalItems": false
 		},
-		"zoneChange": {
+		"ZoneChange": {
 			"type": "array",
         	"items": {
         		"$ref": "zoneChangeSchema.json"
         	}
 		}
 	},
-	"required": ["production", "manipulation", "zoneChange"]
+	"required": ["Production", "Manipulation", "ZoneChange"]
 }

@@ -2,7 +2,7 @@
 	"actionCondition": {
 		"type": "object",
 		"properties": {
-			"property": {
+			"Property": {
 				"$ref": "propertyIdSchema.json#/actionPropertyId"
 			}
 		},
@@ -10,14 +10,14 @@
 			{
 				"if": {
 					"properties": {
-						"property": {
+						"Property": {
 							"$ref": "propertyIdSchema.json#/actionIntPropertyId"
 						}
 					}
 				},
 				"then": {
 					"properties": {
-						"value": {
+						"Value": {
 							"type": "integer",
 							"minimum": 0,
 							"maximum": 100
@@ -26,25 +26,25 @@
 				},
 				"if": {
 					"properties": {
-						"property": {
+						"Property": {
 							"$ref": "propertyIdSchema.json#/actionStringPropertyId"
 						}
 					}
 				},
 				"then": {
 					"properties": {
-						"value": {
+						"Value": {
 							"type": "string"
 						}
 					}
 				}
 			}
 		],
-		"required":["property","value","comparator"]
+		"required":["Property","Value","Comparator"]
 	},
 	"entityCondition": {"type": "object",
 		"properties": {
-			"property": {
+			"Property": {
 				"$ref": "propertyIdSchema.json#/entityPropertyId"
 			}
 		},
@@ -52,14 +52,14 @@
 			{
 				"if": {
 					"properties": {
-						"property": {
+						"Property": {
 							"$ref": "propertyIdSchema.json#/entityIntPropertyId"
 						}
 					}
 				},
 				"then": {
 					"properties": {
-						"value": {
+						"Value": {
 							"type": "integer",
 							"minimum": 0,
 							"maximum": 100
@@ -68,24 +68,24 @@
 				},
 				"if": {
 					"properties": {
-						"property": {
+						"Property": {
 							"$ref": "propertyIdSchema.json#/entityStringPropertyId"
 						}
 					}
 				},
 				"then": {
 					"properties": {
-						"value": {
+						"Value": {
 							"type": "string"
 						}
 					}
 				}
 			}
 		],
-		"required":["property","value","comparator"]},
+		"required":["Property","Value","Comparator"]},
 	"locationCondition": {"type": "object",
 		"properties": {
-			"property": {
+			"Property": {
 				"$ref": "propertyIdSchema.json#/locationPropertyId"
 			}
 		},
@@ -93,14 +93,14 @@
 			{
 				"if": {
 					"properties": {
-						"property": {
+						"Property": {
 							"$ref": "propertyIdSchema.json#/locationIntPropertyId"
 						}
 					}
 				},
 				"then": {
 					"properties": {
-						"value": {
+						"Value": {
 							"type": "integer",
 							"minimum": 0,
 							"maximum": 100
@@ -109,19 +109,19 @@
 				},
 				"if": {
 					"properties": {
-						"property": {
+						"Property": {
 							"$ref": "propertyIdSchema.json#/locationStringPropertyId"
 						}
 					}
 				},
 				"then": {
 					"properties": {
-						"value": {
+						"Value": {
 							"type": "string"
 						}
 					}
 				}
 			}
 		],
-		"required":["property","value","comparator"]}
+		"required":["Property","Value","Comparator"]}
 }

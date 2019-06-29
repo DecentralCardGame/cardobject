@@ -7,29 +7,29 @@
 		"selectorBasics": {
 			"type": "object",
 			"properties": {
-				"playerMode": {
+				"PlayerMode": {
 					"$ref": "#/definitions/selectorMode"
 				},
-				"playerCondition": {
+				"PlayerCondition": {
 					"$ref": ""
 				},
-				"cardMode": {
+				"CardMode": {
 					"$ref": "#/definitions/selectorMode"
 				},
-				"zone": {
+				"Zone": {
 					"$ref": "zoneSchema.json#/dynamicZoneId"
 				}
 			},
-			"required": ["playerMode","playerCondition","cardMode","zone"]
+			"required": ["PlayerMode","PlayerCondition","CardMode","Zone"]
 		}
 	},
 	"actionSelector": {
 		"type": "object",
 		"properties": {
-			"cardCondition": {
+			"CardCondition": {
 				"$ref": "conditionSchema.json#/actionCondition"
 			},
-			"cardType": {
+			"CardType": {
 				"type": "string",
 				"const": "action"
 			}
@@ -39,15 +39,15 @@
 				"$ref": "#/definitions/selectorBasics"
 			}
 		],
-		"required": ["cardCondition","cardType"]
+		"required": ["CardCondition","CardType"]
 	},
 	"entitySelector": {
 		"type": "object",
 		"properties": {
-			"cardCondition": {
+			"CardCondition": {
 				"$ref": "conditionSchema.json#/entityCondition"
 			},
-			"cardType": {
+			"CardType": {
 				"type": "string",
 				"const": "entity"
 			}
@@ -57,15 +57,15 @@
 				"$ref": "#/definitions/selectorBasics"
 			}
 		],
-		"required": ["cardCondition","cardType"]
+		"required": ["CardCondition","CardType"]
 	},
 	"locationSelector": {
 		"type": "object",
 		"properties": {
-			"cardCondition": {
+			"CardCondition": {
 				"$ref": "conditionSchema.json#/locationCondition"
 			},
-			"cardType": {
+			"CardType": {
 				"type": "string",
 				"const": "location"
 			}
@@ -75,17 +75,17 @@
 				"$ref": "#/definitions/selectorBasics"
 			}
 		],
-		"required": ["cardCondition","cardType"]
+		"required": ["CardCondition","CardType"]
 	},
 	"selfSelector": {
 		"type": "object",
 		"properties": {
-			"target": {
+			"Target": {
 				"type": "string",
 				"const": "THIS"
 			}
 		},
-		"required": ["target"]
+		"required": ["Target"]
 	},
 	"selector": {
 		"type": "object",

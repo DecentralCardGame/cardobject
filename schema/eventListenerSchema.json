@@ -3,32 +3,32 @@
 		"timeEventListener": {
 			"type": "object",
 			"properties": {
-				"timeEvent": {
+				"TimeEvent": {
 					"$ref": "timeEventSchema.json"
 				}
 			},
-			"required": ["timeEvent"]
+			"required": ["TimeEvent"]
 		},
 		"manipulationEventListener": {
 			"type": "object",
 			"properties": {
-				"property": {
+				"Property": {
 					"$ref": "propertyIdSchema.json#/cardPropertyId"
 				}
 			},
-			"required": ["property"]
+			"required": ["Property"]
 		},
 		"zoneChangeEventListener": {
 			"type": "object",
 			"properties": {
-				"source": {
+				"Source": {
 					"$ref": "zoneSchema.json#/dynamicZoneId"
 				},
-				"destination": {
+				"Destination": {
 					"$ref": "zoneSchema.json#/zoneId"
 				}
 			},
-			"required": ["source","destination"]
+			"required": ["Source","Destination"]
 		}
 	},
 	"type": "object",

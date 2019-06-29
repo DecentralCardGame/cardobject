@@ -11,15 +11,15 @@
         }
       ],
       "properties": {
-        "effect": {
+        "Effect": {
           "$ref": "effectSchema.json"
         },
-        "cardType": {
+        "CardType": {
           "type": "string",
           "pattern": "^action$"
         }
       },
-      "required": ["effect","cardType"]
+      "required": ["Effect","CardType"]
     },
     "entity": {
       "type": "object",
@@ -35,15 +35,15 @@
         }
       ],
       "properties": {
-        "attack": {
+        "Attack": {
           "$ref": "propertySchema.json#/attack"
         },
-        "cardType": {
+        "CardType": {
           "type": "string",
           "pattern": "^entity$"
         }
       },
-      "required": ["attack","cardType"]
+      "required": ["Attack","CardType"]
     },
     "field": {
       "type": "object",
@@ -59,12 +59,12 @@
         }
       ],
       "properties": {
-        "cardType": {
+        "CardType": {
           "type": "string",
           "pattern": "^field$"
         }
       },
-      "required": ["cardType"]
+      "required": ["CardType"]
     },
     "headquarter": {
       "type": "object",
@@ -77,84 +77,136 @@
         }
       ],
       "properties": {
-        "uniqueName": {
+        "UniqueName": {
           "$ref": "propertySchema.json#/uniqueName"
         },
-        "cardType": {
+        "CardType": {
           "type": "string",
           "pattern": "^field$"
         }
       },
-      "required": ["uniqueName","cardType"]
+      "required": ["UniqueName","CardType"]
     },
     "cardAttributes": {
       "type": "object",
       "properties": {
-        "name": {
+        "Name": {
           "$ref": "propertySchema.json#/name"
         },
-        "tags": {
+        "Tag": {
           "$ref": "propertySchema.json#/tag"
         },
-        "text": {
+        "Text": {
           "$ref": "propertySchema.json#/text"
         }
       },
-      "required": ["name","tags","text"]
+      "required": ["Name","Tag","Text"]
     },
     "castable": {
       "type": "object",
       "properties": {
-        "cost": {
+        "Cost": {
           "type": "array",
           "items": {
             "$ref": "ressourceSchema.json"
           }
         },
-        "castSpeed": {
+        "CastSpeed": {
           "$ref": "propertySchema.json#/speedModifier"
         }
       },
-      "required": [
-        "cost",
-        "castSpeed"
-      ]
+      "required": ["Cost","CastSpeed"]
     },
     "permanent": {
       "type": "object",
       "properties": {
-        "abilities": {
+        "Abilities": {
           "type": "array",
           "items": {
             "$ref": "abilityschema.json"
           }
         },
-        "abilitySpeed": {
+        "AbilitySpeed": {
           "$ref": "propertySchema.json#/speedModifier"
         },
-        "health": {
+        "Health": {
           "$ref": "propertySchema.json#/health"
         }
       },
-      "required": [
-        "abilities",
-        "abilitySpeed",
-        "health"
-      ]
+      "required": ["Abilities","AbilitySpeed","Health"]
     }
   },
-  "oneOf": [
+  "allOf": [
     {
-      "$ref": "#/definitions/action"
+      "if" : {
+        "properties": {
+          "type": {
+            "const": "action"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "$ref": "#/definitions/action"
+          }
+        }
+      }
     },
     {
-      "$ref": "#/definitions/entity"
+      "if" : {
+        "properties": {
+          "type": {
+            "const": "entity"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "$ref": "#/definitions/entity"
+          }
+        }
+      }
     },
     {
-      "$ref": "#/definitions/field"
+      "if" : {
+        "properties": {
+          "type": {
+            "const": "field"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "$ref": "#/definitions/field"
+          }
+        }
+      }
     },
     {
-      "$ref": "#/definitions/headquarter"
+      "if" : {
+        "properties": {
+          "type": {
+            "const": "headquarter"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "$ref": "#/definitions/headquarter"
+          }
+        }
+      }
     }
-  ]
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["action","entity","field","headquarter"]
+    }
+  },
+  "required": ["type","value"]
 }

@@ -1,12 +1,12 @@
 {
 	"type": "object",
 	"properties": {
-		"selector": {
+		"Selector": {
 			"$ref": "selectorSchema.json#/selector"
 		},
-		"destination": {
+		"Destination": {
 			"$ref": "zoneSchema.json#/zoneId"
 		}
 	},
-	"required": ["selector","destination"]
+	"required": ["Selector","Destination"]
 }

@@ -3,33 +3,37 @@
 		"intManipulation": {
 			"type": "object",
 			"properties": {
-				"value": {
+				"Value": {
 					"type": "integer",
 					"minimum": 1,
 					"maximum": 10
 				},
-				"operator": {
+				"Operator": {
 					"$ref": "arithOperatorSchema.json"
 				},
-				"property": {
+				"Property": {
 					"$ref": "propertyIdSchema.json#/cardIntPropertyId"
 				},
-				"selector": {
+				"Selector": {
 					"$ref": "selectorSchema.json#/selector"
+				},
+				"Duration": {
+					"type": "string",
+					"enum": ["ENDOFTICK","PERMANENT"]
 				}
 			},
 			"allOf": [
 				{
 					"if": {
 						"properties": {
-							"selector": {
+							"Selector": {
 								"$ref": "selectorSchema.json#/actionSelector"
 							}
 						}
 					},
 					"then": {
 						"properties": {
-							"property": {
+							"Property": {
 								"$ref": "propertyIdSchema.json#/actionIntPropertyId"
 							}
 						}
@@ -38,14 +42,14 @@
 				{
 					"if": {
 						"properties": {
-							"selector": {
+							"Selector": {
 								"$ref": "selectorSchema.json#/entitySelector"
 							}
 						}
 					},
 					"then": {
 						"properties": {
-							"property": {							
+							"Property": {							
 								"$ref": "propertyIdSchema.json#/entityIntPropertyId"
 							}
 						}
@@ -54,47 +58,51 @@
 				{
 					"if": {
 						"properties": {
-							"selector": {
+							"Selector": {
 								"$ref": "selectorSchema.json#/locationSelector"
 							}
 						}
 					},
 					"then": {
 						"properties": {
-							"property": {					
+							"Property": {					
 								"$ref": "propertyIdSchema.json#/locationIntPropertyId"
 							}
 						}
 					}
 				}
 			],
-			"required": ["value","operator","property","selector"]
+			"required": ["Value","Operator","Property","Selector","Duration"]
 		},
 		"stringManipulation": {
 			"type": "object",
 			"properties": {
-				"value": {
+				"Value": {
 					"type": "string"
 				},
-				"property": {
+				"Property": {
 					"$ref": "propertyIdSchema.json#/cardStringPropertyId"
 				},
-				"selector": {
+				"Selector": {
 					"$ref": "selectorSchema.json#/selector"
+				},
+				"Duration": {
+					"type": "string",
+					"enum": ["ENDOFTICK","PERMANENT"]
 				}
 			},
 			"allOf": [
 				{
 					"if": {
 						"properties": {
-							"selector": {
+							"Selector": {
 								"$ref": "selectorSchema.json#/actionSelector"
 							}
 						}
 					},
 					"then": {
 						"properties": {
-							"property": {
+							"Property": {
 								"$ref": "propertyIdSchema.json#/actionStringPropertyId"
 							}
 						}
@@ -103,14 +111,14 @@
 				{
 					"if": {
 						"properties": {
-							"selector": {
+							"Selector": {
 								"$ref": "selectorSchema.json#/entitySelector"							
 							}
 						}
 					},
 					"then": {
 						"properties": {
-							"property": {
+							"Property": {
 								"$ref": "propertyIdSchema.json#/entityStringPropertyId"
 							}
 						}
@@ -119,37 +127,63 @@
 				{
 					"if": {
 						"properties": {
-							"selector": {
+							"Selector": {
 								"$ref": "selectorSchema.json#/locationSelector"
 							}
 						}
 					},
 					"then": {
 						"properties": {
-							"property": {								
+							"Property": {								
 								"$ref": "propertyIdSchema.json#/locationStringPropertyId"
 							}
 						}
 					}
 				}
 			],
-			"required": ["value","property","selector"]
+			"required": ["Value","Property","Selector","Duration"]
 		}
 	},
 	"type": "object",
-	"properties": {
-		"duration": {
-			"type": "string",
-			"enum": ["ENDOFTICK","PERMANENT"]
-		}
-	},
-	"oneOf": [
+	"allOf": [
 		{
-			"$ref": "#/defintions/intManipulation"
+			"if": {
+				"properties": {
+					"type": {
+						"const": "intManipulation"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"value": {
+						"$ref": "#/defintions/intManipulation"
+					}
+				}
+			}
 		},
 		{
-			"$ref": "#/defintions/stringManipulation"
+			"if": {
+				"properties": {
+					"type": {
+						"const": "stringManipulation"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"value": {
+						"$ref": "#/defintions/stringManipulation"
+					}
+				}
+			}
 		}
 	],
-	"required": ["duration"]
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": ["intManipulation","stringManipulation"]
+		}
+	},
+	"required": ["type","value"]
 }

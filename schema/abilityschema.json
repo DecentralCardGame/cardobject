@@ -1,43 +1,76 @@
 {
 	"definitions": {
-		"activated": {
+		"activatedAbility": {
 			"type": "object",
 			"properties": {
-				"cost": {
+				"Cost": {
           			"type": "array",
           			"items": {
             			"$ref": "ressourceSchema.json"
           			}
         		},
-        		"multipleUse": {
+        		"MultipleUse": {
         			"type": "boolean" 
-        		}
+        		},
+        		"Effect": {
+					"$ref": "effectSchema.json"
+				}
 			},
-			"required": ["cost","multipleUse"]
+			"required": ["Cost","MultipleUse"]
 		},
-		"triggered": {
+		"triggeredAbility": {
 			"type": "object",
 			"properties": {
-				"cause": {
+				"Cause": {
           			"$ref": "eventListenerSchema.json"
-        		}
+        		},
+        		"Effect": {
+					"$ref": "effectSchema.json"
+				}
 			},
-			"required": ["cause"]
+			"required": ["Cause"]
 		}
 	},
 	"type": "object",
-	"oneOf": [
+	"allOf": [
 		{
-			"$ref": "#/definitions/activated"
+			"if": {
+				"properties": {
+					"type": {
+						"const": "activatedAbility"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"value": {
+						"$ref": "#/definitions/activatedAbility"
+					}
+				}
+			}
 		},
 		{
-			"$ref": "#/definitions/triggered"
+			"if": {
+				"properties": {
+					"type": {
+						"const": "triggeredAbility"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"value": {
+						"$ref": "#/definitions/triggeredAbility"
+					}
+				}
+			}
 		}
 	],
 	"properties": {
-		"effect": {
-			"$ref": "effectSchema.json"
+		"type": {
+			"type": "string",
+			"enum": ["activatedAbility","triggeredAbility"]
 		}
 	},
-	"required": ["effect"]
+	"required": ["type","value"]
 }

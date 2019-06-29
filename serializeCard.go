@@ -1,39 +1,30 @@
 package cardobject
 
 import "fmt"
-import "encoding/json"
 import "github.com/xeipuuv/gojsonschema"
+import "encoding/json"
 import amino "github.com/tendermint/go-amino"
 
 func ProcessCard (cardJson string) string {
 	cdc := amino.NewCodec()
 	registerCodec(cdc)
-	var card card
-	cdc.MustUnmarshalJSON([]byte(cardJson), &card)
 
 	if(validateCard(cardJson)) {
-		return serializeCard(deserializeCard(cardJson))
+        var card cardWrapper
+        //cdc.MustUnmarshalJSON([]byte(cardJson), &card)
+        err := json.Unmarshal([]byte(cardJson), &card)
+        if err != nil {
+            fmt.Println("error:", err)
+        }
+        bytes, err := json.Marshal(card)
+        if err != nil {
+            fmt.Println("Can't serialize", card)
+            return "Can't serialize"
+        }
+		return string(bytes)
 	} else {
 		return ""
 	}
-}
-
-func serializeCard(c card) string {
-	bytes, err := json.Marshal(c)
-    if err != nil {
-        fmt.Println("Can't serialize", c)
-        return "Can't serialize"
-    }
-    return string(bytes)
-}
-
-func deserializeCard(s string) card {
-	var card entity
-	err := json.Unmarshal([]byte(s), &card)
-	if err != nil {
-		fmt.Println("error:", err)
-	}
-	return card
 }
 
 func validateCard(s string) bool {
@@ -59,6 +50,12 @@ func validateCard(s string) bool {
 
 func registerCodec(cdc *amino.Codec) {
 	cdc.RegisterInterface((*card)(nil), nil)
-	cdc.RegisterConcrete(action{}, "action", nil)
-	cdc.RegisterConcrete(entity{}, "entity", nil)
+    cdc.RegisterConcrete(&action{}, "action", nil)
+    cdc.RegisterConcrete(&entity{}, "entity", nil)
+    cdc.RegisterConcrete(&field{}, "field", nil)
+    cdc.RegisterConcrete(&headquarter{}, "headquarter", nil)
+    cdc.RegisterConcrete(&effect{}, "effect", nil)
+    cdc.RegisterInterface((*ability)(nil), nil)
+    cdc.RegisterConcrete(&activatedAbility{}, "activatedAbility", nil)
+    cdc.RegisterConcrete(&triggeredAbility{}, "triggeredAbility", nil)
 }

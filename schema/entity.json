@@ -1,70 +1,82 @@
 {
 	"type": "entity",
 	"value": {
-  "name": "hans",
-  "tags": "human",
-  "text": "run",
-  "cost": ["FOOD", "FOOD"],
-  "castSpeed": 1,
-  "abilities": [
+    "Name": "hans",
+    "Tag": "human",
+    "Text": "run",
+    "Cost": ["FOOD", "FOOD"],
+    "CastSpeed": 1,
+    "Abilities": [
   		{
-  			"effect": {
-          "production": ["MANA"],
-          "manipulation": [
-            {
-              "value": 10,
-              "operator": "ADD",
-              "property": "HEALTH",
-              "duration": "ENDOFTICK",
-              "selector": {
-                "playerMode": "TARGET",
-                "playerCondition": {},
-                "cardMode": "ALL",
-                "zone": "HAND",
-                "cardType": "location",
-                "cardCondition": {
-                  "property": "COSTSUM",
-                  "value": 5,
-                  "comparator": "EQUAL"
+        "type": "activatedAbility",
+        "value": {
+  			 "Effect": {
+           "Production": ["MANA"],
+            "Manipulation": [
+              {
+                "type": "intManipulation",
+                "value": {
+                  "Value": 10,
+                  "Operator": "ADD",
+                  "Property": "HEALTH",
+                  "Duration": "ENDOFTICK",
+                  "Selector": {
+                    "PlayerMode": "TARGET",
+                    "PlayerCondition": {},
+                    "CardMode": "ALL",
+                    "Zone": "HAND",
+                    "CardType": "location",
+                    "CardCondition": {
+                      "Property": "COSTSUM",
+                      "Value": 5,
+                      "Comparator": "EQUAL"
+                    }
+                  }
+                }
+              },
+              {
+                "type": "stringManipulation",
+                "value": {
+                  "Value": "Mutant",
+                  "Property": "TAG",
+                  "Duration": "PERMANENT",
+                  "Selector": {               
+                    "Target": "THIS"
+                  }
                 }
               }
-            },
-            {
-              "value": "Mutant",
-              "property": "TAG",
-              "duration": "PERMANENT",
-              "selector": {               
-                "target": "THIS"
+            ],
+            "ZoneChange": [
+              {
+                "Selector": {
+                  "Target": "THIS"
+                },
+                "Destination": "EXILE"
               }
-            }
-          ],
-          "zoneChange": [
-            {
-              "selector": {
-                "target": "THIS"
-              },
-              "destination": "EXILE"
-            }
-          ]
-        },
-  			"cost": ["ENERGY"],
-  			"multipleUse": false
+            ]
+          },
+  			 "Cost": ["ENERGY"],
+  			 "MultipleUse": false
+        }
   		},
   		{
-  			"effect": {
-          "production": [],
-          "manipulation": [],
-          "zoneChange": []
-        },
-  			"cause": {
-  				"source": "HAND",
-          "destination": "EXILE"
-  			}
-  		}
-	],
-  "abilitySpeed": 1,
-  "health": 1,
-  "attack": 1,
-  "cardType": "entity"
-}
+        "type": "triggeredAbility",
+        "value": {
+  			 "Effect": {
+            "Production": [],
+            "Manipulation": [],
+            "ZoneChange": []
+          },
+  			 "Cause": {
+  				  "Source": "HAND",
+            "Destination": "EXILE"
+  			 }
+  		  }
+      }
+	 ],
+    "AbilitySpeed": 1,
+    "Health": 1,
+    "Attack": 1,
+    "CardType": "entity"
+  }
 }
