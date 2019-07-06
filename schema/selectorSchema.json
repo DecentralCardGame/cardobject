@@ -21,87 +21,134 @@
 				}
 			},
 			"required": ["PlayerMode","PlayerCondition","CardMode","Zone"]
+		},
+		"actionSelector": {
+			"type": "object",
+			"properties": {
+				"CardCondition": {
+					"$ref": "conditionSchema.json#/actionCondition"
+				}
+			},
+			"oneOf": [
+				{
+					"$ref": "#/definitions/selectorBasics"
+				}
+			],
+			"required": ["CardCondition"]
+		},
+		"entitySelector": {
+			"type": "object",
+			"properties": {
+				"CardCondition": {
+					"$ref": "conditionSchema.json#/entityCondition"
+				}
+			},
+			"oneOf": [
+				{
+					"$ref": "#/definitions/selectorBasics"
+				}
+			],
+			"required": ["CardCondition"]
+		},
+		"fieldSelector": {
+			"type": "object",
+			"properties": {
+				"CardCondition": {
+					"$ref": "conditionSchema.json#/locationCondition"
+				}
+			},
+			"oneOf": [
+				{
+					"$ref": "#/definitions/selectorBasics"
+				}
+			],
+			"required": ["CardCondition"]
+		},
+		"selfSelector": {
+			"type": "object",
+			"properties": {
+				"Target": {
+					"type": "string",
+					"const": "THIS"
+				}
+			},
+			"required": ["Target"]
 		}
-	},
-	"actionSelector": {
-		"type": "object",
-		"properties": {
-			"CardCondition": {
-				"$ref": "conditionSchema.json#/actionCondition"
-			},
-			"CardType": {
-				"type": "string",
-				"const": "action"
-			}
-		},
-		"oneOf": [
-			{
-				"$ref": "#/definitions/selectorBasics"
-			}
-		],
-		"required": ["CardCondition","CardType"]
-	},
-	"entitySelector": {
-		"type": "object",
-		"properties": {
-			"CardCondition": {
-				"$ref": "conditionSchema.json#/entityCondition"
-			},
-			"CardType": {
-				"type": "string",
-				"const": "entity"
-			}
-		},
-		"oneOf": [
-			{
-				"$ref": "#/definitions/selectorBasics"
-			}
-		],
-		"required": ["CardCondition","CardType"]
-	},
-	"locationSelector": {
-		"type": "object",
-		"properties": {
-			"CardCondition": {
-				"$ref": "conditionSchema.json#/locationCondition"
-			},
-			"CardType": {
-				"type": "string",
-				"const": "location"
-			}
-		},
-		"oneOf": [
-			{
-				"$ref": "#/definitions/selectorBasics"
-			}
-		],
-		"required": ["CardCondition","CardType"]
-	},
-	"selfSelector": {
-		"type": "object",
-		"properties": {
-			"Target": {
-				"type": "string",
-				"const": "THIS"
-			}
-		},
-		"required": ["Target"]
 	},
 	"selector": {
 		"type": "object",
-		"oneOf": [
+		"allOf": [
 			{
-				"$ref": "#/actionSelector"
+				"if": {
+					"properties": {
+						"Type": {
+							"const": "actionSelector"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"Value": {
+							"$ref": "#/definitions/actionSelector"
+						}
+					}
+				}
 			},
 			{
-				"$ref": "#/entitySelector"
+				"if": {
+					"properties": {
+						"Type": {
+							"const": "entitySelector"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"Value": {
+							"$ref": "#/definitions/entitySelector"
+						}
+					}
+				}
 			},
 			{
-				"$ref": "#/locationSelector"
+				"if": {
+					"properties": {
+						"Type": {
+							"const": "fieldSelector"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"Value": {
+							"$ref": "#/definitions/fieldSelector"
+						}
+					}
+				}
 			},
 			{
-				"$ref": "#/selfSelector"
+				"if": {
+					"properties": {
+						"Type": {
+							"const": "selfSelector"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"Value": {
+							"$ref": "#/definitions/selfSelector"
+						}
+					}
+				}
 			}
-		]
+		],
+  		"properties": {
+    		"Type": {
+      			"type": "string",
+      			"enum": ["actionSelector","entitySelector","fieldSelector","selfSelector"]
+    		}
+  		},
+  		"required": ["Type","Value"]
 	}
 }
