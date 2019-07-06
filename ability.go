@@ -16,7 +16,7 @@ type activatedAbility struct {
 
 type triggeredAbility struct {
 	abilityAttributes
-	//Cause cause
+	Cause eventListenerWrapper
 }
 
 func (aa abilityAttributes) getAbilityAttributes() abilityAttributes {

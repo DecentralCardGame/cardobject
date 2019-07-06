@@ -54,7 +54,7 @@
 			"type": "object",
 			"properties": {
 				"CardCondition": {
-					"$ref": "conditionSchema.json#/locationCondition"
+					"$ref": "conditionSchema.json#/fieldCondition"
 				}
 			},
 			"oneOf": [

@@ -6,7 +6,7 @@ type manipulation interface {
 
 type manipulationAttributes struct {
 	Duration string
-	//Selector selector
+	Selector selectorWrapper
 }
 
 type intManipulation struct {

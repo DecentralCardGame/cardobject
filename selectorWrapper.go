@@ -25,6 +25,10 @@ func (sw *selectorWrapper) UnmarshalJSON(data []byte) error {
 			f := fieldSelector{}
 			err = json.Unmarshal(jsonData, &f)
 			sw.Value = f
+		case "selfSelector":
+			s := selfSelector{}
+			err = json.Unmarshal(jsonData, &s)
+			sw.Value = s	
 		default:
 			return errors.New("Unrecognized selector")
 	}

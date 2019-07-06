@@ -32,15 +32,60 @@
 		}
 	},
 	"type": "object",
-	"oneOf": [
+	"allOf": [
 		{
-			"$ref": "#/definitions/timeEventListener"
+			"if": {
+				"properties": {
+					"Type": {
+						"const": "timeEventListener"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"Value": {
+						"$ref": "#/definitions/timeEventListener"
+					}
+				}
+			}
 		},
 		{
-			"$ref": "#/definitions/manipulationEventListener"
+			"if": {
+				"properties": {
+					"Type": {
+						"const": "manipulationEventListener"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"Value": {
+						"$ref": "#/definitions/manipulationEventListener"
+					}
+				}
+			}
 		},
 		{
-			"$ref": "#/definitions/zoneChangeEventListener"
+			"if": {
+				"properties": {
+					"Type": {
+						"const": "zoneChangeEventListener"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"Value": {
+						"$ref": "#/definitions/zoneChangeEventListener"
+					}
+				}
+			}
 		}
-	]
+	],
+	"properties": {
+		"Type": {
+			"enum": ["timeEventListener","manipulationEventListener","zoneChangeEventListener"]
+		}
+	},
+	"required": ["Type","Value"]
 }

@@ -3,8 +3,12 @@ package cardobject
 import "testing"
 import "fmt"
 import "io/ioutil"
+import "strings"
 
 func TestCardSerialization(t *testing.T) {
 	file, _ := ioutil.ReadFile("schema/entity.json")
- 	fmt.Println(ProcessCard(string(file)))
+	input := string(file)
+	output := ProcessCard(input)
+ 	fmt.Println(output)
+ 	fmt.Println(strings.Compare(input, output))
 }

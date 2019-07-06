@@ -83,10 +83,10 @@
 			}
 		],
 		"required":["Property","Value","Comparator"]},
-	"locationCondition": {"type": "object",
+	"fieldCondition": {"type": "object",
 		"properties": {
 			"Property": {
-				"$ref": "propertyIdSchema.json#/locationPropertyId"
+				"$ref": "propertyIdSchema.json#/fieldPropertyId"
 			}
 		},
 		"allOf": [
@@ -94,7 +94,7 @@
 				"if": {
 					"properties": {
 						"Property": {
-							"$ref": "propertyIdSchema.json#/locationIntPropertyId"
+							"$ref": "propertyIdSchema.json#/fieldIntPropertyId"
 						}
 					}
 				},
@@ -110,7 +110,7 @@
 				"if": {
 					"properties": {
 						"Property": {
-							"$ref": "propertyIdSchema.json#/locationStringPropertyId"
+							"$ref": "propertyIdSchema.json#/fieldStringPropertyId"
 						}
 					}
 				},

@@ -76,8 +76,11 @@
             "ZoneChange": []
           },
   			 "Cause": {
-  				  "Source": "HAND",
-            "Destination": "EXILE"
+            "Type": "zoneChangeEventListener",
+            "Value": {
+  				    "Source": "HAND",
+              "Destination": "EXILE"
+            }
   			 }
   		  }
       }

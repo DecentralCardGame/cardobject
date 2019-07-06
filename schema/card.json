@@ -19,7 +19,7 @@
                 "playerCondition": {},
                 "cardMode": "ALL",
                 "zone": "HAND",
-                "cardType": "location",
+                "cardType": "field",
                 "cardCondition": {
                   "property": "COSTSUM",
                   "value": 5,

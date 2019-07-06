@@ -4,7 +4,9 @@ type selector interface {
 	GetSelectorAttributes() selectorAttributes
 }
 
-type selectorAttributes struct {
+type selectorAttributes struct {}
+
+type targetingAttributes struct {
 	PlayerMode string
 	//PlayerCondition
 	CardMode string
@@ -12,18 +14,26 @@ type selectorAttributes struct {
 }
 
 type actionSelector struct {
-	*selectorAttributes
+	selectorAttributes
+	targetingAttributes
 	//actionCondition
 }
 
 type entitySelector struct {
-	*selectorAttributes
+	selectorAttributes
+	targetingAttributes
 	//actionCondition
 }
 
 type fieldSelector struct {
-	*selectorAttributes
+	selectorAttributes
+	targetingAttributes
 	//actionCondition
+}
+
+type selfSelector struct {
+	selectorAttributes
+	Target string
 }
 
 func (s selectorAttributes) GetSelectorAttributes() selectorAttributes {
