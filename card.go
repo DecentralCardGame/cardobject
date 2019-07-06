@@ -22,7 +22,7 @@ type action struct {
 }
 
 type permanent struct {
-	Abilities []ability
+	Abilities []abilityWrapper
 	AbilitySpeed int8
 	Health int8
 }
