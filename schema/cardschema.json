@@ -140,14 +140,14 @@
     {
       "if" : {
         "properties": {
-          "type": {
+          "Type": {
             "const": "action"
           }
         }
       },
       "then": {
         "properties": {
-          "value": {
+          "Value": {
             "$ref": "#/definitions/action"
           }
         }
@@ -156,14 +156,14 @@
     {
       "if" : {
         "properties": {
-          "type": {
+          "Type": {
             "const": "entity"
           }
         }
       },
       "then": {
         "properties": {
-          "value": {
+          "Value": {
             "$ref": "#/definitions/entity"
           }
         }
@@ -172,14 +172,14 @@
     {
       "if" : {
         "properties": {
-          "type": {
+          "Type": {
             "const": "field"
           }
         }
       },
       "then": {
         "properties": {
-          "value": {
+          "Value": {
             "$ref": "#/definitions/field"
           }
         }
@@ -188,14 +188,14 @@
     {
       "if" : {
         "properties": {
-          "type": {
+          "Type": {
             "const": "headquarter"
           }
         }
       },
       "then": {
         "properties": {
-          "value": {
+          "Value": {
             "$ref": "#/definitions/headquarter"
           }
         }
@@ -203,10 +203,10 @@
     }
   ],
   "properties": {
-    "type": {
+    "Type": {
       "type": "string",
       "enum": ["action","entity","field","headquarter"]
     }
   },
-  "required": ["type","value"]
+  "required": ["Type","Value"]
 }

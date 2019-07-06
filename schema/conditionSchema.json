@@ -123,5 +123,6 @@
 				}
 			}
 		],
-		"required":["Property","Value","Comparator"]}
+		"required":["Property","Value","Comparator"]
+	}
 }

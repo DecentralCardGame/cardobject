@@ -36,14 +36,14 @@
 		{
 			"if": {
 				"properties": {
-					"type": {
+					"Type": {
 						"const": "activatedAbility"
 					}
 				}
 			},
 			"then": {
 				"properties": {
-					"value": {
+					"Value": {
 						"$ref": "#/definitions/activatedAbility"
 					}
 				}
@@ -52,14 +52,14 @@
 		{
 			"if": {
 				"properties": {
-					"type": {
+					"Type": {
 						"const": "triggeredAbility"
 					}
 				}
 			},
 			"then": {
 				"properties": {
-					"value": {
+					"Value": {
 						"$ref": "#/definitions/triggeredAbility"
 					}
 				}
@@ -67,10 +67,10 @@
 		}
 	],
 	"properties": {
-		"type": {
+		"Type": {
 			"type": "string",
 			"enum": ["activatedAbility","triggeredAbility"]
 		}
 	},
-	"required": ["type","value"]
+	"required": ["Type","Value"]
 }

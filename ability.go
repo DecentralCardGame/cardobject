@@ -5,7 +5,7 @@ type ability interface {
 }
 
 type abilityAttributes struct {
-	//Effect effect
+	Effect effect
 }
 
 type activatedAbility struct {

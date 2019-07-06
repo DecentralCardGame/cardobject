@@ -6,6 +6,7 @@ type manipulation interface {
 
 type manipulationAttributes struct {
 	Duration string
+	//Selector selector
 }
 
 type intManipulation struct {
@@ -13,14 +14,12 @@ type intManipulation struct {
 	Value int
 	Operator string
 	Property string
-	//Selector selector
 }
 
 type stringManipulation struct {
 	manipulationAttributes
 	Value string
 	Property string
-	//Selector selector
 }
 
 func (ma manipulationAttributes) GetManipulationAttributes() manipulationAttributes {

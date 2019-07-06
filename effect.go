@@ -2,6 +2,6 @@ package cardobject
 
 type effect struct {
 	Production []string
-	Manipulation []manipulation
-	//ZoneChange []zoneChange
+	Manipulation []manipulationWrapper
+	ZoneChange []zoneChange
 }
