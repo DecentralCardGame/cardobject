@@ -27,7 +27,11 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"$ref": "selectorSchema.json#/actionSelector"
+								"properties": {
+									"Type": {
+										"const": "actionSelector"
+									}
+								}
 							}
 						}
 					},
@@ -43,7 +47,11 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"$ref": "selectorSchema.json#/entitySelector"
+								"properties": {
+									"Type": {
+										"const": "entitySelector"
+									}
+								}
 							}
 						}
 					},
@@ -59,7 +67,11 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"$ref": "selectorSchema.json#/locationSelector"
+								"properties": {
+									"Type": {
+										"const": "fieldSelector"
+									}
+								}
 							}
 						}
 					},
@@ -96,7 +108,9 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"$ref": "selectorSchema.json#/actionSelector"
+								"Type": {
+									"const": "actionSelector"
+								}
 							}
 						}
 					},
@@ -112,7 +126,9 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"$ref": "selectorSchema.json#/entitySelector"							
+								"Type": {
+									"const": "entitySelector"
+								}							
 							}
 						}
 					},
@@ -128,7 +144,9 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"$ref": "selectorSchema.json#/locationSelector"
+								"Type": {
+									"const": "fieldSelector"
+								}
 							}
 						}
 					},
@@ -149,14 +167,14 @@
 		{
 			"if": {
 				"properties": {
-					"type": {
+					"Type": {
 						"const": "intManipulation"
 					}
 				}
 			},
 			"then": {
 				"properties": {
-					"value": {
+					"Value": {
 						"$ref": "#/defintions/intManipulation"
 					}
 				}
@@ -165,14 +183,14 @@
 		{
 			"if": {
 				"properties": {
-					"type": {
+					"Type": {
 						"const": "stringManipulation"
 					}
 				}
 			},
 			"then": {
 				"properties": {
-					"value": {
+					"Value": {
 						"$ref": "#/defintions/stringManipulation"
 					}
 				}
@@ -180,10 +198,10 @@
 		}
 	],
 	"properties": {
-		"type": {
+		"Type": {
 			"type": "string",
 			"enum": ["intManipulation","stringManipulation"]
 		}
 	},
-	"required": ["type","value"]
+	"required": ["Type","Value"]
 }
