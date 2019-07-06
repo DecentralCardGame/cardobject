@@ -1,6 +1,6 @@
 {
-	"type": "entity",
-	"value": {
+  "Type": "entity",
+	"Value": {
     "Name": "hans",
     "Tag": "human",
     "Text": "run",
@@ -8,40 +8,45 @@
     "CastSpeed": 1,
     "Abilities": [
   		{
-        "type": "activatedAbility",
-        "value": {
+        "Type": "activatedAbility",
+        "Value": {
   			 "Effect": {
            "Production": ["MANA"],
             "Manipulation": [
               {
-                "type": "intManipulation",
-                "value": {
+                "Type": "intManipulation",
+                "Value": {
                   "Value": 10,
                   "Operator": "ADD",
                   "Property": "HEALTH",
                   "Duration": "ENDOFTICK",
                   "Selector": {
-                    "PlayerMode": "TARGET",
-                    "PlayerCondition": {},
-                    "CardMode": "ALL",
-                    "Zone": "HAND",
-                    "CardType": "location",
-                    "CardCondition": {
-                      "Property": "COSTSUM",
-                      "Value": 5,
-                      "Comparator": "EQUAL"
+                    "Type": "fieldSelector",
+                    "Value": {
+                      "PlayerMode": "TARGET",
+                      "PlayerCondition": {},
+                      "CardMode": "ALL",
+                      "Zone": "HAND",
+                      "CardCondition": {
+                        "Property": "COSTSUM",
+                        "Value": 5,
+                        "Comparator": "EQUAL"
+                      }
                     }
                   }
                 }
               },
               {
-                "type": "stringManipulation",
-                "value": {
+                "Type": "stringManipulation",
+                "Value": {
                   "Value": "Mutant",
                   "Property": "TAG",
                   "Duration": "PERMANENT",
-                  "Selector": {               
-                    "Target": "THIS"
+                  "Selector": {
+                    "Type": "selfSelector",
+                    "Value": {
+                      "Target": "THIS"
+                    }             
                   }
                 }
               }
@@ -49,7 +54,10 @@
             "ZoneChange": [
               {
                 "Selector": {
-                  "Target": "THIS"
+                  "Type":"selfSelector",
+                  "Value": {
+                    "Target": "THIS"
+                  }
                 },
                 "Destination": "EXILE"
               }
@@ -60,8 +68,8 @@
         }
   		},
   		{
-        "type": "triggeredAbility",
-        "value": {
+        "Type": "triggeredAbility",
+        "Value": {
   			 "Effect": {
             "Production": [],
             "Manipulation": [],
