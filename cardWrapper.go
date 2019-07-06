@@ -6,7 +6,7 @@ import "errors"
 type cardWrapper struct {
 	*serializationWrapper
 	Type string
-	Value Card
+	Value card
 }
 
 func (cw *cardWrapper) UnmarshalJSON(data []byte) error {
