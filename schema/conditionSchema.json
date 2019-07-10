@@ -1,128 +1,304 @@
 {
-	"actionCondition": {
-		"type": "object",
-		"properties": {
-			"Property": {
-				"$ref": "propertyIdSchema.json#/actionPropertyId"
-			}
-		},
-		"allOf": [
-			{
-				"if": {
-					"properties": {
-						"Property": {
-							"$ref": "propertyIdSchema.json#/actionIntPropertyId"
-						}
-					}
+	"definitions": {
+		"actionIntCondition": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"$ref": "propertyIdSchema.json#/actionIntPropertyId"
 				},
-				"then": {
-					"properties": {
-						"Value": {
-							"type": "integer",
-							"minimum": 0,
-							"maximum": 100
-						}
-					}
+				"IntValue": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 100
 				},
-				"if": {
-					"properties": {
-						"Property": {
-							"$ref": "propertyIdSchema.json#/actionStringPropertyId"
-						}
-					}
-				},
-				"then": {
-					"properties": {
-						"Value": {
-							"type": "string"
-						}
-					}
+				"IntComparator": {
+					"%ref": "comparatorSchema.json#/intComparator"
 				}
-			}
-		],
-		"required":["Property","Value","Comparator"]
+			},
+			"required": ["IntValue","IntComparator"]
+		},
+		"actionStringCondition": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"$ref": "propertyIdSchema.json#/actionStringPropertyId"
+				},
+				"StringValue": {
+					"type": "string"
+				},
+				"StringComparator": {
+					"%ref": "comparatorSchema.json#/stringComparator"
+				}
+			},
+			"required": ["StringValue","StringComparator"]
+		},
+		"entityIntCondition": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"$ref": "propertyIdSchema.json#/entityIntPropertyId"
+				},
+				"IntValue": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 100
+				},
+				"IntComparator": {
+					"%ref": "comparatorSchema.json#/intComparator"
+				}
+			},
+			"required": ["IntValue","IntComparator"]
+		},
+		"entityStringCondition": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"$ref": "propertyIdSchema.json#/entityStringPropertyId"
+				},
+				"StringValue": {
+					"type": "string"
+				},
+				"StringComparator": {
+					"%ref": "comparatorSchema.json#/stringComparator"
+				}
+			},
+			"required": ["StringValue","StringComparator"]
+		},
+		"fieldIntCondition": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"$ref": "propertyIdSchema.json#/fieldIntPropertyId"
+				},
+				"IntValue": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 100
+				},
+				"IntComparator": {
+					"%ref": "comparatorSchema.json#/intComparator"
+				}
+			},
+			"required": ["IntValue","IntComparator"]
+		},
+		"fieldStringCondition": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"$ref": "propertyIdSchema.json#/fieldStringPropertyId"
+				},
+				"StringValue": {
+					"type": "string"
+				},
+				"StringComparator": {
+					"%ref": "comparatorSchema.json#/stringComparator"
+				}
+			},
+			"required": ["StringValue","StringComparator"]
+		},
+		"playerIntCondition": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"$ref": "propertyIdSchema.json#/playerIntPropertyId"
+				},
+				"IntValue": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 100
+				},
+				"IntComparator": {
+					"%ref": "comparatorSchema.json#/intComparator"
+				}
+			},
+			"required": ["IntValue","IntComparator"]
+		},
+		"playerStringCondition": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"$ref": "propertyIdSchema.json#/playerStringPropertyId"
+				},
+				"StringValue": {
+					"type": "string"
+				},
+				"StringComparator": {
+					"%ref": "comparatorSchema.json#/stringComparator"
+				}
+			},
+			"required": ["StringValue","StringComparator"]
+		}
 	},
-	"entityCondition": {"type": "object",
-		"properties": {
-			"Property": {
-				"$ref": "propertyIdSchema.json#/entityPropertyId"
-			}
-		},
+	"actionCondition": {
 		"allOf": [
 			{
 				"if": {
 					"properties": {
-						"Property": {
-							"$ref": "propertyIdSchema.json#/entityIntPropertyId"
+						"Type": {
+							"const": "intCondition"
 						}
 					}
 				},
 				"then": {
 					"properties": {
 						"Value": {
-							"type": "integer",
-							"minimum": 0,
-							"maximum": 100
+							"$ref": "#/definitions/actionIntCondition"
 						}
 					}
-				},
+				}
+			},
+			{
 				"if": {
 					"properties": {
-						"Property": {
-							"$ref": "propertyIdSchema.json#/entityStringPropertyId"
+						"Type": {
+							"const": "stringCondition"
 						}
 					}
 				},
 				"then": {
 					"properties": {
 						"Value": {
-							"type": "string"
+							"$ref": "#/definitions/actionStringCondition"
 						}
 					}
 				}
 			}
 		],
-		"required":["Property","Value","Comparator"]},
-	"fieldCondition": {"type": "object",
 		"properties": {
-			"Property": {
-				"$ref": "propertyIdSchema.json#/fieldPropertyId"
-			}
-		},
+    		"Type": {
+      			"type": "string",
+      			"enum": ["intCondition","stringCondition"]
+    		}
+  		},
+  		"required": ["Type","Value"]
+	},
+	"entityCondition": {
 		"allOf": [
 			{
 				"if": {
 					"properties": {
-						"Property": {
-							"$ref": "propertyIdSchema.json#/fieldIntPropertyId"
+						"Type": {
+							"const": "intCondition"
 						}
 					}
 				},
 				"then": {
 					"properties": {
 						"Value": {
-							"type": "integer",
-							"minimum": 0,
-							"maximum": 100
+							"$ref": "#/definitions/entityIntCondition"
 						}
 					}
-				},
+				}
+			},
+			{
 				"if": {
 					"properties": {
-						"Property": {
-							"$ref": "propertyIdSchema.json#/fieldStringPropertyId"
+						"Type": {
+							"const": "stringCondition"
 						}
 					}
 				},
 				"then": {
 					"properties": {
 						"Value": {
-							"type": "string"
+							"$ref": "#/definitions/entityStringCondition"
 						}
 					}
 				}
 			}
 		],
-		"required":["Property","Value","Comparator"]
+		"properties": {
+    		"Type": {
+      			"type": "string",
+      			"enum": ["intCondition","stringCondition"]
+    		}
+  		},
+  		"required": ["Type","Value"]
+	},
+	"fieldCondition": {
+		"allOf": [
+			{
+				"if": {
+					"properties": {
+						"Type": {
+							"const": "intCondition"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"Value": {
+							"$ref": "#/definitions/fieldIntCondition"
+						}
+					}
+				}
+			},
+			{
+				"if": {
+					"properties": {
+						"Type": {
+							"const": "stringCondition"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"Value": {
+							"$ref": "#/definitions/fieldStringCondition"
+						}
+					}
+				}
+			}
+		],
+		"properties": {
+    		"Type": {
+      			"type": "string",
+      			"enum": ["intCondition","stringCondition"]
+    		}
+  		},
+  		"required": ["Type","Value"]
+	},
+	"playerCondition": {
+		"allOf": [
+			{
+				"if": {
+					"properties": {
+						"Type": {
+							"const": "intCondition"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"Value": {
+							"$ref": "#/definitions/playerIntCondition"
+						}
+					}
+				}
+			},
+			{
+				"if": {
+					"properties": {
+						"Type": {
+							"const": "stringCondition"
+						}
+					}
+				},
+				"then": {
+					"properties": {
+						"Value": {
+							"$ref": "#/definitions/playerStringCondition"
+						}
+					}
+				}
+			}
+		],
+		"properties": {
+    		"Type": {
+      			"type": "string",
+      			"enum": ["intCondition","stringCondition"]
+    		}
+  		},
+  		"required": ["Type","Value"]
 	}
 }

@@ -24,13 +24,23 @@
                     "Type": "fieldSelector",
                     "Value": {
                       "PlayerMode": "TARGET",
-                      "PlayerCondition": {},
+                      "PlayerCondition": {
+                        "Type": "intCondition",
+                        "Value": {
+                          "Property": "HANDSIZE",
+                          "IntValue": 3,
+                          "IntComparator": "GREATER"
+                        }
+                      },
                       "CardMode": "ALL",
                       "Zone": "HAND",
                       "CardCondition": {
-                        "Property": "COSTSUM",
-                        "Value": 5,
-                        "Comparator": "EQUAL"
+                        "Type": "intCondition",
+                        "Value": {
+                          "Property": "COSTSUM",
+                          "IntValue": 5,
+                          "IntComparator": "EQUAL"
+                        }
                       }
                     }
                   }

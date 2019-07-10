@@ -11,7 +11,7 @@
 					"$ref": "#/definitions/selectorMode"
 				},
 				"PlayerCondition": {
-					"$ref": ""
+					"$ref": "conditionSchema.json#/playerCondition"
 				},
 				"CardMode": {
 					"$ref": "#/definitions/selectorMode"

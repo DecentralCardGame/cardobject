@@ -3,13 +3,13 @@
 		"type": "string",
 		"enum": ["COSTSUM","SPEEDMODIFIER"]
 	},
-	"fieldIntPropertyId": {
-		"type": "string",
-		"enum": ["COSTSUM","HEALTH","SPEEDMODIFIER"]
-	},
 	"entityIntPropertyId": {
 		"type": "string",
 		"enum": ["ATTACK","COSTSUM","HEALTH","SPEEDMODIFIER"]
+	},
+	"fieldIntPropertyId": {
+		"type": "string",
+		"enum": ["COSTSUM","HEALTH","SPEEDMODIFIER"]
 	},
 	"cardIntPropertyId": {
 		"type": "string",
@@ -18,22 +18,26 @@
 				"$ref": "#/actionIntPropertyId"
 			},
 			{
-				"$ref": "#/fieldIntPropertyId"
+				"$ref": "#/entityIntPropertyId"
 			},
 			{
-				"$ref": "#/entityIntPropertyId"
+				"$ref": "#/fieldIntPropertyId"
 			}
 		]
+	},
+	"playerIntPropertyId": {
+		"type": "string",
+		"enum": ["HANDSIZE","BOARDSIZE","DECKSIZE"]
 	},
 	"actionStringPropertyId": {
 		"type": "string",
 		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
 	},
-	"fieldStringPropertyId": {
+	"entityStringPropertyId": {
 		"type": "string",
 		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
 	},
-	"entityStringPropertyId": {
+	"fieldStringPropertyId": {
 		"type": "string",
 		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
 	},
@@ -44,12 +48,16 @@
 				"$ref": "#/actionStringPropertyId"
 			},
 			{
-				"$ref": "#/fieldStringPropertyId"
+				"$ref": "#/entityStringPropertyId"
 			},
 			{
-				"$ref": "#/entityStringPropertyId"
+				"$ref": "#/fieldStringPropertyId"
 			}
 		]
+	},
+	"playerStringPropertyId": {
+		"type": "string",
+		"enum": []
 	},
 	"actionPropertyId": {
 		"type": "string",
@@ -92,6 +100,17 @@
 			},
 			{
 				"$ref": "#/cardStringPropertyId"
+			}
+		]
+	},
+	"playerPropertyId": {
+		"type": "string",
+		"anyOf": [
+			{
+				"$ref": "#/playerIntPropertyId"
+			},
+			{
+				"$ref": "#/playerStringPropertyId"
 			}
 		]
 	}

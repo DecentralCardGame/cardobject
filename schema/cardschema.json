@@ -13,13 +13,9 @@
       "properties": {
         "Effect": {
           "$ref": "effectSchema.json"
-        },
-        "CardType": {
-          "type": "string",
-          "pattern": "^action$"
         }
       },
-      "required": ["Effect","CardType"]
+      "required": ["Effect"]
     },
     "entity": {
       "type": "object",
@@ -37,13 +33,9 @@
       "properties": {
         "Attack": {
           "$ref": "propertySchema.json#/attack"
-        },
-        "CardType": {
-          "type": "string",
-          "pattern": "^entity$"
         }
       },
-      "required": ["Attack","CardType"]
+      "required": ["Attack"]
     },
     "field": {
       "type": "object",
@@ -57,14 +49,7 @@
         {
           "$ref": "#/definitions/permanent"
         }
-      ],
-      "properties": {
-        "CardType": {
-          "type": "string",
-          "pattern": "^field$"
-        }
-      },
-      "required": ["CardType"]
+      ]
     },
     "headquarter": {
       "type": "object",
@@ -79,13 +64,9 @@
       "properties": {
         "UniqueName": {
           "$ref": "propertySchema.json#/uniqueName"
-        },
-        "CardType": {
-          "type": "string",
-          "pattern": "^field$"
         }
       },
-      "required": ["UniqueName","CardType"]
+      "required": ["UniqueName"]
     },
     "cardAttributes": {
       "type": "object",

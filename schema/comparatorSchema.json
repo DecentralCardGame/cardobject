@@ -1,0 +1,10 @@
+{
+	"intComparator": {
+		"type": "string",
+		"enum": ["EQUAL","GREATER","LESSER"]
+	},
+	"stringComparator": {
+		"type": "string",
+		"enum": ["EQUAL","CONTAINS"]
+	}
+}

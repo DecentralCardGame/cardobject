@@ -8,27 +8,25 @@ type selectorAttributes struct {}
 
 type targetingAttributes struct {
 	PlayerMode string
-	//PlayerCondition
+	PlayerCondition conditionWrapper
 	CardMode string
 	Zone string
+	CardCondition conditionWrapper
 }
 
 type actionSelector struct {
 	selectorAttributes
 	targetingAttributes
-	//actionCondition
 }
 
 type entitySelector struct {
 	selectorAttributes
 	targetingAttributes
-	//actionCondition
 }
 
 type fieldSelector struct {
 	selectorAttributes
 	targetingAttributes
-	//actionCondition
 }
 
 type selfSelector struct {
