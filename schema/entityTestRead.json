@@ -1,0 +1,61 @@
+{
+	"Type": "entity",
+	"Value": {
+		"Name":"Archer",
+		"Tag":"range",
+		"Text":"Ping",
+		"Cost":["FOOD","LUMBER","GENERIC"],
+		"CastSpeed":2,
+		"Abilities": [
+			{
+				"Type":"activatedAbility",
+				"Value": {
+					"Effect":{
+						"Production":[],
+						"Manipulation": [
+							{
+								"Type":"intManipulation",
+								"Value": {
+									"Duration":"PERMANENT",
+									"Selector": {	
+										"Type":"entitySelector",
+										"Value": {
+											"PlayerMode":"TARGET",
+											"PlayerCondition": {
+												"Type":"intCondition",
+												"Value": {
+													"Property":"HANDSIZE",
+													"IntValue":1,
+													"IntComparator":"GREATER"
+												}
+											},
+											"CardMode":"TARGET",
+											"Zone":"FIELD",
+											"CardCondition": {
+												"Type":"intCondition",
+												"Value": {
+													"Property":"HEALTH",
+													"IntValue":1,
+													"IntComparator":"GREATER"
+												}
+											}
+										}
+									},
+									"Value":1,
+									"Operator":"SUBTRACT",
+									"Property":"HEALTH"
+								}
+							}
+						],
+						"ZoneChange": []
+					},
+					"Cost":["LUMBER"],
+					"MultipleUse":true
+				}
+			}
+		],
+		"AbilitySpeed":2,
+		"Health":2,
+		"Attack":1
+	}
+}

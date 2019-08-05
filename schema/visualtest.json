@@ -1,0 +1,102 @@
+{
+	"Type": "entity",
+	"Value": {
+		"Name":"hans",
+		"Tag":"human",
+		"Text":"run",
+		"Cost":["FOOD","FOOD"],
+		"CastSpeed":1,
+		"Abilities": [
+			{
+				"Type":"activatedAbility",
+				"Value": {
+					"Effect":{
+						"Production":["MANA"],
+						"Manipulation": [
+							{
+								"Type":"intManipulation",
+								"Value": {
+									"Duration":"ENDOFTICK",
+									"Selector": {	
+										"Type":"fieldSelector",
+										"Value": {
+											"PlayerMode":"TARGET",
+											"PlayerCondition": {
+												"Type":"intCondition",
+												"Value": {
+													"Property":"HANDSIZE",
+													"IntValue":3,
+													"IntComparator":"GREATER"
+												}
+											},
+											"CardMode":"ALL",
+											"Zone":"HAND",
+											"CardCondition": {
+												"Type":"intCondition",
+												"Value": {
+													"Property":"COSTSUM",
+													"IntValue":5,
+													"IntComparator":"EQUAL"
+												}
+											}
+										}
+									},
+									"Value":10,
+									"Operator":"ADD",
+									"Property":"HEALTH"
+								}
+							},
+							{
+								"Type":"stringManipulation",
+								"Value": {
+									"Duration":"PERMANENT",
+									"Selector": {
+										"Type":"selfSelector",
+										"Value": {
+											"Target":"THIS"
+										}
+									},
+									"Value":"Mutant",
+									"Property":"TAG"
+								}
+							}
+						],
+						"ZoneChange": [
+							{
+								"Selector": {
+									"Type":"selfSelector",
+									"Value": {
+										"Target":"THIS"
+									}
+								},
+								"Destination":"EXILE"
+							}
+						]
+					},
+					"Cost":["ENERGY"],
+					"MultipleUse":false
+				}
+			},
+			{ 
+				"Type":"triggeredAbility",
+				"Value": {
+					"Effect": {
+						"Production":[],
+						"Manipulation":[],
+						"ZoneChange":[]
+					},
+					"Cause": {
+						"Type":"zoneChangeEventListener",
+						"Value": {
+							"Source":"HAND",
+							"Destination":"EXILE"
+						}
+					}
+				}
+			}
+		],
+		"AbilitySpeed":1,
+		"Health":1,
+		"Attack":1
+	}
+}

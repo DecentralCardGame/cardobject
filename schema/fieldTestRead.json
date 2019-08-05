@@ -1,0 +1,30 @@
+{
+	"Type": "field",
+	"Value": {
+		"Name":"Mühle",
+		"Tag":"primitiv",
+		"Text":"Brot für alle",
+		"Cost":["LUMBER","LUMBER","GENERIC"],
+		"CastSpeed":1,
+		"Abilities": [
+			{ 
+				"Type":"triggeredAbility",
+				"Value": {
+					"Effect": {
+						"Production":["FOOD"],
+						"Manipulation":[],
+						"ZoneChange":[]
+					},
+					"Cause": {
+						"Type":"timeEventListener",
+						"Value": {
+							"TimeEvent":"TICKSTART"
+						}
+					}
+				}
+			}
+		],
+		"AbilitySpeed":1,
+		"Health":2
+	}
+}

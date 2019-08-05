@@ -1,0 +1,49 @@
+{
+	"Type": "action",
+	"Value": {
+		"Name":"EXPLOSION",
+		"Tag":"fire",
+		"Text":"Its big",
+		"Cost":["ENERGY","ENERGY","MANA","GENERIC","GENERIC","GENERIC"],
+		"CastSpeed":3,
+		"Effect":{
+			"Production":[],
+			"Manipulation": [
+				{
+					"Type":"intManipulation",
+					"Value": {
+						"Duration":"PERMANENT",
+						"Selector": {	
+							"Type":"entitySelector",
+							"Value": {
+								"PlayerMode":"ALL",
+								"PlayerCondition": {
+									"Type":"intCondition",
+									"Value": {
+										"Property":"HANDSIZE",
+										"IntValue":1,
+										"IntComparator":"GREATER"
+									}
+								},
+								"CardMode":"ALL",
+								"Zone":"FIELD",
+								"CardCondition": {
+									"Type":"intCondition",
+									"Value": {
+										"Property":"HEALTH",
+										"IntValue":1,
+										"IntComparator":"GREATER"
+									}
+								}
+							}
+						},
+						"Value":10,
+						"Operator":"SUBTRACT",
+						"Property":"HEALTH"
+					}
+				}
+			],
+			"ZoneChange": []
+		}
+	}
+}

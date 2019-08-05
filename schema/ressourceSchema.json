@@ -1,4 +1,4 @@
 {
 	"type": "string",
-	"enum": ["ENERGY","FOOD","GEENERIC","LUMBER","MANA","METAL"]
+	"enum": ["ENERGY","FOOD","GENERIC","LUMBER","MANA","METAL"]
 }
