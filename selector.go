@@ -34,6 +34,13 @@ type selfSelector struct {
 	Target string
 }
 
+type selectorWrapper struct {
+	ActionSelector *actionSelector `json:",omitempty"`
+	EntitySelector *entitySelector `json:",omitempty"`
+	FieldSelector *fieldSelector `json:",omitempty"`
+	SelfSelector *selfSelector `json:",omitempty"`
+}
+
 func (s selectorAttributes) GetSelectorAttributes() selectorAttributes {
 	return s
 }

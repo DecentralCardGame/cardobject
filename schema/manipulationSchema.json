@@ -1,5 +1,5 @@
 {
-	"defintions": {
+	"definitions": {
 		"intManipulation": {
 			"type": "object",
 			"properties": {
@@ -27,11 +27,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"properties": {
-									"Type": {
-										"const": "actionSelector"
-									}
-								}
+								"$ref": "selectorSchema.json#/definitions/actionSelector"
 							}
 						}
 					},
@@ -47,11 +43,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"properties": {
-									"Type": {
-										"const": "entitySelector"
-									}
-								}
+								"§ref": "selectorSchema.json#/definitions/entitySelector"
 							}
 						}
 					},
@@ -67,11 +59,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"properties": {
-									"Type": {
-										"const": "fieldSelector"
-									}
-								}
+								"§ref": "selectorSchema.json#/definitions/fieldSelector"
 							}
 						}
 					},
@@ -108,9 +96,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"Type": {
-									"const": "actionSelector"
-								}
+								"$ref": "selectorSchema.json#/definitions/actionSelector"
 							}
 						}
 					},
@@ -126,9 +112,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"Type": {
-									"const": "entitySelector"
-								}							
+								"§ref": "selectorSchema.json#/definitions/entitySelector"							
 							}
 						}
 					},
@@ -144,9 +128,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"Type": {
-									"const": "fieldSelector"
-								}
+								"§ref": "selectorSchema.json#/definitions/fieldSelector"
 							}
 						}
 					},

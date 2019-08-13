@@ -32,60 +32,30 @@
 		}
 	},
 	"type": "object",
-	"allOf": [
+	"oneOf": [
 		{
-			"if": {
-				"properties": {
-					"Type": {
-						"const": "timeEventListener"
-					}
+			"properties": {
+				"TimeEventListener": {
+					"§ref": "#/definitions/timeEventListener"
 				}
 			},
-			"then": {
-				"properties": {
-					"Value": {
-						"$ref": "#/definitions/timeEventListener"
-					}
-				}
-			}
+			"required":["TimeEventListener"]
 		},
 		{
-			"if": {
-				"properties": {
-					"Type": {
-						"const": "manipulationEventListener"
-					}
+			"properties": {
+				"ManipulationEventListener": {
+					"§ref": "#/definitions/manipulationEventListener"
 				}
 			},
-			"then": {
-				"properties": {
-					"Value": {
-						"$ref": "#/definitions/manipulationEventListener"
-					}
-				}
-			}
+			"required":["ManipulationEventListener"]
 		},
 		{
-			"if": {
-				"properties": {
-					"Type": {
-						"const": "zoneChangeEventListener"
-					}
+			"properties": {
+				"ZoneChangeEventListener": {
+					"§ref": "#/definitions/zoneChangeEventListener"
 				}
 			},
-			"then": {
-				"properties": {
-					"Value": {
-						"$ref": "#/definitions/zoneChangeEventListener"
-					}
-				}
-			}
+			"required":["ZoneChangeEventListener"]
 		}
-	],
-	"properties": {
-		"Type": {
-			"enum": ["timeEventListener","manipulationEventListener","zoneChangeEventListener"]
-		}
-	},
-	"required": ["Type","Value"]
+	]
 }
