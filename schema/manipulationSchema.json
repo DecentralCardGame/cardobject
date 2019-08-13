@@ -163,45 +163,22 @@
 		}
 	},
 	"type": "object",
-	"allOf": [
+	"oneOf": [
 		{
-			"if": {
-				"properties": {
-					"Type": {
-						"const": "intManipulation"
-					}
+			"properties": {
+				"IntManipulation": {
+					"§ref": "#/definitions/intManipulation"
 				}
 			},
-			"then": {
-				"properties": {
-					"Value": {
-						"$ref": "#/defintions/intManipulation"
-					}
-				}
-			}
+			"required":["IntManipulation"]
 		},
 		{
-			"if": {
-				"properties": {
-					"Type": {
-						"const": "stringManipulation"
-					}
+			"properties": {
+				"StringManipulation": {
+					"§ref": "#/definitions/stringManipulation"
 				}
 			},
-			"then": {
-				"properties": {
-					"Value": {
-						"$ref": "#/defintions/stringManipulation"
-					}
-				}
-			}
+			"required":["StringManipulation"]
 		}
-	],
-	"properties": {
-		"Type": {
-			"type": "string",
-			"enum": ["intManipulation","stringManipulation"]
-		}
-	},
-	"required": ["Type","Value"]
+	]
 }

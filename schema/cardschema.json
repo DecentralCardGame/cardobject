@@ -117,77 +117,38 @@
       "required": ["Abilities","AbilitySpeed","Health"]
     }
   },
-  "allOf": [
+  "oneOf": [
     {
-      "if" : {
-        "properties": {
-          "Type": {
-            "const": "action"
-          }
+      "properties": {
+        "Action": {
+          "$ref": "#/definitions/action"
         }
       },
-      "then": {
-        "properties": {
-          "Value": {
-            "$ref": "#/definitions/action"
-          }
-        }
-      }
+      "required":["Action"]
     },
     {
-      "if" : {
-        "properties": {
-          "Type": {
-            "const": "entity"
-          }
+      "properties": {
+        "Entity": {
+          "$ref": "#/definitions/entity"
         }
       },
-      "then": {
-        "properties": {
-          "Value": {
-            "$ref": "#/definitions/entity"
-          }
-        }
-      }
+      "required":["Entity"]
     },
     {
-      "if" : {
-        "properties": {
-          "Type": {
-            "const": "field"
-          }
+      "properties": {
+        "Field": {
+          "$ref": "#/definitions/field"
         }
       },
-      "then": {
-        "properties": {
-          "Value": {
-            "$ref": "#/definitions/field"
-          }
-        }
-      }
+      "required":["Field"]
     },
     {
-      "if" : {
-        "properties": {
-          "Type": {
-            "const": "headquarter"
-          }
+      "properties": {
+        "Headquarter": {
+          "$ref": "#/definitions/headquarter"
         }
       },
-      "then": {
-        "properties": {
-          "Value": {
-            "$ref": "#/definitions/headquarter"
-          }
-        }
-      }
+      "required":["Headquarter"]
     }
-  ],
-  "properties": {
-    "Type": {
-      "type": "string",
-      "enum": ["action","entity","field","headquarter"]
-    }
-  },
-  "required": ["Type","Value"]
+  ]
 }

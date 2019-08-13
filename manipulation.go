@@ -22,6 +22,11 @@ type stringManipulation struct {
 	Property string
 }
 
+type manipulationWrapper struct {
+	IntManipulation *intManipulation `json:",omitempty"`
+	StringManipulation *stringManipulation `json:",omitempty"`
+}
+
 func (ma manipulationAttributes) GetManipulationAttributes() manipulationAttributes {
 	return ma
 }

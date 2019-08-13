@@ -46,6 +46,13 @@ type headquarter struct {
 	UniqueName string
 }
 
+type cardWrapper struct {
+	Action *action `json:",omitempty"`
+	Entity *entity `json:",omitempty"`
+	Field *field `json:",omitempty"`
+	Headquarter *headquarter `json:",omitempty"`
+}
+
 func (ca cardAttributes) getCardName() string {
 	return ca.Name
 }
