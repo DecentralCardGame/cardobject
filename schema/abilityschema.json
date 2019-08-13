@@ -32,12 +32,22 @@
 		}
 	},
 	"type": "object",
-	"properties": {
-		"ActivatedAbility": {
-			"$ref": "#/definitions/activatedAbility" 
+	"oneOf": [
+		{	
+			"properties": {
+				"ActivatedAbility": {
+					"$ref": "#/definitions/activatedAbility"
+				}
+			},
+			"required":["ActivatedAbility"]
 		},
-		"TriggeredAbility": {
-			"$ref": "#/definitions/triggeredAbility" 
+		{	
+			"properties": {
+				"TriggeredAbility": {
+					"$ref": "#/definitions/triggeredAbility"
+				}
+			},
+			"required":["TriggeredAbility"]
 		}
-	}
+	]
 }
