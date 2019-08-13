@@ -130,175 +130,43 @@
 		}
 	},
 	"actionCondition": {
-		"allOf": [
-			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "intCondition"
-						}
-					}
-				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/actionIntCondition"
-						}
-					}
-				}
-			},
-			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "stringCondition"
-						}
-					}
-				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/actionStringCondition"
-						}
-					}
-				}
-			}
-		],
 		"properties": {
-    		"Type": {
-      			"type": "string",
-      			"enum": ["intCondition","stringCondition"]
+    		"IntCondition": {
+      			"$ref": "#/definitions/actionIntCondition"
+    		},
+    		"StringCondition": {
+      			"$ref": "#/definitions/actionStringCondition"
     		}
-  		},
-  		"required": ["Type","Value"]
+  		}
 	},
 	"entityCondition": {
-		"allOf": [
-			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "intCondition"
-						}
-					}
-				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/entityIntCondition"
-						}
-					}
-				}
-			},
-			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "stringCondition"
-						}
-					}
-				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/entityStringCondition"
-						}
-					}
-				}
-			}
-		],
 		"properties": {
-    		"Type": {
-      			"type": "string",
-      			"enum": ["intCondition","stringCondition"]
+    		"IntCondition": {
+      			"$ref": "#/definitions/entityIntCondition"
+    		},
+    		"StringCondition": {
+      			"$ref": "#/definitions/entityStringCondition"
     		}
-  		},
-  		"required": ["Type","Value"]
+  		}
 	},
 	"fieldCondition": {
-		"allOf": [
-			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "intCondition"
-						}
-					}
-				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/fieldIntCondition"
-						}
-					}
-				}
-			},
-			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "stringCondition"
-						}
-					}
-				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/fieldStringCondition"
-						}
-					}
-				}
-			}
-		],
 		"properties": {
-    		"Type": {
-      			"type": "string",
-      			"enum": ["intCondition","stringCondition"]
+    		"IntCondition": {
+      			"$ref": "#/definitions/fieldIntCondition"
+    		},
+    		"StringCondition": {
+      			"$ref": "#/definitions/fieldStringCondition"
     		}
-  		},
-  		"required": ["Type","Value"]
+  		}
 	},
 	"playerCondition": {
-		"allOf": [
-			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "intCondition"
-						}
-					}
-				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/playerIntCondition"
-						}
-					}
-				}
-			},
-			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "stringCondition"
-						}
-					}
-				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/playerStringCondition"
-						}
-					}
-				}
-			}
-		],
 		"properties": {
-    		"Type": {
-      			"type": "string",
-      			"enum": ["intCondition","stringCondition"]
+    		"IntCondition": {
+      			"$ref": "#/definitions/playerIntCondition"
+    		},
+    		"StringCondition": {
+      			"$ref": "#/definitions/playerStringCondition"
     		}
-  		},
-  		"required": ["Type","Value"]
+  		}
 	}
 }

@@ -20,7 +20,7 @@
 					"$ref": "zoneSchema.json#/dynamicZoneId"
 				}
 			},
-			"required": ["PlayerMode","PlayerCondition","CardMode","Zone"]
+			"required": ["PlayerMode","CardMode","Zone"]
 		},
 		"actionSelector": {
 			"type": "object",

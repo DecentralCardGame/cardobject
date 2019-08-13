@@ -2,17 +2,17 @@
 	"attack": {
 		"type": "integer",
 		"minimum": 1,
-		"maximum": 10
+		"maximum": 32
 	},
 	"costSum": {
 		"type": "integer",
 		"minimum": 1,
-		"maximum": 10
+		"maximum": 32
 	},
 	"health": {
 		"type": "integer",
 		"minimum": 1,
-		"maximum": 10
+		"maximum": 32
 	},
 	"name": {
 		"type": "string"
@@ -20,7 +20,7 @@
 	"speedModifier": {
 		"type": "integer",
 		"minimum": 1,
-		"maximum": 10
+		"maximum": 32
 	},
 	"tag": {
 		"type": "string"

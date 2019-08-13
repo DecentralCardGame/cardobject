@@ -18,8 +18,7 @@
 							"Value": {
 								"PlayerMode":"ALL",
 								"PlayerCondition": {
-									"Type":"intCondition",
-									"Value": {
+									"IntCondition": {
 										"Property":"HANDSIZE",
 										"IntValue":1,
 										"IntComparator":"GREATER"
@@ -28,8 +27,7 @@
 								"CardMode":"ALL",
 								"Zone":"FIELD",
 								"CardCondition": {
-									"Type":"intCondition",
-									"Value": {
+									"IntCondition": {
 										"Property":"HEALTH",
 										"IntValue":1,
 										"IntComparator":"GREATER"

@@ -20,6 +20,11 @@ type stringCondition struct {
 	StringComparator string
 }
 
+type conditionWrapper struct {
+	IntCondition *intCondition `json:",omitempty"`
+	StringCondition *stringCondition `json:",omitempty"`
+}
+
 func (ca conditionAttributes) GetConditionAttributes() conditionAttributes {
 	return ca
 }
