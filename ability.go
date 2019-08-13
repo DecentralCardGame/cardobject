@@ -19,6 +19,11 @@ type triggeredAbility struct {
 	Cause eventListenerWrapper
 }
 
+type abilityWrapper struct {
+	ActivatedAbility *activatedAbility `json:",omitempty"`
+	TriggeredAbility *triggeredAbility `json:",omitempty"`
+}
+
 func (aa abilityAttributes) getAbilityAttributes() abilityAttributes {
 	return aa
 }

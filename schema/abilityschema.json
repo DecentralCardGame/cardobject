@@ -32,45 +32,12 @@
 		}
 	},
 	"type": "object",
-	"allOf": [
-		{
-			"if": {
-				"properties": {
-					"Type": {
-						"const": "activatedAbility"
-					}
-				}
-			},
-			"then": {
-				"properties": {
-					"Value": {
-						"$ref": "#/definitions/activatedAbility"
-					}
-				}
-			}
-		},
-		{
-			"if": {
-				"properties": {
-					"Type": {
-						"const": "triggeredAbility"
-					}
-				}
-			},
-			"then": {
-				"properties": {
-					"Value": {
-						"$ref": "#/definitions/triggeredAbility"
-					}
-				}
-			}
-		}
-	],
 	"properties": {
-		"Type": {
-			"type": "string",
-			"enum": ["activatedAbility","triggeredAbility"]
+		"ActivatedAbility": {
+			"$ref": "#/definitions/activatedAbility" 
+		},
+		"TriggeredAbility": {
+			"$ref": "#/definitions/triggeredAbility" 
 		}
-	},
-	"required": ["Type","Value"]
+	}
 }
