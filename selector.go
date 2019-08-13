@@ -8,10 +8,10 @@ type selectorAttributes struct {}
 
 type targetingAttributes struct {
 	PlayerMode string
-	PlayerCondition conditionWrapper
+	PlayerCondition *conditionWrapper `json:",omitempty"`
 	CardMode string
 	Zone string
-	CardCondition conditionWrapper
+	CardCondition *conditionWrapper `json:",omitempty"`
 }
 
 type actionSelector struct {

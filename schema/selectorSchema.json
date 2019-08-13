@@ -33,8 +33,7 @@
 				{
 					"$ref": "#/definitions/selectorBasics"
 				}
-			],
-			"required": ["CardCondition"]
+			]
 		},
 		"entitySelector": {
 			"type": "object",
@@ -47,8 +46,7 @@
 				{
 					"$ref": "#/definitions/selectorBasics"
 				}
-			],
-			"required": ["CardCondition"]
+			]
 		},
 		"fieldSelector": {
 			"type": "object",
@@ -61,8 +59,7 @@
 				{
 					"$ref": "#/definitions/selectorBasics"
 				}
-			],
-			"required": ["CardCondition"]
+			]
 		},
 		"selfSelector": {
 			"type": "object",

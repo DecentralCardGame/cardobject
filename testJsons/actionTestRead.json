@@ -14,22 +14,8 @@
 						"Selector": {	
 							"EntitySelector": {
 								"PlayerMode":"ALL",
-								"PlayerCondition": {
-									"IntCondition": {
-										"Property":"HANDSIZE",
-										"IntValue":1,
-										"IntComparator":"GREATER"
-									}
-								},
 								"CardMode":"ALL",
-								"Zone":"FIELD",
-								"CardCondition": {
-									"IntCondition": {
-										"Property":"HEALTH",
-										"IntValue":1,
-										"IntComparator":"GREATER"
-									}
-								}
+								"Zone":"FIELD"
 							}
 						},
 						"Value":10,
