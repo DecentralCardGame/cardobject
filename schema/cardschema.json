@@ -104,7 +104,7 @@
         "Abilities": {
           "type": "array",
           "items": {
-            "$ref": "abilityschema.json"
+            "$ref": "abilitySchema.json"
           }
         },
         "AbilitySpeed": {

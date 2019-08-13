@@ -36,7 +36,7 @@
 		{
 			"properties": {
 				"TimeEventListener": {
-					"§ref": "#/definitions/timeEventListener"
+					"$ref": "#/definitions/timeEventListener"
 				}
 			},
 			"required":["TimeEventListener"]
@@ -44,7 +44,7 @@
 		{
 			"properties": {
 				"ManipulationEventListener": {
-					"§ref": "#/definitions/manipulationEventListener"
+					"$ref": "#/definitions/manipulationEventListener"
 				}
 			},
 			"required":["ManipulationEventListener"]
@@ -52,7 +52,7 @@
 		{
 			"properties": {
 				"ZoneChangeEventListener": {
-					"§ref": "#/definitions/zoneChangeEventListener"
+					"$ref": "#/definitions/zoneChangeEventListener"
 				}
 			},
 			"required":["ZoneChangeEventListener"]

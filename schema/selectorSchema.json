@@ -81,7 +81,7 @@
 			{
 				"properties": {
 					"ActionSelector": {
-						"§ref": "#/definitions/actionSelector"
+						"$ref": "#/definitions/actionSelector"
 					}
 				},
 				"required":["ActionSelector"]
@@ -89,7 +89,7 @@
 			{
 				"properties": {
 					"EntitySelector": {
-						"§ref": "#/definitions/entitySelector"
+						"$ref": "#/definitions/entitySelector"
 					}
 				},
 				"required":["EntitySelector"]
@@ -97,7 +97,7 @@
 			{
 				"properties": {
 					"FieldSelector": {
-						"§ref": "#/definitions/fieldSelector"
+						"$ref": "#/definitions/fieldSelector"
 					}
 				},
 				"required":["FieldSelector"]
@@ -105,7 +105,7 @@
 			{
 				"properties": {
 					"SelfSelector": {
-						"§ref": "#/definitions/selfSelector"
+						"$ref": "#/definitions/selfSelector"
 					}
 				},
 				"required":["SelfSelector"]

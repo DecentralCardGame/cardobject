@@ -12,7 +12,7 @@
 					"maximum": 100
 				},
 				"IntComparator": {
-					"%ref": "comparatorSchema.json#/intComparator"
+					"$ref": "comparatorSchema.json#/intComparator"
 				}
 			},
 			"required": ["IntValue","IntComparator"]
@@ -27,7 +27,7 @@
 					"type": "string"
 				},
 				"StringComparator": {
-					"%ref": "comparatorSchema.json#/stringComparator"
+					"$ref": "comparatorSchema.json#/stringComparator"
 				}
 			},
 			"required": ["StringValue","StringComparator"]
@@ -44,7 +44,7 @@
 					"maximum": 100
 				},
 				"IntComparator": {
-					"%ref": "comparatorSchema.json#/intComparator"
+					"$ref": "comparatorSchema.json#/intComparator"
 				}
 			},
 			"required": ["IntValue","IntComparator"]
@@ -59,7 +59,7 @@
 					"type": "string"
 				},
 				"StringComparator": {
-					"%ref": "comparatorSchema.json#/stringComparator"
+					"$ref": "comparatorSchema.json#/stringComparator"
 				}
 			},
 			"required": ["StringValue","StringComparator"]
@@ -76,7 +76,7 @@
 					"maximum": 100
 				},
 				"IntComparator": {
-					"%ref": "comparatorSchema.json#/intComparator"
+					"$ref": "comparatorSchema.json#/intComparator"
 				}
 			},
 			"required": ["IntValue","IntComparator"]
@@ -91,7 +91,7 @@
 					"type": "string"
 				},
 				"StringComparator": {
-					"%ref": "comparatorSchema.json#/stringComparator"
+					"$ref": "comparatorSchema.json#/stringComparator"
 				}
 			},
 			"required": ["StringValue","StringComparator"]
@@ -108,7 +108,7 @@
 					"maximum": 100
 				},
 				"IntComparator": {
-					"%ref": "comparatorSchema.json#/intComparator"
+					"$ref": "comparatorSchema.json#/intComparator"
 				}
 			},
 			"required": ["IntValue","IntComparator"]
@@ -123,7 +123,7 @@
 					"type": "string"
 				},
 				"StringComparator": {
-					"%ref": "comparatorSchema.json#/stringComparator"
+					"$ref": "comparatorSchema.json#/stringComparator"
 				}
 			},
 			"required": ["StringValue","StringComparator"]

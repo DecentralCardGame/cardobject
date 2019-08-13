@@ -43,7 +43,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"§ref": "selectorSchema.json#/definitions/entitySelector"
+								"$ref": "selectorSchema.json#/definitions/entitySelector"
 							}
 						}
 					},
@@ -59,7 +59,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"§ref": "selectorSchema.json#/definitions/fieldSelector"
+								"$ref": "selectorSchema.json#/definitions/fieldSelector"
 							}
 						}
 					},
@@ -112,7 +112,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"§ref": "selectorSchema.json#/definitions/entitySelector"							
+								"$ref": "selectorSchema.json#/definitions/entitySelector"							
 							}
 						}
 					},
@@ -128,7 +128,7 @@
 					"if": {
 						"properties": {
 							"Selector": {
-								"§ref": "selectorSchema.json#/definitions/fieldSelector"
+								"$ref": "selectorSchema.json#/definitions/fieldSelector"
 							}
 						}
 					},
@@ -149,7 +149,7 @@
 		{
 			"properties": {
 				"IntManipulation": {
-					"§ref": "#/definitions/intManipulation"
+					"$ref": "#/definitions/intManipulation"
 				}
 			},
 			"required":["IntManipulation"]
@@ -157,7 +157,7 @@
 		{
 			"properties": {
 				"StringManipulation": {
-					"§ref": "#/definitions/stringManipulation"
+					"$ref": "#/definitions/stringManipulation"
 				}
 			},
 			"required":["StringManipulation"]
