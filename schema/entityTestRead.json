@@ -1,6 +1,5 @@
 {
-	"Type": "entity",
-	"Value": {
+	"Entity": {
 		"Name":"Archer",
 		"Tag":"range",
 		"Text":"Ping",
@@ -8,22 +7,18 @@
 		"CastSpeed":2,
 		"Abilities": [
 			{
-				"Type":"activatedAbility",
-				"Value": {
+				"ActivatedAbility": {
 					"Effect":{
 						"Production":[],
 						"Manipulation": [
 							{
-								"Type":"intManipulation",
-								"Value": {
+								"IntManipulation": {
 									"Duration":"PERMANENT",
 									"Selector": {	
-										"Type":"entitySelector",
-										"Value": {
+										"EntitySelector": {
 											"PlayerMode":"TARGET",
 											"PlayerCondition": {
-												"Type":"intCondition",
-												"Value": {
+												"IntCondition": {
 													"Property":"HANDSIZE",
 													"IntValue":1,
 													"IntComparator":"GREATER"
@@ -32,8 +27,7 @@
 											"CardMode":"TARGET",
 											"Zone":"FIELD",
 											"CardCondition": {
-												"Type":"intCondition",
-												"Value": {
+												"IntCondition": {
 													"Property":"HEALTH",
 													"IntValue":1,
 													"IntComparator":"GREATER"

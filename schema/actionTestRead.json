@@ -1,6 +1,5 @@
 {
-	"Type": "action",
-	"Value": {
+	"Action": {
 		"Name":"EXPLOSION",
 		"Tag":"fire",
 		"Text":"Its big",
@@ -10,12 +9,10 @@
 			"Production":[],
 			"Manipulation": [
 				{
-					"Type":"intManipulation",
-					"Value": {
+					"IntManipulation": {
 						"Duration":"PERMANENT",
 						"Selector": {	
-							"Type":"entitySelector",
-							"Value": {
+							"EntitySelector": {
 								"PlayerMode":"ALL",
 								"PlayerCondition": {
 									"IntCondition": {

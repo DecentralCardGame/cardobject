@@ -77,78 +77,39 @@
 	},
 	"selector": {
 		"type": "object",
-		"allOf": [
+		"oneOf": [
 			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "actionSelector"
-						}
+				"properties": {
+					"ActionSelector": {
+						"§ref": "#/definitions/actionSelector"
 					}
 				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/actionSelector"
-						}
-					}
-				}
+				"required":["ActionSelector"]
 			},
 			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "entitySelector"
-						}
+				"properties": {
+					"EntitySelector": {
+						"§ref": "#/definitions/entitySelector"
 					}
 				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/entitySelector"
-						}
-					}
-				}
+				"required":["EntitySelector"]
 			},
 			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "fieldSelector"
-						}
+				"properties": {
+					"FieldSelector": {
+						"§ref": "#/definitions/fieldSelector"
 					}
 				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/fieldSelector"
-						}
-					}
-				}
+				"required":["FieldSelector"]
 			},
 			{
-				"if": {
-					"properties": {
-						"Type": {
-							"const": "selfSelector"
-						}
+				"properties": {
+					"SelfSelector": {
+						"§ref": "#/definitions/selfSelector"
 					}
 				},
-				"then": {
-					"properties": {
-						"Value": {
-							"$ref": "#/definitions/selfSelector"
-						}
-					}
-				}
+				"required":["SelfSelector"]
 			}
-		],
-  		"properties": {
-    		"Type": {
-      			"type": "string",
-      			"enum": ["actionSelector","entitySelector","fieldSelector","selfSelector"]
-    		}
-  		},
-  		"required": ["Type","Value"]
+		]
 	}
 }

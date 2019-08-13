@@ -1,6 +1,5 @@
 {
-	"Type": "field",
-	"Value": {
+	"Field": {
 		"Name":"Mühle",
 		"Tag":"primitiv",
 		"Text":"Brot für alle",
@@ -8,16 +7,14 @@
 		"CastSpeed":1,
 		"Abilities": [
 			{ 
-				"Type":"triggeredAbility",
-				"Value": {
+				"TriggeredAbility": {
 					"Effect": {
 						"Production":["FOOD"],
 						"Manipulation":[],
 						"ZoneChange":[]
 					},
 					"Cause": {
-						"Type":"timeEventListener",
-						"Value": {
+						"TimeEventListener": {
 							"TimeEvent":"TICKSTART"
 						}
 					}

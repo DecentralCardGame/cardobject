@@ -1,26 +1,22 @@
 {
-	"Type": "headquarter",
-	"Value": {
+	"Headquarter": {
 		"UniqueName":"Spire, Tower of Mages",
 		"Name":"Spire, Tower of Mages",
 		"Tag":"magic",
 		"Text":"happens here",
 		"Abilities": [
 			{
-				"Type":"activatedAbility",
-				"Value": {
+				"ActivatedAbility": {
 					"Effect":{
 						"Production":[],
 						"Manipulation": [],
 						"ZoneChange": [
 							{
 								"Selector": {
-									"Type":"actionSelector",
-									"Value": {
+									"ActionSelector": {
 										"PlayerMode":"TARGET",
 										"PlayerCondition": {
-											"Type":"intCondition",
-											"Value": {
+											"IntCondition": {
 												"Property":"HANDSIZE",
 												"IntValue":3,
 												"IntComparator":"LESSER"
@@ -29,8 +25,7 @@
 										"CardMode":"TARGET",
 										"Zone":"DECK",
 										"CardCondition": {
-											"Type":"intCondition",
-											"Value": {
+											"IntCondition": {
 												"Property":"COSTSUM",
 												"IntValue":2,
 												"IntComparator":"LESSER"
@@ -47,16 +42,14 @@
 				}
 			},
 			{ 
-				"Type":"triggeredAbility",
-				"Value": {
+				"TriggeredAbility": {
 					"Effect": {
 						"Production":["MANA","MANA"],
 						"Manipulation":[],
 						"ZoneChange":[]
 					},
 					"Cause": {
-						"Type":"timeEventListener",
-						"Value": {
+						"TimeEventListener": {
 							"TimeEvent":"TICKSTART"
 						}
 					}
