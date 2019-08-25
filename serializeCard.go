@@ -1,7 +1,9 @@
 package cardobject
 
 import "fmt"
-import "os"
+import "path"
+import "runtime"
+//import "os"
 //import "io/ioutil"
 import "github.com/xeipuuv/gojsonschema"
 import "encoding/json"
@@ -28,14 +30,17 @@ func ProcessCard (cardJson string) string {
 func validateCard(s string) bool {
 		/*
 		// read the file with the schema
-		file, err := ioutil.ReadFile("./schema/cardSchema.json")
+		file, err := ioutil.ReadFile("schema/cardSchema.json")
 		if err != nil {
 			fmt.Println("\x1b[31;1mreading schema/cardschema.json failed\x1b[0m")
 		}
 		fmt.Println(string(file))
-			*/
+		*/
+		_, filename, _, _ := runtime.Caller(1)
+		filepath := path.Join("file://", path.Dir(filename), "/schema/cardSchema.json")
+
     //schemaLoader := gojsonschema.NewStringLoader(string(file))
-		schemaLoader := gojsonschema.NewReferenceLoader("file://"+os.Getenv("$GOPATH")+"schema/cardSchema.json")
+		schemaLoader := gojsonschema.NewReferenceLoader(filepath)
     documentLoader := gojsonschema.NewStringLoader(s)
 
     result, err := gojsonschema.Validate(schemaLoader, documentLoader)
