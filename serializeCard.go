@@ -1,6 +1,7 @@
 package cardobject
 
 import "fmt"
+//import "io/ioutil"
 import "github.com/xeipuuv/gojsonschema"
 import "encoding/json"
 
@@ -24,7 +25,10 @@ func ProcessCard (cardJson string) string {
 }
 
 func validateCard(s string) bool {
-    schemaLoader := gojsonschema.NewReferenceLoader("file://C:/Users/marius/Documents/goworkspace/src/github.com/DecentralCardGame/cardobject/schema/cardSchema.json")
+		//file, err := ioutil.ReadFile("schema/cardschema.json")
+		//fmt.Println(file)
+
+    schemaLoader := gojsonschema.NewReferenceLoader("file://schema/cardSchema.json")
     documentLoader := gojsonschema.NewStringLoader(s)
 
     result, err := gojsonschema.Validate(schemaLoader, documentLoader)
