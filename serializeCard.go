@@ -20,7 +20,7 @@ func ProcessCard(cardJson string) (string, error) {
         }
 		return string(bytes), nil
 	} else {
-		return "", err
+		return "Can't validate", err
 	}
 }
 
