@@ -1,46 +1,34 @@
 package cardobject
 
-import "fmt"
 import "path"
 import "runtime"
-//import "os"
-//import "io/ioutil"
 import "github.com/xeipuuv/gojsonschema"
 import "encoding/json"
+import "errors"
 
-func ProcessCard (cardJson string) string {
-	if(validateCard(cardJson)) {
+func ProcessCard(cardJson string) (string, error) {
+    valid, err := validateCard(cardJson)
+	if(valid) {
         var card cardWrapper
-        //cdc.MustUnmarshalJSON([]byte(cardJson), &card)
         err := json.Unmarshal([]byte(cardJson), &card)
         if err != nil {
-            fmt.Println("error:", err)
+            return "Can't deserialize", err
         }
         bytes, err := json.Marshal(card)
         if err != nil {
-            fmt.Println("Can't serialize", card)
-            return "Can't serialize"
+            return "Can't serialize", err
         }
-		return string(bytes)
+		return string(bytes), nil
 	} else {
-		return ""
+		return "", err
 	}
 }
 
-func validateCard(s string) bool {
-		/*
-		// read the file with the schema
-		file, err := ioutil.ReadFile("schema/cardSchema.json")
-		if err != nil {
-			fmt.Println("\x1b[31;1mreading schema/cardschema.json failed\x1b[0m")
-		}
-		fmt.Println(string(file))
-		*/
-		_, filename, _, _ := runtime.Caller(1)
-		filepath := path.Join("file://", path.Dir(filename), "/schema/cardSchema.json")
+func validateCard(s string) (bool, error) {
+	_, filename, _, _ := runtime.Caller(1)
+	filepath := path.Join("file://", path.Dir(filename), "/schema/cardSchema.json")
 
-    //schemaLoader := gojsonschema.NewStringLoader(string(file))
-		schemaLoader := gojsonschema.NewReferenceLoader(filepath)
+	schemaLoader := gojsonschema.NewReferenceLoader(filepath)
     documentLoader := gojsonschema.NewStringLoader(s)
 
     result, err := gojsonschema.Validate(schemaLoader, documentLoader)
@@ -49,13 +37,12 @@ func validateCard(s string) bool {
     }
 
     if result.Valid() {
-        fmt.Printf("The document is valid\n")
-        return true
+        return true, nil
     } else {
-        fmt.Printf("The document is not valid. see errors :\n")
+        var errorMessage string
         for _, desc := range result.Errors() {
-            fmt.Printf("- %s\n", desc)
+            errorMessage = errorMessage + ("- %s\n"+ desc.String())
         }
-        return true//false
+        return false, errors.New(errorMessage)
     }
 }
