@@ -1,0 +1,1 @@
+{"Action":{"Name":"Evacuate","Tag":"Tactic","Text":"Retreat!","Cost":["GENERIC","MANA"],"CastSpeed":2,"Effect":{"Production":[],"Manipulation":[],"ZoneChange":[{"Selector":{"EntitySelector":{"PlayerMode":"TARGET","CardMode":"TARGET","Zone":"DECK"}},"Destination":"HAND"}]}}}

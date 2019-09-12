@@ -1,0 +1,1 @@
+{"Entity":{"Name":"Farmer","Tag":"farm","Text":"Love my piggies","Cost":["FOOD","GENERIC"],"CastSpeed":2,"Abilities":[{"TriggeredAbility":{"Effect":{"Production":["FOOD"],"Manipulation":[],"ZoneChange":[]},"Cause":{"TimeEventListener":{"TimeEvent":"TICKSTART"}}}}],"AbilitySpeed":3,"Health":1,"Attack":1}}

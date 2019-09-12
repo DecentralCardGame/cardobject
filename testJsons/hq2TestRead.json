@@ -1,0 +1,60 @@
+{
+	"Headquarter": {
+		"UniqueName":"Fortress, Castle of Knights",
+		"Name":"Fortress, Castle of Knights",
+		"Tag":"Knight",
+		"Text":"happens here",
+		"Abilities": [
+			{
+				"ActivatedAbility": {
+					"Effect":{
+						"Production":[],
+						"Manipulation": [
+							{
+								"IntManipulation": {
+									"Value": 1,
+									"Operator": "ADD",
+									"Property": "ATTACK",
+									"Selector": {
+										"EntitySelector": {
+											"PlayerMode": "TARGET",
+											"CardMode": "ALL",
+											"CardCondition": {
+												"StringCondition": {
+													"Property": "TAG",
+													"StringValue": "Knight",
+													"StringComparator":"EQUAL"
+												}
+											},
+											"Zone":"FIELD"
+										}
+									},
+									"Duration": "PERMANENT"
+								}
+							}
+						],
+						"ZoneChange": []
+					},
+					"Cost":["METAL","GENERIC"],
+					"MultipleUse":true
+				}
+			},
+			{ 
+				"TriggeredAbility": {
+					"Effect": {
+						"Production":["METAL","METAL","LUMBER"],
+						"Manipulation":[],
+						"ZoneChange":[]
+					},
+					"Cause": {
+						"TimeEventListener": {
+							"TimeEvent":"TICKSTART"
+						}
+					}
+				}
+			}
+		],
+		"AbilitySpeed":1,
+		"Health":10
+	}
+}

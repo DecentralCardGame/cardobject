@@ -1,0 +1,1 @@
+{"Action":{"Name":"Heat Up","Tag":"Fire","Text":"More heat, pls","Cost":["LUMBER"],"CastSpeed":2,"Effect":{"Production":["ENERGY","ENERGY","ENERGY"],"Manipulation":[],"ZoneChange":[]}}}

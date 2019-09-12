@@ -1,0 +1,1 @@
+{"Entity":{"Name":"Coward","Tag":"farm","Text":"I'm out","Cost":["FOOD"],"CastSpeed":1,"Abilities":[{"TriggeredAbility":{"Effect":{"Production":[],"Manipulation":[],"ZoneChange":[{"Selector":{"SelfSelector":{"Target":"THIS"}},"Destination":"HAND"}]},"Cause":{"ZoneChangeEventListener":{"Source":"FIELD","Destination":"DUSTPILE"}}}}],"AbilitySpeed":1,"Health":1,"Attack":2}}

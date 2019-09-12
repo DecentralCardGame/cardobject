@@ -1,0 +1,26 @@
+{
+	"Headquarter": {
+		"UniqueName":"Townhall, gathering of peasants",
+		"Name":"Townhall, gathering of peasants",
+		"Tag":"primitive",
+		"Text":"peasantville",
+		"Abilities": [
+			{ 
+				"TriggeredAbility": {
+					"Effect": {
+						"Production":["FOOD","METAL","LUMBER"],
+						"Manipulation":[],
+						"ZoneChange":[]
+					},
+					"Cause": {
+						"TimeEventListener": {
+							"TimeEvent":"TICKSTART"
+						}
+					}
+				}
+			}
+		],
+		"AbilitySpeed":1,
+		"Health":10
+	}
+}
