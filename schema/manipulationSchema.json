@@ -80,6 +80,9 @@
 				"Value": {
 					"type": "string"
 				},
+				"Operator": {
+					"$ref": "stringOperatorSchema.json"
+				},
 				"Property": {
 					"$ref": "propertyIdSchema.json#/cardStringPropertyId"
 				},

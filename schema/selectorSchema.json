@@ -2,7 +2,7 @@
 	"definitions": {
 		"selectorMode": {
 			"type": "string",
-			"enum": ["ALL","TARGET","OPPONENTCHOICE"]
+			"enum": ["ALL","TARGET","OPPONENTSCHOICE"]
 		},
 		"selectorBasics": {
 			"type": "object",
