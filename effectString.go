@@ -2,7 +2,7 @@ package cardobject
 
 import "strings"
 
-func (e *effect) ToPlainText() string {
+func (e *effect) ToString() string {
 	var plainText string
 	produce := e.Production
 	manipulate := e.Manipulation
@@ -15,7 +15,7 @@ func (e *effect) ToPlainText() string {
 			if(i > 0) {
 				plainText += " "
 			}
-    		plainText += m.ToPlainText()
+    		plainText += m.ToString()
 		}
 	}
 	if(move != nil) {
@@ -23,7 +23,7 @@ func (e *effect) ToPlainText() string {
 			if(i > 0) {
 				plainText += " "
 			}
-    		plainText += m.ToPlainText()
+    		plainText += m.ToString()
 		}
 	}
 	return plainText

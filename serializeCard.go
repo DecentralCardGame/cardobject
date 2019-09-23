@@ -6,7 +6,7 @@ import "github.com/xeipuuv/gojsonschema"
 import "encoding/json"
 import "errors"
 
-func ProcessCard(cardJson string) (string, error) {
+func FunctionalCardJson(cardJson string) (string, error) {
     valid, err := validateCard(cardJson)
 	if(valid) {
         var card cardWrapper
@@ -22,6 +22,25 @@ func ProcessCard(cardJson string) (string, error) {
 	} else {
 		return "Can't validate", err
 	}
+}
+
+func ReadableCardJson(cardJson string) (string, error) {
+    valid, err := validateCard(cardJson)
+    if(valid) {
+        var card cardWrapper
+        err := json.Unmarshal([]byte(cardJson), &card)
+        if err != nil {
+            return "Can't deserialize", err
+        }
+        readableCard := card.toReadable()
+        bytes, err := json.Marshal(readableCard)
+        if err != nil {
+            return "Can't serialize", err
+        }
+        return string(bytes), nil
+    } else {
+        return "Can't validate", err
+    }
 }
 
 func validateCard(s string) (bool, error) {

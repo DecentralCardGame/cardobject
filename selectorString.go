@@ -1,33 +1,33 @@
 package cardobject
 
-func (s *selectorWrapper) ToPlainText() string {
+func (s *selectorWrapper) ToString() string {
 	var plainText string
 	as := s.ActionSelector
 	es := s.EntitySelector
 	fs := s.FieldSelector
 	ss := s.SelfSelector
 	if(as != nil) {
-		return as.ToPlainText()
+		return as.ToString()
 	}
 	if(es != nil) {
-		return es.ToPlainText()
+		return es.ToString()
 	}
 	if(fs != nil) {
-		return fs.ToPlainText()
+		return fs.ToString()
 	}
 	if(ss != nil) {
-		return ss.ToPlainText()
+		return ss.ToString()
 	}
 	return plainText
 }
 
-func (as *actionSelector) ToPlainText() string {
+func (as *actionSelector) ToString() string {
 	plainText := as.CardMode + " action"
 	if(as.CardMode == "ALL") {
 		plainText += "s"
 	}
 	if(as.CardCondition != nil) {
-		plainText += " with " + as.CardCondition.ToPlainText()
+		plainText += " with " + as.CardCondition.ToString()
 	}
 	plainText += " in the " + as.Zone
 	if(as.PlayerMode == "ALL") {
@@ -38,12 +38,12 @@ func (as *actionSelector) ToPlainText() string {
 		plainText += "s"
 	}
 	if(as.PlayerCondition != nil) {
-		plainText += " with " + as.PlayerCondition.ToPlainText()
+		plainText += " with " + as.PlayerCondition.ToString()
 	}
 	return plainText
 }
 
-func (es *entitySelector) ToPlainText() string {
+func (es *entitySelector) ToString() string {
 	plainText := es.CardMode
 	if(es.CardMode == "ALL") {
 		plainText += " entities"
@@ -51,7 +51,7 @@ func (es *entitySelector) ToPlainText() string {
 		plainText += " entity"
 	}
 	if(es.CardCondition != nil) {
-		plainText += " with " + es.CardCondition.ToPlainText()
+		plainText += " with " + es.CardCondition.ToString()
 	}
 	plainText += " in the " + es.Zone
 	if(es.PlayerMode == "ALL") {
@@ -62,18 +62,18 @@ func (es *entitySelector) ToPlainText() string {
 		plainText += "s"
 	}
 	if(es.PlayerCondition != nil) {
-		plainText += " with " + es.PlayerCondition.ToPlainText()
+		plainText += " with " + es.PlayerCondition.ToString()
 	}
 	return plainText
 }
 
-func (fs *fieldSelector) ToPlainText() string {
+func (fs *fieldSelector) ToString() string {
 	plainText := fs.CardMode + " field"
 	if(fs.CardMode == "ALL") {
 		plainText += "s"
 	}
 	if(fs.CardCondition != nil) {
-		plainText += " with " + fs.CardCondition.ToPlainText()
+		plainText += " with " + fs.CardCondition.ToString()
 	}
 	plainText += " in the " + fs.Zone
 	if(fs.PlayerMode == "ALL") {
@@ -84,12 +84,12 @@ func (fs *fieldSelector) ToPlainText() string {
 		plainText += "s"
 	}
 	if(fs.PlayerCondition != nil) {
-		plainText += " with " + fs.PlayerCondition.ToPlainText()
+		plainText += " with " + fs.PlayerCondition.ToString()
 	}
 	return plainText
 }
 
-func (ss *selfSelector) ToPlainText() string {
+func (ss *selfSelector) ToString() string {
 	plainText := ss.Target
 	return plainText
 }

@@ -1,7 +1,7 @@
 package cardobject
 
-func (z *zoneChange) ToPlainText() string {
+func (z *zoneChange) ToString() string {
 	var plainText string
-	plainText += "Move " + z.Selector.ToPlainText() + " to the " + z.Destination + ". "
+	plainText += "Move " + z.Selector.ToString() + " to the " + z.Destination + ". "
 	return plainText
 }

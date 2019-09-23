@@ -2,22 +2,22 @@ package cardobject
 
 import "strconv"
 
-func (mw *manipulationWrapper) ToPlainText() string {
+func (mw *manipulationWrapper) ToString() string {
 	var plainText string
 	im := mw.IntManipulation
 	sm := mw.StringManipulation
 	if(im != nil) {
-		return im.ToPlainText()
+		return im.ToString()
 	}
 	if(sm != nil) {
-		return im.ToPlainText()
+		return im.ToString()
 	}
 	return plainText
 }
 
-func (im *intManipulation) ToPlainText() string {
+func (im *intManipulation) ToString() string {
 	var plainText string
-	selectorText := im.Selector.ToPlainText()
+	selectorText := im.Selector.ToString()
 	switch im.Operator {
 	case "SET":
 		plainText += "Set the " + im.Property + " of " + selectorText + " to " + strconv.Itoa(im.Value)
@@ -32,9 +32,9 @@ func (im *intManipulation) ToPlainText() string {
 	return plainText
 }
 
-func (sm *stringManipulation) ToPlainText() string {
+func (sm *stringManipulation) ToString() string {
 	var plainText string
-	selectorText := sm.Selector.ToPlainText()
+	selectorText := sm.Selector.ToString()
 	plainText += "Set the " + sm.Property + " of " + selectorText + " to " + sm.Value + " " + sm.Duration
 	return plainText
 }

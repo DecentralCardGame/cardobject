@@ -2,25 +2,25 @@ package cardobject
 
 import "strconv"
 
-func (cw *conditionWrapper) ToPlainText() string {
+func (cw *conditionWrapper) ToString() string {
 	var plainText string
 	ic := cw.IntCondition
 	sc := cw.StringCondition
 	if(ic != nil) {
-		return ic.ToPlainText()
+		return ic.ToString()
 	}
 	if(sc != nil) {
-		return sc.ToPlainText()
+		return sc.ToString()
 	}
 	return plainText
 }
 
-func (ic *intCondition) ToPlainText() string {
+func (ic *intCondition) ToString() string {
 	plainText := ic.Property + " " + ic.IntComparator + " " + strconv.Itoa(ic.IntValue)
 	return plainText
 }
 
-func (sc *stringCondition) ToPlainText() string {
+func (sc *stringCondition) ToString() string {
 	plainText := sc.Property + " " + sc.StringComparator + " " + sc.StringValue
 	return plainText
 }

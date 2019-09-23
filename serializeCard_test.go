@@ -7,7 +7,7 @@ import "strings"
 func TestCardSerializationAction1(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/action1Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -18,7 +18,7 @@ func TestCardSerializationAction1(t *testing.T) {
 func TestCardSerializationAction2(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/action2Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -29,7 +29,7 @@ func TestCardSerializationAction2(t *testing.T) {
 func TestCardSerializationAction3(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/action3Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -40,7 +40,7 @@ func TestCardSerializationAction3(t *testing.T) {
 func TestCardSerializationField1(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/field1Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -51,7 +51,7 @@ func TestCardSerializationField1(t *testing.T) {
 func TestCardSerializationField2(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/field2Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -62,7 +62,7 @@ func TestCardSerializationField2(t *testing.T) {
 func TestCardSerializationField3(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/field3Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -73,7 +73,7 @@ func TestCardSerializationField3(t *testing.T) {
 func TestCardSerializationHq1(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/hq1Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -84,7 +84,7 @@ func TestCardSerializationHq1(t *testing.T) {
 func TestCardSerializationHq2(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/hq2Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -95,7 +95,7 @@ func TestCardSerializationHq2(t *testing.T) {
 func TestCardSerializationHq3(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/hq3Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -106,7 +106,7 @@ func TestCardSerializationHq3(t *testing.T) {
 func TestCardSerializationEntity1(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/entity1Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -117,7 +117,7 @@ func TestCardSerializationEntity1(t *testing.T) {
 func TestCardSerializationEntity2(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/entity2Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
@@ -128,7 +128,7 @@ func TestCardSerializationEntity2(t *testing.T) {
 func TestCardSerializationEntity3(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/entity3Test.json")
 	input := string(file)
-	output, err := ProcessCard(input)
+	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
