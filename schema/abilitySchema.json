@@ -12,11 +12,16 @@
         		"MultipleUse": {
         			"type": "boolean" 
         		},
-        		"Effect": {
-					"$ref": "effectSchema.json"
-				}
+        		"Effects": {
+          			"type": "array",
+          			"items": {
+            			"$ref": "effectSchema.json#/effect"
+          			},
+          			"additionalItems": false
+        		}
 			},
-			"required": ["Cost","MultipleUse"]
+			"required": ["Cost","MultipleUse","Effects"],
+			"additionalProperties": false
 		},
 		"triggeredAbility": {
 			"type": "object",
@@ -24,11 +29,16 @@
 				"Cause": {
           			"$ref": "eventListenerSchema.json"
         		},
-        		"Effect": {
-					"$ref": "effectSchema.json"
-				}
+        		"Effects": {
+          			"type": "array",
+          			"items": {
+            			"$ref": "effectSchema.json#/effect"
+          			},
+          			"additionalItems": false
+        		}
 			},
-			"required": ["Cause"]
+			"required": ["Cause","Effects"],
+			"additionalProperties": false
 		}
 	},
 	"type": "object",
@@ -39,7 +49,8 @@
 					"$ref": "#/definitions/activatedAbility"
 				}
 			},
-			"required":["ActivatedAbility"]
+			"required":["ActivatedAbility"],
+			"additionalProperties": false
 		},
 		{	
 			"properties": {
@@ -47,7 +58,8 @@
 					"$ref": "#/definitions/triggeredAbility"
 				}
 			},
-			"required":["TriggeredAbility"]
+			"required":["TriggeredAbility"],
+			"additionalProperties": false
 		}
 	]
 }

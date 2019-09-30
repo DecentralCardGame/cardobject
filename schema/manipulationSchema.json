@@ -1,169 +1,175 @@
 {
 	"definitions": {
-		"intManipulation": {
+		"actionIntManipulation": {
 			"type": "object",
 			"properties": {
-				"Value": {
+				"IntProperty": {
+					"$ref": "propertyIdSchema.json#/actionIntPropertyId"
+				},
+				"IntValue": {
 					"type": "integer",
 					"minimum": 1,
 					"maximum": 10
 				},
-				"Operator": {
+				"IntOperator": {
 					"$ref": "arithOperatorSchema.json"
-				},
-				"Property": {
-					"$ref": "propertyIdSchema.json#/cardIntPropertyId"
-				},
-				"Selector": {
-					"$ref": "selectorSchema.json#/selector"
-				},
-				"Duration": {
-					"type": "string",
-					"enum": ["ENDOFTICK","PERMANENT"]
 				}
 			},
-			"allOf": [
-				{
-					"if": {
-						"properties": {
-							"Selector": {
-								"$ref": "selectorSchema.json#/definitions/actionSelector"
-							}
-						}
-					},
-					"then": {
-						"properties": {
-							"Property": {
-								"$ref": "propertyIdSchema.json#/actionIntPropertyId"
-							}
-						}
-					}
-				},
-				{
-					"if": {
-						"properties": {
-							"Selector": {
-								"$ref": "selectorSchema.json#/definitions/entitySelector"
-							}
-						}
-					},
-					"then": {
-						"properties": {
-							"Property": {							
-								"$ref": "propertyIdSchema.json#/entityIntPropertyId"
-							}
-						}
-					}
-				},
-				{
-					"if": {
-						"properties": {
-							"Selector": {
-								"$ref": "selectorSchema.json#/definitions/fieldSelector"
-							}
-						}
-					},
-					"then": {
-						"properties": {
-							"Property": {					
-								"$ref": "propertyIdSchema.json#/fieldIntPropertyId"
-							}
-						}
-					}
-				}
-			],
-			"required": ["Value","Operator","Property","Selector","Duration"]
+			"required": ["IntProperty","IntValue","IntOperator"],
+			"additionalProperties": false
 		},
-		"stringManipulation": {
+		"actionStringManipulation": {
 			"type": "object",
 			"properties": {
-				"Value": {
+				"StringProperty": {
+					"$ref": "propertyIdSchema.json#/actionStringPropertyId"
+				},
+				"StringValue": {
 					"type": "string"
 				},
-				"Operator": {
+				"StringOperator": {
 					"$ref": "stringOperatorSchema.json"
-				},
-				"Property": {
-					"$ref": "propertyIdSchema.json#/cardStringPropertyId"
-				},
-				"Selector": {
-					"$ref": "selectorSchema.json#/selector"
-				},
-				"Duration": {
-					"type": "string",
-					"enum": ["ENDOFTICK","PERMANENT"]
 				}
 			},
-			"allOf": [
-				{
-					"if": {
-						"properties": {
-							"Selector": {
-								"$ref": "selectorSchema.json#/definitions/actionSelector"
-							}
-						}
-					},
-					"then": {
-						"properties": {
-							"Property": {
-								"$ref": "propertyIdSchema.json#/actionStringPropertyId"
-							}
-						}
-					}
+			"required": ["StringProperty","StringValue","StringOperator"],
+			"additionalProperties": false
+		},
+		"entityIntManipulation": {
+			"type": "object",
+			"properties": {
+				"IntProperty": {
+					"$ref": "propertyIdSchema.json#/entityIntPropertyId"
 				},
-				{
-					"if": {
-						"properties": {
-							"Selector": {
-								"$ref": "selectorSchema.json#/definitions/entitySelector"							
-							}
-						}
-					},
-					"then": {
-						"properties": {
-							"Property": {
-								"$ref": "propertyIdSchema.json#/entityStringPropertyId"
-							}
-						}
-					}
+				"IntValue": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 10
 				},
-				{
-					"if": {
-						"properties": {
-							"Selector": {
-								"$ref": "selectorSchema.json#/definitions/fieldSelector"
-							}
-						}
-					},
-					"then": {
-						"properties": {
-							"Property": {								
-								"$ref": "propertyIdSchema.json#/fieldStringPropertyId"
-							}
-						}
-					}
+				"IntOperator": {
+					"$ref": "arithOperatorSchema.json"
 				}
-			],
-			"required": ["Value","Property","Selector","Duration"]
+			},
+			"required": ["IntProperty","IntValue","IntOperator"],
+			"additionalProperties": false
+		},
+		"entityStringManipulation": {
+			"type": "object",
+			"properties": {
+				"StringProperty": {
+					"$ref": "propertyIdSchema.json#/entityStringPropertyId"
+				},
+				"StringValue": {
+					"type": "string"
+				},
+				"StringOperator": {
+					"$ref": "stringOperatorSchema.json"
+				}
+			},
+			"required": ["StringProperty","StringValue","StringOperator"],
+			"additionalProperties": false
+		},
+		"fieldIntManipulation": {
+			"type": "object",
+			"properties": {
+				"IntProperty": {
+					"$ref": "propertyIdSchema.json#/fieldIntPropertyId"
+				},
+				"IntValue": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 10
+				},
+				"IntOperator": {
+					"$ref": "arithOperatorSchema.json"
+				}
+			},
+			"required": ["IntProperty","IntValue","IntOperator"],
+			"additionalProperties": false
+		},
+		"fieldStringManipulation": {
+			"type": "object",
+			"properties": {
+				"StringProperty": {
+					"$ref": "propertyIdSchema.json#/fieldStringPropertyId"
+				},
+				"StringValue": {
+					"type": "string"
+				},
+				"StringOperator": {
+					"$ref": "stringOperatorSchema.json"
+				}
+			},
+			"required": ["StringProperty","StringValue","StringOperator"],
+			"additionalProperties": false
 		}
 	},
-	"type": "object",
-	"oneOf": [
-		{
-			"properties": {
-				"IntManipulation": {
-					"$ref": "#/definitions/intManipulation"
-				}
+	"actionManipulation": {
+		"type": "object",
+		"oneOf": [
+			{
+				"properties": {
+					"ActionIntManipulation": {
+						"$ref": "#/definitions/actionIntManipulation"
+					}
+				},
+				"required": ["ActionIntManipulation"],
+				"additionalProperties": false
 			},
-			"required":["IntManipulation"]
-		},
-		{
-			"properties": {
-				"StringManipulation": {
-					"$ref": "#/definitions/stringManipulation"
-				}
+			{
+				"properties": {
+					"ActionStringManipulation": {
+						"$ref": "#/definitions/actionStringManipulation"
+					}
+				},
+				"required": ["ActionStringManipulation"],
+				"additionalProperties": false
+			}
+		]
+	},
+	"entityManipulation": {
+		"type": "object",
+		"oneOf": [
+			{
+				"properties": {
+					"EntityIntManipulation": {
+						"$ref": "#/definitions/entityIntManipulation"
+					}
+				},
+				"required": ["EntityIntManipulation"],
+				"additionalProperties": false
 			},
-			"required":["StringManipulation"]
-		}
-	]
+			{
+				"properties": {
+					"EntityStringManipulation": {
+						"$ref": "#/definitions/entityStringManipulation"
+					}
+				},
+				"required": ["EntityStringManipulation"],
+				"additionalProperties": false
+			}
+		]
+	},
+	"fieldManipulation": {
+		"type": "object",
+		"oneOf": [
+			{
+				"properties": {
+					"FieldIntManipulation": {
+						"$ref": "#/definitions/fieldIntManipulation"
+					}
+				},
+				"required": ["FieldIntManipulation"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"FieldStringManipulation": {
+						"$ref": "#/definitions/fieldStringManipulation"
+					}
+				},
+				"required": ["FieldStringManipulation"],
+				"additionalProperties": false
+			}
+		]
+	}
 }

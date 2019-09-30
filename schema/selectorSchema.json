@@ -2,9 +2,9 @@
 	"definitions": {
 		"selectorMode": {
 			"type": "string",
-			"enum": ["ALL","TARGET","OPPONENTSCHOICE"]
+			"enum": ["ALL","TARGET","OPPONENTSCHOICE"] 
 		},
-		"selectorBasics": {
+		"actionSelector": {
 			"type": "object",
 			"properties": {
 				"PlayerMode": {
@@ -16,50 +16,59 @@
 				"CardMode": {
 					"$ref": "#/definitions/selectorMode"
 				},
+				"CardCondition": {
+					"$ref": "conditionSchema.json#/actionCondition"
+				},
 				"Zone": {
 					"$ref": "zoneSchema.json#/dynamicZoneId"
 				}
 			},
-			"required": ["PlayerMode","CardMode","Zone"]
-		},
-		"actionSelector": {
-			"type": "object",
-			"properties": {
-				"CardCondition": {
-					"$ref": "conditionSchema.json#/actionCondition"
-				}
-			},
-			"oneOf": [
-				{
-					"$ref": "#/definitions/selectorBasics"
-				}
-			]
+			"required": ["PlayerMode","CardMode","Zone"],
+			"additionalProperties": false
 		},
 		"entitySelector": {
 			"type": "object",
 			"properties": {
+				"PlayerMode": {
+					"$ref": "#/definitions/selectorMode"
+				},
+				"PlayerCondition": {
+					"$ref": "conditionSchema.json#/playerCondition"
+				},
+				"CardMode": {
+					"$ref": "#/definitions/selectorMode"
+				},
 				"CardCondition": {
 					"$ref": "conditionSchema.json#/entityCondition"
+				},
+				"Zone": {
+					"$ref": "zoneSchema.json#/dynamicZoneId"
 				}
 			},
-			"oneOf": [
-				{
-					"$ref": "#/definitions/selectorBasics"
-				}
-			]
+			"required": ["PlayerMode","CardMode","Zone"],
+			"additionalProperties": false
 		},
 		"fieldSelector": {
 			"type": "object",
 			"properties": {
+				"PlayerMode": {
+					"$ref": "#/definitions/selectorMode"
+				},
+				"PlayerCondition": {
+					"$ref": "conditionSchema.json#/playerCondition"
+				},
+				"CardMode": {
+					"$ref": "#/definitions/selectorMode"
+				},
 				"CardCondition": {
 					"$ref": "conditionSchema.json#/fieldCondition"
+				},
+				"Zone": {
+					"$ref": "zoneSchema.json#/dynamicZoneId"
 				}
 			},
-			"oneOf": [
-				{
-					"$ref": "#/definitions/selectorBasics"
-				}
-			]
+			"required": ["PlayerMode","CardMode","Zone"],
+			"additionalProperties": false
 		},
 		"selfSelector": {
 			"type": "object",
@@ -81,7 +90,8 @@
 						"$ref": "#/definitions/actionSelector"
 					}
 				},
-				"required":["ActionSelector"]
+				"required":["ActionSelector"],
+				"additionalProperties": false
 			},
 			{
 				"properties": {
@@ -89,7 +99,8 @@
 						"$ref": "#/definitions/entitySelector"
 					}
 				},
-				"required":["EntitySelector"]
+				"required":["EntitySelector"],
+				"additionalProperties": false
 			},
 			{
 				"properties": {
@@ -97,7 +108,8 @@
 						"$ref": "#/definitions/fieldSelector"
 					}
 				},
-				"required":["FieldSelector"]
+				"required":["FieldSelector"],
+				"additionalProperties": false
 			},
 			{
 				"properties": {
@@ -105,7 +117,8 @@
 						"$ref": "#/definitions/selfSelector"
 					}
 				},
-				"required":["SelfSelector"]
+				"required":["SelfSelector"],
+				"additionalProperties": false
 			}
 		]
 	}

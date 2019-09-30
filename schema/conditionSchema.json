@@ -3,7 +3,7 @@
 		"actionIntCondition": {
 			"type": "object",
 			"properties": {
-				"Property": {
+				"IntProperty": {
 					"$ref": "propertyIdSchema.json#/actionIntPropertyId"
 				},
 				"IntValue": {
@@ -11,16 +11,17 @@
 					"minimum": 0,
 					"maximum": 100
 				},
-				"IntComparator": {
+				"IntComparator": { 
 					"$ref": "comparatorSchema.json#/intComparator"
 				}
 			},
-			"required": ["IntValue","IntComparator"]
+			"required": ["IntProperty","IntValue","IntComparator"],
+			"additionalProperties": false
 		},
 		"actionStringCondition": {
 			"type": "object",
 			"properties": {
-				"Property": {
+				"StringProperty": {
 					"$ref": "propertyIdSchema.json#/actionStringPropertyId"
 				},
 				"StringValue": {
@@ -30,12 +31,13 @@
 					"$ref": "comparatorSchema.json#/stringComparator"
 				}
 			},
-			"required": ["StringValue","StringComparator"]
+			"required": ["StringProperty","StringValue","StringComparator"],
+			"additionalProperties": false
 		},
 		"entityIntCondition": {
 			"type": "object",
 			"properties": {
-				"Property": {
+				"IntProperty": {
 					"$ref": "propertyIdSchema.json#/entityIntPropertyId"
 				},
 				"IntValue": {
@@ -47,12 +49,13 @@
 					"$ref": "comparatorSchema.json#/intComparator"
 				}
 			},
-			"required": ["IntValue","IntComparator"]
+			"required": ["IntProperty","IntValue","IntComparator"],
+			"additionalProperties": false
 		},
 		"entityStringCondition": {
 			"type": "object",
 			"properties": {
-				"Property": {
+				"StringProperty": {
 					"$ref": "propertyIdSchema.json#/entityStringPropertyId"
 				},
 				"StringValue": {
@@ -62,12 +65,13 @@
 					"$ref": "comparatorSchema.json#/stringComparator"
 				}
 			},
-			"required": ["StringValue","StringComparator"]
+			"required": ["StringProperty","StringValue","StringComparator"],
+			"additionalProperties": false
 		},
 		"fieldIntCondition": {
 			"type": "object",
 			"properties": {
-				"Property": {
+				"IntProperty": {
 					"$ref": "propertyIdSchema.json#/fieldIntPropertyId"
 				},
 				"IntValue": {
@@ -79,12 +83,13 @@
 					"$ref": "comparatorSchema.json#/intComparator"
 				}
 			},
-			"required": ["IntValue","IntComparator"]
+			"required": ["IntProperty","IntValue","IntComparator"],
+			"additionalProperties": false
 		},
 		"fieldStringCondition": {
 			"type": "object",
 			"properties": {
-				"Property": {
+				"StringProperty": {
 					"$ref": "propertyIdSchema.json#/fieldStringPropertyId"
 				},
 				"StringValue": {
@@ -94,12 +99,13 @@
 					"$ref": "comparatorSchema.json#/stringComparator"
 				}
 			},
-			"required": ["StringValue","StringComparator"]
+			"required": ["StringProperty","StringValue","StringComparator"],
+			"additionalProperties": false
 		},
 		"playerIntCondition": {
 			"type": "object",
 			"properties": {
-				"Property": {
+				"IntProperty": {
 					"$ref": "propertyIdSchema.json#/playerIntPropertyId"
 				},
 				"IntValue": {
@@ -111,12 +117,13 @@
 					"$ref": "comparatorSchema.json#/intComparator"
 				}
 			},
-			"required": ["IntValue","IntComparator"]
+			"required": ["IntProperty","IntValue","IntComparator"],
+			"additionalProperties": false
 		},
 		"playerStringCondition": {
 			"type": "object",
 			"properties": {
-				"Property": {
+				"StringProperty": {
 					"$ref": "propertyIdSchema.json#/playerStringPropertyId"
 				},
 				"StringValue": {
@@ -126,47 +133,96 @@
 					"$ref": "comparatorSchema.json#/stringComparator"
 				}
 			},
-			"required": ["StringValue","StringComparator"]
+			"required": ["StringProperty","StringValue","StringComparator"],
+			"additionalProperties": false
 		}
 	},
 	"actionCondition": {
-		"properties": {
-    		"IntCondition": {
-      			"$ref": "#/definitions/actionIntCondition"
-    		},
-    		"StringCondition": {
-      			"$ref": "#/definitions/actionStringCondition"
-    		}
-  		}
+		"oneOf": [
+			{
+				"properties": {
+					"IntCondition": {
+						"$ref": "#/definitions/actionIntCondition"
+					}
+				},
+				"required": ["IntCondition"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"StringCondition": {
+						"$ref": "#/definitions/actionStringCondition"
+					}
+				},
+				"required": ["StringCondition"],
+				"additionalProperties": false
+			}
+		]
 	},
 	"entityCondition": {
-		"properties": {
-    		"IntCondition": {
-      			"$ref": "#/definitions/entityIntCondition"
-    		},
-    		"StringCondition": {
-      			"$ref": "#/definitions/entityStringCondition"
-    		}
-  		}
+		"oneOf": [
+			{
+				"properties": {
+					"IntCondition": {
+						"$ref": "#/definitions/entityIntCondition"
+					}
+				},
+				"required": ["IntCondition"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"StringCondition": {
+						"$ref": "#/definitions/entityStringCondition"
+					}
+				},
+				"required": ["StringCondition"],
+				"additionalProperties": false
+			}
+		]
 	},
 	"fieldCondition": {
-		"properties": {
-    		"IntCondition": {
-      			"$ref": "#/definitions/fieldIntCondition"
-    		},
-    		"StringCondition": {
-      			"$ref": "#/definitions/fieldStringCondition"
-    		}
-  		}
+		"oneOf": [
+			{
+				"properties": {
+					"IntCondition": {
+						"$ref": "#/definitions/fieldIntCondition"
+					}
+				},
+				"required": ["IntCondition"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"StringCondition": {
+						"$ref": "#/definitions/fieldStringCondition"
+					}
+				},
+				"required": ["StringCondition"],
+				"additionalProperties": false
+			}
+		]
 	},
 	"playerCondition": {
-		"properties": {
-    		"IntCondition": {
-      			"$ref": "#/definitions/playerIntCondition"
-    		},
-    		"StringCondition": {
-      			"$ref": "#/definitions/playerStringCondition"
-    		}
-  		}
+		"oneOf": [
+			{
+				"properties": {
+					"IntCondition": {
+						"$ref": "#/definitions/playerIntCondition"
+					}
+				},
+				"required": ["IntCondition"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"StringCondition": {
+						"$ref": "#/definitions/playerStringCondition"
+					}
+				},
+				"required": ["StringCondition"],
+				"additionalProperties": false
+			}
+		]
 	}
 }

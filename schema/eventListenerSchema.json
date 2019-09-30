@@ -7,7 +7,8 @@
 					"$ref": "timeEventSchema.json"
 				}
 			},
-			"required": ["TimeEvent"]
+			"required": ["TimeEvent"],
+			"additionalProperties": false
 		},
 		"manipulationEventListener": {
 			"type": "object",
@@ -16,7 +17,8 @@
 					"$ref": "propertyIdSchema.json#/cardPropertyId"
 				}
 			},
-			"required": ["Property"]
+			"required": ["Property"],
+			"additionalProperties": false
 		},
 		"zoneChangeEventListener": {
 			"type": "object",
@@ -28,7 +30,8 @@
 					"$ref": "zoneSchema.json#/zoneId"
 				}
 			},
-			"required": ["Source","Destination"]
+			"required": ["Source","Destination"],
+			"additionalProperties": false
 		}
 	},
 	"type": "object",
@@ -39,7 +42,8 @@
 					"$ref": "#/definitions/timeEventListener"
 				}
 			},
-			"required":["TimeEventListener"]
+			"required":["TimeEventListener"],
+			"additionalProperties": false
 		},
 		{
 			"properties": {
@@ -47,7 +51,8 @@
 					"$ref": "#/definitions/manipulationEventListener"
 				}
 			},
-			"required":["ManipulationEventListener"]
+			"required":["ManipulationEventListener"],
+			"additionalProperties": false
 		},
 		{
 			"properties": {
@@ -55,7 +60,8 @@
 					"$ref": "#/definitions/zoneChangeEventListener"
 				}
 			},
-			"required":["ZoneChangeEventListener"]
+			"required":["ZoneChangeEventListener"],
+			"additionalProperties": false
 		}
 	]
 }

@@ -1,25 +1,112 @@
 {
-	"type": "object",
-	"properties": {
-		"Production": {
-			"type": "array",
-        	"items": {
-        		"$ref": "ressourceSchema.json"
-        	}
+	"definitions": {
+		"targetEffect": {
+			"oneOf": [
+				{
+					"properties": {
+						"ActionTargetEffect": {
+							"$ref": "#/definitions/actionTargetEffect"
+						}
+					},
+					"required": ["ActionTargetEffect"],
+					"additionalProperties": false
+				},
+				{
+					"properties": {
+						"EntityTargetEffect": {
+							"$ref": "#/definitions/entityTargetEffect"
+						}
+					},
+					"required": ["EntityTargetEffect"],
+					"additionalProperties": false
+				},
+				{
+					"properties": {
+						"FieldTargetEffect": {
+							"$ref": "#/definitions/fieldTargetEffect"
+						}
+					},
+					"required": ["FieldTargetEffect"],
+					"additionalProperties": false
+				}
+			]
 		},
-		"Manipulation": {
-			"type": "array",
-        	"items": {
-        		"$ref": "manipulationSchema.json"
-        	},
-        	"additionalItems": false
+		"actionTargetEffect": {
+			"type": "object",
+			"properties": {
+				"ActionSelector": {
+					"$ref": "selectorSchema.json#/definitions/actionSelector"
+				},
+				"ActionManipulations": {
+					"type": "array",
+					"items": {
+						"$ref": "manipulationSchema.json#/actionManipulation"
+					}
+				},
+				"ZoneChange": {
+					"$ref": "zoneSchema.json#/zoneId"
+				}
+			},
+			"required": ["ActionSelector"],
+			"additionalProperties": false
 		},
-		"ZoneChange": {
-			"type": "array",
-        	"items": {
-        		"$ref": "zoneChangeSchema.json"
-        	}
-		}
+		"entityTargetEffect": {
+			"type": "object",
+			"properties": {
+				"EntitySelector": {
+					"$ref": "selectorSchema.json#/definitions/entitySelector"
+				},
+				"EntityManipulations": {
+					"type": "array",
+					"items": {
+						"$ref": "manipulationSchema.json#/entityManipulation"
+					}
+				},
+				"ZoneChange": {
+					"$ref": "zoneSchema.json#/zoneId"
+				}
+			},
+			"required": ["EntitySelector"],
+			"additionalProperties": false
+		},
+		"fieldTargetEffect": {
+			"type": "object",
+      		"properties": {
+       			"FieldSelector": {
+          			"$ref": "selectorSchema.json#/definitions/fieldSelector"
+        		},
+        		"FieldManipulations": {
+          			"type": "array",
+          			"items": {
+						"$ref": "manipulationSchema.json#/fieldManipulation"
+					}
+        		},
+				"ZoneChange": {
+					"$ref": "zoneSchema.json#/zoneId"
+				}
+      		},
+     		"required": ["FieldSelector"],
+      		"additionalProperties": false
+    	}
 	},
-	"required": ["Production", "Manipulation", "ZoneChange"]
+	"effect": {
+      	"type": "object",
+     	"properties": {
+        	"Production": {
+          		"type": "array",
+          		"items": {
+          			"$ref": "ressourceSchema.json"
+          		}
+        	},
+        	"Draw": {
+        		"type": "integer",
+          		"minimum": 1,
+          		"maximum": 32
+        	},
+        	"TargetEffect": {
+          		"$ref": "#/definitions/targetEffect"
+        	}
+      	},
+      	"additionalProperties": false
+    }
 }

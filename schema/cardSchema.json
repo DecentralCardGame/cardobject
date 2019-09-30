@@ -2,73 +2,37 @@
   "definitions": {
     "action": {
       "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/castable"
-        },
-        {
-          "$ref": "#/definitions/cardAttributes"
-        }
-      ],
       "properties": {
-        "Effect": {
-          "$ref": "effectSchema.json"
+        "Cost": {
+          "type": "array",
+          "items": {
+            "$ref": "ressourceSchema.json"
+          }
+        },
+        "CastSpeed": {
+          "$ref": "propertySchema.json#/speedModifier"
+        },
+        "Name": {
+          "$ref": "propertySchema.json#/name"
+        },
+        "Tag": {
+          "$ref": "propertySchema.json#/tag"
+        },
+        "Text": {
+          "$ref": "propertySchema.json#/text"
+        },
+        "Effects": {
+          "type": "array",
+          "items": {
+            "$ref": "effectSchema.json#/effect"
+          },
+          "additionalItems": false
         }
       },
-      "required": ["Effect"]
+      "required": ["Cost","CastSpeed","Name","Tag","Text","Effects"],
+      "additionalProperties": false
     },
     "entity": {
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/castable"
-        },
-        {
-          "$ref": "#/definitions/cardAttributes"
-        },
-        {
-          "$ref": "#/definitions/permanent"
-        }
-      ],
-      "properties": {
-        "Attack": {
-          "$ref": "propertySchema.json#/attack"
-        }
-      },
-      "required": ["Attack"]
-    },
-    "field": {
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/castable"
-        },
-        {
-          "$ref": "#/definitions/cardAttributes"
-        },
-        {
-          "$ref": "#/definitions/permanent"
-        }
-      ]
-    },
-    "headquarter": {
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/cardAttributes"
-        },
-        {
-          "$ref": "#/definitions/permanent"
-        }
-      ],
-      "properties": {
-        "UniqueName": {
-          "$ref": "propertySchema.json#/uniqueName"
-        }
-      },
-      "required": ["UniqueName"]
-    },
-    "cardAttributes": {
       "type": "object",
       "properties": {
         "Name": {
@@ -79,13 +43,10 @@
         },
         "Text": {
           "$ref": "propertySchema.json#/text"
-        }
-      },
-      "required": ["Name","Tag","Text"]
-    },
-    "castable": {
-      "type": "object",
-      "properties": {
+        },
+        "Attack": {
+          "$ref": "propertySchema.json#/attack"
+        },
         "Cost": {
           "type": "array",
           "items": {
@@ -94,13 +55,7 @@
         },
         "CastSpeed": {
           "$ref": "propertySchema.json#/speedModifier"
-        }
-      },
-      "required": ["Cost","CastSpeed"]
-    },
-    "permanent": {
-      "type": "object",
-      "properties": {
+        },
         "Abilities": {
           "type": "array",
           "items": {
@@ -114,7 +69,85 @@
           "$ref": "propertySchema.json#/health"
         }
       },
-      "required": ["Abilities","AbilitySpeed","Health"]
+      "required": ["Name","Tag","Text","Attack","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
+      "additionalProperties": false
+    },
+    "field": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "$ref": "propertySchema.json#/name"
+        },
+        "Tag": {
+          "$ref": "propertySchema.json#/tag"
+        },
+        "Text": {
+          "$ref": "propertySchema.json#/text"
+        },
+        "Cost": {
+          "type": "array",
+          "items": {
+            "$ref": "ressourceSchema.json"
+          }
+        },
+        "CastSpeed": {
+          "$ref": "propertySchema.json#/speedModifier"
+        },
+        "Abilities": {
+          "type": "array",
+          "items": {
+            "$ref": "abilitySchema.json"
+          }
+        },
+        "AbilitySpeed": {
+          "$ref": "propertySchema.json#/speedModifier"
+        },
+        "Health": {
+          "$ref": "propertySchema.json#/health"
+        }
+      },
+      "required": ["Name","Tag","Text","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
+      "additionalProperties": false
+    },
+    "headquarter": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "$ref": "propertySchema.json#/name"
+        },
+        "Tag": {
+          "$ref": "propertySchema.json#/tag"
+        },
+        "Text": {
+          "$ref": "propertySchema.json#/text"
+        },
+        "Cost": {
+          "type": "array",
+          "items": {
+            "$ref": "ressourceSchema.json"
+          }
+        },
+        "CastSpeed": {
+          "$ref": "propertySchema.json#/speedModifier"
+        },
+        "Abilities": {
+          "type": "array",
+          "items": {
+            "$ref": "abilitySchema.json"
+          }
+        },
+        "AbilitySpeed": {
+          "$ref": "propertySchema.json#/speedModifier"
+        },
+        "Health": {
+          "$ref": "propertySchema.json#/health"
+        },
+        "UniqueName": {
+          "$ref": "propertySchema.json#/uniqueName"
+        }
+      },
+      "required": ["Name","Tag","Text","Cost","CastSpeed","Abilities","AbilitySpeed","Health","UniqueName"],
+      "additionalProperties": false
     }
   },
   "oneOf": [
@@ -124,7 +157,8 @@
           "$ref": "#/definitions/action"
         }
       },
-      "required":["Action"]
+      "required":["Action"],
+      "additionalProperties": false
     },
     {
       "properties": {
@@ -132,7 +166,8 @@
           "$ref": "#/definitions/entity"
         }
       },
-      "required":["Entity"]
+      "required":["Entity"],
+      "additionalProperties": false
     },
     {
       "properties": {
@@ -140,7 +175,8 @@
           "$ref": "#/definitions/field"
         }
       },
-      "required":["Field"]
+      "required":["Field"],
+      "additionalProperties": false
     },
     {
       "properties": {
@@ -148,7 +184,8 @@
           "$ref": "#/definitions/headquarter"
         }
       },
-      "required":["Headquarter"]
+      "required":["Headquarter"],
+      "additionalProperties": false
     }
   ]
 }
