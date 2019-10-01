@@ -1,34 +1,26 @@
 {
 	"attack": {
-		"type": "integer",
-		"minimum": 1,
-		"maximum": 32
+		"$ref": "standards.json#/int"
 	},
 	"costSum": {
-		"type": "integer",
-		"minimum": 1,
-		"maximum": 32
+		"$ref": "standards.json#/int"
 	},
 	"health": {
-		"type": "integer",
-		"minimum": 1,
-		"maximum": 32
+		"$ref": "standards.json#/int"
 	},
 	"name": {
-		"type": "string"
+		"$ref": "standards.json#/string"
 	},
 	"speedModifier": {
-		"type": "integer",
-		"minimum": 1,
-		"maximum": 32
+		"$ref": "standards.json#/int"
 	},
 	"tag": {
-		"type": "string"
+		"$ref": "standards.json#/string"
 	},
 	"text": {
-		"type": "string"
+		"$ref": "standards.json#/string"
 	},
 	"uniqueName": {
-		"type": "string"
+		"$ref": "standards.json#/string"
 	}
 }

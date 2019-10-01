@@ -7,9 +7,7 @@
 					"$ref": "propertyIdSchema.json#/actionIntPropertyId"
 				},
 				"IntValue": {
-					"type": "integer",
-					"minimum": 0,
-					"maximum": 100
+					"$ref": "standards.json#/int"
 				},
 				"IntComparator": { 
 					"$ref": "comparatorSchema.json#/intComparator"
@@ -25,7 +23,7 @@
 					"$ref": "propertyIdSchema.json#/actionStringPropertyId"
 				},
 				"StringValue": {
-					"type": "string"
+					"$ref": "standards.json#/string"
 				},
 				"StringComparator": {
 					"$ref": "comparatorSchema.json#/stringComparator"
@@ -41,9 +39,7 @@
 					"$ref": "propertyIdSchema.json#/entityIntPropertyId"
 				},
 				"IntValue": {
-					"type": "integer",
-					"minimum": 0,
-					"maximum": 100
+					"$ref": "standards.json#/int"
 				},
 				"IntComparator": {
 					"$ref": "comparatorSchema.json#/intComparator"
@@ -59,7 +55,7 @@
 					"$ref": "propertyIdSchema.json#/entityStringPropertyId"
 				},
 				"StringValue": {
-					"type": "string"
+					"$ref": "standards.json#/string"
 				},
 				"StringComparator": {
 					"$ref": "comparatorSchema.json#/stringComparator"
@@ -75,9 +71,7 @@
 					"$ref": "propertyIdSchema.json#/fieldIntPropertyId"
 				},
 				"IntValue": {
-					"type": "integer",
-					"minimum": 0,
-					"maximum": 100
+					"$ref": "standards.json#/int"
 				},
 				"IntComparator": {
 					"$ref": "comparatorSchema.json#/intComparator"
@@ -93,7 +87,7 @@
 					"$ref": "propertyIdSchema.json#/fieldStringPropertyId"
 				},
 				"StringValue": {
-					"type": "string"
+					"$ref": "standards.json#/string"
 				},
 				"StringComparator": {
 					"$ref": "comparatorSchema.json#/stringComparator"
@@ -109,9 +103,7 @@
 					"$ref": "propertyIdSchema.json#/playerIntPropertyId"
 				},
 				"IntValue": {
-					"type": "integer",
-					"minimum": 0,
-					"maximum": 100
+					"$ref": "standards.json#/int"
 				},
 				"IntComparator": {
 					"$ref": "comparatorSchema.json#/intComparator"
@@ -127,7 +119,7 @@
 					"$ref": "propertyIdSchema.json#/playerStringPropertyId"
 				},
 				"StringValue": {
-					"type": "string"
+					"$ref": "standards.json#/string"
 				},
 				"StringComparator": {
 					"$ref": "comparatorSchema.json#/stringComparator"

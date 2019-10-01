@@ -4,20 +4,13 @@
 			"type": "object",
 			"properties": {
 				"Cost": {
-          			"type": "array",
-          			"items": {
-            			"$ref": "ressourceSchema.json"
-          			}
+          			"$ref": "standards.json#/cost"
         		},
         		"MultipleUse": {
         			"type": "boolean" 
         		},
         		"Effects": {
-          			"type": "array",
-          			"items": {
-            			"$ref": "effectSchema.json#/effect"
-          			},
-          			"additionalItems": false
+          			"$ref": "standards.json#/effects"
         		}
 			},
 			"required": ["Cost","MultipleUse","Effects"],
@@ -30,11 +23,7 @@
           			"$ref": "eventListenerSchema.json"
         		},
         		"Effects": {
-          			"type": "array",
-          			"items": {
-            			"$ref": "effectSchema.json#/effect"
-          			},
-          			"additionalItems": false
+          			"$ref": "standards.json#/effects"
         		}
 			},
 			"required": ["Cause","Effects"],

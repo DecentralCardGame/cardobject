@@ -1,0 +1,41 @@
+{
+	"abilities": {
+        "type": "array",
+        "items": {
+            "$ref": "abilitySchema.json"
+        },
+        "minItems": 1,
+        "maxItems": 3,
+        "additionalItems": false
+    },
+	"cost": {
+		"type": "array",
+       	"items": {
+           	"$ref": "#/ressource"
+        },
+        "maxItems": 15
+	},
+	"effects": {
+        "type": "array",
+        "items": {
+    	    "$ref": "effectSchema.json#/effect"
+        },
+        "minItems": 1,
+        "maxItems": 3,
+        "additionalItems": false
+    },
+	"int": {
+		"type": "integer",
+		"minimum": 0,
+		"maximum": 100
+	},
+	"ressource": {
+		"type": "string",
+		"enum": ["ENERGY","FOOD","GENERIC","LUMBER","MANA","METAL"]
+	},
+	"string": {
+		"type": "string",
+		"minLength": 1,
+		"maxLength": 32
+	}
+}

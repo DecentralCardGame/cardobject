@@ -4,10 +4,7 @@
       "type": "object",
       "properties": {
         "Cost": {
-          "type": "array",
-          "items": {
-            "$ref": "ressourceSchema.json"
-          }
+          "$ref": "standards.json#/cost"
         },
         "CastSpeed": {
           "$ref": "propertySchema.json#/speedModifier"
@@ -22,11 +19,7 @@
           "$ref": "propertySchema.json#/text"
         },
         "Effects": {
-          "type": "array",
-          "items": {
-            "$ref": "effectSchema.json#/effect"
-          },
-          "additionalItems": false
+          "$ref": "standards.json#/effects"
         }
       },
       "required": ["Cost","CastSpeed","Name","Tag","Text","Effects"],
@@ -48,19 +41,13 @@
           "$ref": "propertySchema.json#/attack"
         },
         "Cost": {
-          "type": "array",
-          "items": {
-            "$ref": "ressourceSchema.json"
-          }
+          "$ref": "standards.json#/cost"
         },
         "CastSpeed": {
           "$ref": "propertySchema.json#/speedModifier"
         },
         "Abilities": {
-          "type": "array",
-          "items": {
-            "$ref": "abilitySchema.json"
-          }
+          "$ref": "standards.json#/abilities"
         },
         "AbilitySpeed": {
           "$ref": "propertySchema.json#/speedModifier"
@@ -85,19 +72,13 @@
           "$ref": "propertySchema.json#/text"
         },
         "Cost": {
-          "type": "array",
-          "items": {
-            "$ref": "ressourceSchema.json"
-          }
+          "$ref": "standards.json#/cost"
         },
         "CastSpeed": {
           "$ref": "propertySchema.json#/speedModifier"
         },
         "Abilities": {
-          "type": "array",
-          "items": {
-            "$ref": "abilitySchema.json"
-          }
+          "$ref": "standards.json#/abilities"
         },
         "AbilitySpeed": {
           "$ref": "propertySchema.json#/speedModifier"
@@ -122,19 +103,13 @@
           "$ref": "propertySchema.json#/text"
         },
         "Cost": {
-          "type": "array",
-          "items": {
-            "$ref": "ressourceSchema.json"
-          }
+          "$ref": "standards.json#/cost"
         },
         "CastSpeed": {
           "$ref": "propertySchema.json#/speedModifier"
         },
         "Abilities": {
-          "type": "array",
-          "items": {
-            "$ref": "abilitySchema.json"
-          }
+          "$ref": "standards.json#/abilities"
         },
         "AbilitySpeed": {
           "$ref": "propertySchema.json#/speedModifier"

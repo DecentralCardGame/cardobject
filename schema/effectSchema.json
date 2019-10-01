@@ -41,7 +41,9 @@
 					"type": "array",
 					"items": {
 						"$ref": "manipulationSchema.json#/actionManipulation"
-					}
+					},
+					"maxItems": 4,
+					"additionalItems": false
 				},
 				"ZoneChange": {
 					"$ref": "zoneSchema.json#/zoneId"
@@ -60,7 +62,9 @@
 					"type": "array",
 					"items": {
 						"$ref": "manipulationSchema.json#/entityManipulation"
-					}
+					},
+					"maxItems": 6,
+					"additionalItems": false
 				},
 				"ZoneChange": {
 					"$ref": "zoneSchema.json#/zoneId"
@@ -79,7 +83,9 @@
           			"type": "array",
           			"items": {
 						"$ref": "manipulationSchema.json#/fieldManipulation"
-					}
+					},
+					"maxItems": 5,
+					"additionalItems": false
         		},
 				"ZoneChange": {
 					"$ref": "zoneSchema.json#/zoneId"
@@ -93,15 +99,10 @@
       	"type": "object",
      	"properties": {
         	"Production": {
-          		"type": "array",
-          		"items": {
-          			"$ref": "ressourceSchema.json"
-          		}
+          		"$ref": "standards.json#/cost"
         	},
         	"Draw": {
-        		"type": "integer",
-          		"minimum": 1,
-          		"maximum": 32
+        		"$ref": "standards.json#/int"
         	},
         	"TargetEffect": {
           		"$ref": "#/definitions/targetEffect"
