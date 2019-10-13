@@ -2,39 +2,92 @@ package cardobject
 
 import "strconv"
 
-func (mw *manipulationWrapper) ToString() string {
+func (m *actionManipulation) toString(plural bool) string {
 	var plainText string
-	im := mw.IntManipulation
-	sm := mw.StringManipulation
+	im := m.ActionIntManipulation
+	sm := m.ActionStringManipulation
+
 	if(im != nil) {
-		return im.ToString()
+		return im.toString(plural)
 	}
 	if(sm != nil) {
-		return im.ToString()
+		return sm.toString(plural)
 	}
 	return plainText
 }
 
-func (im *intManipulation) ToString() string {
+func (m *entityManipulation) toString(plural bool) string {
 	var plainText string
-	selectorText := im.Selector.ToString()
-	switch im.Operator {
+	im := m.EntityIntManipulation
+	sm := m.EntityStringManipulation
+
+	if(im != nil) {
+		return im.toString(plural)
+	}
+	if(sm != nil) {
+		return sm.toString(plural)
+	}
+	return plainText
+}
+
+func (m *fieldManipulation) toString(plural bool) string {
+	var plainText string
+	im := m.FieldIntManipulation
+	sm := m.FieldStringManipulation
+
+	if(im != nil) {
+		return im.toString(plural)
+	}
+	if(sm != nil) {
+		return sm.toString(plural)
+	}
+	return plainText
+}
+
+func (im *intManipulationBasics) toString(plural bool) string {
+	var plainText string
+
+	switch im.IntOperator {
 	case "SET":
-		plainText += "Set the " + im.Property + " of " + selectorText + " to " + strconv.Itoa(im.Value)
+		plainText += "Set "
+		if (plural) {
+			plainText += "their "
+		} else {
+			plainText += "its "
+		}
+		plainText += im.IntProperty + " to " + strconv.Itoa(im.IntValue) + "."
 	case "ADD":
-		plainText += "Add " + strconv.Itoa(im.Value) + " to the " + im.Property + " of " + selectorText
+		plainText += "Add " + strconv.Itoa(im.IntValue) + " to "
+		if (plural) {
+			plainText += "their "
+		} else {
+			plainText += "its "
+		}
+		plainText +=  im.IntProperty + "."
 	case "SUBTRACT":
-		plainText += "Subtract " + strconv.Itoa(im.Value) + " from the " + im.Property + " of " + selectorText
+		plainText += "Subtract " + strconv.Itoa(im.IntValue) + " from "
+		if (plural) {
+			plainText += "their "
+		} else {
+			plainText += "its "
+		}
+		plainText += im.IntProperty + "."
 	default:
 		
 	}
-	plainText += " " + im.Duration + "."
+
 	return plainText
 }
 
-func (sm *stringManipulation) ToString() string {
+func (sm *stringManipulationBasics) toString(plural bool) string {
 	var plainText string
-	selectorText := sm.Selector.ToString()
-	plainText += "Set the " + sm.Property + " of " + selectorText + " to " + sm.Value + " " + sm.Duration
+
+	plainText += "Set "
+	if (plural) {
+		plainText += "their "
+	} else {
+		plainText += "its "
+	}
+	plainText += sm.StringProperty + " to " + sm.StringValue + "."
 	return plainText
 }

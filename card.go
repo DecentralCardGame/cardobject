@@ -1,9 +1,5 @@
 package cardobject
 
-type card interface {
-	getCardName() string
-}
-
 type cardAttributes struct {
 	Name string
 	Tag string
@@ -18,11 +14,11 @@ type castable struct {
 type action struct {
 	cardAttributes
 	castable
-	Effect effect
+	Effects []effect
 }
 
 type permanent struct {
-	Abilities []abilityWrapper
+	Abilities []ability
 	AbilitySpeed int8
 	Health int8
 }
@@ -41,18 +37,14 @@ type field struct {
 }
 
 type headquarter struct {
+	UniqueName string
 	cardAttributes
 	permanent
-	UniqueName string
 }
 
-type cardWrapper struct {
+type card struct {
 	Action *action `json:",omitempty"`
 	Entity *entity `json:",omitempty"`
 	Field *field `json:",omitempty"`
 	Headquarter *headquarter `json:",omitempty"`
-}
-
-func (ca cardAttributes) getCardName() string {
-	return ca.Name
 }

@@ -1,30 +1,117 @@
 package cardobject
 
 import "strings"
+import "strconv"
 
-func (e *effect) ToString() string {
-	var plainText string
+func (e *effect) toString() string {
+	var sentences []string
 	produce := e.Production
-	manipulate := e.Manipulation
-	move := e.ZoneChange
+	draw := e.Draw
+	targetEffect := e.TargetEffect
+
+	if (targetEffect != nil) {
+		sentences = append(sentences, targetEffect.toString())
+	}
+
 	if(len(produce) > 0) {
-		plainText += "Produce " + strings.Join(produce, ",") + "."
+		sentences = append(sentences, "Produce " + strings.Join(produce, ",") + ".")
 	}
-	if(manipulate != nil) {
-		for i, m := range manipulate {
-			if(i > 0) {
-				plainText += " "
-			}
-    		plainText += m.ToString()
+
+	if(draw != nil) {
+		sentences = append(sentences, "Draw " + strconv.Itoa(*draw) + " cards.")
+	}
+
+	return strings.Join(sentences, " ")
+}
+
+func (te *targetEffect) toString() string {
+	ate := te.ActionTargetEffect
+	ete := te.EntityTargetEffect
+	fte := te.FieldTargetEffect
+	if(ate != nil) {
+		return ate.toString()
+	}
+	if(ete != nil) {
+		return ete.toString()
+	}
+	if(fte != nil) {
+		return fte.toString()
+	}
+	return ""
+}
+
+func (ate *actionTargetEffect) toString() string {
+	var sentences []string
+	plural := false
+	manipulations := ate.ActionManipulations
+	zoneChange := ate.ZoneChange
+	if(ate.ActionSelector.CardMode == "ALL") {
+		plural = true
+	}
+
+	sentences = append(sentences, ate.ActionSelector.toString())
+	
+	if(manipulations != nil) {
+		for _, m := range manipulations {
+    		sentences = append(sentences, m.toString(plural))
 		}
 	}
-	if(move != nil) {
-		for i, m := range move {
-			if(i > 0) {
-				plainText += " "
-			}
-    		plainText += m.ToString()
+
+	if(zoneChange != nil) {
+		sentences = append(sentences, zoneChangeString(zoneChange, plural))
+	}
+	return strings.Join(sentences, " ")
+}
+
+func (ete *entityTargetEffect) toString() string {
+	var sentences []string
+	plural := false
+	manipulations := ete.EntityManipulations
+	zoneChange := ete.ZoneChange
+	if(ete.EntitySelector.CardMode == "ALL") {
+		plural = true
+	}
+
+	sentences = append(sentences, ete.EntitySelector.toString())
+	
+	if(manipulations != nil) {
+		for _, m := range manipulations {
+    		sentences = append(sentences, m.toString(plural))
 		}
 	}
-	return plainText
+
+	if(zoneChange != nil) {
+		sentences = append(sentences, zoneChangeString(zoneChange, plural))
+	}
+	return strings.Join(sentences, " ")
+}
+
+func (fte *fieldTargetEffect) toString() string {
+	var sentences []string
+	plural := false
+	manipulations := fte.FieldManipulations
+	zoneChange := fte.ZoneChange
+	if(fte.FieldSelector.CardMode == "ALL") {
+		plural = true
+	}
+
+	sentences = append(sentences, fte.FieldSelector.toString())
+	
+	if(manipulations != nil) {
+		for _, m := range manipulations {
+    		sentences = append(sentences, m.toString(plural))
+		}
+	}
+
+	if(zoneChange != nil) {
+		sentences = append(sentences, zoneChangeString(zoneChange, plural))
+	}
+	return strings.Join(sentences, " ")
+}
+
+func zoneChangeString(zone *string, plural bool) string {
+	if(plural) {
+		return "Move them to the " + *zone + "."
+	}
+	return "Move it to the " + *zone + "."
 }

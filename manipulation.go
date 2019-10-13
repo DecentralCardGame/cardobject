@@ -1,32 +1,28 @@
 package cardobject
 
-type manipulation interface {
-	GetManipulationAttributes() manipulationAttributes
+type intManipulationBasics struct {
+	IntProperty string
+	IntOperator string
+	IntValue int
 }
 
-type manipulationAttributes struct {
-	Duration string
-	Selector selectorWrapper
+type stringManipulationBasics struct {
+	StringProperty string
+	StringOperator string
+	StringValue string
 }
 
-type intManipulation struct {
-	manipulationAttributes
-	Value int
-	Operator string
-	Property string
+type actionManipulation struct {
+	ActionIntManipulation *intManipulationBasics `json:",omitempty"`
+	ActionStringManipulation *stringManipulationBasics `json:",omitempty"`
 }
 
-type stringManipulation struct {
-	manipulationAttributes
-	Value string
-	Property string
+type entityManipulation struct {
+	EntityIntManipulation *intManipulationBasics `json:",omitempty"`
+	EntityStringManipulation *stringManipulationBasics `json:",omitempty"`
 }
 
-type manipulationWrapper struct {
-	IntManipulation *intManipulation `json:",omitempty"`
-	StringManipulation *stringManipulation `json:",omitempty"`
-}
-
-func (ma manipulationAttributes) GetManipulationAttributes() manipulationAttributes {
-	return ma
+type fieldManipulation struct {
+	FieldIntManipulation *intManipulationBasics `json:",omitempty"`
+	FieldStringManipulation *stringManipulationBasics `json:",omitempty"`
 }

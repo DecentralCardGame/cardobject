@@ -16,12 +16,12 @@ func (cw *conditionWrapper) ToString() string {
 }
 
 func (ic *intCondition) ToString() string {
-	plainText := ic.Property + " " + ic.IntComparator + " " + strconv.Itoa(ic.IntValue)
+	plainText := ic.IntProperty + " " + ic.IntComparator + " " + strconv.Itoa(ic.IntValue)
 	return plainText
 }
 
 func (sc *stringCondition) ToString() string {
-	plainText := sc.Property + " " + sc.StringComparator + " " + sc.StringValue
+	plainText := sc.StringProperty + " " + sc.StringComparator + " " + sc.StringValue
 	return plainText
 }
 

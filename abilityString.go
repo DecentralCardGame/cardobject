@@ -2,43 +2,52 @@ package cardobject
 
 import "strings"
 
-func ToString(aws []abilityWrapper) string {
+func (a *ability) toString() string {
 	var plainText string
-	for i, a := range aws {
-			if(i > 0) {
-				plainText += "\n"
-			}
-    		plainText += a.ToString()
-	}
-	return plainText
-}
-
-func (aw *abilityWrapper) ToString() string {
-	var plainText string
-	aa := aw.ActivatedAbility
-	ta := aw.TriggeredAbility
+	aa := a.ActivatedAbility
+	ta := a.TriggeredAbility
 	if(aa != nil) {
-		return aa.ToString()
+		return aa.toString()
 	}
 	if(ta != nil) {
-		return ta.ToString()
+		return ta.toString()
 	}
 	return plainText
 }
 
-func (aa *activatedAbility) ToString() string {
+func (aa *activatedAbility) toString() string {
 	var plainText string
+	effects := aa.Effects
+
 	if(aa.MultipleUse) {
 		plainText += "|M|"
 	}
+
 	plainText += "Pay " + strings.Join(aa.Cost, ",") + ": "
-	plainText += aa.Effect.ToString()
+
+	var effectsString []string
+	if(effects != nil) {
+		for _, e := range effects {
+    		effectsString = append(effectsString, e.toString())
+		}
+	}
+	plainText += strings.Join(effectsString, " ")
+
 	return plainText
 }
 
-func (ta *triggeredAbility) ToString() string {
+func (ta *triggeredAbility) toString() string {
 	var plainText string
-	plainText += ta.Cause.ToString()
-	plainText += ta.Effect.ToString()
+	effects := ta.Effects
+	plainText += ta.Cause.toString()
+
+	var effectsString []string
+	if(effects != nil) {
+		for _, e := range effects {
+    		effectsString = append(effectsString, e.toString())
+		}
+	}
+	plainText += strings.Join(effectsString, " ")
+
 	return plainText
 }

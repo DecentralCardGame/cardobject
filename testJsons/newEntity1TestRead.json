@@ -1,0 +1,108 @@
+{
+	"Entity": {
+		"Name":"EXPLOSION",
+		"Tag":"fire",
+		"Text":"Its big",
+		"Cost":["ENERGY","ENERGY","MANA","GENERIC","GENERIC","GENERIC"],
+		"CastSpeed":3,
+		"Abilities": [
+			{
+				"ActivatedAbility": {
+					"Cost": ["LUMBER"],
+					"MultipleUse": true,
+					"Effects": [
+						{
+							"Production":[],
+							"Draw": 5,
+							"TargetEffect": {
+								"FieldTargetEffect": {
+									"FieldSelector": {
+										"PlayerMode": "ALL",
+										"CardMode": "ALL",
+										"Zone": "FIELD"
+									},
+									"FieldManipulations": [
+										{
+											"FieldIntManipulation": {
+												"IntProperty": "HEALTH",
+												"IntValue": 10,
+												"IntOperator": "SUBTRACT"
+											}
+										},
+										{
+											"FieldStringManipulation": {
+												"StringProperty": "TAG",
+												"StringValue": "Wasted",
+												"StringOperator": "SET"
+											}
+										}
+									],
+									"ZoneChange": "DUSTPILE"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"TriggeredAbility": {
+					"Cause": {
+						"ZoneChangeEventListener": {
+							"Source": "HAND",
+							"Destination": "DUSTPILE"
+						}
+					},
+					"Effects": [
+						{
+							"Production":[],
+							"Draw": 5,
+							"TargetEffect": {
+								"FieldTargetEffect": {
+									"FieldSelector": {
+										"PlayerMode": "ALL",
+										"PlayerCondition": {
+											"IntCondition": {
+												"IntProperty": "HANDSIZE",
+												"IntComparator": "EQUAL",
+												"IntValue": 5
+											}
+										},
+										"CardCondition": {
+											"IntCondition": {
+												"IntProperty": "HEALTH",
+												"IntComparator": "EQUAL",
+												"IntValue": 10
+											}
+										},
+										"CardMode": "ALL",
+										"Zone": "FIELD"
+									},
+									"FieldManipulations": [
+										{
+											"FieldIntManipulation": {
+												"IntProperty": "HEALTH",
+												"IntValue": 10,
+												"IntOperator": "SUBTRACT"
+											}
+										},
+										{
+											"FieldStringManipulation": {
+												"StringProperty": "TAG",
+												"StringValue": "Wasted",
+												"StringOperator": "SET"
+											}
+										}
+									],
+									"ZoneChange": "DUSTPILE"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"AbilitySpeed": 3,
+		"Health": 4,
+		"Attack": 4
+	}
+}

@@ -1,0 +1,41 @@
+{
+	"Action": {
+		"Name":"EXPLOSION",
+		"Tag":"fire",
+		"Text":"Its big",
+		"Cost":["ENERGY","ENERGY","MANA","GENERIC","GENERIC","GENERIC"],
+		"CastSpeed":3,
+		"Effects": [
+			{
+				"Production":[],
+				"Draw": 5,
+				"TargetEffect": {
+					"FieldTargetEffect": {
+						"FieldSelector": {
+							"PlayerMode": "ALL",
+							"CardMode": "ALL",
+							"Zone": "FIELD"
+						},
+						"FieldManipulations": [
+							{
+								"FieldIntManipulation": {
+									"IntProperty": "HEALTH",
+									"IntValue": 10,
+									"IntOperator": "SUBTRACT"
+								}
+							},
+							{
+								"FieldStringManipulation": {
+									"StringProperty": "TAG",
+									"StringValue": "Wasted",
+									"StringOperator": "SET"
+								}
+							}
+						],
+						"ZoneChange": "DUSTPILE"
+					}
+				}
+			}
+		]
+	}
+}

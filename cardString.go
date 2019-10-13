@@ -1,77 +1,76 @@
 package cardobject
 
-type readableAction struct {
-	cardAttributes
-	castable
-	Effect effect
-	ReadAbleEffect string
+import "strings"
+
+type readable struct {
+	ReadAbleCardText string
 }
 
-type readablePermanent struct {
-	Abilities []abilityWrapper
-	ReadableAbilities string
-	AbilitySpeed int8
-	Health int8
+type readableCard struct {
+	card
+	readable
 }
 
-type readableEntity struct {
-	cardAttributes
-	castable
-	readablePermanent
-	Attack int8
-}
-
-type readableField struct {
-	cardAttributes
-	castable
-	readablePermanent	
-}
-
-type readableHeadquarter struct {
-	cardAttributes
-	readablePermanent
-	UniqueName string
-}
-
-type readableCardWrapper struct {
-	Action *readableAction `json:",omitempty"`
-	Entity *readableEntity `json:",omitempty"`
-	Field *readableField `json:",omitempty"`
-	Headquarter *readableHeadquarter `json:",omitempty"`
-}
-
-func (cw *cardWrapper) toReadable() readableCardWrapper {
-	a := cw.Action
-	e := cw.Entity
-	f := cw.Field
-	h := cw.Headquarter
+func (c *card) toReadable() readableCard {
+	a := c.Action
+	e := c.Entity
+	f := c.Field
+	h := c.Headquarter
 	if(a != nil) {
-		return readableCardWrapper{a.toReadable(), nil, nil, nil}
+		return readableCard{*c, readable{a.toString()}}
 	}
 	if(e != nil) {
-		return readableCardWrapper{nil, e.toReadable(), nil, nil}
+		return readableCard{*c, readable{e.toString()}}
 	}
 	if(f != nil) {
-		return readableCardWrapper{nil, nil, f.toReadable(), nil}
+		return readableCard{*c, readable{f.toString()}}
 	}
 	if(h != nil) {
-		return readableCardWrapper{nil, nil, nil, h.toReadable()}
+		return readableCard{*c, readable{h.toString()}}
 	}
-	return readableCardWrapper{}
+	return readableCard{}
 }
 
-func (a *action) toReadable() *readableAction {
-	return &readableAction{cardAttributes{a.Name, a.Tag, a.Text}, castable{a.Cost, a.CastSpeed}, a.Effect, a.Effect.ToString()}
+func (a *action) toString() string {
+	var effectsString []string
+	effects := a.Effects
+	if(effects != nil) {
+		for _, e := range effects {
+    		effectsString = append(effectsString, e.toString())
+		}
+	}
+	return strings.Join(effectsString, "\n")
 }
 
-func (e *entity) toReadable() *readableEntity {
-	return &readableEntity{cardAttributes{e.Name, e.Tag, e.Text}, castable{e.Cost, e.CastSpeed}, readablePermanent{e.Abilities, ToString(e.Abilities), e.AbilitySpeed, e.Health}, e.Attack}
+func (e *entity) toString() string {
+	var abilitiesString []string
+	abilities := e.Abilities
+	if(abilities != nil) {
+		for _, a := range abilities {
+    		abilitiesString = append(abilitiesString, a.toString())
+		}
+	}
+	return strings.Join(abilitiesString, "\n")
 }
 
-func (f *field) toReadable() *readableField {
-	return &readableField{cardAttributes{f.Name, f.Tag, f.Text}, castable{f.Cost, f.CastSpeed}, readablePermanent{f.Abilities, ToString(f.Abilities), f.AbilitySpeed, f.Health}}
+func (f *field) toString() string {
+	var abilitiesString []string
+	abilities := f.Abilities
+	if(abilities != nil) {
+		for _, a := range abilities {
+    		abilitiesString = append(abilitiesString, a.toString())
+		}
+	}
+	return strings.Join(abilitiesString, "\n")
 }
 
-func (h *headquarter) toReadable() *readableHeadquarter {
-	return &readableHeadquarter{cardAttributes{h.Name, h.Tag, h.Text}, readablePermanent{h.Abilities, ToString(h.Abilities), h.AbilitySpeed, h.Health}, h.UniqueName}
+func (h *headquarter) toString() string {
+	var abilitiesString []string
+	abilities := h.Abilities
+	if(abilities != nil) {
+		for _, a := range abilities {
+    		abilitiesString = append(abilitiesString, a.toString())
+		}
+	}
+	return strings.Join(abilitiesString, "\n")
 }

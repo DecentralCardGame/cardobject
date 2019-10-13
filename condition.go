@@ -1,30 +1,18 @@
 package cardobject
 
-type condition interface {
-	GetConditionAttributes() conditionAttributes
-}
-
-type conditionAttributes struct {
-	Property string
-}
-
 type intCondition struct {
-	conditionAttributes
-	IntValue int
+	IntProperty string
 	IntComparator string
+	IntValue int
 }
 
 type stringCondition struct {
-	conditionAttributes
-	StringValue string
+	StringProperty string
 	StringComparator string
+	StringValue string
 }
 
 type conditionWrapper struct {
 	IntCondition *intCondition `json:",omitempty"`
 	StringCondition *stringCondition `json:",omitempty"`
-}
-
-func (ca conditionAttributes) GetConditionAttributes() conditionAttributes {
-	return ca
 }

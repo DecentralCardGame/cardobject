@@ -1,35 +1,35 @@
 package cardobject
 
-func (elw *eventListenerWrapper) ToString() string {
+func (el *eventListener) toString() string {
 	var plainText string
-	tel := elw.TimeEventListener
-	mel := elw.ManipulationEventListener
-	zel := elw.ZoneChangeEventListener
+	tel := el.TimeEventListener
+	mel := el.ManipulationEventListener
+	zel := el.ZoneChangeEventListener
 	if(tel != nil) {
-		return tel.ToString()
+		return tel.toString()
 	}
 	if(mel != nil) {
-		return mel.ToString()
+		return mel.toString()
 	}
 	if(zel != nil) {
-		return zel.ToString()
+		return zel.toString()
 	}
 	return plainText
 }
 
-func (tel *timeEventListener) ToString() string {
+func (tel *timeEventListener) toString() string {
 	var plainText string
 	plainText += "At " + tel.TimeEvent + ": "
 	return plainText
 }
 
-func (mel *manipulationEventListener) ToString() string {
+func (mel *manipulationEventListener) toString() string {
 	var plainText string
 	plainText += "Whenever the " + mel.Property + " of a card changes: "
 	return plainText
 }
 
-func (zel *zoneChangeEventListener) ToString() string {
+func (zel *zoneChangeEventListener) toString() string {
 	var plainText string
 	plainText += "Whenever a card is moved from the "
 	plainText += zel.Source+ " to the " + zel.Destination + ": "
