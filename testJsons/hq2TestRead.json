@@ -7,45 +7,46 @@
 		"Abilities": [
 			{
 				"ActivatedAbility": {
-					"Effect":{
-						"Production":[],
-						"Manipulation": [
-							{
-								"IntManipulation": {
-									"Value": 1,
-									"Operator": "ADD",
-									"Property": "ATTACK",
-									"Selector": {
-										"EntitySelector": {
-											"PlayerMode": "TARGET",
-											"CardMode": "ALL",
-											"CardCondition": {
-												"StringCondition": {
-													"Property": "TAG",
-													"StringValue": "Knight",
-													"StringComparator":"EQUAL"
-												}
-											},
-											"Zone":"FIELD"
-										}
+					"Effects":[
+						{
+							"TargetEffect": {
+								"EntityTargetEffect": {
+									"EntitySelector": {
+										"PlayerMode": "TARGET",
+										"CardMode": "ALL",
+										"CardCondition": {
+											"StringCondition": {
+												"StringProperty": "TAG",
+												"StringValue": "Knight",
+												"StringComparator":"EQUAL"
+											}
+										},
+										"Zone":"FIELD"
 									},
-									"Duration": "PERMANENT"
+									"EntityManipulations": [
+										{
+											"EntityIntManipulation": {
+												"IntValue": 1,
+												"IntOperator": "ADD",
+												"IntProperty": "ATTACK"
+											}
+										}
+									]
 								}
 							}
-						],
-						"ZoneChange": []
-					},
+						}
+					],
 					"Cost":["METAL","GENERIC"],
 					"MultipleUse":true
 				}
 			},
 			{ 
 				"TriggeredAbility": {
-					"Effect": {
-						"Production":["METAL","METAL","LUMBER"],
-						"Manipulation":[],
-						"ZoneChange":[]
-					},
+					"Effects": [
+						{
+							"Production":["METAL","METAL","LUMBER"]
+						}
+					],
 					"Cause": {
 						"TimeEventListener": {
 							"TimeEvent":"TICKSTART"

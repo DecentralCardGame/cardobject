@@ -1,1 +1,1 @@
-{"Field":{"Name":"Mühle","Tag":"primitiv","Text":"Brot für alle","Cost":["LUMBER","LUMBER","GENERIC"],"CastSpeed":1,"Abilities":[{"TriggeredAbility":{"Effect":{"Production":["FOOD"],"Manipulation":[],"ZoneChange":[]},"Cause":{"TimeEventListener":{"TimeEvent":"TICKSTART"}}}}],"AbilitySpeed":1,"Health":2}}
+{"Field":{"Name":"Mühle","Tag":"primitiv","Text":"Brot für alle","Cost":["LUMBER","LUMBER","GENERIC"],"CastSpeed":1,"Abilities":[{"TriggeredAbility":{"Cause":{"TimeEventListener":{"TimeEvent":"TICKSTART"}},"Effects":[{"Production":["FOOD"]}]}}],"AbilitySpeed":1,"Health":2}}

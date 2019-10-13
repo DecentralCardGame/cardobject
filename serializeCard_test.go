@@ -12,7 +12,7 @@ func TestCardSerializationAction1(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationAction2(t *testing.T) {
@@ -23,7 +23,7 @@ func TestCardSerializationAction2(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationAction3(t *testing.T) {
@@ -34,7 +34,7 @@ func TestCardSerializationAction3(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationField1(t *testing.T) {
@@ -45,7 +45,7 @@ func TestCardSerializationField1(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationField2(t *testing.T) {
@@ -56,7 +56,7 @@ func TestCardSerializationField2(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationField3(t *testing.T) {
@@ -67,7 +67,7 @@ func TestCardSerializationField3(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationHq1(t *testing.T) {
@@ -78,7 +78,7 @@ func TestCardSerializationHq1(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationHq2(t *testing.T) {
@@ -89,7 +89,7 @@ func TestCardSerializationHq2(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationHq3(t *testing.T) {
@@ -100,7 +100,7 @@ func TestCardSerializationHq3(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationEntity1(t *testing.T) {
@@ -111,7 +111,7 @@ func TestCardSerializationEntity1(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationEntity2(t *testing.T) {
@@ -122,7 +122,7 @@ func TestCardSerializationEntity2(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationEntity3(t *testing.T) {
@@ -133,6 +133,6 @@ func TestCardSerializationEntity3(t *testing.T) {
 		t.Error(err)
 	}
 	if(strings.Compare(input, output) != 0){
-		t.Errorf("In- and output are not equal")
+		t.Errorf("In- and output are not equal: " + output)
 	}
 }

@@ -5,21 +5,19 @@
 		"Text":"Retreat!",
 		"Cost":["GENERIC","MANA"],
 		"CastSpeed":2,
-		"Effect":{
-			"Production":[],
-			"Manipulation": [],
-			"ZoneChange": [
-				{
-					"Selector": {
+		"Effects":[
+			{
+				"TargetEffect": {
+					"EntityTargetEffect": {
 						"EntitySelector": {
 							"PlayerMode":"TARGET",
 							"CardMode":"TARGET",
 							"Zone":"DECK"
-						}
-					},
-					"Destination":"HAND"
+						},
+						"ZoneChange": "HAND"
+					}
 				}
-			]
-		}
+			}
+		]
 	}
 }

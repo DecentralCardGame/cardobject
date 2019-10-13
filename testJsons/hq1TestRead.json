@@ -7,17 +7,15 @@
 		"Abilities": [
 			{
 				"ActivatedAbility": {
-					"Effect":{
-						"Production":[],
-						"Manipulation": [],
-						"ZoneChange": [
-							{
-								"Selector": {
+					"Effects":[
+						{
+							"TargetEffect": {
+								"ActionTargetEffect": {
 									"ActionSelector": {
 										"PlayerMode":"TARGET",
 										"PlayerCondition": {
 											"IntCondition": {
-												"Property":"HANDSIZE",
+												"IntProperty":"HANDSIZE",
 												"IntValue":3,
 												"IntComparator":"LESSER"
 											}
@@ -26,28 +24,28 @@
 										"Zone":"DECK",
 										"CardCondition": {
 											"IntCondition": {
-												"Property":"COSTSUM",
+												"IntProperty":"COSTSUM",
 												"IntValue":2,
 												"IntComparator":"LESSER"
 											}
 										}
-									}
-								},
-								"Destination":"HAND"
+									},
+									"ZoneChange": "HAND"
+								}
 							}
-						]
-					},
+						}
+					],
 					"Cost":["MANA","GENERIC"],
 					"MultipleUse":true
 				}
 			},
 			{ 
 				"TriggeredAbility": {
-					"Effect": {
-						"Production":["MANA","MANA"],
-						"Manipulation":[],
-						"ZoneChange":[]
-					},
+					"Effects": [
+						{
+							"Production":["MANA","MANA"]
+						}
+					],
 					"Cause": {
 						"TimeEventListener": {
 							"TimeEvent":"TICKSTART"

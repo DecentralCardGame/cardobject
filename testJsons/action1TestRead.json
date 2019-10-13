@@ -5,26 +5,27 @@
 		"Text":"Its big",
 		"Cost":["ENERGY","ENERGY","MANA","GENERIC","GENERIC","GENERIC"],
 		"CastSpeed":3,
-		"Effect":{
-			"Production":[],
-			"Manipulation": [
-				{
-					"IntManipulation": {
-						"Duration":"PERMANENT",
-						"Selector": {	
-							"EntitySelector": {
-								"PlayerMode":"ALL",
-								"CardMode":"ALL",
-								"Zone":"FIELD"
-							}
+		"Effects":[
+			{
+				"TargetEffect": {
+					"EntityTargetEffect": {
+						"EntitySelector": {
+							"PlayerMode":"ALL",
+							"CardMode":"ALL",
+							"Zone":"FIELD"
 						},
-						"Value":10,
-						"Operator":"SUBTRACT",
-						"Property":"HEALTH"
+						"EntityManipulations": [
+							{
+								"EntityIntManipulation": {
+									"IntValue":10,
+									"IntOperator":"SUBTRACT",
+									"IntProperty":"HEALTH"
+								}
+							}
+						]
 					}
 				}
-			],
-			"ZoneChange": []
-		}
+			}
+		]
 	}
 }

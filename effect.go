@@ -1,7 +1,7 @@
 package cardobject
 
 type effect struct {
-	Production []string
+	Production []string `json:",omitempty"`
 	Draw *int `json:",omitempty"`
 	TargetEffect *targetEffect `json:",omitempty"`
 }

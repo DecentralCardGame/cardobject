@@ -8,22 +8,20 @@
 		"Abilities": [
 			{ 
 				"TriggeredAbility": {
-					"Effect": {
-						"Production":[],
-						"Manipulation":[],
-						"ZoneChange":[
-							{
-								"Selector": {
+					"Effects": [
+						{
+							"TargetEffect": {
+								"EntityTargetEffect": {
 									"EntitySelector": {
 										"PlayerMode": "TARGET",
 										"CardMode": "TARGET",
-										"Zone":"DUSTPILE"
-									}
-								},
-								"Destination": "EXILE"
+										"Zone":"DUSTPILE"	
+									},
+									"ZoneChange": "EXILE"
+								}
 							}
-						]
-					},
+						}
+					],
 					"Cause": {
 						"TimeEventListener": {
 							"TimeEvent":"TICKSTART"

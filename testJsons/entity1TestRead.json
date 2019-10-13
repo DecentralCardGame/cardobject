@@ -8,41 +8,42 @@
 		"Abilities": [
 			{
 				"ActivatedAbility": {
-					"Effect":{
-						"Production":[],
-						"Manipulation": [
-							{
-								"IntManipulation": {
-									"Duration":"PERMANENT",
-									"Selector": {	
-										"EntitySelector": {
-											"PlayerMode":"TARGET",
-											"PlayerCondition": {
-												"IntCondition": {
-													"Property":"HANDSIZE",
-													"IntValue":1,
-													"IntComparator":"GREATER"
-												}
-											},
-											"CardMode":"TARGET",
-											"Zone":"FIELD",
-											"CardCondition": {
-												"IntCondition": {
-													"Property":"HEALTH",
-													"IntValue":1,
-													"IntComparator":"GREATER"
-												}
+					"Effects": [
+						{
+							"TargetEffect": {
+								"EntityTargetEffect": {
+									"EntitySelector": {
+										"PlayerMode":"TARGET",
+										"PlayerCondition": {
+											"IntCondition": {
+												"IntProperty":"HANDSIZE",
+												"IntValue":1,
+												"IntComparator":"GREATER"
+											}
+										},
+										"CardMode":"TARGET",
+										"Zone":"FIELD",
+										"CardCondition": {
+											"IntCondition": {
+												"IntProperty":"HEALTH",
+												"IntValue":1,
+												"IntComparator":"GREATER"
 											}
 										}
 									},
-									"Value":1,
-									"Operator":"SUBTRACT",
-									"Property":"HEALTH"
+									"EntityManipulations": [
+										{
+											"EntityIntManipulation": {									
+												"IntValue":1,
+												"IntOperator":"SUBTRACT",
+												"IntProperty":"HEALTH"
+											}
+										}
+									]
 								}
 							}
-						],
-						"ZoneChange": []
-					},
+						}
+					],
 					"Cost":["LUMBER"],
 					"MultipleUse":true
 				}

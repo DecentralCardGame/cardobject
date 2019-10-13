@@ -7,11 +7,11 @@
 		"Abilities": [
 			{ 
 				"TriggeredAbility": {
-					"Effect": {
-						"Production":["FOOD","METAL","LUMBER"],
-						"Manipulation":[],
-						"ZoneChange":[]
-					},
+					"Effects": [
+						{
+							"Production":["FOOD","METAL","LUMBER"]
+						}
+					],
 					"Cause": {
 						"TimeEventListener": {
 							"TimeEvent":"TICKSTART"

@@ -2,17 +2,17 @@
 	"Field": {
 		"Name":"Ambulance",
 		"Tag":"militant",
-		"Text":"",
+		"Text":"UIUIUIUIUI",
 		"Cost":["FOOD","LUMBER","GENERIC","GENERIC","GENERIC"],
 		"CastSpeed":5,
 		"Abilities": [
 			{ 
 				"TriggeredAbility": {
-					"Effect": {
-						"Production":["FOOD"],
-						"Manipulation":[],
-						"ZoneChange":[]
-					},
+					"Effects": [
+						{
+							"Production":["FOOD"]
+						}
+					],
 					"Cause": {
 						"ManipulationEventListener": {
 							"Property":"HEALTH"

@@ -102,12 +102,6 @@
         "Text": {
           "$ref": "propertySchema.json#/text"
         },
-        "Cost": {
-          "$ref": "standards.json#/cost"
-        },
-        "CastSpeed": {
-          "$ref": "propertySchema.json#/speedModifier"
-        },
         "Abilities": {
           "$ref": "standards.json#/abilities"
         },
@@ -121,7 +115,7 @@
           "$ref": "propertySchema.json#/uniqueName"
         }
       },
-      "required": ["Name","Tag","Text","Cost","CastSpeed","Abilities","AbilitySpeed","Health","UniqueName"],
+      "required": ["Name","Tag","Text","Abilities","AbilitySpeed","Health","UniqueName"],
       "additionalProperties": false
     }
   },

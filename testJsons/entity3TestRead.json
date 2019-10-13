@@ -8,20 +8,27 @@
 		"Abilities": [
 			{
 				"TriggeredAbility": {
-					"Effect":{
-						"Production":[],
-						"Manipulation": [],
-						"ZoneChange": [
-							{
-								"Selector": {
-									"SelfSelector": {
-										"Target": "THIS"
-									}
-								},
-								"Destination":"HAND"
+					"Effects": [
+						{
+							"TargetEffect": {
+								"EntityTargetEffect": {
+									"EntitySelector": {
+										"PlayerMode": "TARGET",
+										"CardMode": "TARGET",
+										"CardCondition": {
+											"StringCondition": {
+												"StringProperty": "NAME",
+												"StringComparator": "EQUAL",
+												"StringValue": "Coward"
+											}
+										},
+										"Zone": "FIELD"
+									},
+									"ZoneChange": "HAND"
+								}
 							}
-						]
-					},
+						}
+					],
 					"Cause": {
 						"ZoneChangeEventListener": {
 							"Source":"FIELD",
