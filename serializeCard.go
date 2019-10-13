@@ -9,7 +9,7 @@ import "errors"
 func FunctionalCardJson(cardJson string) (string, error) {
     valid, err := validateCard(cardJson)
 	if(valid) {
-        var card cardWrapper
+        var card card
         err := json.Unmarshal([]byte(cardJson), &card)
         if err != nil {
             return "Can't deserialize", err
@@ -27,7 +27,7 @@ func FunctionalCardJson(cardJson string) (string, error) {
 func ReadableCardJson(cardJson string) (string, error) {
     valid, err := validateCard(cardJson)
     if(valid) {
-        var card cardWrapper
+        var card card
         err := json.Unmarshal([]byte(cardJson), &card)
         if err != nil {
             return "Can't deserialize", err
