@@ -2,7 +2,7 @@ package cardobject
 
 import "strconv"
 
-func (cw *conditionWrapper) ToString() string {
+func (cw *condition) ToString() string {
 	var plainText string
 	ic := cw.IntCondition
 	sc := cw.StringCondition

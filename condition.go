@@ -12,7 +12,7 @@ type stringCondition struct {
 	StringValue string
 }
 
-type conditionWrapper struct {
+type condition struct {
 	IntCondition *intCondition `json:",omitempty"`
 	StringCondition *stringCondition `json:",omitempty"`
 }

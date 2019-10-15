@@ -2,9 +2,9 @@ package cardobject
 
 type selectorAttributes struct {
 	PlayerMode string
-	PlayerCondition *conditionWrapper `json:",omitempty"`
+	PlayerCondition *condition `json:",omitempty"`
 	CardMode string
-	CardCondition *conditionWrapper `json:",omitempty"`
+	CardCondition *condition `json:",omitempty"`
 	Zone string
 }
 
