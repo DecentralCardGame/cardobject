@@ -3,6 +3,7 @@ package cardobject
 type effect struct {
 	Production []string `json:",omitempty"`
 	Draw *int `json:",omitempty"`
+	TokenEffect *tokenEffect `json:",omitempty"`
 	TargetEffect *targetEffect `json:",omitempty"`
 }
 
@@ -28,4 +29,9 @@ type fieldTargetEffect struct {
 	FieldSelector fieldSelector
 	FieldManipulations []fieldManipulation `json:",omitempty"`
 	ZoneChange *string `json:",omitempty"`
+}
+
+type tokenEffect struct {
+	Amount *int8 `json:",omitempty"`
+	Token token
 }

@@ -1,0 +1,21 @@
+{
+	"properties": {
+		"Name": {
+			"$ref": "propertySchema.json#/name"
+		},
+		"Tag": {
+			"$ref": "propertySchema.json#/tag"
+    	},
+    	"Attack": {
+    		"$ref": "propertySchema.json#/attack"
+    	},
+    	"AbilitySpeed": {
+        	"$ref": "propertySchema.json#/speedModifier"
+    	},
+    	"Health": {
+       		"$ref": "propertySchema.json#/health"
+    	}
+	},
+    "required": ["Attack","AbilitySpeed","Health"],
+    "additionalProperties": false
+}

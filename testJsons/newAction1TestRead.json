@@ -7,8 +7,24 @@
 		"CastSpeed":3,
 		"Effects": [
 			{
-				"Production":[],
-				"Draw": 5,
+				"Production":["ENERGY"]
+			},
+			{
+				"Draw": 5
+			},
+			{
+				"TokenEffect": {
+					"Amount": 3,
+					"Token": {
+						"Name": "Wusel",
+						"Tag": "Squirrel",
+						"Attack": 1,
+						"Health": 2,
+						"AbilitySpeed": 1
+					}					
+				}
+			},
+			{
 				"TargetEffect": {
 					"FieldTargetEffect": {
 						"FieldSelector": {

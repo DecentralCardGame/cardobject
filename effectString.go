@@ -7,10 +7,15 @@ func (e *effect) toString() string {
 	var sentences []string
 	produce := e.Production
 	draw := e.Draw
+	tokenEffect := e.TokenEffect
 	targetEffect := e.TargetEffect
 
 	if (targetEffect != nil) {
 		sentences = append(sentences, targetEffect.toString())
+	}
+
+	if (tokenEffect != nil) {
+		sentences = append(sentences, tokenEffect.toString())
 	}
 
 	if(len(produce) > 0) {
@@ -114,4 +119,18 @@ func zoneChangeString(zone *string, plural bool) string {
 		return "Move them to the " + *zone + "."
 	}
 	return "Move it to the " + *zone + "."
+}
+
+func (toe *tokenEffect) toString() string {
+	var plainText string
+	plainText += "Create "
+	if (toe.Amount != nil) {
+		plainText += strconv.Itoa(int(*toe.Amount))
+	} else {
+		plainText += "a"
+	}
+	plainText += " "
+	plainText += toe.Token.toString()
+	plainText += "."
+	return plainText
 }

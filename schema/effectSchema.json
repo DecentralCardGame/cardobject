@@ -1,5 +1,15 @@
 {
 	"definitions": {
+		"tokenEffect": {
+			"properties": {
+				"Amount": {
+					"$ref": "standards.json#/int"
+				},
+				"Token": {
+					"$ref": "tokenSchema.json"
+				}
+			}
+		},
 		"targetEffect": {
 			"oneOf": [
 				{
@@ -96,18 +106,43 @@
     	}
 	},
 	"effect": {
-      	"type": "object",
-     	"properties": {
-        	"Production": {
-          		"$ref": "standards.json#/cost"
-        	},
-        	"Draw": {
-        		"$ref": "standards.json#/int"
-        	},
-        	"TargetEffect": {
-          		"$ref": "#/definitions/targetEffect"
-        	}
-      	},
-      	"additionalProperties": false
+		"oneOf": [
+			{
+				"properties": {
+					"Production": {
+          				"$ref": "standards.json#/cost"
+        			}
+				},
+				"required": ["Production"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"Draw": {
+						"$ref": "standards.json#/int"
+					}
+				},
+				"required": ["Draw"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"TokenEffect": {
+						"$ref": "#/definitions/tokenEffect" 
+					}
+				},
+				"required": ["TokenEffect"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"TargetEffect": {
+						"$ref": "#/definitions/targetEffect"
+					}
+				},
+				"required": ["TargetEffect"],
+				"additionalProperties": false
+			}
+		]
     }
 }

@@ -13,6 +13,7 @@
        	"items": {
            	"$ref": "#/ressource"
         },
+        "minItems": 1,
         "maxItems": 15
 	},
 	"effects": {
@@ -21,7 +22,7 @@
     	    "$ref": "effectSchema.json#/effect"
         },
         "minItems": 1,
-        "maxItems": 3,
+        "maxItems": 4,
         "additionalItems": false
     },
 	"int": {
