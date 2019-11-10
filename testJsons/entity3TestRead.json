@@ -32,7 +32,16 @@
 					"Cause": {
 						"ZoneChangeEventListener": {
 							"Source":"FIELD",
-							"Destination":"DUSTPILE"
+							"Destination":"DUSTPILE",
+							"CardCondition": {
+								"EntityCondition": {
+									"IntCondition": {
+										"IntProperty": "HEALTH",
+										"IntComparator": "LESSER",
+										"IntValue": 2
+									}
+								}
+							}
 						}
 					}
 				}

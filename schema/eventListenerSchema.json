@@ -28,6 +28,9 @@
 				},
 				"Destination": {
 					"$ref": "zoneSchema.json#/zoneId"
+				},
+				"CardCondition": {
+					"$ref": "conditionSchema.json#/cardCondition"
 				}
 			},
 			"required": ["Source","Destination"],

@@ -5,6 +5,16 @@ import "io/ioutil"
 import "fmt"
 
 func TestPlainText1(t *testing.T) {
+	file, _ := ioutil.ReadFile("testJsons/newEntity1TestRead.json")
+	input := string(file)
+	output, err := ReadableCardJson(input)
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(output)
+}
+/*
+func TestPlainText1(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/action1Test.json")
 	input := string(file)
 	output, err := ReadableCardJson(input)
@@ -112,4 +122,4 @@ func TestPlainText12(t *testing.T) {
 		t.Error(err)
 	}
 	fmt.Println(output)
-}
+}*/

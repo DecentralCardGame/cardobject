@@ -12,7 +12,29 @@ type stringCondition struct {
 	StringValue string
 }
 
-type condition struct {
+type conditionAttributes struct {
 	IntCondition *intCondition `json:",omitempty"`
 	StringCondition *stringCondition `json:",omitempty"`
+}
+
+type actionCondition struct {
+	conditionAttributes
+}
+
+type entityCondition struct {
+	conditionAttributes
+}
+
+type fieldCondition struct {
+	conditionAttributes
+}
+
+type playerCondition struct {
+	conditionAttributes
+}
+
+type cardCondition struct {
+	ActionCondition *actionCondition `json:",omitempty"`
+	EntityCondition *entityCondition `json:",omitempty"`
+	FieldCondition *fieldCondition `json:",omitempty"`
 }

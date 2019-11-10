@@ -216,5 +216,36 @@
 				"additionalProperties": false
 			}
 		]
+	},
+	"cardCondition": {
+		"oneOf": [
+			{
+				"properties": {
+					"ActionCondition": {
+						"$ref": "#/actionCondition"						
+					}
+				},
+				"required": ["ActionCondition"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"EntityCondition": {
+						"$ref": "#/entityCondition"						
+					}
+				},
+				"required": ["EntityCondition"],
+				"additionalProperties": false
+			},
+			{
+				"properties": {
+					"FieldCondition": {
+						"$ref": "#/fieldCondition"						
+					}
+				},
+				"required": ["FieldCondition"],
+				"additionalProperties": false
+			}
+		]
 	}
 }

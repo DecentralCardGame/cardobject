@@ -12,8 +12,9 @@
 					"MultipleUse": true,
 					"Effects": [
 						{
-							"Production":[],
-							"Draw": 5,
+							"Draw": 5
+						},
+						{
 							"TargetEffect": {
 								"FieldTargetEffect": {
 									"FieldSelector": {
@@ -49,13 +50,23 @@
 					"Cause": {
 						"ZoneChangeEventListener": {
 							"Source": "HAND",
-							"Destination": "DUSTPILE"
+							"Destination": "DUSTPILE",
+							"CardCondition": {
+								"ActionCondition": {
+									"IntCondition": {
+										"IntProperty": "COSTSUM",
+										"IntComparator": "EQUAL",
+										"IntValue": 10
+									}
+								}
+							}
 						}
 					},
 					"Effects": [
 						{
-							"Production":[],
-							"Draw": 5,
+							"Draw": 5
+						},
+						{
 							"TargetEffect": {
 								"FieldTargetEffect": {
 									"FieldSelector": {
