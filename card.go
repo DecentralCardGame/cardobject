@@ -33,7 +33,7 @@ type entity struct {
 type field struct {
 	cardAttributes
 	castable
-	permanent	
+	permanent
 }
 
 type headquarter struct {
