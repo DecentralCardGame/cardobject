@@ -113,7 +113,9 @@
 					}
 				},
 				"required": ["ActionIntManipulation"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§ActionIntManipulation",
+				"title": "Numeric action manipulation"
 			},
 			{
 				"properties": {
@@ -122,7 +124,9 @@
 					}
 				},
 				"required": ["ActionStringManipulation"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§ActionStringManipulation",
+				"title": "text action manipulation"
 			}
 		]
 	},
@@ -136,7 +140,9 @@
 					}
 				},
 				"required": ["EntityIntManipulation"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§EntityIntManipulation",
+				"title": "Numeric entity manipulation"
 			},
 			{
 				"properties": {
@@ -145,7 +151,9 @@
 					}
 				},
 				"required": ["EntityStringManipulation"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§EntityStringManipulation",
+				"title": "text entity manipulation"
 			}
 		]
 	},
@@ -159,7 +167,9 @@
 					}
 				},
 				"required": ["FieldIntManipulation"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§FieldIntManipulation",
+				"title": "Numeric field manipulation"
 			},
 			{
 				"properties": {
@@ -168,7 +178,9 @@
 					}
 				},
 				"required": ["FieldStringManipulation"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§FieldStringManipulation",
+				"title": "text field manipulation"
 			}
 		]
 	}

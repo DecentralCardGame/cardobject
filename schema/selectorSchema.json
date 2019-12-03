@@ -96,7 +96,9 @@
 					}
 				},
 				"required":["ActionSelector"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§ActionSelector",
+				"title": "action selector"
 			},
 			{
 				"properties": {
@@ -105,7 +107,9 @@
 					}
 				},
 				"required":["EntitySelector"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§EntitySelector",
+				"title": "entity selector"
 			},
 			{
 				"properties": {
@@ -114,7 +118,9 @@
 					}
 				},
 				"required":["FieldSelector"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§FieldSelector",
+				"title": "field selector"
 			},
 			{
 				"properties": {
@@ -123,7 +129,9 @@
 					}
 				},
 				"required":["SelfSelector"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§SelfSelector",
+				"title": "self selector"
 			}
 		]
 	}

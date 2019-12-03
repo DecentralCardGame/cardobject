@@ -22,7 +22,9 @@
 						}
 					},
 					"required": ["ActionTargetEffect"],
-					"additionalProperties": false
+					"additionalProperties": false,
+					"description": "§ActionTargetEffect",
+					"title": "target action"
 				},
 				{
 					"properties": {
@@ -31,7 +33,9 @@
 						}
 					},
 					"required": ["EntityTargetEffect"],
-					"additionalProperties": false
+					"additionalProperties": false,
+					"description": "§EntityTargetEffect",
+					"title": "target entity"
 				},
 				{
 					"properties": {
@@ -40,7 +44,9 @@
 						}
 					},
 					"required": ["FieldTargetEffect"],
-					"additionalProperties": false
+					"additionalProperties": false,
+					"description": "§FieldTargetEffect",
+					"title": "target field"
 				}
 			]
 		},
@@ -121,7 +127,8 @@
 				},
 				"required": ["Production"],
 				"additionalProperties": false,
-				"description": "Produce §Cost."
+				"description": "Produce §Cost.",
+				"title": "Production"
 			},
 			{
 				"properties": {
@@ -131,7 +138,8 @@
 				},
 				"required": ["Draw"],
 				"additionalProperties": false,
-				"description": "Draw §Draw"
+				"description": "Draw §Draw",
+				"title": "Draw"
 			},
 			{
 				"properties": {
@@ -140,7 +148,9 @@
 					}
 				},
 				"required": ["TokenEffect"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§TokenEffect",
+				"title": "Token"
 			},
 			{
 				"properties": {
@@ -149,7 +159,9 @@
 					}
 				},
 				"required": ["TargetEffect"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "§TargetEffect",
+				"title": "targeting effect"
 			}
 		]
     }

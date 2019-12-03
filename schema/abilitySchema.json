@@ -41,7 +41,9 @@
 				}
 			},
 			"required":["ActivatedAbility"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§ActivatedAbility",
+			"title": "Activated Ability"
 		},
 		{
 			"properties": {
@@ -50,7 +52,9 @@
 				}
 			},
 			"required":["TriggeredAbility"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§TriggeredAbility",
+			"title": "Triggered Ability"
 		}
 	]
 }

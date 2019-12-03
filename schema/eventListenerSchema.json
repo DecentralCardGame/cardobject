@@ -49,7 +49,9 @@
 				}
 			},
 			"required":["TimeEventListener"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§TimeEventListener",
+			"title": "Time event"
 		},
 		{
 			"properties": {
@@ -58,7 +60,9 @@
 				}
 			},
 			"required":["ManipulationEventListener"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§ManipulationEventListener",
+			"title": "manipulation event"
 		},
 		{
 			"properties": {
@@ -67,7 +71,9 @@
 				}
 			},
 			"required":["ZoneChangeEventListener"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§ZoneChangeEventListener",
+			"title": "zone change event"
 		}
 	]
 }
