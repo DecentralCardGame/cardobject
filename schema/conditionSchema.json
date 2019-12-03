@@ -9,12 +9,13 @@
 				"IntValue": {
 					"$ref": "standards.json#/int"
 				},
-				"IntComparator": { 
+				"IntComparator": {
 					"$ref": "comparatorSchema.json#/intComparator"
 				}
 			},
 			"required": ["IntProperty","IntValue","IntComparator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "with §IntProperty §IntComparator §IntValue"
 		},
 		"actionStringCondition": {
 			"type": "object",
@@ -30,7 +31,8 @@
 				}
 			},
 			"required": ["StringProperty","StringValue","StringComparator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "with §StringProperty §StringComparator §StringValue"
 		},
 		"entityIntCondition": {
 			"type": "object",
@@ -46,7 +48,8 @@
 				}
 			},
 			"required": ["IntProperty","IntValue","IntComparator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "with §IntProperty §IntComparator §IntValue"
 		},
 		"entityStringCondition": {
 			"type": "object",
@@ -62,7 +65,8 @@
 				}
 			},
 			"required": ["StringProperty","StringValue","StringComparator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "with §StringProperty §StringComparator §StringValue"
 		},
 		"fieldIntCondition": {
 			"type": "object",
@@ -78,7 +82,8 @@
 				}
 			},
 			"required": ["IntProperty","IntValue","IntComparator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "with §IntProperty §IntComparator §IntValue"
 		},
 		"fieldStringCondition": {
 			"type": "object",
@@ -94,7 +99,8 @@
 				}
 			},
 			"required": ["StringProperty","StringValue","StringComparator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "with §StringProperty §StringComparator §StringValue"
 		},
 		"playerIntCondition": {
 			"type": "object",
@@ -110,7 +116,8 @@
 				}
 			},
 			"required": ["IntProperty","IntValue","IntComparator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "with §IntProperty §IntComparator §IntValue"
 		},
 		"playerStringCondition": {
 			"type": "object",
@@ -126,7 +133,8 @@
 				}
 			},
 			"required": ["StringProperty","StringValue","StringComparator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "with §StringProperty §StringComparator §StringValue"
 		}
 	},
 	"actionCondition": {
@@ -222,7 +230,7 @@
 			{
 				"properties": {
 					"ActionCondition": {
-						"$ref": "#/actionCondition"						
+						"$ref": "#/actionCondition"
 					}
 				},
 				"required": ["ActionCondition"],
@@ -231,7 +239,7 @@
 			{
 				"properties": {
 					"EntityCondition": {
-						"$ref": "#/entityCondition"						
+						"$ref": "#/entityCondition"
 					}
 				},
 				"required": ["EntityCondition"],
@@ -240,7 +248,7 @@
 			{
 				"properties": {
 					"FieldCondition": {
-						"$ref": "#/fieldCondition"						
+						"$ref": "#/fieldCondition"
 					}
 				},
 				"required": ["FieldCondition"],

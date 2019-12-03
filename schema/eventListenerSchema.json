@@ -8,7 +8,8 @@
 				}
 			},
 			"required": ["TimeEvent"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "At §TimeEvent"
 		},
 		"manipulationEventListener": {
 			"type": "object",
@@ -18,7 +19,8 @@
 				}
 			},
 			"required": ["Property"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "Whenever §Property of a card changes"
 		},
 		"zoneChangeEventListener": {
 			"type": "object",
@@ -34,7 +36,8 @@
 				}
 			},
 			"required": ["Source","Destination"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "Whenever a card §CardCondition is moved from the §Source to the §Destination"
 		}
 	},
 	"type": "object",

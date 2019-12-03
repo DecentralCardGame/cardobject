@@ -2,7 +2,7 @@
 	"definitions": {
 		"selectorMode": {
 			"type": "string",
-			"enum": ["ALL","TARGET","OPPONENTSCHOICE"] 
+			"enum": ["ALL","TARGET","OPPONENTSCHOICE"]
 		},
 		"actionSelector": {
 			"type": "object",
@@ -24,7 +24,8 @@
 				}
 			},
 			"required": ["PlayerMode","CardMode","Zone"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "Choose §CardMode action §CardCondition in the §Zone of §PlayerMode player §PlayerCondition."
 		},
 		"entitySelector": {
 			"type": "object",
@@ -46,7 +47,8 @@
 				}
 			},
 			"required": ["PlayerMode","CardMode","Zone"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "Choose §CardMode entity §CardCondition in the §Zone of §PlayerMode player §PlayerCondition."
 		},
 		"fieldSelector": {
 			"type": "object",
@@ -68,7 +70,8 @@
 				}
 			},
 			"required": ["PlayerMode","CardMode","Zone"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "Choose §CardMode field §CardCondition in the §Zone of §PlayerMode player §PlayerCondition."
 		},
 		"selfSelector": {
 			"type": "object",
@@ -78,7 +81,9 @@
 					"const": "THIS"
 				}
 			},
-			"required": ["Target"]
+			"required": ["Target"],
+			"additionalProperties": false,
+			"description": "Choose this card."
 		}
 	},
 	"selector": {

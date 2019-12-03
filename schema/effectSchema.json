@@ -1,6 +1,7 @@
 {
 	"definitions": {
 		"tokenEffect": {
+			"type": "object",
 			"properties": {
 				"Amount": {
 					"$ref": "standards.json#/int"
@@ -8,7 +9,9 @@
 				"Token": {
 					"$ref": "tokenSchema.json"
 				}
-			}
+			},
+			"required": ["Amount", "Token"],
+			"description": "Create §Amount §Token"
 		},
 		"targetEffect": {
 			"oneOf": [
@@ -60,7 +63,8 @@
 				}
 			},
 			"required": ["ActionSelector"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§ActionSelector. §ActionManipulations. §ZoneChange."
 		},
 		"entityTargetEffect": {
 			"type": "object",
@@ -81,7 +85,8 @@
 				}
 			},
 			"required": ["EntitySelector"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§EntitySelector. §EntityManipulations. §ZoneChange."
 		},
 		"fieldTargetEffect": {
 			"type": "object",
@@ -102,7 +107,8 @@
 				}
       		},
      		"required": ["FieldSelector"],
-      		"additionalProperties": false
+      		"additionalProperties": false,
+					"description": "§FieldSelector. §FieldManipulations. §ZoneChange."
     	}
 	},
 	"effect": {
@@ -114,7 +120,8 @@
         			}
 				},
 				"required": ["Production"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "Produce §Cost."
 			},
 			{
 				"properties": {
@@ -123,12 +130,13 @@
 					}
 				},
 				"required": ["Draw"],
-				"additionalProperties": false
+				"additionalProperties": false,
+				"description": "Draw §Draw"
 			},
 			{
 				"properties": {
 					"TokenEffect": {
-						"$ref": "#/definitions/tokenEffect" 
+						"$ref": "#/definitions/tokenEffect"
 					}
 				},
 				"required": ["TokenEffect"],

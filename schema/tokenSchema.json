@@ -17,5 +17,6 @@
     	}
 	},
     "required": ["Attack","AbilitySpeed","Health"],
-    "additionalProperties": false
+    "additionalProperties": false,
+		"description": "§Attack/§Health Token with §AbilitySpeed §Tag §Name"
 }

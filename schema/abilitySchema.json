@@ -7,14 +7,15 @@
           			"$ref": "standards.json#/cost"
         		},
         		"MultipleUse": {
-        			"type": "boolean" 
+        			"type": "boolean"
         		},
         		"Effects": {
           			"$ref": "standards.json#/effects"
         		}
 			},
 			"required": ["Cost","MultipleUse","Effects"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "Pay §Cost to activate: §Effect. Can be activated §MultipleUse"
 		},
 		"triggeredAbility": {
 			"type": "object",
@@ -27,12 +28,13 @@
         		}
 			},
 			"required": ["Cause","Effects"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "Whenever §Cause: §Effect."
 		}
 	},
 	"type": "object",
 	"oneOf": [
-		{	
+		{
 			"properties": {
 				"ActivatedAbility": {
 					"$ref": "#/definitions/activatedAbility"
@@ -41,7 +43,7 @@
 			"required":["ActivatedAbility"],
 			"additionalProperties": false
 		},
-		{	
+		{
 			"properties": {
 				"TriggeredAbility": {
 					"$ref": "#/definitions/triggeredAbility"

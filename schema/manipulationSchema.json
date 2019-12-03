@@ -14,7 +14,8 @@
 				}
 			},
 			"required": ["IntProperty","IntValue","IntOperator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§IntOperator §IntProperty §IntValue"
 		},
 		"actionStringManipulation": {
 			"type": "object",
@@ -30,7 +31,8 @@
 				}
 			},
 			"required": ["StringProperty","StringValue","StringOperator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§StringOperator §StringProperty §StringValue"
 		},
 		"entityIntManipulation": {
 			"type": "object",
@@ -46,7 +48,8 @@
 				}
 			},
 			"required": ["IntProperty","IntValue","IntOperator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§IntOperator §IntProperty §IntValue"
 		},
 		"entityStringManipulation": {
 			"type": "object",
@@ -62,7 +65,8 @@
 				}
 			},
 			"required": ["StringProperty","StringValue","StringOperator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§StringOperator §StringProperty §StringValue"
 		},
 		"fieldIntManipulation": {
 			"type": "object",
@@ -78,7 +82,8 @@
 				}
 			},
 			"required": ["IntProperty","IntValue","IntOperator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§IntOperator §IntProperty §IntValue"
 		},
 		"fieldStringManipulation": {
 			"type": "object",
@@ -94,7 +99,8 @@
 				}
 			},
 			"required": ["StringProperty","StringValue","StringOperator"],
-			"additionalProperties": false
+			"additionalProperties": false,
+			"description": "§StringOperator §StringProperty §StringValue"
 		}
 	},
 	"actionManipulation": {
