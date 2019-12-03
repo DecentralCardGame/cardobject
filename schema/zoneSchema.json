@@ -1,11 +1,11 @@
 {
 	"protectedZoneId": {
 		"type": "string",
-		"enum": ["EXILE"]
+		"enum": ["VOID"]
 	},
 	"dynamicZoneId": {
 		"type": "string",
-		"enum": ["DECK","DUSTPILE","FIELD","HAND","QUEUE","TOPDECK"]
+		"enum": ["DECK","DUSTPILE","FIELD","HAND","QUEUE"]
 	},
 	"zoneId": {
 		"type": "string",
