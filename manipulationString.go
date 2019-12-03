@@ -30,10 +30,10 @@ func (m *entityManipulation) toString(plural bool) string {
 	return plainText
 }
 
-func (m *fieldManipulation) toString(plural bool) string {
+func (m *locationManipulation) toString(plural bool) string {
 	var plainText string
-	im := m.FieldIntManipulation
-	sm := m.FieldStringManipulation
+	im := m.LocationIntManipulation
+	sm := m.LocationStringManipulation
 
 	if(im != nil) {
 		return im.toString(plural)
@@ -73,7 +73,7 @@ func (im *intManipulationBasics) toString(plural bool) string {
 		}
 		plainText += im.IntProperty + "."
 	default:
-		
+
 	}
 
 	return plainText

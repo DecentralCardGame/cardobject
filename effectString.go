@@ -32,7 +32,7 @@ func (e *effect) toString() string {
 func (te *targetEffect) toString() string {
 	ate := te.ActionTargetEffect
 	ete := te.EntityTargetEffect
-	fte := te.FieldTargetEffect
+	fte := te.LocationTargetEffect
 	if(ate != nil) {
 		return ate.toString()
 	}
@@ -55,7 +55,7 @@ func (ate *actionTargetEffect) toString() string {
 	}
 
 	sentences = append(sentences, ate.ActionSelector.toString())
-	
+
 	if(manipulations != nil) {
 		for _, m := range manipulations {
     		sentences = append(sentences, m.toString(plural))
@@ -78,7 +78,7 @@ func (ete *entityTargetEffect) toString() string {
 	}
 
 	sentences = append(sentences, ete.EntitySelector.toString())
-	
+
 	if(manipulations != nil) {
 		for _, m := range manipulations {
     		sentences = append(sentences, m.toString(plural))
@@ -91,17 +91,17 @@ func (ete *entityTargetEffect) toString() string {
 	return strings.Join(sentences, " ")
 }
 
-func (fte *fieldTargetEffect) toString() string {
+func (fte *locationTargetEffect) toString() string {
 	var sentences []string
 	plural := false
-	manipulations := fte.FieldManipulations
+	manipulations := fte.LocationManipulations
 	zoneChange := fte.ZoneChange
-	if(fte.FieldSelector.CardMode == "ALL") {
+	if(fte.LocationSelector.CardMode == "ALL") {
 		plural = true
 	}
 
-	sentences = append(sentences, fte.FieldSelector.toString())
-	
+	sentences = append(sentences, fte.LocationSelector.toString())
+
 	if(manipulations != nil) {
 		for _, m := range manipulations {
     		sentences = append(sentences, m.toString(plural))

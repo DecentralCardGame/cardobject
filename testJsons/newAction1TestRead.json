@@ -21,27 +21,27 @@
 						"Attack": 1,
 						"Health": 2,
 						"AbilitySpeed": 1
-					}					
+					}
 				}
 			},
 			{
 				"TargetEffect": {
-					"FieldTargetEffect": {
-						"FieldSelector": {
+					"LocationTargetEffect": {
+						"LocationSelector": {
 							"PlayerMode": "ALL",
 							"CardMode": "ALL",
 							"Zone": "FIELD"
 						},
-						"FieldManipulations": [
+						"LocationManipulations": [
 							{
-								"FieldIntManipulation": {
+								"LocationIntManipulation": {
 									"IntProperty": "HEALTH",
 									"IntValue": 10,
 									"IntOperator": "SUBTRACT"
 								}
 							},
 							{
-								"FieldStringManipulation": {
+								"LocationStringManipulation": {
 									"StringProperty": "TAG",
 									"StringValue": "Wasted",
 									"StringOperator": "SET"

@@ -1,12 +1,12 @@
 {
-	"Field": {
+	"Location": {
 		"Name":"Chapel",
 		"Tag":"primitiv",
 		"Text":"RIP",
 		"Cost":["LUMBER","METAL"],
 		"CastSpeed":1,
 		"Abilities": [
-			{ 
+			{
 				"TriggeredAbility": {
 					"Effects": [
 						{
@@ -15,7 +15,7 @@
 									"EntitySelector": {
 										"PlayerMode": "TARGET",
 										"CardMode": "TARGET",
-										"Zone":"DUSTPILE"	
+										"Zone":"DUSTPILE"
 									},
 									"ZoneChange": "EXILE"
 								}

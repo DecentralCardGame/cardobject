@@ -25,7 +25,7 @@ type entityCondition struct {
 	conditionAttributes
 }
 
-type fieldCondition struct {
+type locationCondition struct {
 	conditionAttributes
 }
 
@@ -36,5 +36,5 @@ type playerCondition struct {
 type cardCondition struct {
 	ActionCondition *actionCondition `json:",omitempty"`
 	EntityCondition *entityCondition `json:",omitempty"`
-	FieldCondition *fieldCondition `json:",omitempty"`
+	LocationCondition *locationCondition `json:",omitempty"`
 }

@@ -59,7 +59,7 @@
       "required": ["Name","Tag","Text","Attack","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
       "additionalProperties": false
     },
-    "field": {
+    "location": {
       "type": "object",
       "properties": {
         "Name": {
@@ -140,11 +140,11 @@
     },
     {
       "properties": {
-        "Field": {
-          "$ref": "#/definitions/field"
+        "Location": {
+          "$ref": "#/definitions/location"
         }
       },
-      "required":["Field"],
+      "required":["Location"],
       "additionalProperties": false
     },
     {

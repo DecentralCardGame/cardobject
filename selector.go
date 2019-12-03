@@ -17,9 +17,9 @@ type entitySelector struct {
 	CardCondition *entityCondition `json:",omitempty"`
 }
 
-type fieldSelector struct {
+type locationSelector struct {
 	selectorAttributes
-	CardCondition *fieldCondition `json:",omitempty"`
+	CardCondition *locationCondition `json:",omitempty"`
 }
 
 type selfSelector struct {

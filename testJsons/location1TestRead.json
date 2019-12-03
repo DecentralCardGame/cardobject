@@ -1,12 +1,12 @@
 {
-	"Field": {
+	"Location": {
 		"Name":"Mühle",
 		"Tag":"primitiv",
 		"Text":"Brot für alle",
 		"Cost":["LUMBER","LUMBER","GENERIC"],
 		"CastSpeed":1,
 		"Abilities": [
-			{ 
+			{
 				"TriggeredAbility": {
 					"Effects": [
 						{

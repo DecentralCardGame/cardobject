@@ -68,11 +68,11 @@
 			"additionalProperties": false,
 			"description": "§StringOperator §StringProperty §StringValue"
 		},
-		"fieldIntManipulation": {
+		"locationIntManipulation": {
 			"type": "object",
 			"properties": {
 				"IntProperty": {
-					"$ref": "propertyIdSchema.json#/fieldIntPropertyId"
+					"$ref": "propertyIdSchema.json#/locationIntPropertyId"
 				},
 				"IntValue": {
 					"$ref": "standards.json#/int"
@@ -85,11 +85,11 @@
 			"additionalProperties": false,
 			"description": "§IntOperator §IntProperty §IntValue"
 		},
-		"fieldStringManipulation": {
+		"locationStringManipulation": {
 			"type": "object",
 			"properties": {
 				"StringProperty": {
-					"$ref": "propertyIdSchema.json#/fieldStringPropertyId"
+					"$ref": "propertyIdSchema.json#/locationStringPropertyId"
 				},
 				"StringValue": {
 					"$ref": "standards.json#/string"
@@ -157,30 +157,30 @@
 			}
 		]
 	},
-	"fieldManipulation": {
+	"locationManipulation": {
 		"type": "object",
 		"oneOf": [
 			{
 				"properties": {
-					"FieldIntManipulation": {
-						"$ref": "#/definitions/fieldIntManipulation"
+					"LocationIntManipulation": {
+						"$ref": "#/definitions/locationIntManipulation"
 					}
 				},
-				"required": ["FieldIntManipulation"],
+				"required": ["LocationIntManipulation"],
 				"additionalProperties": false,
-				"description": "§FieldIntManipulation",
-				"title": "Numeric field manipulation"
+				"description": "§LocationIntManipulation",
+				"title": "Numeric location manipulation"
 			},
 			{
 				"properties": {
-					"FieldStringManipulation": {
-						"$ref": "#/definitions/fieldStringManipulation"
+					"LocationStringManipulation": {
+						"$ref": "#/definitions/locationStringManipulation"
 					}
 				},
-				"required": ["FieldStringManipulation"],
+				"required": ["LocationStringManipulation"],
 				"additionalProperties": false,
-				"description": "§FieldStringManipulation",
-				"title": "text field manipulation"
+				"description": "§LocationStringManipulation",
+				"title": "text location manipulation"
 			}
 		]
 	}

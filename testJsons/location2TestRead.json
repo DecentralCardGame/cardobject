@@ -1,12 +1,12 @@
 {
-	"Field": {
+	"Location": {
 		"Name":"Ambulance",
 		"Tag":"militant",
 		"Text":"UIUIUIUIUI",
 		"Cost":["FOOD","LUMBER","GENERIC","GENERIC","GENERIC"],
 		"CastSpeed":5,
 		"Abilities": [
-			{ 
+			{
 				"TriggeredAbility": {
 					"Effects": [
 						{

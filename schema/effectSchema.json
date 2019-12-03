@@ -39,14 +39,14 @@
 				},
 				{
 					"properties": {
-						"FieldTargetEffect": {
-							"$ref": "#/definitions/fieldTargetEffect"
+						"LocationTargetEffect": {
+							"$ref": "#/definitions/locationTargetEffect"
 						}
 					},
-					"required": ["FieldTargetEffect"],
+					"required": ["LocationTargetEffect"],
 					"additionalProperties": false,
-					"description": "§FieldTargetEffect",
-					"title": "target field"
+					"description": "§LocationTargetEffect",
+					"title": "target location"
 				}
 			]
 		},
@@ -94,16 +94,16 @@
 			"additionalProperties": false,
 			"description": "§EntitySelector. §EntityManipulations. §ZoneChange."
 		},
-		"fieldTargetEffect": {
+		"locationTargetEffect": {
 			"type": "object",
       		"properties": {
-       			"FieldSelector": {
-          			"$ref": "selectorSchema.json#/definitions/fieldSelector"
+       			"LocationSelector": {
+          			"$ref": "selectorSchema.json#/definitions/locationSelector"
         		},
-        		"FieldManipulations": {
+        		"LocationManipulations": {
           			"type": "array",
           			"items": {
-						"$ref": "manipulationSchema.json#/fieldManipulation"
+						"$ref": "manipulationSchema.json#/locationManipulation"
 					},
 					"maxItems": 5,
 					"additionalItems": false
@@ -112,9 +112,9 @@
 					"$ref": "zoneSchema.json#/zoneId"
 				}
       		},
-     		"required": ["FieldSelector"],
+     		"required": ["LocationSelector"],
       		"additionalProperties": false,
-					"description": "§FieldSelector. §FieldManipulations. §ZoneChange."
+					"description": "§LocationSelector. §LocationManipulations. §ZoneChange."
     	}
 	},
 	"effect": {

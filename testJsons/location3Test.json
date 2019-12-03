@@ -1,0 +1,1 @@
+{"Location":{"Name":"Chapel","Tag":"primitiv","Text":"RIP","Cost":["LUMBER","METAL"],"CastSpeed":1,"Abilities":[{"TriggeredAbility":{"Cause":{"TimeEventListener":{"TimeEvent":"TICKSTART"}},"Effects":[{"TargetEffect":{"EntityTargetEffect":{"EntitySelector":{"PlayerMode":"TARGET","Zone":"DUSTPILE","CardMode":"TARGET"},"ZoneChange":"EXILE"}}}]}}],"AbilitySpeed":1,"Health":2}}

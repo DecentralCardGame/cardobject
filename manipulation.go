@@ -22,7 +22,7 @@ type entityManipulation struct {
 	EntityStringManipulation *stringManipulationBasics `json:",omitempty"`
 }
 
-type fieldManipulation struct {
-	FieldIntManipulation *intManipulationBasics `json:",omitempty"`
-	FieldStringManipulation *stringManipulationBasics `json:",omitempty"`
+type locationManipulation struct {
+	LocationIntManipulation *intManipulationBasics `json:",omitempty"`
+	LocationStringManipulation *stringManipulationBasics `json:",omitempty"`
 }

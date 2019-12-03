@@ -7,7 +7,7 @@
 		"type": "string",
 		"enum": ["ATTACK","COSTSUM","HEALTH","SPEEDMODIFIER"]
 	},
-	"fieldIntPropertyId": {
+	"locationIntPropertyId": {
 		"type": "string",
 		"enum": ["COSTSUM","HEALTH","SPEEDMODIFIER"]
 	},
@@ -21,7 +21,7 @@
 				"$ref": "#/entityIntPropertyId"
 			},
 			{
-				"$ref": "#/fieldIntPropertyId"
+				"$ref": "#/locationIntPropertyId"
 			}
 		]
 	},
@@ -37,7 +37,7 @@
 		"type": "string",
 		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
 	},
-	"fieldStringPropertyId": {
+	"locationStringPropertyId": {
 		"type": "string",
 		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
 	},
@@ -51,7 +51,7 @@
 				"$ref": "#/entityStringPropertyId"
 			},
 			{
-				"$ref": "#/fieldStringPropertyId"
+				"$ref": "#/locationStringPropertyId"
 			}
 		]
 	},
@@ -81,14 +81,14 @@
 			}
 		]
 	},
-	"fieldPropertyId": {
+	"locationPropertyId": {
 		"type": "string",
 		"oneOf": [
 			{
-				"$ref": "#/fieldIntPropertyId"
+				"$ref": "#/locationIntPropertyId"
 			},
 			{
-				"$ref": "#/fieldStringPropertyId"
+				"$ref": "#/locationStringPropertyId"
 			}
 		]
 	},

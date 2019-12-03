@@ -68,11 +68,11 @@
 			"additionalProperties": false,
 			"description": "with §StringProperty §StringComparator §StringValue"
 		},
-		"fieldIntCondition": {
+		"locationIntCondition": {
 			"type": "object",
 			"properties": {
 				"IntProperty": {
-					"$ref": "propertyIdSchema.json#/fieldIntPropertyId"
+					"$ref": "propertyIdSchema.json#/locationIntPropertyId"
 				},
 				"IntValue": {
 					"$ref": "standards.json#/int"
@@ -85,11 +85,11 @@
 			"additionalProperties": false,
 			"description": "with §IntProperty §IntComparator §IntValue"
 		},
-		"fieldStringCondition": {
+		"locationStringCondition": {
 			"type": "object",
 			"properties": {
 				"StringProperty": {
-					"$ref": "propertyIdSchema.json#/fieldStringPropertyId"
+					"$ref": "propertyIdSchema.json#/locationStringPropertyId"
 				},
 				"StringValue": {
 					"$ref": "standards.json#/string"
@@ -189,12 +189,12 @@
 			}
 		]
 	},
-	"fieldCondition": {
+	"locationCondition": {
 		"oneOf": [
 			{
 				"properties": {
 					"IntCondition": {
-						"$ref": "#/definitions/fieldIntCondition"
+						"$ref": "#/definitions/locationIntCondition"
 					}
 				},
 				"required": ["IntCondition"],
@@ -205,7 +205,7 @@
 			{
 				"properties": {
 					"StringCondition": {
-						"$ref": "#/definitions/fieldStringCondition"
+						"$ref": "#/definitions/locationStringCondition"
 					}
 				},
 				"required": ["StringCondition"],
@@ -267,14 +267,14 @@
 			},
 			{
 				"properties": {
-					"FieldCondition": {
-						"$ref": "#/fieldCondition"
+					"LocationCondition": {
+						"$ref": "#/locationCondition"
 					}
 				},
-				"required": ["FieldCondition"],
+				"required": ["LocationCondition"],
 				"additionalProperties": false,
-				"description": "§FieldCondition",
-				"title": "Field Condition"
+				"description": "§LocationCondition",
+				"title": "Location Condition"
 			}
 		]
 	}
