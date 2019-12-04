@@ -15,7 +15,10 @@
 					],
 					"Cause": {
 						"ManipulationEventListener": {
-							"Property":"HEALTH"
+							"IntManipulationEventListener": {
+								"Property":"HEALTH",
+								"ChangeMode":"DECREASES" 
+							}
 						}
 					}
 				}

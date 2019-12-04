@@ -25,7 +25,23 @@ func (tel *timeEventListener) toString() string {
 
 func (mel *manipulationEventListener) toString() string {
 	var plainText string
-	plainText += "Whenever the " + mel.Property + " of a card changes: "
+	intMel := mel.IntManipulationEventListener
+	stringMel := mel.StringManipulationEventListener
+	plainText += "Whenever the "
+	if(intMel != nil) {
+		plainText += intMel.Property
+	}
+	if(stringMel != nil) {
+		plainText += stringMel.Property
+	}
+	plainText += " of a card "
+	if(intMel != nil) {
+		plainText += intMel.ChangeMode
+	}
+	if(stringMel != nil) {
+		plainText += stringMel.ChangeMode
+	}
+	plainText += ": "
 	return plainText
 }
 

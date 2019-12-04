@@ -5,7 +5,13 @@ type timeEventListener struct {
 }
 
 type manipulationEventListener struct {
+	IntManipulationEventListener *manipulationBasics `json:",omitempty"`
+	StringManipulationEventListener *manipulationBasics `json:",omitempty"`
+}
+
+type manipulationBasics struct {
 	Property string
+	ChangeMode string
 }
 
 type zoneChangeEventListener struct {

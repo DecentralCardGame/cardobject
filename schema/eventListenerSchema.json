@@ -13,14 +13,58 @@
 		},
 		"manipulationEventListener": {
 			"type": "object",
+			"oneOf": [
+				{
+					"properties": {
+						"IntManipulationEventListener": {
+							"$ref": "#/definitions/intManipulationEventListener"
+						}
+					},
+					"required":["IntManipulationEventListener"],
+					"additionalProperties": false,
+					"description": "§IntManipulationEventListener",
+					"title": "manipulation event"
+				},
+				{
+					"properties": {
+						"StringManipulationEventListener": {
+							"$ref": "#/definitions/stringManipulationEventListener"
+						}
+					},
+					"required":["StringManipulationEventListener"],
+					"additionalProperties": false,
+					"description": "§StringManipulationEventListener",
+					"title": "manipulation event"
+				}
+			]
+		},
+		"intManipulationEventListener": {
+			"type": "object",
 			"properties": {
 				"Property": {
-					"$ref": "propertyIdSchema.json#/cardPropertyId"
+					"$ref": "propertyIdSchema.json#/cardIntPropertyId"
+				},
+				"ChangeMode": {
+					"$ref": "standards.json#/intChangeMode"
 				}
 			},
-			"required": ["Property"],
+			"required": ["Property","ChangeMode"],
 			"additionalProperties": false,
-			"description": "Whenever §Property of a card changes"
+			"description": "Whenever §Property of a card §ChangeMode:"
+		},
+		"stringManipulationEventListener": {
+			"type": "object",
+			"properties": {
+				"Property": {
+					"$ref": "propertyIdSchema.json#/cardStringPropertyId"
+				},
+				"ChangeMode": {
+					"$ref": "standards.json#/stringChangeMode"
+				}
+			},
+			"required": ["Property","ChangeMode"],
+			"additionalProperties": false,
+			"description": "Whenever §Property of a card §ChangeMode:"
 		},
 		"zoneChangeEventListener": {
 			"type": "object",
