@@ -17,7 +17,7 @@
 										"CardMode": "TARGET",
 										"Zone":"DUSTPILE"
 									},
-									"ZoneChange": "EXILE"
+									"ZoneChange": "VOID"
 								}
 							}
 						}

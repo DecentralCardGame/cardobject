@@ -1,5 +1,5 @@
 package cardobject
-
+/*
 import "testing"
 import "io/ioutil"
 import "fmt"
@@ -13,7 +13,7 @@ func TestPlainText1(t *testing.T) {
 	}
 	fmt.Println(output)
 }
-/*
+
 func TestPlainText1(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/action1Test.json")
 	input := string(file)
