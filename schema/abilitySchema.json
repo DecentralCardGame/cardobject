@@ -15,7 +15,7 @@
 			},
 			"required": ["Cost","MultipleUse","Effects"],
 			"additionalProperties": false,
-			"description": "Pay §Cost to activate: §Effect. Can be activated §MultipleUse"
+			"description": "Pay §Cost to activate: §Effects. Can be activated §MultipleUse"
 		},
 		"triggeredAbility": {
 			"type": "object",
@@ -29,7 +29,7 @@
 			},
 			"required": ["Cause","Effects"],
 			"additionalProperties": false,
-			"description": "Whenever §Cause: §Effect."
+			"description": "Whenever §Cause: §Effects."
 		}
 	},
 	"type": "object",
