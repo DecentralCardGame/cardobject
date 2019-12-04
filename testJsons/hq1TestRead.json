@@ -30,7 +30,10 @@
 											}
 										}
 									},
-									"ZoneChange": "HAND"
+									"ZoneChange": {
+											"Zone": "HAND",
+											"Player": "YOUR"
+										}
 								}
 							}
 						}
@@ -39,7 +42,7 @@
 					"MultipleUse":true
 				}
 			},
-			{ 
+			{
 				"TriggeredAbility": {
 					"Effects": [
 						{

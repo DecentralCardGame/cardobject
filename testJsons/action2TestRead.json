@@ -14,7 +14,10 @@
 							"CardMode":"TARGET",
 							"Zone":"DECK"
 						},
-						"ZoneChange": "HAND"
+						"ZoneChange": {
+							"Zone": "HAND",
+							"Player": "YOUR"
+						}
 					}
 				}
 			}

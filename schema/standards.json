@@ -30,6 +30,10 @@
 		"minimum": 0,
 		"maximum": 100
 	},
+	"owner": {
+		"type": "string",
+		"enum": ["YOUR", "OPPONENTS", "OWNERS"]
+	},
 	"ressource": {
 		"type": "string",
 		"enum": ["ENERGY","FOOD","GENERIC","LUMBER","MANA","METAL"]

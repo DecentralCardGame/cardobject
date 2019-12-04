@@ -65,7 +65,7 @@
 					"additionalItems": false
 				},
 				"ZoneChange": {
-					"$ref": "zoneSchema.json#/zoneId"
+					"$ref": "zoneChangeSchema.json"
 				}
 			},
 			"required": ["ActionSelector"],
@@ -87,7 +87,7 @@
 					"additionalItems": false
 				},
 				"ZoneChange": {
-					"$ref": "zoneSchema.json#/zoneId"
+					"$ref": "zoneChangeSchema.json"
 				}
 			},
 			"required": ["EntitySelector"],
@@ -109,7 +109,7 @@
 					"additionalItems": false
         		},
 				"ZoneChange": {
-					"$ref": "zoneSchema.json#/zoneId"
+					"$ref": "zoneChangeSchema.json"
 				}
       		},
      		"required": ["LocationSelector"],

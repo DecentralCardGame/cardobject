@@ -24,7 +24,10 @@
 										},
 										"Zone": "FIELD"
 									},
-									"ZoneChange": "HAND"
+									"ZoneChange": {
+											"Zone": "HAND",
+											"Player": "YOUR"
+										}
 								}
 							}
 						}

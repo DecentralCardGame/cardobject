@@ -17,7 +17,9 @@
 										"CardMode": "TARGET",
 										"Zone":"DUSTPILE"
 									},
-									"ZoneChange": "VOID"
+									"ZoneChange": {
+										"Zone":"VOID",
+										"Player": "OWNERS"
 								}
 							}
 						}

@@ -114,11 +114,11 @@ func (fte *locationTargetEffect) toString() string {
 	return strings.Join(sentences, " ")
 }
 
-func zoneChangeString(zone *string, plural bool) string {
+func zoneChangeString(zoneChange *zoneChange, plural bool) string {
 	if(plural) {
-		return "Move them to the " + *zone + "."
+		return "Move them to " + zoneChange.Player + " " + zoneChange.Zone + "."
 	}
-	return "Move it to the " + *zone + "."
+	return "Move it to the " + zoneChange.Player + " " + zoneChange.Zone + "."
 }
 
 func (toe *tokenEffect) toString() string {

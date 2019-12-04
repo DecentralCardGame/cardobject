@@ -16,22 +16,27 @@ type targetEffect struct {
 type actionTargetEffect struct {
 	ActionSelector actionSelector
 	ActionManipulations []actionManipulation `json:",omitempty"`
-	ZoneChange *string `json:",omitempty"`
+	ZoneChange *zoneChange `json:",omitempty"`
 }
 
 type entityTargetEffect struct {
 	EntitySelector entitySelector
 	EntityManipulations []entityManipulation `json:",omitempty"`
-	ZoneChange *string `json:",omitempty"`
+	ZoneChange *zoneChange `json:",omitempty"`
 }
 
 type locationTargetEffect struct {
 	LocationSelector locationSelector
 	LocationManipulations []locationManipulation `json:",omitempty"`
-	ZoneChange *string `json:",omitempty"`
+	ZoneChange *zoneChange `json:",omitempty"`
 }
 
 type tokenEffect struct {
 	Amount *int8 `json:",omitempty"`
 	Token token
+}
+
+type zoneChange struct {
+	Zone string
+	Player string
 }
