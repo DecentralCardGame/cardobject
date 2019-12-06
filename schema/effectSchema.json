@@ -24,7 +24,7 @@
 					"required": ["ActionTargetEffect"],
 					"additionalProperties": false,
 					"description": "§ActionTargetEffect",
-					"title": "target action"
+					"title": "Target action"
 				},
 				{
 					"properties": {
@@ -35,7 +35,7 @@
 					"required": ["EntityTargetEffect"],
 					"additionalProperties": false,
 					"description": "§EntityTargetEffect",
-					"title": "target entity"
+					"title": "Target entity"
 				},
 				{
 					"properties": {
@@ -46,7 +46,7 @@
 					"required": ["LocationTargetEffect"],
 					"additionalProperties": false,
 					"description": "§LocationTargetEffect",
-					"title": "target location"
+					"title": "Target location"
 				}
 			]
 		},
@@ -161,7 +161,7 @@
 				"required": ["TargetEffect"],
 				"additionalProperties": false,
 				"description": "§TargetEffect",
-				"title": "targeting effect"
+				"title": "Targeting effect"
 			}
 		]
     }
