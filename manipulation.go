@@ -1,10 +1,5 @@
 package cardobject
 
-type abilityManipulationBasics struct{
-	AbilityOperator string
-	Ability ability
-}
-
 type intManipulationBasics struct {
 	IntProperty string
 	IntOperator string
@@ -23,13 +18,11 @@ type actionManipulation struct {
 }
 
 type entityManipulation struct {
-	EntityAbilityManipulation *abilityManipulationBasics `json:",omitempty"`
 	EntityIntManipulation *intManipulationBasics `json:",omitempty"`
 	EntityStringManipulation *stringManipulationBasics `json:",omitempty"`
 }
 
 type locationManipulation struct {
-	LocationAbilityManipulation *abilityManipulationBasics `json:",omitempty"`
 	LocationIntManipulation *intManipulationBasics `json:",omitempty"`
 	LocationStringManipulation *stringManipulationBasics `json:",omitempty"`
 }

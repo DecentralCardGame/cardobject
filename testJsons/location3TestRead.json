@@ -3,108 +3,35 @@
 		"Name":"Chapel",
 		"Tag":"primitiv",
 		"Text":"RIP",
-		"Cost": {
-			"Lumber":1,
-			"Metal":1
+		"Cost":{
+			"Lumber": 1,
+			"Metal": 1
 		},
 		"CastSpeed":1,
 		"Abilities": [
 			{
-				"ActivatedAbility": {
-					"Cost": {
-						"Generic":1
-					},
-					"MultipleUse":false,
+				"TriggeredAbility": {
 					"Effects": [
 						{
 							"TargetEffect": {
 								"EntityTargetEffect": {
 									"EntitySelector": {
-										"PlayerMode":"TARGET",
-										"CardMode":"TARGET",
-										"CardCondition": {
-											"StringCondition": {
-												"StringValue": "spirital",
-												"StringProperty": "TAG",
-												"StringComparator": "EQUAL"
-											}
-										},
-										"Zone":"FIELD"
+										"PlayerMode": "TARGET",
+										"CardMode": "TARGET",
+										"Zone":"DUSTPILE"
 									},
-									"EntityManipulations":[
-										{
-											"EntityAbilityManipulation": {
-												"AbilityOperator": "GAIN",
-												"Ability": {
-													"TriggeredAbility": {
-														"Cause": {
-															"TimeEventListener": {
-																"TimeEvent": "TICKSTART"															}
-														},
-														"Effects": [
-															{
-																"TargetEffect": {
-																	"EntityTargetEffect": {
-																		"EntitySelector": {
-																			"PlayerMode":"TARGET",
-																			"CardMode":"TARGET",
-																			"CardCondition": {
-																				"StringCondition": {
-																					"StringValue": "spirital",
-																					"StringProperty": "TAG",
-																					"StringComparator": "EQUAL"
-																				}
-																			},
-																			"Zone":"FIELD"
-																		},
-																		"EntityManipulations": [
-																			{
-																				"EntityIntManipulation": {
-																					"IntValue":1,
-																					"IntOperator":"ADD",
-																					"IntProperty":"HEALTH"
-																				}
-																			}
-																		]
-																	}
-																}
-															}
-														]
-													}
-												}
-											}
-										}
-									]
+									"ZoneChange": {
+										"Zone":"VOID",
+										"Player": "OWNERS"
 								}
 							}
 						}
-					]
-				}
-			},
-			{
-				"TriggeredAbility": {
+					],
 					"Cause": {
 						"TimeEventListener": {
 							"TimeEvent":"TICKSTART"
 						}
-					},
-					"Effects": [
-						{
-							"TargetEffect": {
-								"EntityTargetEffect": {
-									"EntitySelector": {
-										"PlayerMode":"TARGET",
-										"Zone":"DUSTPILE",
-										"CardMode":"TARGET"
-									},
-									"ZoneChange": {
-										"Zone":"VOID",
-										"Player":"OWNERS"
-									}
-								}
-							}
-						}
-					]
+					}
 				}
 			}
 		],

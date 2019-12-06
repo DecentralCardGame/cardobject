@@ -8,10 +8,6 @@
         "maxItems": 3,
         "additionalItems": false
   },
-	"abilityOperator": {
-		"type": "string",
-		"enum": ["GAIN","LOSE"]
-	},
 	"effects": {
         "type": "array",
         "items": {

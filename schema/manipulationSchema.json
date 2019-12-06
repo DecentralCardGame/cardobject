@@ -15,7 +15,7 @@
 			},
 			"required": ["IntProperty","IntValue","IntOperator"],
 			"additionalProperties": false,
-			"description": "§IntOperator §IntProperty §IntValue."
+			"description": "§IntOperator §IntProperty §IntValue"
 		},
 		"actionStringManipulation": {
 			"type": "object",
@@ -32,21 +32,7 @@
 			},
 			"required": ["StringProperty","StringValue","StringOperator"],
 			"additionalProperties": false,
-			"description": "§StringOperator §StringProperty §StringValue."
-		},
-		"entityAbilityManipulation": {
-			"type": "object",
-			"properties": {
-				"Ability": {
-					"$ref": "abilitySchema.json"
-				},
-				"AbilityOperator": {
-					"$ref": "standards.json#/abilityOperator"
-				}
-			},
-			"required": ["Ability","AbilityOperator"],
-			"additionalProperties": false,
-			"description": "It §AbilityOperator §Ability."
+			"description": "§StringOperator §StringProperty §StringValue"
 		},
 		"entityIntManipulation": {
 			"type": "object",
@@ -63,7 +49,7 @@
 			},
 			"required": ["IntProperty","IntValue","IntOperator"],
 			"additionalProperties": false,
-			"description": "§IntOperator §IntProperty §IntValue."
+			"description": "§IntOperator §IntProperty §IntValue"
 		},
 		"entityStringManipulation": {
 			"type": "object",
@@ -80,21 +66,7 @@
 			},
 			"required": ["StringProperty","StringValue","StringOperator"],
 			"additionalProperties": false,
-			"description": "§StringOperator §StringProperty §StringValue."
-		},
-		"locationAbilityManipulation": {
-			"type": "object",
-			"properties": {
-				"Ability": {
-					"$ref": "abilitySchema.json"
-				},
-				"AbilityOperator": {
-					"$ref": "standards.json#/abilityOperator"
-				}
-			},
-			"required": ["Ability","AbilityOperator"],
-			"additionalProperties": false,
-			"description": "It §AbilityOperator §Ability."
+			"description": "§StringOperator §StringProperty §StringValue"
 		},
 		"locationIntManipulation": {
 			"type": "object",
@@ -154,24 +126,13 @@
 				"required": ["ActionStringManipulation"],
 				"additionalProperties": false,
 				"description": "§ActionStringManipulation",
-				"title": "Text action manipulation"
+				"title": "text action manipulation"
 			}
 		]
 	},
 	"entityManipulation": {
 		"type": "object",
 		"oneOf": [
-			{
-				"properties": {
-					"EntityAbilityManipulation": {
-						"$ref": "#/definitions/entityAbilityManipulation"
-					}
-				},
-				"required": ["EntityAbilityManipulation"],
-				"additionalProperties": false,
-				"description": "§EntityAbilityManipulation",
-				"title": "Add ore remove an ability from manipulation"
-			},
 			{
 				"properties": {
 					"EntityIntManipulation": {
@@ -192,24 +153,13 @@
 				"required": ["EntityStringManipulation"],
 				"additionalProperties": false,
 				"description": "§EntityStringManipulation",
-				"title": "Text entity manipulation"
+				"title": "text entity manipulation"
 			}
 		]
 	},
 	"locationManipulation": {
 		"type": "object",
 		"oneOf": [
-			{
-				"properties": {
-					"LocationAbilityManipulation": {
-						"$ref": "#/definitions/locationAbilityManipulation"
-					}
-				},
-				"required": ["LocationAbilityManipulation"],
-				"additionalProperties": false,
-				"description": "§LocationAbilityManipulation",
-				"title": "Add ore remove an ability from location"
-			},
 			{
 				"properties": {
 					"LocationIntManipulation": {
@@ -230,7 +180,7 @@
 				"required": ["LocationStringManipulation"],
 				"additionalProperties": false,
 				"description": "§LocationStringManipulation",
-				"title": "Text location manipulation"
+				"title": "text location manipulation"
 			}
 		]
 	}

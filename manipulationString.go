@@ -18,13 +18,9 @@ func (m *actionManipulation) toString(plural bool) string {
 
 func (m *entityManipulation) toString(plural bool) string {
 	var plainText string
-	am := m.EntityAbilityManipulation
 	im := m.EntityIntManipulation
 	sm := m.EntityStringManipulation
 
-	if(am != nil) {
-		return am.toString(plural)
-	}
 	if(im != nil) {
 		return im.toString(plural)
 	}
@@ -36,34 +32,15 @@ func (m *entityManipulation) toString(plural bool) string {
 
 func (m *locationManipulation) toString(plural bool) string {
 	var plainText string
-	am := m.LocationAbilityManipulation
 	im := m.LocationIntManipulation
 	sm := m.LocationStringManipulation
 
-	if(am != nil) {
-		return am.toString(plural)
-	}
 	if(im != nil) {
 		return im.toString(plural)
 	}
 	if(sm != nil) {
 		return sm.toString(plural)
 	}
-	return plainText
-}
-
-func (am *abilityManipulationBasics) toString(plural bool) string {
-	var plainText string
-	if (plural) {
-		plainText += "They "
-	} else {
-		plainText += "It "
-	}
-	plainText += am.AbilityOperator
-	if (!plural) {
-		plainText += "s "
-	}
-	plainText += am.Ability.toString()
 	return plainText
 }
 
