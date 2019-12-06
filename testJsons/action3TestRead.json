@@ -3,11 +3,15 @@
 		"Name":"Heat Up",
 		"Tag":"Fire",
 		"Text":"More heat, pls",
-		"Cost":["LUMBER"],
+		"Cost":{
+			"Lumber": 1
+		},
 		"CastSpeed":2,
 		"Effects":[
 			{
-				"Production":["ENERGY","ENERGY","ENERGY"]
+				"Production":{
+					"Energy": 3
+				},
 			}
 		]
 	}

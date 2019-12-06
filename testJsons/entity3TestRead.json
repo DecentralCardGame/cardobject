@@ -3,7 +3,7 @@
 		"Name":"Coward",
 		"Tag":"farm",
 		"Text":"I'm out",
-		"Cost":["FOOD"],
+		"Cost":{"Food": 1},
 		"CastSpeed":1,
 		"Abilities": [
 			{

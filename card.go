@@ -7,7 +7,7 @@ type cardAttributes struct {
 }
 
 type castable struct {
-	Cost []string
+	Cost ressources
 	CastSpeed int8
 }
 

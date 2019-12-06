@@ -4,7 +4,7 @@
 			"type": "object",
 			"properties": {
 				"Cost": {
-          			"$ref": "standards.json#/cost"
+          			"$ref": "ressourcesSchema.json"
         		},
         		"MultipleUse": {
         			"type": "boolean"

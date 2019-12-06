@@ -38,7 +38,10 @@
 							}
 						}
 					],
-					"Cost":["MANA","GENERIC"],
+					"Cost":{
+						"Mana": 1,
+						"Generic": 1
+					},
 					"MultipleUse":true
 				}
 			},
@@ -46,7 +49,9 @@
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":["MANA","MANA"]
+							"Production":{
+								"Mana": 2
+							}
 						}
 					],
 					"Cause": {

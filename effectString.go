@@ -18,11 +18,11 @@ func (e *effect) toString() string {
 		sentences = append(sentences, tokenEffect.toString())
 	}
 
-	if(len(produce) > 0) {
-		sentences = append(sentences, "Produce " + strings.Join(produce, ",") + ".")
+	if (produce != nil) {
+		sentences = append(sentences, "Produce " + produce.toString() + ".")
 	}
 
-	if(draw != nil) {
+	if (draw != nil) {
 		sentences = append(sentences, "Draw " + strconv.Itoa(*draw) + " cards.")
 	}
 

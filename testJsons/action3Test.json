@@ -1,1 +1,1 @@
-{"Action":{"Name":"Heat Up","Tag":"Fire","Text":"More heat, pls","Cost":["LUMBER"],"CastSpeed":2,"Effects":[{"Production":["ENERGY","ENERGY","ENERGY"]}]}}
+{"Action":{"Name":"Heat Up","Tag":"Fire","Text":"More heat, pls","Cost":{"Lumber":1},"CastSpeed":2,"Effects":[{"Production":{"Energy":3}}]}}

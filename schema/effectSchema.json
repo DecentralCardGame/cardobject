@@ -122,12 +122,12 @@
 			{
 				"properties": {
 					"Production": {
-          				"$ref": "standards.json#/cost"
+          				"$ref": "ressourcesSchema.json"
         			}
 				},
 				"required": ["Production"],
 				"additionalProperties": false,
-				"description": "Produce §Cost.",
+				"description": "Produce §Production.",
 				"title": "Production"
 			},
 			{

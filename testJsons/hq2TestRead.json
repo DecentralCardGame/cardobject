@@ -36,15 +36,21 @@
 							}
 						}
 					],
-					"Cost":["METAL","GENERIC"],
+					"Cost":{
+						"Metal": 1,
+						"Generic": 1
+					},
 					"MultipleUse":true
 				}
 			},
-			{ 
+			{
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":["METAL","METAL","LUMBER"]
+							"Production":{
+								"Metal": 2,
+								"Lumber": 1,
+							}
 						}
 					],
 					"Cause": {

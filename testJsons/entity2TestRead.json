@@ -3,14 +3,17 @@
 		"Name":"Farmer",
 		"Tag":"farm",
 		"Text":"Love my piggies",
-		"Cost":["FOOD","GENERIC"],
+		"Cost":{
+			"Food": 1,
+			"Generic": 1
+		},
 		"CastSpeed":2,
 		"Abilities": [
 			{
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":["FOOD"]
+							"Production":{"Food":1}
 						}
 					],
 					"Cause": {

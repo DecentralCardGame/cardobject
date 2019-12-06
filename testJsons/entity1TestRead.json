@@ -3,7 +3,11 @@
 		"Name":"Archer",
 		"Tag":"range",
 		"Text":"Ping",
-		"Cost":["FOOD","LUMBER","GENERIC"],
+		"Cost":{
+			"Food": 1,
+			"Lumber": 1,
+			"Generic": 1
+		},
 		"CastSpeed":2,
 		"Abilities": [
 			{
@@ -33,7 +37,7 @@
 									},
 									"EntityManipulations": [
 										{
-											"EntityIntManipulation": {									
+											"EntityIntManipulation": {
 												"IntValue":1,
 												"IntOperator":"SUBTRACT",
 												"IntProperty":"HEALTH"
@@ -44,7 +48,7 @@
 							}
 						}
 					],
-					"Cost":["LUMBER"],
+					"Cost":{"Lumber": 1},
 					"MultipleUse":true
 				}
 			}

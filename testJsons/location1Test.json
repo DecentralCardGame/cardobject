@@ -1,1 +1,1 @@
-{"Location":{"Name":"Muehle","Tag":"primitiv","Text":"Brotfueralle","Cost":["LUMBER","LUMBER","GENERIC"],"CastSpeed":1,"Abilities":[{"TriggeredAbility":{"Cause":{"TimeEventListener":{"TimeEvent":"TICKSTART"}},"Effects":[{"Production":["FOOD"]}]}}],"AbilitySpeed":2,"Health":2}}
+{"Location":{"Name":"Muehle","Tag":"primitiv","Text":"Brotfueralle","Cost":{"Lumber":2,"Generic":1},"CastSpeed":1,"Abilities":[{"TriggeredAbility":{"Cause":{"TimeEventListener":{"TimeEvent":"TICKSTART"}},"Effects":[{"Production":{"Food":1}}]}}],"AbilitySpeed":2,"Health":2}}

@@ -2,7 +2,7 @@ package cardobject
 
 type activatedAbility struct {
 	MultipleUse bool
-	Cost []string
+	Cost ressources
 	Effects []effect
 }
 

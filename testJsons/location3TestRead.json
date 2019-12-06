@@ -3,7 +3,10 @@
 		"Name":"Chapel",
 		"Tag":"primitiv",
 		"Text":"RIP",
-		"Cost":["LUMBER","METAL"],
+		"Cost":{
+			"Lumber": 1,
+			"Metal": 1
+		},
 		"CastSpeed":1,
 		"Abilities": [
 			{

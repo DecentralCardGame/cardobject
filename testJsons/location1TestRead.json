@@ -3,14 +3,17 @@
 		"Name":"Mühle",
 		"Tag":"primitiv",
 		"Text":"Brot für alle",
-		"Cost":["LUMBER","LUMBER","GENERIC"],
+		"Cost":{
+			"Lumber": 2,
+			"Generic": 1
+		},
 		"CastSpeed":1,
 		"Abilities": [
 			{
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":["FOOD"]
+							"Production":{"Food": 1}
 						}
 					],
 					"Cause": {

@@ -3,7 +3,11 @@
 		"Name":"EXPLOSION",
 		"Tag":"fire",
 		"Text":"Its big",
-		"Cost":["ENERGY","ENERGY","MANA","GENERIC","GENERIC","GENERIC"],
+		"Cost": {
+			"Energy": 2,
+			"Mana": 1,
+			"Generic": 3
+		},
 		"CastSpeed":3,
 		"Effects":[
 			{

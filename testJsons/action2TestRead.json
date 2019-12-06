@@ -3,7 +3,10 @@
 		"Name":"Evacuate",
 		"Tag":"Tactic",
 		"Text":"Retreat!",
-		"Cost":["GENERIC","MANA"],
+		"Cost":{
+			"Mana": 1,
+			"Generic": 1
+		},
 		"CastSpeed":2,
 		"Effects":[
 			{

@@ -3,21 +3,25 @@
 		"Name":"Ambulance",
 		"Tag":"militant",
 		"Text":"UIUIUIUIUI",
-		"Cost":["FOOD","LUMBER","GENERIC","GENERIC","GENERIC"],
+		"Cost":{
+			"Food": 1,
+			"Lumber": 1,
+			"Generic": 3
+		},
 		"CastSpeed":5,
 		"Abilities": [
 			{
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":["FOOD"]
+							"Production":{"Food":1}
 						}
 					],
 					"Cause": {
 						"ManipulationEventListener": {
 							"IntManipulationEventListener": {
 								"Property":"HEALTH",
-								"ChangeMode":"DECREASES" 
+								"ChangeMode":"DECREASES"
 							}
 						}
 					}

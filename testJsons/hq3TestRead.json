@@ -5,11 +5,15 @@
 		"Tag":"primitive",
 		"Text":"peasantville",
 		"Abilities": [
-			{ 
+			{
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":["FOOD","METAL","LUMBER"]
+							"Production":{
+								"Food": 1,
+								"Lumber": 1,
+								"Metal": 1
+							}
 						}
 					],
 					"Cause": {

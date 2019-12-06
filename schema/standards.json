@@ -7,15 +7,7 @@
         "minItems": 1,
         "maxItems": 3,
         "additionalItems": false
-    },
-	"cost": {
-		"type": "array",
-       	"items": {
-           	"$ref": "#/ressource"
-        },
-        "minItems": 1,
-        "maxItems": 15
-	},
+  },
 	"effects": {
         "type": "array",
         "items": {
@@ -37,10 +29,6 @@
 	"owner": {
 		"type": "string",
 		"enum": ["YOUR", "OPPONENTS", "OWNERS"]
-	},
-	"ressource": {
-		"type": "string",
-		"enum": ["ENERGY","FOOD","GENERIC","LUMBER","MANA","METAL"]
 	},
 	"string": {
 		"type": "string",
