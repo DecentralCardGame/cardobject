@@ -1,8 +1,13 @@
 package cardobject
 
-type abilityManipulationBasics struct{
+type abilityManipulationBasics struct {
 	AbilityOperator string
 	Ability ability
+}
+
+type effectManipulationBasics struct {
+	EffectOperator string
+	Effect effect
 }
 
 type intManipulationBasics struct {
@@ -18,6 +23,7 @@ type stringManipulationBasics struct {
 }
 
 type actionManipulation struct {
+	ActionEffectManipulation *effectManipulationBasics `json:",omitempty"`
 	ActionIntManipulation *intManipulationBasics `json:",omitempty"`
 	ActionStringManipulation *stringManipulationBasics `json:",omitempty"`
 }

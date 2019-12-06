@@ -29,6 +29,44 @@
 						]
 					}
 				}
+			},
+			{
+				"TargetEffect": {
+					"ActionTargetEffect": {
+						"ActionSelector": {
+							"PlayerMode":"ALL",
+							"CardMode":"ALL",
+							"Zone":"QUEUE"
+						},
+						"ActionManipulations": [
+							{
+								"ActionEffectManipulation": {
+									"EffectOperator":"GAIN",
+									"Effect": {
+										"TargetEffect": {
+											"EntityTargetEffect": {
+												"EntitySelector": {
+													"PlayerMode":"ALL",
+													"CardMode":"ALL",
+													"Zone":"FIELD"
+												},
+												"EntityManipulations": [
+													{
+														"EntityIntManipulation": {
+															"IntValue":10,
+															"IntOperator":"SUBTRACT",
+															"IntProperty":"HEALTH"
+														}
+													}
+												]
+											}
+										}
+									}
+								}
+							}
+						]
+					}
+				}
 			}
 		]
 	}

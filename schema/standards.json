@@ -8,7 +8,7 @@
         "maxItems": 3,
         "additionalItems": false
   },
-	"abilityOperator": {
+	"abilityEffectOperator": {
 		"type": "string",
 		"enum": ["GAIN","LOSE"]
 	},

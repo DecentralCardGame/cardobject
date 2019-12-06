@@ -1,5 +1,19 @@
 {
 	"definitions": {
+		"actionEffectManipulation": {
+			"type": "object",
+			"properties": {
+				"Effect": {
+					"$ref": "effectSchema.json#/effect"
+				},
+				"EffectOperator": {
+					"$ref": "standards.json#/abilityEffectOperator"
+				}
+			},
+			"required": ["Effect","EffectOperator"],
+			"additionalProperties": false,
+			"description": "It §EffectOperator §Effect"
+		},
 		"actionIntManipulation": {
 			"type": "object",
 			"properties": {
@@ -41,7 +55,7 @@
 					"$ref": "abilitySchema.json"
 				},
 				"AbilityOperator": {
-					"$ref": "standards.json#/abilityOperator"
+					"$ref": "standards.json#/abilityEffectOperator"
 				}
 			},
 			"required": ["Ability","AbilityOperator"],
@@ -89,7 +103,7 @@
 					"$ref": "abilitySchema.json"
 				},
 				"AbilityOperator": {
-					"$ref": "standards.json#/abilityOperator"
+					"$ref": "standards.json#/abilityEffectOperator"
 				}
 			},
 			"required": ["Ability","AbilityOperator"],
@@ -134,6 +148,17 @@
 	"actionManipulation": {
 		"type": "object",
 		"oneOf": [
+			{
+				"properties": {
+					"ActionEffectManipulation": {
+						"$ref": "#/definitions/actionEffectManipulation"
+					}
+				},
+				"required": ["ActionEffectManipulation"],
+				"additionalProperties": false,
+				"description": "§ActionEffectManipulation",
+				"title": "Add or remove an Effect from manipulation"
+			},
 			{
 				"properties": {
 					"ActionIntManipulation": {

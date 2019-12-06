@@ -4,9 +4,13 @@ import "strconv"
 
 func (m *actionManipulation) toString(plural bool) string {
 	var plainText string
+	em := m.ActionEffectManipulation
 	im := m.ActionIntManipulation
 	sm := m.ActionStringManipulation
 
+	if(em != nil) {
+		return im.toString(plural)
+	}
 	if(im != nil) {
 		return im.toString(plural)
 	}
@@ -64,6 +68,21 @@ func (am *abilityManipulationBasics) toString(plural bool) string {
 		plainText += "s "
 	}
 	plainText += am.Ability.toString()
+	return plainText
+}
+
+func (em *effectManipulationBasics) toString(plural bool) string {
+	var plainText string
+	if (plural) {
+		plainText += "They "
+	} else {
+		plainText += "It "
+	}
+	plainText += em.EffectOperator
+	if (!plural) {
+		plainText += "s "
+	}
+	plainText += em.Effect.toString()
 	return plainText
 }
 
