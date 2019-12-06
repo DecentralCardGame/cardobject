@@ -1,20 +1,16 @@
 {
 	"definitions": {
-		"selectorMode": {
-			"type": "string",
-			"enum": ["ALL","TARGET","OPPONENTSCHOICE"]
-		},
 		"actionSelector": {
 			"type": "object",
 			"properties": {
 				"PlayerMode": {
-					"$ref": "#/definitions/selectorMode"
+					"$ref": "standards.json#/mode/selectorMode"
 				},
 				"PlayerCondition": {
 					"$ref": "conditionSchema.json#/playerCondition"
 				},
 				"CardMode": {
-					"$ref": "#/definitions/selectorMode"
+					"$ref": "standards.json#/mode/selectorMode"
 				},
 				"CardCondition": {
 					"$ref": "conditionSchema.json#/actionCondition"
@@ -31,13 +27,13 @@
 			"type": "object",
 			"properties": {
 				"PlayerMode": {
-					"$ref": "#/definitions/selectorMode"
+					"$ref": "standards.json#/mode/selectorMode"
 				},
 				"PlayerCondition": {
 					"$ref": "conditionSchema.json#/playerCondition"
 				},
 				"CardMode": {
-					"$ref": "#/definitions/selectorMode"
+					"$ref": "standards.json#/mode/selectorMode"
 				},
 				"CardCondition": {
 					"$ref": "conditionSchema.json#/entityCondition"
@@ -54,13 +50,13 @@
 			"type": "object",
 			"properties": {
 				"PlayerMode": {
-					"$ref": "#/definitions/selectorMode"
+					"$ref": "standards.json#/mode/selectorMode"
 				},
 				"PlayerCondition": {
 					"$ref": "conditionSchema.json#/playerCondition"
 				},
 				"CardMode": {
-					"$ref": "#/definitions/selectorMode"
+					"$ref": "standards.json#/mode/selectorMode"
 				},
 				"CardCondition": {
 					"$ref": "conditionSchema.json#/locationCondition"

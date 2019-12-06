@@ -24,7 +24,7 @@
 					"required": ["ActionTargetEffect"],
 					"additionalProperties": false,
 					"description": "§ActionTargetEffect",
-					"title": "Target action"
+					"title": "An effect targeting an action"
 				},
 				{
 					"properties": {
@@ -35,7 +35,7 @@
 					"required": ["EntityTargetEffect"],
 					"additionalProperties": false,
 					"description": "§EntityTargetEffect",
-					"title": "Target entity"
+					"title": "An effect targeting an entity"
 				},
 				{
 					"properties": {
@@ -46,7 +46,7 @@
 					"required": ["LocationTargetEffect"],
 					"additionalProperties": false,
 					"description": "§LocationTargetEffect",
-					"title": "Target location"
+					"title": "An effect targeting a  location"
 				}
 			]
 		},
@@ -128,7 +128,7 @@
 				"required": ["Production"],
 				"additionalProperties": false,
 				"description": "Produce §Production.",
-				"title": "Production"
+				"title": "Produce ressources"
 			},
 			{
 				"properties": {
@@ -138,8 +138,8 @@
 				},
 				"required": ["Draw"],
 				"additionalProperties": false,
-				"description": "Draw §Draw",
-				"title": "Draw"
+				"description": "Draw §Draw cards",
+				"title": "Draw cards"
 			},
 			{
 				"properties": {
@@ -150,7 +150,7 @@
 				"required": ["TokenEffect"],
 				"additionalProperties": false,
 				"description": "§TokenEffect",
-				"title": "Token"
+				"title": "Create tokens"
 			},
 			{
 				"properties": {
@@ -161,8 +161,8 @@
 				"required": ["TargetEffect"],
 				"additionalProperties": false,
 				"description": "§TargetEffect",
-				"title": "Targeting effect"
+				"title": "An effect targeting a card"
 			}
 		]
-    }
+  }
 }

@@ -10,7 +10,7 @@
 					"$ref": "standards.json#/int"
 				},
 				"IntComparator": {
-					"$ref": "comparatorSchema.json#/intComparator"
+					"$ref": "standards.json#/comparator/intComparator"
 				}
 			},
 			"required": ["IntProperty","IntValue","IntComparator"],
@@ -27,7 +27,7 @@
 					"$ref": "standards.json#/string"
 				},
 				"StringComparator": {
-					"$ref": "comparatorSchema.json#/stringComparator"
+					"$ref": "standards.json#/comparator/stringComparator"
 				}
 			},
 			"required": ["StringProperty","StringValue","StringComparator"],
@@ -44,7 +44,7 @@
 					"$ref": "standards.json#/int"
 				},
 				"IntComparator": {
-					"$ref": "comparatorSchema.json#/intComparator"
+					"$ref": "standards.json#/comparator/intComparator"
 				}
 			},
 			"required": ["IntProperty","IntValue","IntComparator"],
@@ -61,7 +61,7 @@
 					"$ref": "standards.json#/string"
 				},
 				"StringComparator": {
-					"$ref": "comparatorSchema.json#/stringComparator"
+					"$ref": "standards.json#/comparator/stringComparator"
 				}
 			},
 			"required": ["StringProperty","StringValue","StringComparator"],
@@ -78,7 +78,7 @@
 					"$ref": "standards.json#/int"
 				},
 				"IntComparator": {
-					"$ref": "comparatorSchema.json#/intComparator"
+					"$ref": "standards.json#/comparator/intComparator"
 				}
 			},
 			"required": ["IntProperty","IntValue","IntComparator"],
@@ -95,7 +95,7 @@
 					"$ref": "standards.json#/string"
 				},
 				"StringComparator": {
-					"$ref": "comparatorSchema.json#/stringComparator"
+					"$ref": "standards.json#/comparator/stringComparator"
 				}
 			},
 			"required": ["StringProperty","StringValue","StringComparator"],
@@ -112,7 +112,7 @@
 					"$ref": "standards.json#/int"
 				},
 				"IntComparator": {
-					"$ref": "comparatorSchema.json#/intComparator"
+					"$ref": "standards.json#/comparator/intComparator"
 				}
 			},
 			"required": ["IntProperty","IntValue","IntComparator"],
@@ -129,7 +129,7 @@
 					"$ref": "standards.json#/string"
 				},
 				"StringComparator": {
-					"$ref": "comparatorSchema.json#/stringComparator"
+					"$ref": "standards.json#/comparator/stringComparator"
 				}
 			},
 			"required": ["StringProperty","StringValue","StringComparator"],

@@ -2,15 +2,21 @@
 	"abilities": {
         "type": "array",
         "items": {
-            "$ref": "abilitySchema.json"
+            "$ref": "abilitySchema.json#/ability"
         },
         "minItems": 1,
         "maxItems": 3,
         "additionalItems": false
   },
-	"abilityEffectOperator": {
-		"type": "string",
-		"enum": ["GAIN","LOSE"]
+	"comparator": {
+		"intComparator": {
+			"type": "string",
+			"enum": ["EQUAL","GREATER","LESSER"]
+		},
+		"stringComparator": {
+			"type": "string",
+			"enum": ["EQUAL","CONTAINS"]
+		}
 	},
 	"effects": {
         "type": "array",
@@ -26,9 +32,33 @@
 		"minimum": 0,
 		"maximum": 100
 	},
-	"intChangeMode": {
-		"type": "string",
-		"enum": ["INCREASES", "DECREASES", "CHANGES"]
+	"mode": {
+		"intChangeMode": {
+			"type": "string",
+			"enum": ["INCREASES", "DECREASES", "CHANGES"]
+		},
+		"selectorMode": {
+			"type": "string",
+			"enum": ["ALL","TARGET","OPPONENTSCHOICE"]
+		},
+		"stringChangeMode": {
+			"type": "string",
+			"enum": ["CHANGES"]
+		}
+	},
+	"operator": {
+		"arithOperator": {
+			"type": "string",
+			"enum": ["SET","ADD","SUBTRACT"]
+		},
+		"abilityEffectOperator": {
+			"type": "string",
+			"enum": ["GAIN","LOSE"]
+		},
+		"stringOperator": {
+			"type": "string",
+			"enum": ["SET"]
+		}
 	},
 	"owner": {
 		"type": "string",
@@ -39,8 +69,8 @@
 		"minLength": 1,
 		"maxLength": 32
 	},
-	"stringChangeMode": {
+	"timeEvents": {
 		"type": "string",
-		"enum": ["CHANGES"]
+		"enum": ["TICKEND","TICKSTART"]
 	}
 }

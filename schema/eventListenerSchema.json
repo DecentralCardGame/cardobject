@@ -4,7 +4,7 @@
 			"type": "object",
 			"properties": {
 				"TimeEvent": {
-					"$ref": "timeEventSchema.json"
+					"$ref": "standards.json#/timeEvents"
 				}
 			},
 			"required": ["TimeEvent"],
@@ -23,7 +23,7 @@
 					"required":["IntManipulationEventListener"],
 					"additionalProperties": false,
 					"description": "§IntManipulationEventListener",
-					"title": "manipulation event"
+					"title": "Triggers when a number is manipulated"
 				},
 				{
 					"properties": {
@@ -34,7 +34,7 @@
 					"required":["StringManipulationEventListener"],
 					"additionalProperties": false,
 					"description": "§StringManipulationEventListener",
-					"title": "manipulation event"
+					"title": "Triggers when a text is manipulated"
 				}
 			]
 		},
@@ -45,7 +45,7 @@
 					"$ref": "propertyIdSchema.json#/cardIntPropertyId"
 				},
 				"ChangeMode": {
-					"$ref": "standards.json#/intChangeMode"
+					"$ref": "standards.json#/mode/intChangeMode"
 				}
 			},
 			"required": ["Property","ChangeMode"],
@@ -59,7 +59,7 @@
 					"$ref": "propertyIdSchema.json#/cardStringPropertyId"
 				},
 				"ChangeMode": {
-					"$ref": "standards.json#/stringChangeMode"
+					"$ref": "standards.json#/mode/stringChangeMode"
 				}
 			},
 			"required": ["Property","ChangeMode"],
@@ -95,7 +95,7 @@
 			"required":["TimeEventListener"],
 			"additionalProperties": false,
 			"description": "§TimeEventListener",
-			"title": "Time event"
+			"title": "Triggers when a time-event occurs"
 		},
 		{
 			"properties": {
@@ -106,7 +106,7 @@
 			"required":["ManipulationEventListener"],
 			"additionalProperties": false,
 			"description": "§ManipulationEventListener",
-			"title": "manipulation event"
+			"title": "Triggers when a card-property is manipulated"
 		},
 		{
 			"properties": {
@@ -117,7 +117,7 @@
 			"required":["ZoneChangeEventListener"],
 			"additionalProperties": false,
 			"description": "§ZoneChangeEventListener",
-			"title": "zone change event"
+			"title": "Triggers when a card changes its zone"
 		}
 	]
 }

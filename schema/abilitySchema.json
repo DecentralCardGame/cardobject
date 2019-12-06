@@ -32,29 +32,31 @@
 			"description": "Whenever §Cause: §Effects."
 		}
 	},
-	"type": "object",
-	"oneOf": [
-		{
-			"properties": {
-				"ActivatedAbility": {
-					"$ref": "#/definitions/activatedAbility"
-				}
+	"ability": {
+		"type": "object",
+		"oneOf": [
+			{
+				"properties": {
+					"ActivatedAbility": {
+						"$ref": "#/definitions/activatedAbility"
+					}
+				},
+				"required":["ActivatedAbility"],
+				"additionalProperties": false,
+				"description": "§ActivatedAbility",
+				"title": "An activatable ability"
 			},
-			"required":["ActivatedAbility"],
-			"additionalProperties": false,
-			"description": "§ActivatedAbility",
-			"title": "Activated Ability"
-		},
-		{
-			"properties": {
-				"TriggeredAbility": {
-					"$ref": "#/definitions/triggeredAbility"
-				}
-			},
-			"required":["TriggeredAbility"],
-			"additionalProperties": false,
-			"description": "§TriggeredAbility",
-			"title": "Triggered Ability"
-		}
-	]
+			{
+				"properties": {
+					"TriggeredAbility": {
+						"$ref": "#/definitions/triggeredAbility"
+					}
+				},
+				"required":["TriggeredAbility"],
+				"additionalProperties": false,
+				"description": "§TriggeredAbility",
+				"title": "A triggerable Ability"
+			}
+		]
+	}
 }

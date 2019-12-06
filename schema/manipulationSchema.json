@@ -7,7 +7,7 @@
 					"$ref": "effectSchema.json#/effect"
 				},
 				"EffectOperator": {
-					"$ref": "standards.json#/abilityEffectOperator"
+					"$ref": "standards.json#/operator/abilityEffectOperator"
 				}
 			},
 			"required": ["Effect","EffectOperator"],
@@ -24,7 +24,7 @@
 					"$ref": "standards.json#/int"
 				},
 				"IntOperator": {
-					"$ref": "arithOperatorSchema.json"
+					"$ref": "standards.json#/operator/arithOperator"
 				}
 			},
 			"required": ["IntProperty","IntValue","IntOperator"],
@@ -41,7 +41,7 @@
 					"$ref": "standards.json#/string"
 				},
 				"StringOperator": {
-					"$ref": "stringOperatorSchema.json"
+					"$ref": "standards.json#/operator/stringOperator"
 				}
 			},
 			"required": ["StringProperty","StringValue","StringOperator"],
@@ -52,10 +52,10 @@
 			"type": "object",
 			"properties": {
 				"Ability": {
-					"$ref": "abilitySchema.json"
+					"$ref": "abilitySchema.json#/ability"
 				},
 				"AbilityOperator": {
-					"$ref": "standards.json#/abilityEffectOperator"
+					"$ref": "standards.json#/operator/abilityEffectOperator"
 				}
 			},
 			"required": ["Ability","AbilityOperator"],
@@ -72,7 +72,7 @@
 					"$ref": "standards.json#/int"
 				},
 				"IntOperator": {
-					"$ref": "arithOperatorSchema.json"
+					"$ref": "standards.json#/operator/arithOperator"
 				}
 			},
 			"required": ["IntProperty","IntValue","IntOperator"],
@@ -89,7 +89,7 @@
 					"$ref": "standards.json#/string"
 				},
 				"StringOperator": {
-					"$ref": "stringOperatorSchema.json"
+					"$ref": "standards.json#/operator/stringOperator"
 				}
 			},
 			"required": ["StringProperty","StringValue","StringOperator"],
@@ -100,10 +100,10 @@
 			"type": "object",
 			"properties": {
 				"Ability": {
-					"$ref": "abilitySchema.json"
+					"$ref": "abilitySchema.json#/ability"
 				},
 				"AbilityOperator": {
-					"$ref": "standards.json#/abilityEffectOperator"
+					"$ref": "standards.json#/operator/abilityEffectOperator"
 				}
 			},
 			"required": ["Ability","AbilityOperator"],
@@ -120,7 +120,7 @@
 					"$ref": "standards.json#/int"
 				},
 				"IntOperator": {
-					"$ref": "arithOperatorSchema.json"
+					"$ref": "standards.json#/operator/arithOperator"
 				}
 			},
 			"required": ["IntProperty","IntValue","IntOperator"],
@@ -137,7 +137,7 @@
 					"$ref": "standards.json#/string"
 				},
 				"StringOperator": {
-					"$ref": "stringOperatorSchema.json"
+					"$ref": "standards.json#/operator/stringOperator"
 				}
 			},
 			"required": ["StringProperty","StringValue","StringOperator"],
