@@ -12,6 +12,7 @@ type manipulationEventListener struct {
 type manipulationBasics struct {
 	Property string
 	ChangeMode string
+	CardCondition *cardCondition `json:",omitempty"` 
 }
 
 type zoneChangeEventListener struct {

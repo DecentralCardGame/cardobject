@@ -21,7 +21,16 @@
 						"ManipulationEventListener": {
 							"IntManipulationEventListener": {
 								"Property":"HEALTH",
-								"ChangeMode":"DECREASES"
+								"ChangeMode":"DECREASES",
+								"CardCondition": {
+									"EntityCondition": {
+										"StringCondition": {
+											"StringProperty": "TAG",
+											"StringComparator": "CONTAINS",
+											"StringValue": "militant"
+										}
+									}
+								}
 							}
 						}
 					}

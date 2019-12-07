@@ -46,11 +46,14 @@
 				},
 				"ChangeMode": {
 					"$ref": "standards.json#/mode/intChangeMode"
+				},
+				"CardCondition": {
+					"$ref": "conditionSchema.json#/cardCondition"
 				}
 			},
 			"required": ["Property","ChangeMode"],
 			"additionalProperties": false,
-			"description": "Whenever §Property of a card §ChangeMode:"
+			"description": "Whenever §Property of a card §CardCondition §ChangeMode:"
 		},
 		"stringManipulationEventListener": {
 			"type": "object",
@@ -60,11 +63,14 @@
 				},
 				"ChangeMode": {
 					"$ref": "standards.json#/mode/stringChangeMode"
+				},
+				"CardCondition": {
+					"$ref": "conditionSchema.json#/cardCondition"
 				}
 			},
 			"required": ["Property","ChangeMode"],
 			"additionalProperties": false,
-			"description": "Whenever §Property of a card §ChangeMode:"
+			"description": "Whenever §Property of a card §CardCondition §ChangeMode:"
 		},
 		"zoneChangeEventListener": {
 			"type": "object",
