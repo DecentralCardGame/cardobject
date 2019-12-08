@@ -1,5 +1,16 @@
 {
 	"definitions": {
+		"productionEventListener": {
+			"type": "object",
+			"properties": {
+				"RessourceType": {
+					"$ref": "standards.json#/ressourceType"
+				}
+			},
+			"required": ["RessourceType"],
+			"additionalProperties": false,
+			"description": "When §RessourceType is produced"
+		},
 		"timeEventListener": {
 			"type": "object",
 			"properties": {
@@ -113,6 +124,17 @@
 			"additionalProperties": false,
 			"description": "§ManipulationEventListener",
 			"title": "Triggers when a card-property is manipulated"
+		},
+		{
+			"properties": {
+				"ProductionEventListener": {
+					"$ref": "#/definitions/productionEventListener"
+				}
+			},
+			"required":["ProductionEventListener"],
+			"additionalProperties": false,
+			"description": "§ProductionEventListener",
+			"title": "Triggers when a ressource-type is produced"
 		},
 		{
 			"properties": {

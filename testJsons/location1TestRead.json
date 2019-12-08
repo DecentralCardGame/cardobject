@@ -22,6 +22,22 @@
 						}
 					}
 				}
+			},
+			{
+				"TriggeredAbility": {
+					"Effects": [
+						{
+							"Production": {
+								"Generic":1
+							}
+						}
+					],
+					"Cause": {
+						"ProductionEventListener": {
+							"RessourceType": "FOOD"
+						}
+					}
+				}
 			}
 		],
 		"AbilitySpeed":1,

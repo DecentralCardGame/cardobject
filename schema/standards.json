@@ -64,6 +64,10 @@
 		"type": "string",
 		"enum": ["YOUR", "OPPONENTS", "OWNERS"]
 	},
+	"ressourceType": {
+		"type": "string",
+		"enum": ["ENERGY","FOOD","GENERIC","LUMBER","MANA","METAL"]
+	},
 	"string": {
 		"type": "string",
 		"minLength": 1,

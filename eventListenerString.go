@@ -2,9 +2,13 @@ package cardobject
 
 func (el *eventListener) toString() string {
 	var plainText string
+	pel := el.ProductionEventListener
 	tel := el.TimeEventListener
 	mel := el.ManipulationEventListener
 	zel := el.ZoneChangeEventListener
+	if(pel != nil) {
+		return pel.toString()
+	}
 	if(tel != nil) {
 		return tel.toString()
 	}
@@ -14,6 +18,12 @@ func (el *eventListener) toString() string {
 	if(zel != nil) {
 		return zel.toString()
 	}
+	return plainText
+}
+
+func (pel *productionEventListener) toString() string {
+	var plainText string
+	plainText += "Whenever you produce " + pel.RessourceType + ": "
 	return plainText
 }
 

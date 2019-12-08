@@ -1,18 +1,22 @@
 package cardobject
 
+type productionEventListener struct {
+	RessourceType string
+}
+
 type timeEventListener struct {
 	TimeEvent string
 }
 
 type manipulationEventListener struct {
-	IntManipulationEventListener *manipulationBasics `json:",omitempty"`
-	StringManipulationEventListener *manipulationBasics `json:",omitempty"`
+	IntManipulationEventListener *manipulationEventBasics `json:",omitempty"`
+	StringManipulationEventListener *manipulationEventBasics `json:",omitempty"`
 }
 
-type manipulationBasics struct {
+type manipulationEventBasics struct {
 	Property string
 	ChangeMode string
-	CardCondition *cardCondition `json:",omitempty"` 
+	CardCondition *cardCondition `json:",omitempty"`
 }
 
 type zoneChangeEventListener struct {
@@ -22,6 +26,7 @@ type zoneChangeEventListener struct {
 }
 
 type eventListener struct {
+	ProductionEventListener *productionEventListener `json:",omitempty"`
 	TimeEventListener *timeEventListener `json:",omitempty"`
 	ManipulationEventListener *manipulationEventListener `json:",omitempty"`
 	ZoneChangeEventListener *zoneChangeEventListener `json:",omitempty"`
