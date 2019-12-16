@@ -118,6 +118,7 @@
     	}
 	},
 	"effect": {
+		"type": "object",
 		"oneOf": [
 			{
 				"properties": {
