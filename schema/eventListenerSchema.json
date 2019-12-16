@@ -101,51 +101,53 @@
 			"description": "Whenever a card §CardCondition is moved from the §Source to the §Destination"
 		}
 	},
-	"type": "object",
-	"oneOf": [
-		{
-			"properties": {
-				"TimeEventListener": {
-					"$ref": "#/definitions/timeEventListener"
-				}
+	"eventListener": {
+		"type": "object",
+		"oneOf": [
+			{
+				"properties": {
+					"TimeEventListener": {
+						"$ref": "#/definitions/timeEventListener"
+					}
+				},
+				"required":["TimeEventListener"],
+				"additionalProperties": false,
+				"description": "§TimeEventListener",
+				"title": "Triggers when a time-event occurs"
 			},
-			"required":["TimeEventListener"],
-			"additionalProperties": false,
-			"description": "§TimeEventListener",
-			"title": "Triggers when a time-event occurs"
-		},
-		{
-			"properties": {
-				"ManipulationEventListener": {
-					"$ref": "#/definitions/manipulationEventListener"
-				}
+			{
+				"properties": {
+					"ManipulationEventListener": {
+						"$ref": "#/definitions/manipulationEventListener"
+					}
+				},
+				"required":["ManipulationEventListener"],
+				"additionalProperties": false,
+				"description": "§ManipulationEventListener",
+				"title": "Triggers when a card-property is manipulated"
 			},
-			"required":["ManipulationEventListener"],
-			"additionalProperties": false,
-			"description": "§ManipulationEventListener",
-			"title": "Triggers when a card-property is manipulated"
-		},
-		{
-			"properties": {
-				"ProductionEventListener": {
-					"$ref": "#/definitions/productionEventListener"
-				}
+			{
+				"properties": {
+					"ProductionEventListener": {
+						"$ref": "#/definitions/productionEventListener"
+					}
+				},
+				"required":["ProductionEventListener"],
+				"additionalProperties": false,
+				"description": "§ProductionEventListener",
+				"title": "Triggers when a ressource-type is produced"
 			},
-			"required":["ProductionEventListener"],
-			"additionalProperties": false,
-			"description": "§ProductionEventListener",
-			"title": "Triggers when a ressource-type is produced"
-		},
-		{
-			"properties": {
-				"ZoneChangeEventListener": {
-					"$ref": "#/definitions/zoneChangeEventListener"
-				}
-			},
-			"required":["ZoneChangeEventListener"],
-			"additionalProperties": false,
-			"description": "§ZoneChangeEventListener",
-			"title": "Triggers when a card changes its zone"
-		}
-	]
+			{
+				"properties": {
+					"ZoneChangeEventListener": {
+						"$ref": "#/definitions/zoneChangeEventListener"
+					}
+				},
+				"required":["ZoneChangeEventListener"],
+				"additionalProperties": false,
+				"description": "§ZoneChangeEventListener",
+				"title": "Triggers when a card changes its zone"
+			}
+		]
+	}
 }
