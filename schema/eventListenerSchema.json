@@ -1,5 +1,25 @@
 {
 	"definitions": {
+		"attackEventListener": {
+			"type": "object",
+			"properties": {
+				"EntityCondition": {
+					"$ref": "conditionSchema.json#/entityCondition"
+				}
+			},
+			"additionalProperties": false,
+			"description": "When an entity §CardCondition attacks"
+		},
+		"blockEventListener": {
+			"type": "object",
+			"properties": {
+				"EntityCondition": {
+					"$ref": "conditionSchema.json#/entityCondition"
+				}
+			},
+			"additionalProperties": false,
+			"description": "When an entity §CardCondition blocks"
+		},
 		"productionEventListener": {
 			"type": "object",
 			"properties": {
@@ -114,6 +134,28 @@
 				"additionalProperties": false,
 				"description": "§TimeEventListener",
 				"title": "Triggers when a time-event occurs"
+			},
+			{
+				"properties": {
+					"AttackEventListener": {
+						"$ref": "#/definitions/attackEventListener"
+					}
+				},
+				"required":["AttackEventListener"],
+				"additionalProperties": false,
+				"description": "§AttackEventListener",
+				"title": "Triggers when an entity attacks"
+			},
+			{
+				"properties": {
+					"BlockEventListener": {
+						"$ref": "#/definitions/blockEventListener"
+					}
+				},
+				"required":["BlockEventListener"],
+				"additionalProperties": false,
+				"description": "§BlockEventListener",
+				"title": "Triggers when an entity blocks"
 			},
 			{
 				"properties": {

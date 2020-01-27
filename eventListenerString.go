@@ -6,6 +6,9 @@ func (el *eventListener) toString() string {
 	tel := el.TimeEventListener
 	mel := el.ManipulationEventListener
 	zel := el.ZoneChangeEventListener
+	bel := el.BlockEventListener
+	ael := el.AttackEventListener
+
 	if(pel != nil) {
 		return pel.toString()
 	}
@@ -18,12 +21,30 @@ func (el *eventListener) toString() string {
 	if(zel != nil) {
 		return zel.toString()
 	}
+	if(bel != nil) {
+		return bel.toString()
+	}
+	if(ael != nil) {
+		return ael.toString()
+	}
 	return plainText
 }
 
 func (pel *productionEventListener) toString() string {
 	var plainText string
 	plainText += "Whenever you produce " + pel.RessourceType + ": "
+	return plainText
+}
+
+func (bel *blockEventListener) toString() string {
+	var plainText string
+	plainText += "Whenever an entity " + bel.EntityCondition.ToString() + " blocks: "
+	return plainText
+}
+
+func (ael *attackEventListener) toString() string {
+	var plainText string
+	plainText += "Whenever an entity " + ael.EntityCondition.ToString() + " attacks: "
 	return plainText
 }
 
