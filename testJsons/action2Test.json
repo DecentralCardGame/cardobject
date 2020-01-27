@@ -1,1 +1,1 @@
-{"Action":{"Name":"Evacuate","Tags":["Tactic"],"Text":"Retreat!","Cost":{"Mana":1,"Generic":1},"CastSpeed":2,"Effects":[{"TargetEffect":{"EntityTargetEffect":{"EntitySelector":{"PlayerMode":"TARGET","Zone":"DECK","CardMode":"TARGET"},"ZoneChange":{"Zone":"HAND","Player":"YOUR"}}}}]}}
+{"Action":{"Name":"Evacuate","Tags":["TACTIC"],"Text":"Retreat!","Cost":{"Mana":1,"Generic":1},"CastSpeed":2,"Effects":[{"TargetEffect":{"EntityTargetEffect":{"EntitySelector":{"PlayerMode":"TARGET","Zone":"DECK","CardMode":"TARGET"},"ZoneChange":{"Zone":"HAND","Player":"YOUR"}}}}]}}

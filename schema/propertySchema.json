@@ -14,9 +14,6 @@
 	"speedModifier": {
 		"$ref": "standards.json#/int"
 	},
-	"tag": {
-		"$ref": "standards.json#/string"
-	},
 	"text": {
 		"$ref": "standards.json#/string"
 	},

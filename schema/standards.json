@@ -80,7 +80,7 @@
 	"tags": {
         "type": "array",
         "items": {
-    	    "$ref": "propertySchema.json#/tag"
+    	    "$ref": "tagsSchema.json"
         },
         "minItems": 1,
         "maxItems": 4,

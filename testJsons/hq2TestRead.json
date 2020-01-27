@@ -2,7 +2,7 @@
 	"Headquarter": {
 		"UniqueName":"Fortress, Castle of Knights",
 		"Name":"Fortress, Castle of Knights",
-		"Tags":["Knight"],
+		"Tags":["KNIGHT"],
 		"Text":"happens here",
 		"Abilities": [
 			{
@@ -17,7 +17,7 @@
 										"CardCondition": {
 											"StringCondition": {
 												"StringProperty": "TAG",
-												"StringValue": "Knight",
+												"StringValue": "KNIGHT",
 												"StringComparator":"EQUAL"
 											}
 										},

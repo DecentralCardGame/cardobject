@@ -1,7 +1,7 @@
 {
 	"Entity": {
 		"Name":"Coward",
-		"Tags":["farm"],
+		"Tags":["FARM"],
 		"Text":"I'm out",
 		"Cost":{"Food": 1},
 		"CastSpeed":1,

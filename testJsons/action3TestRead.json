@@ -1,7 +1,7 @@
 {
 	"Action": {
 		"Name":"Heat Up",
-		"Tags":["Fire"],
+		"Tags":["FIRE"],
 		"Text":"More heat, pls",
 		"Cost":{
 			"Lumber": 1

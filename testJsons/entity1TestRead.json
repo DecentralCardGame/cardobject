@@ -1,7 +1,7 @@
 {
 	"Entity": {
 		"Name":"Archer",
-		"Tags":["range"],
+		"Tags":["RANGE"],
 		"Text":"Ping",
 		"Cost":{
 			"Food": 1,

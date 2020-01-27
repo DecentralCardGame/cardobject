@@ -5,7 +5,7 @@
 			"$ref": "propertySchema.json#/name"
 		},
 		"Tag": {
-			"$ref": "propertySchema.json#/tag"
+			"$ref": "standards.json#/tags"
     	},
     	"Attack": {
     		"$ref": "propertySchema.json#/attack"

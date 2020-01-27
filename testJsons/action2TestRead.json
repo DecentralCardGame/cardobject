@@ -1,7 +1,7 @@
 {
 	"Action": {
 		"Name":"Evacuate",
-		"Tags":["Tactic"],
+		"Tags":["TACTIC"],
 		"Text":"Retreat!",
 		"Cost":{
 			"Mana": 1,

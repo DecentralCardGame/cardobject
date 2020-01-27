@@ -1,7 +1,7 @@
 {
 	"Location": {
 		"Name":"Mühle",
-		"Tags":["primitiv"],
+		"Tags":["PRIMITIVE"],
 		"Text":"Brot für alle",
 		"Cost":{
 			"Lumber": 2,

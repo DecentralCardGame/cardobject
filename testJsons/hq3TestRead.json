@@ -2,7 +2,7 @@
 	"Headquarter": {
 		"UniqueName":"Townhall, gathering of peasants",
 		"Name":"Townhall, gathering of peasants",
-		"Tags":["primitive"],
+		"Tags":["PRIMITIVE"],
 		"Text":"peasantville",
 		"Abilities": [
 			{
