@@ -31,15 +31,15 @@
 	},
 	"actionStringPropertyId": {
 		"type": "string",
-		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
+		"enum": ["NAME","TEXT","UNIQUENAME"]
 	},
 	"entityStringPropertyId": {
 		"type": "string",
-		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
+		"enum": ["NAME","TEXT","UNIQUENAME"]
 	},
 	"locationStringPropertyId": {
 		"type": "string",
-		"enum": ["NAME","TAG","TEXT","UNIQUENAME"]
+		"enum": ["NAME","TEXT","UNIQUENAME"]
 	},
 	"cardStringPropertyId": {
 		"type": "string",

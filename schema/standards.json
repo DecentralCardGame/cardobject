@@ -26,7 +26,7 @@
         "minItems": 1,
         "maxItems": 4,
         "additionalItems": false
-    },
+  },
 	"int": {
 		"type": "integer",
 		"minimum": 0,
@@ -58,6 +58,10 @@
 		"stringOperator": {
 			"type": "string",
 			"enum": ["SET"]
+		},
+		"tagOperator": {
+			"type": "string",
+			"enum": ["ADD", "REMOVE"]
 		}
 	},
 	"owner": {
@@ -73,6 +77,15 @@
 		"minLength": 1,
 		"maxLength": 32
 	},
+	"tags": {
+        "type": "array",
+        "items": {
+    	    "$ref": "propertySchema.json#/tag"
+        },
+        "minItems": 1,
+        "maxItems": 4,
+        "additionalItems": false
+  },
 	"timeEvents": {
 		"type": "string",
 		"enum": ["TICKEND","TICKSTART"]

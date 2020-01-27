@@ -48,6 +48,20 @@
 			"additionalProperties": false,
 			"description": "§StringOperator §StringProperty §StringValue."
 		},
+		"actionTagManipulation": {
+			"type": "object",
+			"properties": {
+				"TagValue": {
+					"$ref": "standards.json#/string"
+				},
+				"TagOperator": {
+					"$ref": "standards.json#/operator/tagOperator"
+				}
+			},
+			"required": ["TagValue","TagOperator"],
+			"additionalProperties": false,
+			"description": "§TagOperator tag §TagValue."
+		},
 		"entityAbilityManipulation": {
 			"type": "object",
 			"properties": {
@@ -96,6 +110,20 @@
 			"additionalProperties": false,
 			"description": "§StringOperator §StringProperty §StringValue."
 		},
+		"entityTagManipulation": {
+			"type": "object",
+			"properties": {
+				"TagValue": {
+					"$ref": "standards.json#/string"
+				},
+				"TagOperator": {
+					"$ref": "standards.json#/operator/tagOperator"
+				}
+			},
+			"required": ["TagValue","TagOperator"],
+			"additionalProperties": false,
+			"description": "§TagOperator tag §TagValue."
+		},
 		"locationAbilityManipulation": {
 			"type": "object",
 			"properties": {
@@ -143,6 +171,20 @@
 			"required": ["StringProperty","StringValue","StringOperator"],
 			"additionalProperties": false,
 			"description": "§StringOperator §StringProperty §StringValue"
+		},
+		"locationTagManipulation": {
+			"type": "object",
+			"properties": {
+				"TagValue": {
+					"$ref": "standards.json#/string"
+				},
+				"TagOperator": {
+					"$ref": "standards.json#/operator/tagOperator"
+				}
+			},
+			"required": ["TagValue","TagOperator"],
+			"additionalProperties": false,
+			"description": "§TagOperator tag §TagValue."
 		}
 	},
 	"actionManipulation": {
@@ -180,6 +222,17 @@
 				"additionalProperties": false,
 				"description": "§ActionStringManipulation",
 				"title": "Text action manipulation"
+			},
+			{
+				"properties": {
+					"ActionTagManipulation": {
+						"$ref": "#/definitions/actionTagManipulation"
+					}
+				},
+				"required": ["ActionTagManipulation"],
+				"additionalProperties": false,
+				"description": "§ActionTagManipulation",
+				"title": "Tag action manipulation"
 			}
 		]
 	},
@@ -218,6 +271,17 @@
 				"additionalProperties": false,
 				"description": "§EntityStringManipulation",
 				"title": "Text entity manipulation"
+			},
+			{
+				"properties": {
+					"EntityTagManipulation": {
+						"$ref": "#/definitions/entityTagManipulation"
+					}
+				},
+				"required": ["EntityTagManipulation"],
+				"additionalProperties": false,
+				"description": "§EntityTagManipulation",
+				"title": "Tag entity manipulation"
 			}
 		]
 	},
@@ -256,6 +320,17 @@
 				"additionalProperties": false,
 				"description": "§LocationStringManipulation",
 				"title": "Text location manipulation"
+			},
+			{
+				"properties": {
+					"LocationTagManipulation": {
+						"$ref": "#/definitions/locationTagManipulation"
+					}
+				},
+				"required": ["LocationTagManipulation"],
+				"additionalProperties": false,
+				"description": "§LocationTagManipulation",
+				"title": "Tag location manipulation"
 			}
 		]
 	}

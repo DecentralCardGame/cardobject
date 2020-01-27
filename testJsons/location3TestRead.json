@@ -1,7 +1,7 @@
 {
 	"Location": {
 		"Name":"Chapel",
-		"Tag":"primitiv",
+		"Tags":["primitiv"],
 		"Text":"RIP",
 		"Cost": {
 			"Lumber":1,
@@ -23,10 +23,9 @@
 										"PlayerMode":"TARGET",
 										"CardMode":"TARGET",
 										"CardCondition": {
-											"StringCondition": {
-												"StringValue": "spirital",
-												"StringProperty": "TAG",
-												"StringComparator": "EQUAL"
+											"TagCondition": {
+												"TagValue": "spirital",
+												"TagComparator": "EQUAL"
 											}
 										},
 										"Zone":"FIELD"

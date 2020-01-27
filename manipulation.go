@@ -22,20 +22,28 @@ type stringManipulationBasics struct {
 	StringValue string
 }
 
+type tagManipulationBasics struct {
+	TagOperator string
+	TagValue string
+}
+
 type actionManipulation struct {
 	ActionEffectManipulation *effectManipulationBasics `json:",omitempty"`
 	ActionIntManipulation *intManipulationBasics `json:",omitempty"`
 	ActionStringManipulation *stringManipulationBasics `json:",omitempty"`
+	ActionTagManipulation *tagManipulationBasics `json:",omitempty"`
 }
 
 type entityManipulation struct {
 	EntityAbilityManipulation *abilityManipulationBasics `json:",omitempty"`
 	EntityIntManipulation *intManipulationBasics `json:",omitempty"`
 	EntityStringManipulation *stringManipulationBasics `json:",omitempty"`
+	EntityTagManipulation *tagManipulationBasics `json:",omitempty"`
 }
 
 type locationManipulation struct {
 	LocationAbilityManipulation *abilityManipulationBasics `json:",omitempty"`
 	LocationIntManipulation *intManipulationBasics `json:",omitempty"`
 	LocationStringManipulation *stringManipulationBasics `json:",omitempty"`
+	LocationTagManipulation *tagManipulationBasics `json:",omitempty"`
 }

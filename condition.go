@@ -12,9 +12,15 @@ type stringCondition struct {
 	StringValue string
 }
 
+type tagCondition struct {
+	TagComparator string
+	TagValue string
+}
+
 type conditionAttributes struct {
 	IntCondition *intCondition `json:",omitempty"`
 	StringCondition *stringCondition `json:",omitempty"`
+	TagCondition *tagCondition `json:",omitempty"`
 }
 
 type actionCondition struct {

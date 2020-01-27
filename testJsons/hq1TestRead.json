@@ -2,7 +2,7 @@
 	"Headquarter": {
 		"UniqueName":"Spire, Tower of Mages",
 		"Name":"Spire, Tower of Mages",
-		"Tag":"magic",
+		"Tags":["magic"],
 		"Text":"happens here",
 		"Abilities": [
 			{

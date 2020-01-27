@@ -1,7 +1,7 @@
 {
 	"Location": {
 		"Name":"Ambulance",
-		"Tag":"militant",
+		"Tags":["militant"],
 		"Text":"UIUIUIUIUI",
 		"Cost":{
 			"Food": 1,
@@ -24,10 +24,9 @@
 								"ChangeMode":"DECREASES",
 								"CardCondition": {
 									"EntityCondition": {
-										"StringCondition": {
-											"StringProperty": "TAG",
-											"StringComparator": "CONTAINS",
-											"StringValue": "militant"
+										"TagCondition": {
+											"TagComparator": "CONTAINS",
+											"TagValue": "militant"
 										}
 									}
 								}

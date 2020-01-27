@@ -8,6 +8,14 @@ type timeEventListener struct {
 	TimeEvent string
 }
 
+type attackEventListener struct {
+	EntityCondition *entityCondition `json:",omitempty"`
+}
+
+type blockEventListener struct {
+	EntityCondition *entityCondition `json:",omitempty"`
+}
+
 type manipulationEventListener struct {
 	IntManipulationEventListener *manipulationEventBasics `json:",omitempty"`
 	StringManipulationEventListener *manipulationEventBasics `json:",omitempty"`
@@ -30,4 +38,6 @@ type eventListener struct {
 	TimeEventListener *timeEventListener `json:",omitempty"`
 	ManipulationEventListener *manipulationEventListener `json:",omitempty"`
 	ZoneChangeEventListener *zoneChangeEventListener `json:",omitempty"`
+	AttackEventListener *attackEventListener `json:",omitempty"`
+	BlockEventListener *blockEventListener `json:",omitempty"`
 }

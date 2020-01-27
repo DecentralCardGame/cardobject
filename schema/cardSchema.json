@@ -12,8 +12,8 @@
         "Name": {
           "$ref": "propertySchema.json#/name"
         },
-        "Tag": {
-          "$ref": "propertySchema.json#/tag"
+        "Tags": {
+          "$ref": "standards.json#/tags"
         },
         "Text": {
           "$ref": "propertySchema.json#/text"
@@ -22,7 +22,7 @@
           "$ref": "standards.json#/effects"
         }
       },
-      "required": ["Cost","CastSpeed","Name","Tag","Text","Effects"],
+      "required": ["Cost","CastSpeed","Name","Tags","Text","Effects"],
       "additionalProperties": false
     },
     "entity": {
@@ -31,8 +31,8 @@
         "Name": {
           "$ref": "propertySchema.json#/name"
         },
-        "Tag": {
-          "$ref": "propertySchema.json#/tag"
+        "Tags": {
+          "$ref": "standards.json#/tags"
         },
         "Text": {
           "$ref": "propertySchema.json#/text"
@@ -56,7 +56,7 @@
           "$ref": "propertySchema.json#/health"
         }
       },
-      "required": ["Name","Tag","Text","Attack","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
+      "required": ["Name","Tags","Text","Attack","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
       "additionalProperties": false
     },
     "location": {
@@ -65,8 +65,8 @@
         "Name": {
           "$ref": "propertySchema.json#/name"
         },
-        "Tag": {
-          "$ref": "propertySchema.json#/tag"
+        "Tags": {
+          "$ref": "standards.json#/tags"
         },
         "Text": {
           "$ref": "propertySchema.json#/text"
@@ -87,7 +87,7 @@
           "$ref": "propertySchema.json#/health"
         }
       },
-      "required": ["Name","Tag","Text","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
+      "required": ["Name","Tags","Text","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
       "additionalProperties": false
     },
     "headquarter": {
@@ -96,8 +96,8 @@
         "Name": {
           "$ref": "propertySchema.json#/name"
         },
-        "Tag": {
-          "$ref": "propertySchema.json#/tag"
+        "Tags": {
+          "$ref": "standards.json#/tags"
         },
         "Text": {
           "$ref": "propertySchema.json#/text"
@@ -115,7 +115,7 @@
           "$ref": "propertySchema.json#/uniqueName"
         }
       },
-      "required": ["Name","Tag","Text","Abilities","AbilitySpeed","Health","UniqueName"],
+      "required": ["Name","Tags","Text","Abilities","AbilitySpeed","Health","UniqueName"],
       "additionalProperties": false
     }
   },

@@ -1,7 +1,7 @@
 {
 	"Entity": {
 		"Name":"Farmer",
-		"Tag":"farm",
+		"Tags":["farm"],
 		"Text":"Love my piggies",
 		"Cost":{
 			"Food": 1,
@@ -19,6 +19,26 @@
 					"Cause": {
 						"TimeEventListener": {
 							"TimeEvent":"TICKSTART"
+						}
+					}
+				}
+			},
+			{
+				"TriggeredAbility": {
+					"Effects": [
+						{
+							"Production":{"Food":1}
+						}
+					],
+					"Cause": {
+						"AttackEventListener": {
+							"EntityCondition": {
+								"EntityIntCondition": {
+									"IntProperty": "ATTACK",
+									"IntComparator": "EQUALS",
+									"IntValue": 1
+								}
+							}
 						}
 					}
 				}

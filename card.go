@@ -2,7 +2,7 @@ package cardobject
 
 type cardAttributes struct {
 	Name string
-	Tag string
+	Tags []string
 	Text string
 }
 

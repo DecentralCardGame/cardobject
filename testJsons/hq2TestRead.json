@@ -2,7 +2,7 @@
 	"Headquarter": {
 		"UniqueName":"Fortress, Castle of Knights",
 		"Name":"Fortress, Castle of Knights",
-		"Tag":"Knight",
+		"Tags":["Knight"],
 		"Text":"happens here",
 		"Abilities": [
 			{

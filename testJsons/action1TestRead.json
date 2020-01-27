@@ -1,7 +1,7 @@
 {
 	"Action": {
 		"Name":"EXPLOSION",
-		"Tag":"fire",
+		"Tags":["fire"],
 		"Text":"Its big",
 		"Cost": {
 			"Energy": 2,
