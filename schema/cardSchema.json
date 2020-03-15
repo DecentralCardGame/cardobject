@@ -21,7 +21,10 @@
         "Effects": {
           "$ref": "standards.json#/effects"
         },
-        "DisplayName": "Action"
+        "DisplayName": {
+          "type": "string",
+          "enum": ["Action"]
+        }
       },
       "required": ["Cost","CastSpeed","Name","Tags","Text","Effects"],
       "additionalProperties": false
@@ -56,7 +59,10 @@
         "Health": {
           "$ref": "propertySchema.json#/health"
         },
-        "DisplayName": "Entity"
+        "DisplayName": {
+          "type": "string",
+          "enum": ["Entity"]
+        }
       },
       "required": ["Name","Tags","Text","Attack","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
       "additionalProperties": false
@@ -88,7 +94,10 @@
         "Health": {
           "$ref": "propertySchema.json#/health"
         },
-        "DisplayName": "Location"
+        "DisplayName": {
+          "type": "string",
+          "enum": ["Location"]
+        }
       },
       "required": ["Name","Tags","Text","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
       "additionalProperties": false
@@ -117,7 +126,10 @@
         "UniqueName": {
           "$ref": "propertySchema.json#/uniqueName"
         },
-        "DisplayName": "HQ"
+        "DisplayName": {
+          "type": "string",
+          "enum": ["HQ"]
+        }
       },
       "required": ["Name","Tags","Text","Abilities","AbilitySpeed","Health","UniqueName"],
       "additionalProperties": false
