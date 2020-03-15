@@ -14,7 +14,7 @@ type readableCard struct {
 func (c *card) toReadable() readableCard {
 	a := c.Action
 	e := c.Entity
-	f := c.Location
+	f := c.Place
 	h := c.Headquarter
 	if(a != nil) {
 		return readableCard{*c, readable{a.toString()}}
@@ -53,7 +53,7 @@ func (e *entity) toString() string {
 	return strings.Join(abilitiesString, "\n")
 }
 
-func (f *location) toString() string {
+func (f *place) toString() string {
 	var abilitiesString []string
 	abilities := f.Abilities
 	if(abilities != nil) {

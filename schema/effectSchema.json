@@ -40,14 +40,14 @@
 				},
 				{
 					"properties": {
-						"LocationTargetEffect": {
-							"$ref": "#/definitions/locationTargetEffect"
+						"PlaceTargetEffect": {
+							"$ref": "#/definitions/placeTargetEffect"
 						}
 					},
-					"required": ["LocationTargetEffect"],
+					"required": ["PlaceTargetEffect"],
 					"additionalProperties": false,
-					"description": "§LocationTargetEffect",
-					"title": "An effect targeting a  location"
+					"description": "§PlaceTargetEffect",
+					"title": "An effect targeting a  place"
 				}
 			]
 		},
@@ -95,16 +95,16 @@
 			"additionalProperties": false,
 			"description": "§EntitySelector. §EntityManipulations. §ZoneChange."
 		},
-		"locationTargetEffect": {
+		"placeTargetEffect": {
 			"type": "object",
       		"properties": {
-       			"LocationSelector": {
-          			"$ref": "selectorSchema.json#/definitions/locationSelector"
+       			"PlaceSelector": {
+          			"$ref": "selectorSchema.json#/definitions/placeSelector"
         		},
-        		"LocationManipulations": {
+        		"PlaceManipulations": {
           			"type": "array",
           			"items": {
-						"$ref": "manipulationSchema.json#/locationManipulation"
+						"$ref": "manipulationSchema.json#/placeManipulation"
 					},
 					"maxItems": 5,
 					"additionalItems": false
@@ -113,9 +113,9 @@
 					"$ref": "zoneChangeSchema.json"
 				}
       		},
-     		"required": ["LocationSelector"],
+     		"required": ["PlaceSelector"],
       		"additionalProperties": false,
-					"description": "§LocationSelector. §LocationManipulations. §ZoneChange."
+					"description": "§PlaceSelector. §PlaceManipulations. §ZoneChange."
     	}
 	},
 	"effect": {

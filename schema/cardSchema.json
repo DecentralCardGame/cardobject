@@ -67,7 +67,7 @@
       "required": ["Name","Tags","Text","Attack","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
       "additionalProperties": false
     },
-    "location": {
+    "place": {
       "type": "object",
       "properties": {
         "Name": {
@@ -96,7 +96,7 @@
         },
         "DisplayName": {
           "type": "string",
-          "enum": ["Location"]
+          "enum": ["Place"]
         }
       },
       "required": ["Name","Tags","Text","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
@@ -156,11 +156,11 @@
     },
     {
       "properties": {
-        "Location": {
-          "$ref": "#/definitions/location"
+        "Place": {
+          "$ref": "#/definitions/place"
         }
       },
-      "required":["Location"],
+      "required":["Place"],
       "additionalProperties": false
     },
     {

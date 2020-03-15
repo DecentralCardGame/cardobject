@@ -48,8 +48,8 @@ func (es *entitySelector) toString() string {
 	return plainText
 }
 
-func (fs *locationSelector) toString() string {
-	plainText := "Choose " + fs.CardMode + " location"
+func (fs *placeSelector) toString() string {
+	plainText := "Choose " + fs.CardMode + " place"
 	if(fs.CardMode == "ALL") {
 		plainText += "s"
 	}

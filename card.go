@@ -30,7 +30,7 @@ type entity struct {
 	Attack int8
 }
 
-type location struct {
+type place struct {
 	cardAttributes
 	castable
 	permanent
@@ -45,6 +45,6 @@ type headquarter struct {
 type card struct {
 	Action *action `json:",omitempty"`
 	Entity *entity `json:",omitempty"`
-	Location *location `json:",omitempty"`
+	Place *place `json:",omitempty"`
 	Headquarter *headquarter `json:",omitempty"`
 }

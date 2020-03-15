@@ -36,8 +36,8 @@ func TestCardSerializationAction3(t *testing.T) {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
-func TestCardSerializationLocation1(t *testing.T) {
-	file, _ := ioutil.ReadFile("testJsons/location1Test.json")
+func TestCardSerializationPlace1(t *testing.T) {
+	file, _ := ioutil.ReadFile("testJsons/place1Test.json")
   input := string(file)
 	output, err := FunctionalCardJson(input)
 	if err != nil {
@@ -47,8 +47,8 @@ func TestCardSerializationLocation1(t *testing.T) {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
-func TestCardSerializationLocation2(t *testing.T) {
-	file, _ := ioutil.ReadFile("testJsons/location2Test.json")
+func TestCardSerializationPlace2(t *testing.T) {
+	file, _ := ioutil.ReadFile("testJsons/place2Test.json")
 	input := string(file)
 	output, err := FunctionalCardJson(input)
 	if err != nil {
@@ -58,8 +58,8 @@ func TestCardSerializationLocation2(t *testing.T) {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
-func TestCardSerializationLocation3(t *testing.T) {
-	file, _ := ioutil.ReadFile("testJsons/location3Test.json")
+func TestCardSerializationPlace3(t *testing.T) {
+	file, _ := ioutil.ReadFile("testJsons/place3Test.json")
 	input := string(file)
 	output, err := FunctionalCardJson(input)
 	if err != nil {

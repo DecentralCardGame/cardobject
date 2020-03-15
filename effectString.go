@@ -32,7 +32,7 @@ func (e *effect) toString() string {
 func (te *targetEffect) toString() string {
 	ate := te.ActionTargetEffect
 	ete := te.EntityTargetEffect
-	fte := te.LocationTargetEffect
+	fte := te.PlaceTargetEffect
 	if(ate != nil) {
 		return ate.toString()
 	}
@@ -91,16 +91,16 @@ func (ete *entityTargetEffect) toString() string {
 	return strings.Join(sentences, " ")
 }
 
-func (fte *locationTargetEffect) toString() string {
+func (fte *placeTargetEffect) toString() string {
 	var sentences []string
 	plural := false
-	manipulations := fte.LocationManipulations
+	manipulations := fte.PlaceManipulations
 	zoneChange := fte.ZoneChange
-	if(fte.LocationSelector.CardMode == "ALL") {
+	if(fte.PlaceSelector.CardMode == "ALL") {
 		plural = true
 	}
 
-	sentences = append(sentences, fte.LocationSelector.toString())
+	sentences = append(sentences, fte.PlaceSelector.toString())
 
 	if(manipulations != nil) {
 		for _, m := range manipulations {

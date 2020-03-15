@@ -124,7 +124,7 @@
 			"additionalProperties": false,
 			"description": "§TagOperator tag §TagValue."
 		},
-		"locationAbilityManipulation": {
+		"placeAbilityManipulation": {
 			"type": "object",
 			"properties": {
 				"Ability": {
@@ -138,11 +138,11 @@
 			"additionalProperties": false,
 			"description": "It §AbilityOperator §Ability."
 		},
-		"locationIntManipulation": {
+		"placeIntManipulation": {
 			"type": "object",
 			"properties": {
 				"IntProperty": {
-					"$ref": "propertyIdSchema.json#/locationIntPropertyId"
+					"$ref": "propertyIdSchema.json#/placeIntPropertyId"
 				},
 				"IntValue": {
 					"$ref": "standards.json#/int"
@@ -155,11 +155,11 @@
 			"additionalProperties": false,
 			"description": "§IntOperator §IntProperty §IntValue"
 		},
-		"locationStringManipulation": {
+		"placeStringManipulation": {
 			"type": "object",
 			"properties": {
 				"StringProperty": {
-					"$ref": "propertyIdSchema.json#/locationStringPropertyId"
+					"$ref": "propertyIdSchema.json#/placeStringPropertyId"
 				},
 				"StringValue": {
 					"$ref": "standards.json#/string"
@@ -172,7 +172,7 @@
 			"additionalProperties": false,
 			"description": "§StringOperator §StringProperty §StringValue"
 		},
-		"locationTagManipulation": {
+		"placeTagManipulation": {
 			"type": "object",
 			"properties": {
 				"TagValue": {
@@ -285,52 +285,52 @@
 			}
 		]
 	},
-	"locationManipulation": {
+	"placeManipulation": {
 		"type": "object",
 		"oneOf": [
 			{
 				"properties": {
-					"LocationAbilityManipulation": {
-						"$ref": "#/definitions/locationAbilityManipulation"
+					"PlaceAbilityManipulation": {
+						"$ref": "#/definitions/placeAbilityManipulation"
 					}
 				},
-				"required": ["LocationAbilityManipulation"],
+				"required": ["PlaceAbilityManipulation"],
 				"additionalProperties": false,
-				"description": "§LocationAbilityManipulation",
-				"title": "Add ore remove an ability from location"
+				"description": "§PlaceAbilityManipulation",
+				"title": "Add ore remove an ability from place"
 			},
 			{
 				"properties": {
-					"LocationIntManipulation": {
-						"$ref": "#/definitions/locationIntManipulation"
+					"PlaceIntManipulation": {
+						"$ref": "#/definitions/placeIntManipulation"
 					}
 				},
-				"required": ["LocationIntManipulation"],
+				"required": ["PlaceIntManipulation"],
 				"additionalProperties": false,
-				"description": "§LocationIntManipulation",
-				"title": "Numeric location manipulation"
+				"description": "§PlaceIntManipulation",
+				"title": "Numeric place manipulation"
 			},
 			{
 				"properties": {
-					"LocationStringManipulation": {
-						"$ref": "#/definitions/locationStringManipulation"
+					"PlaceStringManipulation": {
+						"$ref": "#/definitions/placeStringManipulation"
 					}
 				},
-				"required": ["LocationStringManipulation"],
+				"required": ["PlaceStringManipulation"],
 				"additionalProperties": false,
-				"description": "§LocationStringManipulation",
-				"title": "Text location manipulation"
+				"description": "§PlaceStringManipulation",
+				"title": "Text place manipulation"
 			},
 			{
 				"properties": {
-					"LocationTagManipulation": {
-						"$ref": "#/definitions/locationTagManipulation"
+					"PlaceTagManipulation": {
+						"$ref": "#/definitions/placeTagManipulation"
 					}
 				},
-				"required": ["LocationTagManipulation"],
+				"required": ["PlaceTagManipulation"],
 				"additionalProperties": false,
-				"description": "§LocationTagManipulation",
-				"title": "Tag location manipulation"
+				"description": "§PlaceTagManipulation",
+				"title": "Tag place manipulation"
 			}
 		]
 	}

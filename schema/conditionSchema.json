@@ -96,11 +96,11 @@
 			"additionalProperties": false,
 			"description": "with tag §StringComparator §StringValue"
 		},
-		"locationIntCondition": {
+		"placeIntCondition": {
 			"type": "object",
 			"properties": {
 				"IntProperty": {
-					"$ref": "propertyIdSchema.json#/locationIntPropertyId"
+					"$ref": "propertyIdSchema.json#/placeIntPropertyId"
 				},
 				"IntValue": {
 					"$ref": "standards.json#/int"
@@ -113,11 +113,11 @@
 			"additionalProperties": false,
 			"description": "with §IntProperty §IntComparator §IntValue"
 		},
-		"locationStringCondition": {
+		"placeStringCondition": {
 			"type": "object",
 			"properties": {
 				"StringProperty": {
-					"$ref": "propertyIdSchema.json#/locationStringPropertyId"
+					"$ref": "propertyIdSchema.json#/placeStringPropertyId"
 				},
 				"StringValue": {
 					"$ref": "standards.json#/string"
@@ -130,7 +130,7 @@
 			"additionalProperties": false,
 			"description": "with §StringProperty §StringComparator §StringValue"
 		},
-		"locationTagCondition": {
+		"placeTagCondition": {
 			"type": "object",
 			"properties": {
 				"TagValue": {
@@ -253,12 +253,12 @@
 			}
 		]
 	},
-	"locationCondition": {
+	"placeCondition": {
 		"oneOf": [
 			{
 				"properties": {
 					"IntCondition": {
-						"$ref": "#/definitions/locationIntCondition"
+						"$ref": "#/definitions/placeIntCondition"
 					}
 				},
 				"required": ["IntCondition"],
@@ -269,7 +269,7 @@
 			{
 				"properties": {
 					"StringCondition": {
-						"$ref": "#/definitions/locationStringCondition"
+						"$ref": "#/definitions/placeStringCondition"
 					}
 				},
 				"required": ["StringCondition"],
@@ -280,7 +280,7 @@
 			{
 				"properties": {
 					"TagCondition": {
-						"$ref": "#/definitions/locationTagCondition"
+						"$ref": "#/definitions/placeTagCondition"
 					}
 				},
 				"required": ["TagCondition"],
@@ -342,14 +342,14 @@
 			},
 			{
 				"properties": {
-					"LocationCondition": {
-						"$ref": "#/locationCondition"
+					"PlaceCondition": {
+						"$ref": "#/placeCondition"
 					}
 				},
-				"required": ["LocationCondition"],
+				"required": ["PlaceCondition"],
 				"additionalProperties": false,
-				"description": "§LocationCondition",
-				"title": "Location Condition"
+				"description": "§PlaceCondition",
+				"title": "Place Condition"
 			}
 		]
 	}

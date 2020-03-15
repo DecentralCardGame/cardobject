@@ -38,11 +38,11 @@ func (m *entityManipulation) toString(plural bool) string {
 	return plainText
 }
 
-func (m *locationManipulation) toString(plural bool) string {
+func (m *placeManipulation) toString(plural bool) string {
 	var plainText string
-	am := m.LocationAbilityManipulation
-	im := m.LocationIntManipulation
-	sm := m.LocationStringManipulation
+	am := m.PlaceAbilityManipulation
+	im := m.PlaceIntManipulation
+	sm := m.PlaceStringManipulation
 
 	if(am != nil) {
 		return am.toString(plural)

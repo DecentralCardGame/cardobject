@@ -42,7 +42,7 @@ func TestPlainText3(t *testing.T) {
 	fmt.Println(output)
 }
 func TestPlainText4(t *testing.T) {
-	file, _ := ioutil.ReadFile("testJsons/location1Test.json")
+	file, _ := ioutil.ReadFile("testJsons/place1Test.json")
 	input := string(file)
 	output, err := ReadableCardJson(input)
 	if err != nil {
@@ -51,7 +51,7 @@ func TestPlainText4(t *testing.T) {
 	fmt.Println(output)
 }
 func TestPlainText5(t *testing.T) {
-	file, _ := ioutil.ReadFile("testJsons/location2Test.json")
+	file, _ := ioutil.ReadFile("testJsons/place2Test.json")
 	input := string(file)
 	output, err := ReadableCardJson(input)
 	if err != nil {
@@ -60,7 +60,7 @@ func TestPlainText5(t *testing.T) {
 	fmt.Println(output)
 }
 func TestPlainText6(t *testing.T) {
-	file, _ := ioutil.ReadFile("testJsons/location3Test.json")
+	file, _ := ioutil.ReadFile("testJsons/place3Test.json")
 	input := string(file)
 	output, err := ReadableCardJson(input)
 	if err != nil {

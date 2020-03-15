@@ -10,7 +10,7 @@ type effect struct {
 type targetEffect struct {
 	ActionTargetEffect *actionTargetEffect `json:",omitempty"`
 	EntityTargetEffect *entityTargetEffect `json:",omitempty"`
-	LocationTargetEffect *locationTargetEffect `json:",omitempty"`
+	PlaceTargetEffect *placeTargetEffect `json:",omitempty"`
 }
 
 type actionTargetEffect struct {
@@ -25,9 +25,9 @@ type entityTargetEffect struct {
 	ZoneChange *zoneChange `json:",omitempty"`
 }
 
-type locationTargetEffect struct {
-	LocationSelector locationSelector
-	LocationManipulations []locationManipulation `json:",omitempty"`
+type placeTargetEffect struct {
+	PlaceSelector placeSelector
+	PlaceManipulations []placeManipulation `json:",omitempty"`
 	ZoneChange *zoneChange `json:",omitempty"`
 }
 

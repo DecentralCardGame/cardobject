@@ -46,7 +46,7 @@
 			"additionalProperties": false,
 			"description": "Choose §CardMode entity §CardCondition in the §Zone of §PlayerMode player §PlayerCondition."
 		},
-		"locationSelector": {
+		"placeSelector": {
 			"type": "object",
 			"properties": {
 				"PlayerMode": {
@@ -59,7 +59,7 @@
 					"$ref": "standards.json#/mode/selectorMode"
 				},
 				"CardCondition": {
-					"$ref": "conditionSchema.json#/locationCondition"
+					"$ref": "conditionSchema.json#/placeCondition"
 				},
 				"Zone": {
 					"$ref": "zoneSchema.json#/dynamicZoneId"
@@ -67,7 +67,7 @@
 			},
 			"required": ["PlayerMode","CardMode","Zone"],
 			"additionalProperties": false,
-			"description": "Choose §CardMode location §CardCondition in the §Zone of §PlayerMode player §PlayerCondition."
+			"description": "Choose §CardMode place §CardCondition in the §Zone of §PlayerMode player §PlayerCondition."
 		},
 		"selfSelector": {
 			"type": "object",
@@ -109,14 +109,14 @@
 			},
 			{
 				"properties": {
-					"LocationSelector": {
-						"$ref": "#/definitions/locationSelector"
+					"PlaceSelector": {
+						"$ref": "#/definitions/placeSelector"
 					}
 				},
-				"required":["LocationSelector"],
+				"required":["PlaceSelector"],
 				"additionalProperties": false,
-				"description": "§LocationSelector",
-				"title": "location selector"
+				"description": "§PlaceSelector",
+				"title": "place selector"
 			},
 			{
 				"properties": {

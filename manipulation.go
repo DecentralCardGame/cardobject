@@ -41,9 +41,9 @@ type entityManipulation struct {
 	EntityTagManipulation *tagManipulationBasics `json:",omitempty"`
 }
 
-type locationManipulation struct {
-	LocationAbilityManipulation *abilityManipulationBasics `json:",omitempty"`
-	LocationIntManipulation *intManipulationBasics `json:",omitempty"`
-	LocationStringManipulation *stringManipulationBasics `json:",omitempty"`
-	LocationTagManipulation *tagManipulationBasics `json:",omitempty"`
+type placeManipulation struct {
+	PlaceAbilityManipulation *abilityManipulationBasics `json:",omitempty"`
+	PlaceIntManipulation *intManipulationBasics `json:",omitempty"`
+	PlaceStringManipulation *stringManipulationBasics `json:",omitempty"`
+	PlaceTagManipulation *tagManipulationBasics `json:",omitempty"`
 }
