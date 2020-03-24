@@ -3,7 +3,7 @@
 		"Name":"EXPLOSION",
 		"Tags":["FIRE"],
 		"Text":"Its big",
-		"Cost": {
+		"CostType": {
 			"Energy": 2,
 			"Mana": 1,
 			"Generic": 3

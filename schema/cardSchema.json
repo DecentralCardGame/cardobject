@@ -3,7 +3,7 @@
     "action": {
       "type": "object",
       "properties": {
-        "Cost": {
+        "CostType": {
           "$ref": "ressourcesSchema.json"
         },
         "CastSpeed": {
@@ -26,7 +26,7 @@
           "enum": ["Action"]
         }
       },
-      "required": ["Cost","CastSpeed","Name","Tags","Text","Effects"],
+      "required": ["CostType","CastSpeed","Name","Tags","Text","Effects"],
       "additionalProperties": false
     },
     "entity": {
@@ -44,7 +44,7 @@
         "Attack": {
           "$ref": "propertySchema.json#/attack"
         },
-        "Cost": {
+        "CostType": {
           "$ref": "ressourcesSchema.json"
         },
         "CastSpeed": {
@@ -64,7 +64,7 @@
           "enum": ["Entity"]
         }
       },
-      "required": ["Name","Tags","Text","Attack","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
+      "required": ["Name","Tags","Text","Attack","CostType","CastSpeed","Abilities","AbilitySpeed","Health"],
       "additionalProperties": false
     },
     "place": {
@@ -79,7 +79,7 @@
         "Text": {
           "$ref": "propertySchema.json#/text"
         },
-        "Cost": {
+        "CostType": {
           "$ref": "ressourcesSchema.json"
         },
         "CastSpeed": {
@@ -99,7 +99,7 @@
           "enum": ["Place"]
         }
       },
-      "required": ["Name","Tags","Text","Cost","CastSpeed","Abilities","AbilitySpeed","Health"],
+      "required": ["Name","Tags","Text","CostType","CastSpeed","Abilities","AbilitySpeed","Health"],
       "additionalProperties": false
     },
     "headquarter": {

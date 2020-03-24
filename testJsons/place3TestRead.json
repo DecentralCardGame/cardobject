@@ -3,7 +3,7 @@
 		"Name":"Chapel",
 		"Tags":["PRIMITIVE"],
 		"Text":"RIP",
-		"Cost": {
+		"CostType": {
 			"Lumber":1,
 			"Metal":1
 		},
@@ -11,7 +11,7 @@
 		"Abilities": [
 			{
 				"ActivatedAbility": {
-					"Cost": {
+					"CostType": {
 						"Generic":1
 					},
 					"MultipleUse":false,

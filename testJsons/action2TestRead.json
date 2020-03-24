@@ -3,7 +3,7 @@
 		"Name":"Evacuate",
 		"Tags":["TACTIC"],
 		"Text":"Retreat!",
-		"Cost":{
+		"CostType":{
 			"Mana": 1,
 			"Generic": 1
 		},

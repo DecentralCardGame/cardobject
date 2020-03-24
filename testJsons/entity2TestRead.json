@@ -3,7 +3,7 @@
 		"Name":"Farmer",
 		"Tags":["FARM"],
 		"Text":"Love my piggies",
-		"Cost":{
+		"CostType":{
 			"Food": 1,
 			"Generic": 1
 		},

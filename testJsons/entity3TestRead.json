@@ -3,7 +3,7 @@
 		"Name":"Coward",
 		"Tags":["FARM"],
 		"Text":"I'm out",
-		"Cost":{"Food": 1},
+		"CostType":{"Food": 1},
 		"CastSpeed":1,
 		"Abilities": [
 			{

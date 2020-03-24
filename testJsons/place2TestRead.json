@@ -3,7 +3,7 @@
 		"Name":"Ambulance",
 		"Tags":["MILITANT"],
 		"Text":"UIUIUIUIUI",
-		"Cost":{
+		"CostType":{
 			"Food": 1,
 			"Lumber": 1,
 			"Generic": 3

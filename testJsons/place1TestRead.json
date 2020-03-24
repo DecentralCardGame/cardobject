@@ -3,7 +3,7 @@
 		"Name":"Mühle",
 		"Tags":["PRIMITIVE"],
 		"Text":"Brot für alle",
-		"Cost":{
+		"CostType":{
 			"Lumber": 2,
 			"Generic": 1
 		},

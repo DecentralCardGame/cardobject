@@ -23,7 +23,7 @@ func (aa *activatedAbility) toString() string {
 		plainText += "|M|"
 	}
 
-	plainText += "Pay " + aa.Cost.toString() + ": "
+	plainText += "Pay " + aa.CostType.toString() + ": "
 
 	var effectsString []string
 	if(effects != nil) {

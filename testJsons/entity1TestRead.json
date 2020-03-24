@@ -3,7 +3,7 @@
 		"Name":"Archer",
 		"Tags":["RANGE"],
 		"Text":"Ping",
-		"Cost":{
+		"CostType":{
 			"Food": 1,
 			"Lumber": 1,
 			"Generic": 1
@@ -48,7 +48,7 @@
 							}
 						}
 					],
-					"Cost":{"Lumber": 1},
+					"CostType":{"Lumber": 1},
 					"MultipleUse":true
 				}
 			}

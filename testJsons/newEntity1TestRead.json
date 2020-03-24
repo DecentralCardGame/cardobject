@@ -3,12 +3,12 @@
 		"Name":"EXPLOSION",
 		"Tag":"fire",
 		"Text":"Its big",
-		"Cost":["ENERGY","ENERGY","MANA","GENERIC","GENERIC","GENERIC"],
+		"CostType":["ENERGY","ENERGY","MANA","GENERIC","GENERIC","GENERIC"],
 		"CastSpeed":3,
 		"Abilities": [
 			{
 				"ActivatedAbility": {
-					"Cost": ["LUMBER"],
+					"CostType": ["LUMBER"],
 					"MultipleUse": true,
 					"Effects": [
 						{

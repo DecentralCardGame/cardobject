@@ -3,7 +3,7 @@
 		"Name":"Heat Up",
 		"Tags":["FIRE"],
 		"Text":"More heat, pls",
-		"Cost":{
+		"CostType":{
 			"Lumber": 1
 		},
 		"CastSpeed":2,
