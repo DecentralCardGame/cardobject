@@ -4,7 +4,7 @@
 		"Tags":["FARM"],
 		"Text":"I'm out",
 		"CostType":{"Food": 1},
-		"CastSpeed":1,
+		"CastingCost":1,
 		"Abilities": [
 			{
 				"TriggeredAbility": {

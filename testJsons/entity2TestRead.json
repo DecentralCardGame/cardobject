@@ -7,7 +7,7 @@
 			"Food": 1,
 			"Generic": 1
 		},
-		"CastSpeed":2,
+		"CastingCost":2,
 		"Abilities": [
 			{
 				"TriggeredAbility": {

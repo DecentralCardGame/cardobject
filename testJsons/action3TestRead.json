@@ -6,7 +6,7 @@
 		"CostType":{
 			"Lumber": 1
 		},
-		"CastSpeed":2,
+		"CastingCost":2,
 		"Effects":[
 			{
 				"Production":{

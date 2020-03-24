@@ -4,7 +4,7 @@
 		"Tag":"fire",
 		"Text":"Its big",
 		"CostType":["ENERGY","ENERGY","MANA","GENERIC","GENERIC","GENERIC"],
-		"CastSpeed":3,
+		"CastingCost":3,
 		"Effects": [
 			{
 				"Production":["ENERGY"]

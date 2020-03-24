@@ -7,7 +7,7 @@
 			"Lumber": 2,
 			"Generic": 1
 		},
-		"CastSpeed":1,
+		"CastingCost":1,
 		"Abilities": [
 			{
 				"TriggeredAbility": {

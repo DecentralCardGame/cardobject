@@ -8,7 +8,7 @@
 			"Mana": 1,
 			"Generic": 3
 		},
-		"CastSpeed":3,
+		"CastingCost":3,
 		"Effects":[
 			{
 				"TargetEffect": {

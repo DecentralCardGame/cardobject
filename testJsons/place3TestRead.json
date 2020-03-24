@@ -7,7 +7,7 @@
 			"Lumber":1,
 			"Metal":1
 		},
-		"CastSpeed":1,
+		"CastingCost":1,
 		"Abilities": [
 			{
 				"ActivatedAbility": {

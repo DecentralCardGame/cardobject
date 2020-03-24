@@ -8,7 +8,7 @@ type cardAttributes struct {
 
 type castable struct {
 	CostType ressources
-	CastSpeed int8
+	CastingCost int8
 }
 
 type action struct {
