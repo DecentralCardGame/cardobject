@@ -11,7 +11,7 @@
     		"$ref": "propertySchema.json#/attack"
     	},
     	"AbilitySpeed": {
-        	"$ref": "propertySchema.json#/speedModifier"
+        	"$ref": "propertySchema.json#/costAmount"
     	},
     	"Health": {
        		"$ref": "propertySchema.json#/health"

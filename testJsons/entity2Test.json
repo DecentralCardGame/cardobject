@@ -1,1 +1,1 @@
-{"Entity":{"Name":"Farmer","Tags":["FARM"],"Text":"Love my piggies","CostType":{"Food":1,"Generic":1},"CastingCost":2,"Abilities":[{"TriggeredAbility":{"Cause":{"TimeEventListener":{"TimeEvent":"TICKSTART"}},"Effects":[{"Production":{"Food":1}}]}}],"AbilitySpeed":3,"Health":1,"Attack":1}}
+{"Entity":{"Name":"Farmer","Tags":["FARM"],"Text":"Love my piggies","CostType":{"Food":1,"Generic":1},"CastingCost":2,"Abilities":[{"TriggeredAbility":{"Cause":{"TimeEventListener":{"TimeEvent":"TICKSTART"}},"Effects":[{"Production":{"Food":1}}]}}],"Health":1,"Attack":1}}

@@ -7,7 +7,7 @@
           "$ref": "ressourcesSchema.json"
         },
         "CastingCost": {
-          "$ref": "propertySchema.json#/speedModifier"
+          "$ref": "propertySchema.json#/costAmount"
         },
         "Name": {
           "$ref": "propertySchema.json#/name"
@@ -48,13 +48,10 @@
           "$ref": "ressourcesSchema.json"
         },
         "CastingCost": {
-          "$ref": "propertySchema.json#/speedModifier"
+          "$ref": "propertySchema.json#/costAmount"
         },
         "Abilities": {
           "$ref": "standards.json#/abilities"
-        },
-        "AbilitySpeed": {
-          "$ref": "propertySchema.json#/speedModifier"
         },
         "Health": {
           "$ref": "propertySchema.json#/health"
@@ -64,7 +61,7 @@
           "enum": ["Entity"]
         }
       },
-      "required": ["Name","Tags","Text","Attack","CostType","CastingCost","Abilities","AbilitySpeed","Health"],
+      "required": ["Name","Tags","Text","Attack","CostType","CastingCost","Abilities","Health"],
       "additionalProperties": false
     },
     "place": {
@@ -83,13 +80,10 @@
           "$ref": "ressourcesSchema.json"
         },
         "CastingCost": {
-          "$ref": "propertySchema.json#/speedModifier"
+          "$ref": "propertySchema.json#/costAmount"
         },
         "Abilities": {
           "$ref": "standards.json#/abilities"
-        },
-        "AbilitySpeed": {
-          "$ref": "propertySchema.json#/speedModifier"
         },
         "Health": {
           "$ref": "propertySchema.json#/health"
@@ -99,7 +93,7 @@
           "enum": ["Place"]
         }
       },
-      "required": ["Name","Tags","Text","CostType","CastingCost","Abilities","AbilitySpeed","Health"],
+      "required": ["Name","Tags","Text","CostType","CastingCost","Abilities","Health"],
       "additionalProperties": false
     },
     "headquarter": {
@@ -117,9 +111,6 @@
         "Abilities": {
           "$ref": "standards.json#/abilities"
         },
-        "AbilitySpeed": {
-          "$ref": "propertySchema.json#/speedModifier"
-        },
         "Health": {
           "$ref": "propertySchema.json#/health"
         },
@@ -131,7 +122,7 @@
           "enum": ["HQ"]
         }
       },
-      "required": ["Name","Tags","Text","Abilities","AbilitySpeed","Health","UniqueName"],
+      "required": ["Name","Tags","Text","Abilities","Health","UniqueName"],
       "additionalProperties": false
     }
   },

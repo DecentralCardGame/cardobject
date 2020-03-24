@@ -11,7 +11,7 @@
 	"name": {
 		"$ref": "standards.json#/string"
 	},
-	"speedModifier": {
+	"costAmount": {
 		"$ref": "standards.json#/int"
 	},
 	"text": {

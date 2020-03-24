@@ -19,7 +19,6 @@ type action struct {
 
 type permanent struct {
 	Abilities []ability
-	AbilitySpeed int8
 	Health int8
 }
 
