@@ -116,18 +116,32 @@
      		"required": ["PlaceSelector"],
       		"additionalProperties": false,
 					"description": "§PlaceSelector. §PlaceManipulations. §ZoneChange."
-    	}
+    	},
+			"productionEffect":{
+				"type": "object",
+				"properties": {
+					"ProductionAmount": {
+          				"$ref": "propertySchema.json#/costAmount"
+        			},
+							"ProductionType": {
+			          "$ref": "ressourcesSchema.json"
+			  		}
+				},
+				"required": ["ProductionAmount","ProductionType"],
+				"additionalProperties": false,
+				"description": "§ProductionAmount of §ProductionType"
+			}
 	},
 	"effect": {
 		"type": "object",
 		"oneOf": [
 			{
 				"properties": {
-					"Production": {
-          				"$ref": "ressourcesSchema.json"
-        			}
+					"ProductionEffect": {
+						"$ref": "#/definitions/productionEffect"
+					}
 				},
-				"required": ["Production"],
+				"required": ["ProductionEffect"],
 				"additionalProperties": false,
 				"description": "Produce §Production.",
 				"title": "Produce ressources"

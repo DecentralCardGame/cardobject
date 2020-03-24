@@ -4,9 +4,9 @@
 		"Tags":["FIRE"],
 		"Text":"Its big",
 		"CostType": {
-			"Energy": 2,
-			"Mana": 1,
-			"Generic": 3
+			"Energy": true,
+			"Mana": true,
+			"Generic": true
 		},
 		"CastingCost":3,
 		"Effects":[

@@ -46,8 +46,11 @@
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":{
-								"Mana": 2
+							"ProductionEffect": {
+								"ProductionAmount": 2,
+								"ProductionType": {
+									"Mana": true
+								}
 							}
 						}
 					],

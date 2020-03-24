@@ -1,10 +1,15 @@
 package cardobject
 
 type effect struct {
-	Production *ressources `json:",omitempty"`
+	ProductionEffect *productionEffect `json:",omitempty"`
 	Draw *int `json:",omitempty"`
 	TokenEffect *tokenEffect `json:",omitempty"`
 	TargetEffect *targetEffect `json:",omitempty"`
+}
+
+type productionEffect struct {
+	ProductionAmount int8
+	ProductionType ressources
 }
 
 type targetEffect struct {

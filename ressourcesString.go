@@ -5,23 +5,23 @@ import "strings"
 
 func(r *ressources) toString() string {
   ressourceList := []string{}
-  if(r.Energy !=0){
-    ressourceList = append(ressourceList, strconv.Itoa(int(r.Energy)) + " Energy")
+  if(r.Energy){
+    ressourceList = append(ressourceList, strconv.FormatBool(r.Energy) + " Energy")
   }
-  if(r.Food !=0){
-    ressourceList = append(ressourceList, strconv.Itoa(int(r.Food)) + " Food")
+  if(r.Food){
+    ressourceList = append(ressourceList, strconv.FormatBool(r.Food) + " Food")
   }
-  if(r.Lumber !=0){
-    ressourceList = append(ressourceList, strconv.Itoa(int(r.Lumber)) + " Lumber")
+  if(r.Lumber){
+    ressourceList = append(ressourceList, strconv.FormatBool(r.Lumber) + " Lumber")
   }
-  if(r.Mana !=0){
-    ressourceList = append(ressourceList, strconv.Itoa(int(r.Mana)) + " Mana")
+  if(r.Mana){
+    ressourceList = append(ressourceList, strconv.FormatBool(r.Mana) + " Mana")
   }
-  if(r.Metal !=0){
-    ressourceList = append(ressourceList, strconv.Itoa(int(r.Metal)) + " Metal")
+  if(r.Metal){
+    ressourceList = append(ressourceList, strconv.FormatBool(r.Metal) + " Metal")
   }
-  if(r.Generic !=0){
-    ressourceList = append(ressourceList, strconv.Itoa(int(r.Generic)) + " Generic")
+  if(r.Generic){
+    ressourceList = append(ressourceList, strconv.FormatBool(r.Generic) + " Generic")
   }
   return strings.Join(ressourceList, ", ")
 }

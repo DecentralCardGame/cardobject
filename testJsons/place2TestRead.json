@@ -4,9 +4,9 @@
 		"Tags":["MILITANT"],
 		"Text":"UIUIUIUIUI",
 		"CostType":{
-			"Food": 1,
-			"Lumber": 1,
-			"Generic": 3
+			"Food": true,
+			"Lumber": true,
+			"Generic": true
 		},
 		"CastingCost":5,
 		"Abilities": [
@@ -14,7 +14,12 @@
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":{"Food":1}
+							"ProductionEffect":{
+								"ProductionAmount":1,
+								"ProductionType":{
+									"Food":true
+								}
+							}
 						}
 					],
 					"Cause": {

@@ -3,7 +3,7 @@
 		"Name":"Archer",
 		"Tags":["RANGE"],
 		"Text":"Ping",
-		"AbilityCost": 3,
+		"CostType":{"Food":true,"Lumber":true,"Generic":true},
 		"CastingCost":2,
 		"Abilities": [
 			{
@@ -44,7 +44,7 @@
 							}
 						}
 					],
-					"CostType":{"Lumber": 1},
+					"AbilityCost":1,
 					"MultipleUse":true
 				}
 			}

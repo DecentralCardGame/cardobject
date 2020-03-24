@@ -4,7 +4,7 @@
 		"Tags":["FIRE"],
 		"Text":"More heat, pls",
 		"CostType":{
-			"Lumber": 1
+			"Lumber": true
 		},
 		"CastingCost":2,
 		"Effects":[

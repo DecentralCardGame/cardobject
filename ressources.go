@@ -1,10 +1,10 @@
 package cardobject
 
 type ressources struct {
-  Energy int8 `json:",omitempty"`
-  Food int8 `json:",omitempty"`
-  Lumber int8 `json:",omitempty"`
-  Mana int8 `json:",omitempty"`
-  Metal int8 `json:",omitempty"`
-  Generic int8 `json:",omitempty"`
+  Energy bool `json:",omitempty"`
+  Food bool `json:",omitempty"`
+  Lumber bool `json:",omitempty"`
+  Mana bool `json:",omitempty"`
+  Metal bool `json:",omitempty"`
+  Generic bool `json:",omitempty"`
 }

@@ -5,7 +5,7 @@ import "strconv"
 
 func (e *effect) toString() string {
 	var sentences []string
-	produce := e.Production
+	productionEffect := e.ProductionEffect
 	draw := e.Draw
 	tokenEffect := e.TokenEffect
 	targetEffect := e.TargetEffect
@@ -18,8 +18,8 @@ func (e *effect) toString() string {
 		sentences = append(sentences, tokenEffect.toString())
 	}
 
-	if (produce != nil) {
-		sentences = append(sentences, "Produce " + produce.toString() + ".")
+	if (productionEffect != nil) {
+		sentences = append(sentences, tokenEffect.toString())
 	}
 
 	if (draw != nil) {
@@ -43,6 +43,10 @@ func (te *targetEffect) toString() string {
 		return fte.toString()
 	}
 	return ""
+}
+
+func (pe *productionEffect) toString() string {
+	return "Produce " + strconv.Itoa(int(pe.ProductionAmount)) + " of ."
 }
 
 func (ate *actionTargetEffect) toString() string {

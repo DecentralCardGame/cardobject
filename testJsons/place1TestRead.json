@@ -4,8 +4,8 @@
 		"Tags":["PRIMITIVE"],
 		"Text":"Brot für alle",
 		"CostType":{
-			"Lumber": 2,
-			"Generic": 1
+			"Lumber": true,
+			"Generic": true
 		},
 		"CastingCost":1,
 		"Abilities": [
@@ -13,7 +13,11 @@
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":{"Food": 1}
+							"ProductionEffect":{
+								"ProductionAmount":1,
+								"ProductionType":{
+									"Food": true}
+								}
 						}
 					],
 					"Cause": {
@@ -27,8 +31,11 @@
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production": {
-								"Generic":1
+							"ProductionEffect": {
+								"ProductionAmount":1,
+								"ProductionType":{
+									"Generic":true
+								}
 							}
 						}
 					],

@@ -4,8 +4,8 @@
 		"Tags":["PRIMITIVE"],
 		"Text":"RIP",
 		"CostType": {
-			"Lumber":1,
-			"Metal":1
+			"Lumber":true,
+			"Metal":true
 		},
 		"CastingCost":1,
 		"Abilities": [

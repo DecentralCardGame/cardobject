@@ -44,9 +44,12 @@
 				"TriggeredAbility": {
 					"Effects": [
 						{
-							"Production":{
-								"Metal": 2,
-								"Lumber": 1,
+							"ProductionEffect":{
+								"ProductionAmount": 3,
+								"ProductionType": {
+									"Metal": true,
+									"Lumber": true,
+								}
 							}
 						}
 					],

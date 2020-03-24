@@ -2,22 +2,22 @@
   "type": "object",
   "properties": {
     "Energy": {
-      "$ref": "standards.json#/int"
+      "type": "boolean"
     },
     "Food": {
-      "$ref": "standards.json#/int"
+      "type": "boolean"
     },
     "Generic": {
-      "$ref": "standards.json#/int"
+      "type": "boolean"
     },
     "Lumber": {
-      "$ref": "standards.json#/int"
+      "type": "boolean"
     },
     "Mana": {
-      "$ref": "standards.json#/int"
+      "type": "boolean"
     },
     "Metal": {
-      "$ref": "standards.json#/int"
+      "type": "boolean"
     }
   },
   "additionalProperties": false,

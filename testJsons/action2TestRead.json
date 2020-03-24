@@ -4,8 +4,8 @@
 		"Tags":["TACTIC"],
 		"Text":"Retreat!",
 		"CostType":{
-			"Mana": 1,
-			"Generic": 1
+			"Mana": true,
+			"Generic": true
 		},
 		"CastingCost":2,
 		"Effects":[
