@@ -36,10 +36,7 @@
 							}
 						}
 					],
-					"CostType":{
-						"Metal": 1,
-						"Generic": 1
-					},
+					"AbilityCost": 2,
 					"MultipleUse":true
 				}
 			},

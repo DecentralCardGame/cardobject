@@ -3,11 +3,7 @@
 		"Name":"Archer",
 		"Tags":["RANGE"],
 		"Text":"Ping",
-		"CostType":{
-			"Food": 1,
-			"Lumber": 1,
-			"Generic": 1
-		},
+		"AbilityCost": 3,
 		"CastingCost":2,
 		"Abilities": [
 			{

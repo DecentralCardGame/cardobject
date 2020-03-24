@@ -1,8 +1,8 @@
 package cardobject
 
 type activatedAbility struct {
+	AbilityCost int8
 	MultipleUse bool
-	CostType ressources
 	Effects []effect
 }
 

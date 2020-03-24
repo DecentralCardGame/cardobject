@@ -11,9 +11,7 @@
 		"Abilities": [
 			{
 				"ActivatedAbility": {
-					"CostType": {
-						"Generic":1
-					},
+					"AbilityCost": 1,
 					"MultipleUse":false,
 					"Effects": [
 						{

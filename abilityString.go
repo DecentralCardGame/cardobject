@@ -1,5 +1,6 @@
 package cardobject
 
+import "strconv"
 import "strings"
 
 func (a *ability) toString() string {
@@ -23,7 +24,7 @@ func (aa *activatedAbility) toString() string {
 		plainText += "|M|"
 	}
 
-	plainText += "Pay " + aa.CostType.toString() + ": "
+	plainText += "Pay " + strconv.Itoa(int(aa.AbilityCost)) + ": "
 
 	var effectsString []string
 	if(effects != nil) {

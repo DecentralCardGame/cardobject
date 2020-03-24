@@ -3,8 +3,8 @@
 		"activatedAbility": {
 			"type": "object",
 			"properties": {
-				"CostType": {
-          			"$ref": "ressourcesSchema.json"
+				"AbilityCost": {
+          		"$ref": "propertySchema.json#/costAmount"
         		},
         		"MultipleUse": {
         			"type": "boolean"
@@ -13,7 +13,7 @@
           			"$ref": "standards.json#/effects"
         		}
 			},
-			"required": ["CostType","MultipleUse","Effects"],
+			"required": ["AbilityCost","MultipleUse","Effects"],
 			"additionalProperties": false,
 			"description": "Pay §CostType to activate: §Effects. Can be activated §MultipleUse"
 		},
