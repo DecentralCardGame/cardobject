@@ -5,6 +5,7 @@ import "runtime"
 import "github.com/xeipuuv/gojsonschema"
 import "encoding/json"
 import "errors"
+import "fmt"
 
 func FunctionalCardJson(cardJson string) (string, error) {
     valid, err := validateCard(cardJson)
@@ -52,7 +53,8 @@ func validateCard(s string) (bool, error) {
 
     result, err := gojsonschema.Validate(schemaLoader, documentLoader)
     if err != nil {
-        panic(err.Error("schema-file: " + filepath))
+        fmt.Println(filepath)
+        panic(err.Error())
     }
 
     if result.Valid() {
