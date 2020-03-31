@@ -52,7 +52,7 @@ func validateCard(s string) (bool, error) {
 
     result, err := gojsonschema.Validate(schemaLoader, documentLoader)
     if err != nil {
-        panic(err.Error())
+        panic(err.Error("schema-file: " + filepath))
     }
 
     if result.Valid() {
