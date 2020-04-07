@@ -14,7 +14,7 @@
 								"ProductionType": {
 									"Food": true,
 									"Lumber": true,
-									"Metal": true
+									"Iron": true
 								}
 							}
 						}

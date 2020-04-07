@@ -17,8 +17,8 @@ func(r *ressources) toString() string {
   if(r.Mana){
     ressourceList = append(ressourceList, strconv.FormatBool(r.Mana) + " Mana")
   }
-  if(r.Metal){
-    ressourceList = append(ressourceList, strconv.FormatBool(r.Metal) + " Metal")
+  if(r.Iron){
+    ressourceList = append(ressourceList, strconv.FormatBool(r.Iron) + " Iron")
   }
   if(r.Generic){
     ressourceList = append(ressourceList, strconv.FormatBool(r.Generic) + " Generic")

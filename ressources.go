@@ -5,6 +5,6 @@ type ressources struct {
   Food bool `json:",omitempty"`
   Lumber bool `json:",omitempty"`
   Mana bool `json:",omitempty"`
-  Metal bool `json:",omitempty"`
+  Iron bool `json:",omitempty"`
   Generic bool `json:",omitempty"`
 }

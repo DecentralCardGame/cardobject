@@ -16,10 +16,10 @@
     "Mana": {
       "type": "boolean"
     },
-    "Metal": {
+    "Iron": {
       "type": "boolean"
     }
   },
   "additionalProperties": false,
-  "description": "§Energy, §Food, §Lumber, §Mana, §Metal, §Generic"
+  "description": "§Energy, §Food, §Lumber, §Mana, §Iron, §Generic"
 }

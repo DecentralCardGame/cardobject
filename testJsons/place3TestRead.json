@@ -5,7 +5,7 @@
 		"Text":"RIP",
 		"CostType": {
 			"Lumber":true,
-			"Metal":true
+			"Iron":true
 		},
 		"CastingCost":1,
 		"Abilities": [

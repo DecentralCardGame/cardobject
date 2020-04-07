@@ -47,7 +47,7 @@
 							"ProductionEffect":{
 								"ProductionAmount": 3,
 								"ProductionType": {
-									"Metal": true,
+									"Iron": true,
 									"Lumber": true,
 								}
 							}
