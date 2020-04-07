@@ -4,7 +4,6 @@
         "items": {
             "$ref": "abilitySchema.json#/ability"
         },
-        "minItems": 1,
         "maxItems": 3,
         "additionalItems": false
   },
@@ -23,7 +22,6 @@
         "items": {
     	    "$ref": "effectSchema.json#/effect"
         },
-        "minItems": 1,
         "maxItems": 4,
         "additionalItems": false
   },
