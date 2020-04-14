@@ -5,8 +5,7 @@
 		"Text":"Its big",
 		"CostType": {
 			"Energy": true,
-			"Mana": true,
-			"Generic": true
+			"Mana": true
 		},
 		"CastingCost":3,
 		"Effects":[

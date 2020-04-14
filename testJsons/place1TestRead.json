@@ -4,8 +4,7 @@
 		"Tags":["PRIMITIVE"],
 		"Text":"Brot für alle",
 		"CostType":{
-			"Lumber": true,
-			"Generic": true
+			"Lumber": true
 		},
 		"CastingCost":1,
 		"Abilities": [
@@ -34,7 +33,7 @@
 							"ProductionEffect": {
 								"ProductionAmount":1,
 								"ProductionType":{
-									"Generic":true
+									"Food":true
 								}
 							}
 						}

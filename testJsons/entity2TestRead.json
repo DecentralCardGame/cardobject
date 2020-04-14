@@ -4,8 +4,7 @@
 		"Tags":["FARM"],
 		"Text":"Love my piggies",
 		"CostType":{
-			"Food": true,
-			"Generic": true
+			"Food": true
 		},
 		"CastingCost":2,
 		"Abilities": [

@@ -5,8 +5,7 @@
 		"Text":"UIUIUIUIUI",
 		"CostType":{
 			"Food": true,
-			"Lumber": true,
-			"Generic": true
+			"Lumber": true
 		},
 		"CastingCost":5,
 		"Abilities": [
