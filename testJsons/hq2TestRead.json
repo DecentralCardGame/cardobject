@@ -61,6 +61,8 @@
 				}
 			}
 		],
-		"Health":10
+		"Health":10,
+		"Growth":10,
+		"Wisdom":10
 	}
 }

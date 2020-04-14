@@ -34,6 +34,8 @@ type place struct {
 type headquarter struct {
 	cardAttributes
 	permanent
+	Growth int8
+	Wisdom int8
 }
 
 type card struct {

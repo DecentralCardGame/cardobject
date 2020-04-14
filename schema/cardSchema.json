@@ -117,12 +117,18 @@
         "Health": {
           "$ref": "propertySchema.json#/health"
         },
+        "Growth": {
+          "$ref": "propertySchema.json#/growth"
+        },
+        "Wisdom": {
+          "$ref": "propertySchema.json#/wisdom"
+        },
         "DisplayName": {
           "type": "string",
           "const": "HQ"
         }
       },
-      "required": ["Name","Tags","Text","CostType","Abilities","Health"],
+      "required": ["Name","Tags","Text","CostType","Abilities","Health","Growth","Wisdom"],
       "additionalProperties": false
     }
   },
