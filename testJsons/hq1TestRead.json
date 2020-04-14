@@ -1,9 +1,9 @@
 {
 	"Headquarter": {
-		"UniqueName":"Spire, Tower of Mages",
 		"Name":"Spire, Tower of Mages",
 		"Tags":["MAGIC"],
 		"Text":"happens here",
+		"CostType":{"Mana":true},
 		"Abilities": [
 			{
 				"ActivatedAbility": {

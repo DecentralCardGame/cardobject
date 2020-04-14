@@ -1,9 +1,9 @@
 {
 	"Headquarter": {
-		"UniqueName":"Fortress, Castle of Knights",
 		"Name":"Fortress, Castle of Knights",
 		"Tags":["KNIGHT"],
 		"Text":"happens here",
+		"CostType":{"Iron":true},
 		"Abilities": [
 			{
 				"ActivatedAbility": {

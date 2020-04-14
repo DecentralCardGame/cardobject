@@ -108,21 +108,21 @@
         "Text": {
           "$ref": "propertySchema.json#/text"
         },
+        "CostType": {
+          "$ref": "ressourcesSchema.json"
+        },
         "Abilities": {
           "$ref": "standards.json#/abilities"
         },
         "Health": {
           "$ref": "propertySchema.json#/health"
         },
-        "UniqueName": {
-          "$ref": "propertySchema.json#/uniqueName"
-        },
         "DisplayName": {
           "type": "string",
           "const": "HQ"
         }
       },
-      "required": ["Name","Tags","Text","Abilities","Health","UniqueName"],
+      "required": ["Name","Tags","Text","CostType","Abilities","Health"],
       "additionalProperties": false
     }
   },

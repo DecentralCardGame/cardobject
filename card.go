@@ -4,16 +4,12 @@ type cardAttributes struct {
 	Name string
 	Tags []string
 	Text string
-}
-
-type castable struct {
 	CostType ressources
-	CastingCost int8
 }
 
 type action struct {
 	cardAttributes
-	castable
+	CastingCost int8
 	Effects []effect
 }
 
@@ -24,19 +20,18 @@ type permanent struct {
 
 type entity struct {
 	cardAttributes
-	castable
+	CastingCost int8
 	permanent
 	Attack int8
 }
 
 type place struct {
 	cardAttributes
-	castable
+	CastingCost int8
 	permanent
 }
 
 type headquarter struct {
-	UniqueName string
 	cardAttributes
 	permanent
 }

@@ -1,9 +1,9 @@
 {
 	"Headquarter": {
-		"UniqueName":"Townhall, gathering of peasants",
 		"Name":"Townhall, gathering of peasants",
 		"Tags":["PRIMITIVE"],
 		"Text":"peasantville",
+		"CostType":{"Food":true,"Lumber":true},
 		"Abilities": [
 			{
 				"TriggeredAbility": {
