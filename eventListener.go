@@ -17,27 +17,27 @@ type blockEventListener struct {
 }
 
 type manipulationEventListener struct {
-	IntManipulationEventListener *manipulationEventBasics `json:",omitempty"`
+	IntManipulationEventListener    *manipulationEventBasics `json:",omitempty"`
 	StringManipulationEventListener *manipulationEventBasics `json:",omitempty"`
 }
 
 type manipulationEventBasics struct {
-	Property string
-	ChangeMode string
+	Property      string
+	ChangeMode    string
 	CardCondition *cardCondition `json:",omitempty"`
 }
 
 type zoneChangeEventListener struct {
-	Source string
-	Destination string
+	Source        string
+	Destination   string
 	CardCondition *cardCondition `json:",omitempty"`
 }
 
 type eventListener struct {
-	ProductionEventListener *productionEventListener `json:",omitempty"`
-	TimeEventListener *timeEventListener `json:",omitempty"`
+	ProductionEventListener   *productionEventListener   `json:",omitempty"`
+	TimeEventListener         *timeEventListener         `json:",omitempty"`
 	ManipulationEventListener *manipulationEventListener `json:",omitempty"`
-	ZoneChangeEventListener *zoneChangeEventListener `json:",omitempty"`
-	AttackEventListener *attackEventListener `json:",omitempty"`
-	BlockEventListener *blockEventListener `json:",omitempty"`
+	ZoneChangeEventListener   *zoneChangeEventListener   `json:",omitempty"`
+	AttackEventListener       *attackEventListener       `json:",omitempty"`
+	BlockEventListener        *blockEventListener        `json:",omitempty"`
 }

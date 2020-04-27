@@ -1,10 +1,10 @@
 package cardobject
 
 type selectorAttributes struct {
-	PlayerMode string
+	PlayerMode      string
 	PlayerCondition *playerCondition `json:",omitempty"`
-	Zone string
-	CardMode string
+	Zone            string
+	CardMode        string
 }
 
 type actionSelector struct {

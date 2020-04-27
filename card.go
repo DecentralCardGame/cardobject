@@ -1,21 +1,21 @@
 package cardobject
 
 type cardAttributes struct {
-	Name string
-	Tags []string
-	Text string
+	Name     string
+	Tags     []string
+	Text     string
 	CostType ressources
 }
 
 type action struct {
 	cardAttributes
 	CastingCost int8
-	Effects []effect
+	Effects     []effect
 }
 
 type permanent struct {
 	Abilities []ability
-	Health int8
+	Health    int8
 }
 
 type entity struct {
@@ -39,8 +39,8 @@ type headquarter struct {
 }
 
 type card struct {
-	Action *action `json:",omitempty"`
-	Entity *entity `json:",omitempty"`
-	Place *place `json:",omitempty"`
+	Action      *action      `json:",omitempty"`
+	Entity      *entity      `json:",omitempty"`
+	Place       *place       `json:",omitempty"`
 	Headquarter *headquarter `json:",omitempty"`
 }

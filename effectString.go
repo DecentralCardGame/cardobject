@@ -1,7 +1,9 @@
 package cardobject
 
-import "strings"
-import "strconv"
+import (
+	"strconv"
+	"strings"
+)
 
 func (e *effect) toString() string {
 	var sentences []string
@@ -10,20 +12,20 @@ func (e *effect) toString() string {
 	tokenEffect := e.TokenEffect
 	targetEffect := e.TargetEffect
 
-	if (targetEffect != nil) {
+	if targetEffect != nil {
 		sentences = append(sentences, targetEffect.toString())
 	}
 
-	if (tokenEffect != nil) {
+	if tokenEffect != nil {
 		sentences = append(sentences, tokenEffect.toString())
 	}
 
-	if (productionEffect != nil) {
+	if productionEffect != nil {
 		sentences = append(sentences, tokenEffect.toString())
 	}
 
-	if (draw != nil) {
-		sentences = append(sentences, "Draw " + strconv.Itoa(*draw) + " cards.")
+	if draw != nil {
+		sentences = append(sentences, "Draw "+strconv.Itoa(*draw)+" cards.")
 	}
 
 	return strings.Join(sentences, " ")
@@ -33,13 +35,13 @@ func (te *targetEffect) toString() string {
 	ate := te.ActionTargetEffect
 	ete := te.EntityTargetEffect
 	fte := te.PlaceTargetEffect
-	if(ate != nil) {
+	if ate != nil {
 		return ate.toString()
 	}
-	if(ete != nil) {
+	if ete != nil {
 		return ete.toString()
 	}
-	if(fte != nil) {
+	if fte != nil {
 		return fte.toString()
 	}
 	return ""
@@ -54,19 +56,19 @@ func (ate *actionTargetEffect) toString() string {
 	plural := false
 	manipulations := ate.ActionManipulations
 	zoneChange := ate.ZoneChange
-	if(ate.ActionSelector.CardMode == "ALL") {
+	if ate.ActionSelector.CardMode == "ALL" {
 		plural = true
 	}
 
 	sentences = append(sentences, ate.ActionSelector.toString())
 
-	if(manipulations != nil) {
+	if manipulations != nil {
 		for _, m := range manipulations {
-    		sentences = append(sentences, m.toString(plural))
+			sentences = append(sentences, m.toString(plural))
 		}
 	}
 
-	if(zoneChange != nil) {
+	if zoneChange != nil {
 		sentences = append(sentences, zoneChangeString(zoneChange, plural))
 	}
 	return strings.Join(sentences, " ")
@@ -77,19 +79,19 @@ func (ete *entityTargetEffect) toString() string {
 	plural := false
 	manipulations := ete.EntityManipulations
 	zoneChange := ete.ZoneChange
-	if(ete.EntitySelector.CardMode == "ALL") {
+	if ete.EntitySelector.CardMode == "ALL" {
 		plural = true
 	}
 
 	sentences = append(sentences, ete.EntitySelector.toString())
 
-	if(manipulations != nil) {
+	if manipulations != nil {
 		for _, m := range manipulations {
-    		sentences = append(sentences, m.toString(plural))
+			sentences = append(sentences, m.toString(plural))
 		}
 	}
 
-	if(zoneChange != nil) {
+	if zoneChange != nil {
 		sentences = append(sentences, zoneChangeString(zoneChange, plural))
 	}
 	return strings.Join(sentences, " ")
@@ -100,26 +102,26 @@ func (fte *placeTargetEffect) toString() string {
 	plural := false
 	manipulations := fte.PlaceManipulations
 	zoneChange := fte.ZoneChange
-	if(fte.PlaceSelector.CardMode == "ALL") {
+	if fte.PlaceSelector.CardMode == "ALL" {
 		plural = true
 	}
 
 	sentences = append(sentences, fte.PlaceSelector.toString())
 
-	if(manipulations != nil) {
+	if manipulations != nil {
 		for _, m := range manipulations {
-    		sentences = append(sentences, m.toString(plural))
+			sentences = append(sentences, m.toString(plural))
 		}
 	}
 
-	if(zoneChange != nil) {
+	if zoneChange != nil {
 		sentences = append(sentences, zoneChangeString(zoneChange, plural))
 	}
 	return strings.Join(sentences, " ")
 }
 
 func zoneChangeString(zoneChange *zoneChange, plural bool) string {
-	if(plural) {
+	if plural {
 		return "Move them to " + zoneChange.Player + " " + zoneChange.Zone + "."
 	}
 	return "Move it to the " + zoneChange.Player + " " + zoneChange.Zone + "."
@@ -128,7 +130,7 @@ func zoneChangeString(zoneChange *zoneChange, plural bool) string {
 func (toe *tokenEffect) toString() string {
 	var plainText string
 	plainText += "Create "
-	if (toe.Amount != nil) {
+	if toe.Amount != nil {
 		plainText += strconv.Itoa(int(*toe.Amount))
 	} else {
 		plainText += "a"

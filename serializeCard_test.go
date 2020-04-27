@@ -1,7 +1,9 @@
 package cardobject
 
-import "testing"
-import "io/ioutil"
+import (
+	"io/ioutil"
+	"testing"
+)
 
 func TestCardSerializationAction1(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/action1Test.json")
@@ -10,7 +12,7 @@ func TestCardSerializationAction1(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -21,7 +23,7 @@ func TestCardSerializationAction2(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -32,18 +34,18 @@ func TestCardSerializationAction3(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
 func TestCardSerializationPlace1(t *testing.T) {
 	file, _ := ioutil.ReadFile("testJsons/place1Test.json")
-  input := string(file)
+	input := string(file)
 	output, err := FunctionalCardJson(input)
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -54,7 +56,7 @@ func TestCardSerializationPlace2(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -65,7 +67,7 @@ func TestCardSerializationPlace3(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -76,7 +78,7 @@ func TestCardSerializationHq1(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -87,7 +89,7 @@ func TestCardSerializationHq2(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -98,7 +100,7 @@ func TestCardSerializationHq3(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -109,7 +111,7 @@ func TestCardSerializationEntity1(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -120,7 +122,7 @@ func TestCardSerializationEntity2(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }
@@ -131,7 +133,7 @@ func TestCardSerializationEntity3(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if(input != output){
+	if input != output {
 		t.Errorf("In- and output are not equal: " + output)
 	}
 }

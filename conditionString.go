@@ -6,10 +6,10 @@ func (cw *conditionAttributes) ToString() string {
 	var plainText string
 	ic := cw.IntCondition
 	sc := cw.StringCondition
-	if(ic != nil) {
+	if ic != nil {
 		return ic.ToString()
 	}
-	if(sc != nil) {
+	if sc != nil {
 		return sc.ToString()
 	}
 	return plainText
@@ -24,6 +24,3 @@ func (sc *stringCondition) ToString() string {
 	plainText := sc.StringProperty + " " + sc.StringComparator + " " + sc.StringValue
 	return plainText
 }
-
-
-

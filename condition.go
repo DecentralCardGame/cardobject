@@ -1,26 +1,26 @@
 package cardobject
 
 type intCondition struct {
-	IntProperty string
+	IntProperty   string
 	IntComparator string
-	IntValue int
+	IntValue      int
 }
 
 type stringCondition struct {
-	StringProperty string
+	StringProperty   string
 	StringComparator string
-	StringValue string
+	StringValue      string
 }
 
 type tagCondition struct {
 	TagComparator string
-	TagValue string
+	TagValue      string
 }
 
 type conditionAttributes struct {
-	IntCondition *intCondition `json:",omitempty"`
+	IntCondition    *intCondition    `json:",omitempty"`
 	StringCondition *stringCondition `json:",omitempty"`
-	TagCondition *tagCondition `json:",omitempty"`
+	TagCondition    *tagCondition    `json:",omitempty"`
 }
 
 type actionCondition struct {
@@ -42,5 +42,5 @@ type playerCondition struct {
 type cardCondition struct {
 	ActionCondition *actionCondition `json:",omitempty"`
 	EntityCondition *entityCondition `json:",omitempty"`
-	PlaceCondition *placeCondition `json:",omitempty"`
+	PlaceCondition  *placeCondition  `json:",omitempty"`
 }

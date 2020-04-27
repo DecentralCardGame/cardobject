@@ -9,22 +9,22 @@ func (el *eventListener) toString() string {
 	bel := el.BlockEventListener
 	ael := el.AttackEventListener
 
-	if(pel != nil) {
+	if pel != nil {
 		return pel.toString()
 	}
-	if(tel != nil) {
+	if tel != nil {
 		return tel.toString()
 	}
-	if(mel != nil) {
+	if mel != nil {
 		return mel.toString()
 	}
-	if(zel != nil) {
+	if zel != nil {
 		return zel.toString()
 	}
-	if(bel != nil) {
+	if bel != nil {
 		return bel.toString()
 	}
-	if(ael != nil) {
+	if ael != nil {
 		return ael.toString()
 	}
 	return plainText
@@ -59,17 +59,17 @@ func (mel *manipulationEventListener) toString() string {
 	intMel := mel.IntManipulationEventListener
 	stringMel := mel.StringManipulationEventListener
 	plainText += "Whenever the "
-	if(intMel != nil) {
+	if intMel != nil {
 		plainText += intMel.Property
 	}
-	if(stringMel != nil) {
+	if stringMel != nil {
 		plainText += stringMel.Property
 	}
 	plainText += " of a card "
-	if(intMel != nil) {
+	if intMel != nil {
 		plainText += intMel.ChangeMode
 	}
-	if(stringMel != nil) {
+	if stringMel != nil {
 		plainText += stringMel.ChangeMode
 	}
 	plainText += ": "
@@ -79,6 +79,6 @@ func (mel *manipulationEventListener) toString() string {
 func (zel *zoneChangeEventListener) toString() string {
 	var plainText string
 	plainText += "Whenever a card is moved from the "
-	plainText += zel.Source+ " to the " + zel.Destination + ": "
+	plainText += zel.Source + " to the " + zel.Destination + ": "
 	return plainText
 }

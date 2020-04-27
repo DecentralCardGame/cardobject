@@ -8,13 +8,13 @@ func (m *actionManipulation) toString(plural bool) string {
 	im := m.ActionIntManipulation
 	sm := m.ActionStringManipulation
 
-	if(em != nil) {
+	if em != nil {
 		return im.toString(plural)
 	}
-	if(im != nil) {
+	if im != nil {
 		return im.toString(plural)
 	}
-	if(sm != nil) {
+	if sm != nil {
 		return sm.toString(plural)
 	}
 	return plainText
@@ -26,13 +26,13 @@ func (m *entityManipulation) toString(plural bool) string {
 	im := m.EntityIntManipulation
 	sm := m.EntityStringManipulation
 
-	if(am != nil) {
+	if am != nil {
 		return am.toString(plural)
 	}
-	if(im != nil) {
+	if im != nil {
 		return im.toString(plural)
 	}
-	if(sm != nil) {
+	if sm != nil {
 		return sm.toString(plural)
 	}
 	return plainText
@@ -44,13 +44,13 @@ func (m *placeManipulation) toString(plural bool) string {
 	im := m.PlaceIntManipulation
 	sm := m.PlaceStringManipulation
 
-	if(am != nil) {
+	if am != nil {
 		return am.toString(plural)
 	}
-	if(im != nil) {
+	if im != nil {
 		return im.toString(plural)
 	}
-	if(sm != nil) {
+	if sm != nil {
 		return sm.toString(plural)
 	}
 	return plainText
@@ -58,13 +58,13 @@ func (m *placeManipulation) toString(plural bool) string {
 
 func (am *abilityManipulationBasics) toString(plural bool) string {
 	var plainText string
-	if (plural) {
+	if plural {
 		plainText += "They "
 	} else {
 		plainText += "It "
 	}
 	plainText += am.AbilityOperator
-	if (!plural) {
+	if !plural {
 		plainText += "s "
 	}
 	plainText += am.Ability.toString()
@@ -73,13 +73,13 @@ func (am *abilityManipulationBasics) toString(plural bool) string {
 
 func (em *effectManipulationBasics) toString(plural bool) string {
 	var plainText string
-	if (plural) {
+	if plural {
 		plainText += "They "
 	} else {
 		plainText += "It "
 	}
 	plainText += em.EffectOperator
-	if (!plural) {
+	if !plural {
 		plainText += "s "
 	}
 	plainText += em.Effect.toString()
@@ -92,7 +92,7 @@ func (im *intManipulationBasics) toString(plural bool) string {
 	switch im.IntOperator {
 	case "SET":
 		plainText += "Set "
-		if (plural) {
+		if plural {
 			plainText += "their "
 		} else {
 			plainText += "its "
@@ -100,15 +100,15 @@ func (im *intManipulationBasics) toString(plural bool) string {
 		plainText += im.IntProperty + " to " + strconv.Itoa(im.IntValue) + "."
 	case "ADD":
 		plainText += "Add " + strconv.Itoa(im.IntValue) + " to "
-		if (plural) {
+		if plural {
 			plainText += "their "
 		} else {
 			plainText += "its "
 		}
-		plainText +=  im.IntProperty + "."
+		plainText += im.IntProperty + "."
 	case "SUBTRACT":
 		plainText += "Subtract " + strconv.Itoa(im.IntValue) + " from "
-		if (plural) {
+		if plural {
 			plainText += "their "
 		} else {
 			plainText += "its "
@@ -125,7 +125,7 @@ func (sm *stringManipulationBasics) toString(plural bool) string {
 	var plainText string
 
 	plainText += "Set "
-	if (plural) {
+	if plural {
 		plainText += "their "
 	} else {
 		plainText += "its "

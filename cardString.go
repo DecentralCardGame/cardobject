@@ -16,16 +16,16 @@ func (c *card) toReadable() readableCard {
 	e := c.Entity
 	f := c.Place
 	h := c.Headquarter
-	if(a != nil) {
+	if a != nil {
 		return readableCard{*c, readable{a.toString()}}
 	}
-	if(e != nil) {
+	if e != nil {
 		return readableCard{*c, readable{e.toString()}}
 	}
-	if(f != nil) {
+	if f != nil {
 		return readableCard{*c, readable{f.toString()}}
 	}
-	if(h != nil) {
+	if h != nil {
 		return readableCard{*c, readable{h.toString()}}
 	}
 	return readableCard{}
@@ -34,9 +34,9 @@ func (c *card) toReadable() readableCard {
 func (a *action) toString() string {
 	var effectsString []string
 	effects := a.Effects
-	if(effects != nil) {
+	if effects != nil {
 		for _, e := range effects {
-    		effectsString = append(effectsString, e.toString())
+			effectsString = append(effectsString, e.toString())
 		}
 	}
 	return strings.Join(effectsString, "\n")
@@ -45,9 +45,9 @@ func (a *action) toString() string {
 func (e *entity) toString() string {
 	var abilitiesString []string
 	abilities := e.Abilities
-	if(abilities != nil) {
+	if abilities != nil {
 		for _, a := range abilities {
-    		abilitiesString = append(abilitiesString, a.toString())
+			abilitiesString = append(abilitiesString, a.toString())
 		}
 	}
 	return strings.Join(abilitiesString, "\n")
@@ -56,9 +56,9 @@ func (e *entity) toString() string {
 func (f *place) toString() string {
 	var abilitiesString []string
 	abilities := f.Abilities
-	if(abilities != nil) {
+	if abilities != nil {
 		for _, a := range abilities {
-    		abilitiesString = append(abilitiesString, a.toString())
+			abilitiesString = append(abilitiesString, a.toString())
 		}
 	}
 	return strings.Join(abilitiesString, "\n")
@@ -67,9 +67,9 @@ func (f *place) toString() string {
 func (h *headquarter) toString() string {
 	var abilitiesString []string
 	abilities := h.Abilities
-	if(abilities != nil) {
+	if abilities != nil {
 		for _, a := range abilities {
-    		abilitiesString = append(abilitiesString, a.toString())
+			abilitiesString = append(abilitiesString, a.toString())
 		}
 	}
 	return strings.Join(abilitiesString, "\n")

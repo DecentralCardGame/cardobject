@@ -3,11 +3,11 @@ package cardobject
 type activatedAbility struct {
 	AbilityCost int8
 	MultipleUse bool
-	Effects []effect
+	Effects     []effect
 }
 
 type triggeredAbility struct {
-	Cause eventListener
+	Cause   eventListener
 	Effects []effect
 }
 
