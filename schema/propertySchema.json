@@ -18,7 +18,7 @@
 		"$ref": "standards.json#/int"
 	},
 	"text": {
-		"$ref": "standards.json#/string"
+		"type": "string"
 	},
 	"wisdom": {
 		"$ref": "standards.json#/int"
