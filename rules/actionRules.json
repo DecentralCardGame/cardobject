@@ -1,0 +1,26 @@
+{
+  "name": "action",
+  "children": {
+    "costType": {
+      "$ref": "costTypeRules.json"
+    },
+    "castingCost": {
+      "$ref": "castingCostRules.json"
+    },
+    "cardName": {
+      "$ref": "cardNameRules.json"
+    },
+    "tags": {
+      "$ref": "tagsRules.json"
+    },
+    "flavourText": {
+      "$ref": "flavourTextRules.json"
+    },
+    "effects": {
+      "$ref": "effectsRules.json"
+    }
+  },
+  "type": "struct",
+  "menu": "list",
+  "description": "Build an action"
+}
