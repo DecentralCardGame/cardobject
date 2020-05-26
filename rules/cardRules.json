@@ -1,0 +1,20 @@
+{
+  "name":"card",
+  "children": {
+    "action": {
+      "$ref": "actionRules.json"
+    },
+    "entity": {
+      "$ref": "entityRules.json"
+    },
+    "field": {
+      "$ref": "fieldRules.json"
+    },
+    "hq": {
+      "$ref": "hqRules.json"
+    }
+  },
+  "type": "interface",
+  "menu": "radio-box",
+  "description": "Chose a Cardtype"
+}
