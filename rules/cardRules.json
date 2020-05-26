@@ -7,14 +7,13 @@
     "entity": {
       "$ref": "entityRules.json"
     },
-    "field": {
-      "$ref": "fieldRules.json"
+    "headquarter": {
+      "$ref": "headquarterRules.json"
     },
-    "hq": {
-      "$ref": "hqRules.json"
+    "place": {
+      "$ref": "placeRules.json"
     }
   },
   "type": "interface",
-  "menu": "radio-box",
   "description": "Chose a Cardtype"
 }

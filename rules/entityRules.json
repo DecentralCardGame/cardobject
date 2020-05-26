@@ -1,5 +1,5 @@
 {
-  "name": "action",
+  "name": "entity",
   "children": {
     "costType": {
       "$ref": "costTypeRules.json"
@@ -16,10 +16,16 @@
     "flavourText": {
       "$ref": "flavourTextRules.json"
     },
-    "effects": {
-      "$ref": "effectsRules.json"
+    "attack": {
+      "$ref": "attackRules.json"
+    },
+    "health": {
+      "$ref": "healthRules.json"
+    },
+    "abilities": {
+      "$ref": "abilitiesRules.json"
     }
   },
   "type": "struct",
-  "description": "Build an action"
+  "description": "Build an entity"
 }
