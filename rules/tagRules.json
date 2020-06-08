@@ -1,4 +1,6 @@
 {
   "name": "Tag",
-  "type": "string"
+  "children": ["DEFAULT","ANIMAL","BOT","DWARF","ENGINEER","EQUIPMENT","FARM","FIRE","HUMAN","KNIGHT","MAGIC","MILITANT","PRIMITIVE","RANGE","SPIRITUAL","TACTIC"]
+  "type": "enum",
+  "description": "Chose a Tag"
 }
