@@ -8,7 +8,7 @@
       "$ref": "stringValueRules.json"
     },
     "stringComparator": {
-      "$ref: ""stringComparatorRules.json"
+      "$ref": "stringComparatorRules.json"
     }
   },
   "type": "struct",
