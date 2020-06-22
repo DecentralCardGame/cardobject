@@ -1,0 +1,13 @@
+{
+  "name": "Action-Tagmanipulation",
+  "children": {
+    "tagValue": {
+      "$ref": "tagRules.json"
+    },
+    "tagOperator": {
+      "$ref": "tagOperatorRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build an Action-Tagmanipulation"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Entity-Stringmanipulation",
+  "children": {
+    "stringProperty": {
+      "$ref": "entityStringPropertyRules.json"
+    },
+    "stringOperator": {
+      "$ref": "stringOperatorRules.json"
+    },
+    "stringValue": {
+      "$ref": "stringValueRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build an Entity-Stringmanipulation"
+}

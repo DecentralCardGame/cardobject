@@ -1,0 +1,16 @@
+{
+  "name": "Action-Intmanipulation",
+  "children": {
+    "intProperty": {
+      "$ref": "actionIntPropertyRules.json"
+    },
+    "intOperator": {
+      "$ref": "intOperatorRules.json"
+    },
+    "intValue": {
+      "$ref": "intValueRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build an Action-Intmanipulation"
+}

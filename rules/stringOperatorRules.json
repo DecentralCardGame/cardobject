@@ -1,0 +1,6 @@
+{
+  "name": "String-Operator",
+  "children": ["SET"],
+  "type": "enum",
+  "description": "Choose a String-Operator"
+}

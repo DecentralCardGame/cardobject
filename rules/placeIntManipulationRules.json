@@ -1,0 +1,16 @@
+{
+  "name": "Place-Intmanipulation",
+  "children": {
+    "intProperty": {
+      "$ref": "placeIntPropertyRules.json"
+    },
+    "intOperator": {
+      "$ref": "intOperatorRules.json"
+    },
+    "intValue": {
+      "$ref": "intValueRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build a Place-Intmanipulation"
+}

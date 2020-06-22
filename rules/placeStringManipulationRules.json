@@ -1,0 +1,16 @@
+{
+  "name": "Place-Stringmanipulation",
+  "children": {
+    "stringProperty": {
+      "$ref": "placeStringPropertyRules.json"
+    },
+    "stringOperator": {
+      "$ref": "stringOperatorRules.json"
+    },
+    "stringValue": {
+      "$ref": "stringValueRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build a PLace-Stringmanipulation"
+}

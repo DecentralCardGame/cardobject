@@ -1,0 +1,13 @@
+{
+  "name": "Action-Effectmanipulation",
+  "children": {
+    "effect": {
+      "$ref": "effectRules.json"
+    },
+    "effectOperator": {
+      "$ref": "abilityEffectOperatorRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build an Action-Effectmanipulation"
+}

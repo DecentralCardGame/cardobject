@@ -1,0 +1,16 @@
+{
+  "name": "Entity-Intmanipulation",
+  "children": {
+    "intProperty": {
+      "$ref": "entityIntPropertyRules.json"
+    },
+    "intOperator": {
+      "$ref": "intOperatorRules.json"
+    },
+    "intValue": {
+      "$ref": "intValueRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build an Entity-Intmanipulation"
+}

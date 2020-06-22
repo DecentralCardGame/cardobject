@@ -1,0 +1,16 @@
+{
+  "name": "Action-Stringmanipulation",
+  "children": {
+    "stringProperty": {
+      "$ref": "actionStringPropertyRules.json"
+    },
+    "stringOperator": {
+      "$ref": "stringOperatorRules.json"
+    },
+    "stringValue": {
+      "$ref": "stringValueRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build an Action-Stringmanipulation"
+}
