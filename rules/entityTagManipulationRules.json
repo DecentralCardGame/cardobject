@@ -1,5 +1,5 @@
 {
-  "name": "Entity-Tagmanipulation",
+  "name": "Tagbased Entity-Manipulation",
   "children": {
     "tagValue": {
       "$ref": "tagRules.json"
@@ -9,5 +9,5 @@
     }
   },
   "type": "struct",
-  "description": "Build an Entity-Tagmanipulation"
+  "description": "Build an Tagbased Entity-Manipulation"
 }

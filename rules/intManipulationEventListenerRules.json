@@ -1,5 +1,5 @@
 {
-  "name": "Intmanipulation-Eventlistener",
+  "name": "Numeric Manipulation-Eventlistener",
   "children": {
     "property": {
       "$ref": "cardIntPropertyRules.json"
@@ -12,5 +12,5 @@
     }
   },
   "type": "struct",
-  "description": "Build an Intmanipulation-Eventlistener"
+  "description": "Build a Numeric Manipulation-Eventlistener"
 }

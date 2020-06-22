@@ -6,5 +6,6 @@
     }
   },
   "type": "struct",
-  "description": "Build a Time-Eventlistener"
+  "description": "Build a Time-Eventlistener",
+  "interactionText": ""
 }

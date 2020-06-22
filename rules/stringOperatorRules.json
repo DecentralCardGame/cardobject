@@ -1,6 +1,6 @@
 {
-  "name": "String-Operator",
+  "name": "Textbased Operator",
   "children": ["SET"],
   "type": "enum",
-  "description": "Choose a String-Operator"
+  "description": "Choose a Textbased Operator"
 }

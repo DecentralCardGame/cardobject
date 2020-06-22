@@ -1,6 +1,6 @@
 {
-  "name": "Int-Operator",
+  "name": "Numeric Operator",
   "children": ["SET","ADD","SUBTRACT"],
   "type": "enum",
-  "description": "Choose an Int-Operator"
+  "description": "Choose a Numeric Operator"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Action-Stringmanipulation",
+  "name": "Textbased Action-Manipulation",
   "children": {
     "stringProperty": {
       "$ref": "actionStringPropertyRules.json"
@@ -12,5 +12,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Action-Stringmanipulation"
+  "description": "Build an Textbased Action-Manipulation",
+  "interactionText": ""
 }

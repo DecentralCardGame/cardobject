@@ -14,5 +14,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Entity-Targeteffect"
+  "description": "Build an Entity-Targeteffect",
+  "interactionText": ""
 }

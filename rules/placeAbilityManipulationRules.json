@@ -9,5 +9,6 @@
     }
   },
   "type": "struct",
-  "description": "Build a Place-Abilitymanipulation"
+  "description": "Build a Place-Abilitymanipulation",
+  "interactionText": ""
 }

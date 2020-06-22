@@ -1,5 +1,5 @@
 {
-  "name": "Stringmanipulation-Eventlistener",
+  "name": "Textbased Manipulation-Eventlistener",
   "children": {
     "property": {
       "$ref": "cardStringPropertyRules.json"
@@ -12,5 +12,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Stringmanipulation-Eventlistener"
+  "description": "Build an Textbased Manipulation-Eventlistener",
+  "interactionText": ""
 }

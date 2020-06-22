@@ -20,5 +20,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Entity-Selector"
+  "description": "Build an Entity-Selector",
+  "interactionText": ""
 }

@@ -9,5 +9,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Action-Effectmanipulation"
+  "description": "Build an Action-Effectmanipulation",
+  "interactionText": "§effectOperator §effect"
 }

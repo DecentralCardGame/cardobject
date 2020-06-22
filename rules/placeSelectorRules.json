@@ -20,5 +20,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Place-Selector"
+  "description": "Build an Place-Selector",
+  "interactionText": ""
 }

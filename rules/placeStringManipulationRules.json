@@ -1,5 +1,5 @@
 {
-  "name": "Place-Stringmanipulation",
+  "name": "Textbased Place-Manipulation",
   "children": {
     "stringProperty": {
       "$ref": "placeStringPropertyRules.json"
@@ -12,5 +12,6 @@
     }
   },
   "type": "struct",
-  "description": "Build a PLace-Stringmanipulation"
+  "description": "Build a Textbased Place-Stringmanipulation",
+  "interactionText": ""
 }

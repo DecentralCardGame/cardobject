@@ -1,5 +1,5 @@
 {
-  "name": "Entity-Intmanipulation",
+  "name": "Numeric Entity-Manipulation",
   "children": {
     "intProperty": {
       "$ref": "entityIntPropertyRules.json"
@@ -12,5 +12,5 @@
     }
   },
   "type": "struct",
-  "description": "Build an Entity-Intmanipulation"
+  "description": "Build an Numeric Entity-Manipulation"
 }

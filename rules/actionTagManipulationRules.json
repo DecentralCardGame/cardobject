@@ -1,5 +1,5 @@
 {
-  "name": "Action-Tagmanipulation",
+  "name": "Textbased Action-Manipulation",
   "children": {
     "tagValue": {
       "$ref": "tagRules.json"
@@ -9,5 +9,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Action-Tagmanipulation"
+  "description": "Build an Tagbased Action-Manipulation",
+  "interactionText": ""
 }

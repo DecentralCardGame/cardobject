@@ -17,5 +17,6 @@
     }
   },
   "type": "struct",
-  "description": "Build a Token"
+  "description": "Build a Token",
+  "interactionText": ""
 }
