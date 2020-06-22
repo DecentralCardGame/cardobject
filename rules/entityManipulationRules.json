@@ -3,7 +3,7 @@
   "children": {
     "entityAbilityManipulation": {
       "$ref": "entityAbilityManipulationRules.json"
-    }
+    },
     "actionIntManipulation": {
       "$ref": "actionIntManipulationRules.json"
     },
