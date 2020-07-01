@@ -10,5 +10,5 @@
   },
   "type": "struct",
   "description": "Build a Zonechange",
-  "interactionText": ""
+  "interactionText": "Put it into §player §zone."
 }

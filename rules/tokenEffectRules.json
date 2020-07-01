@@ -10,5 +10,5 @@
   },
   "type": "struct",
   "description": "Build a Token Effect",
-  "interactionText": ""
+  "interactionText": "Create §tokenAmount §token."
 }

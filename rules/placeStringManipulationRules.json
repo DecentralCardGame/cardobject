@@ -13,5 +13,5 @@
   },
   "type": "struct",
   "description": "Build a Textbased Place-Stringmanipulation",
-  "interactionText": ""
+  "interactionText": "§stringOperator §stringProperty §stringValue."
 }

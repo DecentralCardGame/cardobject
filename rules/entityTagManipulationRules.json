@@ -9,5 +9,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Tagbased Entity-Manipulation"
+  "description": "Build an Tagbased Entity-Manipulation",
+  "interactionText": "It §tagOperator §tagValue."
 }

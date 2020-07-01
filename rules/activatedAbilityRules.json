@@ -1,14 +1,14 @@
 {
   "name": "Activated Ability",
   "children": {
-    "AbilityCost": {
+    "abilityCost": {
       "$ref": "abilityCostRules.json"
     },
-    "Effects": {
+    "effects": {
       "$ref": "effectsRules.json"
     }
   },
   "type": "struct",
   "description": "Build an Activated Ability",
-  "interactionText": ""
+  "interactionText": "Pay §abilityCost: §effects \n"
 }

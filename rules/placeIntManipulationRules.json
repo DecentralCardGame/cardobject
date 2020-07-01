@@ -13,5 +13,5 @@
   },
   "type": "struct",
   "description": "Build a Numeric Place-Manipulation",
-  "interactionText": ""
+  "interactionText": "§intOperator §intProperty §intValue."
 }

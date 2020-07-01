@@ -13,5 +13,5 @@
   },
   "type": "struct",
   "description": "Build a Textbase Player-Condition",
-  "interactionText": ""
+  "interactionText": "with §stringProperty §stringComparator §stringValue"
 }

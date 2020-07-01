@@ -10,5 +10,5 @@
   },
   "type": "struct",
   "description": "Build a Triggered Ability",
-  "interactionText": ""
+  "interactionText": "§cause : §effects \n"
 }

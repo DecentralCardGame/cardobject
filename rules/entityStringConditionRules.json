@@ -13,5 +13,5 @@
   },
   "type": "struct",
   "description": "Build a Textbased Entity-Condition",
-  "interactionText": ""
+  "interactionText": "with §entityStringProperty §stringComparator §stringValue"
 }

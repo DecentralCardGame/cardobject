@@ -8,9 +8,11 @@
       "$ref": "intChangeModeRules.json"
     },
     "cardCondition": {
-      "$ref": "cardConditionRules.json"
+      "$ref": "cardConditionRules.json",
+      "optional": true
     }
   },
   "type": "struct",
-  "description": "Build a Numeric Manipulation-Eventlistener"
+  "description": "Build a Numeric Manipulation-Eventlistener",
+  "interactionText": "Whenever §property on card §cardCondition §intChangeMode"
 }

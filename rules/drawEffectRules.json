@@ -7,5 +7,5 @@
   },
   "type": "struct",
   "description": "Build a Draw Effect",
-  "interactionText": ""
+  "interactionText": "Draw §drawAmount cards."
 }

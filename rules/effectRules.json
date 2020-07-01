@@ -15,6 +15,5 @@
     }
   },
   "type": "interface",
-  "description": "Choose an Effect Type",
-  "interactionText": ""
+  "description": "Choose an Effect Type"
 }

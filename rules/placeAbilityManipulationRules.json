@@ -10,5 +10,5 @@
   },
   "type": "struct",
   "description": "Build a Place-Abilitymanipulation",
-  "interactionText": ""
+  "interactionText": "It §abilityOperator §ability."
 }

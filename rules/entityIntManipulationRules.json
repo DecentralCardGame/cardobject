@@ -12,5 +12,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Numeric Entity-Manipulation"
+  "description": "Build an Numeric Entity-Manipulation",
+  "interactionText": "§intOperator §intProperty §intValue"
 }

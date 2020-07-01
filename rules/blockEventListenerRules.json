@@ -8,5 +8,5 @@
   },
   "type": "struct",
   "description": "Build a Block-Eventlistener",
-  "interactionText": ""
+  "interactionText": "Whenever an entity §entityCondition blocks"
 }

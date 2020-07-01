@@ -13,5 +13,5 @@
   },
   "type": "struct",
   "description": "Build a Numeric Place-Condition",
-  "interactionText": ""
+  "interactionText": "with §placeIntProperty §intComparator §intValue"
 }

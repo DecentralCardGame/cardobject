@@ -13,5 +13,5 @@
   },
   "type": "struct",
   "description": "Build a Numeric Player-Condition",
-  "interactionText": ""
+  "interactionText": "with §intProperty §intComparator §intValue"
 }

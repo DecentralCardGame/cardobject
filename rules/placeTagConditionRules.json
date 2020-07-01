@@ -10,5 +10,5 @@
   },
   "type": "struct",
   "description": "Build a Tagbased Place-Condition",
-  "interactionText": ""
+  "interactionText": "with tag §stringComparator §stringValue"
 }

@@ -21,5 +21,5 @@
   },
   "type": "struct",
   "description": "Build an Entity-Selector",
-  "interactionText": ""
+  "interactionText": "Choose §cardMode entity §entityCondition in the §zone of §playerMode player §playerCondition."
 }

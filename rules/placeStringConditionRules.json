@@ -13,5 +13,5 @@
   },
   "type": "struct",
   "description": "Build a Textbased Place-Condition",
-  "interactionText": ""
+  "interactionText": "with §placeStringProperty §stringComparator §stringValue"
 }

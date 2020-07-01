@@ -8,5 +8,5 @@
   },
   "type": "struct",
   "description": "Build an Attack-Eventlistener",
-  "interactionText": ""
+  "interactionText": "Whenever an entity §entityCondition attacks"
 }

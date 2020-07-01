@@ -13,5 +13,5 @@
   },
   "type": "struct",
   "description": "Build a Numeric Action-Manipulation",
-  "interactionText": "§intOperator §intProperty §intValue"
+  "interactionText": "§intOperator §intProperty §intValue."
 }
