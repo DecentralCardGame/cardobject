@@ -9,6 +9,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Tagbased Action-Manipulation",
+  "description": "Build a Tagbased Action-Manipulation",
   "interactionText": "§tagOperator tag §tagValue."
 }

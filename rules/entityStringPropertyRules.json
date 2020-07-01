@@ -2,5 +2,5 @@
   "name": "Textbased Entity-Property",
   "children": ["NAME","TEXT"],
   "type": "enum",
-  "description": "Choose an Textbased Entity-Property"
+  "description": "Choose a Textbased Entity-Property"
 }

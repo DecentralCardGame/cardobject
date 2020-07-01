@@ -12,6 +12,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Textbased Entity-Manipulation",
+  "description": "Build a Textbased Entity-Manipulation",
   "interactionText": "§stringOperator §stringProperty §stringValue."
 }

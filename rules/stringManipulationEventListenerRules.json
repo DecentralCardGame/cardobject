@@ -13,6 +13,6 @@
     }
   },
   "type": "struct",
-  "description": "Build an Textbased Manipulation-Eventlistener",
+  "description": "Build a Textbased Manipulation-Eventlistener",
   "interactionText": "Whenever §property §stringChangeMode on a card §cardCondition"
 }
