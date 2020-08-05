@@ -2,7 +2,7 @@
   "name": "Action",
   "children": {
     "costType": {
-      "$ref": "costTypeRules.json"
+      "$ref": "ressourceCostTypeRules.json"
     },
     "castingCost": {
       "$ref": "castingCostRules.json"

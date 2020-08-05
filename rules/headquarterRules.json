@@ -2,7 +2,7 @@
   "name": "HQ",
   "children": {
     "costType": {
-      "$ref": "costTypeRules.json"
+      "$ref": "ressourceCostTypeRules.json"
     },
     "cardName": {
       "$ref": "cardNameRules.json"

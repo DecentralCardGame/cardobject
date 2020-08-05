@@ -2,7 +2,7 @@
   "name": "Production-Eventlistener",
   "children": {
     "ressourceType": {
-      "$ref": "costTypeRules.json"
+      "$ref": "ressourceCostTypeRules.json"
     }
   },
   "type": "struct",
