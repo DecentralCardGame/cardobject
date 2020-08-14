@@ -17,9 +17,13 @@
     },
     "zone": {
       "$ref": "dynamicZoneRules.json"
+    },
+    "placeExtractor": {
+      "$ref": "placeExtractorRules.json",
+      "optional": true
     }
   },
   "type": "struct",
   "description": "Build a Place-Selector",
-  "interactionText": "Choose §cardMode place §placeCondition in the §zone of §playerMode player §playerCondition."
+  "interactionText": "Choose §cardMode place §placeCondition in the §zone of §playerMode player §playerCondition. §placeExtractor"
 }

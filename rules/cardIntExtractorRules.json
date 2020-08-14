@@ -1,0 +1,14 @@
+{
+  "name": "Numeric Card-Extractor",
+  "children": {
+    "extractIntProperty": {
+      "$ref": "cardIntPropertyRules.json"
+    },
+    "intVariableName": {
+      "$ref": "intVariableNameRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build a Numeric Card-Extractor",
+  "interactionText": "Set §intVariableName to the cards §extractIntProperty."
+}

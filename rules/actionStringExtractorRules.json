@@ -1,0 +1,14 @@
+{
+  "name": "Textbased Action-Extractor",
+  "children": {
+    "extractStringProperty": {
+      "$ref": "actionStringPropertyRules.json"
+    },
+    "stringVariableName": {
+      "$ref": "stringVariableNameRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build a Textbased Action-Extractor",
+  "interactionText": "Set §stringVariableName to the actionss §extractStringProperty."
+}

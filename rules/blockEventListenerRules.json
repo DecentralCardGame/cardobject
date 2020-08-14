@@ -4,9 +4,17 @@
     "entityCondition": {
       "$ref": "entityConditionRules.json",
       "optional": true
+    },
+    "blockingEntityExtractor": {
+      "$ref": "entityExtractorRules.json",
+      "optional": true
+    },
+    "blockedEntityExtractor": {
+      "$ref": "entityExtractorRules.json",
+      "optional": true
     }
   },
   "type": "struct",
   "description": "Build a Block-Eventlistener",
-  "interactionText": "Whenever an entity §entityCondition blocks"
+  "interactionText": "Whenever an entity §entityCondition blocks. §blockingEntityExtractor §blockedEntityExtractor"
 }

@@ -4,9 +4,13 @@
     "entityCondition": {
       "$ref": "entityConditionRules.json",
       "optional": true
+    },
+    "attackEntityExtractor": {
+      "$ref": "entityExtractorRules.json",
+      "optional": true
     }
   },
   "type": "struct",
   "description": "Build an Attack-Eventlistener",
-  "interactionText": "Whenever an entity §entityCondition attacks"
+  "interactionText": "Whenever an entity §entityCondition attacks. §attackEntityExtractor"
 }
