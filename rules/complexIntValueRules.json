@@ -1,0 +1,17 @@
+{
+  "name": "Complex Numeric Value",
+  "children": {
+    "firstValue": {
+      "$ref": "simpleIntValueRules.json"
+    },
+    "secondValue": {
+      "$ref": "simpleIntValueRules.json"
+    },
+    "arithOperator": {
+      "$ref": "arithOperatorRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Build a Complex Numeric Value",
+  "interactionText": "§firstValue §arithOperator §secondValue"
+}

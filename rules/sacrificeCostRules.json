@@ -2,7 +2,7 @@
   "name": "SacrificeCost",
   "children" : {
     "amount": {
-      "$ref": "intValueRules.json"
+      "$ref": "simpleIntValueRules.json"
     },
     "condition": {
       "$ref": "cardConditionRules.json",

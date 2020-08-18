@@ -5,7 +5,7 @@
       "$ref": "actionIntPropertyRules.json"
     },
     "intValue": {
-      "$ref": "intValueRules.json"
+      "$ref": "simpleIntValueRules.json"
     },
     "intComparator": {
       "$ref": "intComparatorRules.json"
