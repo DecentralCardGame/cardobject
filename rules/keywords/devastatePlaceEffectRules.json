@@ -2,7 +2,7 @@
   "name": "Devastate-Place Effect",
   "children": {
     "placeSelector": {
-      "$ref": "placeSelectorRules.json",
+      "$ref": "../placeSelectorRules.json",
       "optional": true
     }
   },

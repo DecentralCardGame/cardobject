@@ -2,7 +2,7 @@
   "name": "Destroy-Entity Effect",
   "children": {
     "entitySelector": {
-      "$ref": "entitySelectorRules.json",
+      "$ref": "../entitySelectorRules.json",
       "optional": true
     }
   },
