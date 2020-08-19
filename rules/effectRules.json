@@ -15,5 +15,10 @@
     }
   },
   "type": "interface",
-  "description": "Choose an Effect Type"
+  "description": "Choose an Effect Type",
+  "keywords": {
+    "destroyEntityEffect": {
+      "$ref": "keywords/destroyEntityEffectRules.json"
+    }
+  }
 }
