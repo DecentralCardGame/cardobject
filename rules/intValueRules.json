@@ -1,13 +1,13 @@
 {
   "name": "Numeric Value",
   "children": {
-    "complexIntValue": {
+    "ComplexIntValue": {
       "$ref": "complexIntValueRules.json"
     },
-    "simpleIntValue": {
+    "SimpleIntValue": {
       "$ref": "simpleIntValueRules.json"
     },
-    "intVariable": {
+    "IntVariable": {
       "$ref": "intVariableNameRules.json"
     }
   },

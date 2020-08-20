@@ -1,14 +1,14 @@
 {
   "name": "Textbased Place-Extractor",
   "children": {
-    "extractStringProperty": {
+    "ExtractStringProperty": {
       "$ref": "placeStringPropertyRules.json"
     },
-    "stringVariableName": {
+    "StringVariableName": {
       "$ref": "stringVariableNameRules.json"
     }
   },
   "type": "struct",
   "description": "Build a Textbased Place-Extractor",
-  "interactionText": "Set §stringVariableName to the places §extractStringProperty."
+  "interactionText": "Set §StringVariableName to the places §ExtractStringProperty."
 }

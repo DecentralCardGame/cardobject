@@ -1,14 +1,14 @@
 {
   "name": "Numeric Entity-Extractor",
   "children": {
-    "extractIntProperty": {
+    "ExtractIntProperty": {
       "$ref": "entityIntPropertyRules.json"
     },
-    "intVariableName": {
+    "IntVariableName": {
       "$ref": "intVariableNameRules.json"
     }
   },
   "type": "struct",
   "description": "Build a Numeric Entity-Extractor",
-  "interactionText": "Set §intVariableName to the entities §extractIntProperty."
+  "interactionText": "Set §IntVariableName to the entities §ExtractIntProperty."
 }

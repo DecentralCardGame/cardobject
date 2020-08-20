@@ -1,10 +1,10 @@
 {
   "name": "Place-Extractor",
   "children": {
-    "placeIntExtractor": {
+    "PlaceIntExtractor": {
       "$ref": "placeIntExtractorRules.json"
     },
-    "placeStringExtractor": {
+    "PlaceStringExtractor": {
       "$ref": "placeStringExtractorRules.json"
     }
   },

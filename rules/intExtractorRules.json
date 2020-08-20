@@ -1,11 +1,11 @@
 {
   "name": "Numeric Extractor",
   "children": {
-    "intVariableName": {
+    "IntVariableName": {
       "$ref": "intVariableNameRules.json"
     }
   },
   "type": "struct",
   "description": "Build a Numeric Extractor",
-  "interactionText": "Set §intVariableName."
+  "interactionText": "Set §IntVariableName."
 }

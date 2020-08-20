@@ -1,10 +1,10 @@
 {
   "name": "Entity-Extractor",
   "children": {
-    "entityIntExtractor": {
+    "EntityIntExtractor": {
       "$ref": "entityIntExtractorRules.json"
     },
-    "entityStringExtractor": {
+    "EntityStringExtractor": {
       "$ref": "entityStringExtractorRules.json"
     }
   },

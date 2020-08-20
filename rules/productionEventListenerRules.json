@@ -1,16 +1,16 @@
 {
   "name": "Production-Eventlistener",
   "children": {
-    "ressourceTypeCondition": {
+    "RessourceTypeCondition": {
       "$ref": "ressourceCostTypeRules.json",
       "optional": true
     },
-    "productionAmountExtractor": {
+    "ProductionAmountExtractor": {
       "$ref": "intExtractorRules.json",
       "optional": true
     }
   },
   "type": "struct",
   "description": "Build a Production-Eventlistener",
-  "interactionText": "Whenever one or more §ressourceType ressources is produced. §productionAmountExtractor"
+  "interactionText": "Whenever one or more §RessourceType ressources is produced. §ProductionAmountExtractor"
 }

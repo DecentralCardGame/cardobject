@@ -1,10 +1,10 @@
 {
   "name": "Card-Extractor",
   "children": {
-    "cardIntExtractor": {
+    "CardIntExtractor": {
       "$ref": "entityIntExtractorRules.json"
     },
-    "cardStringExtractor": {
+    "CardStringExtractor": {
       "$ref": "entityStringExtractorRules.json"
     }
   },

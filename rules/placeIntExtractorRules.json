@@ -1,14 +1,14 @@
 {
   "name": "Numeric Place-Extractor",
   "children": {
-    "extractIntProperty": {
+    "ExtractIntProperty": {
       "$ref": "placeIntPropertyRules.json"
     },
-    "intVariableName": {
+    "IntVariableName": {
       "$ref": "intVariableNameRules.json"
     }
   },
   "type": "struct",
   "description": "Build a Numeric Place-Extractor",
-  "interactionText": "Set §intVariableName to the places §extractIntProperty."
+  "interactionText": "Set §IntVariableName to the places §ExtractIntProperty."
 }

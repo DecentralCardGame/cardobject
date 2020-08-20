@@ -1,13 +1,13 @@
 {
   "name": "Cost",
   "children": {
-    "ressourceCost": {
+    "RessourceCost": {
       "$ref": "ressourceCostRules.json"
     },
-    "sacrificeCost": {
+    "SacrificeCost": {
       "$ref": "sacrificeCostRules.json"
     },
-    "discardCost": {
+    "DiscardCost": {
       "$ref": "discardCostRules.json"
     }
   },

@@ -1,26 +1,26 @@
 {
   "name": "Numeric Manipulation-Eventlistener",
   "children": {
-    "property": {
+    "Property": {
       "$ref": "cardIntPropertyRules.json"
     },
-    "intChangeMode": {
+    "IntChangeMode": {
       "$ref": "intChangeModeRules.json"
     },
-    "cardCondition": {
+    "CardCondition": {
       "$ref": "cardConditionRules.json",
       "optional": true
     },
-    "manipulatedCardExtractor": {
+    "ManipulatedCardExtractor": {
       "$ref": "cardExtractorRules.json",
       "optional": true
     },
-    "manipulationValueExtractor": {
+    "ManipulationValueExtractor": {
       "$ref": "intExtractorRules.json",
       "optional": true
     }
   },
   "type": "struct",
   "description": "Build a Numeric Manipulation-Eventlistener",
-  "interactionText": "Whenever §property on card §cardCondition §intChangeMode. §manipulatedCardExtractor §manipulationValueExtractor"
+  "interactionText": "Whenever §Property on card §CardCondition §IntChangeMode. §ManipulatedCardExtractor §ManipulationValueExtractor"
 }

@@ -1,10 +1,10 @@
 {
   "name": "Action-Extractor",
   "children": {
-    "actionIntExtractor": {
+    "ActionIntExtractor": {
       "$ref": "actionIntExtractorRules.json"
     },
-    "actionStringExtractor": {
+    "ActionStringExtractor": {
       "$ref": "actionStringExtractorRules.json"
     }
   },

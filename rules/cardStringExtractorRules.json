@@ -1,14 +1,14 @@
 {
   "name": "Textbased Card-Extractor",
   "children": {
-    "extractStringProperty": {
+    "ExtractStringProperty": {
       "$ref": "cardStringPropertyRules.json"
     },
-    "stringVariableName": {
+    "StringVariableName": {
       "$ref": "stringVariableNameRules.json"
     }
   },
   "type": "struct",
   "description": "Build a Textbased Card-Extractor",
-  "interactionText": "Set §stringVariableName to the cards §extractStringProperty."
+  "interactionText": "Set §StringVariableName to the cards §ExtractStringProperty."
 }
