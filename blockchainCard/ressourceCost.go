@@ -1,4 +1,4 @@
-package blockchaincard
+package cardobject
 
 import "errors"
 
