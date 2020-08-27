@@ -1,0 +1,19 @@
+{
+  "name": "cardobject",
+  "version": "1.0.0",
+  "description": "cardobject-library written in go",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DecentralCardGame/cardobject.git"
+  },
+  "author": "",
+  "license": "NONE",
+  "bugs": {
+    "url": "https://github.com/DecentralCardGame/cardobject/issues"
+  },
+  "homepage": "https://github.com/DecentralCardGame/cardobject#readme"
+}
