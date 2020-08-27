@@ -9,8 +9,8 @@ type effect struct {
 }
 
 func validateEffects(effects []effect) error {
-	if len(effects) > maxEffectCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxEffectCount) + " effects")
+	if len(effects) > maxAbilityEffectCount {
+		return errors.New("The card must have at most " + strconv.Itoa(maxAbilityEffectCount) + " effects")
 	}
 	errorRange := []error{}
 	for _, effect := range effects {

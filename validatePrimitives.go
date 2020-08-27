@@ -8,10 +8,12 @@ import (
 const maxAttack int = 32
 const minAttack int = 0
 const maxCardNameLength int = 32
+const minCardNameLength int = 1
 const maxCastingCost int = 32
 const minCastingCost int = 0
-const maxEffectCount int = 3
+const maxAbilityEffectCount int = 3
 const maxFlavourTextLength int = 1000
+const minFlavourTextLength int = 1
 const maxGrowth = 32
 const minGrowth = 0
 const maxHealth int = 32
@@ -32,7 +34,7 @@ func validateAttack(attack int) error {
 
 func validateCardName(cardName string) error {
 	if len(cardName) > maxCardNameLength {
-		return errors.New("The cards name must have at most " + strconv.Itoa(maxCardNameLength) + " characters")
+		return errors.New("The cards name must have between " + strconv.Itoa(minCardNameLength) + " and " + strconv.Itoa(maxCardNameLength) + " characters")
 	}
 	return nil
 }
@@ -46,7 +48,7 @@ func validateCastingCost(castingCost int) error {
 
 func validateFlavourText(flavourText string) error {
 	if len(flavourText) > maxFlavourTextLength {
-		return errors.New("The cards flavour text must have at most " + strconv.Itoa(maxFlavourTextLength) + " characters")
+		return errors.New("The cards flavour text must have between " + strconv.Itoa(minFlavourTextLength) + " and " + strconv.Itoa(maxFlavourTextLength) + " characters")
 	}
 	return nil
 }
