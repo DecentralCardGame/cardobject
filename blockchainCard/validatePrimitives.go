@@ -1,4 +1,4 @@
-package blockchainCard
+package blockchaincard
 
 import (
 	"errors"
@@ -58,7 +58,7 @@ func validateGrowth(growth int) error {
 
 func validateHealth(health int) error {
 	if health > maxHealth || health < minHealth {
-		return errors.New("The cards attack must be between " + strconv.Itoa(minHealth) + " and " + strconv.Itoa(maxHealth))
+		return errors.New("The cards health must be between " + strconv.Itoa(minHealth) + " and " + strconv.Itoa(maxHealth))
 	}
 	return nil
 }

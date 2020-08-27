@@ -1,11 +1,14 @@
-package blockchainCard
+package blockchaincard
 
-import "errors"
+import (
+	"errors"
+	"reflect"
+)
 
 func xorInterface(possibleImplementer []validateable) validateable {
 	var implmenter validateable
 	for _, b := range possibleImplementer {
-		if b != nil {
+		if !reflect.ValueOf(b).IsNil() {
 			implmenter = b
 		}
 	}
@@ -23,7 +26,6 @@ func combineErrors(errorRange []error) error {
 	}
 	if isError {
 		return errors.New(errorString)
-	} else {
-		return nil
 	}
+	return nil
 }

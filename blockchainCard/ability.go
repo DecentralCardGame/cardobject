@@ -1,4 +1,4 @@
-package blockchainCard
+package blockchaincard
 
 import (
 	"errors"

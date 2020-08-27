@@ -1,6 +1,8 @@
-package blockchainCard
+package blockchaincard
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 type validateable interface {
 	validate() error
