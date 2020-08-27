@@ -42,14 +42,15 @@ type place struct {
 }
 
 type headquarter struct {
-	CardName    string
-	CostType    *ressourceCostType
-	Abilities   []ability
-	Health      int
-	Growth      int
-	Wisdom      int
-	FlavourText string
-	Tags        []string
+	CardName         string
+	CostType         *ressourceCostType
+	Abilities        []ability
+	Health           int
+	Growth           int
+	StartingHandSize int
+	Wisdom           int
+	FlavourText      string
+	Tags             []string
 }
 
 func (c *card) validate() error {
@@ -109,6 +110,7 @@ func (h *headquarter) validate() error {
 	errors = append(errors, h.CostType.validate())
 	errors = append(errors, validateAbilities(h.Abilities))
 	errors = append(errors, validateGrowth(h.Growth))
+	errors = append(errors, validateStartingHandSize(h.StartingHandSize))
 	errors = append(errors, validateWisdom(h.Wisdom))
 	errors = append(errors, validateHealth(h.Health))
 	errors = append(errors, validateFlavourText(h.FlavourText))

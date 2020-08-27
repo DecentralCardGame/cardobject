@@ -16,6 +16,8 @@ const maxGrowth = 32
 const minGrowth = 0
 const maxHealth int = 32
 const minHealth int = 0
+const maxStartingHandSize int = 10
+const minStartingHandSize int = 0
 const maxTagCount int = 3
 const minTagCount int = 1
 const maxWisdom int = 32
@@ -59,6 +61,13 @@ func validateGrowth(growth int) error {
 func validateHealth(health int) error {
 	if health > maxHealth || health < minHealth {
 		return errors.New("The cards health must be between " + strconv.Itoa(minHealth) + " and " + strconv.Itoa(maxHealth))
+	}
+	return nil
+}
+
+func validateStartingHandSize(startingHandSize int) error {
+	if startingHandSize > maxStartingHandSize || startingHandSize < minStartingHandSize {
+		return errors.New("The cards startingHandSize must be between " + strconv.Itoa(minStartingHandSize) + " and " + strconv.Itoa(minStartingHandSize))
 	}
 	return nil
 }
