@@ -24,6 +24,9 @@
     },
     "Wisdom": {
       "$ref": "wisdomRules.json"
+    },
+    "StartingHandSize": {
+      "$ref": "startingHandSizeRules.json"
     }
   },
   "type": "struct",
