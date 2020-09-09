@@ -18,6 +18,10 @@
     "ManipulationValueExtractor": {
       "$ref": "stringExtractorRules.json",
       "optional": true
+    },
+    "TargetExtractor": {
+      "$ref": "targetExtractorRules.json",
+      "optional": true
     }
   },
   "type": "struct",
