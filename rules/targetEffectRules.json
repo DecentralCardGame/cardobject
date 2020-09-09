@@ -9,6 +9,9 @@
     },
     "PlaceTargetEffect": {
       "$ref": "placeTargetEffectRules.json"
+    },
+    "ThisTargetEffect": {
+      "$ref": "thisTargetEffectRules.json"
     }
   },
   "type": "interface",

@@ -1,0 +1,14 @@
+{
+  "name": "TargetVariable-Effect",
+  "children": {
+    "TargetVariable": {
+      "$ref": "targetVariableNameRules.json"
+    },
+    "Manipulations": {
+      "$ref": "manipulationsRules.json"
+    }
+  },
+  "type": "struct",
+  "description": "Buid an TargetVariable-Effect",
+  "interactionText": "Choose §TargetVariable. §Manipulations"
+}
