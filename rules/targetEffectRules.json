@@ -10,8 +10,8 @@
     "PlaceTargetEffect": {
       "$ref": "placeTargetEffectRules.json"
     },
-    "ThisTargetEffect": {
-      "$ref": "thisTargetEffectRules.json"
+    "ExtractorTargetEffect": {
+      "$ref": "extractorTargetEffectRules.json"
     }
   },
   "type": "interface",

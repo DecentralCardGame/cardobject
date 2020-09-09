@@ -1,5 +1,5 @@
 {
-  "name": "TargetVariable-Effect",
+  "name": "ExtractorTarget-Effect",
   "children": {
     "TargetVariable": {
       "$ref": "targetVariableNameRules.json"
@@ -9,6 +9,6 @@
     }
   },
   "type": "struct",
-  "description": "Buid an TargetVariable-Effect",
+  "description": "Buid an ExtractorTarget-Effect",
   "interactionText": "Choose §TargetVariable. §Manipulations"
 }
