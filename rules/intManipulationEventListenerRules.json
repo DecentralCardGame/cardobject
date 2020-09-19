@@ -12,19 +12,15 @@
       "optional": true
     },
     "ManipulatedCardExtractor": {
-      "$ref": "cardExtractorRules.json",
+      "$ref": "cardExtractorsRules.json",
       "optional": true
     },
     "ManipulationValueExtractor": {
       "$ref": "intExtractorRules.json",
       "optional": true
-    },
-    "TargetExtractor": {
-      "$ref": "targetExtractorRules.json",
-      "optional": true
     }
   },
   "type": "struct",
   "description": "Build a Numeric Manipulation-Event Listener",
-  "interactionText": "Whenever §Property on card §CardCondition §IntChangeMode. §ManipulatedCardExtractor §ManipulationValueExtractor"
+  "interactionText": "Whenever §Property on card §CardCondition §IntChangeMode. §ManipulatedCardExtractors §ManipulationValueExtractor"
 }
