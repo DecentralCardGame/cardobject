@@ -2,7 +2,8 @@
   "name": "Zonechange-Event Listener",
   "children": {
     "Source": {
-      "$ref": "dynamicZoneRules.json"
+      "$ref": "dynamicZoneRules.json",
+      "optional": true
     },
     "Destination": {
       "$ref": "zoneRules.json"
