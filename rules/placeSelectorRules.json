@@ -21,6 +21,10 @@
     "PlaceExtractor": {
       "$ref": "placeExtractorsRules.json",
       "optional": true
+    },
+    "AmountExtractor": {
+      "$ref": "intExtractorRules.json",
+      "optional": true
     }
   },
   "type": "struct",

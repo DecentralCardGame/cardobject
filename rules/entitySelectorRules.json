@@ -21,6 +21,10 @@
     "EntityExtractor": {
       "$ref": "entityExtractorsRules.json",
       "optional": true
+    },
+    "AmountExtractor": {
+      "$ref": "intExtractorRules.json",
+      "optional": true
     }
   },
   "type": "struct",
