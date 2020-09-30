@@ -19,7 +19,7 @@
       "$ref": "dynamicZoneRules.json"
     },
     "ActionExtractor": {
-      "$ref": "actionExtractorRules.json",
+      "$ref": "actionExtractorsRules.json",
       "optional": true
     }
   },

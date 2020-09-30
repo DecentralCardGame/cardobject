@@ -19,7 +19,7 @@
       "$ref": "dynamicZoneRules.json"
     },
     "EntityExtractor": {
-      "$ref": "entityExtractorRules.json",
+      "$ref": "entityExtractorsRules.json",
       "optional": true
     }
   },

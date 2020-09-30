@@ -19,7 +19,7 @@
       "$ref": "dynamicZoneRules.json"
     },
     "PlaceExtractor": {
-      "$ref": "placeExtractorRules.json",
+      "$ref": "placeExtractorsRules.json",
       "optional": true
     }
   },
