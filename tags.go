@@ -40,5 +40,5 @@ func validateTag(tag string) error {
 			return nil
 		}
 	}
-	return errors.New("Tag not available")
+	return errors.New("Tag: " + tag + " not available")
 }

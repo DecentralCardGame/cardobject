@@ -18,6 +18,10 @@ const maxGrowth = 32
 const minGrowth = 0
 const maxHealth int = 32
 const minHealth int = 0
+const maxSimpleInt int = 32
+const minSimpleInt int = 0
+const maxSimpleStringLength = 32
+const minSimpleStringLength = 1
 const maxStartingHandSize int = 10
 const minStartingHandSize int = 0
 const maxTagCount int = 3
@@ -33,7 +37,8 @@ func validateAttack(attack int) error {
 }
 
 func validateCardName(cardName string) error {
-	if len(cardName) > maxCardNameLength {
+	cardNameLength := len(cardName)
+	if cardNameLength > maxCardNameLength || cardNameLength < minCardNameLength {
 		return errors.New("The cards name must have between " + strconv.Itoa(minCardNameLength) + " and " + strconv.Itoa(maxCardNameLength) + " characters")
 	}
 	return nil
@@ -47,7 +52,8 @@ func validateCastingCost(castingCost int) error {
 }
 
 func validateFlavourText(flavourText string) error {
-	if len(flavourText) > maxFlavourTextLength {
+	flavourTextLength := len(flavourText)
+	if flavourTextLength > maxFlavourTextLength || flavourTextLength < minFlavourTextLength {
 		return errors.New("The cards flavour text must have between " + strconv.Itoa(minFlavourTextLength) + " and " + strconv.Itoa(maxFlavourTextLength) + " characters")
 	}
 	return nil
@@ -77,6 +83,21 @@ func validateStartingHandSize(startingHandSize int) error {
 func validateWisdom(wisdom int) error {
 	if wisdom > maxWisdom || wisdom < minWisdom {
 		return errors.New("The cards growth must be between " + strconv.Itoa(minWisdom) + " and " + strconv.Itoa(maxWisdom))
+	}
+	return nil
+}
+
+func validateSimpleInt(simpleInt int) error {
+	if simpleInt > maxSimpleInt || simpleInt < minSimpleInt {
+		return errors.New("Simple Integer must be between " + strconv.Itoa(minSimpleInt) + " and " + strconv.Itoa(maxSimpleInt))
+	}
+	return nil
+}
+
+func validateSimpleString(simpleString string) error {
+	simpleStringLength := len(simpleString)
+	if simpleStringLength > maxSimpleStringLength || simpleStringLength < minSimpleStringLength {
+		return errors.New("Simple String-length mus be between " + strconv.Itoa(minSimpleStringLength) + " and " + strconv.Itoa(maxSimpleStringLength))
 	}
 	return nil
 }

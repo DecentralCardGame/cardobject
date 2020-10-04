@@ -6,6 +6,16 @@ import (
 )
 
 type ability struct {
+	ActivatedAbility *activatedAbility `json:",omitempty"`
+	TriggeredAbility *triggeredAbility `json:",omitempty"`
+}
+
+type activatedAbility struct {
+	Cost    *cost `json:",omitempty"`
+	Effects []effect
+}
+
+type triggeredAbility struct {
 }
 
 func validateAbilities(abilities []ability) error {
@@ -19,6 +29,23 @@ func validateAbilities(abilities []ability) error {
 	return combineErrors(errorRange)
 }
 
-func (ability *ability) validate() error {
+func (a *ability) validate() error {
+	possibleImplementer := []validateable{a.ActivatedAbility, a.TriggeredAbility}
+
+	implementer := xorInterface(possibleImplementer)
+	if implementer == nil {
+		return errors.New("Ability implemented by not exactly one option")
+	}
+	return implementer.validate()
+}
+
+func (a *activatedAbility) validate() error {
+	errors := []error{}
+	errors = append(errors, a.Cost.validate())
+	errors = append(errors, validateEffects(a.Effects))
+	return combineErrors(errors)
+}
+
+func (a *triggeredAbility) validate() error {
 	return nil
 }
