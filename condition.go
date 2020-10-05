@@ -1,13 +1,22 @@
 package cardobject
 
-import "errors"
+import (
+	"errors"
+	"strconv"
+)
 
-type cardCondition struct {
-	ActionCondition *actionCondition `json:",omitempty"`
-	EntityCondition *entityCondition `json:",omitempty"`
-	PlaceCondition  *placeCondition  `json:",omitempty"`
-	ThisCondition   *thisCondition   `json:",omitempty"`
+type cardConditions struct {
+	ActionConditions *actionConditions `json:",omitempty"`
+	EntityConditions *entityConditions `json:",omitempty"`
+	PlaceConditions  *placeConditions  `json:",omitempty"`
+	ThisConditions   *thisCondition    `json:",omitempty"`
 }
+
+type actionConditions []actionCondition
+
+type entityConditions []entityCondition
+
+type placeConditions []placeCondition
 
 type actionCondition struct {
 	ActionIntCondition    *actionIntCondition    `json:",omitempty"`
@@ -80,21 +89,54 @@ type placeTagCondition struct {
 	StringComparator string
 }
 
-func (c *cardCondition) validate() error {
-	possibleImplementer := []validateable{c.ActionCondition, c.EntityCondition, c.PlaceCondition, c.ThisCondition}
+func (c *cardConditions) validate() error {
+	possibleImplementer := []validateable{c.ActionConditions, c.EntityConditions, c.PlaceConditions, c.ThisConditions}
 
-	implementer := xorInterface(possibleImplementer)
-	if implementer == nil {
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
 		return errors.New("Ability implemented by not exactly one option")
 	}
 	return implementer.validate()
 }
 
+func (c actionConditions) validate() error {
+	if len(c) > maxConditionCount {
+		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " conditions")
+	}
+	errorRange := []error{}
+	for _, actionCondition := range c {
+		errorRange = append(errorRange, actionCondition.validate())
+	}
+	return combineErrors(errorRange)
+}
+
+func (c entityConditions) validate() error {
+	if len(c) > maxConditionCount {
+		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " conditions")
+	}
+	errorRange := []error{}
+	for _, entityCondition := range c {
+		errorRange = append(errorRange, entityCondition.validate())
+	}
+	return combineErrors(errorRange)
+}
+
+func (c placeConditions) validate() error {
+	if len(c) > maxConditionCount {
+		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " conditions")
+	}
+	errorRange := []error{}
+	for _, placeCondition := range c {
+		errorRange = append(errorRange, placeCondition.validate())
+	}
+	return combineErrors(errorRange)
+}
+
 func (c *actionCondition) validate() error {
 	possibleImplementer := []validateable{c.ActionIntCondition, c.ActionStringCondition, c.ActionTagCondition}
 
-	implementer := xorInterface(possibleImplementer)
-	if implementer == nil {
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
 		return errors.New("Ability implemented by not exactly one option")
 	}
 	return implementer.validate()
@@ -103,8 +145,8 @@ func (c *actionCondition) validate() error {
 func (c *entityCondition) validate() error {
 	possibleImplementer := []validateable{c.EntityIntCondition, c.EntityStringCondition, c.EntityTagCondition}
 
-	implementer := xorInterface(possibleImplementer)
-	if implementer == nil {
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
 		return errors.New("Ability implemented by not exactly one option")
 	}
 	return implementer.validate()
@@ -113,8 +155,8 @@ func (c *entityCondition) validate() error {
 func (c *placeCondition) validate() error {
 	possibleImplementer := []validateable{c.PlaceIntCondition, c.PlaceStringCondition, c.PlaceTagCondition}
 
-	implementer := xorInterface(possibleImplementer)
-	if implementer == nil {
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
 		return errors.New("Ability implemented by not exactly one option")
 	}
 	return implementer.validate()

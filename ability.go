@@ -32,8 +32,8 @@ func validateAbilities(abilities []ability) error {
 func (a *ability) validate() error {
 	possibleImplementer := []validateable{a.ActivatedAbility, a.TriggeredAbility}
 
-	implementer := xorInterface(possibleImplementer)
-	if implementer == nil {
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
 		return errors.New("Ability implemented by not exactly one option")
 	}
 	return implementer.validate()

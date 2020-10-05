@@ -5,14 +5,19 @@ import (
 	"reflect"
 )
 
-func xorInterface(possibleImplementer []validateable) validateable {
-	var implmenter validateable
+func xorInterface(possibleImplementer []validateable) (validateable, error) {
+	var implementer validateable
+	implementerFound := false
 	for _, b := range possibleImplementer {
 		if !reflect.ValueOf(b).IsNil() {
-			implmenter = b
+			if implementerFound {
+				return nil, errors.New("ImplementerError")
+			}
+			implementer = b
+			implementerFound = true
 		}
 	}
-	return implmenter
+	return implementer, nil
 }
 
 func combineErrors(errorRange []error) error {

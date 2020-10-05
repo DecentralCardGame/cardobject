@@ -14,20 +14,20 @@ type ressourceCost struct {
 }
 
 type sacrificeCost struct {
-	Amount    int
-	Condition *cardCondition
+	Amount     int
+	Conditions *cardConditions
 }
 
 type discardCost struct {
-	Amount    int
-	Condition *cardCondition
+	Amount     int
+	Conditions *cardConditions
 }
 
 func (c *cost) validate() error {
 	possibleImplementer := []validateable{c.RessourceCost, c.SacrificeCost, c.DiscardCost}
 
-	implementer := xorInterface(possibleImplementer)
-	if implementer == nil {
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
 		return errors.New("Ability implemented by not exactly one option")
 	}
 	return implementer.validate()
@@ -43,13 +43,17 @@ func (c *ressourceCost) validate() error {
 func (c *sacrificeCost) validate() error {
 	errors := []error{}
 	errors = append(errors, validateSimpleInt(c.Amount))
-	errors = append(errors, c.Condition.validate())
+	if c.Conditions != nil {
+		errors = append(errors, c.Conditions.validate())
+	}
 	return combineErrors(errors)
 }
 
 func (c *discardCost) validate() error {
 	errors := []error{}
 	errors = append(errors, validateSimpleInt(c.Amount))
-	errors = append(errors, c.Condition.validate())
+	if c.Conditions != nil {
+		errors = append(errors, c.Conditions.validate())
+	}
 	return combineErrors(errors)
 }

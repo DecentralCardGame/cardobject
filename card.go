@@ -56,8 +56,8 @@ type headquarter struct {
 func (c *card) validate() error {
 	possibleImplementer := []validateable{c.Action, c.Entity, c.Place, c.Headquarter}
 
-	implementer := xorInterface(possibleImplementer)
-	if implementer == nil {
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
 		return errors.New("Card implemented by not exactly one option")
 	}
 	return implementer.validate()
