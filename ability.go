@@ -11,11 +11,14 @@ type ability struct {
 }
 
 type activatedAbility struct {
-	Cost    *cost `json:",omitempty"`
+	Cost    *cost
 	Effects []effect
 }
 
 type triggeredAbility struct {
+	//Cause   *eventListener
+	Cost    *cost
+	Effects []effect
 }
 
 func validateAbilities(abilities []ability) error {
@@ -40,10 +43,14 @@ func (a *ability) validate() error {
 }
 
 func (a *activatedAbility) validate() error {
-	errors := []error{}
-	errors = append(errors, a.Cost.validate())
-	errors = append(errors, validateEffects(a.Effects))
-	return combineErrors(errors)
+	errorRange := []error{}
+	if a.Cost == nil {
+		errorRange = append(errorRange, errors.New("ActivatedAbility must have Cost"))
+	} else {
+		errorRange = append(errorRange, a.Cost.validate())
+	}
+	errorRange = append(errorRange, validateEffects(a.Effects))
+	return combineErrors(errorRange)
 }
 
 func (a *triggeredAbility) validate() error {

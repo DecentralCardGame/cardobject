@@ -167,70 +167,70 @@ func (c *thisCondition) validate() error {
 }
 
 func (c *actionIntCondition) validate() error {
-	errors := []error{}
-	errors = append(errors, validateActionIntProperty(c.ActionIntProperty))
-	errors = append(errors, validateIntComparator(c.IntComparator))
-	errors = append(errors, validateSimpleInt(c.IntValue))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateActionIntProperty(c.ActionIntProperty))
+	errorRange = append(errorRange, validateIntComparator(c.IntComparator))
+	errorRange = append(errorRange, validateSimpleInt(c.IntValue))
+	return combineErrors(errorRange)
 }
 
 func (c *actionStringCondition) validate() error {
-	errors := []error{}
-	errors = append(errors, validateActionStringProperty(c.ActionStringProperty))
-	errors = append(errors, validateStringComparator(c.StringComparator))
-	errors = append(errors, validateSimpleString(c.StringValue))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateActionStringProperty(c.ActionStringProperty))
+	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
+	errorRange = append(errorRange, validateSimpleString(c.StringValue))
+	return combineErrors(errorRange)
 }
 
 func (c *actionTagCondition) validate() error {
-	errors := []error{}
-	errors = append(errors, validateStringComparator(c.StringComparator))
-	errors = append(errors, validateSimpleString(c.StringValue))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
+	errorRange = append(errorRange, validateSimpleString(c.StringValue))
+	return combineErrors(errorRange)
 }
 
 func (c *entityIntCondition) validate() error {
-	errors := []error{}
-	errors = append(errors, validateEntityIntProperty(c.EntityIntProperty))
-	errors = append(errors, validateIntComparator(c.IntComparator))
-	errors = append(errors, validateSimpleInt(c.IntValue))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateEntityIntProperty(c.EntityIntProperty))
+	errorRange = append(errorRange, validateIntComparator(c.IntComparator))
+	errorRange = append(errorRange, validateSimpleInt(c.IntValue))
+	return combineErrors(errorRange)
 }
 
 func (c *entityStringCondition) validate() error {
-	errors := []error{}
-	errors = append(errors, validateEntityStringProperty(c.EntityStringProperty))
-	errors = append(errors, validateStringComparator(c.StringComparator))
-	errors = append(errors, validateSimpleString(c.StringValue))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateEntityStringProperty(c.EntityStringProperty))
+	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
+	errorRange = append(errorRange, validateSimpleString(c.StringValue))
+	return combineErrors(errorRange)
 }
 
 func (c *entityTagCondition) validate() error {
-	errors := []error{}
-	errors = append(errors, validateStringComparator(c.StringComparator))
-	errors = append(errors, validateSimpleString(c.StringValue))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
+	errorRange = append(errorRange, validateSimpleString(c.StringValue))
+	return combineErrors(errorRange)
 }
 
 func (c *placeIntCondition) validate() error {
-	errors := []error{}
-	errors = append(errors, validatePlaceIntProperty(c.PlaceIntProperty))
-	errors = append(errors, validateIntComparator(c.IntComparator))
-	errors = append(errors, validateSimpleInt(c.IntValue))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validatePlaceIntProperty(c.PlaceIntProperty))
+	errorRange = append(errorRange, validateIntComparator(c.IntComparator))
+	errorRange = append(errorRange, validateSimpleInt(c.IntValue))
+	return combineErrors(errorRange)
 }
 
 func (c *placeStringCondition) validate() error {
-	errors := []error{}
-	errors = append(errors, validatePlaceStringProperty(c.PlaceStringProperty))
-	errors = append(errors, validateStringComparator(c.StringComparator))
-	errors = append(errors, validateSimpleString(c.StringValue))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validatePlaceStringProperty(c.PlaceStringProperty))
+	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
+	errorRange = append(errorRange, validateSimpleString(c.StringValue))
+	return combineErrors(errorRange)
 }
 
 func (c *placeTagCondition) validate() error {
-	errors := []error{}
-	errors = append(errors, validateStringComparator(c.StringComparator))
-	errors = append(errors, validateSimpleString(c.StringValue))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
+	errorRange = append(errorRange, validateSimpleString(c.StringValue))
+	return combineErrors(errorRange)
 }

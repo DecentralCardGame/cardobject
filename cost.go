@@ -23,6 +23,14 @@ type discardCost struct {
 	Conditions *cardConditions
 }
 
+type ressourceCostType struct {
+	Energy bool
+	Food   bool
+	Lumber bool
+	Mana   bool
+	Iron   bool
+}
+
 func (c *cost) validate() error {
 	possibleImplementer := []validateable{c.RessourceCost, c.SacrificeCost, c.DiscardCost}
 
@@ -34,26 +42,28 @@ func (c *cost) validate() error {
 }
 
 func (c *ressourceCost) validate() error {
-	errors := []error{}
-	errors = append(errors, validateCastingCost(c.CostAmount))
-	errors = append(errors, c.RessourceCostType.validate())
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateCastingCost(c.CostAmount))
+	if c.RessourceCostType == nil {
+		errorRange = append(errorRange, errors.New("RessourceCost must have RessourceCostType"))
+	}
+	return combineErrors(errorRange)
 }
 
 func (c *sacrificeCost) validate() error {
-	errors := []error{}
-	errors = append(errors, validateSimpleInt(c.Amount))
+	errorRange := []error{}
+	errorRange = append(errorRange, validateSimpleInt(c.Amount))
 	if c.Conditions != nil {
-		errors = append(errors, c.Conditions.validate())
+		errorRange = append(errorRange, c.Conditions.validate())
 	}
-	return combineErrors(errors)
+	return combineErrors(errorRange)
 }
 
 func (c *discardCost) validate() error {
-	errors := []error{}
-	errors = append(errors, validateSimpleInt(c.Amount))
+	errorRange := []error{}
+	errorRange = append(errorRange, validateSimpleInt(c.Amount))
 	if c.Conditions != nil {
-		errors = append(errors, c.Conditions.validate())
+		errorRange = append(errorRange, c.Conditions.validate())
 	}
-	return combineErrors(errors)
+	return combineErrors(errorRange)
 }

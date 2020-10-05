@@ -1,8 +1,6 @@
 package cardobject
 
-import (
-	"errors"
-)
+import "errors"
 
 type card struct {
 	Action      *action      `json:",omitempty"`
@@ -64,51 +62,59 @@ func (c *card) validate() error {
 }
 
 func (a *action) validate() error {
-	errors := []error{}
-	errors = append(errors, validateCardName(a.CardName))
-	errors = append(errors, validateCastingCost(a.CastingCost))
-	errors = append(errors, a.CostType.validate())
-	errors = append(errors, validateEffects(a.Effects))
-	errors = append(errors, validateFlavourText(a.FlavourText))
-	errors = append(errors, validateTags(a.Tags))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateCardName(a.CardName))
+	errorRange = append(errorRange, validateCastingCost(a.CastingCost))
+	if a.CostType == nil {
+		errorRange = append(errorRange, errors.New("Action must have a CostType"))
+	}
+	errorRange = append(errorRange, validateEffects(a.Effects))
+	errorRange = append(errorRange, validateFlavourText(a.FlavourText))
+	errorRange = append(errorRange, validateTags(a.Tags))
+	return combineErrors(errorRange)
 }
 
 func (e *entity) validate() error {
-	errors := []error{}
-	errors = append(errors, validateCardName(e.CardName))
-	errors = append(errors, validateCastingCost(e.CastingCost))
-	errors = append(errors, e.CostType.validate())
-	errors = append(errors, validateAbilities(e.Abilities))
-	errors = append(errors, validateAttack(e.Attack))
-	errors = append(errors, validateHealth(e.Health))
-	errors = append(errors, validateFlavourText(e.FlavourText))
-	errors = append(errors, validateTags(e.Tags))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateCardName(e.CardName))
+	errorRange = append(errorRange, validateCastingCost(e.CastingCost))
+	if e.CostType == nil {
+		errorRange = append(errorRange, errors.New("Entity must have a CostType"))
+	}
+	errorRange = append(errorRange, validateAbilities(e.Abilities))
+	errorRange = append(errorRange, validateAttack(e.Attack))
+	errorRange = append(errorRange, validateHealth(e.Health))
+	errorRange = append(errorRange, validateFlavourText(e.FlavourText))
+	errorRange = append(errorRange, validateTags(e.Tags))
+	return combineErrors(errorRange)
 }
 
 func (p *place) validate() error {
-	errors := []error{}
-	errors = append(errors, validateCardName(p.CardName))
-	errors = append(errors, validateCastingCost(p.CastingCost))
-	errors = append(errors, p.CostType.validate())
-	errors = append(errors, validateAbilities(p.Abilities))
-	errors = append(errors, validateHealth(p.Health))
-	errors = append(errors, validateFlavourText(p.FlavourText))
-	errors = append(errors, validateTags(p.Tags))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateCardName(p.CardName))
+	errorRange = append(errorRange, validateCastingCost(p.CastingCost))
+	if p.CostType == nil {
+		errorRange = append(errorRange, errors.New("Place must have a CostType"))
+	}
+	errorRange = append(errorRange, validateAbilities(p.Abilities))
+	errorRange = append(errorRange, validateHealth(p.Health))
+	errorRange = append(errorRange, validateFlavourText(p.FlavourText))
+	errorRange = append(errorRange, validateTags(p.Tags))
+	return combineErrors(errorRange)
 }
 
 func (h *headquarter) validate() error {
-	errors := []error{}
-	errors = append(errors, validateCardName(h.CardName))
-	errors = append(errors, h.CostType.validate())
-	errors = append(errors, validateAbilities(h.Abilities))
-	errors = append(errors, validateGrowth(h.Growth))
-	errors = append(errors, validateStartingHandSize(h.StartingHandSize))
-	errors = append(errors, validateWisdom(h.Wisdom))
-	errors = append(errors, validateHealth(h.Health))
-	errors = append(errors, validateFlavourText(h.FlavourText))
-	errors = append(errors, validateTags(h.Tags))
-	return combineErrors(errors)
+	errorRange := []error{}
+	errorRange = append(errorRange, validateCardName(h.CardName))
+	if h.CostType == nil {
+		errorRange = append(errorRange, errors.New("HQ must have a CostType"))
+	}
+	errorRange = append(errorRange, validateAbilities(h.Abilities))
+	errorRange = append(errorRange, validateGrowth(h.Growth))
+	errorRange = append(errorRange, validateStartingHandSize(h.StartingHandSize))
+	errorRange = append(errorRange, validateWisdom(h.Wisdom))
+	errorRange = append(errorRange, validateHealth(h.Health))
+	errorRange = append(errorRange, validateFlavourText(h.FlavourText))
+	errorRange = append(errorRange, validateTags(h.Tags))
+	return combineErrors(errorRange)
 }
