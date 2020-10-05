@@ -9,7 +9,7 @@
       "$ref": "zoneRules.json"
     },
     "CardCondition": {
-      "$ref": "cardConditionRules.json",
+      "$ref": "cardConditionsRules.json",
       "optional": true
     },
     "MovedCardExtractors": {

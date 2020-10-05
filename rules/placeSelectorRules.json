@@ -12,7 +12,7 @@
       "$ref": "cardModeRules.json"
     },
     "PlaceCondition": {
-      "$ref": "placeConditionRules.json",
+      "$ref": "placeConditionsRules.json",
       "optional": true
     },
     "Zone": {

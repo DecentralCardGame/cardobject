@@ -8,7 +8,7 @@
       "$ref": "stringChangeModeRules.json"
     },
     "CardCondition": {
-      "$ref": "cardConditionRules.json",
+      "$ref": "cardConditionsRules.json",
       "optional": true
     },
     "ManipulatedCardExtractors": {

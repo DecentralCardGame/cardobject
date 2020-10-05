@@ -12,7 +12,7 @@
       "$ref": "cardModeRules.json"
     },
     "EntityCondition": {
-      "$ref": "entityConditionRules.json",
+      "$ref": "entityConditionsRules.json",
       "optional": true
     },
     "Zone": {
