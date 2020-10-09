@@ -9,6 +9,9 @@ var entityStringProperties []string = []string{"NAME", "TEXT"}
 var placeIntProperties []string = []string{"COSTSUM", "HEALTH"}
 var placeStringProperties []string = []string{"NAME", "TEXT"}
 
+var cardIntProperties []string = []string{"ATTACK", "COSTSUM", "HEALTH"}
+var cardStringProperties []string = []string{"NAME", "TEXT"}
+
 func validateActionIntProperty(property string) error {
 	for _, t := range actionIntProperties {
 		if t == property {
@@ -61,4 +64,22 @@ func validatePlaceStringProperty(property string) error {
 		}
 	}
 	return errors.New("PlaceStringProperty: " + property + " not available")
+}
+
+func validateCardIntProperty(property string) error {
+	for _, t := range cardIntProperties {
+		if t == property {
+			return nil
+		}
+	}
+	return errors.New("CardIntProperty: " + property + " not available")
+}
+
+func validateCardStringProperty(property string) error {
+	for _, t := range cardStringProperties {
+		if t == property {
+			return nil
+		}
+	}
+	return errors.New("CardStringProperty: " + property + " not available")
 }

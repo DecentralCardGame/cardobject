@@ -6,7 +6,7 @@
       "optional": true
     },
     "BlockingEntityExtractors": {
-      "$ref": "entityExtractorRules.json"
+      "$ref": "entityExtractorsRules.json"
     },
     "BlockedEntityExtractors": {
       "$ref": "entityExtractorsRules.json"

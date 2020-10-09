@@ -16,7 +16,7 @@ type activatedAbility struct {
 }
 
 type triggeredAbility struct {
-	//Cause   *eventListener
+	Cause   *eventListener
 	Cost    *cost
 	Effects []effect
 }
@@ -54,5 +54,15 @@ func (a *activatedAbility) validate() error {
 }
 
 func (a *triggeredAbility) validate() error {
-	return nil
+	errorRange := []error{}
+	if a.Cause == nil {
+		errorRange = append(errorRange, errors.New("TriggeredAbility must have Cause"))
+	} else {
+		errorRange = append(errorRange, a.Cause.validate())
+	}
+	if a.Cost != nil {
+		errorRange = append(errorRange, a.Cost.validate())
+	}
+	errorRange = append(errorRange, validateEffects(a.Effects))
+	return combineErrors(errorRange)
 }

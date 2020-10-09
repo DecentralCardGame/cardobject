@@ -12,6 +12,7 @@ const minCardNameLength int = 1
 const maxCastingCost int = 32
 const minCastingCost int = 0
 const maxConditionCount int = 3
+const maxExtractorCount int = 3
 const maxAbilityEffectCount int = 3
 const maxFlavourTextLength int = 1000
 const minFlavourTextLength int = 1
