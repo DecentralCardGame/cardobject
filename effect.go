@@ -6,6 +6,55 @@ import (
 )
 
 type effect struct {
+	ProductionEffect *productionEffect `json:",omitempty"`
+	DrawEffect       *drawEffect       `json:",omitempty"`
+	TokenEffect      *tokenEffect      `json:",omitempty"`
+	TargetEffect     *targetEffect     `json:",omitempty"`
+	ChooseFromEffect *chooseFromEffect `json:",omitempty"`
+}
+
+type productionEffect struct {
+	Amount int
+}
+
+type drawEffect struct {
+	DrawAmount int
+}
+
+type tokenEffect struct {
+	TokenAmount int
+	Token       token
+}
+
+type chooseFromEffect struct {
+	Effects []effect
+}
+
+type targetEffect struct {
+	ActionTargetEffect    *actionTargetEffect    `json:",omitempty"`
+	EntityTargetEffect    *entityTargetEffect    `json:",omitempty"`
+	PlaceTargetEffect     *placeTargetEffect     `json:",omitempty"`
+	ExtractorTargetEffect *extractorTargetEffect `json:",omitempty"`
+}
+
+type actionTargetEffect struct {
+	ActionSelector      *actionSelector
+	ActionManipulations *actionManipulations
+}
+
+type entityTargetEffect struct {
+	EntitySelector      *entitySelector
+	EntityManipulations *entityManipulations
+}
+
+type placeTargetEffect struct {
+	PlaceSelector      *placeSelector
+	PlaceManipulations *placeManipulations
+}
+
+type extractorTargetEffect struct {
+	TargetVariable string
+	Manipulations  *manipulations
 }
 
 func validateEffects(effects []effect) error {
@@ -19,6 +68,75 @@ func validateEffects(effects []effect) error {
 	return combineErrors(errorRange)
 }
 
-func (effect *effect) validate() error {
-	return nil
+func (e *effect) validate() error {
+	possibleImplementer := []validateable{e.ChooseFromEffect, e.DrawEffect, e.ProductionEffect, e.TargetEffect, e.TokenEffect}
+
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
+		return errors.New("Effect implemented by not exactly one option")
+	}
+	return implementer.validate()
+}
+
+func (e *chooseFromEffect) validate() error {
+	errorRange := []error{}
+	errorRange = append(errorRange, validateEffects(e.Effects))
+	return combineErrors(errorRange)
+}
+
+func (e *drawEffect) validate() error {
+	errorRange := []error{}
+	errorRange = append(errorRange, validateSimpleInt(e.DrawAmount))
+	return combineErrors(errorRange)
+}
+
+func (e *productionEffect) validate() error {
+	errorRange := []error{}
+	errorRange = append(errorRange, validateSimpleInt(e.Amount))
+	return combineErrors(errorRange)
+}
+
+func (e *tokenEffect) validate() error {
+	errorRange := []error{}
+	errorRange = append(errorRange, validateSimpleInt(e.TokenAmount))
+	errorRange = append(errorRange, e.Token.validate())
+	return combineErrors(errorRange)
+}
+
+func (e *targetEffect) validate() error {
+	possibleImplementer := []validateable{e.ActionTargetEffect, e.EntityTargetEffect, e.ExtractorTargetEffect, e.PlaceTargetEffect}
+
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
+		return errors.New("TargetEffect implemented by not exactly one option")
+	}
+	return implementer.validate()
+}
+
+func (e *actionTargetEffect) validate() error {
+	errorRange := []error{}
+	errorRange = append(errorRange, e.ActionSelector.validate())
+	errorRange = append(errorRange, e.ActionManipulations.validate())
+	return combineErrors(errorRange)
+}
+
+func (e *entityTargetEffect) validate() error {
+	errorRange := []error{}
+	errorRange = append(errorRange, e.EntitySelector.validate())
+	errorRange = append(errorRange, e.EntityManipulations.validate())
+	return combineErrors(errorRange)
+}
+
+func (e *placeTargetEffect) validate() error {
+	errorRange := []error{}
+	errorRange = append(errorRange, e.PlaceSelector.validate())
+	errorRange = append(errorRange, e.PlaceManipulations.validate())
+	return combineErrors(errorRange)
+}
+
+func (e *extractorTargetEffect) validate() error {
+	errorRange := []error{}
+	errorRange = append(errorRange, validateTargetVariableName(e.TargetVariable))
+	errorRange = append(errorRange, e.Manipulations.validate())
+	return combineErrors(errorRange)
 }

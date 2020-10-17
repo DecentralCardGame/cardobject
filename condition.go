@@ -18,6 +18,8 @@ type entityConditions []entityCondition
 
 type placeConditions []placeCondition
 
+type playerConditions []playerCondition
+
 type actionCondition struct {
 	ActionIntCondition    *actionIntCondition    `json:",omitempty"`
 	ActionStringCondition *actionStringCondition `json:",omitempty"`
@@ -34,6 +36,10 @@ type placeCondition struct {
 	PlaceIntCondition    *placeIntCondition    `json:",omitempty"`
 	PlaceStringCondition *placeStringCondition `json:",omitempty"`
 	PlaceTagCondition    *placeTagCondition    `json:",omitempty"`
+}
+
+type playerCondition struct {
+	PlayerIntCondition *playerIntCondition `json:",omitempty"`
 }
 
 type thisCondition struct{}
@@ -89,19 +95,25 @@ type placeTagCondition struct {
 	StringComparator string
 }
 
+type playerIntCondition struct {
+	PlayerIntProperty string
+	IntValue          int
+	IntComparator     string
+}
+
 func (c *cardConditions) validate() error {
 	possibleImplementer := []validateable{c.ActionConditions, c.EntityConditions, c.PlaceConditions, c.ThisConditions}
 
 	implementer, error := xorInterface(possibleImplementer)
 	if implementer == nil || error != nil {
-		return errors.New("Ability implemented by not exactly one option")
+		return errors.New("Conditions implemented by not exactly one option")
 	}
 	return implementer.validate()
 }
 
 func (c actionConditions) validate() error {
 	if len(c) > maxConditionCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " conditions")
+		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " actionConditions")
 	}
 	errorRange := []error{}
 	for _, actionCondition := range c {
@@ -112,7 +124,7 @@ func (c actionConditions) validate() error {
 
 func (c entityConditions) validate() error {
 	if len(c) > maxConditionCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " conditions")
+		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " entityConditions")
 	}
 	errorRange := []error{}
 	for _, entityCondition := range c {
@@ -123,7 +135,7 @@ func (c entityConditions) validate() error {
 
 func (c placeConditions) validate() error {
 	if len(c) > maxConditionCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " conditions")
+		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " placeConditions")
 	}
 	errorRange := []error{}
 	for _, placeCondition := range c {
@@ -137,7 +149,7 @@ func (c *actionCondition) validate() error {
 
 	implementer, error := xorInterface(possibleImplementer)
 	if implementer == nil || error != nil {
-		return errors.New("Ability implemented by not exactly one option")
+		return errors.New("ActionCondition implemented by not exactly one option")
 	}
 	return implementer.validate()
 }
@@ -147,7 +159,7 @@ func (c *entityCondition) validate() error {
 
 	implementer, error := xorInterface(possibleImplementer)
 	if implementer == nil || error != nil {
-		return errors.New("Ability implemented by not exactly one option")
+		return errors.New("EntityCondition implemented by not exactly one option")
 	}
 	return implementer.validate()
 }
@@ -157,7 +169,17 @@ func (c *placeCondition) validate() error {
 
 	implementer, error := xorInterface(possibleImplementer)
 	if implementer == nil || error != nil {
-		return errors.New("Ability implemented by not exactly one option")
+		return errors.New("PlaceCondition implemented by not exactly one option")
+	}
+	return implementer.validate()
+}
+
+func (c *playerCondition) validate() error {
+	possibleImplementer := []validateable{c.PlayerIntCondition}
+
+	implementer, error := xorInterface(possibleImplementer)
+	if implementer == nil || error != nil {
+		return errors.New("PlayerCondition implemented by not exactly one option")
 	}
 	return implementer.validate()
 }
@@ -232,5 +254,13 @@ func (c *placeTagCondition) validate() error {
 	errorRange := []error{}
 	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
 	errorRange = append(errorRange, validateSimpleString(c.StringValue))
+	return combineErrors(errorRange)
+}
+
+func (c *playerIntCondition) validate() error {
+	errorRange := []error{}
+	errorRange = append(errorRange, validatePlayerIntProperty(c.PlayerIntProperty))
+	errorRange = append(errorRange, validateIntComparator(c.IntComparator))
+	errorRange = append(errorRange, validateSimpleInt(c.IntValue))
 	return combineErrors(errorRange)
 }

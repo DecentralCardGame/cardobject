@@ -12,6 +12,8 @@ var placeStringProperties []string = []string{"NAME", "TEXT"}
 var cardIntProperties []string = []string{"ATTACK", "COSTSUM", "HEALTH"}
 var cardStringProperties []string = []string{"NAME", "TEXT"}
 
+var playerIntProperties []string = []string{"HANDSIZE", "BOARDSIZE", "DECKSIZE"}
+
 func validateActionIntProperty(property string) error {
 	for _, t := range actionIntProperties {
 		if t == property {
@@ -82,4 +84,13 @@ func validateCardStringProperty(property string) error {
 		}
 	}
 	return errors.New("CardStringProperty: " + property + " not available")
+}
+
+func validatePlayerIntProperty(property string) error {
+	for _, t := range playerIntProperties {
+		if t == property {
+			return nil
+		}
+	}
+	return errors.New("PlayerIntProperty: " + property + " not available")
 }

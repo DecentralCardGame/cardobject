@@ -14,6 +14,7 @@ const minCastingCost int = 0
 const maxConditionCount int = 3
 const maxExtractorCount int = 3
 const maxAbilityEffectCount int = 3
+const maxManipulationCount int = 3
 const maxFlavourTextLength int = 1000
 const minFlavourTextLength int = 1
 const maxGrowth = 32
