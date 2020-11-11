@@ -11,8 +11,8 @@ type ability struct {
 }
 
 type activatedAbility struct {
-	Cost    *cost
-	Effects []effect
+	AbilityCost *cost
+	Effects     []effect
 }
 
 type triggeredAbility struct {
@@ -44,10 +44,10 @@ func (a *ability) validate() error {
 
 func (a *activatedAbility) validate() error {
 	errorRange := []error{}
-	if a.Cost == nil {
-		errorRange = append(errorRange, errors.New("ActivatedAbility must have Cost"))
+	if a.AbilityCost == nil {
+		errorRange = append(errorRange, errors.New("ActivatedAbility must have AbilityCost"))
 	} else {
-		errorRange = append(errorRange, a.Cost.validate())
+		errorRange = append(errorRange, a.AbilityCost.validate())
 	}
 	errorRange = append(errorRange, validateEffects(a.Effects))
 	return combineErrors(errorRange)
