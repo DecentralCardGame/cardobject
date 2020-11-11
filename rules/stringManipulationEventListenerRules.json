@@ -19,7 +19,6 @@
       "$ref": "stringExtractorRules.json",
       "optional": true
     }
-    }
   },
   "type": "struct",
   "description": "Build a Text based Manipulation-Event Listener",
