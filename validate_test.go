@@ -7,7 +7,7 @@ import (
 )
 
 func TestCardSerializationAction1(t *testing.T) {
-	file, _ := ioutil.ReadFile("testJsons/place1Test.json")
+	file, _ := ioutil.ReadFile("testJsons/actionTest1.json")
 	input := string(file)
 	card, err := NewCardFromJson(input)
 	if err != nil {
