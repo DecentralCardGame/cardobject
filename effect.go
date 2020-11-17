@@ -14,15 +14,15 @@ type effect struct {
 }
 
 type productionEffect struct {
-	Amount int
+	Amount intValue
 }
 
 type drawEffect struct {
-	DrawAmount int
+	DrawAmount intValue
 }
 
 type tokenEffect struct {
-	TokenAmount int
+	TokenAmount intValue
 	Token       token
 }
 
@@ -86,19 +86,19 @@ func (e *chooseFromEffect) validate() error {
 
 func (e *drawEffect) validate() error {
 	errorRange := []error{}
-	errorRange = append(errorRange, validateSimpleInt(e.DrawAmount))
+	errorRange = append(errorRange, e.DrawAmount.validate())
 	return combineErrors(errorRange)
 }
 
 func (e *productionEffect) validate() error {
 	errorRange := []error{}
-	errorRange = append(errorRange, validateSimpleInt(e.Amount))
+	errorRange = append(errorRange, e.Amount.validate())
 	return combineErrors(errorRange)
 }
 
 func (e *tokenEffect) validate() error {
 	errorRange := []error{}
-	errorRange = append(errorRange, validateSimpleInt(e.TokenAmount))
+	errorRange = append(errorRange, e.TokenAmount.validate())
 	errorRange = append(errorRange, e.Token.validate())
 	return combineErrors(errorRange)
 }

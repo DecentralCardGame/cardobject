@@ -3,9 +3,9 @@ package cardobject
 import "errors"
 
 type intValue struct {
-	ComplexIntValue *complexIntValue
-	SimpleIntValue  *int
-	IntVariable     *string
+	ComplexIntValue *complexIntValue `json:",omitempty"`
+	SimpleIntValue  *int             `json:",omitempty"`
+	IntVariable     *string          `json:",omitempty"`
 }
 
 type complexIntValue struct {
