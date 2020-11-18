@@ -9,8 +9,7 @@ type cost struct {
 }
 
 type ressourceCost struct {
-	RessourceCostType *ressourceCostType `json:",omitempty"`
-	CostAmount        int
+	CostAmount int
 }
 
 type sacrificeCost struct {
@@ -44,9 +43,6 @@ func (c *cost) validate() error {
 func (c *ressourceCost) validate() error {
 	errorRange := []error{}
 	errorRange = append(errorRange, validateCastingCost(c.CostAmount))
-	if c.RessourceCostType == nil {
-		errorRange = append(errorRange, errors.New("RessourceCost must have RessourceCostType"))
-	}
 	return combineErrors(errorRange)
 }
 
