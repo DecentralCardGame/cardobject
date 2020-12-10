@@ -13,7 +13,7 @@ type action struct {
 	CardName    string
 	CastingCost int
 	CostType    *ressourceCostType
-	Effects     []effect
+	Effects     effects
 	FlavourText string
 	Tags        []string
 }
@@ -22,7 +22,7 @@ type entity struct {
 	CardName    string
 	CastingCost int
 	CostType    *ressourceCostType
-	Abilities   []ability
+	Abilities   abilities
 	Attack      int
 	Health      int
 	FlavourText string
@@ -33,7 +33,7 @@ type place struct {
 	CardName    string
 	CastingCost int
 	CostType    *ressourceCostType
-	Abilities   []ability
+	Abilities   abilities
 	Health      int
 	FlavourText string
 	Tags        []string
@@ -42,7 +42,7 @@ type place struct {
 type headquarter struct {
 	CardName         string
 	CostType         *ressourceCostType
-	Abilities        []ability
+	Abilities        abilities
 	Health           int
 	Growth           int
 	StartingHandSize int
@@ -68,7 +68,7 @@ func (a *action) validate() error {
 	if a.CostType == nil {
 		errorRange = append(errorRange, errors.New("Action must have a CostType"))
 	}
-	errorRange = append(errorRange, validateEffects(a.Effects))
+	errorRange = append(errorRange, a.Effects.validate())
 	errorRange = append(errorRange, validateFlavourText(a.FlavourText))
 	errorRange = append(errorRange, validateTags(a.Tags))
 	return combineErrors(errorRange)
@@ -81,7 +81,7 @@ func (e *entity) validate() error {
 	if e.CostType == nil {
 		errorRange = append(errorRange, errors.New("Entity must have a CostType"))
 	}
-	errorRange = append(errorRange, validateAbilities(e.Abilities))
+	errorRange = append(errorRange, e.Abilities.validate())
 	errorRange = append(errorRange, validateAttack(e.Attack))
 	errorRange = append(errorRange, validateHealth(e.Health))
 	errorRange = append(errorRange, validateFlavourText(e.FlavourText))
@@ -96,7 +96,7 @@ func (p *place) validate() error {
 	if p.CostType == nil {
 		errorRange = append(errorRange, errors.New("Place must have a CostType"))
 	}
-	errorRange = append(errorRange, validateAbilities(p.Abilities))
+	errorRange = append(errorRange, p.Abilities.validate())
 	errorRange = append(errorRange, validateHealth(p.Health))
 	errorRange = append(errorRange, validateFlavourText(p.FlavourText))
 	errorRange = append(errorRange, validateTags(p.Tags))
@@ -109,7 +109,7 @@ func (h *headquarter) validate() error {
 	if h.CostType == nil {
 		errorRange = append(errorRange, errors.New("HQ must have a CostType"))
 	}
-	errorRange = append(errorRange, validateAbilities(h.Abilities))
+	errorRange = append(errorRange, h.Abilities.validate())
 	errorRange = append(errorRange, validateGrowth(h.Growth))
 	errorRange = append(errorRange, validateStartingHandSize(h.StartingHandSize))
 	errorRange = append(errorRange, validateWisdom(h.Wisdom))

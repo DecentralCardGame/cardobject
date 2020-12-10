@@ -5,6 +5,8 @@ import (
 	"strconv"
 )
 
+type effects []effect
+
 type effect struct {
 	ProductionEffect *productionEffect `json:",omitempty"`
 	DrawEffect       *drawEffect       `json:",omitempty"`
@@ -27,7 +29,7 @@ type tokenEffect struct {
 }
 
 type chooseFromEffect struct {
-	Effects []effect
+	Effects effects
 }
 
 type targetEffect struct {
@@ -57,12 +59,12 @@ type extractorTargetEffect struct {
 	Manipulations  *manipulations
 }
 
-func validateEffects(effects []effect) error {
-	if len(effects) > maxAbilityEffectCount {
+func (e effects) validate() error {
+	if len(e) > maxAbilityEffectCount {
 		return errors.New("The card must have at most " + strconv.Itoa(maxAbilityEffectCount) + " effects")
 	}
 	errorRange := []error{}
-	for _, effect := range effects {
+	for _, effect := range e {
 		errorRange = append(errorRange, effect.validate())
 	}
 	return combineErrors(errorRange)
@@ -80,7 +82,7 @@ func (e *effect) validate() error {
 
 func (e *chooseFromEffect) validate() error {
 	errorRange := []error{}
-	errorRange = append(errorRange, validateEffects(e.Effects))
+	errorRange = append(errorRange, e.Effects.validate())
 	return combineErrors(errorRange)
 }
 

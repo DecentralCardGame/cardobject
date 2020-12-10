@@ -5,6 +5,8 @@ import (
 	"strconv"
 )
 
+type abilities []ability
+
 type ability struct {
 	ActivatedAbility *activatedAbility `json:",omitempty"`
 	TriggeredAbility *triggeredAbility `json:",omitempty"`
@@ -12,21 +14,21 @@ type ability struct {
 
 type activatedAbility struct {
 	AbilityCost *cost
-	Effects     []effect
+	Effects     effects
 }
 
 type triggeredAbility struct {
 	Cause   *eventListener
 	Cost    *cost
-	Effects []effect
+	Effects effects
 }
 
-func validateAbilities(abilities []ability) error {
-	if len(abilities) > maxAbilityEffectCount {
+func (a abilities) validate() error {
+	if len(a) > maxAbilityEffectCount {
 		return errors.New("The card must have at most " + strconv.Itoa(maxAbilityEffectCount) + " effects")
 	}
 	errorRange := []error{}
-	for _, ability := range abilities {
+	for _, ability := range a {
 		errorRange = append(errorRange, ability.validate())
 	}
 	return combineErrors(errorRange)
@@ -49,7 +51,7 @@ func (a *activatedAbility) validate() error {
 	} else {
 		errorRange = append(errorRange, a.AbilityCost.validate())
 	}
-	errorRange = append(errorRange, validateEffects(a.Effects))
+	errorRange = append(errorRange, a.Effects.validate())
 	return combineErrors(errorRange)
 }
 
@@ -63,6 +65,6 @@ func (a *triggeredAbility) validate() error {
 	if a.Cost != nil {
 		errorRange = append(errorRange, a.Cost.validate())
 	}
-	errorRange = append(errorRange, validateEffects(a.Effects))
+	errorRange = append(errorRange, a.Effects.validate())
 	return combineErrors(errorRange)
 }
