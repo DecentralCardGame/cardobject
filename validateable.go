@@ -8,8 +8,8 @@ type validateable interface {
 	validate() error
 }
 
-func NewCardFromJson(jsonString string) (card, error) {
-	var card card
+func NewCardFromJson(jsonString string) (cardInterface, error) {
+	var card cardInterface
 	err := json.Unmarshal([]byte(jsonString), &card)
 	if err != nil {
 		return card, err

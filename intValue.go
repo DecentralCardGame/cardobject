@@ -2,19 +2,19 @@ package cardobject
 
 import "errors"
 
-type intValue struct {
+type intValueInterface struct {
 	ComplexIntValue *complexIntValue `json:",omitempty"`
 	SimpleIntValue  *int             `json:",omitempty"`
 	IntVariable     *string          `json:",omitempty"`
 }
 
 type complexIntValue struct {
-	FirstValue    *complexIntValue
-	SecondValue   *complexIntValue
+	FirstValue    *intValueInterface
+	SecondValue   *intValueInterface
 	ArithOperator string
 }
 
-func (v *intValue) validate() error {
+func (v *intValueInterface) validate() error {
 	if v.ComplexIntValue != nil {
 		if v.SimpleIntValue != nil {
 			return errors.New("IntValue implemented by not exactly one option")

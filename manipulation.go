@@ -5,19 +5,19 @@ import (
 	"strconv"
 )
 
-type manipulations struct {
+type manipulationsInterface struct {
 	ActionManipulations *actionManipulations `json:",omitempty"`
 	EntityManipulations *entityManipulations `json:",omitempty"`
 	PlaceManipulations  *placeManipulations  `json:",omitempty"`
 }
 
-type actionManipulations []actionManipulation
+type actionManipulations []actionManipulationInterface
 
-type entityManipulations []entityManipulation
+type entityManipulations []entityManipulationInterface
 
-type placeManipulations []placeManipulation
+type placeManipulations []placeManipulationInterface
 
-type actionManipulation struct {
+type actionManipulationInterface struct {
 	ActionEffectManipulation *actionEffectManipulation `json:",omitempty"`
 	ActionIntManipulation    *actionIntManipulation    `json:",omitempty"`
 	ActionStringManipulation *actionStringManipulation `json:",omitempty"`
@@ -25,7 +25,7 @@ type actionManipulation struct {
 	ActionZoneChange         *actionZoneChange         `json:",omitempty"`
 }
 
-type entityManipulation struct {
+type entityManipulationInterface struct {
 	EntityAbilityManipulation *entityAbilityManipulation `json:",omitempty"`
 	EntityIntManipulation     *entityIntManipulation     `json:",omitempty"`
 	EntityStringManipulation  *entityStringManipulation  `json:",omitempty"`
@@ -33,7 +33,7 @@ type entityManipulation struct {
 	EntityZoneChange          *entityZoneChange          `json:",omitempty"`
 }
 
-type placeManipulation struct {
+type placeManipulationInterface struct {
 	PlaceAbilityManipulation *placeAbilityManipulation `json:",omitempty"`
 	PlaceIntManipulation     *placeIntManipulation     `json:",omitempty"`
 	PlaceStringManipulation  *placeStringManipulation  `json:",omitempty"`
@@ -42,14 +42,14 @@ type placeManipulation struct {
 }
 
 type actionEffectManipulation struct {
-	Effect         effect
+	Effect         effectInterface
 	EffectOperator string
 }
 
 type actionIntManipulation struct {
 	IntProperty string
 	IntOperator string
-	IntValue    intValue
+	IntValue    intValueInterface
 }
 
 type actionStringManipulation struct {
@@ -64,14 +64,14 @@ type actionTagManipulation struct {
 }
 
 type entityAbilityManipulation struct {
-	Ability         ability
+	Ability         abilityInterface
 	AbilityOperator string
 }
 
 type entityIntManipulation struct {
 	IntProperty string
 	IntOperator string
-	IntValue    intValue
+	IntValue    intValueInterface
 }
 
 type entityStringManipulation struct {
@@ -86,14 +86,14 @@ type entityTagManipulation struct {
 }
 
 type placeAbilityManipulation struct {
-	Ability         ability
+	Ability         abilityInterface
 	AbilityOperator string
 }
 
 type placeIntManipulation struct {
 	IntProperty string
 	IntOperator string
-	IntValue    intValue
+	IntValue    intValueInterface
 }
 
 type placeStringManipulation struct {
@@ -107,7 +107,7 @@ type placeTagManipulation struct {
 	StringOperator string
 }
 
-func (m *manipulations) validate() error {
+func (m *manipulationsInterface) validate() error {
 	possibleImplementer := []validateable{m.ActionManipulations, m.EntityManipulations, m.PlaceManipulations}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -150,7 +150,7 @@ func (m placeManipulations) validate() error {
 	return combineErrors(errorRange)
 }
 
-func (m *actionManipulation) validate() error {
+func (m *actionManipulationInterface) validate() error {
 	possibleImplementer := []validateable{m.ActionEffectManipulation, m.ActionIntManipulation, m.ActionStringManipulation, m.ActionTagManipulation, m.ActionZoneChange}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -160,7 +160,7 @@ func (m *actionManipulation) validate() error {
 	return implementer.validate()
 }
 
-func (m *entityManipulation) validate() error {
+func (m *entityManipulationInterface) validate() error {
 	possibleImplementer := []validateable{m.EntityAbilityManipulation, m.EntityIntManipulation, m.EntityStringManipulation, m.EntityTagManipulation, m.EntityZoneChange}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -170,7 +170,7 @@ func (m *entityManipulation) validate() error {
 	return implementer.validate()
 }
 
-func (m *placeManipulation) validate() error {
+func (m *placeManipulationInterface) validate() error {
 	possibleImplementer := []validateable{m.PlaceAbilityManipulation, m.PlaceIntManipulation, m.PlaceStringManipulation, m.PlaceTagManipulation, m.PlaceZoneChange}
 
 	implementer, error := xorInterface(possibleImplementer)

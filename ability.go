@@ -5,21 +5,21 @@ import (
 	"strconv"
 )
 
-type abilities []ability
+type abilities []abilityInterface
 
-type ability struct {
+type abilityInterface struct {
 	ActivatedAbility *activatedAbility `json:",omitempty"`
 	TriggeredAbility *triggeredAbility `json:",omitempty"`
 }
 
 type activatedAbility struct {
-	AbilityCost *cost
+	AbilityCost *costInterface
 	Effects     effects
 }
 
 type triggeredAbility struct {
-	Cause   *eventListener
-	Cost    *cost
+	Cause   *eventListenerInterface
+	Cost    *costInterface
 	Effects effects
 }
 
@@ -34,7 +34,7 @@ func (a abilities) validate() error {
 	return combineErrors(errorRange)
 }
 
-func (a *ability) validate() error {
+func (a *abilityInterface) validate() error {
 	possibleImplementer := []validateable{a.ActivatedAbility, a.TriggeredAbility}
 
 	implementer, error := xorInterface(possibleImplementer)

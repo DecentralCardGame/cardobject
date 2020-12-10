@@ -2,27 +2,27 @@ package cardobject
 
 import "errors"
 
-type eventListener struct {
-	AttackEventListener       *attackEventListener       `json:",omitempty"`
-	BlockEventListener        *blockEventListener        `json:",omitempty"`
-	ManipulationEventListener *manipulationEventListener `json:",omitempty"`
-	ProductionEventListener   *productionEventListener   `json:",omitempty"`
-	TimeEventListener         *timeEventListener         `json:",omitempty"`
-	ZoneChangeEventListener   *zoneChangeEventListener   `json:",omitempty"`
+type eventListenerInterface struct {
+	AttackEventListener       *attackEventListener                `json:",omitempty"`
+	BlockEventListener        *blockEventListener                 `json:",omitempty"`
+	ManipulationEventListener *manipulationEventListenerInterface `json:",omitempty"`
+	ProductionEventListener   *productionEventListener            `json:",omitempty"`
+	TimeEventListener         *timeEventListener                  `json:",omitempty"`
+	ZoneChangeEventListener   *zoneChangeEventListener            `json:",omitempty"`
 }
 
 type attackEventListener struct {
-	EntityCondition        *entityCondition  `json:",omitempty"`
-	AttackEntityExtractors *entityExtractors `json:",omitempty"`
+	EntityCondition        *entityConditionInterface `json:",omitempty"`
+	AttackEntityExtractors *entityExtractors         `json:",omitempty"`
 }
 
 type blockEventListener struct {
-	EntityCondition          *entityCondition  `json:",omitempty"`
-	BlockingEntityExtractors *entityExtractors `json:",omitempty"`
-	BlockedEntityExtractors  *entityExtractors `json:",omitempty"`
+	EntityCondition          *entityConditionInterface `json:",omitempty"`
+	BlockingEntityExtractors *entityExtractors         `json:",omitempty"`
+	BlockedEntityExtractors  *entityExtractors         `json:",omitempty"`
 }
 
-type manipulationEventListener struct {
+type manipulationEventListenerInterface struct {
 	IntManipulationEventListener    *intManipulationEventListener    `json:",omitempty"`
 	StringManipulationEventListener *stringManipulationEventListener `json:",omitempty"`
 }
@@ -30,17 +30,17 @@ type manipulationEventListener struct {
 type intManipulationEventListener struct {
 	Property                   string
 	IntChangeMode              string
-	CardCondition              *cardConditions `json:",omitempty"`
-	ManipulatedCardExtractor   *cardExtractors `json:",omitempty"`
-	ManipulationValueExtractor *intExtractor   `json:",omitempty"`
+	CardCondition              *cardConditionsInterface `json:",omitempty"`
+	ManipulatedCardExtractor   *cardExtractorsInterface `json:",omitempty"`
+	ManipulationValueExtractor *intExtractor            `json:",omitempty"`
 }
 
 type stringManipulationEventListener struct {
 	Property                   string
 	StringChangeMode           string
-	CardCondition              *cardConditions  `json:",omitempty"`
-	ManipulatedCardExtractor   *cardExtractors  `json:",omitempty"`
-	ManipulationValueExtractor *stringExtractor `json:",omitempty"`
+	CardCondition              *cardConditionsInterface `json:",omitempty"`
+	ManipulatedCardExtractor   *cardExtractorsInterface `json:",omitempty"`
+	ManipulationValueExtractor *stringExtractor         `json:",omitempty"`
 }
 
 type productionEventListener struct {
@@ -54,12 +54,12 @@ type timeEventListener struct {
 
 type zoneChangeEventListener struct {
 	Source              string
-	Destination         string          `json:",omitempty"`
-	CardCondition       *cardConditions `json:",omitempty"`
-	MovedCardExtractors *cardExtractors `json:",omitempty"`
+	Destination         string                   `json:",omitempty"`
+	CardCondition       *cardConditionsInterface `json:",omitempty"`
+	MovedCardExtractors *cardExtractorsInterface `json:",omitempty"`
 }
 
-func (e *eventListener) validate() error {
+func (e *eventListenerInterface) validate() error {
 	possibleImplementer := []validateable{e.AttackEventListener, e.BlockEventListener, e.ManipulationEventListener, e.ProductionEventListener, e.TimeEventListener, e.ZoneChangeEventListener}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -94,7 +94,7 @@ func (e *blockEventListener) validate() error {
 	return combineErrors(errorRange)
 }
 
-func (e *manipulationEventListener) validate() error {
+func (e *manipulationEventListenerInterface) validate() error {
 	possibleImplementer := []validateable{e.IntManipulationEventListener, e.StringManipulationEventListener}
 
 	implementer, error := xorInterface(possibleImplementer)

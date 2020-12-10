@@ -5,9 +5,9 @@ import (
 	"strconv"
 )
 
-type effects []effect
+type effects []effectInterface
 
-type effect struct {
+type effectInterface struct {
 	ProductionEffect *productionEffect `json:",omitempty"`
 	DrawEffect       *drawEffect       `json:",omitempty"`
 	TokenEffect      *tokenEffect      `json:",omitempty"`
@@ -16,15 +16,15 @@ type effect struct {
 }
 
 type productionEffect struct {
-	Amount intValue
+	Amount intValueInterface
 }
 
 type drawEffect struct {
-	DrawAmount intValue
+	DrawAmount intValueInterface
 }
 
 type tokenEffect struct {
-	TokenAmount intValue
+	TokenAmount intValueInterface
 	Token       token
 }
 
@@ -56,7 +56,7 @@ type placeTargetEffect struct {
 
 type extractorTargetEffect struct {
 	TargetVariable string
-	Manipulations  *manipulations
+	Manipulations  *manipulationsInterface
 }
 
 func (e effects) validate() error {
@@ -70,7 +70,7 @@ func (e effects) validate() error {
 	return combineErrors(errorRange)
 }
 
-func (e *effect) validate() error {
+func (e *effectInterface) validate() error {
 	possibleImplementer := []validateable{e.ChooseFromEffect, e.DrawEffect, e.ProductionEffect, e.TargetEffect, e.TokenEffect}
 
 	implementer, error := xorInterface(possibleImplementer)

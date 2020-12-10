@@ -2,7 +2,7 @@ package cardobject
 
 import "errors"
 
-type cost struct {
+type costInterface struct {
 	RessourceCost *ressourceCost `json:",omitempty"`
 	SacrificeCost *sacrificeCost `json:",omitempty"`
 	DiscardCost   *discardCost   `json:",omitempty"`
@@ -14,12 +14,12 @@ type ressourceCost struct {
 
 type sacrificeCost struct {
 	Amount     int
-	Conditions *cardConditions
+	Conditions *cardConditionsInterface
 }
 
 type discardCost struct {
 	Amount     int
-	Conditions *cardConditions
+	Conditions *cardConditionsInterface
 }
 
 type ressourceCostType struct {
@@ -30,7 +30,7 @@ type ressourceCostType struct {
 	Iron   bool
 }
 
-func (c *cost) validate() error {
+func (c *costInterface) validate() error {
 	possibleImplementer := []validateable{c.RessourceCost, c.SacrificeCost, c.DiscardCost}
 
 	implementer, error := xorInterface(possibleImplementer)

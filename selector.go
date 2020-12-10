@@ -2,7 +2,7 @@ package cardobject
 
 type actionSelector struct {
 	PlayerMode       string
-	PlayerCondition  *playerCondition `json:",omitempty"`
+	PlayerCondition  *playerConditionInterface `json:",omitempty"`
 	CardMode         string
 	ActionConditions *actionConditions `json:",omitempty"`
 	Zone             string
@@ -12,7 +12,7 @@ type actionSelector struct {
 
 type entitySelector struct {
 	PlayerMode       string
-	PlayerCondition  *playerCondition `json:",omitempty"`
+	PlayerCondition  *playerConditionInterface `json:",omitempty"`
 	CardMode         string
 	EntityConditions *entityConditions `json:",omitempty"`
 	Zone             string
@@ -22,7 +22,7 @@ type entitySelector struct {
 
 type placeSelector struct {
 	PlayerMode      string
-	PlayerCondition *playerCondition `json:",omitempty"`
+	PlayerCondition *playerConditionInterface `json:",omitempty"`
 	CardMode        string
 	PlaceConditions *placeConditions `json:",omitempty"`
 	Zone            string

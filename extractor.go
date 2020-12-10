@@ -5,31 +5,31 @@ import (
 	"strconv"
 )
 
-type cardExtractors struct {
+type cardExtractorsInterface struct {
 	ActionExtractors *actionExtractors `json:",omitempty"`
 	EntityExtractors *entityExtractors `json:",omitempty"`
 	PlaceExtractors  *placeExtractors  `json:",omitempty"`
 }
 
-type actionExtractors []actionExtractor
+type actionExtractors []actionExtractorInterface
 
-type entityExtractors []entityExtractor
+type entityExtractors []entityExtractorInterface
 
-type placeExtractors []placeExtractor
+type placeExtractors []placeExtractorInterface
 
-type actionExtractor struct {
+type actionExtractorInterface struct {
 	ActionIntExtractor    *actionIntExtractor    `json:",omitempty"`
 	ActionStringExtractor *actionStringExtractor `json:",omitempty"`
 	ActionTargetExtractor *targetExtractor       `json:",omitempty"`
 }
 
-type entityExtractor struct {
+type entityExtractorInterface struct {
 	EntityIntExtractor    *entityIntExtractor    `json:",omitempty"`
 	EntityStringExtractor *entityStringExtractor `json:",omitempty"`
 	EntityTargetExtractor *targetExtractor       `json:",omitempty"`
 }
 
-type placeExtractor struct {
+type placeExtractorInterface struct {
 	PlaceIntExtractor    *placeIntExtractor    `json:",omitempty"`
 	PlaceStringExtractor *placeStringExtractor `json:",omitempty"`
 	PlaceTargetExtractor *targetExtractor      `json:",omitempty"`
@@ -74,7 +74,7 @@ type stringExtractor struct {
 	StringVariableName string
 }
 
-func (e *cardExtractors) validate() error {
+func (e *cardExtractorsInterface) validate() error {
 	possibleImplementer := []validateable{e.ActionExtractors, e.EntityExtractors, e.PlaceExtractors}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -117,7 +117,7 @@ func (e placeExtractors) validate() error {
 	return combineErrors(errorRange)
 }
 
-func (e *actionExtractor) validate() error {
+func (e *actionExtractorInterface) validate() error {
 	possibleImplementer := []validateable{e.ActionIntExtractor, e.ActionStringExtractor, e.ActionTargetExtractor}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -127,22 +127,22 @@ func (e *actionExtractor) validate() error {
 	return implementer.validate()
 }
 
-func (e *entityExtractor) validate() error {
+func (e *entityExtractorInterface) validate() error {
 	possibleImplementer := []validateable{e.EntityIntExtractor, e.EntityStringExtractor, e.EntityTargetExtractor}
 
 	implementer, error := xorInterface(possibleImplementer)
 	if implementer == nil || error != nil {
-		return errors.New("ActionExtractor implemented by not exactly one option")
+		return errors.New("EntityExtractor implemented by not exactly one option")
 	}
 	return implementer.validate()
 }
 
-func (e *placeExtractor) validate() error {
+func (e *placeExtractorInterface) validate() error {
 	possibleImplementer := []validateable{e.PlaceIntExtractor, e.PlaceStringExtractor, e.PlaceTargetExtractor}
 
 	implementer, error := xorInterface(possibleImplementer)
 	if implementer == nil || error != nil {
-		return errors.New("ActionExtractor implemented by not exactly one option")
+		return errors.New("PlaceExtractor implemented by not exactly one option")
 	}
 	return implementer.validate()
 }

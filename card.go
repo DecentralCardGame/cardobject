@@ -2,7 +2,7 @@ package cardobject
 
 import "errors"
 
-type card struct {
+type cardInterface struct {
 	Action      *action      `json:",omitempty"`
 	Entity      *entity      `json:",omitempty"`
 	Place       *place       `json:",omitempty"`
@@ -51,7 +51,7 @@ type headquarter struct {
 	Tags             []string
 }
 
-func (c *card) validate() error {
+func (c *cardInterface) validate() error {
 	possibleImplementer := []validateable{c.Action, c.Entity, c.Place, c.Headquarter}
 
 	implementer, error := xorInterface(possibleImplementer)

@@ -5,40 +5,40 @@ import (
 	"strconv"
 )
 
-type cardConditions struct {
+type cardConditionsInterface struct {
 	ActionConditions *actionConditions `json:",omitempty"`
 	EntityConditions *entityConditions `json:",omitempty"`
 	PlaceConditions  *placeConditions  `json:",omitempty"`
 	ThisConditions   *thisCondition    `json:",omitempty"`
 }
 
-type actionConditions []actionCondition
+type actionConditions []actionConditionInterface
 
-type entityConditions []entityCondition
+type entityConditions []entityConditionInterface
 
-type placeConditions []placeCondition
+type placeConditions []placeConditionInterface
 
-type playerConditions []playerCondition
+type playerConditions []playerConditionInterface
 
-type actionCondition struct {
+type actionConditionInterface struct {
 	ActionIntCondition    *actionIntCondition    `json:",omitempty"`
 	ActionStringCondition *actionStringCondition `json:",omitempty"`
 	ActionTagCondition    *actionTagCondition    `json:",omitempty"`
 }
 
-type entityCondition struct {
+type entityConditionInterface struct {
 	EntityIntCondition    *entityIntCondition    `json:",omitempty"`
 	EntityStringCondition *entityStringCondition `json:",omitempty"`
 	EntityTagCondition    *entityTagCondition    `json:",omitempty"`
 }
 
-type placeCondition struct {
+type placeConditionInterface struct {
 	PlaceIntCondition    *placeIntCondition    `json:",omitempty"`
 	PlaceStringCondition *placeStringCondition `json:",omitempty"`
 	PlaceTagCondition    *placeTagCondition    `json:",omitempty"`
 }
 
-type playerCondition struct {
+type playerConditionInterface struct {
 	PlayerIntCondition *playerIntCondition `json:",omitempty"`
 }
 
@@ -101,7 +101,7 @@ type playerIntCondition struct {
 	IntComparator     string
 }
 
-func (c *cardConditions) validate() error {
+func (c *cardConditionsInterface) validate() error {
 	possibleImplementer := []validateable{c.ActionConditions, c.EntityConditions, c.PlaceConditions, c.ThisConditions}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -144,7 +144,7 @@ func (c placeConditions) validate() error {
 	return combineErrors(errorRange)
 }
 
-func (c *actionCondition) validate() error {
+func (c *actionConditionInterface) validate() error {
 	possibleImplementer := []validateable{c.ActionIntCondition, c.ActionStringCondition, c.ActionTagCondition}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -154,7 +154,7 @@ func (c *actionCondition) validate() error {
 	return implementer.validate()
 }
 
-func (c *entityCondition) validate() error {
+func (c *entityConditionInterface) validate() error {
 	possibleImplementer := []validateable{c.EntityIntCondition, c.EntityStringCondition, c.EntityTagCondition}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -164,7 +164,7 @@ func (c *entityCondition) validate() error {
 	return implementer.validate()
 }
 
-func (c *placeCondition) validate() error {
+func (c *placeConditionInterface) validate() error {
 	possibleImplementer := []validateable{c.PlaceIntCondition, c.PlaceStringCondition, c.PlaceTagCondition}
 
 	implementer, error := xorInterface(possibleImplementer)
@@ -174,7 +174,7 @@ func (c *placeCondition) validate() error {
 	return implementer.validate()
 }
 
-func (c *playerCondition) validate() error {
+func (c *playerConditionInterface) validate() error {
 	possibleImplementer := []validateable{c.PlayerIntCondition}
 
 	implementer, error := xorInterface(possibleImplementer)
