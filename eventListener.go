@@ -1,165 +1,97 @@
 package cardobject
 
-import "errors"
+import "github.com/DecentralCardGame/jsonschema"
 
-type eventListenerInterface struct {
-	AttackEventListener       *attackEventListener                `json:",omitempty"`
-	BlockEventListener        *blockEventListener                 `json:",omitempty"`
-	ManipulationEventListener *manipulationEventListenerInterface `json:",omitempty"`
-	ProductionEventListener   *productionEventListener            `json:",omitempty"`
-	TimeEventListener         *timeEventListener                  `json:",omitempty"`
-	ZoneChangeEventListener   *zoneChangeEventListener            `json:",omitempty"`
+type eventListener struct {
+	*jsonschema.BasicInterface
+	AttackEventListener       *attackEventListener       `json:",omitempty"`
+	BlockEventListener        *blockEventListener        `json:",omitempty"`
+	ManipulationEventListener *manipulationEventListener `json:",omitempty"`
+	ProductionEventListener   *productionEventListener   `json:",omitempty"`
+	TimeEventListener         *timeEventListener         `json:",omitempty"`
+	ZoneChangeEventListener   *zoneChangeEventListener   `json:",omitempty"`
 }
 
 type attackEventListener struct {
-	EntityCondition        *entityConditionInterface `json:",omitempty"`
-	AttackEntityExtractors *entityExtractors         `json:",omitempty"`
+	*jsonschema.BasicStruct
+	EntityCondition        *entityCondition  `json:",omitempty"`
+	AttackEntityExtractors *entityExtractors `json:",omitempty"`
+}
+
+func (a attackEventListener) GetInteractionText() string {
+	return ""
 }
 
 type blockEventListener struct {
-	EntityCondition          *entityConditionInterface `json:",omitempty"`
-	BlockingEntityExtractors *entityExtractors         `json:",omitempty"`
-	BlockedEntityExtractors  *entityExtractors         `json:",omitempty"`
+	*jsonschema.BasicStruct
+	EntityCondition          *entityCondition  `json:",omitempty"`
+	BlockingEntityExtractors *entityExtractors `json:",omitempty"`
+	BlockedEntityExtractors  *entityExtractors `json:",omitempty"`
 }
 
-type manipulationEventListenerInterface struct {
+func (b blockEventListener) GetInteractionText() string {
+	return ""
+}
+
+type manipulationEventListener struct {
+	*jsonschema.BasicInterface
 	IntManipulationEventListener    *intManipulationEventListener    `json:",omitempty"`
 	StringManipulationEventListener *stringManipulationEventListener `json:",omitempty"`
 }
 
 type intManipulationEventListener struct {
-	Property                   string
-	IntChangeMode              string
-	CardCondition              *cardConditionsInterface `json:",omitempty"`
-	ManipulatedCardExtractor   *cardExtractorsInterface `json:",omitempty"`
-	ManipulationValueExtractor *intExtractor            `json:",omitempty"`
+	*jsonschema.BasicStruct
+	IntProperty                cardIntProperty
+	IntChangeMode              intChangeMode
+	CardCondition              *cardConditions `json:",omitempty"`
+	ManipulatedCardExtractor   *cardExtractors `json:",omitempty"`
+	ManipulationValueExtractor *intExtractor   `json:",omitempty"`
+}
+
+func (i intManipulationEventListener) GetInteractionText() string {
+	return ""
 }
 
 type stringManipulationEventListener struct {
-	Property                   string
-	StringChangeMode           string
-	CardCondition              *cardConditionsInterface `json:",omitempty"`
-	ManipulatedCardExtractor   *cardExtractorsInterface `json:",omitempty"`
-	ManipulationValueExtractor *stringExtractor         `json:",omitempty"`
+	*jsonschema.BasicStruct
+	StringProperty             cardStringProperty
+	StringChangeMode           stringChangeMode
+	CardCondition              *cardConditions  `json:",omitempty"`
+	ManipulatedCardExtractor   *cardExtractors  `json:",omitempty"`
+	ManipulationValueExtractor *stringExtractor `json:",omitempty"`
+}
+
+func (s stringManipulationEventListener) GetInteractionText() string {
+	return ""
 }
 
 type productionEventListener struct {
+	*jsonschema.BasicStruct
 	RessourceTypeCondition    *ressourceCostType `json:",omitempty"`
 	ProductionAmountExtractor *intExtractor      `json:",omitempty"`
 }
 
+func (p productionEventListener) GetInteractionText() string {
+	return ""
+}
+
 type timeEventListener struct {
-	TimeEvent string
+	*jsonschema.BasicStruct
+	TimeEvent timeEvent
+}
+
+func (t timeEventListener) GetInteractionText() string {
+	return ""
 }
 
 type zoneChangeEventListener struct {
-	Source              string
-	Destination         string                   `json:",omitempty"`
-	CardCondition       *cardConditionsInterface `json:",omitempty"`
-	MovedCardExtractors *cardExtractorsInterface `json:",omitempty"`
+	*jsonschema.BasicStruct
+	Source              dynamicZone
+	Destination         zone            `json:",omitempty"`
+	CardCondition       *cardConditions `json:",omitempty"`
+	MovedCardExtractors *cardExtractors `json:",omitempty"`
 }
 
-func (e *eventListenerInterface) validate() error {
-	possibleImplementer := []validateable{e.AttackEventListener, e.BlockEventListener, e.ManipulationEventListener, e.ProductionEventListener, e.TimeEventListener, e.ZoneChangeEventListener}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("EventListener implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (e *attackEventListener) validate() error {
-	errorRange := []error{}
-	if e.EntityCondition != nil {
-		errorRange = append(errorRange, e.EntityCondition.validate())
-	}
-	if e.AttackEntityExtractors != nil {
-		errorRange = append(errorRange, e.AttackEntityExtractors.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (e *blockEventListener) validate() error {
-	errorRange := []error{}
-	if e.EntityCondition != nil {
-		errorRange = append(errorRange, e.EntityCondition.validate())
-	}
-	if e.BlockedEntityExtractors != nil {
-		errorRange = append(errorRange, e.BlockedEntityExtractors.validate())
-	}
-	if e.BlockingEntityExtractors != nil {
-		errorRange = append(errorRange, e.BlockingEntityExtractors.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (e *manipulationEventListenerInterface) validate() error {
-	possibleImplementer := []validateable{e.IntManipulationEventListener, e.StringManipulationEventListener}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("ManipulationEventListener implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (e *intManipulationEventListener) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateCardIntProperty(e.Property))
-	errorRange = append(errorRange, validateIntChangeMode(e.IntChangeMode))
-	if e.CardCondition != nil {
-		errorRange = append(errorRange, e.CardCondition.validate())
-	}
-	if e.ManipulatedCardExtractor != nil {
-		errorRange = append(errorRange, e.ManipulatedCardExtractor.validate())
-	}
-	if e.ManipulationValueExtractor != nil {
-		errorRange = append(errorRange, e.ManipulationValueExtractor.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (e *stringManipulationEventListener) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateCardStringProperty(e.Property))
-	errorRange = append(errorRange, validateStringChangeMode(e.StringChangeMode))
-	if e.CardCondition != nil {
-		errorRange = append(errorRange, e.CardCondition.validate())
-	}
-	if e.ManipulatedCardExtractor != nil {
-		errorRange = append(errorRange, e.ManipulatedCardExtractor.validate())
-	}
-	if e.ManipulationValueExtractor != nil {
-		errorRange = append(errorRange, e.ManipulationValueExtractor.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (e *productionEventListener) validate() error {
-	errorRange := []error{}
-	if e.ProductionAmountExtractor != nil {
-		errorRange = append(errorRange, e.ProductionAmountExtractor.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (e *timeEventListener) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateTimeEvent(e.TimeEvent))
-	return combineErrors(errorRange)
-}
-
-func (e *zoneChangeEventListener) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateDynamicZone(e.Source))
-	errorRange = append(errorRange, validateZone(e.Destination))
-
-	if e.CardCondition != nil {
-		errorRange = append(errorRange, e.CardCondition.validate())
-	}
-	if e.MovedCardExtractors != nil {
-		errorRange = append(errorRange, e.MovedCardExtractors.validate())
-	}
-	return combineErrors(errorRange)
+func (z zoneChangeEventListener) GetInteractionText() string {
+	return ""
 }

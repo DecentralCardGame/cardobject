@@ -1,6 +1,6 @@
 package cardobject
 
-import "errors"
+import "github.com/DecentralCardGame/jsonschema"
 
 var intChangeModes []string = []string{"INCREASES", "DECREASES", "CHANGES"}
 var stringChangeModes []string = []string{"CHANGES"}
@@ -9,46 +9,32 @@ var playerModes []string = []string{"YOU", "OPPONENT"}
 var cardModes []string = []string{"ALL", "OPPONENTSCHOICE", "RANDOM", "TARGET"}
 var ownerModes []string = []string{"YOUR", "OPPONENTS", "OWNERS"}
 
-func validateIntChangeMode(mode string) error {
-	for _, t := range intChangeModes {
-		if t == mode {
-			return nil
-		}
-	}
-	return errors.New("IntChangeMode: " + mode + " not available")
+type intChangeMode struct{ *jsonschema.BasicEnum }
+
+func (i intChangeMode) GetEnumValues() []string {
+	return intChangeModes
 }
 
-func validateStringChangeMode(mode string) error {
-	for _, t := range stringChangeModes {
-		if t == mode {
-			return nil
-		}
-	}
-	return errors.New("stringChangeMode: " + mode + " not available")
+type stringChangeMode struct{ *jsonschema.BasicEnum }
+
+func (s stringChangeMode) GetEnumValues() []string {
+	return stringChangeModes
 }
 
-func validatePlayerMode(mode string) error {
-	for _, t := range playerModes {
-		if t == mode {
-			return nil
-		}
-	}
-	return errors.New("playerMode: " + mode + " not available")
+type playerMode struct{ *jsonschema.BasicEnum }
+
+func (p playerMode) GetEnumValues() []string {
+	return playerModes
 }
 
-func validateCardMode(mode string) error {
-	for _, t := range cardModes {
-		if t == mode {
-			return nil
-		}
-	}
-	return errors.New("cardMode: " + mode + " not available")
+type cardMode struct{ *jsonschema.BasicEnum }
+
+func (c cardMode) GetEnumValues() []string {
+	return cardModes
 }
-func validateOwnerMode(mode string) error {
-	for _, t := range ownerModes {
-		if t == mode {
-			return nil
-		}
-	}
-	return errors.New("OwnerMode: " + mode + " not available")
+
+type ownerMode struct{ *jsonschema.BasicEnum }
+
+func (o ownerMode) GetEnumValues() []string {
+	return ownerModes
 }

@@ -1,23 +1,58 @@
 package cardobject
 
-import (
-	"errors"
-	"strconv"
-)
+import "github.com/DecentralCardGame/jsonschema"
 
-type manipulationsInterface struct {
+type manipulations struct {
+	*jsonschema.BasicInterface
 	ActionManipulations *actionManipulations `json:",omitempty"`
 	EntityManipulations *entityManipulations `json:",omitempty"`
 	PlaceManipulations  *placeManipulations  `json:",omitempty"`
 }
 
-type actionManipulations []actionManipulationInterface
+type actionManipulations []actionManipulation
 
-type entityManipulations []entityManipulationInterface
+func (a actionManipulations) Validate() error {
+	return a.ValidateArray()
+}
 
-type placeManipulations []placeManipulationInterface
+func (a actionManipulations) ValidateArray() error {
+	return nil
+}
 
-type actionManipulationInterface struct {
+func (a actionManipulations) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+type entityManipulations []entityManipulation
+
+func (e entityManipulations) Validate() error {
+	return e.ValidateArray()
+}
+
+func (e entityManipulations) ValidateArray() error {
+	return nil
+}
+
+func (e entityManipulations) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+type placeManipulations []placeManipulation
+
+func (p placeManipulations) Validate() error {
+	return p.ValidateArray()
+}
+
+func (p placeManipulations) ValidateArray() error {
+	return nil
+}
+
+func (p placeManipulations) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+type actionManipulation struct {
+	*jsonschema.BasicInterface
 	ActionEffectManipulation *actionEffectManipulation `json:",omitempty"`
 	ActionIntManipulation    *actionIntManipulation    `json:",omitempty"`
 	ActionStringManipulation *actionStringManipulation `json:",omitempty"`
@@ -25,7 +60,8 @@ type actionManipulationInterface struct {
 	ActionZoneChange         *actionZoneChange         `json:",omitempty"`
 }
 
-type entityManipulationInterface struct {
+type entityManipulation struct {
+	*jsonschema.BasicInterface
 	EntityAbilityManipulation *entityAbilityManipulation `json:",omitempty"`
 	EntityIntManipulation     *entityIntManipulation     `json:",omitempty"`
 	EntityStringManipulation  *entityStringManipulation  `json:",omitempty"`
@@ -33,7 +69,8 @@ type entityManipulationInterface struct {
 	EntityZoneChange          *entityZoneChange          `json:",omitempty"`
 }
 
-type placeManipulationInterface struct {
+type placeManipulation struct {
+	*jsonschema.BasicInterface
 	PlaceAbilityManipulation *placeAbilityManipulation `json:",omitempty"`
 	PlaceIntManipulation     *placeIntManipulation     `json:",omitempty"`
 	PlaceStringManipulation  *placeStringManipulation  `json:",omitempty"`
@@ -42,230 +79,127 @@ type placeManipulationInterface struct {
 }
 
 type actionEffectManipulation struct {
-	Effect         effectInterface
-	EffectOperator string
+	*jsonschema.BasicStruct
+	Effect         effect
+	EffectOperator abilityEffectOperator
+}
+
+func (a actionEffectManipulation) GetInteractionText() string {
+	return ""
 }
 
 type actionIntManipulation struct {
-	IntProperty string
-	IntOperator string
-	IntValue    intValueInterface
+	*jsonschema.BasicStruct
+	IntProperty actionIntProperty
+	IntOperator intOperator
+	IntValue    intValue
+}
+
+func (a actionIntManipulation) GetInteractionText() string {
+	return ""
 }
 
 type actionStringManipulation struct {
-	StringProperty string
-	StringOperator string
-	StringValue    string
+	*jsonschema.BasicStruct
+	StringProperty actionStringProperty
+	StringOperator stringOperator
+	StringValue    simpleStringValue
+}
+
+func (a actionStringManipulation) GetInteractionText() string {
+	return ""
 }
 
 type actionTagManipulation struct {
-	StringValue    string
-	StringOperator string
+	*jsonschema.BasicStruct
+	StringValue    tag
+	StringOperator stringOperator
+}
+
+func (a actionTagManipulation) GetInteractionText() string {
+	return ""
 }
 
 type entityAbilityManipulation struct {
-	Ability         abilityInterface
-	AbilityOperator string
+	*jsonschema.BasicStruct
+	Ability         ability
+	AbilityOperator abilityEffectOperator
+}
+
+func (e entityAbilityManipulation) GetInteractionText() string {
+	return ""
 }
 
 type entityIntManipulation struct {
-	IntProperty string
-	IntOperator string
-	IntValue    intValueInterface
+	*jsonschema.BasicStruct
+	IntProperty entityIntProperty
+	IntOperator intOperator
+	IntValue    intValue
+}
+
+func (e entityIntManipulation) GetInteractionText() string {
+	return ""
 }
 
 type entityStringManipulation struct {
-	StringProperty string
-	StringOperator string
-	StringValue    string
+	*jsonschema.BasicStruct
+	StringProperty entityStringProperty
+	StringOperator stringOperator
+	StringValue    simpleStringValue
+}
+
+func (e entityStringManipulation) GetInteractionText() string {
+	return ""
 }
 
 type entityTagManipulation struct {
-	StringValue    string
-	StringOperator string
+	*jsonschema.BasicStruct
+	StringValue    tag
+	StringOperator stringOperator
+}
+
+func (e entityTagManipulation) GetInteractionText() string {
+	return ""
 }
 
 type placeAbilityManipulation struct {
-	Ability         abilityInterface
-	AbilityOperator string
+	*jsonschema.BasicStruct
+	Ability         ability
+	AbilityOperator abilityEffectOperator
+}
+
+func (p placeAbilityManipulation) GetInteractionText() string {
+	return ""
 }
 
 type placeIntManipulation struct {
-	IntProperty string
-	IntOperator string
-	IntValue    intValueInterface
+	*jsonschema.BasicStruct
+	IntProperty placeIntProperty
+	IntOperator intOperator
+	IntValue    intValue
+}
+
+func (p placeIntManipulation) GetInteractionText() string {
+	return ""
 }
 
 type placeStringManipulation struct {
-	StringProperty string
-	StringOperator string
-	StringValue    string
+	*jsonschema.BasicStruct
+	StringProperty placeStringProperty
+	StringOperator stringOperator
+	StringValue    simpleStringValue
+}
+
+func (p placeStringManipulation) GetInteractionText() string {
+	return ""
 }
 
 type placeTagManipulation struct {
-	StringValue    string
-	StringOperator string
+	*jsonschema.BasicStruct
+	StringValue    tag
+	StringOperator stringOperator
 }
 
-func (m *manipulationsInterface) validate() error {
-	possibleImplementer := []validateable{m.ActionManipulations, m.EntityManipulations, m.PlaceManipulations}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("Manipulations implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (m actionManipulations) validate() error {
-	if len(m) > maxExtractorCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxManipulationCount) + " ActionManipulations")
-	}
-	errorRange := []error{}
-	for _, actionManipulation := range m {
-		errorRange = append(errorRange, actionManipulation.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (m entityManipulations) validate() error {
-	if len(m) > maxExtractorCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxManipulationCount) + " EntityManipulations")
-	}
-	errorRange := []error{}
-	for _, entityManipulation := range m {
-		errorRange = append(errorRange, entityManipulation.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (m placeManipulations) validate() error {
-	if len(m) > maxExtractorCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxManipulationCount) + " EntityManipulations")
-	}
-	errorRange := []error{}
-	for _, placeManipulation := range m {
-		errorRange = append(errorRange, placeManipulation.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (m *actionManipulationInterface) validate() error {
-	possibleImplementer := []validateable{m.ActionEffectManipulation, m.ActionIntManipulation, m.ActionStringManipulation, m.ActionTagManipulation, m.ActionZoneChange}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("ActionManipulation implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (m *entityManipulationInterface) validate() error {
-	possibleImplementer := []validateable{m.EntityAbilityManipulation, m.EntityIntManipulation, m.EntityStringManipulation, m.EntityTagManipulation, m.EntityZoneChange}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("EntityManipulation implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (m *placeManipulationInterface) validate() error {
-	possibleImplementer := []validateable{m.PlaceAbilityManipulation, m.PlaceIntManipulation, m.PlaceStringManipulation, m.PlaceTagManipulation, m.PlaceZoneChange}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("PlaceManipulation implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (m *actionEffectManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, m.Effect.validate())
-	errorRange = append(errorRange, validateAbilityEffectOperator(m.EffectOperator))
-	return combineErrors(errorRange)
-}
-
-func (m *actionIntManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateActionIntProperty(m.IntProperty))
-	errorRange = append(errorRange, validateIntOperator(m.IntOperator))
-	errorRange = append(errorRange, m.IntValue.validate())
-	return combineErrors(errorRange)
-}
-
-func (m *actionStringManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateActionStringProperty(m.StringProperty))
-	errorRange = append(errorRange, validateStringOperator(m.StringOperator))
-	errorRange = append(errorRange, validateSimpleString(m.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (m *actionTagManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateStringOperator(m.StringOperator))
-	errorRange = append(errorRange, validateSimpleString(m.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (m *entityAbilityManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, m.Ability.validate())
-	errorRange = append(errorRange, validateAbilityEffectOperator(m.AbilityOperator))
-	return combineErrors(errorRange)
-}
-
-func (m *entityIntManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateEntityIntProperty(m.IntProperty))
-	errorRange = append(errorRange, validateIntOperator(m.IntOperator))
-	errorRange = append(errorRange, m.IntValue.validate())
-	return combineErrors(errorRange)
-}
-
-func (m *entityStringManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateEntityStringProperty(m.StringProperty))
-	errorRange = append(errorRange, validateStringOperator(m.StringOperator))
-	errorRange = append(errorRange, validateSimpleString(m.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (m *entityTagManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateStringOperator(m.StringOperator))
-	errorRange = append(errorRange, validateSimpleString(m.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (m *placeAbilityManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, m.Ability.validate())
-	errorRange = append(errorRange, validateAbilityEffectOperator(m.AbilityOperator))
-	return combineErrors(errorRange)
-}
-
-func (m *placeIntManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlaceIntProperty(m.IntProperty))
-	errorRange = append(errorRange, validateIntOperator(m.IntOperator))
-	errorRange = append(errorRange, m.IntValue.validate())
-	return combineErrors(errorRange)
-}
-
-func (m *placeStringManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlaceStringProperty(m.StringProperty))
-	errorRange = append(errorRange, validateStringOperator(m.StringOperator))
-	errorRange = append(errorRange, validateSimpleString(m.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (m *placeTagManipulation) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateStringOperator(m.StringOperator))
-	errorRange = append(errorRange, validateSimpleString(m.StringValue))
-	return combineErrors(errorRange)
+func (p placeTagManipulation) GetInteractionText() string {
+	return ""
 }

@@ -1,17 +1,15 @@
 package cardobject
 
+import "github.com/DecentralCardGame/jsonschema"
+
 type token struct {
-	Name   string `json:",omitempty"`
-	Attack int
-	Health int
-	Tags   []string `json:",omitempty"`
+	*jsonschema.BasicStruct
+	Name   cardName `json:",omitempty"`
+	Attack attack
+	Health health
+	Tags   tags `json:",omitempty"`
 }
 
-func (t *token) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateCardName(t.Name))
-	errorRange = append(errorRange, validateAttack(t.Attack))
-	errorRange = append(errorRange, validateHealth(t.Health))
-	errorRange = append(errorRange, validateTags(t.Tags))
-	return combineErrors(errorRange)
+func (t token) GetInteractionText() string {
+	return ""
 }

@@ -1,34 +1,25 @@
 package cardobject
 
-import "errors"
+import "github.com/DecentralCardGame/jsonschema"
 
 var intVariableNames []string = []string{"X", "Y", "Z"}
 var stringVariableNames []string = []string{"A", "B", "C"}
 var targetVariableNames []string = []string{"M", "T"}
 
-func validateIntVariableName(variableName string) error {
-	for _, t := range intVariableNames {
-		if t == variableName {
-			return nil
-		}
-	}
-	return errors.New("IntVariableName: " + variableName + " not available")
+type intVariableName struct{ *jsonschema.BasicEnum }
+
+func (i intVariableName) GetEnumValues() []string {
+	return intVariableNames
 }
 
-func validateStringVariableName(variableName string) error {
-	for _, t := range stringVariableNames {
-		if t == variableName {
-			return nil
-		}
-	}
-	return errors.New("StringVariableName: " + variableName + " not available")
+type stringVariableName struct{ *jsonschema.BasicEnum }
+
+func (s stringVariableName) GetEnumValues() []string {
+	return stringVariableNames
 }
 
-func validateTargetVariableName(variableName string) error {
-	for _, t := range targetVariableNames {
-		if t == variableName {
-			return nil
-		}
-	}
-	return errors.New("TargetVariableName: " + variableName + " not available")
+type targetVariableName struct{ *jsonschema.BasicEnum }
+
+func (t targetVariableName) GetEnumValues() []string {
+	return targetVariableNames
 }

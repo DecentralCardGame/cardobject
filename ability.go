@@ -1,70 +1,46 @@
 package cardobject
 
 import (
-	"errors"
-	"strconv"
+	"github.com/DecentralCardGame/jsonschema"
 )
 
-type abilities []abilityInterface
+type abilities []ability
 
-type abilityInterface struct {
+func (a abilities) Validate() error {
+	return a.ValidateArray()
+}
+
+func (a abilities) ValidateArray() error {
+	return nil
+}
+
+func (a abilities) GetMinMaxItems() (int, int) {
+	return 0, maxAbilityEffectCount
+}
+
+type ability struct {
+	*jsonschema.BasicInterface
 	ActivatedAbility *activatedAbility `json:",omitempty"`
 	TriggeredAbility *triggeredAbility `json:",omitempty"`
 }
 
 type activatedAbility struct {
-	AbilityCost *costInterface
+	*jsonschema.BasicStruct
+	AbilityCost *cost
 	Effects     effects
 }
 
+func (a activatedAbility) GetInteractionText() string {
+	return "troll"
+}
+
 type triggeredAbility struct {
-	Cause   *eventListenerInterface
-	Cost    *costInterface
+	*jsonschema.BasicStruct
+	Cause   *eventListener
+	Cost    *cost
 	Effects effects
 }
 
-func (a abilities) validate() error {
-	if len(a) > maxAbilityEffectCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxAbilityEffectCount) + " effects")
-	}
-	errorRange := []error{}
-	for _, ability := range a {
-		errorRange = append(errorRange, ability.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (a *abilityInterface) validate() error {
-	possibleImplementer := []validateable{a.ActivatedAbility, a.TriggeredAbility}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("Ability implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (a *activatedAbility) validate() error {
-	errorRange := []error{}
-	if a.AbilityCost == nil {
-		errorRange = append(errorRange, errors.New("ActivatedAbility must have AbilityCost"))
-	} else {
-		errorRange = append(errorRange, a.AbilityCost.validate())
-	}
-	errorRange = append(errorRange, a.Effects.validate())
-	return combineErrors(errorRange)
-}
-
-func (a *triggeredAbility) validate() error {
-	errorRange := []error{}
-	if a.Cause == nil {
-		errorRange = append(errorRange, errors.New("TriggeredAbility must have Cause"))
-	} else {
-		errorRange = append(errorRange, a.Cause.validate())
-	}
-	if a.Cost != nil {
-		errorRange = append(errorRange, a.Cost.validate())
-	}
-	errorRange = append(errorRange, a.Effects.validate())
-	return combineErrors(errorRange)
+func (a triggeredAbility) GetInteractionText() string {
+	return "troll"
 }

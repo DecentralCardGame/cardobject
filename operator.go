@@ -1,6 +1,6 @@
 package cardobject
 
-import "errors"
+import "github.com/DecentralCardGame/jsonschema"
 
 var abilityEffectOperators []string = []string{"GAIN", "LOSE"}
 var intOperators []string = []string{"SET", "ADD", "SUBTRACT"}
@@ -8,38 +8,26 @@ var stringOperators []string = []string{"SET"}
 
 var arithOperators []string = []string{"ADD", "SUBTRACT"}
 
-func validateAbilityEffectOperator(property string) error {
-	for _, t := range abilityEffectOperators {
-		if t == property {
-			return nil
-		}
-	}
-	return errors.New("AbilityEffectOperator: " + property + " not available")
+type abilityEffectOperator struct{ *jsonschema.BasicEnum }
+
+func (a abilityEffectOperator) GetEnumValues() []string {
+	return abilityEffectOperators
 }
 
-func validateIntOperator(property string) error {
-	for _, t := range intOperators {
-		if t == property {
-			return nil
-		}
-	}
-	return errors.New("IntOperator: " + property + " not available")
+type intOperator struct{ *jsonschema.BasicEnum }
+
+func (i intOperator) GetEnumValues() []string {
+	return intOperators
 }
 
-func validateStringOperator(property string) error {
-	for _, t := range stringOperators {
-		if t == property {
-			return nil
-		}
-	}
-	return errors.New("StringOperator: " + property + " not available")
+type stringOperator struct{ *jsonschema.BasicEnum }
+
+func (s stringOperator) GetEnumValues() []string {
+	return stringOperators
 }
 
-func validateArithOperator(property string) error {
-	for _, t := range arithOperators {
-		if t == property {
-			return nil
-		}
-	}
-	return errors.New("ArithOperator: " + property + " not available")
+type arithOperator struct{ *jsonschema.BasicEnum }
+
+func (a arithOperator) GetEnumValues() []string {
+	return arithOperators
 }

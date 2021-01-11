@@ -1,266 +1,210 @@
 package cardobject
 
 import (
-	"errors"
-	"strconv"
+	"github.com/DecentralCardGame/jsonschema"
 )
 
-type cardConditionsInterface struct {
+type cardConditions struct {
+	*jsonschema.BasicInterface
 	ActionConditions *actionConditions `json:",omitempty"`
 	EntityConditions *entityConditions `json:",omitempty"`
 	PlaceConditions  *placeConditions  `json:",omitempty"`
 	ThisConditions   *thisCondition    `json:",omitempty"`
 }
 
-type actionConditions []actionConditionInterface
+type actionConditions []actionCondition
 
-type entityConditions []entityConditionInterface
+func (a actionConditions) Validate() error {
+	return a.ValidateArray()
+}
 
-type placeConditions []placeConditionInterface
+func (a actionConditions) ValidateArray() error {
+	return nil
+}
 
-type playerConditions []playerConditionInterface
+func (a actionConditions) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
 
-type actionConditionInterface struct {
+type entityConditions []entityCondition
+
+func (e entityConditions) Validate() error {
+	return e.ValidateArray()
+}
+
+func (e entityConditions) ValidateArray() error {
+	return nil
+}
+
+func (e entityConditions) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+type placeConditions []placeCondition
+
+func (p placeConditions) Validate() error {
+	return p.ValidateArray()
+}
+
+func (p placeConditions) ValidateArray() error {
+	return nil
+}
+
+func (p placeConditions) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+type playerConditions []playerCondition
+
+func (p playerConditions) Validate() error {
+	return p.ValidateArray()
+}
+
+func (p playerConditions) ValidateArray() error {
+	return nil
+}
+
+func (p playerConditions) GetMinMayItems() (int, int) {
+	return 0, 3
+}
+
+type actionCondition struct {
+	*jsonschema.BasicInterface
 	ActionIntCondition    *actionIntCondition    `json:",omitempty"`
 	ActionStringCondition *actionStringCondition `json:",omitempty"`
 	ActionTagCondition    *actionTagCondition    `json:",omitempty"`
 }
 
-type entityConditionInterface struct {
+type entityCondition struct {
+	*jsonschema.BasicInterface
 	EntityIntCondition    *entityIntCondition    `json:",omitempty"`
 	EntityStringCondition *entityStringCondition `json:",omitempty"`
 	EntityTagCondition    *entityTagCondition    `json:",omitempty"`
 }
 
-type placeConditionInterface struct {
+type placeCondition struct {
+	*jsonschema.BasicInterface
 	PlaceIntCondition    *placeIntCondition    `json:",omitempty"`
 	PlaceStringCondition *placeStringCondition `json:",omitempty"`
 	PlaceTagCondition    *placeTagCondition    `json:",omitempty"`
 }
 
-type playerConditionInterface struct {
+type playerCondition struct {
+	*jsonschema.BasicInterface
 	PlayerIntCondition *playerIntCondition `json:",omitempty"`
 }
 
-type thisCondition struct{}
+type thisCondition struct {
+	*jsonschema.BasicStruct
+}
+
+func (t thisCondition) GetInteractionText() string {
+	return ""
+}
 
 type actionIntCondition struct {
-	ActionIntProperty string
-	IntValue          int
-	IntComparator     string
+	*jsonschema.BasicStruct
+	ActionIntProperty actionIntProperty
+	IntValue          simpleIntValue
+	IntComparator     intComparator
+}
+
+func (a actionIntCondition) GetInteractionText() string {
+	return ""
 }
 
 type actionStringCondition struct {
-	ActionStringProperty string
-	StringValue          string
-	StringComparator     string
+	*jsonschema.BasicStruct
+	ActionStringProperty actionStringProperty
+	StringValue          simpleStringValue
+	StringComparator     stringComparator
+}
+
+func (a actionStringCondition) GetInteractionText() string {
+	return ""
 }
 
 type actionTagCondition struct {
-	StringValue      string
-	StringComparator string
+	*jsonschema.BasicStruct
+	StringValue      simpleStringValue
+	StringComparator stringComparator
+}
+
+func (a actionTagCondition) GetInteractionText() string {
+	return ""
 }
 
 type entityIntCondition struct {
-	EntityIntProperty string
-	IntValue          int
-	IntComparator     string
+	*jsonschema.BasicStruct
+	EntityIntProperty entityIntProperty
+	IntValue          simpleIntValue
+	IntComparator     intComparator
+}
+
+func (e entityIntCondition) GetInteractionText() string {
+	return ""
 }
 
 type entityStringCondition struct {
-	EntityStringProperty string
-	StringValue          string
-	StringComparator     string
+	*jsonschema.BasicStruct
+	EntityStringProperty entityStringProperty
+	StringValue          simpleStringValue
+	StringComparator     stringComparator
+}
+
+func (e entityStringCondition) GetInteractionText() string {
+	return ""
 }
 
 type entityTagCondition struct {
-	StringValue      string
-	StringComparator string
+	*jsonschema.BasicStruct
+	StringValue      simpleStringValue
+	StringComparator stringComparator
+}
+
+func (e entityTagCondition) GetInteractionText() string {
+	return ""
 }
 
 type placeIntCondition struct {
-	PlaceIntProperty string
-	IntValue         int
-	IntComparator    string
+	*jsonschema.BasicStruct
+	PlaceIntProperty placeIntProperty
+	IntValue         simpleIntValue
+	IntComparator    intComparator
+}
+
+func (p placeIntCondition) GetInteractionText() string {
+	return ""
 }
 
 type placeStringCondition struct {
-	PlaceStringProperty string
-	StringValue         string
-	StringComparator    string
+	*jsonschema.BasicStruct
+	PlaceStringProperty placeStringProperty
+	StringValue         simpleStringValue
+	StringComparator    stringComparator
+}
+
+func (p placeStringCondition) GetInteractionText() string {
+	return ""
 }
 
 type placeTagCondition struct {
-	StringValue      string
-	StringComparator string
+	*jsonschema.BasicStruct
+	StringValue      simpleStringValue
+	StringComparator stringComparator
+}
+
+func (p placeTagCondition) GetInteractionText() string {
+	return ""
 }
 
 type playerIntCondition struct {
-	PlayerIntProperty string
-	IntValue          int
-	IntComparator     string
+	*jsonschema.BasicStruct
+	PlayerIntProperty playerIntProperty
+	IntValue          simpleIntValue
+	IntComparator     intComparator
 }
 
-func (c *cardConditionsInterface) validate() error {
-	possibleImplementer := []validateable{c.ActionConditions, c.EntityConditions, c.PlaceConditions, c.ThisConditions}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("Conditions implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (c actionConditions) validate() error {
-	if len(c) > maxConditionCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " actionConditions")
-	}
-	errorRange := []error{}
-	for _, actionCondition := range c {
-		errorRange = append(errorRange, actionCondition.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (c entityConditions) validate() error {
-	if len(c) > maxConditionCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " entityConditions")
-	}
-	errorRange := []error{}
-	for _, entityCondition := range c {
-		errorRange = append(errorRange, entityCondition.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (c placeConditions) validate() error {
-	if len(c) > maxConditionCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxConditionCount) + " placeConditions")
-	}
-	errorRange := []error{}
-	for _, placeCondition := range c {
-		errorRange = append(errorRange, placeCondition.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (c *actionConditionInterface) validate() error {
-	possibleImplementer := []validateable{c.ActionIntCondition, c.ActionStringCondition, c.ActionTagCondition}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("ActionCondition implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (c *entityConditionInterface) validate() error {
-	possibleImplementer := []validateable{c.EntityIntCondition, c.EntityStringCondition, c.EntityTagCondition}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("EntityCondition implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (c *placeConditionInterface) validate() error {
-	possibleImplementer := []validateable{c.PlaceIntCondition, c.PlaceStringCondition, c.PlaceTagCondition}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("PlaceCondition implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (c *playerConditionInterface) validate() error {
-	possibleImplementer := []validateable{c.PlayerIntCondition}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("PlayerCondition implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (c *thisCondition) validate() error {
-	return nil
-}
-
-func (c *actionIntCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateActionIntProperty(c.ActionIntProperty))
-	errorRange = append(errorRange, validateIntComparator(c.IntComparator))
-	errorRange = append(errorRange, validateSimpleInt(c.IntValue))
-	return combineErrors(errorRange)
-}
-
-func (c *actionStringCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateActionStringProperty(c.ActionStringProperty))
-	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
-	errorRange = append(errorRange, validateSimpleString(c.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (c *actionTagCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
-	errorRange = append(errorRange, validateSimpleString(c.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (c *entityIntCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateEntityIntProperty(c.EntityIntProperty))
-	errorRange = append(errorRange, validateIntComparator(c.IntComparator))
-	errorRange = append(errorRange, validateSimpleInt(c.IntValue))
-	return combineErrors(errorRange)
-}
-
-func (c *entityStringCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateEntityStringProperty(c.EntityStringProperty))
-	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
-	errorRange = append(errorRange, validateSimpleString(c.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (c *entityTagCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
-	errorRange = append(errorRange, validateSimpleString(c.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (c *placeIntCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlaceIntProperty(c.PlaceIntProperty))
-	errorRange = append(errorRange, validateIntComparator(c.IntComparator))
-	errorRange = append(errorRange, validateSimpleInt(c.IntValue))
-	return combineErrors(errorRange)
-}
-
-func (c *placeStringCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlaceStringProperty(c.PlaceStringProperty))
-	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
-	errorRange = append(errorRange, validateSimpleString(c.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (c *placeTagCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateStringComparator(c.StringComparator))
-	errorRange = append(errorRange, validateSimpleString(c.StringValue))
-	return combineErrors(errorRange)
-}
-
-func (c *playerIntCondition) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlayerIntProperty(c.PlayerIntProperty))
-	errorRange = append(errorRange, validateIntComparator(c.IntComparator))
-	errorRange = append(errorRange, validateSimpleInt(c.IntValue))
-	return combineErrors(errorRange)
+func (p playerIntCondition) GetInteractionText() string {
+	return ""
 }

@@ -1,28 +1,47 @@
 package cardobject
 
-import "errors"
+import (
+	"github.com/DecentralCardGame/jsonschema"
+)
 
-type costInterface struct {
+type cost struct {
+	*jsonschema.BasicInterface
 	RessourceCost *ressourceCost `json:",omitempty"`
 	SacrificeCost *sacrificeCost `json:",omitempty"`
 	DiscardCost   *discardCost   `json:",omitempty"`
 }
 
 type ressourceCost struct {
-	CostAmount int
+	*jsonschema.BasicStruct
+	CostAmount basicAmount
+}
+
+func (r ressourceCost) GetInteractionText() string {
+	return ""
 }
 
 type sacrificeCost struct {
-	Amount     int
-	Conditions *cardConditionsInterface
+	*jsonschema.BasicStruct
+	Amount     basicAmount
+	Conditions *cardConditions
+}
+
+func (s sacrificeCost) GetInteractionText() string {
+	return ""
 }
 
 type discardCost struct {
-	Amount     int
-	Conditions *cardConditionsInterface
+	*jsonschema.BasicStruct
+	Amount     basicAmount
+	Conditions *cardConditions
+}
+
+func (d discardCost) GetInteractionText() string {
+	return ""
 }
 
 type ressourceCostType struct {
+	*jsonschema.BasicStruct
 	Energy bool
 	Food   bool
 	Lumber bool
@@ -30,36 +49,6 @@ type ressourceCostType struct {
 	Iron   bool
 }
 
-func (c *costInterface) validate() error {
-	possibleImplementer := []validateable{c.RessourceCost, c.SacrificeCost, c.DiscardCost}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("Ability implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (c *ressourceCost) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateCastingCost(c.CostAmount))
-	return combineErrors(errorRange)
-}
-
-func (c *sacrificeCost) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateSimpleInt(c.Amount))
-	if c.Conditions != nil {
-		errorRange = append(errorRange, c.Conditions.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (c *discardCost) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateSimpleInt(c.Amount))
-	if c.Conditions != nil {
-		errorRange = append(errorRange, c.Conditions.validate())
-	}
-	return combineErrors(errorRange)
+func (r ressourceCostType) GetInteractionText() string {
+	return "No InteractionText defined"
 }

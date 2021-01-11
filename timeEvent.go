@@ -1,14 +1,11 @@
 package cardobject
 
-import "errors"
+import "github.com/DecentralCardGame/jsonschema"
 
 var timeEvents []string = []string{"TICKSTART", "COMBAT"}
 
-func validateTimeEvent(timeEvent string) error {
-	for _, t := range timeEvents {
-		if t == timeEvent {
-			return nil
-		}
-	}
-	return errors.New("TimeEvent: " + timeEvent + " not available")
+type timeEvent struct{ *jsonschema.BasicEnum }
+
+func (t timeEvent) GetEnumValues() []string {
+	return timeEvents
 }

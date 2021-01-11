@@ -1,42 +1,21 @@
 package cardobject
 
-import "errors"
+import "github.com/DecentralCardGame/jsonschema"
 
-type intValueInterface struct {
+type intValue struct {
+	*jsonschema.BasicInterface
 	ComplexIntValue *complexIntValue `json:",omitempty"`
-	SimpleIntValue  *int             `json:",omitempty"`
-	IntVariable     *string          `json:",omitempty"`
+	SimpleIntValue  *simpleIntValue  `json:",omitempty"`
+	IntVariable     *intVariableName `json:",omitempty"`
 }
 
 type complexIntValue struct {
-	FirstValue    *intValueInterface
-	SecondValue   *intValueInterface
-	ArithOperator string
+	*jsonschema.BasicStruct
+	FirstValue    *intValue
+	SecondValue   *intValue
+	ArithOperator arithOperator
 }
 
-func (v *intValueInterface) validate() error {
-	if v.ComplexIntValue != nil {
-		if v.SimpleIntValue != nil {
-			return errors.New("IntValue implemented by not exactly one option")
-		}
-		if v.IntVariable != nil {
-			return errors.New("IntValue implemented by not exactly one option")
-		}
-		return v.ComplexIntValue.validate()
-	}
-	if v.SimpleIntValue != nil {
-		if v.IntVariable != nil {
-			return errors.New("IntValue implemented by not exactly one option")
-		}
-		return validateSimpleInt(*v.SimpleIntValue)
-	}
-	return validateIntVariableName(*v.IntVariable)
-}
-
-func (v *complexIntValue) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, v.FirstValue.validate())
-	errorRange = append(errorRange, v.SecondValue.validate())
-	errorRange = append(errorRange, validateArithOperator(v.ArithOperator))
-	return combineErrors(errorRange)
+func (c complexIntValue) GetInteractionText() string {
+	return ""
 }

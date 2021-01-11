@@ -1,24 +1,20 @@
 package cardobject
 
-import "errors"
+import (
+	"github.com/DecentralCardGame/jsonschema"
+)
 
 var intComparators []string = []string{"EQUAL", "GREATER", "LESSER"}
 var stringComparators []string = []string{"EQUAL", "CONTAINS", "UNEQUAL", "CONTAINSNOT"}
 
-func validateIntComparator(comparator string) error {
-	for _, t := range intComparators {
-		if t == comparator {
-			return nil
-		}
-	}
-	return errors.New("IntComparator: " + comparator + " not available")
+type intComparator struct{ *jsonschema.BasicEnum }
+
+func (i intComparator) GetEnumValues() []string {
+	return intComparators
 }
 
-func validateStringComparator(comparator string) error {
-	for _, t := range stringComparators {
-		if t == comparator {
-			return nil
-		}
-	}
-	return errors.New("StringComparator: " + comparator + " not available")
+type stringComparator struct{ *jsonschema.BasicEnum }
+
+func (s stringComparator) GetEnumValues() []string {
+	return stringComparators
 }

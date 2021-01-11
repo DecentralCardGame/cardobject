@@ -1,21 +1,38 @@
 package cardobject
 
 import (
-	"encoding/json"
-	"io/ioutil"
+	"fmt"
+	"os"
 	"testing"
+
+	"github.com/DecentralCardGame/jsonschema"
 )
 
+func writeToFile(schema string) {
+	f, err := os.Create("schema.txt")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	l, err := f.WriteString(schema)
+	if err != nil {
+		fmt.Println(err)
+		f.Close()
+		return
+	}
+	fmt.Println(l, "bytes written successfully")
+	err = f.Close()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+
 func TestCardSerializationAction1(t *testing.T) {
-	file, _ := ioutil.ReadFile("testJsons/entityTest1.json")
-	input := string(file)
-	card, err := NewCardFromJson(input)
+	schema := jsonschema.Reflect(&card{})
+	json, err := schema.MarshalJSON()
 	if err != nil {
 		t.Error(err)
 	}
-	b, err := json.Marshal(card)
-	if err != nil {
-		t.Error(err)
-	}
-	println(string(b))
+	writeToFile(string(json))
 }
