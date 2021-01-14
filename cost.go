@@ -42,13 +42,30 @@ func (d discardCost) GetInteractionText() string {
 
 type ressourceCostType struct {
 	*jsonschema.BasicStruct
-	Energy bool
-	Food   bool
-	Lumber bool
-	Mana   bool
-	Iron   bool
+	Energy energy
+	Food   food
+	Lumber lumber
+	Mana   mana
+	Iron   iron
 }
 
 func (r ressourceCostType) GetInteractionText() string {
 	return "No InteractionText defined"
+}
+
+type energy struct {
+	*jsonschema.BasicBool
+}
+
+type food struct {
+	*jsonschema.BasicBool
+}
+type lumber struct {
+	*jsonschema.BasicBool
+}
+type mana struct {
+	*jsonschema.BasicBool
+}
+type iron struct {
+	*jsonschema.BasicBool
 }
