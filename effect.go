@@ -33,7 +33,7 @@ type productionEffect struct {
 }
 
 func (p productionEffect) GetInteractionText() string {
-	return ""
+	return "Produce §Amount."
 }
 
 type drawEffect struct {
@@ -42,7 +42,7 @@ type drawEffect struct {
 }
 
 func (d drawEffect) GetInteractionText() string {
-	return ""
+	return "Draw §DrawAmount cards."
 }
 
 type tokenEffect struct {
@@ -52,7 +52,7 @@ type tokenEffect struct {
 }
 
 func (t tokenEffect) GetInteractionText() string {
-	return ""
+	return "Create §TokenAmount §Token."
 }
 
 type chooseFromEffect struct {
@@ -61,7 +61,7 @@ type chooseFromEffect struct {
 }
 
 func (c chooseFromEffect) GetInteractionText() string {
-	return ""
+	return "Do one of §Effects."
 }
 
 type targetEffect struct {
@@ -79,7 +79,7 @@ type actionTargetEffect struct {
 }
 
 func (a actionTargetEffect) GetInteractionText() string {
-	return ""
+	return "§ActionSelector §ActionManipulations"
 }
 
 type entityTargetEffect struct {
@@ -89,7 +89,7 @@ type entityTargetEffect struct {
 }
 
 func (e entityTargetEffect) GetInteractionText() string {
-	return ""
+	return "§EntitySelector §EntityManipulations"
 }
 
 type placeTargetEffect struct {
@@ -99,7 +99,7 @@ type placeTargetEffect struct {
 }
 
 func (p placeTargetEffect) GetInteractionText() string {
-	return ""
+	return "§PlaceSelector §PlaceManipulations"
 }
 
 type extractorTargetEffect struct {
@@ -109,5 +109,5 @@ type extractorTargetEffect struct {
 }
 
 func (e extractorTargetEffect) GetInteractionText() string {
-	return ""
+	return "Choose §TargetVariable. §Manipulations"
 }

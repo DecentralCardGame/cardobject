@@ -81,7 +81,7 @@ type actionIntExtractor struct {
 }
 
 func (a actionIntExtractor) GetInteractionText() string {
-	return ""
+	return "Set §IntVariableName to the actions §ExtractIntProperty."
 }
 
 type actionStringExtractor struct {
@@ -91,7 +91,7 @@ type actionStringExtractor struct {
 }
 
 func (a actionStringExtractor) GetInteractionText() string {
-	return ""
+	return "Set §StringVariableName to the actionss §ExtractStringProperty."
 }
 
 type entityIntExtractor struct {
@@ -101,7 +101,7 @@ type entityIntExtractor struct {
 }
 
 func (e entityIntExtractor) GetInteractionText() string {
-	return ""
+	return "Set §IntVariableName to the entities §ExtractIntProperty."
 }
 
 type entityStringExtractor struct {
@@ -111,7 +111,7 @@ type entityStringExtractor struct {
 }
 
 func (e entityStringExtractor) GetInteractionText() string {
-	return ""
+	return "Set §StringVariableName to the entities §ExtractStringProperty."
 }
 
 type placeIntExtractor struct {
@@ -121,7 +121,7 @@ type placeIntExtractor struct {
 }
 
 func (p placeIntExtractor) GetInteractionText() string {
-	return ""
+	return "Set §IntVariableName to the places §ExtractIntProperty."
 }
 
 type placeStringExtractor struct {
@@ -131,7 +131,7 @@ type placeStringExtractor struct {
 }
 
 func (p placeStringExtractor) GetInteractionText() string {
-	return ""
+	return "Set §StringVariableName to the places §ExtractStringProperty."
 }
 
 type targetExtractor struct {
@@ -140,7 +140,7 @@ type targetExtractor struct {
 }
 
 func (t targetExtractor) GetInteractionText() string {
-	return ""
+	return "That card is marked as §TargetVariableName."
 }
 
 type intExtractor struct {
@@ -149,7 +149,7 @@ type intExtractor struct {
 }
 
 func (i intExtractor) GetInteractionText() string {
-	return ""
+	return "Set §IntVariableName."
 }
 
 type stringExtractor struct {
@@ -158,5 +158,5 @@ type stringExtractor struct {
 }
 
 func (s stringExtractor) GetInteractionText() string {
-	return ""
+	return "Set §StringVariableName."
 }

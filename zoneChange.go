@@ -9,7 +9,7 @@ type actionZoneChange struct {
 }
 
 func (a actionZoneChange) GetInteractionText() string {
-	return ""
+	return "Put it into §Player §Zone."
 }
 
 type entityZoneChange struct {
@@ -19,7 +19,7 @@ type entityZoneChange struct {
 }
 
 func (e entityZoneChange) GetInteractionText() string {
-	return ""
+	return "Put it into §Player §Zone."
 }
 
 type placeZoneChange struct {
@@ -29,5 +29,5 @@ type placeZoneChange struct {
 }
 
 func (p placeZoneChange) GetInteractionText() string {
-	return ""
+	return "Put it into §Player §Zone."
 }

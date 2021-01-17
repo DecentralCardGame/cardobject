@@ -11,5 +11,5 @@ type token struct {
 }
 
 func (t token) GetInteractionText() string {
-	return ""
+	return "§Attack / §Health token named §Name tagged §Tags"
 }

@@ -29,7 +29,10 @@ func writeToFile(schema string) {
 }
 
 func TestCardSerializationAction1(t *testing.T) {
-	schema := jsonschema.Reflect(&card{})
+	schema, textErr := jsonschema.Reflect(&card{})
+	if textErr != nil {
+		t.Error(textErr)
+	}
 	json, err := schema.MarshalJSON()
 	if err != nil {
 		t.Error(err)

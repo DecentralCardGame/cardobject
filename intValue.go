@@ -17,5 +17,5 @@ type complexIntValue struct {
 }
 
 func (c complexIntValue) GetInteractionText() string {
-	return ""
+	return "§FirstValue §ArithOperator §SecondValue"
 }

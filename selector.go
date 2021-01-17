@@ -14,7 +14,7 @@ type actionSelector struct {
 }
 
 func (a actionSelector) GetInteractionText() string {
-	return ""
+	return "Choose §CardMode action §ActionConditions in the §Zone of §PlayerMode player §PlayerCondition. §ActionExtractors §AmountExtractor"
 }
 
 type entitySelector struct {
@@ -29,7 +29,7 @@ type entitySelector struct {
 }
 
 func (e entitySelector) GetInteractionText() string {
-	return ""
+	return "Choose §CardMode entity §EntityConditions in the §Zone of §PlayerMode player §PlayerCondition. §EntityExtractors §AmountExtractor"
 }
 
 type placeSelector struct {
@@ -44,5 +44,5 @@ type placeSelector struct {
 }
 
 func (p placeSelector) GetInteractionText() string {
-	return ""
+	return "Choose §CardMode place §PlaceConditions in the §Zone of §PlayerMode player §PlayerCondition. §PlaceExtractors §AmountExtractor"
 }

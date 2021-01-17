@@ -19,7 +19,7 @@ type attackEventListener struct {
 }
 
 func (a attackEventListener) GetInteractionText() string {
-	return ""
+	return "Whenever an entity §EntityCondition attacks. §AttackEntityExtractors"
 }
 
 type blockEventListener struct {
@@ -30,7 +30,7 @@ type blockEventListener struct {
 }
 
 func (b blockEventListener) GetInteractionText() string {
-	return ""
+	return "Whenever an entity §EntityCondition blocks. §BlockingEntityExtractors §BlockedEntityExtractors"
 }
 
 type manipulationEventListener struct {
@@ -49,7 +49,7 @@ type intManipulationEventListener struct {
 }
 
 func (i intManipulationEventListener) GetInteractionText() string {
-	return ""
+	return "Whenever §IntProperty on card §CardCondition §IntChangeMode. §ManipulatedCardExtractors §ManipulationValueExtractor"
 }
 
 type stringManipulationEventListener struct {
@@ -62,7 +62,7 @@ type stringManipulationEventListener struct {
 }
 
 func (s stringManipulationEventListener) GetInteractionText() string {
-	return ""
+	return "Whenever §StringProperty §StringChangeMode on a card §CardCondition. §ManipulatedCardExtractors §ManipulationValueExtractor"
 }
 
 type productionEventListener struct {
@@ -72,7 +72,7 @@ type productionEventListener struct {
 }
 
 func (p productionEventListener) GetInteractionText() string {
-	return ""
+	return "Whenever one or more §RessourceTypeCondition ressources is produced. §ProductionAmountExtractor"
 }
 
 type timeEventListener struct {
@@ -81,7 +81,7 @@ type timeEventListener struct {
 }
 
 func (t timeEventListener) GetInteractionText() string {
-	return ""
+	return "Every §TimeEvent"
 }
 
 type zoneChangeEventListener struct {
@@ -93,5 +93,5 @@ type zoneChangeEventListener struct {
 }
 
 func (z zoneChangeEventListener) GetInteractionText() string {
-	return ""
+	return "Whenever a card §CardCondition gets put from §Source to §Destination. §MovedCardExtractors"
 }

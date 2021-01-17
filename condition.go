@@ -99,7 +99,7 @@ type thisCondition struct {
 }
 
 func (t thisCondition) GetInteractionText() string {
-	return ""
+	return "this"
 }
 
 type actionIntCondition struct {
@@ -110,7 +110,7 @@ type actionIntCondition struct {
 }
 
 func (a actionIntCondition) GetInteractionText() string {
-	return ""
+	return "with §ActionIntProperty §IntComparator §IntValue"
 }
 
 type actionStringCondition struct {
@@ -121,7 +121,7 @@ type actionStringCondition struct {
 }
 
 func (a actionStringCondition) GetInteractionText() string {
-	return ""
+	return "with §ActionStringProperty §StringComparator §StringValue"
 }
 
 type actionTagCondition struct {
@@ -131,7 +131,7 @@ type actionTagCondition struct {
 }
 
 func (a actionTagCondition) GetInteractionText() string {
-	return ""
+	return "with tag §StringComparator §StringValue"
 }
 
 type entityIntCondition struct {
@@ -142,7 +142,7 @@ type entityIntCondition struct {
 }
 
 func (e entityIntCondition) GetInteractionText() string {
-	return ""
+	return "with §EntityIntProperty §IntComparator §IntValue"
 }
 
 type entityStringCondition struct {
@@ -153,7 +153,7 @@ type entityStringCondition struct {
 }
 
 func (e entityStringCondition) GetInteractionText() string {
-	return ""
+	return "with §EntityStringProperty §StringComparator §StringValue"
 }
 
 type entityTagCondition struct {
@@ -163,7 +163,7 @@ type entityTagCondition struct {
 }
 
 func (e entityTagCondition) GetInteractionText() string {
-	return ""
+	return "with tag §StringComparator §StringValue"
 }
 
 type placeIntCondition struct {
@@ -174,7 +174,7 @@ type placeIntCondition struct {
 }
 
 func (p placeIntCondition) GetInteractionText() string {
-	return ""
+	return "with §PlaceIntProperty §IntComparator §IntValue"
 }
 
 type placeStringCondition struct {
@@ -185,7 +185,7 @@ type placeStringCondition struct {
 }
 
 func (p placeStringCondition) GetInteractionText() string {
-	return ""
+	return "with §PlaceStringProperty §StringComparator §StringValue"
 }
 
 type placeTagCondition struct {
@@ -195,7 +195,7 @@ type placeTagCondition struct {
 }
 
 func (p placeTagCondition) GetInteractionText() string {
-	return ""
+	return "with tag §StringComparator §StringValue"
 }
 
 type playerIntCondition struct {
@@ -206,5 +206,5 @@ type playerIntCondition struct {
 }
 
 func (p playerIntCondition) GetInteractionText() string {
-	return ""
+	return "with §PlayerIntProperty §IntComparator §IntValue"
 }

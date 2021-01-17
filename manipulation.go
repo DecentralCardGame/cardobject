@@ -85,7 +85,7 @@ type actionEffectManipulation struct {
 }
 
 func (a actionEffectManipulation) GetInteractionText() string {
-	return ""
+	return "It §EffectOperator §Effect."
 }
 
 type actionIntManipulation struct {
@@ -96,7 +96,7 @@ type actionIntManipulation struct {
 }
 
 func (a actionIntManipulation) GetInteractionText() string {
-	return ""
+	return "§IntOperator §IntProperty §IntValue."
 }
 
 type actionStringManipulation struct {
@@ -107,17 +107,17 @@ type actionStringManipulation struct {
 }
 
 func (a actionStringManipulation) GetInteractionText() string {
-	return ""
+	return "§StringOperator §StringProperty §StringValue."
 }
 
 type actionTagManipulation struct {
 	*jsonschema.BasicStruct
-	StringValue    tag
-	StringOperator stringOperator
+	TagValue    tag
+	TagOperator stringOperator
 }
 
 func (a actionTagManipulation) GetInteractionText() string {
-	return ""
+	return "§TagOperator tag §TagValue."
 }
 
 type entityAbilityManipulation struct {
@@ -127,7 +127,7 @@ type entityAbilityManipulation struct {
 }
 
 func (e entityAbilityManipulation) GetInteractionText() string {
-	return ""
+	return "It §AbilityOperator §Ability."
 }
 
 type entityIntManipulation struct {
@@ -138,7 +138,7 @@ type entityIntManipulation struct {
 }
 
 func (e entityIntManipulation) GetInteractionText() string {
-	return ""
+	return "§IntOperator §IntProperty §IntValue"
 }
 
 type entityStringManipulation struct {
@@ -149,17 +149,17 @@ type entityStringManipulation struct {
 }
 
 func (e entityStringManipulation) GetInteractionText() string {
-	return ""
+	return "§StringOperator §StringProperty §StringValue."
 }
 
 type entityTagManipulation struct {
 	*jsonschema.BasicStruct
-	StringValue    tag
-	StringOperator stringOperator
+	TagValue    tag
+	TagOperator stringOperator
 }
 
 func (e entityTagManipulation) GetInteractionText() string {
-	return ""
+	return "It §TagOperator §TagValue."
 }
 
 type placeAbilityManipulation struct {
@@ -169,7 +169,7 @@ type placeAbilityManipulation struct {
 }
 
 func (p placeAbilityManipulation) GetInteractionText() string {
-	return ""
+	return "It §AbilityOperator §Ability."
 }
 
 type placeIntManipulation struct {
@@ -180,7 +180,7 @@ type placeIntManipulation struct {
 }
 
 func (p placeIntManipulation) GetInteractionText() string {
-	return ""
+	return "§IntOperator §IntProperty §IntValue."
 }
 
 type placeStringManipulation struct {
@@ -191,15 +191,15 @@ type placeStringManipulation struct {
 }
 
 func (p placeStringManipulation) GetInteractionText() string {
-	return ""
+	return "§StringOperator §StringProperty §StringValue."
 }
 
 type placeTagManipulation struct {
 	*jsonschema.BasicStruct
-	StringValue    tag
-	StringOperator stringOperator
+	TagValue    tag
+	TagOperator stringOperator
 }
 
 func (p placeTagManipulation) GetInteractionText() string {
-	return ""
+	return "It §TagOperator §TagValue."
 }

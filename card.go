@@ -23,7 +23,7 @@ type action struct {
 }
 
 func (a action) GetInteractionText() string {
-	return "No text needed"
+	return "§CardName §CastingCost §CostType §Effects §FlavourText §Tags"
 }
 
 type entity struct {
@@ -39,7 +39,7 @@ type entity struct {
 }
 
 func (a entity) GetInteractionText() string {
-	return "No text needed"
+	return "§CardName §CastingCost §CostType §Abilities §Attack §Health §FlavourText §Tags"
 }
 
 type place struct {
@@ -54,7 +54,7 @@ type place struct {
 }
 
 func (a place) GetInteractionText() string {
-	return "No text needed"
+	return "§CardName §CastingCost §CostType §Abilities §Health §FlavourText §Tags"
 }
 
 type headquarter struct {
@@ -71,5 +71,5 @@ type headquarter struct {
 }
 
 func (a headquarter) GetInteractionText() string {
-	return "No text needed"
+	return "§CardName §CostType §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags"
 }

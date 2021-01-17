@@ -31,7 +31,7 @@ type activatedAbility struct {
 }
 
 func (a activatedAbility) GetInteractionText() string {
-	return "troll"
+	return "Pay §AbilityCost: §Effects \n"
 }
 
 type triggeredAbility struct {
@@ -42,5 +42,5 @@ type triggeredAbility struct {
 }
 
 func (a triggeredAbility) GetInteractionText() string {
-	return "troll"
+	return "§Cause, §Cost : §Effects \n"
 }

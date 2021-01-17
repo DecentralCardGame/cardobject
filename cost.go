@@ -17,7 +17,7 @@ type ressourceCost struct {
 }
 
 func (r ressourceCost) GetInteractionText() string {
-	return ""
+	return "§CostAmount ressources"
 }
 
 type sacrificeCost struct {
@@ -27,7 +27,7 @@ type sacrificeCost struct {
 }
 
 func (s sacrificeCost) GetInteractionText() string {
-	return ""
+	return "Sacrifice §Amount card §Conditions"
 }
 
 type discardCost struct {
@@ -37,7 +37,7 @@ type discardCost struct {
 }
 
 func (d discardCost) GetInteractionText() string {
-	return ""
+	return "Discard §Amount card §Conditions"
 }
 
 type ressourceCostType struct {
@@ -50,7 +50,7 @@ type ressourceCostType struct {
 }
 
 func (r ressourceCostType) GetInteractionText() string {
-	return "No InteractionText defined"
+	return "§Energy §Food §Lumber §Mana §Iron"
 }
 
 type energy struct {
