@@ -1,6 +1,8 @@
 package cardobject
 
 import (
+	"errors"
+
 	"github.com/DecentralCardGame/jsonschema"
 )
 
@@ -33,67 +35,202 @@ const minTagCount int = 1
 const maxWisdom int = 32
 const minWisdom int = 0
 
-type attack struct{ *jsonschema.BasicInt }
+type attack jsonschema.BasicInt
+
+func (a attack) Validate() error {
+	return a.ValidateInt()
+}
+
+func (a attack) ValidateInt() error {
+	min, max := a.GetMinMax()
+	if a < attack(min) || a > attack(max) {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (a attack) GetMinMax() (int, int) {
 	return minAttack, maxAttack
 }
 
-type basicAmount struct{ *jsonschema.BasicInt }
+type basicAmount jsonschema.BasicInt
+
+func (b basicAmount) Validate() error {
+	return b.ValidateInt()
+}
+
+func (b basicAmount) ValidateInt() error {
+	min, max := b.GetMinMax()
+	if b < basicAmount(min) || b > basicAmount(max) {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (b basicAmount) GetMinMax() (int, int) {
 	return minBasicAmount, maxBasicAmount
 }
 
-type cardName struct{ *jsonschema.BasicString }
+type cardName jsonschema.BasicString
+
+func (c cardName) Validate() error {
+	return c.ValidateString()
+}
+
+func (c cardName) ValidateString() error {
+	minLength, maxLength := c.GetMinMaxLength()
+	length := len(string(c))
+	if length < minLength || length > maxLength {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (c cardName) GetMinMaxLength() (int, int) {
 	return minCardNameLength, maxCardNameLength
 }
 
-type castingCost struct{ *jsonschema.BasicInt }
+type castingCost jsonschema.BasicInt
+
+func (c castingCost) Validate() error {
+	return c.ValidateInt()
+}
+
+func (c castingCost) ValidateInt() error {
+	min, max := c.GetMinMax()
+	if c < castingCost(min) || c > castingCost(max) {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (c castingCost) GetMinMax() (int, int) {
 	return minCastingCost, maxCastingCost
 }
 
-type flavourText struct{ *jsonschema.BasicString }
+type flavourText jsonschema.BasicString
+
+func (f flavourText) Validate() error {
+	return f.ValidateString()
+}
+
+func (f flavourText) ValidateString() error {
+	minLength, maxLength := f.GetMinMaxLength()
+	length := len(string(f))
+	if length < minLength || length > maxLength {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (f flavourText) GetMinMaxLength() (int, int) {
 	return minFlavourTextLength, maxFlavourTextLength
 }
 
-type growth struct{ *jsonschema.BasicInt }
+type growth jsonschema.BasicInt
 
-func (h growth) GetMinMax() (int, int) {
+func (g growth) Validate() error {
+	return g.ValidateInt()
+}
+
+func (g growth) ValidateInt() error {
+	min, max := g.GetMinMax()
+	if g < growth(min) || g > growth(max) {
+		return errors.New("")
+	}
+	return nil
+}
+
+func (g growth) GetMinMax() (int, int) {
 	return minGrowth, maxGrowth
 }
 
-type health struct{ *jsonschema.BasicInt }
+type health jsonschema.BasicInt
+
+func (h health) Validate() error {
+	return h.ValidateInt()
+}
+
+func (h health) ValidateInt() error {
+	min, max := h.GetMinMax()
+	if h < health(min) || h > health(max) {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (h health) GetMinMax() (int, int) {
 	return minHealth, maxHealth
 }
 
-type startingHandsize struct{ *jsonschema.BasicInt }
+type startingHandsize jsonschema.BasicInt
+
+func (s startingHandsize) Validate() error {
+	return s.ValidateInt()
+}
+
+func (s startingHandsize) ValidateInt() error {
+	min, max := s.GetMinMax()
+	if s < startingHandsize(min) || s > startingHandsize(max) {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (s startingHandsize) GetMinMax() (int, int) {
 	return minStartingHandSize, maxStartingHandSize
 }
 
-type wisdom struct{ *jsonschema.BasicInt }
+type wisdom jsonschema.BasicInt
+
+func (w wisdom) Validate() error {
+	return w.ValidateInt()
+}
+
+func (w wisdom) ValidateInt() error {
+	min, max := w.GetMinMax()
+	if w < wisdom(min) || w > wisdom(max) {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (w wisdom) GetMinMax() (int, int) {
 	return minWisdom, maxWisdom
 }
 
-type simpleIntValue struct{ *jsonschema.BasicInt }
+type simpleIntValue jsonschema.BasicInt
+
+func (s simpleIntValue) Validate() error {
+	return s.ValidateInt()
+}
+
+func (s simpleIntValue) ValidateInt() error {
+	min, max := s.GetMinMax()
+	if s < simpleIntValue(min) || s > simpleIntValue(max) {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (s simpleIntValue) GetMinMax() (int, int) {
 	return minSimpleInt, maxSimpleInt
 }
 
-type simpleStringValue struct{ *jsonschema.BasicString }
+type simpleStringValue jsonschema.BasicString
+
+func (s simpleStringValue) Validate() error {
+	return s.ValidateString()
+}
+
+func (s simpleStringValue) ValidateString() error {
+	minLength, maxLength := s.GetMinMaxLength()
+	length := len(string(s))
+	if length < minLength || length > maxLength {
+		return errors.New("")
+	}
+	return nil
+}
 
 func (s simpleStringValue) GetMinMaxLength() (int, int) {
 	return minSimpleStringLength, maxSimpleStringLength

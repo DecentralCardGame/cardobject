@@ -1,6 +1,8 @@
 package cardobject
 
 import (
+	"errors"
+
 	"github.com/DecentralCardGame/jsonschema"
 )
 
@@ -53,19 +55,72 @@ func (r ressourceCostType) GetInteractionText() string {
 	return "§Energy §Food §Lumber §Mana §Iron"
 }
 
-type energy struct {
-	*jsonschema.BasicBool
+type energy jsonschema.BasicBool
+
+func (e energy) Validate() error {
+	return e.ValidateBool()
 }
 
-type food struct {
-	*jsonschema.BasicBool
+func (e energy) ValidateBool() error {
+	b := bool(e)
+	if b || !b {
+		return nil
+	}
+	return errors.New("")
 }
-type lumber struct {
-	*jsonschema.BasicBool
+
+type food jsonschema.BasicBool
+
+func (f food) Validate() error {
+	return f.ValidateBool()
 }
-type mana struct {
-	*jsonschema.BasicBool
+
+func (f food) ValidateBool() error {
+	b := bool(f)
+	if b || !b {
+		return nil
+	}
+	return errors.New("")
 }
-type iron struct {
-	*jsonschema.BasicBool
+
+type lumber jsonschema.BasicBool
+
+func (l lumber) Validate() error {
+	return l.ValidateBool()
+}
+
+func (l lumber) ValidateBool() error {
+	b := bool(l)
+	if b || !b {
+		return nil
+	}
+	return errors.New("")
+}
+
+type mana jsonschema.BasicBool
+
+func (m mana) Validate() error {
+	return m.ValidateBool()
+}
+
+func (m mana) ValidateBool() error {
+	b := bool(m)
+	if b || !b {
+		return nil
+	}
+	return errors.New("")
+}
+
+type iron jsonschema.BasicBool
+
+func (i iron) Validate() error {
+	return i.ValidateBool()
+}
+
+func (i iron) ValidateBool() error {
+	b := bool(i)
+	if b || !b {
+		return nil
+	}
+	return errors.New("")
 }

@@ -1,6 +1,10 @@
 package cardobject
 
-import "github.com/DecentralCardGame/jsonschema"
+import (
+	"errors"
+
+	"github.com/DecentralCardGame/jsonschema"
+)
 
 var possibleTags []string = []string{
 	"ANIMAL",
@@ -34,7 +38,21 @@ func (t tags) GetMinMaxItems() (int, int) {
 	return 1, 3
 }
 
-type tag struct{ *jsonschema.BasicEnum }
+type tag jsonschema.BasicEnum
+
+func (t tag) Validate() error {
+	return t.ValidateEnum()
+}
+
+func (t tag) ValidateEnum() error {
+	values := t.GetEnumValues()
+	for _, v := range values {
+		if v == string(t) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
 
 func (t tag) GetEnumValues() []string {
 	return possibleTags
