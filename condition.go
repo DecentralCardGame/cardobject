@@ -19,7 +19,14 @@ func (a actionConditions) Validate() error {
 }
 
 func (a actionConditions) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range a {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (a actionConditions) GetMinMaxItems() (int, int) {
@@ -33,7 +40,14 @@ func (e entityConditions) Validate() error {
 }
 
 func (e entityConditions) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range e {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (e entityConditions) GetMinMaxItems() (int, int) {
@@ -47,7 +61,14 @@ func (p placeConditions) Validate() error {
 }
 
 func (p placeConditions) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range p {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (p placeConditions) GetMinMaxItems() (int, int) {
@@ -61,7 +82,14 @@ func (p playerConditions) Validate() error {
 }
 
 func (p playerConditions) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range p {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (p playerConditions) GetMinMayItems() (int, int) {

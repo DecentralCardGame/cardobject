@@ -18,7 +18,14 @@ func (a actionExtractors) Validate() error {
 }
 
 func (a actionExtractors) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range a {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (a actionExtractors) GetMinMaxItems() (int, int) {
@@ -32,7 +39,14 @@ func (e entityExtractors) Validate() error {
 }
 
 func (e entityExtractors) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range e {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (e entityExtractors) GetMinMaxItems() (int, int) {
@@ -46,7 +60,14 @@ func (p placeExtractors) Validate() error {
 }
 
 func (p placeExtractors) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range p {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (p placeExtractors) GetMinMaxItems() (int, int) {

@@ -31,7 +31,14 @@ func (t tags) Validate() error {
 }
 
 func (t tags) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range t {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (t tags) GetMinMaxItems() (int, int) {

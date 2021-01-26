@@ -11,7 +11,14 @@ func (a abilities) Validate() error {
 }
 
 func (a abilities) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range a {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (a abilities) GetMinMaxItems() (int, int) {

@@ -11,7 +11,14 @@ func (e effects) Validate() error {
 }
 
 func (e effects) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range e {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (e effects) GetMinMaxItems() (int, int) {

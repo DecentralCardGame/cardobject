@@ -16,7 +16,14 @@ func (a actionManipulations) Validate() error {
 }
 
 func (a actionManipulations) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range a {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (a actionManipulations) GetMinMaxItems() (int, int) {
@@ -30,7 +37,14 @@ func (e entityManipulations) Validate() error {
 }
 
 func (e entityManipulations) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range e {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (e entityManipulations) GetMinMaxItems() (int, int) {
@@ -44,7 +58,14 @@ func (p placeManipulations) Validate() error {
 }
 
 func (p placeManipulations) ValidateArray() error {
-	return nil
+	errorRange := []error{}
+	for _, v := range p {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
 }
 
 func (p placeManipulations) GetMinMaxItems() (int, int) {
