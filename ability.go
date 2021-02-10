@@ -25,16 +25,34 @@ func (a abilities) GetMinMaxItems() (int, int) {
 	return 0, maxAbilityEffectCount
 }
 
+func (a abilities) GetItemName() string {
+	return "Ability"
+}
+
 type ability struct {
-	*jsonschema.BasicInterface
 	ActivatedAbility *activatedAbility `json:",omitempty"`
 	TriggeredAbility *triggeredAbility `json:",omitempty"`
 }
 
+func (a ability) Validate() error {
+	return a.ValidateInterface()
+}
+
+func (a ability) ValidateInterface() error {
+	return jsonschema.ValidateInterface(a)
+}
+
 type activatedAbility struct {
-	*jsonschema.BasicStruct
 	AbilityCost *cost
 	Effects     effects
+}
+
+func (a activatedAbility) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a activatedAbility) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a activatedAbility) GetInteractionText() string {
@@ -42,10 +60,17 @@ func (a activatedAbility) GetInteractionText() string {
 }
 
 type triggeredAbility struct {
-	*jsonschema.BasicStruct
 	Cause   *eventListener
 	Cost    *cost
 	Effects effects
+}
+
+func (t triggeredAbility) Validate() error {
+	return t.ValidateStruct()
+}
+
+func (t triggeredAbility) ValidateStruct() error {
+	return jsonschema.ValidateStruct(t)
 }
 
 func (a triggeredAbility) GetInteractionText() string {

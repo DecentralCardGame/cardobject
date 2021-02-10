@@ -25,8 +25,11 @@ func (e effects) GetMinMaxItems() (int, int) {
 	return 0, maxAbilityEffectCount
 }
 
+func (e effects) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(e)
+}
+
 type effect struct {
-	*jsonschema.BasicInterface
 	ProductionEffect *productionEffect `json:",omitempty"`
 	DrawEffect       *drawEffect       `json:",omitempty"`
 	TokenEffect      *tokenEffect      `json:",omitempty"`
@@ -34,9 +37,24 @@ type effect struct {
 	ChooseFromEffect *chooseFromEffect `json:",omitempty"`
 }
 
+func (e effect) Validate() error {
+	return e.ValidateInterface()
+}
+
+func (e effect) ValidateInterface() error {
+	return jsonschema.ValidateInterface(e)
+}
+
 type productionEffect struct {
-	*jsonschema.BasicStruct
 	Amount intValue
+}
+
+func (p productionEffect) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p productionEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p productionEffect) GetInteractionText() string {
@@ -44,8 +62,15 @@ func (p productionEffect) GetInteractionText() string {
 }
 
 type drawEffect struct {
-	*jsonschema.BasicStruct
 	DrawAmount intValue
+}
+
+func (d drawEffect) Validate() error {
+	return d.ValidateStruct()
+}
+
+func (d drawEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(d)
 }
 
 func (d drawEffect) GetInteractionText() string {
@@ -53,9 +78,16 @@ func (d drawEffect) GetInteractionText() string {
 }
 
 type tokenEffect struct {
-	*jsonschema.BasicStruct
 	TokenAmount intValue
 	Token       token
+}
+
+func (t tokenEffect) Validate() error {
+	return t.ValidateStruct()
+}
+
+func (t tokenEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(t)
 }
 
 func (t tokenEffect) GetInteractionText() string {
@@ -63,8 +95,15 @@ func (t tokenEffect) GetInteractionText() string {
 }
 
 type chooseFromEffect struct {
-	*jsonschema.BasicStruct
 	Effects effects
+}
+
+func (c chooseFromEffect) Validate() error {
+	return c.ValidateStruct()
+}
+
+func (c chooseFromEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(c)
 }
 
 func (c chooseFromEffect) GetInteractionText() string {
@@ -72,17 +111,31 @@ func (c chooseFromEffect) GetInteractionText() string {
 }
 
 type targetEffect struct {
-	*jsonschema.BasicInterface
 	ActionTargetEffect    *actionTargetEffect    `json:",omitempty"`
 	EntityTargetEffect    *entityTargetEffect    `json:",omitempty"`
 	PlaceTargetEffect     *placeTargetEffect     `json:",omitempty"`
 	ExtractorTargetEffect *extractorTargetEffect `json:",omitempty"`
 }
 
+func (t targetEffect) Validate() error {
+	return t.ValidateInterface()
+}
+
+func (t targetEffect) ValidateInterface() error {
+	return jsonschema.ValidateInterface(t)
+}
+
 type actionTargetEffect struct {
-	jsonschema.BasicStruct
 	ActionSelector      *actionSelector
 	ActionManipulations *actionManipulations
+}
+
+func (a actionTargetEffect) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionTargetEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionTargetEffect) GetInteractionText() string {
@@ -90,9 +143,16 @@ func (a actionTargetEffect) GetInteractionText() string {
 }
 
 type entityTargetEffect struct {
-	*jsonschema.BasicStruct
 	EntitySelector      *entitySelector
 	EntityManipulations *entityManipulations
+}
+
+func (e entityTargetEffect) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityTargetEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityTargetEffect) GetInteractionText() string {
@@ -100,9 +160,16 @@ func (e entityTargetEffect) GetInteractionText() string {
 }
 
 type placeTargetEffect struct {
-	*jsonschema.BasicStruct
 	PlaceSelector      *placeSelector
 	PlaceManipulations *placeManipulations
+}
+
+func (p placeTargetEffect) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeTargetEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeTargetEffect) GetInteractionText() string {
@@ -110,9 +177,16 @@ func (p placeTargetEffect) GetInteractionText() string {
 }
 
 type extractorTargetEffect struct {
-	*jsonschema.BasicStruct
 	TargetVariable targetVariableName
 	Manipulations  *manipulations
+}
+
+func (e extractorTargetEffect) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e extractorTargetEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e extractorTargetEffect) GetInteractionText() string {

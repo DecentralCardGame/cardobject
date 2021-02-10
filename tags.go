@@ -45,6 +45,10 @@ func (t tags) GetMinMaxItems() (int, int) {
 	return 1, 3
 }
 
+func (t tags) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(t)
+}
+
 type tag jsonschema.BasicEnum
 
 func (t tag) Validate() error {

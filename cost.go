@@ -7,15 +7,29 @@ import (
 )
 
 type cost struct {
-	*jsonschema.BasicInterface
 	RessourceCost *ressourceCost `json:",omitempty"`
 	SacrificeCost *sacrificeCost `json:",omitempty"`
 	DiscardCost   *discardCost   `json:",omitempty"`
 }
 
+func (c cost) Validate() error {
+	return c.ValidateInterface()
+}
+
+func (c cost) ValidateInterface() error {
+	return jsonschema.ValidateInterface(c)
+}
+
 type ressourceCost struct {
-	*jsonschema.BasicStruct
 	CostAmount basicAmount
+}
+
+func (r ressourceCost) Validate() error {
+	return r.ValidateStruct()
+}
+
+func (r ressourceCost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(r)
 }
 
 func (r ressourceCost) GetInteractionText() string {
@@ -23,9 +37,16 @@ func (r ressourceCost) GetInteractionText() string {
 }
 
 type sacrificeCost struct {
-	*jsonschema.BasicStruct
 	Amount     basicAmount
 	Conditions *cardConditions
+}
+
+func (s sacrificeCost) Validate() error {
+	return s.ValidateStruct()
+}
+
+func (s sacrificeCost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(s)
 }
 
 func (s sacrificeCost) GetInteractionText() string {
@@ -33,9 +54,16 @@ func (s sacrificeCost) GetInteractionText() string {
 }
 
 type discardCost struct {
-	*jsonschema.BasicStruct
 	Amount     basicAmount
 	Conditions *cardConditions
+}
+
+func (d discardCost) Validate() error {
+	return d.ValidateStruct()
+}
+
+func (d discardCost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(d)
 }
 
 func (d discardCost) GetInteractionText() string {
@@ -43,12 +71,19 @@ func (d discardCost) GetInteractionText() string {
 }
 
 type ressourceCostType struct {
-	*jsonschema.BasicStruct
 	Energy energy
 	Food   food
 	Lumber lumber
 	Mana   mana
 	Iron   iron
+}
+
+func (r ressourceCostType) Validate() error {
+	return r.ValidateStruct()
+}
+
+func (r ressourceCostType) ValidateStruct() error {
+	return jsonschema.ValidateStruct(r)
 }
 
 func (r ressourceCostType) GetInteractionText() string {

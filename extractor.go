@@ -5,10 +5,17 @@ import (
 )
 
 type cardExtractors struct {
-	*jsonschema.BasicInterface
 	ActionExtractors *actionExtractors `json:",omitempty"`
 	EntityExtractors *entityExtractors `json:",omitempty"`
 	PlaceExtractors  *placeExtractors  `json:",omitempty"`
+}
+
+func (c cardExtractors) Validate() error {
+	return c.ValidateInterface()
+}
+
+func (c cardExtractors) ValidateInterface() error {
+	return jsonschema.ValidateInterface(c)
 }
 
 type actionExtractors []actionExtractor
@@ -32,6 +39,10 @@ func (a actionExtractors) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
+func (a actionExtractors) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(a)
+}
+
 type entityExtractors []entityExtractor
 
 func (e entityExtractors) Validate() error {
@@ -51,6 +62,10 @@ func (e entityExtractors) ValidateArray() error {
 
 func (e entityExtractors) GetMinMaxItems() (int, int) {
 	return 0, 3
+}
+
+func (e entityExtractors) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(e)
 }
 
 type placeExtractors []placeExtractor
@@ -74,31 +89,63 @@ func (p placeExtractors) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
+func (p placeExtractors) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(p)
+}
+
 type actionExtractor struct {
-	*jsonschema.BasicInterface
 	ActionIntExtractor    *actionIntExtractor    `json:",omitempty"`
 	ActionStringExtractor *actionStringExtractor `json:",omitempty"`
 	ActionTargetExtractor *targetExtractor       `json:",omitempty"`
 }
 
+func (a actionExtractor) Validate() error {
+	return a.ValidateInterface()
+}
+
+func (a actionExtractor) ValidateInterface() error {
+	return jsonschema.ValidateInterface(a)
+}
+
 type entityExtractor struct {
-	*jsonschema.BasicInterface
 	EntityIntExtractor    *entityIntExtractor    `json:",omitempty"`
 	EntityStringExtractor *entityStringExtractor `json:",omitempty"`
 	EntityTargetExtractor *targetExtractor       `json:",omitempty"`
 }
 
+func (e entityExtractor) Validate() error {
+	return e.ValidateInterface()
+}
+
+func (e entityExtractor) ValidateInterface() error {
+	return jsonschema.ValidateInterface(e)
+}
+
 type placeExtractor struct {
-	*jsonschema.BasicInterface
 	PlaceIntExtractor    *placeIntExtractor    `json:",omitempty"`
 	PlaceStringExtractor *placeStringExtractor `json:",omitempty"`
 	PlaceTargetExtractor *targetExtractor      `json:",omitempty"`
 }
 
+func (p placeExtractor) Validate() error {
+	return p.ValidateInterface()
+}
+
+func (p placeExtractor) ValidateInterface() error {
+	return jsonschema.ValidateInterface(p)
+}
+
 type actionIntExtractor struct {
-	*jsonschema.BasicStruct
 	ExtractIntProperty actionIntProperty
 	IntVariableName    intVariableName
+}
+
+func (a actionIntExtractor) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionIntExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionIntExtractor) GetInteractionText() string {
@@ -106,9 +153,16 @@ func (a actionIntExtractor) GetInteractionText() string {
 }
 
 type actionStringExtractor struct {
-	*jsonschema.BasicStruct
 	ExtractStringProperty actionStringProperty
 	StringVariableName    stringVariableName
+}
+
+func (a actionStringExtractor) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionStringExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionStringExtractor) GetInteractionText() string {
@@ -116,9 +170,16 @@ func (a actionStringExtractor) GetInteractionText() string {
 }
 
 type entityIntExtractor struct {
-	*jsonschema.BasicStruct
 	ExtractIntProperty entityIntProperty
 	IntVariableName    intVariableName
+}
+
+func (e entityIntExtractor) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityIntExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityIntExtractor) GetInteractionText() string {
@@ -126,9 +187,16 @@ func (e entityIntExtractor) GetInteractionText() string {
 }
 
 type entityStringExtractor struct {
-	*jsonschema.BasicStruct
 	ExtractStringProperty entityStringProperty
 	StringVariableName    stringVariableName
+}
+
+func (e entityStringExtractor) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityStringExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityStringExtractor) GetInteractionText() string {
@@ -136,9 +204,16 @@ func (e entityStringExtractor) GetInteractionText() string {
 }
 
 type placeIntExtractor struct {
-	*jsonschema.BasicStruct
 	ExtractIntProperty placeIntProperty
 	IntVariableName    intVariableName
+}
+
+func (p placeIntExtractor) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeIntExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeIntExtractor) GetInteractionText() string {
@@ -146,9 +221,16 @@ func (p placeIntExtractor) GetInteractionText() string {
 }
 
 type placeStringExtractor struct {
-	*jsonschema.BasicStruct
 	ExtractStringProperty placeStringProperty
 	StringVariableName    stringVariableName
+}
+
+func (p placeStringExtractor) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeStringExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeStringExtractor) GetInteractionText() string {
@@ -156,8 +238,15 @@ func (p placeStringExtractor) GetInteractionText() string {
 }
 
 type targetExtractor struct {
-	*jsonschema.BasicStruct
 	TargetVariableName targetVariableName
+}
+
+func (t targetExtractor) Validate() error {
+	return t.ValidateStruct()
+}
+
+func (t targetExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(t)
 }
 
 func (t targetExtractor) GetInteractionText() string {
@@ -165,8 +254,15 @@ func (t targetExtractor) GetInteractionText() string {
 }
 
 type intExtractor struct {
-	*jsonschema.BasicStruct
 	IntVariableName intVariableName
+}
+
+func (i intExtractor) Validate() error {
+	return i.ValidateStruct()
+}
+
+func (i intExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(i)
 }
 
 func (i intExtractor) GetInteractionText() string {
@@ -174,8 +270,15 @@ func (i intExtractor) GetInteractionText() string {
 }
 
 type stringExtractor struct {
-	*jsonschema.BasicStruct
 	StringVariableName stringVariableName
+}
+
+func (s stringExtractor) Validate() error {
+	return s.ValidateStruct()
+}
+
+func (s stringExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(s)
 }
 
 func (s stringExtractor) GetInteractionText() string {

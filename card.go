@@ -5,15 +5,21 @@ import (
 )
 
 type card struct {
-	*jsonschema.BasicInterface
 	Action      *action      `json:",omitempty"`
 	Entity      *entity      `json:",omitempty"`
 	Place       *place       `json:",omitempty"`
 	Headquarter *headquarter `json:",omitempty"`
 }
 
+func (c card) Validate() error {
+	return c.ValidateInterface()
+}
+
+func (c card) ValidateInterface() error {
+	return jsonschema.ValidateInterface(c)
+}
+
 type action struct {
-	*jsonschema.BasicStruct
 	CardName    cardName
 	CastingCost castingCost
 	CostType    ressourceCostType
@@ -22,12 +28,19 @@ type action struct {
 	Tags        tags
 }
 
+func (a action) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a action) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
+}
+
 func (a action) GetInteractionText() string {
 	return "§CardName §CastingCost §CostType §Effects §FlavourText §Tags"
 }
 
 type entity struct {
-	*jsonschema.BasicStruct
 	CardName    cardName
 	CastingCost castingCost
 	CostType    ressourceCostType
@@ -38,12 +51,19 @@ type entity struct {
 	Tags        tags
 }
 
+func (e entity) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entity) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
+}
+
 func (a entity) GetInteractionText() string {
 	return "§CardName §CastingCost §CostType §Abilities §Attack §Health §FlavourText §Tags"
 }
 
 type place struct {
-	*jsonschema.BasicStruct
 	CardName    cardName
 	CastingCost castingCost
 	CostType    ressourceCostType
@@ -53,12 +73,19 @@ type place struct {
 	Tags        tags
 }
 
+func (p place) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p place) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
+}
+
 func (a place) GetInteractionText() string {
 	return "§CardName §CastingCost §CostType §Abilities §Health §FlavourText §Tags"
 }
 
 type headquarter struct {
-	*jsonschema.BasicStruct
 	CardName         cardName
 	CostType         ressourceCostType
 	Abilities        abilities
@@ -68,6 +95,14 @@ type headquarter struct {
 	Wisdom           wisdom
 	FlavourText      flavourText
 	Tags             tags
+}
+
+func (h headquarter) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h headquarter) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
 }
 
 func (a headquarter) GetInteractionText() string {

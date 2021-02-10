@@ -33,7 +33,7 @@ func TestCardSerializationAction1(t *testing.T) {
 	if textErr != nil {
 		t.Error(textErr)
 	}
-	json, err := schema.MarshalJSON()
+	json, err := schema.MarshalJSONForJS("Card")
 	if err != nil {
 		t.Error(err)
 	}

@@ -3,10 +3,17 @@ package cardobject
 import "github.com/DecentralCardGame/jsonschema"
 
 type manipulations struct {
-	*jsonschema.BasicInterface
 	ActionManipulations *actionManipulations `json:",omitempty"`
 	EntityManipulations *entityManipulations `json:",omitempty"`
 	PlaceManipulations  *placeManipulations  `json:",omitempty"`
+}
+
+func (m manipulations) Validate() error {
+	return m.ValidateInterface()
+}
+
+func (m manipulations) ValidateInterface() error {
+	return jsonschema.ValidateInterface(m)
 }
 
 type actionManipulations []actionManipulation
@@ -30,6 +37,10 @@ func (a actionManipulations) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
+func (a actionManipulations) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(a)
+}
+
 type entityManipulations []entityManipulation
 
 func (e entityManipulations) Validate() error {
@@ -49,6 +60,10 @@ func (e entityManipulations) ValidateArray() error {
 
 func (e entityManipulations) GetMinMaxItems() (int, int) {
 	return 0, 3
+}
+
+func (e entityManipulations) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(e)
 }
 
 type placeManipulations []placeManipulation
@@ -72,8 +87,11 @@ func (p placeManipulations) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
+func (p placeManipulations) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(p)
+}
+
 type actionManipulation struct {
-	*jsonschema.BasicInterface
 	ActionEffectManipulation *actionEffectManipulation `json:",omitempty"`
 	ActionIntManipulation    *actionIntManipulation    `json:",omitempty"`
 	ActionStringManipulation *actionStringManipulation `json:",omitempty"`
@@ -81,8 +99,15 @@ type actionManipulation struct {
 	ActionZoneChange         *actionZoneChange         `json:",omitempty"`
 }
 
+func (a actionManipulation) Validate() error {
+	return a.ValidateInterface()
+}
+
+func (a actionManipulation) ValidateInterface() error {
+	return jsonschema.ValidateInterface(a)
+}
+
 type entityManipulation struct {
-	*jsonschema.BasicInterface
 	EntityAbilityManipulation *entityAbilityManipulation `json:",omitempty"`
 	EntityIntManipulation     *entityIntManipulation     `json:",omitempty"`
 	EntityStringManipulation  *entityStringManipulation  `json:",omitempty"`
@@ -90,8 +115,15 @@ type entityManipulation struct {
 	EntityZoneChange          *entityZoneChange          `json:",omitempty"`
 }
 
+func (e entityManipulation) Validate() error {
+	return e.ValidateInterface()
+}
+
+func (e entityManipulation) ValidateInterface() error {
+	return jsonschema.ValidateInterface(e)
+}
+
 type placeManipulation struct {
-	*jsonschema.BasicInterface
 	PlaceAbilityManipulation *placeAbilityManipulation `json:",omitempty"`
 	PlaceIntManipulation     *placeIntManipulation     `json:",omitempty"`
 	PlaceStringManipulation  *placeStringManipulation  `json:",omitempty"`
@@ -99,10 +131,25 @@ type placeManipulation struct {
 	PlaceZoneChange          *placeZoneChange          `json:",omitempty"`
 }
 
+func (p placeManipulation) Validate() error {
+	return p.ValidateInterface()
+}
+
+func (p placeManipulation) ValidateInterface() error {
+	return jsonschema.ValidateInterface(p)
+}
+
 type actionEffectManipulation struct {
-	*jsonschema.BasicStruct
 	Effect         effect
 	EffectOperator abilityEffectOperator
+}
+
+func (a actionEffectManipulation) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionEffectManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionEffectManipulation) GetInteractionText() string {
@@ -110,10 +157,17 @@ func (a actionEffectManipulation) GetInteractionText() string {
 }
 
 type actionIntManipulation struct {
-	*jsonschema.BasicStruct
 	IntProperty actionIntProperty
 	IntOperator intOperator
 	IntValue    intValue
+}
+
+func (a actionIntManipulation) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionIntManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionIntManipulation) GetInteractionText() string {
@@ -121,10 +175,17 @@ func (a actionIntManipulation) GetInteractionText() string {
 }
 
 type actionStringManipulation struct {
-	*jsonschema.BasicStruct
 	StringProperty actionStringProperty
 	StringOperator stringOperator
 	StringValue    simpleStringValue
+}
+
+func (a actionStringManipulation) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionStringManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionStringManipulation) GetInteractionText() string {
@@ -132,9 +193,16 @@ func (a actionStringManipulation) GetInteractionText() string {
 }
 
 type actionTagManipulation struct {
-	*jsonschema.BasicStruct
 	TagValue    tag
 	TagOperator stringOperator
+}
+
+func (a actionTagManipulation) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionTagManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionTagManipulation) GetInteractionText() string {
@@ -142,9 +210,16 @@ func (a actionTagManipulation) GetInteractionText() string {
 }
 
 type entityAbilityManipulation struct {
-	*jsonschema.BasicStruct
 	Ability         ability
 	AbilityOperator abilityEffectOperator
+}
+
+func (e entityAbilityManipulation) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityAbilityManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityAbilityManipulation) GetInteractionText() string {
@@ -152,10 +227,17 @@ func (e entityAbilityManipulation) GetInteractionText() string {
 }
 
 type entityIntManipulation struct {
-	*jsonschema.BasicStruct
 	IntProperty entityIntProperty
 	IntOperator intOperator
 	IntValue    intValue
+}
+
+func (e entityIntManipulation) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityIntManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityIntManipulation) GetInteractionText() string {
@@ -163,10 +245,17 @@ func (e entityIntManipulation) GetInteractionText() string {
 }
 
 type entityStringManipulation struct {
-	*jsonschema.BasicStruct
 	StringProperty entityStringProperty
 	StringOperator stringOperator
 	StringValue    simpleStringValue
+}
+
+func (e entityStringManipulation) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityStringManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityStringManipulation) GetInteractionText() string {
@@ -174,9 +263,16 @@ func (e entityStringManipulation) GetInteractionText() string {
 }
 
 type entityTagManipulation struct {
-	*jsonschema.BasicStruct
 	TagValue    tag
 	TagOperator stringOperator
+}
+
+func (e entityTagManipulation) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityTagManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityTagManipulation) GetInteractionText() string {
@@ -184,9 +280,16 @@ func (e entityTagManipulation) GetInteractionText() string {
 }
 
 type placeAbilityManipulation struct {
-	*jsonschema.BasicStruct
 	Ability         ability
 	AbilityOperator abilityEffectOperator
+}
+
+func (p placeAbilityManipulation) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeAbilityManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeAbilityManipulation) GetInteractionText() string {
@@ -194,10 +297,17 @@ func (p placeAbilityManipulation) GetInteractionText() string {
 }
 
 type placeIntManipulation struct {
-	*jsonschema.BasicStruct
 	IntProperty placeIntProperty
 	IntOperator intOperator
 	IntValue    intValue
+}
+
+func (p placeIntManipulation) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeIntManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeIntManipulation) GetInteractionText() string {
@@ -205,10 +315,17 @@ func (p placeIntManipulation) GetInteractionText() string {
 }
 
 type placeStringManipulation struct {
-	*jsonschema.BasicStruct
 	StringProperty placeStringProperty
 	StringOperator stringOperator
 	StringValue    simpleStringValue
+}
+
+func (p placeStringManipulation) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeStringManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeStringManipulation) GetInteractionText() string {
@@ -216,9 +333,16 @@ func (p placeStringManipulation) GetInteractionText() string {
 }
 
 type placeTagManipulation struct {
-	*jsonschema.BasicStruct
 	TagValue    tag
 	TagOperator stringOperator
+}
+
+func (p placeTagManipulation) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeTagManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeTagManipulation) GetInteractionText() string {

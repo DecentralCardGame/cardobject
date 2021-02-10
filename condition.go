@@ -5,11 +5,18 @@ import (
 )
 
 type cardConditions struct {
-	*jsonschema.BasicInterface
 	ActionConditions *actionConditions `json:",omitempty"`
 	EntityConditions *entityConditions `json:",omitempty"`
 	PlaceConditions  *placeConditions  `json:",omitempty"`
 	ThisConditions   *thisCondition    `json:",omitempty"`
+}
+
+func (c cardConditions) Validate() error {
+	return c.ValidateInterface()
+}
+
+func (c cardConditions) ValidateInterface() error {
+	return jsonschema.ValidateInterface(c)
 }
 
 type actionConditions []actionCondition
@@ -27,6 +34,10 @@ func (a actionConditions) ValidateArray() error {
 		}
 	}
 	return jsonschema.CombineErrors(errorRange)
+}
+
+func (a actionConditions) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(a)
 }
 
 func (a actionConditions) GetMinMaxItems() (int, int) {
@@ -54,6 +65,10 @@ func (e entityConditions) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
+func (e entityConditions) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(e)
+}
+
 type placeConditions []placeCondition
 
 func (p placeConditions) Validate() error {
@@ -75,6 +90,10 @@ func (p placeConditions) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
+func (p placeConditions) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(p)
+}
+
 type playerConditions []playerCondition
 
 func (p playerConditions) Validate() error {
@@ -92,38 +111,76 @@ func (p playerConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (p playerConditions) GetMinMayItems() (int, int) {
+func (p playerConditions) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
+func (p playerConditions) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(p)
+}
+
 type actionCondition struct {
-	*jsonschema.BasicInterface
 	ActionIntCondition    *actionIntCondition    `json:",omitempty"`
 	ActionStringCondition *actionStringCondition `json:",omitempty"`
 	ActionTagCondition    *actionTagCondition    `json:",omitempty"`
 }
 
+func (a actionCondition) Validate() error {
+	return a.ValidateInterface()
+}
+
+func (a actionCondition) ValidateInterface() error {
+	return jsonschema.ValidateInterface(a)
+}
+
 type entityCondition struct {
-	*jsonschema.BasicInterface
 	EntityIntCondition    *entityIntCondition    `json:",omitempty"`
 	EntityStringCondition *entityStringCondition `json:",omitempty"`
 	EntityTagCondition    *entityTagCondition    `json:",omitempty"`
 }
 
+func (e entityCondition) Validate() error {
+	return e.ValidateInterface()
+}
+
+func (e entityCondition) ValidateInterface() error {
+	return jsonschema.ValidateInterface(e)
+}
+
 type placeCondition struct {
-	*jsonschema.BasicInterface
 	PlaceIntCondition    *placeIntCondition    `json:",omitempty"`
 	PlaceStringCondition *placeStringCondition `json:",omitempty"`
 	PlaceTagCondition    *placeTagCondition    `json:",omitempty"`
 }
 
+func (p placeCondition) Validate() error {
+	return p.ValidateInterface()
+}
+
+func (p placeCondition) ValidateInterface() error {
+	return jsonschema.ValidateInterface(p)
+}
+
 type playerCondition struct {
-	*jsonschema.BasicInterface
 	PlayerIntCondition *playerIntCondition `json:",omitempty"`
 }
 
-type thisCondition struct {
-	*jsonschema.BasicStruct
+func (p playerCondition) Validate() error {
+	return p.ValidateInterface()
+}
+
+func (p playerCondition) ValidateInterface() error {
+	return jsonschema.ValidateInterface(p)
+}
+
+type thisCondition struct{}
+
+func (t thisCondition) Validate() error {
+	return t.ValidateStruct()
+}
+
+func (t thisCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(t)
 }
 
 func (t thisCondition) GetInteractionText() string {
@@ -131,10 +188,17 @@ func (t thisCondition) GetInteractionText() string {
 }
 
 type actionIntCondition struct {
-	*jsonschema.BasicStruct
 	ActionIntProperty actionIntProperty
 	IntValue          simpleIntValue
 	IntComparator     intComparator
+}
+
+func (a actionIntCondition) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionIntCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionIntCondition) GetInteractionText() string {
@@ -142,10 +206,17 @@ func (a actionIntCondition) GetInteractionText() string {
 }
 
 type actionStringCondition struct {
-	*jsonschema.BasicStruct
 	ActionStringProperty actionStringProperty
 	StringValue          simpleStringValue
 	StringComparator     stringComparator
+}
+
+func (a actionStringCondition) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionStringCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionStringCondition) GetInteractionText() string {
@@ -153,9 +224,16 @@ func (a actionStringCondition) GetInteractionText() string {
 }
 
 type actionTagCondition struct {
-	*jsonschema.BasicStruct
 	StringValue      simpleStringValue
 	StringComparator stringComparator
+}
+
+func (a actionTagCondition) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionTagCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionTagCondition) GetInteractionText() string {
@@ -163,10 +241,17 @@ func (a actionTagCondition) GetInteractionText() string {
 }
 
 type entityIntCondition struct {
-	*jsonschema.BasicStruct
 	EntityIntProperty entityIntProperty
 	IntValue          simpleIntValue
 	IntComparator     intComparator
+}
+
+func (e entityIntCondition) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityIntCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityIntCondition) GetInteractionText() string {
@@ -174,10 +259,17 @@ func (e entityIntCondition) GetInteractionText() string {
 }
 
 type entityStringCondition struct {
-	*jsonschema.BasicStruct
 	EntityStringProperty entityStringProperty
 	StringValue          simpleStringValue
 	StringComparator     stringComparator
+}
+
+func (e entityStringCondition) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityStringCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityStringCondition) GetInteractionText() string {
@@ -185,9 +277,16 @@ func (e entityStringCondition) GetInteractionText() string {
 }
 
 type entityTagCondition struct {
-	*jsonschema.BasicStruct
 	StringValue      simpleStringValue
 	StringComparator stringComparator
+}
+
+func (e entityTagCondition) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityTagCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityTagCondition) GetInteractionText() string {
@@ -195,10 +294,17 @@ func (e entityTagCondition) GetInteractionText() string {
 }
 
 type placeIntCondition struct {
-	*jsonschema.BasicStruct
 	PlaceIntProperty placeIntProperty
 	IntValue         simpleIntValue
 	IntComparator    intComparator
+}
+
+func (p placeIntCondition) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeIntCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeIntCondition) GetInteractionText() string {
@@ -206,10 +312,17 @@ func (p placeIntCondition) GetInteractionText() string {
 }
 
 type placeStringCondition struct {
-	*jsonschema.BasicStruct
 	PlaceStringProperty placeStringProperty
 	StringValue         simpleStringValue
 	StringComparator    stringComparator
+}
+
+func (p placeStringCondition) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeStringCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeStringCondition) GetInteractionText() string {
@@ -217,9 +330,16 @@ func (p placeStringCondition) GetInteractionText() string {
 }
 
 type placeTagCondition struct {
-	*jsonschema.BasicStruct
 	StringValue      simpleStringValue
 	StringComparator stringComparator
+}
+
+func (p placeTagCondition) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeTagCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeTagCondition) GetInteractionText() string {
@@ -227,10 +347,17 @@ func (p placeTagCondition) GetInteractionText() string {
 }
 
 type playerIntCondition struct {
-	*jsonschema.BasicStruct
 	PlayerIntProperty playerIntProperty
 	IntValue          simpleIntValue
 	IntComparator     intComparator
+}
+
+func (p playerIntCondition) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p playerIntCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p playerIntCondition) GetInteractionText() string {

@@ -3,9 +3,16 @@ package cardobject
 import "github.com/DecentralCardGame/jsonschema"
 
 type actionZoneChange struct {
-	*jsonschema.BasicStruct
 	Zone   actionZone
 	Player playerMode
+}
+
+func (a actionZoneChange) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionZoneChange) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a actionZoneChange) GetInteractionText() string {
@@ -13,9 +20,16 @@ func (a actionZoneChange) GetInteractionText() string {
 }
 
 type entityZoneChange struct {
-	*jsonschema.BasicStruct
 	Zone   entityZone
 	Player playerMode
+}
+
+func (e entityZoneChange) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityZoneChange) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
 func (e entityZoneChange) GetInteractionText() string {
@@ -23,9 +37,16 @@ func (e entityZoneChange) GetInteractionText() string {
 }
 
 type placeZoneChange struct {
-	*jsonschema.BasicStruct
 	Zone   placeZone
 	Player playerMode
+}
+
+func (p placeZoneChange) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeZoneChange) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p placeZoneChange) GetInteractionText() string {

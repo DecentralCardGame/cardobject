@@ -3,7 +3,6 @@ package cardobject
 import "github.com/DecentralCardGame/jsonschema"
 
 type eventListener struct {
-	*jsonschema.BasicInterface
 	AttackEventListener       *attackEventListener       `json:",omitempty"`
 	BlockEventListener        *blockEventListener        `json:",omitempty"`
 	ManipulationEventListener *manipulationEventListener `json:",omitempty"`
@@ -12,10 +11,25 @@ type eventListener struct {
 	ZoneChangeEventListener   *zoneChangeEventListener   `json:",omitempty"`
 }
 
+func (e eventListener) Validate() error {
+	return e.ValidateInterface()
+}
+
+func (e eventListener) ValidateInterface() error {
+	return jsonschema.ValidateInterface(e)
+}
+
 type attackEventListener struct {
-	*jsonschema.BasicStruct
 	EntityCondition        *entityCondition  `json:",omitempty"`
 	AttackEntityExtractors *entityExtractors `json:",omitempty"`
+}
+
+func (a attackEventListener) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a attackEventListener) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
 }
 
 func (a attackEventListener) GetInteractionText() string {
@@ -23,10 +37,17 @@ func (a attackEventListener) GetInteractionText() string {
 }
 
 type blockEventListener struct {
-	*jsonschema.BasicStruct
 	EntityCondition          *entityCondition  `json:",omitempty"`
 	BlockingEntityExtractors *entityExtractors `json:",omitempty"`
 	BlockedEntityExtractors  *entityExtractors `json:",omitempty"`
+}
+
+func (b blockEventListener) Validate() error {
+	return b.ValidateStruct()
+}
+
+func (b blockEventListener) ValidateStruct() error {
+	return jsonschema.ValidateStruct(b)
 }
 
 func (b blockEventListener) GetInteractionText() string {
@@ -34,13 +55,19 @@ func (b blockEventListener) GetInteractionText() string {
 }
 
 type manipulationEventListener struct {
-	*jsonschema.BasicInterface
 	IntManipulationEventListener    *intManipulationEventListener    `json:",omitempty"`
 	StringManipulationEventListener *stringManipulationEventListener `json:",omitempty"`
 }
 
+func (m manipulationEventListener) Validate() error {
+	return m.ValidateInterface()
+}
+
+func (m manipulationEventListener) ValidateInterface() error {
+	return jsonschema.ValidateInterface(m)
+}
+
 type intManipulationEventListener struct {
-	*jsonschema.BasicStruct
 	IntProperty                cardIntProperty
 	IntChangeMode              intChangeMode
 	CardCondition              *cardConditions `json:",omitempty"`
@@ -48,12 +75,19 @@ type intManipulationEventListener struct {
 	ManipulationValueExtractor *intExtractor   `json:",omitempty"`
 }
 
+func (i intManipulationEventListener) Validate() error {
+	return i.ValidateStruct()
+}
+
+func (i intManipulationEventListener) ValidateStruct() error {
+	return jsonschema.ValidateStruct(i)
+}
+
 func (i intManipulationEventListener) GetInteractionText() string {
 	return "Whenever §IntProperty on card §CardCondition §IntChangeMode. §ManipulatedCardExtractors §ManipulationValueExtractor"
 }
 
 type stringManipulationEventListener struct {
-	*jsonschema.BasicStruct
 	StringProperty             cardStringProperty
 	StringChangeMode           stringChangeMode
 	CardCondition              *cardConditions  `json:",omitempty"`
@@ -61,14 +95,29 @@ type stringManipulationEventListener struct {
 	ManipulationValueExtractor *stringExtractor `json:",omitempty"`
 }
 
+func (s stringManipulationEventListener) Validate() error {
+	return s.ValidateStruct()
+}
+
+func (s stringManipulationEventListener) ValidateStruct() error {
+	return jsonschema.ValidateStruct(s)
+}
+
 func (s stringManipulationEventListener) GetInteractionText() string {
 	return "Whenever §StringProperty §StringChangeMode on a card §CardCondition. §ManipulatedCardExtractors §ManipulationValueExtractor"
 }
 
 type productionEventListener struct {
-	*jsonschema.BasicStruct
 	RessourceTypeCondition    *ressourceCostType `json:",omitempty"`
 	ProductionAmountExtractor *intExtractor      `json:",omitempty"`
+}
+
+func (p productionEventListener) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p productionEventListener) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
 func (p productionEventListener) GetInteractionText() string {
@@ -76,8 +125,15 @@ func (p productionEventListener) GetInteractionText() string {
 }
 
 type timeEventListener struct {
-	*jsonschema.BasicStruct
 	TimeEvent timeEvent
+}
+
+func (t timeEventListener) Validate() error {
+	return t.ValidateStruct()
+}
+
+func (t timeEventListener) ValidateStruct() error {
+	return jsonschema.ValidateStruct(t)
 }
 
 func (t timeEventListener) GetInteractionText() string {
@@ -85,11 +141,18 @@ func (t timeEventListener) GetInteractionText() string {
 }
 
 type zoneChangeEventListener struct {
-	*jsonschema.BasicStruct
 	Source              dynamicZone
 	Destination         zone            `json:",omitempty"`
 	CardCondition       *cardConditions `json:",omitempty"`
 	MovedCardExtractors *cardExtractors `json:",omitempty"`
+}
+
+func (z zoneChangeEventListener) Validate() error {
+	return z.ValidateStruct()
+}
+
+func (z zoneChangeEventListener) ValidateStruct() error {
+	return jsonschema.ValidateStruct(z)
 }
 
 func (z zoneChangeEventListener) GetInteractionText() string {
