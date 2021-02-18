@@ -74,5 +74,5 @@ func (t triggeredAbility) ValidateStruct() error {
 }
 
 func (a triggeredAbility) GetInteractionText() string {
-	return "§Cause, §Cost : §Effects \n"
+	return "§Cause , §Cost : §Effects \n"
 }
