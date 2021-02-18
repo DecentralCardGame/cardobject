@@ -1,7 +1,9 @@
 package cardobject
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"testing"
 
@@ -38,4 +40,55 @@ func TestCardSerializationAction1(t *testing.T) {
 		t.Error(err)
 	}
 	writeToFile(string(json))
+}
+
+func TestValidateAction(t *testing.T) {
+	var c card
+	dat, readErr := ioutil.ReadFile("testJsons/actionTest1.json")
+	if readErr != nil {
+		t.Error(readErr)
+	}
+
+	marshalErr := json.Unmarshal(dat, &c)
+	if marshalErr != nil {
+		t.Error(marshalErr)
+	}
+	validateErr := c.Validate()
+	if validateErr != nil {
+		t.Error(validateErr)
+	}
+}
+
+func TestValidateEntity(t *testing.T) {
+	var c card
+	dat, readErr := ioutil.ReadFile("testJsons/entityTest1.json")
+	if readErr != nil {
+		t.Error(readErr)
+	}
+
+	marshalErr := json.Unmarshal(dat, &c)
+	if marshalErr != nil {
+		t.Error(marshalErr)
+	}
+	validateErr := c.Validate()
+	if validateErr != nil {
+		t.Error(validateErr)
+	}
+}
+
+func TestValidatePlace(t *testing.T) {
+	var c card
+	dat, readErr := ioutil.ReadFile("testJsons/place1Test.json")
+	if readErr != nil {
+		t.Error(readErr)
+	}
+
+	marshalErr := json.Unmarshal(dat, &c)
+	if marshalErr != nil {
+		t.Error(marshalErr)
+	}
+	validateErr := c.Validate()
+	if validateErr != nil {
+		t.Error(validateErr)
+	}
 }
