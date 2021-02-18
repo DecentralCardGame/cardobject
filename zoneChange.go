@@ -1,37 +1,54 @@
 package cardobject
 
+import "github.com/DecentralCardGame/jsonschema"
+
 type actionZoneChange struct {
-	Zone   string
-	Player string
+	Zone   actionZone
+	Player playerMode
+}
+
+func (a actionZoneChange) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionZoneChange) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
+}
+
+func (a actionZoneChange) GetInteractionText() string {
+	return "Put it into §Player §Zone."
 }
 
 type entityZoneChange struct {
-	Zone   string
-	Player string
+	Zone   entityZone
+	Player playerMode
+}
+
+func (e entityZoneChange) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityZoneChange) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
+}
+
+func (e entityZoneChange) GetInteractionText() string {
+	return "Put it into §Player §Zone."
 }
 
 type placeZoneChange struct {
-	Zone   string
-	Player string
+	Zone   placeZone
+	Player playerMode
 }
 
-func (c *actionZoneChange) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateActionZone(c.Zone))
-	errorRange = append(errorRange, validateOwnerMode(c.Player))
-	return combineErrors(errorRange)
+func (p placeZoneChange) Validate() error {
+	return p.ValidateStruct()
 }
 
-func (c *entityZoneChange) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateEntityZone(c.Zone))
-	errorRange = append(errorRange, validateOwnerMode(c.Player))
-	return combineErrors(errorRange)
+func (p placeZoneChange) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
-func (c *placeZoneChange) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlaceZone(c.Zone))
-	errorRange = append(errorRange, validateOwnerMode(c.Player))
-	return combineErrors(errorRange)
+func (p placeZoneChange) GetInteractionText() string {
+	return "Put it into §Player §Zone."
 }

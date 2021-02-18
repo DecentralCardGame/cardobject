@@ -1,42 +1,35 @@
 package cardobject
 
-import "errors"
+import "github.com/DecentralCardGame/jsonschema"
 
-type intValueInterface struct {
+type intValue struct {
 	ComplexIntValue *complexIntValue `json:",omitempty"`
-	SimpleIntValue  *int             `json:",omitempty"`
-	IntVariable     *string          `json:",omitempty"`
+	SimpleIntValue  *simpleIntValue  `json:",omitempty"`
+	IntVariable     *intVariableName `json:",omitempty"`
+}
+
+func (i intValue) Validate() error {
+	return i.ValidateInterface()
+}
+
+func (i intValue) ValidateInterface() error {
+	return jsonschema.ValidateInterface(i)
 }
 
 type complexIntValue struct {
-	FirstValue    *intValueInterface
-	SecondValue   *intValueInterface
-	ArithOperator string
+	FirstValue    *intValue
+	SecondValue   *intValue
+	ArithOperator arithOperator
 }
 
-func (v *intValueInterface) validate() error {
-	if v.ComplexIntValue != nil {
-		if v.SimpleIntValue != nil {
-			return errors.New("IntValue implemented by not exactly one option")
-		}
-		if v.IntVariable != nil {
-			return errors.New("IntValue implemented by not exactly one option")
-		}
-		return v.ComplexIntValue.validate()
-	}
-	if v.SimpleIntValue != nil {
-		if v.IntVariable != nil {
-			return errors.New("IntValue implemented by not exactly one option")
-		}
-		return validateSimpleInt(*v.SimpleIntValue)
-	}
-	return validateIntVariableName(*v.IntVariable)
+func (c complexIntValue) Validate() error {
+	return c.ValidateStruct()
 }
 
-func (v *complexIntValue) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, v.FirstValue.validate())
-	errorRange = append(errorRange, v.SecondValue.validate())
-	errorRange = append(errorRange, validateArithOperator(v.ArithOperator))
-	return combineErrors(errorRange)
+func (c complexIntValue) ValidateStruct() error {
+	return jsonschema.ValidateStruct(c)
+}
+
+func (c complexIntValue) GetInteractionText() string {
+	return "§FirstValue §ArithOperator §SecondValue"
 }

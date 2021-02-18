@@ -1,91 +1,69 @@
 package cardobject
 
+import "github.com/DecentralCardGame/jsonschema"
+
 type actionSelector struct {
-	PlayerMode       string
-	PlayerCondition  *playerConditionInterface `json:",omitempty"`
-	CardMode         string
+	PlayerMode       playerMode
+	PlayerCondition  *playerCondition `json:",omitempty"`
+	CardMode         cardMode
 	ActionConditions *actionConditions `json:",omitempty"`
-	Zone             string
+	Zone             actionZone
 	ActionExtractors *actionExtractors `json:",omitempty"`
 	AmountExtractor  *intExtractor     `json:",omitempty"`
 }
 
+func (a actionSelector) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionSelector) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
+}
+
+func (a actionSelector) GetInteractionText() string {
+	return "Choose §CardMode action §ActionConditions in the §Zone of §PlayerMode player §PlayerCondition. §ActionExtractors §AmountExtractor"
+}
+
 type entitySelector struct {
-	PlayerMode       string
-	PlayerCondition  *playerConditionInterface `json:",omitempty"`
-	CardMode         string
+	PlayerMode       playerMode
+	PlayerCondition  *playerCondition `json:",omitempty"`
+	CardMode         cardMode
 	EntityConditions *entityConditions `json:",omitempty"`
-	Zone             string
+	Zone             entityZone
 	EntityExtractors *entityExtractors `json:",omitempty"`
 	AmountExtractor  *intExtractor     `json:",omitempty"`
 }
 
+func (e entitySelector) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entitySelector) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
+}
+
+func (e entitySelector) GetInteractionText() string {
+	return "Choose §CardMode entity §EntityConditions in the §Zone of §PlayerMode player §PlayerCondition. §EntityExtractors §AmountExtractor"
+}
+
 type placeSelector struct {
-	PlayerMode      string
-	PlayerCondition *playerConditionInterface `json:",omitempty"`
-	CardMode        string
+	PlayerMode      playerMode
+	PlayerCondition *playerCondition `json:",omitempty"`
+	CardMode        cardMode
 	PlaceConditions *placeConditions `json:",omitempty"`
-	Zone            string
+	Zone            placeZone
 	PlaceExtractors *placeExtractors `json:",omitempty"`
 	AmountExtractor *intExtractor    `json:",omitempty"`
 }
 
-func (s *actionSelector) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlayerMode(s.PlayerMode))
-	if s.PlayerCondition != nil {
-		errorRange = append(errorRange, s.PlayerCondition.validate())
-	}
-	errorRange = append(errorRange, validateCardMode(s.CardMode))
-	if s.ActionConditions != nil {
-		errorRange = append(errorRange, s.ActionConditions.validate())
-	}
-	errorRange = append(errorRange, validateDynamicZone(s.Zone))
-	if s.ActionExtractors != nil {
-		errorRange = append(errorRange, s.ActionExtractors.validate())
-	}
-	if s.AmountExtractor != nil {
-		errorRange = append(errorRange, s.AmountExtractor.validate())
-	}
-	return combineErrors(errorRange)
+func (p placeSelector) Validate() error {
+	return p.ValidateStruct()
 }
 
-func (s *entitySelector) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlayerMode(s.PlayerMode))
-	if s.PlayerCondition != nil {
-		errorRange = append(errorRange, s.PlayerCondition.validate())
-	}
-	errorRange = append(errorRange, validateCardMode(s.CardMode))
-	if s.EntityConditions != nil {
-		errorRange = append(errorRange, s.EntityConditions.validate())
-	}
-	errorRange = append(errorRange, validateDynamicZone(s.Zone))
-	if s.EntityExtractors != nil {
-		errorRange = append(errorRange, s.EntityExtractors.validate())
-	}
-	if s.AmountExtractor != nil {
-		errorRange = append(errorRange, s.AmountExtractor.validate())
-	}
-	return combineErrors(errorRange)
+func (p placeSelector) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
 }
 
-func (s *placeSelector) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlayerMode(s.PlayerMode))
-	if s.PlayerCondition != nil {
-		errorRange = append(errorRange, s.PlayerCondition.validate())
-	}
-	errorRange = append(errorRange, validateCardMode(s.CardMode))
-	if s.PlaceConditions != nil {
-		errorRange = append(errorRange, s.PlaceConditions.validate())
-	}
-	errorRange = append(errorRange, validateDynamicZone(s.Zone))
-	if s.PlaceExtractors != nil {
-		errorRange = append(errorRange, s.PlaceExtractors.validate())
-	}
-	if s.AmountExtractor != nil {
-		errorRange = append(errorRange, s.AmountExtractor.validate())
-	}
-	return combineErrors(errorRange)
+func (p placeSelector) GetInteractionText() string {
+	return "Choose §CardMode place §PlaceConditions in the §Zone of §PlayerMode player §PlayerCondition. §PlaceExtractors §AmountExtractor"
 }

@@ -1,6 +1,10 @@
 package cardobject
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/DecentralCardGame/jsonschema"
+)
 
 var dynamicZones []string = []string{"DECK", "DUSTPILE", "FIELD", "HAND"}
 var zones []string = []string{"DECK", "DUSTPILE", "FIELD", "HAND", "VOID"}
@@ -9,46 +13,102 @@ var actionZones []string = []string{"DECK", "DUSTPILE", "HAND", "VOID"}
 var entityZones []string = []string{"ATTACKLANE", "BLOCKLANE", "DECK", "DUSTPILE", "FIELD", "HAND", "VOID"}
 var placeZones []string = []string{"DECK", "DUSTPILE", "FIELD", "HAND", "VOID"}
 
-func validateDynamicZone(zone string) error {
-	for _, t := range dynamicZones {
-		if t == zone {
-			return nil
-		}
-	}
-	return errors.New("DynamicZone: " + zone + " not available")
+type dynamicZone jsonschema.BasicEnum
+
+func (d dynamicZone) Validate() error {
+	return d.ValidateEnum()
 }
 
-func validateZone(zone string) error {
-	for _, t := range zones {
-		if t == zone {
+func (d dynamicZone) ValidateEnum() error {
+	values := d.GetEnumValues()
+	for _, v := range values {
+		if v == string(d) {
 			return nil
 		}
 	}
-	return errors.New("Zone: " + zone + " not available")
+	return errors.New("")
 }
 
-func validateActionZone(zone string) error {
-	for _, t := range actionZones {
-		if t == zone {
-			return nil
-		}
-	}
-	return errors.New("ActionZone: " + zone + " not available")
+func (d dynamicZone) GetEnumValues() []string {
+	return dynamicZones
 }
 
-func validateEntityZone(zone string) error {
-	for _, t := range entityZones {
-		if t == zone {
-			return nil
-		}
-	}
-	return errors.New("EntityZone: " + zone + " not available")
+type zone jsonschema.BasicEnum
+
+func (z zone) Validate() error {
+	return z.ValidateEnum()
 }
-func validatePlaceZone(zone string) error {
-	for _, t := range placeZones {
-		if t == zone {
+
+func (z zone) ValidateEnum() error {
+	values := z.GetEnumValues()
+	for _, v := range values {
+		if v == string(z) {
 			return nil
 		}
 	}
-	return errors.New("PlaceZone: " + zone + " not available")
+	return errors.New("")
+}
+
+func (z zone) GetEnumValues() []string {
+	return zones
+}
+
+type actionZone jsonschema.BasicEnum
+
+func (a actionZone) Validate() error {
+	return a.ValidateEnum()
+}
+
+func (a actionZone) ValidateEnum() error {
+	values := a.GetEnumValues()
+	for _, v := range values {
+		if v == string(a) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (a actionZone) GetEnumValues() []string {
+	return actionZones
+}
+
+type entityZone jsonschema.BasicEnum
+
+func (e entityZone) Validate() error {
+	return e.ValidateEnum()
+}
+
+func (e entityZone) ValidateEnum() error {
+	values := e.GetEnumValues()
+	for _, v := range values {
+		if v == string(e) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (e entityZone) GetEnumValues() []string {
+	return entityZones
+}
+
+type placeZone jsonschema.BasicEnum
+
+func (p placeZone) Validate() error {
+	return p.ValidateEnum()
+}
+
+func (p placeZone) ValidateEnum() error {
+	values := p.GetEnumValues()
+	for _, v := range values {
+		if v == string(p) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (p placeZone) GetEnumValues() []string {
+	return placeZones
 }

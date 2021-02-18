@@ -1,6 +1,10 @@
 package cardobject
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/DecentralCardGame/jsonschema"
+)
 
 var actionIntProperties []string = []string{"COSTSUM"}
 var actionStringProperties []string = []string{"NAME", "TEXT"}
@@ -14,83 +18,182 @@ var cardStringProperties []string = []string{"NAME", "TEXT"}
 
 var playerIntProperties []string = []string{"HANDSIZE", "BOARDSIZE", "DECKSIZE"}
 
-func validateActionIntProperty(property string) error {
-	for _, t := range actionIntProperties {
-		if t == property {
-			return nil
-		}
-	}
-	return errors.New("ActionIntProperty: " + property + " not available")
+type actionIntProperty jsonschema.BasicEnum
+
+func (a actionIntProperty) Validate() error {
+	return a.ValidateEnum()
 }
 
-func validateActionStringProperty(property string) error {
-	for _, t := range actionStringProperties {
-		if t == property {
+func (a actionIntProperty) ValidateEnum() error {
+	values := a.GetEnumValues()
+	for _, v := range values {
+		if v == string(a) {
 			return nil
 		}
 	}
-	return errors.New("ActionStringProperty: " + property + " not available")
+	return errors.New("")
 }
 
-func validateEntityIntProperty(property string) error {
-	for _, t := range entityIntProperties {
-		if t == property {
-			return nil
-		}
-	}
-	return errors.New("EntityIntProperty: " + property + " not available")
+func (a actionIntProperty) GetEnumValues() []string {
+	return actionIntProperties
 }
 
-func validateEntityStringProperty(property string) error {
-	for _, t := range entityStringProperties {
-		if t == property {
-			return nil
-		}
-	}
-	return errors.New("EntityStringProperty: " + property + " not available")
+type actionStringProperty jsonschema.BasicEnum
+
+func (a actionStringProperty) Validate() error {
+	return a.ValidateEnum()
 }
 
-func validatePlaceIntProperty(property string) error {
-	for _, t := range placeIntProperties {
-		if t == property {
+func (a actionStringProperty) ValidateEnum() error {
+	values := a.GetEnumValues()
+	for _, v := range values {
+		if v == string(a) {
 			return nil
 		}
 	}
-	return errors.New("PlaceIntProperty: " + property + " not available")
+	return errors.New("")
 }
 
-func validatePlaceStringProperty(property string) error {
-	for _, t := range placeStringProperties {
-		if t == property {
-			return nil
-		}
-	}
-	return errors.New("PlaceStringProperty: " + property + " not available")
+func (a actionStringProperty) GetEnumValues() []string {
+	return actionStringProperties
 }
 
-func validateCardIntProperty(property string) error {
-	for _, t := range cardIntProperties {
-		if t == property {
-			return nil
-		}
-	}
-	return errors.New("CardIntProperty: " + property + " not available")
+type entityIntProperty jsonschema.BasicEnum
+
+func (e entityIntProperty) Validate() error {
+	return e.ValidateEnum()
 }
 
-func validateCardStringProperty(property string) error {
-	for _, t := range cardStringProperties {
-		if t == property {
+func (e entityIntProperty) ValidateEnum() error {
+	values := e.GetEnumValues()
+	for _, v := range values {
+		if v == string(e) {
 			return nil
 		}
 	}
-	return errors.New("CardStringProperty: " + property + " not available")
+	return errors.New("")
 }
 
-func validatePlayerIntProperty(property string) error {
-	for _, t := range playerIntProperties {
-		if t == property {
+func (e entityIntProperty) GetEnumValues() []string {
+	return entityIntProperties
+}
+
+type entityStringProperty jsonschema.BasicEnum
+
+func (e entityStringProperty) Validate() error {
+	return e.ValidateEnum()
+}
+
+func (e entityStringProperty) ValidateEnum() error {
+	values := e.GetEnumValues()
+	for _, v := range values {
+		if v == string(e) {
 			return nil
 		}
 	}
-	return errors.New("PlayerIntProperty: " + property + " not available")
+	return errors.New("")
+}
+
+func (e entityStringProperty) GetEnumValues() []string {
+	return entityStringProperties
+}
+
+type placeIntProperty jsonschema.BasicEnum
+
+func (p placeIntProperty) Validate() error {
+	return p.ValidateEnum()
+}
+
+func (p placeIntProperty) ValidateEnum() error {
+	values := p.GetEnumValues()
+	for _, v := range values {
+		if v == string(p) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (p placeIntProperty) GetEnumValues() []string {
+	return placeIntProperties
+}
+
+type placeStringProperty jsonschema.BasicEnum
+
+func (p placeStringProperty) Validate() error {
+	return p.ValidateEnum()
+}
+
+func (p placeStringProperty) ValidateEnum() error {
+	values := p.GetEnumValues()
+	for _, v := range values {
+		if v == string(p) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (p placeStringProperty) GetEnumValues() []string {
+	return actionStringProperties
+}
+
+type cardIntProperty jsonschema.BasicEnum
+
+func (c cardIntProperty) Validate() error {
+	return c.ValidateEnum()
+}
+
+func (c cardIntProperty) ValidateEnum() error {
+	values := c.GetEnumValues()
+	for _, v := range values {
+		if v == string(c) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (c cardIntProperty) GetEnumValues() []string {
+	return cardIntProperties
+}
+
+type cardStringProperty jsonschema.BasicEnum
+
+func (c cardStringProperty) Validate() error {
+	return c.ValidateEnum()
+}
+
+func (c cardStringProperty) ValidateEnum() error {
+	values := c.GetEnumValues()
+	for _, v := range values {
+		if v == string(c) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (c cardStringProperty) GetEnumValues() []string {
+	return cardStringProperties
+}
+
+type playerIntProperty jsonschema.BasicEnum
+
+func (p playerIntProperty) Validate() error {
+	return p.ValidateEnum()
+}
+
+func (p playerIntProperty) ValidateEnum() error {
+	values := p.GetEnumValues()
+	for _, v := range values {
+		if v == string(p) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (p playerIntProperty) GetEnumValues() []string {
+	return playerIntProperties
 }

@@ -1,13 +1,35 @@
 package cardobject
 
 import (
-	"errors"
-	"strconv"
+	"github.com/DecentralCardGame/jsonschema"
 )
 
-type effects []effectInterface
+type effects []effect
 
-type effectInterface struct {
+func (e effects) Validate() error {
+	return e.ValidateArray()
+}
+
+func (e effects) ValidateArray() error {
+	errorRange := []error{}
+	for _, v := range e {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
+}
+
+func (e effects) GetMinMaxItems() (int, int) {
+	return 0, maxAbilityEffectCount
+}
+
+func (e effects) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(e)
+}
+
+type effect struct {
 	ProductionEffect *productionEffect `json:",omitempty"`
 	DrawEffect       *drawEffect       `json:",omitempty"`
 	TokenEffect      *tokenEffect      `json:",omitempty"`
@@ -15,21 +37,77 @@ type effectInterface struct {
 	ChooseFromEffect *chooseFromEffect `json:",omitempty"`
 }
 
+func (e effect) Validate() error {
+	return e.ValidateInterface()
+}
+
+func (e effect) ValidateInterface() error {
+	return jsonschema.ValidateInterface(e)
+}
+
 type productionEffect struct {
-	Amount intValueInterface
+	Amount intValue
+}
+
+func (p productionEffect) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p productionEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
+}
+
+func (p productionEffect) GetInteractionText() string {
+	return "Produce §Amount."
 }
 
 type drawEffect struct {
-	DrawAmount intValueInterface
+	DrawAmount intValue
+}
+
+func (d drawEffect) Validate() error {
+	return d.ValidateStruct()
+}
+
+func (d drawEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(d)
+}
+
+func (d drawEffect) GetInteractionText() string {
+	return "Draw §DrawAmount cards."
 }
 
 type tokenEffect struct {
-	TokenAmount intValueInterface
+	TokenAmount intValue
 	Token       token
+}
+
+func (t tokenEffect) Validate() error {
+	return t.ValidateStruct()
+}
+
+func (t tokenEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(t)
+}
+
+func (t tokenEffect) GetInteractionText() string {
+	return "Create §TokenAmount §Token."
 }
 
 type chooseFromEffect struct {
 	Effects effects
+}
+
+func (c chooseFromEffect) Validate() error {
+	return c.ValidateStruct()
+}
+
+func (c chooseFromEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(c)
+}
+
+func (c chooseFromEffect) GetInteractionText() string {
+	return "Do one of §Effects."
 }
 
 type targetEffect struct {
@@ -39,9 +117,29 @@ type targetEffect struct {
 	ExtractorTargetEffect *extractorTargetEffect `json:",omitempty"`
 }
 
+func (t targetEffect) Validate() error {
+	return t.ValidateInterface()
+}
+
+func (t targetEffect) ValidateInterface() error {
+	return jsonschema.ValidateInterface(t)
+}
+
 type actionTargetEffect struct {
 	ActionSelector      *actionSelector
 	ActionManipulations *actionManipulations
+}
+
+func (a actionTargetEffect) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionTargetEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
+}
+
+func (a actionTargetEffect) GetInteractionText() string {
+	return "§ActionSelector §ActionManipulations"
 }
 
 type entityTargetEffect struct {
@@ -49,96 +147,48 @@ type entityTargetEffect struct {
 	EntityManipulations *entityManipulations
 }
 
+func (e entityTargetEffect) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityTargetEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
+}
+
+func (e entityTargetEffect) GetInteractionText() string {
+	return "§EntitySelector §EntityManipulations"
+}
+
 type placeTargetEffect struct {
 	PlaceSelector      *placeSelector
 	PlaceManipulations *placeManipulations
 }
 
+func (p placeTargetEffect) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeTargetEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
+}
+
+func (p placeTargetEffect) GetInteractionText() string {
+	return "§PlaceSelector §PlaceManipulations"
+}
+
 type extractorTargetEffect struct {
-	TargetVariable string
-	Manipulations  *manipulationsInterface
+	TargetVariable targetVariableName
+	Manipulations  *manipulations
 }
 
-func (e effects) validate() error {
-	if len(e) > maxAbilityEffectCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxAbilityEffectCount) + " effects")
-	}
-	errorRange := []error{}
-	for _, effect := range e {
-		errorRange = append(errorRange, effect.validate())
-	}
-	return combineErrors(errorRange)
+func (e extractorTargetEffect) Validate() error {
+	return e.ValidateStruct()
 }
 
-func (e *effectInterface) validate() error {
-	possibleImplementer := []validateable{e.ChooseFromEffect, e.DrawEffect, e.ProductionEffect, e.TargetEffect, e.TokenEffect}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("Effect implemented by not exactly one option")
-	}
-	return implementer.validate()
+func (e extractorTargetEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
 }
 
-func (e *chooseFromEffect) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, e.Effects.validate())
-	return combineErrors(errorRange)
-}
-
-func (e *drawEffect) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, e.DrawAmount.validate())
-	return combineErrors(errorRange)
-}
-
-func (e *productionEffect) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, e.Amount.validate())
-	return combineErrors(errorRange)
-}
-
-func (e *tokenEffect) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, e.TokenAmount.validate())
-	errorRange = append(errorRange, e.Token.validate())
-	return combineErrors(errorRange)
-}
-
-func (e *targetEffect) validate() error {
-	possibleImplementer := []validateable{e.ActionTargetEffect, e.EntityTargetEffect, e.ExtractorTargetEffect, e.PlaceTargetEffect}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("TargetEffect implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (e *actionTargetEffect) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, e.ActionSelector.validate())
-	errorRange = append(errorRange, e.ActionManipulations.validate())
-	return combineErrors(errorRange)
-}
-
-func (e *entityTargetEffect) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, e.EntitySelector.validate())
-	errorRange = append(errorRange, e.EntityManipulations.validate())
-	return combineErrors(errorRange)
-}
-
-func (e *placeTargetEffect) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, e.PlaceSelector.validate())
-	errorRange = append(errorRange, e.PlaceManipulations.validate())
-	return combineErrors(errorRange)
-}
-
-func (e *extractorTargetEffect) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateTargetVariableName(e.TargetVariable))
-	errorRange = append(errorRange, e.Manipulations.validate())
-	return combineErrors(errorRange)
+func (e extractorTargetEffect) GetInteractionText() string {
+	return "Choose §TargetVariable. §Manipulations"
 }

@@ -1,70 +1,78 @@
 package cardobject
 
 import (
-	"errors"
-	"strconv"
+	"github.com/DecentralCardGame/jsonschema"
 )
 
-type abilities []abilityInterface
+type abilities []ability
 
-type abilityInterface struct {
+func (a abilities) Validate() error {
+	return a.ValidateArray()
+}
+
+func (a abilities) ValidateArray() error {
+	errorRange := []error{}
+	for _, v := range a {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
+}
+
+func (a abilities) GetMinMaxItems() (int, int) {
+	return 0, maxAbilityEffectCount
+}
+
+func (a abilities) GetItemName() string {
+	return "Ability"
+}
+
+type ability struct {
 	ActivatedAbility *activatedAbility `json:",omitempty"`
 	TriggeredAbility *triggeredAbility `json:",omitempty"`
 }
 
+func (a ability) Validate() error {
+	return a.ValidateInterface()
+}
+
+func (a ability) ValidateInterface() error {
+	return jsonschema.ValidateInterface(a)
+}
+
 type activatedAbility struct {
-	AbilityCost *costInterface
+	AbilityCost *cost
 	Effects     effects
 }
 
+func (a activatedAbility) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a activatedAbility) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
+}
+
+func (a activatedAbility) GetInteractionText() string {
+	return "Pay §AbilityCost: §Effects \n"
+}
+
 type triggeredAbility struct {
-	Cause   *eventListenerInterface
-	Cost    *costInterface
+	Cause   *eventListener
+	Cost    *cost
 	Effects effects
 }
 
-func (a abilities) validate() error {
-	if len(a) > maxAbilityEffectCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxAbilityEffectCount) + " effects")
-	}
-	errorRange := []error{}
-	for _, ability := range a {
-		errorRange = append(errorRange, ability.validate())
-	}
-	return combineErrors(errorRange)
+func (t triggeredAbility) Validate() error {
+	return t.ValidateStruct()
 }
 
-func (a *abilityInterface) validate() error {
-	possibleImplementer := []validateable{a.ActivatedAbility, a.TriggeredAbility}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("Ability implemented by not exactly one option")
-	}
-	return implementer.validate()
+func (t triggeredAbility) ValidateStruct() error {
+	return jsonschema.ValidateStruct(t)
 }
 
-func (a *activatedAbility) validate() error {
-	errorRange := []error{}
-	if a.AbilityCost == nil {
-		errorRange = append(errorRange, errors.New("ActivatedAbility must have AbilityCost"))
-	} else {
-		errorRange = append(errorRange, a.AbilityCost.validate())
-	}
-	errorRange = append(errorRange, a.Effects.validate())
-	return combineErrors(errorRange)
-}
-
-func (a *triggeredAbility) validate() error {
-	errorRange := []error{}
-	if a.Cause == nil {
-		errorRange = append(errorRange, errors.New("TriggeredAbility must have Cause"))
-	} else {
-		errorRange = append(errorRange, a.Cause.validate())
-	}
-	if a.Cost != nil {
-		errorRange = append(errorRange, a.Cost.validate())
-	}
-	errorRange = append(errorRange, a.Effects.validate())
-	return combineErrors(errorRange)
+func (a triggeredAbility) GetInteractionText() string {
+	return "§Cause, §Cost : §Effects \n"
 }

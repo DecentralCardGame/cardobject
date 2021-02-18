@@ -1,65 +1,164 @@
 package cardobject
 
-import "errors"
+import (
+	"errors"
 
-type costInterface struct {
+	"github.com/DecentralCardGame/jsonschema"
+)
+
+type cost struct {
 	RessourceCost *ressourceCost `json:",omitempty"`
 	SacrificeCost *sacrificeCost `json:",omitempty"`
 	DiscardCost   *discardCost   `json:",omitempty"`
 }
 
+func (c cost) Validate() error {
+	return c.ValidateInterface()
+}
+
+func (c cost) ValidateInterface() error {
+	return jsonschema.ValidateInterface(c)
+}
+
 type ressourceCost struct {
-	CostAmount int
+	CostAmount basicAmount
+}
+
+func (r ressourceCost) Validate() error {
+	return r.ValidateStruct()
+}
+
+func (r ressourceCost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(r)
+}
+
+func (r ressourceCost) GetInteractionText() string {
+	return "§CostAmount ressources"
 }
 
 type sacrificeCost struct {
-	Amount     int
-	Conditions *cardConditionsInterface
+	Amount     basicAmount
+	Conditions *cardConditions
+}
+
+func (s sacrificeCost) Validate() error {
+	return s.ValidateStruct()
+}
+
+func (s sacrificeCost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(s)
+}
+
+func (s sacrificeCost) GetInteractionText() string {
+	return "Sacrifice §Amount card §Conditions"
 }
 
 type discardCost struct {
-	Amount     int
-	Conditions *cardConditionsInterface
+	Amount     basicAmount
+	Conditions *cardConditions
+}
+
+func (d discardCost) Validate() error {
+	return d.ValidateStruct()
+}
+
+func (d discardCost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(d)
+}
+
+func (d discardCost) GetInteractionText() string {
+	return "Discard §Amount card §Conditions"
 }
 
 type ressourceCostType struct {
-	Energy bool
-	Food   bool
-	Lumber bool
-	Mana   bool
-	Iron   bool
+	Energy energy
+	Food   food
+	Lumber lumber
+	Mana   mana
+	Iron   iron
 }
 
-func (c *costInterface) validate() error {
-	possibleImplementer := []validateable{c.RessourceCost, c.SacrificeCost, c.DiscardCost}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("Ability implemented by not exactly one option")
+func (r ressourceCostType) Validate() error {
+	if !(bool(r.Energy) || bool(r.Food) || bool(r.Lumber) || bool(r.Mana) || bool(r.Iron)) {
+		return errors.New("At least one Costtype must be selected for a card.")
 	}
-	return implementer.validate()
+	return r.ValidateStruct()
 }
 
-func (c *ressourceCost) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateCastingCost(c.CostAmount))
-	return combineErrors(errorRange)
+func (r ressourceCostType) ValidateStruct() error {
+	return jsonschema.ValidateStruct(r)
 }
 
-func (c *sacrificeCost) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateSimpleInt(c.Amount))
-	if c.Conditions != nil {
-		errorRange = append(errorRange, c.Conditions.validate())
+func (r ressourceCostType) GetInteractionText() string {
+	return "§Energy §Food §Lumber §Mana §Iron"
+}
+
+type energy jsonschema.BasicBool
+
+func (e energy) Validate() error {
+	return e.ValidateBool()
+}
+
+func (e energy) ValidateBool() error {
+	b := bool(e)
+	if b || !b {
+		return nil
 	}
-	return combineErrors(errorRange)
+	return errors.New("")
 }
 
-func (c *discardCost) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateSimpleInt(c.Amount))
-	if c.Conditions != nil {
-		errorRange = append(errorRange, c.Conditions.validate())
+type food jsonschema.BasicBool
+
+func (f food) Validate() error {
+	return f.ValidateBool()
+}
+
+func (f food) ValidateBool() error {
+	b := bool(f)
+	if b || !b {
+		return nil
 	}
-	return combineErrors(errorRange)
+	return errors.New("")
+}
+
+type lumber jsonschema.BasicBool
+
+func (l lumber) Validate() error {
+	return l.ValidateBool()
+}
+
+func (l lumber) ValidateBool() error {
+	b := bool(l)
+	if b || !b {
+		return nil
+	}
+	return errors.New("")
+}
+
+type mana jsonschema.BasicBool
+
+func (m mana) Validate() error {
+	return m.ValidateBool()
+}
+
+func (m mana) ValidateBool() error {
+	b := bool(m)
+	if b || !b {
+		return nil
+	}
+	return errors.New("")
+}
+
+type iron jsonschema.BasicBool
+
+func (i iron) Validate() error {
+	return i.ValidateBool()
+}
+
+func (i iron) ValidateBool() error {
+	b := bool(i)
+	if b || !b {
+		return nil
+	}
+	return errors.New("")
 }

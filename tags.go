@@ -2,7 +2,8 @@ package cardobject
 
 import (
 	"errors"
-	"strconv"
+
+	"github.com/DecentralCardGame/jsonschema"
 )
 
 var possibleTags []string = []string{
@@ -23,22 +24,47 @@ var possibleTags []string = []string{
 	"TACTIC",
 	"TECHNOCRAT"}
 
-func validateTags(tags []string) error {
-	if len(tags) > maxTagCount || len(tags) < minTagCount {
-		return errors.New("The card must have at least " + strconv.Itoa(minTagCount) + " and at most " + strconv.Itoa(maxTagCount) + "tags")
-	}
-	errorRange := []error{}
-	for _, tag := range tags {
-		errorRange = append(errorRange, validateTag(tag))
-	}
-	return combineErrors(errorRange)
+type tags []tag
+
+func (t tags) Validate() error {
+	return t.ValidateArray()
 }
 
-func validateTag(tag string) error {
-	for _, t := range possibleTags {
-		if t == tag {
+func (t tags) ValidateArray() error {
+	errorRange := []error{}
+	for _, v := range t {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
+}
+
+func (t tags) GetMinMaxItems() (int, int) {
+	return 1, 3
+}
+
+func (t tags) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(t)
+}
+
+type tag jsonschema.BasicEnum
+
+func (t tag) Validate() error {
+	return t.ValidateEnum()
+}
+
+func (t tag) ValidateEnum() error {
+	values := t.GetEnumValues()
+	for _, v := range values {
+		if v == string(t) {
 			return nil
 		}
 	}
-	return errors.New("Tag: " + tag + " not available")
+	return errors.New("")
+}
+
+func (t tag) GetEnumValues() []string {
+	return possibleTags
 }

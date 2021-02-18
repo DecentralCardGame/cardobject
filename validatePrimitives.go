@@ -2,11 +2,14 @@ package cardobject
 
 import (
 	"errors"
-	"strconv"
+
+	"github.com/DecentralCardGame/jsonschema"
 )
 
 const maxAttack int = 32
 const minAttack int = 0
+const maxBasicAmount = 32
+const minBasicAmount = 0
 const maxCardNameLength int = 32
 const minCardNameLength int = 1
 const maxCastingCost int = 32
@@ -32,75 +35,203 @@ const minTagCount int = 1
 const maxWisdom int = 32
 const minWisdom int = 0
 
-func validateAttack(attack int) error {
-	if attack > maxAttack || attack < minAttack {
-		return errors.New("The cards attack must be between " + strconv.Itoa(minAttack) + " and " + strconv.Itoa(maxAttack))
+type attack jsonschema.BasicInt
+
+func (a attack) Validate() error {
+	return a.ValidateInt()
+}
+
+func (a attack) ValidateInt() error {
+	min, max := a.GetMinMax()
+	if a < attack(min) || a > attack(max) {
+		return errors.New("")
 	}
 	return nil
 }
 
-func validateCardName(cardName string) error {
-	cardNameLength := len(cardName)
-	if cardNameLength > maxCardNameLength || cardNameLength < minCardNameLength {
-		return errors.New("The cards name must have between " + strconv.Itoa(minCardNameLength) + " and " + strconv.Itoa(maxCardNameLength) + " characters")
+func (a attack) GetMinMax() (int, int) {
+	return minAttack, maxAttack
+}
+
+type basicAmount jsonschema.BasicInt
+
+func (b basicAmount) Validate() error {
+	return b.ValidateInt()
+}
+
+func (b basicAmount) ValidateInt() error {
+	min, max := b.GetMinMax()
+	if b < basicAmount(min) || b > basicAmount(max) {
+		return errors.New("")
 	}
 	return nil
 }
 
-func validateCastingCost(castingCost int) error {
-	if castingCost > maxCastingCost || castingCost < 0 {
-		return errors.New("The casting must be between " + strconv.Itoa(minCastingCost) + " and " + strconv.Itoa(maxCastingCost))
+func (b basicAmount) GetMinMax() (int, int) {
+	return minBasicAmount, maxBasicAmount
+}
+
+type cardName jsonschema.BasicString
+
+func (c cardName) Validate() error {
+	return c.ValidateString()
+}
+
+func (c cardName) ValidateString() error {
+	minLength, maxLength := c.GetMinMaxLength()
+	length := len(string(c))
+	if length < minLength || length > maxLength {
+		return errors.New("")
 	}
 	return nil
 }
 
-func validateFlavourText(flavourText string) error {
-	flavourTextLength := len(flavourText)
-	if flavourTextLength > maxFlavourTextLength || flavourTextLength < minFlavourTextLength {
-		return errors.New("The cards flavour text must have between " + strconv.Itoa(minFlavourTextLength) + " and " + strconv.Itoa(maxFlavourTextLength) + " characters")
+func (c cardName) GetMinMaxLength() (int, int) {
+	return minCardNameLength, maxCardNameLength
+}
+
+type castingCost jsonschema.BasicInt
+
+func (c castingCost) Validate() error {
+	return c.ValidateInt()
+}
+
+func (c castingCost) ValidateInt() error {
+	min, max := c.GetMinMax()
+	if c < castingCost(min) || c > castingCost(max) {
+		return errors.New("")
 	}
 	return nil
 }
 
-func validateGrowth(growth int) error {
-	if growth > maxGrowth || growth < minGrowth {
-		return errors.New("The cards growth must be between " + strconv.Itoa(minGrowth) + " and " + strconv.Itoa(maxGrowth))
+func (c castingCost) GetMinMax() (int, int) {
+	return minCastingCost, maxCastingCost
+}
+
+type flavourText jsonschema.BasicString
+
+func (f flavourText) Validate() error {
+	return f.ValidateString()
+}
+
+func (f flavourText) ValidateString() error {
+	minLength, maxLength := f.GetMinMaxLength()
+	length := len(string(f))
+	if length < minLength || length > maxLength {
+		return errors.New("")
 	}
 	return nil
 }
 
-func validateHealth(health int) error {
-	if health > maxHealth || health < minHealth {
-		return errors.New("The cards health must be between " + strconv.Itoa(minHealth) + " and " + strconv.Itoa(maxHealth))
+func (f flavourText) GetMinMaxLength() (int, int) {
+	return minFlavourTextLength, maxFlavourTextLength
+}
+
+type growth jsonschema.BasicInt
+
+func (g growth) Validate() error {
+	return g.ValidateInt()
+}
+
+func (g growth) ValidateInt() error {
+	min, max := g.GetMinMax()
+	if g < growth(min) || g > growth(max) {
+		return errors.New("")
 	}
 	return nil
 }
 
-func validateStartingHandSize(startingHandSize int) error {
-	if startingHandSize > maxStartingHandSize || startingHandSize < minStartingHandSize {
-		return errors.New("The cards startingHandSize must be between " + strconv.Itoa(minStartingHandSize) + " and " + strconv.Itoa(minStartingHandSize))
+func (g growth) GetMinMax() (int, int) {
+	return minGrowth, maxGrowth
+}
+
+type health jsonschema.BasicInt
+
+func (h health) Validate() error {
+	return h.ValidateInt()
+}
+
+func (h health) ValidateInt() error {
+	min, max := h.GetMinMax()
+	if h < health(min) || h > health(max) {
+		return errors.New("")
 	}
 	return nil
 }
 
-func validateWisdom(wisdom int) error {
-	if wisdom > maxWisdom || wisdom < minWisdom {
-		return errors.New("The cards growth must be between " + strconv.Itoa(minWisdom) + " and " + strconv.Itoa(maxWisdom))
+func (h health) GetMinMax() (int, int) {
+	return minHealth, maxHealth
+}
+
+type startingHandsize jsonschema.BasicInt
+
+func (s startingHandsize) Validate() error {
+	return s.ValidateInt()
+}
+
+func (s startingHandsize) ValidateInt() error {
+	min, max := s.GetMinMax()
+	if s < startingHandsize(min) || s > startingHandsize(max) {
+		return errors.New("")
 	}
 	return nil
 }
 
-func validateSimpleInt(simpleInt int) error {
-	if simpleInt > maxSimpleInt || simpleInt < minSimpleInt {
-		return errors.New("Simple Integer must be between " + strconv.Itoa(minSimpleInt) + " and " + strconv.Itoa(maxSimpleInt))
+func (s startingHandsize) GetMinMax() (int, int) {
+	return minStartingHandSize, maxStartingHandSize
+}
+
+type wisdom jsonschema.BasicInt
+
+func (w wisdom) Validate() error {
+	return w.ValidateInt()
+}
+
+func (w wisdom) ValidateInt() error {
+	min, max := w.GetMinMax()
+	if w < wisdom(min) || w > wisdom(max) {
+		return errors.New("")
 	}
 	return nil
 }
 
-func validateSimpleString(simpleString string) error {
-	simpleStringLength := len(simpleString)
-	if simpleStringLength > maxSimpleStringLength || simpleStringLength < minSimpleStringLength {
-		return errors.New("Simple String-length mus be between " + strconv.Itoa(minSimpleStringLength) + " and " + strconv.Itoa(maxSimpleStringLength))
+func (w wisdom) GetMinMax() (int, int) {
+	return minWisdom, maxWisdom
+}
+
+type simpleIntValue jsonschema.BasicInt
+
+func (s simpleIntValue) Validate() error {
+	return s.ValidateInt()
+}
+
+func (s simpleIntValue) ValidateInt() error {
+	min, max := s.GetMinMax()
+	if s < simpleIntValue(min) || s > simpleIntValue(max) {
+		return errors.New("")
 	}
 	return nil
+}
+
+func (s simpleIntValue) GetMinMax() (int, int) {
+	return minSimpleInt, maxSimpleInt
+}
+
+type simpleStringValue jsonschema.BasicString
+
+func (s simpleStringValue) Validate() error {
+	return s.ValidateString()
+}
+
+func (s simpleStringValue) ValidateString() error {
+	minLength, maxLength := s.GetMinMaxLength()
+	length := len(string(s))
+	if length < minLength || length > maxLength {
+		return errors.New("")
+	}
+	return nil
+}
+
+func (s simpleStringValue) GetMinMaxLength() (int, int) {
+	return minSimpleStringLength, maxSimpleStringLength
 }

@@ -1,204 +1,286 @@
 package cardobject
 
 import (
-	"errors"
-	"strconv"
+	"github.com/DecentralCardGame/jsonschema"
 )
 
-type cardExtractorsInterface struct {
+type cardExtractors struct {
 	ActionExtractors *actionExtractors `json:",omitempty"`
 	EntityExtractors *entityExtractors `json:",omitempty"`
 	PlaceExtractors  *placeExtractors  `json:",omitempty"`
 }
 
-type actionExtractors []actionExtractorInterface
+func (c cardExtractors) Validate() error {
+	return c.ValidateInterface()
+}
 
-type entityExtractors []entityExtractorInterface
+func (c cardExtractors) ValidateInterface() error {
+	return jsonschema.ValidateInterface(c)
+}
 
-type placeExtractors []placeExtractorInterface
+type actionExtractors []actionExtractor
 
-type actionExtractorInterface struct {
+func (a actionExtractors) Validate() error {
+	return a.ValidateArray()
+}
+
+func (a actionExtractors) ValidateArray() error {
+	errorRange := []error{}
+	for _, v := range a {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
+}
+
+func (a actionExtractors) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+func (a actionExtractors) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(a)
+}
+
+type entityExtractors []entityExtractor
+
+func (e entityExtractors) Validate() error {
+	return e.ValidateArray()
+}
+
+func (e entityExtractors) ValidateArray() error {
+	errorRange := []error{}
+	for _, v := range e {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
+}
+
+func (e entityExtractors) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+func (e entityExtractors) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(e)
+}
+
+type placeExtractors []placeExtractor
+
+func (p placeExtractors) Validate() error {
+	return p.ValidateArray()
+}
+
+func (p placeExtractors) ValidateArray() error {
+	errorRange := []error{}
+	for _, v := range p {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
+}
+
+func (p placeExtractors) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+func (p placeExtractors) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(p)
+}
+
+type actionExtractor struct {
 	ActionIntExtractor    *actionIntExtractor    `json:",omitempty"`
 	ActionStringExtractor *actionStringExtractor `json:",omitempty"`
 	ActionTargetExtractor *targetExtractor       `json:",omitempty"`
 }
 
-type entityExtractorInterface struct {
+func (a actionExtractor) Validate() error {
+	return a.ValidateInterface()
+}
+
+func (a actionExtractor) ValidateInterface() error {
+	return jsonschema.ValidateInterface(a)
+}
+
+type entityExtractor struct {
 	EntityIntExtractor    *entityIntExtractor    `json:",omitempty"`
 	EntityStringExtractor *entityStringExtractor `json:",omitempty"`
 	EntityTargetExtractor *targetExtractor       `json:",omitempty"`
 }
 
-type placeExtractorInterface struct {
+func (e entityExtractor) Validate() error {
+	return e.ValidateInterface()
+}
+
+func (e entityExtractor) ValidateInterface() error {
+	return jsonschema.ValidateInterface(e)
+}
+
+type placeExtractor struct {
 	PlaceIntExtractor    *placeIntExtractor    `json:",omitempty"`
 	PlaceStringExtractor *placeStringExtractor `json:",omitempty"`
 	PlaceTargetExtractor *targetExtractor      `json:",omitempty"`
 }
 
-type actionIntExtractor struct {
-	ExtractIntProperty string
-	IntVariableName    string
+func (p placeExtractor) Validate() error {
+	return p.ValidateInterface()
 }
+
+func (p placeExtractor) ValidateInterface() error {
+	return jsonschema.ValidateInterface(p)
+}
+
+type actionIntExtractor struct {
+	ExtractIntProperty actionIntProperty
+	IntVariableName    intVariableName
+}
+
+func (a actionIntExtractor) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionIntExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
+}
+
+func (a actionIntExtractor) GetInteractionText() string {
+	return "Set §IntVariableName to the actions §ExtractIntProperty."
+}
+
 type actionStringExtractor struct {
-	ExtractStringProperty string
-	StringVariableName    string
+	ExtractStringProperty actionStringProperty
+	StringVariableName    stringVariableName
+}
+
+func (a actionStringExtractor) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a actionStringExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
+}
+
+func (a actionStringExtractor) GetInteractionText() string {
+	return "Set §StringVariableName to the actionss §ExtractStringProperty."
 }
 
 type entityIntExtractor struct {
-	ExtractIntProperty string
-	IntVariableName    string
+	ExtractIntProperty entityIntProperty
+	IntVariableName    intVariableName
 }
+
+func (e entityIntExtractor) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityIntExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
+}
+
+func (e entityIntExtractor) GetInteractionText() string {
+	return "Set §IntVariableName to the entities §ExtractIntProperty."
+}
+
 type entityStringExtractor struct {
-	ExtractStringProperty string
-	StringVariableName    string
+	ExtractStringProperty entityStringProperty
+	StringVariableName    stringVariableName
+}
+
+func (e entityStringExtractor) Validate() error {
+	return e.ValidateStruct()
+}
+
+func (e entityStringExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(e)
+}
+
+func (e entityStringExtractor) GetInteractionText() string {
+	return "Set §StringVariableName to the entities §ExtractStringProperty."
 }
 
 type placeIntExtractor struct {
-	ExtractIntProperty string
-	IntVariableName    string
+	ExtractIntProperty placeIntProperty
+	IntVariableName    intVariableName
 }
+
+func (p placeIntExtractor) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeIntExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
+}
+
+func (p placeIntExtractor) GetInteractionText() string {
+	return "Set §IntVariableName to the places §ExtractIntProperty."
+}
+
 type placeStringExtractor struct {
-	ExtractStringProperty string
-	StringVariableName    string
+	ExtractStringProperty placeStringProperty
+	StringVariableName    stringVariableName
+}
+
+func (p placeStringExtractor) Validate() error {
+	return p.ValidateStruct()
+}
+
+func (p placeStringExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(p)
+}
+
+func (p placeStringExtractor) GetInteractionText() string {
+	return "Set §StringVariableName to the places §ExtractStringProperty."
 }
 
 type targetExtractor struct {
-	TargetVariableName string
+	TargetVariableName targetVariableName
+}
+
+func (t targetExtractor) Validate() error {
+	return t.ValidateStruct()
+}
+
+func (t targetExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(t)
+}
+
+func (t targetExtractor) GetInteractionText() string {
+	return "That card is marked as §TargetVariableName."
 }
 
 type intExtractor struct {
-	IntVariableName string
+	IntVariableName intVariableName
+}
+
+func (i intExtractor) Validate() error {
+	return i.ValidateStruct()
+}
+
+func (i intExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(i)
+}
+
+func (i intExtractor) GetInteractionText() string {
+	return "Set §IntVariableName."
 }
 
 type stringExtractor struct {
-	StringVariableName string
+	StringVariableName stringVariableName
 }
 
-func (e *cardExtractorsInterface) validate() error {
-	possibleImplementer := []validateable{e.ActionExtractors, e.EntityExtractors, e.PlaceExtractors}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("Extractor implemented by not exactly one option")
-	}
-	return implementer.validate()
+func (s stringExtractor) Validate() error {
+	return s.ValidateStruct()
 }
 
-func (e actionExtractors) validate() error {
-	if len(e) > maxExtractorCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxExtractorCount) + " extractors")
-	}
-	errorRange := []error{}
-	for _, actionExtractor := range e {
-		errorRange = append(errorRange, actionExtractor.validate())
-	}
-	return combineErrors(errorRange)
+func (s stringExtractor) ValidateStruct() error {
+	return jsonschema.ValidateStruct(s)
 }
 
-func (e entityExtractors) validate() error {
-	if len(e) > maxExtractorCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxExtractorCount) + " extractors")
-	}
-	errorRange := []error{}
-	for _, entityExtractor := range e {
-		errorRange = append(errorRange, entityExtractor.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (e placeExtractors) validate() error {
-	if len(e) > maxExtractorCount {
-		return errors.New("The card must have at most " + strconv.Itoa(maxExtractorCount) + " extractors")
-	}
-	errorRange := []error{}
-	for _, placeExtractor := range e {
-		errorRange = append(errorRange, placeExtractor.validate())
-	}
-	return combineErrors(errorRange)
-}
-
-func (e *actionExtractorInterface) validate() error {
-	possibleImplementer := []validateable{e.ActionIntExtractor, e.ActionStringExtractor, e.ActionTargetExtractor}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("ActionExtractor implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (e *entityExtractorInterface) validate() error {
-	possibleImplementer := []validateable{e.EntityIntExtractor, e.EntityStringExtractor, e.EntityTargetExtractor}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("EntityExtractor implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (e *placeExtractorInterface) validate() error {
-	possibleImplementer := []validateable{e.PlaceIntExtractor, e.PlaceStringExtractor, e.PlaceTargetExtractor}
-
-	implementer, error := xorInterface(possibleImplementer)
-	if implementer == nil || error != nil {
-		return errors.New("PlaceExtractor implemented by not exactly one option")
-	}
-	return implementer.validate()
-}
-
-func (e *actionIntExtractor) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateActionIntProperty(e.ExtractIntProperty))
-	errorRange = append(errorRange, validateIntVariableName(e.IntVariableName))
-	return combineErrors(errorRange)
-}
-
-func (e *actionStringExtractor) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateActionIntProperty(e.ExtractStringProperty))
-	errorRange = append(errorRange, validateStringVariableName(e.StringVariableName))
-	return combineErrors(errorRange)
-}
-
-func (e *entityIntExtractor) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateEntityIntProperty(e.ExtractIntProperty))
-	errorRange = append(errorRange, validateIntVariableName(e.IntVariableName))
-	return combineErrors(errorRange)
-}
-
-func (e *entityStringExtractor) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateEntityIntProperty(e.ExtractStringProperty))
-	errorRange = append(errorRange, validateStringVariableName(e.StringVariableName))
-	return combineErrors(errorRange)
-}
-
-func (e *placeIntExtractor) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlaceIntProperty(e.ExtractIntProperty))
-	errorRange = append(errorRange, validateIntVariableName(e.IntVariableName))
-	return combineErrors(errorRange)
-}
-
-func (e *placeStringExtractor) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validatePlaceIntProperty(e.ExtractStringProperty))
-	errorRange = append(errorRange, validateStringVariableName(e.StringVariableName))
-	return combineErrors(errorRange)
-}
-
-func (e *targetExtractor) validate() error {
-	errorRange := []error{}
-	errorRange = append(errorRange, validateStringVariableName(e.TargetVariableName))
-	return combineErrors(errorRange)
-}
-
-func (e *intExtractor) validate() error {
-	return validateIntVariableName(e.IntVariableName)
-}
-
-func (e *stringExtractor) validate() error {
-	return validateStringVariableName(e.StringVariableName)
+func (s stringExtractor) GetInteractionText() string {
+	return "Set §StringVariableName."
 }
