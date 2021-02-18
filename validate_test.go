@@ -1,7 +1,6 @@
 package cardobject
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -43,52 +42,40 @@ func TestCardSerializationAction1(t *testing.T) {
 }
 
 func TestValidateAction(t *testing.T) {
-	var c card
 	dat, readErr := ioutil.ReadFile("testJsons/actionTest1.json")
 	if readErr != nil {
 		t.Error(readErr)
 	}
 
-	marshalErr := json.Unmarshal(dat, &c)
-	if marshalErr != nil {
-		t.Error(marshalErr)
-	}
-	validateErr := c.Validate()
-	if validateErr != nil {
-		t.Error(validateErr)
+	_, err := NewCardFromJson(string(dat))
+
+	if err != nil {
+		t.Error(err)
 	}
 }
 
 func TestValidateEntity(t *testing.T) {
-	var c card
 	dat, readErr := ioutil.ReadFile("testJsons/entityTest1.json")
 	if readErr != nil {
 		t.Error(readErr)
 	}
 
-	marshalErr := json.Unmarshal(dat, &c)
-	if marshalErr != nil {
-		t.Error(marshalErr)
-	}
-	validateErr := c.Validate()
-	if validateErr != nil {
-		t.Error(validateErr)
+	_, err := NewCardFromJson(string(dat))
+
+	if err != nil {
+		t.Error(err)
 	}
 }
 
 func TestValidatePlace(t *testing.T) {
-	var c card
 	dat, readErr := ioutil.ReadFile("testJsons/place1Test.json")
 	if readErr != nil {
 		t.Error(readErr)
 	}
 
-	marshalErr := json.Unmarshal(dat, &c)
-	if marshalErr != nil {
-		t.Error(marshalErr)
-	}
-	validateErr := c.Validate()
-	if validateErr != nil {
-		t.Error(validateErr)
+	_, err := NewCardFromJson(string(dat))
+
+	if err != nil {
+		t.Error(err)
 	}
 }
