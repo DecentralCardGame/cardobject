@@ -79,6 +79,9 @@ type ressourceCostType struct {
 }
 
 func (r ressourceCostType) Validate() error {
+	if !(bool(r.Energy) || bool(r.Food) || bool(r.Lumber) || bool(r.Mana) || bool(r.Iron)) {
+		return errors.New("At least one Costtype must be selected for a card.")
+	}
 	return r.ValidateStruct()
 }
 
