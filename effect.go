@@ -31,7 +31,7 @@ func (e effects) GetItemName() string {
 
 type effect struct {
 	ProductionEffect *productionEffect `json:",omitempty"`
-	DrawEffect       *drawEffect       `json:",omitempty"`
+	WisdomEffect     *wisdomEffect     `json:",omitempty"`
 	TokenEffect      *tokenEffect      `json:",omitempty"`
 	TargetEffect     *targetEffect     `json:",omitempty"`
 	ChooseFromEffect *chooseFromEffect `json:",omitempty"`
@@ -61,20 +61,20 @@ func (p productionEffect) GetInteractionText() string {
 	return "Produce §Amount."
 }
 
-type drawEffect struct {
-	DrawAmount intValue
+type wisdomEffect struct {
+	wisdomAmount intValue
 }
 
-func (d drawEffect) Validate() error {
+func (d wisdomEffect) Validate() error {
 	return d.ValidateStruct()
 }
 
-func (d drawEffect) ValidateStruct() error {
+func (d wisdomEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(d)
 }
 
-func (d drawEffect) GetInteractionText() string {
-	return "Draw §DrawAmount cards."
+func (d wisdomEffect) GetInteractionText() string {
+	return "Gain §WisdomAmount wisdom."
 }
 
 type tokenEffect struct {
