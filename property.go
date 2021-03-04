@@ -8,9 +8,9 @@ import (
 
 var actionIntProperties []string = []string{"COSTSUM"}
 var actionStringProperties []string = []string{"NAME", "TEXT"}
-var entityIntProperties []string = []string{"ATTACK", "COSTSUM", "HEALTH"}
+var entityIntProperties []string = []string{"ATTACK", "COSTSUM", "HEALTH", "BASEHEALTH"}
 var entityStringProperties []string = []string{"NAME", "TEXT"}
-var placeIntProperties []string = []string{"COSTSUM", "HEALTH"}
+var placeIntProperties []string = []string{"COSTSUM", "HEALTH", "BASEHEALTH"}
 var placeStringProperties []string = []string{"NAME", "TEXT"}
 
 var cardIntProperties []string = []string{"ATTACK", "COSTSUM", "HEALTH"}
