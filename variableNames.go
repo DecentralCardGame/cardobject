@@ -10,13 +10,13 @@ var intVariableNames []string = []string{"X", "Y", "Z"}
 var stringVariableNames []string = []string{"A", "B", "C"}
 var targetVariableNames []string = []string{"M", "T"}
 
-type intVariableName jsonschema.BasicEnum
+type IntVariableName jsonschema.BasicEnum
 
-func (i intVariableName) Validate() error {
+func (i IntVariableName) Validate() error {
 	return i.ValidateEnum()
 }
 
-func (i intVariableName) ValidateEnum() error {
+func (i IntVariableName) ValidateEnum() error {
 	values := i.GetEnumValues()
 	for _, v := range values {
 		if v == string(i) {
@@ -26,17 +26,17 @@ func (i intVariableName) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (i intVariableName) GetEnumValues() []string {
+func (i IntVariableName) GetEnumValues() []string {
 	return intVariableNames
 }
 
-type stringVariableName jsonschema.BasicEnum
+type StringVariableName jsonschema.BasicEnum
 
-func (s stringVariableName) Validate() error {
+func (s StringVariableName) Validate() error {
 	return s.ValidateEnum()
 }
 
-func (s stringVariableName) ValidateEnum() error {
+func (s StringVariableName) ValidateEnum() error {
 	values := s.GetEnumValues()
 	for _, v := range values {
 		if v == string(s) {
@@ -46,17 +46,17 @@ func (s stringVariableName) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (s stringVariableName) GetEnumValues() []string {
+func (s StringVariableName) GetEnumValues() []string {
 	return stringVariableNames
 }
 
-type targetVariableName jsonschema.BasicEnum
+type TargetVariableName jsonschema.BasicEnum
 
-func (t targetVariableName) Validate() error {
+func (t TargetVariableName) Validate() error {
 	return t.ValidateEnum()
 }
 
-func (t targetVariableName) ValidateEnum() error {
+func (t TargetVariableName) ValidateEnum() error {
 	values := t.GetEnumValues()
 	for _, v := range values {
 		if v == string(t) {
@@ -66,6 +66,6 @@ func (t targetVariableName) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (t targetVariableName) GetEnumValues() []string {
+func (t TargetVariableName) GetEnumValues() []string {
 	return targetVariableNames
 }

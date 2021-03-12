@@ -8,13 +8,13 @@ import (
 
 var timeEvents []string = []string{"TICKSTART", "COMBAT"}
 
-type timeEvent jsonschema.BasicEnum
+type TimeEvent jsonschema.BasicEnum
 
-func (t timeEvent) Validate() error {
+func (t TimeEvent) Validate() error {
 	return t.ValidateEnum()
 }
 
-func (t timeEvent) ValidateEnum() error {
+func (t TimeEvent) ValidateEnum() error {
 	values := t.GetEnumValues()
 	for _, v := range values {
 		if v == string(t) {
@@ -24,6 +24,6 @@ func (t timeEvent) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (t timeEvent) GetEnumValues() []string {
+func (t TimeEvent) GetEnumValues() []string {
 	return timeEvents
 }

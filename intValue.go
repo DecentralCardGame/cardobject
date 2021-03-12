@@ -2,34 +2,34 @@ package cardobject
 
 import "github.com/DecentralCardGame/jsonschema"
 
-type intValue struct {
-	ComplexIntValue *complexIntValue `json:",omitempty"`
-	SimpleIntValue  *simpleIntValue  `json:",omitempty"`
-	IntVariable     *intVariableName `json:",omitempty"`
+type IntValue struct {
+	ComplexIntValue *ComplexIntValue `json:",omitempty"`
+	SimpleIntValue  *SimpleIntValue  `json:",omitempty"`
+	IntVariable     *IntVariableName `json:",omitempty"`
 }
 
-func (i intValue) Validate() error {
+func (i IntValue) Validate() error {
 	return i.ValidateInterface()
 }
 
-func (i intValue) ValidateInterface() error {
+func (i IntValue) ValidateInterface() error {
 	return jsonschema.ValidateInterface(i)
 }
 
-type complexIntValue struct {
-	FirstValue    *intValue
-	SecondValue   *intValue
-	ArithOperator arithOperator
+type ComplexIntValue struct {
+	FirstValue    *IntValue
+	SecondValue   *IntValue
+	ArithOperator ArithOperator
 }
 
-func (c complexIntValue) Validate() error {
+func (c ComplexIntValue) Validate() error {
 	return c.ValidateStruct()
 }
 
-func (c complexIntValue) ValidateStruct() error {
+func (c ComplexIntValue) ValidateStruct() error {
 	return jsonschema.ValidateStruct(c)
 }
 
-func (c complexIntValue) GetInteractionText() string {
+func (c ComplexIntValue) GetInteractionText() string {
 	return "§FirstValue §ArithOperator §SecondValue"
 }

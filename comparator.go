@@ -9,13 +9,13 @@ import (
 var intComparators []string = []string{"EQUAL", "GREATER", "LESSER"}
 var stringComparators []string = []string{"EQUAL", "CONTAINS", "UNEQUAL", "CONTAINSNOT"}
 
-type intComparator jsonschema.BasicEnum
+type IntComparator jsonschema.BasicEnum
 
-func (i intComparator) Validate() error {
+func (i IntComparator) Validate() error {
 	return i.ValidateEnum()
 }
 
-func (i intComparator) ValidateEnum() error {
+func (i IntComparator) ValidateEnum() error {
 	values := i.GetEnumValues()
 	for _, v := range values {
 		if v == string(i) {
@@ -25,17 +25,17 @@ func (i intComparator) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (i intComparator) GetEnumValues() []string {
+func (i IntComparator) GetEnumValues() []string {
 	return intComparators
 }
 
-type stringComparator jsonschema.BasicEnum
+type StringComparator jsonschema.BasicEnum
 
-func (s stringComparator) Validate() error {
+func (s StringComparator) Validate() error {
 	return s.ValidateEnum()
 }
 
-func (s stringComparator) ValidateEnum() error {
+func (s StringComparator) ValidateEnum() error {
 	values := s.GetEnumValues()
 	for _, v := range values {
 		if v == string(s) {
@@ -45,6 +45,6 @@ func (s stringComparator) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (s stringComparator) GetEnumValues() []string {
+func (s StringComparator) GetEnumValues() []string {
 	return stringComparators
 }

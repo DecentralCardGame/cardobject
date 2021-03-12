@@ -13,13 +13,13 @@ var actionZones []string = []string{"DECK", "DUSTPILE", "HAND", "VOID"}
 var entityZones []string = []string{"ATTACKLANE", "BLOCKLANE", "DECK", "DUSTPILE", "FIELD", "HAND", "VOID"}
 var placeZones []string = []string{"DECK", "DUSTPILE", "FIELD", "HAND", "VOID"}
 
-type dynamicZone jsonschema.BasicEnum
+type DynamicZone jsonschema.BasicEnum
 
-func (d dynamicZone) Validate() error {
+func (d DynamicZone) Validate() error {
 	return d.ValidateEnum()
 }
 
-func (d dynamicZone) ValidateEnum() error {
+func (d DynamicZone) ValidateEnum() error {
 	values := d.GetEnumValues()
 	for _, v := range values {
 		if v == string(d) {
@@ -29,17 +29,17 @@ func (d dynamicZone) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (d dynamicZone) GetEnumValues() []string {
+func (d DynamicZone) GetEnumValues() []string {
 	return dynamicZones
 }
 
-type zone jsonschema.BasicEnum
+type Zone jsonschema.BasicEnum
 
-func (z zone) Validate() error {
+func (z Zone) Validate() error {
 	return z.ValidateEnum()
 }
 
-func (z zone) ValidateEnum() error {
+func (z Zone) ValidateEnum() error {
 	values := z.GetEnumValues()
 	for _, v := range values {
 		if v == string(z) {
@@ -49,17 +49,17 @@ func (z zone) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (z zone) GetEnumValues() []string {
+func (z Zone) GetEnumValues() []string {
 	return zones
 }
 
-type actionZone jsonschema.BasicEnum
+type ActionZone jsonschema.BasicEnum
 
-func (a actionZone) Validate() error {
+func (a ActionZone) Validate() error {
 	return a.ValidateEnum()
 }
 
-func (a actionZone) ValidateEnum() error {
+func (a ActionZone) ValidateEnum() error {
 	values := a.GetEnumValues()
 	for _, v := range values {
 		if v == string(a) {
@@ -69,17 +69,17 @@ func (a actionZone) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (a actionZone) GetEnumValues() []string {
+func (a ActionZone) GetEnumValues() []string {
 	return actionZones
 }
 
-type entityZone jsonschema.BasicEnum
+type EntityZone jsonschema.BasicEnum
 
-func (e entityZone) Validate() error {
+func (e EntityZone) Validate() error {
 	return e.ValidateEnum()
 }
 
-func (e entityZone) ValidateEnum() error {
+func (e EntityZone) ValidateEnum() error {
 	values := e.GetEnumValues()
 	for _, v := range values {
 		if v == string(e) {
@@ -89,17 +89,17 @@ func (e entityZone) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (e entityZone) GetEnumValues() []string {
+func (e EntityZone) GetEnumValues() []string {
 	return entityZones
 }
 
-type placeZone jsonschema.BasicEnum
+type PlaceZone jsonschema.BasicEnum
 
-func (p placeZone) Validate() error {
+func (p PlaceZone) Validate() error {
 	return p.ValidateEnum()
 }
 
-func (p placeZone) ValidateEnum() error {
+func (p PlaceZone) ValidateEnum() error {
 	values := p.GetEnumValues()
 	for _, v := range values {
 		if v == string(p) {
@@ -109,6 +109,6 @@ func (p placeZone) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (p placeZone) GetEnumValues() []string {
+func (p PlaceZone) GetEnumValues() []string {
 	return placeZones
 }

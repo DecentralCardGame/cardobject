@@ -4,107 +4,107 @@ import (
 	"github.com/DecentralCardGame/jsonschema"
 )
 
-type card struct {
-	Action      *action      `json:",omitempty"`
-	Entity      *entity      `json:",omitempty"`
-	Place       *place       `json:",omitempty"`
-	Headquarter *headquarter `json:",omitempty"`
+type Card struct {
+	Action      *Action      `json:",omitempty"`
+	Entity      *Entity      `json:",omitempty"`
+	Place       *Place       `json:",omitempty"`
+	Headquarter *Headquarter `json:",omitempty"`
 }
 
-func (c card) Validate() error {
+func (c Card) Validate() error {
 	return c.ValidateInterface()
 }
 
-func (c card) ValidateInterface() error {
+func (c Card) ValidateInterface() error {
 	return jsonschema.ValidateInterface(c)
 }
 
-type action struct {
-	CardName    cardName
-	CastingCost castingCost
-	CostType    ressourceCostType
-	Effects     effects
-	FlavourText flavourText
-	Tags        tags
+type Action struct {
+	CardName    CardName
+	CastingCost CastingCost
+	CostType    RessourceCostType
+	Effects     Effects
+	FlavourText FlavourText
+	Tags        Tags
 }
 
-func (a action) Validate() error {
+func (a Action) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a action) ValidateStruct() error {
+func (a Action) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a action) GetInteractionText() string {
+func (a Action) GetInteractionText() string {
 	return "§CardName §CastingCost §CostType §Effects §FlavourText §Tags"
 }
 
-type entity struct {
-	CardName    cardName
-	CastingCost castingCost
-	CostType    ressourceCostType
-	Abilities   abilities
-	Attack      attack
-	Health      health
-	FlavourText flavourText
-	Tags        tags
+type Entity struct {
+	CardName    CardName
+	CastingCost CastingCost
+	CostType    RessourceCostType
+	Abilities   Abilities
+	Attack      Attack
+	Health      Health
+	FlavourText FlavourText
+	Tags        Tags
 }
 
-func (e entity) Validate() error {
+func (e Entity) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entity) ValidateStruct() error {
+func (e Entity) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (a entity) GetInteractionText() string {
+func (a Entity) GetInteractionText() string {
 	return "§CardName §CastingCost §CostType §Abilities §Attack §Health §FlavourText §Tags"
 }
 
-type place struct {
-	CardName    cardName
-	CastingCost castingCost
-	CostType    ressourceCostType
-	Abilities   abilities
-	Health      health
-	FlavourText flavourText
-	Tags        tags
+type Place struct {
+	CardName    CardName
+	CastingCost CastingCost
+	CostType    RessourceCostType
+	Abilities   Abilities
+	Health      Health
+	FlavourText FlavourText
+	Tags        Tags
 }
 
-func (p place) Validate() error {
+func (p Place) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p place) ValidateStruct() error {
+func (p Place) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (a place) GetInteractionText() string {
+func (a Place) GetInteractionText() string {
 	return "§CardName §CastingCost §CostType §Abilities §Health §FlavourText §Tags"
 }
 
-type headquarter struct {
-	CardName         cardName
-	CostType         ressourceCostType
-	Abilities        abilities
-	Health           health
-	Growth           growth
-	StartingHandSize startingHandsize
-	Wisdom           wisdom
-	FlavourText      flavourText
-	Tags             tags
+type Headquarter struct {
+	CardName         CardName
+	CostType         RessourceCostType
+	Abilities        Abilities
+	Health           Health
+	Growth           Growth
+	StartingHandSize StartingHandsize
+	Wisdom           Wisdom
+	FlavourText      FlavourText
+	Tags             Tags
 }
 
-func (h headquarter) Validate() error {
+func (h Headquarter) Validate() error {
 	return h.ValidateStruct()
 }
 
-func (h headquarter) ValidateStruct() error {
+func (h Headquarter) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (a headquarter) GetInteractionText() string {
+func (a Headquarter) GetInteractionText() string {
 	return "§CardName §CostType §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags"
 }

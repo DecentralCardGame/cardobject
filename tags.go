@@ -24,13 +24,13 @@ var possibleTags []string = []string{
 	"TACTIC",
 	"TECHNOCRAT"}
 
-type tags []tag
+type Tags []Tag
 
-func (t tags) Validate() error {
+func (t Tags) Validate() error {
 	return t.ValidateArray()
 }
 
-func (t tags) ValidateArray() error {
+func (t Tags) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range t {
 		err := v.Validate()
@@ -41,21 +41,21 @@ func (t tags) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (t tags) GetMinMaxItems() (int, int) {
+func (t Tags) GetMinMaxItems() (int, int) {
 	return 1, 3
 }
 
-func (t tags) GetItemName() string {
+func (t Tags) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(t)
 }
 
-type tag jsonschema.BasicEnum
+type Tag jsonschema.BasicEnum
 
-func (t tag) Validate() error {
+func (t Tag) Validate() error {
 	return t.ValidateEnum()
 }
 
-func (t tag) ValidateEnum() error {
+func (t Tag) ValidateEnum() error {
 	values := t.GetEnumValues()
 	for _, v := range values {
 		if v == string(t) {
@@ -65,6 +65,6 @@ func (t tag) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (t tag) GetEnumValues() []string {
+func (t Tag) GetEnumValues() []string {
 	return possibleTags
 }

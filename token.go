@@ -2,21 +2,21 @@ package cardobject
 
 import "github.com/DecentralCardGame/jsonschema"
 
-type token struct {
-	Name   cardName `json:",omitempty"`
-	Attack attack
-	Health health
-	Tags   tags `json:",omitempty"`
+type Token struct {
+	Name   CardName `json:",omitempty"`
+	Attack Attack
+	Health Health
+	Tags   Tags `json:",omitempty"`
 }
 
-func (t token) Validate() error {
+func (t Token) Validate() error {
 	return t.ValidateStruct()
 }
 
-func (t token) ValidateStruct() error {
+func (t Token) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (t token) GetInteractionText() string {
+func (t Token) GetInteractionText() string {
 	return "§Attack / §Health token named §Name tagged §Tags"
 }

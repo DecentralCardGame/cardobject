@@ -4,28 +4,28 @@ import (
 	"github.com/DecentralCardGame/jsonschema"
 )
 
-type cardConditions struct {
-	ActionConditions *actionConditions `json:",omitempty"`
-	EntityConditions *entityConditions `json:",omitempty"`
-	PlaceConditions  *placeConditions  `json:",omitempty"`
-	ThisConditions   *thisCondition    `json:",omitempty"`
+type CardConditions struct {
+	ActionConditions *ActionConditions `json:",omitempty"`
+	EntityConditions *EntityConditions `json:",omitempty"`
+	PlaceConditions  *PlaceConditions  `json:",omitempty"`
+	ThisConditions   *ThisCondition    `json:",omitempty"`
 }
 
-func (c cardConditions) Validate() error {
+func (c CardConditions) Validate() error {
 	return c.ValidateInterface()
 }
 
-func (c cardConditions) ValidateInterface() error {
+func (c CardConditions) ValidateInterface() error {
 	return jsonschema.ValidateInterface(c)
 }
 
-type actionConditions []actionCondition
+type ActionConditions []ActionCondition
 
-func (a actionConditions) Validate() error {
+func (a ActionConditions) Validate() error {
 	return a.ValidateArray()
 }
 
-func (a actionConditions) ValidateArray() error {
+func (a ActionConditions) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range a {
 		err := v.Validate()
@@ -36,21 +36,21 @@ func (a actionConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (a actionConditions) GetItemName() string {
+func (a ActionConditions) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(a)
 }
 
-func (a actionConditions) GetMinMaxItems() (int, int) {
+func (a ActionConditions) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-type entityConditions []entityCondition
+type EntityConditions []EntityCondition
 
-func (e entityConditions) Validate() error {
+func (e EntityConditions) Validate() error {
 	return e.ValidateArray()
 }
 
-func (e entityConditions) ValidateArray() error {
+func (e EntityConditions) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range e {
 		err := v.Validate()
@@ -61,21 +61,21 @@ func (e entityConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (e entityConditions) GetMinMaxItems() (int, int) {
+func (e EntityConditions) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (e entityConditions) GetItemName() string {
+func (e EntityConditions) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(e)
 }
 
-type placeConditions []placeCondition
+type PlaceConditions []PlaceCondition
 
-func (p placeConditions) Validate() error {
+func (p PlaceConditions) Validate() error {
 	return p.ValidateArray()
 }
 
-func (p placeConditions) ValidateArray() error {
+func (p PlaceConditions) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range p {
 		err := v.Validate()
@@ -86,21 +86,21 @@ func (p placeConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (p placeConditions) GetMinMaxItems() (int, int) {
+func (p PlaceConditions) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (p placeConditions) GetItemName() string {
+func (p PlaceConditions) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(p)
 }
 
-type playerConditions []playerCondition
+type PlayerConditions []PlayerCondition
 
-func (p playerConditions) Validate() error {
+func (p PlayerConditions) Validate() error {
 	return p.ValidateArray()
 }
 
-func (p playerConditions) ValidateArray() error {
+func (p PlayerConditions) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range p {
 		err := v.Validate()
@@ -111,255 +111,255 @@ func (p playerConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (p playerConditions) GetMinMaxItems() (int, int) {
+func (p PlayerConditions) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (p playerConditions) GetItemName() string {
+func (p PlayerConditions) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(p)
 }
 
-type actionCondition struct {
-	ActionIntCondition    *actionIntCondition    `json:",omitempty"`
-	ActionStringCondition *actionStringCondition `json:",omitempty"`
-	ActionTagCondition    *actionTagCondition    `json:",omitempty"`
+type ActionCondition struct {
+	ActionIntCondition    *ActionIntCondition    `json:",omitempty"`
+	ActionStringCondition *ActionStringCondition `json:",omitempty"`
+	ActionTagCondition    *ActionTagCondition    `json:",omitempty"`
 }
 
-func (a actionCondition) Validate() error {
+func (a ActionCondition) Validate() error {
 	return a.ValidateInterface()
 }
 
-func (a actionCondition) ValidateInterface() error {
+func (a ActionCondition) ValidateInterface() error {
 	return jsonschema.ValidateInterface(a)
 }
 
-type entityCondition struct {
-	EntityIntCondition    *entityIntCondition    `json:",omitempty"`
-	EntityStringCondition *entityStringCondition `json:",omitempty"`
-	EntityTagCondition    *entityTagCondition    `json:",omitempty"`
+type EntityCondition struct {
+	EntityIntCondition    *EntityIntCondition    `json:",omitempty"`
+	EntityStringCondition *EntityStringCondition `json:",omitempty"`
+	EntityTagCondition    *EntityTagCondition    `json:",omitempty"`
 }
 
-func (e entityCondition) Validate() error {
+func (e EntityCondition) Validate() error {
 	return e.ValidateInterface()
 }
 
-func (e entityCondition) ValidateInterface() error {
+func (e EntityCondition) ValidateInterface() error {
 	return jsonschema.ValidateInterface(e)
 }
 
-type placeCondition struct {
-	PlaceIntCondition    *placeIntCondition    `json:",omitempty"`
-	PlaceStringCondition *placeStringCondition `json:",omitempty"`
-	PlaceTagCondition    *placeTagCondition    `json:",omitempty"`
+type PlaceCondition struct {
+	PlaceIntCondition    *PlaceIntCondition    `json:",omitempty"`
+	PlaceStringCondition *PlaceStringCondition `json:",omitempty"`
+	PlaceTagCondition    *PlaceTagCondition    `json:",omitempty"`
 }
 
-func (p placeCondition) Validate() error {
+func (p PlaceCondition) Validate() error {
 	return p.ValidateInterface()
 }
 
-func (p placeCondition) ValidateInterface() error {
+func (p PlaceCondition) ValidateInterface() error {
 	return jsonschema.ValidateInterface(p)
 }
 
-type playerCondition struct {
-	PlayerIntCondition *playerIntCondition `json:",omitempty"`
+type PlayerCondition struct {
+	PlayerIntCondition *PlayerIntCondition `json:",omitempty"`
 }
 
-func (p playerCondition) Validate() error {
+func (p PlayerCondition) Validate() error {
 	return p.ValidateInterface()
 }
 
-func (p playerCondition) ValidateInterface() error {
+func (p PlayerCondition) ValidateInterface() error {
 	return jsonschema.ValidateInterface(p)
 }
 
-type thisCondition struct{}
+type ThisCondition struct{}
 
-func (t thisCondition) Validate() error {
+func (t ThisCondition) Validate() error {
 	return t.ValidateStruct()
 }
 
-func (t thisCondition) ValidateStruct() error {
+func (t ThisCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (t thisCondition) GetInteractionText() string {
+func (t ThisCondition) GetInteractionText() string {
 	return "this"
 }
 
-type actionIntCondition struct {
-	ActionIntProperty actionIntProperty
-	IntValue          simpleIntValue
-	IntComparator     intComparator
+type ActionIntCondition struct {
+	ActionIntProperty ActionIntProperty
+	IntValue          SimpleIntValue
+	IntComparator     IntComparator
 }
 
-func (a actionIntCondition) Validate() error {
+func (a ActionIntCondition) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionIntCondition) ValidateStruct() error {
+func (a ActionIntCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionIntCondition) GetInteractionText() string {
+func (a ActionIntCondition) GetInteractionText() string {
 	return "with §ActionIntProperty §IntComparator §IntValue"
 }
 
-type actionStringCondition struct {
-	ActionStringProperty actionStringProperty
-	StringValue          simpleStringValue
-	StringComparator     stringComparator
+type ActionStringCondition struct {
+	ActionStringProperty ActionStringProperty
+	StringValue          SimpleStringValue
+	StringComparator     StringComparator
 }
 
-func (a actionStringCondition) Validate() error {
+func (a ActionStringCondition) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionStringCondition) ValidateStruct() error {
+func (a ActionStringCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionStringCondition) GetInteractionText() string {
+func (a ActionStringCondition) GetInteractionText() string {
 	return "with §ActionStringProperty §StringComparator §StringValue"
 }
 
-type actionTagCondition struct {
-	StringValue      simpleStringValue
-	StringComparator stringComparator
+type ActionTagCondition struct {
+	StringValue      SimpleStringValue
+	StringComparator StringComparator
 }
 
-func (a actionTagCondition) Validate() error {
+func (a ActionTagCondition) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionTagCondition) ValidateStruct() error {
+func (a ActionTagCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionTagCondition) GetInteractionText() string {
+func (a ActionTagCondition) GetInteractionText() string {
 	return "with tag §StringComparator §StringValue"
 }
 
-type entityIntCondition struct {
-	EntityIntProperty entityIntProperty
-	IntValue          simpleIntValue
-	IntComparator     intComparator
+type EntityIntCondition struct {
+	EntityIntProperty EntityIntProperty
+	IntValue          SimpleIntValue
+	IntComparator     IntComparator
 }
 
-func (e entityIntCondition) Validate() error {
+func (e EntityIntCondition) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityIntCondition) ValidateStruct() error {
+func (e EntityIntCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityIntCondition) GetInteractionText() string {
+func (e EntityIntCondition) GetInteractionText() string {
 	return "with §EntityIntProperty §IntComparator §IntValue"
 }
 
-type entityStringCondition struct {
-	EntityStringProperty entityStringProperty
-	StringValue          simpleStringValue
-	StringComparator     stringComparator
+type EntityStringCondition struct {
+	EntityStringProperty EntityStringProperty
+	StringValue          SimpleStringValue
+	StringComparator     StringComparator
 }
 
-func (e entityStringCondition) Validate() error {
+func (e EntityStringCondition) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityStringCondition) ValidateStruct() error {
+func (e EntityStringCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityStringCondition) GetInteractionText() string {
+func (e EntityStringCondition) GetInteractionText() string {
 	return "with §EntityStringProperty §StringComparator §StringValue"
 }
 
-type entityTagCondition struct {
-	StringValue      simpleStringValue
-	StringComparator stringComparator
+type EntityTagCondition struct {
+	StringValue      SimpleStringValue
+	StringComparator StringComparator
 }
 
-func (e entityTagCondition) Validate() error {
+func (e EntityTagCondition) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityTagCondition) ValidateStruct() error {
+func (e EntityTagCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityTagCondition) GetInteractionText() string {
+func (e EntityTagCondition) GetInteractionText() string {
 	return "with tag §StringComparator §StringValue"
 }
 
-type placeIntCondition struct {
-	PlaceIntProperty placeIntProperty
-	IntValue         simpleIntValue
-	IntComparator    intComparator
+type PlaceIntCondition struct {
+	PlaceIntProperty PlaceIntProperty
+	IntValue         SimpleIntValue
+	IntComparator    IntComparator
 }
 
-func (p placeIntCondition) Validate() error {
+func (p PlaceIntCondition) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeIntCondition) ValidateStruct() error {
+func (p PlaceIntCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeIntCondition) GetInteractionText() string {
+func (p PlaceIntCondition) GetInteractionText() string {
 	return "with §PlaceIntProperty §IntComparator §IntValue"
 }
 
-type placeStringCondition struct {
-	PlaceStringProperty placeStringProperty
-	StringValue         simpleStringValue
-	StringComparator    stringComparator
+type PlaceStringCondition struct {
+	PlaceStringProperty PlaceStringProperty
+	StringValue         SimpleStringValue
+	StringComparator    StringComparator
 }
 
-func (p placeStringCondition) Validate() error {
+func (p PlaceStringCondition) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeStringCondition) ValidateStruct() error {
+func (p PlaceStringCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeStringCondition) GetInteractionText() string {
+func (p PlaceStringCondition) GetInteractionText() string {
 	return "with §PlaceStringProperty §StringComparator §StringValue"
 }
 
-type placeTagCondition struct {
-	StringValue      simpleStringValue
-	StringComparator stringComparator
+type PlaceTagCondition struct {
+	StringValue      SimpleStringValue
+	StringComparator StringComparator
 }
 
-func (p placeTagCondition) Validate() error {
+func (p PlaceTagCondition) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeTagCondition) ValidateStruct() error {
+func (p PlaceTagCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeTagCondition) GetInteractionText() string {
+func (p PlaceTagCondition) GetInteractionText() string {
 	return "with tag §StringComparator §StringValue"
 }
 
-type playerIntCondition struct {
-	PlayerIntProperty playerIntProperty
-	IntValue          simpleIntValue
-	IntComparator     intComparator
+type PlayerIntCondition struct {
+	PlayerIntProperty PlayerIntProperty
+	IntValue          SimpleIntValue
+	IntComparator     IntComparator
 }
 
-func (p playerIntCondition) Validate() error {
+func (p PlayerIntCondition) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p playerIntCondition) ValidateStruct() error {
+func (p PlayerIntCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p playerIntCondition) GetInteractionText() string {
+func (p PlayerIntCondition) GetInteractionText() string {
 	return "with §PlayerIntProperty §IntComparator §IntValue"
 }

@@ -4,13 +4,13 @@ import (
 	"github.com/DecentralCardGame/jsonschema"
 )
 
-type abilities []ability
+type Abilities []Ability
 
-func (a abilities) Validate() error {
+func (a Abilities) Validate() error {
 	return a.ValidateArray()
 }
 
-func (a abilities) ValidateArray() error {
+func (a Abilities) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range a {
 		err := v.Validate()
@@ -21,58 +21,58 @@ func (a abilities) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (a abilities) GetMinMaxItems() (int, int) {
+func (a Abilities) GetMinMaxItems() (int, int) {
 	return 0, maxAbilityEffectCount
 }
 
-func (a abilities) GetItemName() string {
+func (a Abilities) GetItemName() string {
 	return "Ability"
 }
 
-type ability struct {
-	ActivatedAbility *activatedAbility `json:",omitempty"`
-	TriggeredAbility *triggeredAbility `json:",omitempty"`
+type Ability struct {
+	ActivatedAbility *ActivatedAbility `json:",omitempty"`
+	TriggeredAbility *TriggeredAbility `json:",omitempty"`
 }
 
-func (a ability) Validate() error {
+func (a Ability) Validate() error {
 	return a.ValidateInterface()
 }
 
-func (a ability) ValidateInterface() error {
+func (a Ability) ValidateInterface() error {
 	return jsonschema.ValidateInterface(a)
 }
 
-type activatedAbility struct {
-	AbilityCost *cost
-	Effects     effects
+type ActivatedAbility struct {
+	AbilityCost *Cost
+	Effects     Effects
 }
 
-func (a activatedAbility) Validate() error {
+func (a ActivatedAbility) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a activatedAbility) ValidateStruct() error {
+func (a ActivatedAbility) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a activatedAbility) GetInteractionText() string {
+func (a ActivatedAbility) GetInteractionText() string {
 	return "Pay §AbilityCost: §Effects \n"
 }
 
-type triggeredAbility struct {
-	Cause   *eventListener
-	Cost    *cost
-	Effects effects
+type TriggeredAbility struct {
+	Cause   *EventListener
+	Cost    *Cost
+	Effects Effects
 }
 
-func (t triggeredAbility) Validate() error {
+func (t TriggeredAbility) Validate() error {
 	return t.ValidateStruct()
 }
 
-func (t triggeredAbility) ValidateStruct() error {
+func (t TriggeredAbility) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (a triggeredAbility) GetInteractionText() string {
+func (a TriggeredAbility) GetInteractionText() string {
 	return "§Cause , §Cost : §Effects \n"
 }

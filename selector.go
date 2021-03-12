@@ -2,68 +2,68 @@ package cardobject
 
 import "github.com/DecentralCardGame/jsonschema"
 
-type actionSelector struct {
-	PlayerMode       playerMode
-	PlayerCondition  *playerCondition `json:",omitempty"`
-	CardMode         cardMode
-	ActionConditions *actionConditions `json:",omitempty"`
-	Zone             actionZone
-	ActionExtractors *actionExtractors `json:",omitempty"`
-	AmountExtractor  *intExtractor     `json:",omitempty"`
+type ActionSelector struct {
+	PlayerMode       PlayerMode
+	PlayerCondition  *PlayerCondition `json:",omitempty"`
+	CardMode         CardMode
+	ActionConditions *ActionConditions `json:",omitempty"`
+	Zone             ActionZone
+	ActionExtractors *ActionExtractors `json:",omitempty"`
+	AmountExtractor  *IntExtractor     `json:",omitempty"`
 }
 
-func (a actionSelector) Validate() error {
+func (a ActionSelector) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionSelector) ValidateStruct() error {
+func (a ActionSelector) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionSelector) GetInteractionText() string {
+func (a ActionSelector) GetInteractionText() string {
 	return "Choose §CardMode action §ActionConditions in the §Zone of §PlayerMode player §PlayerCondition. §ActionExtractors §AmountExtractor"
 }
 
-type entitySelector struct {
-	PlayerMode       playerMode
-	PlayerCondition  *playerCondition `json:",omitempty"`
-	CardMode         cardMode
-	EntityConditions *entityConditions `json:",omitempty"`
-	Zone             entityZone
-	EntityExtractors *entityExtractors `json:",omitempty"`
-	AmountExtractor  *intExtractor     `json:",omitempty"`
+type EntitySelector struct {
+	PlayerMode       PlayerMode
+	PlayerCondition  *PlayerCondition `json:",omitempty"`
+	CardMode         CardMode
+	EntityConditions *EntityConditions `json:",omitempty"`
+	Zone             EntityZone
+	EntityExtractors *EntityExtractors `json:",omitempty"`
+	AmountExtractor  *IntExtractor     `json:",omitempty"`
 }
 
-func (e entitySelector) Validate() error {
+func (e EntitySelector) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entitySelector) ValidateStruct() error {
+func (e EntitySelector) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entitySelector) GetInteractionText() string {
+func (e EntitySelector) GetInteractionText() string {
 	return "Choose §CardMode entity §EntityConditions in the §Zone of §PlayerMode player §PlayerCondition. §EntityExtractors §AmountExtractor"
 }
 
-type placeSelector struct {
-	PlayerMode      playerMode
-	PlayerCondition *playerCondition `json:",omitempty"`
-	CardMode        cardMode
-	PlaceConditions *placeConditions `json:",omitempty"`
-	Zone            placeZone
-	PlaceExtractors *placeExtractors `json:",omitempty"`
-	AmountExtractor *intExtractor    `json:",omitempty"`
+type PlaceSelector struct {
+	PlayerMode      PlayerMode
+	PlayerCondition *PlayerCondition `json:",omitempty"`
+	CardMode        CardMode
+	PlaceConditions *PlaceConditions `json:",omitempty"`
+	Zone            PlaceZone
+	PlaceExtractors *PlaceExtractors `json:",omitempty"`
+	AmountExtractor *IntExtractor    `json:",omitempty"`
 }
 
-func (p placeSelector) Validate() error {
+func (p PlaceSelector) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeSelector) ValidateStruct() error {
+func (p PlaceSelector) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeSelector) GetInteractionText() string {
+func (p PlaceSelector) GetInteractionText() string {
 	return "Choose §CardMode place §PlaceConditions in the §Zone of §PlayerMode player §PlayerCondition. §PlaceExtractors §AmountExtractor"
 }

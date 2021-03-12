@@ -18,13 +18,13 @@ var cardStringProperties []string = []string{"NAME", "TEXT"}
 
 var playerIntProperties []string = []string{"HANDSIZE", "BOARDSIZE", "DECKSIZE"}
 
-type actionIntProperty jsonschema.BasicEnum
+type ActionIntProperty jsonschema.BasicEnum
 
-func (a actionIntProperty) Validate() error {
+func (a ActionIntProperty) Validate() error {
 	return a.ValidateEnum()
 }
 
-func (a actionIntProperty) ValidateEnum() error {
+func (a ActionIntProperty) ValidateEnum() error {
 	values := a.GetEnumValues()
 	for _, v := range values {
 		if v == string(a) {
@@ -34,17 +34,17 @@ func (a actionIntProperty) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (a actionIntProperty) GetEnumValues() []string {
+func (a ActionIntProperty) GetEnumValues() []string {
 	return actionIntProperties
 }
 
-type actionStringProperty jsonschema.BasicEnum
+type ActionStringProperty jsonschema.BasicEnum
 
-func (a actionStringProperty) Validate() error {
+func (a ActionStringProperty) Validate() error {
 	return a.ValidateEnum()
 }
 
-func (a actionStringProperty) ValidateEnum() error {
+func (a ActionStringProperty) ValidateEnum() error {
 	values := a.GetEnumValues()
 	for _, v := range values {
 		if v == string(a) {
@@ -54,17 +54,17 @@ func (a actionStringProperty) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (a actionStringProperty) GetEnumValues() []string {
+func (a ActionStringProperty) GetEnumValues() []string {
 	return actionStringProperties
 }
 
-type entityIntProperty jsonschema.BasicEnum
+type EntityIntProperty jsonschema.BasicEnum
 
-func (e entityIntProperty) Validate() error {
+func (e EntityIntProperty) Validate() error {
 	return e.ValidateEnum()
 }
 
-func (e entityIntProperty) ValidateEnum() error {
+func (e EntityIntProperty) ValidateEnum() error {
 	values := e.GetEnumValues()
 	for _, v := range values {
 		if v == string(e) {
@@ -74,17 +74,17 @@ func (e entityIntProperty) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (e entityIntProperty) GetEnumValues() []string {
+func (e EntityIntProperty) GetEnumValues() []string {
 	return entityIntProperties
 }
 
-type entityStringProperty jsonschema.BasicEnum
+type EntityStringProperty jsonschema.BasicEnum
 
-func (e entityStringProperty) Validate() error {
+func (e EntityStringProperty) Validate() error {
 	return e.ValidateEnum()
 }
 
-func (e entityStringProperty) ValidateEnum() error {
+func (e EntityStringProperty) ValidateEnum() error {
 	values := e.GetEnumValues()
 	for _, v := range values {
 		if v == string(e) {
@@ -94,17 +94,17 @@ func (e entityStringProperty) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (e entityStringProperty) GetEnumValues() []string {
+func (e EntityStringProperty) GetEnumValues() []string {
 	return entityStringProperties
 }
 
-type placeIntProperty jsonschema.BasicEnum
+type PlaceIntProperty jsonschema.BasicEnum
 
-func (p placeIntProperty) Validate() error {
+func (p PlaceIntProperty) Validate() error {
 	return p.ValidateEnum()
 }
 
-func (p placeIntProperty) ValidateEnum() error {
+func (p PlaceIntProperty) ValidateEnum() error {
 	values := p.GetEnumValues()
 	for _, v := range values {
 		if v == string(p) {
@@ -114,17 +114,17 @@ func (p placeIntProperty) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (p placeIntProperty) GetEnumValues() []string {
+func (p PlaceIntProperty) GetEnumValues() []string {
 	return placeIntProperties
 }
 
-type placeStringProperty jsonschema.BasicEnum
+type PlaceStringProperty jsonschema.BasicEnum
 
-func (p placeStringProperty) Validate() error {
+func (p PlaceStringProperty) Validate() error {
 	return p.ValidateEnum()
 }
 
-func (p placeStringProperty) ValidateEnum() error {
+func (p PlaceStringProperty) ValidateEnum() error {
 	values := p.GetEnumValues()
 	for _, v := range values {
 		if v == string(p) {
@@ -134,17 +134,17 @@ func (p placeStringProperty) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (p placeStringProperty) GetEnumValues() []string {
+func (p PlaceStringProperty) GetEnumValues() []string {
 	return actionStringProperties
 }
 
-type cardIntProperty jsonschema.BasicEnum
+type CardIntProperty jsonschema.BasicEnum
 
-func (c cardIntProperty) Validate() error {
+func (c CardIntProperty) Validate() error {
 	return c.ValidateEnum()
 }
 
-func (c cardIntProperty) ValidateEnum() error {
+func (c CardIntProperty) ValidateEnum() error {
 	values := c.GetEnumValues()
 	for _, v := range values {
 		if v == string(c) {
@@ -154,17 +154,17 @@ func (c cardIntProperty) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (c cardIntProperty) GetEnumValues() []string {
+func (c CardIntProperty) GetEnumValues() []string {
 	return cardIntProperties
 }
 
-type cardStringProperty jsonschema.BasicEnum
+type CardStringProperty jsonschema.BasicEnum
 
-func (c cardStringProperty) Validate() error {
+func (c CardStringProperty) Validate() error {
 	return c.ValidateEnum()
 }
 
-func (c cardStringProperty) ValidateEnum() error {
+func (c CardStringProperty) ValidateEnum() error {
 	values := c.GetEnumValues()
 	for _, v := range values {
 		if v == string(c) {
@@ -174,17 +174,17 @@ func (c cardStringProperty) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (c cardStringProperty) GetEnumValues() []string {
+func (c CardStringProperty) GetEnumValues() []string {
 	return cardStringProperties
 }
 
-type playerIntProperty jsonschema.BasicEnum
+type PlayerIntProperty jsonschema.BasicEnum
 
-func (p playerIntProperty) Validate() error {
+func (p PlayerIntProperty) Validate() error {
 	return p.ValidateEnum()
 }
 
-func (p playerIntProperty) ValidateEnum() error {
+func (p PlayerIntProperty) ValidateEnum() error {
 	values := p.GetEnumValues()
 	for _, v := range values {
 		if v == string(p) {
@@ -194,6 +194,6 @@ func (p playerIntProperty) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (p playerIntProperty) GetEnumValues() []string {
+func (p PlayerIntProperty) GetEnumValues() []string {
 	return playerIntProperties
 }

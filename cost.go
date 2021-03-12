@@ -6,100 +6,100 @@ import (
 	"github.com/DecentralCardGame/jsonschema"
 )
 
-type cost struct {
-	RessourceCost *ressourceCost `json:",omitempty"`
-	SacrificeCost *sacrificeCost `json:",omitempty"`
-	DiscardCost   *discardCost   `json:",omitempty"`
+type Cost struct {
+	RessourceCost *RessourceCost `json:",omitempty"`
+	SacrificeCost *SacrificeCost `json:",omitempty"`
+	DiscardCost   *DiscardCost   `json:",omitempty"`
 }
 
-func (c cost) Validate() error {
+func (c Cost) Validate() error {
 	return c.ValidateInterface()
 }
 
-func (c cost) ValidateInterface() error {
+func (c Cost) ValidateInterface() error {
 	return jsonschema.ValidateInterface(c)
 }
 
-type ressourceCost struct {
-	CostAmount basicAmount
+type RessourceCost struct {
+	CostAmount BasicAmount
 }
 
-func (r ressourceCost) Validate() error {
+func (r RessourceCost) Validate() error {
 	return r.ValidateStruct()
 }
 
-func (r ressourceCost) ValidateStruct() error {
+func (r RessourceCost) ValidateStruct() error {
 	return jsonschema.ValidateStruct(r)
 }
 
-func (r ressourceCost) GetInteractionText() string {
+func (r RessourceCost) GetInteractionText() string {
 	return "§CostAmount ressources"
 }
 
-type sacrificeCost struct {
-	Amount     basicAmount
-	Conditions *cardConditions
+type SacrificeCost struct {
+	Amount     BasicAmount
+	Conditions *CardConditions
 }
 
-func (s sacrificeCost) Validate() error {
+func (s SacrificeCost) Validate() error {
 	return s.ValidateStruct()
 }
 
-func (s sacrificeCost) ValidateStruct() error {
+func (s SacrificeCost) ValidateStruct() error {
 	return jsonschema.ValidateStruct(s)
 }
 
-func (s sacrificeCost) GetInteractionText() string {
+func (s SacrificeCost) GetInteractionText() string {
 	return "Sacrifice §Amount card §Conditions"
 }
 
-type discardCost struct {
-	Amount     basicAmount
-	Conditions *cardConditions
+type DiscardCost struct {
+	Amount     BasicAmount
+	Conditions *CardConditions
 }
 
-func (d discardCost) Validate() error {
+func (d DiscardCost) Validate() error {
 	return d.ValidateStruct()
 }
 
-func (d discardCost) ValidateStruct() error {
+func (d DiscardCost) ValidateStruct() error {
 	return jsonschema.ValidateStruct(d)
 }
 
-func (d discardCost) GetInteractionText() string {
+func (d DiscardCost) GetInteractionText() string {
 	return "Discard §Amount card §Conditions"
 }
 
-type ressourceCostType struct {
-	Energy energy
-	Food   food
-	Lumber lumber
-	Mana   mana
-	Iron   iron
+type RessourceCostType struct {
+	Energy Energy
+	Food   Food
+	Lumber Lumber
+	Mana   Mana
+	Iron   Iron
 }
 
-func (r ressourceCostType) Validate() error {
+func (r RessourceCostType) Validate() error {
 	if !(bool(r.Energy) || bool(r.Food) || bool(r.Lumber) || bool(r.Mana) || bool(r.Iron)) {
-		return errors.New("At least one Costtype must be selected for a card.")
+		return errors.New("At least one Costtype Must be selected for a card.")
 	}
 	return r.ValidateStruct()
 }
 
-func (r ressourceCostType) ValidateStruct() error {
+func (r RessourceCostType) ValidateStruct() error {
 	return jsonschema.ValidateStruct(r)
 }
 
-func (r ressourceCostType) GetInteractionText() string {
+func (r RessourceCostType) GetInteractionText() string {
 	return "§Energy §Food §Lumber §Mana §Iron"
 }
 
-type energy jsonschema.BasicBool
+type Energy jsonschema.BasicBool
 
-func (e energy) Validate() error {
+func (e Energy) Validate() error {
 	return e.ValidateBool()
 }
 
-func (e energy) ValidateBool() error {
+func (e Energy) ValidateBool() error {
 	b := bool(e)
 	if b || !b {
 		return nil
@@ -107,13 +107,13 @@ func (e energy) ValidateBool() error {
 	return errors.New("")
 }
 
-type food jsonschema.BasicBool
+type Food jsonschema.BasicBool
 
-func (f food) Validate() error {
+func (f Food) Validate() error {
 	return f.ValidateBool()
 }
 
-func (f food) ValidateBool() error {
+func (f Food) ValidateBool() error {
 	b := bool(f)
 	if b || !b {
 		return nil
@@ -121,13 +121,13 @@ func (f food) ValidateBool() error {
 	return errors.New("")
 }
 
-type lumber jsonschema.BasicBool
+type Lumber jsonschema.BasicBool
 
-func (l lumber) Validate() error {
+func (l Lumber) Validate() error {
 	return l.ValidateBool()
 }
 
-func (l lumber) ValidateBool() error {
+func (l Lumber) ValidateBool() error {
 	b := bool(l)
 	if b || !b {
 		return nil
@@ -135,13 +135,13 @@ func (l lumber) ValidateBool() error {
 	return errors.New("")
 }
 
-type mana jsonschema.BasicBool
+type Mana jsonschema.BasicBool
 
-func (m mana) Validate() error {
+func (m Mana) Validate() error {
 	return m.ValidateBool()
 }
 
-func (m mana) ValidateBool() error {
+func (m Mana) ValidateBool() error {
 	b := bool(m)
 	if b || !b {
 		return nil
@@ -149,13 +149,13 @@ func (m mana) ValidateBool() error {
 	return errors.New("")
 }
 
-type iron jsonschema.BasicBool
+type Iron jsonschema.BasicBool
 
-func (i iron) Validate() error {
+func (i Iron) Validate() error {
 	return i.ValidateBool()
 }
 
-func (i iron) ValidateBool() error {
+func (i Iron) ValidateBool() error {
 	b := bool(i)
 	if b || !b {
 		return nil

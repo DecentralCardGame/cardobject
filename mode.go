@@ -13,13 +13,13 @@ var playerModes []string = []string{"YOU", "OPPONENT"}
 var cardModes []string = []string{"ALL", "OPPONENTSCHOICE", "RANDOM", "TARGET"}
 var ownerModes []string = []string{"YOUR", "OPPONENTS", "OWNERS"}
 
-type intChangeMode jsonschema.BasicEnum
+type IntChangeMode jsonschema.BasicEnum
 
-func (i intChangeMode) Validate() error {
+func (i IntChangeMode) Validate() error {
 	return i.ValidateEnum()
 }
 
-func (i intChangeMode) ValidateEnum() error {
+func (i IntChangeMode) ValidateEnum() error {
 	values := i.GetEnumValues()
 	for _, v := range values {
 		if v == string(i) {
@@ -29,17 +29,17 @@ func (i intChangeMode) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (i intChangeMode) GetEnumValues() []string {
+func (i IntChangeMode) GetEnumValues() []string {
 	return intChangeModes
 }
 
-type stringChangeMode jsonschema.BasicEnum
+type StringChangeMode jsonschema.BasicEnum
 
-func (s stringChangeMode) Validate() error {
+func (s StringChangeMode) Validate() error {
 	return s.ValidateEnum()
 }
 
-func (s stringChangeMode) ValidateEnum() error {
+func (s StringChangeMode) ValidateEnum() error {
 	values := s.GetEnumValues()
 	for _, v := range values {
 		if v == string(s) {
@@ -49,17 +49,17 @@ func (s stringChangeMode) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (s stringChangeMode) GetEnumValues() []string {
+func (s StringChangeMode) GetEnumValues() []string {
 	return stringChangeModes
 }
 
-type playerMode jsonschema.BasicEnum
+type PlayerMode jsonschema.BasicEnum
 
-func (p playerMode) Validate() error {
+func (p PlayerMode) Validate() error {
 	return p.ValidateEnum()
 }
 
-func (p playerMode) ValidateEnum() error {
+func (p PlayerMode) ValidateEnum() error {
 	values := p.GetEnumValues()
 	for _, v := range values {
 		if v == string(p) {
@@ -69,17 +69,17 @@ func (p playerMode) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (p playerMode) GetEnumValues() []string {
+func (p PlayerMode) GetEnumValues() []string {
 	return playerModes
 }
 
-type cardMode jsonschema.BasicEnum
+type CardMode jsonschema.BasicEnum
 
-func (c cardMode) Validate() error {
+func (c CardMode) Validate() error {
 	return c.ValidateEnum()
 }
 
-func (c cardMode) ValidateEnum() error {
+func (c CardMode) ValidateEnum() error {
 	values := c.GetEnumValues()
 	for _, v := range values {
 		if v == string(c) {
@@ -89,17 +89,17 @@ func (c cardMode) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (c cardMode) GetEnumValues() []string {
+func (c CardMode) GetEnumValues() []string {
 	return cardModes
 }
 
-type ownerMode jsonschema.BasicEnum
+type OwnerMode jsonschema.BasicEnum
 
-func (o ownerMode) Validate() error {
+func (o OwnerMode) Validate() error {
 	return o.ValidateEnum()
 }
 
-func (o ownerMode) ValidateEnum() error {
+func (o OwnerMode) ValidateEnum() error {
 	values := o.GetEnumValues()
 	for _, v := range values {
 		if v == string(o) {
@@ -109,6 +109,6 @@ func (o ownerMode) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (o ownerMode) GetEnumValues() []string {
+func (o OwnerMode) GetEnumValues() []string {
 	return ownerModes
 }

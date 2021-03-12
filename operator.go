@@ -12,13 +12,13 @@ var stringOperators []string = []string{"SET"}
 
 var arithOperators []string = []string{"ADD", "SUBTRACT"}
 
-type abilityEffectOperator jsonschema.BasicEnum
+type AbilityEffectOperator jsonschema.BasicEnum
 
-func (a abilityEffectOperator) Validate() error {
+func (a AbilityEffectOperator) Validate() error {
 	return a.ValidateEnum()
 }
 
-func (a abilityEffectOperator) ValidateEnum() error {
+func (a AbilityEffectOperator) ValidateEnum() error {
 	values := a.GetEnumValues()
 	for _, v := range values {
 		if v == string(a) {
@@ -28,17 +28,17 @@ func (a abilityEffectOperator) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (a abilityEffectOperator) GetEnumValues() []string {
+func (a AbilityEffectOperator) GetEnumValues() []string {
 	return abilityEffectOperators
 }
 
-type intOperator jsonschema.BasicEnum
+type IntOperator jsonschema.BasicEnum
 
-func (i intOperator) Validate() error {
+func (i IntOperator) Validate() error {
 	return i.ValidateEnum()
 }
 
-func (i intOperator) ValidateEnum() error {
+func (i IntOperator) ValidateEnum() error {
 	values := i.GetEnumValues()
 	for _, v := range values {
 		if v == string(i) {
@@ -48,17 +48,17 @@ func (i intOperator) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (i intOperator) GetEnumValues() []string {
+func (i IntOperator) GetEnumValues() []string {
 	return intOperators
 }
 
-type stringOperator jsonschema.BasicEnum
+type StringOperator jsonschema.BasicEnum
 
-func (s stringOperator) Validate() error {
+func (s StringOperator) Validate() error {
 	return s.ValidateEnum()
 }
 
-func (s stringOperator) ValidateEnum() error {
+func (s StringOperator) ValidateEnum() error {
 	values := s.GetEnumValues()
 	for _, v := range values {
 		if v == string(s) {
@@ -68,17 +68,17 @@ func (s stringOperator) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (s stringOperator) GetEnumValues() []string {
+func (s StringOperator) GetEnumValues() []string {
 	return stringOperators
 }
 
-type arithOperator jsonschema.BasicEnum
+type ArithOperator jsonschema.BasicEnum
 
-func (a arithOperator) Validate() error {
+func (a ArithOperator) Validate() error {
 	return a.ValidateEnum()
 }
 
-func (a arithOperator) ValidateEnum() error {
+func (a ArithOperator) ValidateEnum() error {
 	values := a.GetEnumValues()
 	for _, v := range values {
 		if v == string(a) {
@@ -88,6 +88,6 @@ func (a arithOperator) ValidateEnum() error {
 	return errors.New("")
 }
 
-func (a arithOperator) GetEnumValues() []string {
+func (a ArithOperator) GetEnumValues() []string {
 	return arithOperators
 }

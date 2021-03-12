@@ -4,27 +4,27 @@ import (
 	"github.com/DecentralCardGame/jsonschema"
 )
 
-type cardExtractors struct {
-	ActionExtractors *actionExtractors `json:",omitempty"`
-	EntityExtractors *entityExtractors `json:",omitempty"`
-	PlaceExtractors  *placeExtractors  `json:",omitempty"`
+type CardExtractors struct {
+	ActionExtractors *ActionExtractors `json:",omitempty"`
+	EntityExtractors *EntityExtractors `json:",omitempty"`
+	PlaceExtractors  *PlaceExtractors  `json:",omitempty"`
 }
 
-func (c cardExtractors) Validate() error {
+func (c CardExtractors) Validate() error {
 	return c.ValidateInterface()
 }
 
-func (c cardExtractors) ValidateInterface() error {
+func (c CardExtractors) ValidateInterface() error {
 	return jsonschema.ValidateInterface(c)
 }
 
-type actionExtractors []actionExtractor
+type ActionExtractors []ActionExtractor
 
-func (a actionExtractors) Validate() error {
+func (a ActionExtractors) Validate() error {
 	return a.ValidateArray()
 }
 
-func (a actionExtractors) ValidateArray() error {
+func (a ActionExtractors) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range a {
 		err := v.Validate()
@@ -35,21 +35,21 @@ func (a actionExtractors) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (a actionExtractors) GetMinMaxItems() (int, int) {
+func (a ActionExtractors) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (a actionExtractors) GetItemName() string {
+func (a ActionExtractors) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(a)
 }
 
-type entityExtractors []entityExtractor
+type EntityExtractors []EntityExtractor
 
-func (e entityExtractors) Validate() error {
+func (e EntityExtractors) Validate() error {
 	return e.ValidateArray()
 }
 
-func (e entityExtractors) ValidateArray() error {
+func (e EntityExtractors) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range e {
 		err := v.Validate()
@@ -60,21 +60,21 @@ func (e entityExtractors) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (e entityExtractors) GetMinMaxItems() (int, int) {
+func (e EntityExtractors) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (e entityExtractors) GetItemName() string {
+func (e EntityExtractors) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(e)
 }
 
-type placeExtractors []placeExtractor
+type PlaceExtractors []PlaceExtractor
 
-func (p placeExtractors) Validate() error {
+func (p PlaceExtractors) Validate() error {
 	return p.ValidateArray()
 }
 
-func (p placeExtractors) ValidateArray() error {
+func (p PlaceExtractors) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range p {
 		err := v.Validate()
@@ -85,202 +85,202 @@ func (p placeExtractors) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (p placeExtractors) GetMinMaxItems() (int, int) {
+func (p PlaceExtractors) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (p placeExtractors) GetItemName() string {
+func (p PlaceExtractors) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(p)
 }
 
-type actionExtractor struct {
-	ActionIntExtractor    *actionIntExtractor    `json:",omitempty"`
-	ActionStringExtractor *actionStringExtractor `json:",omitempty"`
-	ActionTargetExtractor *targetExtractor       `json:",omitempty"`
+type ActionExtractor struct {
+	ActionIntExtractor    *ActionIntExtractor    `json:",omitempty"`
+	ActionStringExtractor *ActionStringExtractor `json:",omitempty"`
+	ActionTargetExtractor *TargetExtractor       `json:",omitempty"`
 }
 
-func (a actionExtractor) Validate() error {
+func (a ActionExtractor) Validate() error {
 	return a.ValidateInterface()
 }
 
-func (a actionExtractor) ValidateInterface() error {
+func (a ActionExtractor) ValidateInterface() error {
 	return jsonschema.ValidateInterface(a)
 }
 
-type entityExtractor struct {
-	EntityIntExtractor    *entityIntExtractor    `json:",omitempty"`
-	EntityStringExtractor *entityStringExtractor `json:",omitempty"`
-	EntityTargetExtractor *targetExtractor       `json:",omitempty"`
+type EntityExtractor struct {
+	EntityIntExtractor    *EntityIntExtractor    `json:",omitempty"`
+	EntityStringExtractor *EntityStringExtractor `json:",omitempty"`
+	EntityTargetExtractor *TargetExtractor       `json:",omitempty"`
 }
 
-func (e entityExtractor) Validate() error {
+func (e EntityExtractor) Validate() error {
 	return e.ValidateInterface()
 }
 
-func (e entityExtractor) ValidateInterface() error {
+func (e EntityExtractor) ValidateInterface() error {
 	return jsonschema.ValidateInterface(e)
 }
 
-type placeExtractor struct {
-	PlaceIntExtractor    *placeIntExtractor    `json:",omitempty"`
-	PlaceStringExtractor *placeStringExtractor `json:",omitempty"`
-	PlaceTargetExtractor *targetExtractor      `json:",omitempty"`
+type PlaceExtractor struct {
+	PlaceIntExtractor    *PlaceIntExtractor    `json:",omitempty"`
+	PlaceStringExtractor *PlaceStringExtractor `json:",omitempty"`
+	PlaceTargetExtractor *TargetExtractor      `json:",omitempty"`
 }
 
-func (p placeExtractor) Validate() error {
+func (p PlaceExtractor) Validate() error {
 	return p.ValidateInterface()
 }
 
-func (p placeExtractor) ValidateInterface() error {
+func (p PlaceExtractor) ValidateInterface() error {
 	return jsonschema.ValidateInterface(p)
 }
 
-type actionIntExtractor struct {
-	ExtractIntProperty actionIntProperty
-	IntVariableName    intVariableName
+type ActionIntExtractor struct {
+	ExtractIntProperty ActionIntProperty
+	IntVariableName    IntVariableName
 }
 
-func (a actionIntExtractor) Validate() error {
+func (a ActionIntExtractor) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionIntExtractor) ValidateStruct() error {
+func (a ActionIntExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionIntExtractor) GetInteractionText() string {
+func (a ActionIntExtractor) GetInteractionText() string {
 	return "Set §IntVariableName to the actions §ExtractIntProperty."
 }
 
-type actionStringExtractor struct {
-	ExtractStringProperty actionStringProperty
-	StringVariableName    stringVariableName
+type ActionStringExtractor struct {
+	ExtractStringProperty ActionStringProperty
+	StringVariableName    StringVariableName
 }
 
-func (a actionStringExtractor) Validate() error {
+func (a ActionStringExtractor) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionStringExtractor) ValidateStruct() error {
+func (a ActionStringExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionStringExtractor) GetInteractionText() string {
+func (a ActionStringExtractor) GetInteractionText() string {
 	return "Set §StringVariableName to the actionss §ExtractStringProperty."
 }
 
-type entityIntExtractor struct {
-	ExtractIntProperty entityIntProperty
-	IntVariableName    intVariableName
+type EntityIntExtractor struct {
+	ExtractIntProperty EntityIntProperty
+	IntVariableName    IntVariableName
 }
 
-func (e entityIntExtractor) Validate() error {
+func (e EntityIntExtractor) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityIntExtractor) ValidateStruct() error {
+func (e EntityIntExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityIntExtractor) GetInteractionText() string {
+func (e EntityIntExtractor) GetInteractionText() string {
 	return "Set §IntVariableName to the entities §ExtractIntProperty."
 }
 
-type entityStringExtractor struct {
-	ExtractStringProperty entityStringProperty
-	StringVariableName    stringVariableName
+type EntityStringExtractor struct {
+	ExtractStringProperty EntityStringProperty
+	StringVariableName    StringVariableName
 }
 
-func (e entityStringExtractor) Validate() error {
+func (e EntityStringExtractor) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityStringExtractor) ValidateStruct() error {
+func (e EntityStringExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityStringExtractor) GetInteractionText() string {
+func (e EntityStringExtractor) GetInteractionText() string {
 	return "Set §StringVariableName to the entities §ExtractStringProperty."
 }
 
-type placeIntExtractor struct {
-	ExtractIntProperty placeIntProperty
-	IntVariableName    intVariableName
+type PlaceIntExtractor struct {
+	ExtractIntProperty PlaceIntProperty
+	IntVariableName    IntVariableName
 }
 
-func (p placeIntExtractor) Validate() error {
+func (p PlaceIntExtractor) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeIntExtractor) ValidateStruct() error {
+func (p PlaceIntExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeIntExtractor) GetInteractionText() string {
+func (p PlaceIntExtractor) GetInteractionText() string {
 	return "Set §IntVariableName to the places §ExtractIntProperty."
 }
 
-type placeStringExtractor struct {
-	ExtractStringProperty placeStringProperty
-	StringVariableName    stringVariableName
+type PlaceStringExtractor struct {
+	ExtractStringProperty PlaceStringProperty
+	StringVariableName    StringVariableName
 }
 
-func (p placeStringExtractor) Validate() error {
+func (p PlaceStringExtractor) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeStringExtractor) ValidateStruct() error {
+func (p PlaceStringExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeStringExtractor) GetInteractionText() string {
+func (p PlaceStringExtractor) GetInteractionText() string {
 	return "Set §StringVariableName to the places §ExtractStringProperty."
 }
 
-type targetExtractor struct {
-	TargetVariableName targetVariableName
+type TargetExtractor struct {
+	TargetVariableName TargetVariableName
 }
 
-func (t targetExtractor) Validate() error {
+func (t TargetExtractor) Validate() error {
 	return t.ValidateStruct()
 }
 
-func (t targetExtractor) ValidateStruct() error {
+func (t TargetExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (t targetExtractor) GetInteractionText() string {
+func (t TargetExtractor) GetInteractionText() string {
 	return "That card is marked as §TargetVariableName."
 }
 
-type intExtractor struct {
-	IntVariableName intVariableName
+type IntExtractor struct {
+	IntVariableName IntVariableName
 }
 
-func (i intExtractor) Validate() error {
+func (i IntExtractor) Validate() error {
 	return i.ValidateStruct()
 }
 
-func (i intExtractor) ValidateStruct() error {
+func (i IntExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(i)
 }
 
-func (i intExtractor) GetInteractionText() string {
+func (i IntExtractor) GetInteractionText() string {
 	return "Set §IntVariableName."
 }
 
-type stringExtractor struct {
-	StringVariableName stringVariableName
+type StringExtractor struct {
+	StringVariableName StringVariableName
 }
 
-func (s stringExtractor) Validate() error {
+func (s StringExtractor) Validate() error {
 	return s.ValidateStruct()
 }
 
-func (s stringExtractor) ValidateStruct() error {
+func (s StringExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(s)
 }
 
-func (s stringExtractor) GetInteractionText() string {
+func (s StringExtractor) GetInteractionText() string {
 	return "Set §StringVariableName."
 }

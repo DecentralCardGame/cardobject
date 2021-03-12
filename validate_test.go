@@ -30,7 +30,7 @@ func writeToFile(schema string) {
 }
 
 func TestCardSerializationAction1(t *testing.T) {
-	schema, textErr := jsonschema.Reflect(&card{})
+	schema, textErr := jsonschema.Reflect(&Card{})
 	if textErr != nil {
 		t.Error(textErr)
 	}

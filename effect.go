@@ -4,13 +4,13 @@ import (
 	"github.com/DecentralCardGame/jsonschema"
 )
 
-type effects []effect
+type Effects []Effect
 
-func (e effects) Validate() error {
+func (e Effects) Validate() error {
 	return e.ValidateArray()
 }
 
-func (e effects) ValidateArray() error {
+func (e Effects) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range e {
 		err := v.Validate()
@@ -21,174 +21,174 @@ func (e effects) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (e effects) GetMinMaxItems() (int, int) {
+func (e Effects) GetMinMaxItems() (int, int) {
 	return 0, maxAbilityEffectCount
 }
 
-func (e effects) GetItemName() string {
+func (e Effects) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(e)
 }
 
-type effect struct {
-	ProductionEffect *productionEffect `json:",omitempty"`
-	WisdomEffect     *wisdomEffect     `json:",omitempty"`
-	TokenEffect      *tokenEffect      `json:",omitempty"`
-	TargetEffect     *targetEffect     `json:",omitempty"`
-	ChooseFromEffect *chooseFromEffect `json:",omitempty"`
+type Effect struct {
+	ProductionEffect *ProductionEffect `json:",omitempty"`
+	WisdomEffect     *WisdomEffect     `json:",omitempty"`
+	TokenEffect      *TokenEffect      `json:",omitempty"`
+	TargetEffect     *TargetEffect     `json:",omitempty"`
+	ChooseFromEffect *ChooseFromEffect `json:",omitempty"`
 }
 
-func (e effect) Validate() error {
+func (e Effect) Validate() error {
 	return e.ValidateInterface()
 }
 
-func (e effect) ValidateInterface() error {
+func (e Effect) ValidateInterface() error {
 	return jsonschema.ValidateInterface(e)
 }
 
-type productionEffect struct {
-	Amount intValue
+type ProductionEffect struct {
+	Amount IntValue
 }
 
-func (p productionEffect) Validate() error {
+func (p ProductionEffect) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p productionEffect) ValidateStruct() error {
+func (p ProductionEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p productionEffect) GetInteractionText() string {
+func (p ProductionEffect) GetInteractionText() string {
 	return "Produce §Amount."
 }
 
-type wisdomEffect struct {
-	wisdomAmount intValue
+type WisdomEffect struct {
+	wisdomAmount IntValue
 }
 
-func (d wisdomEffect) Validate() error {
+func (d WisdomEffect) Validate() error {
 	return d.ValidateStruct()
 }
 
-func (d wisdomEffect) ValidateStruct() error {
+func (d WisdomEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(d)
 }
 
-func (d wisdomEffect) GetInteractionText() string {
+func (d WisdomEffect) GetInteractionText() string {
 	return "Gain §WisdomAmount wisdom."
 }
 
-type tokenEffect struct {
-	TokenAmount intValue
-	Token       token
+type TokenEffect struct {
+	TokenAmount IntValue
+	Token       Token
 }
 
-func (t tokenEffect) Validate() error {
+func (t TokenEffect) Validate() error {
 	return t.ValidateStruct()
 }
 
-func (t tokenEffect) ValidateStruct() error {
+func (t TokenEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (t tokenEffect) GetInteractionText() string {
+func (t TokenEffect) GetInteractionText() string {
 	return "Create §TokenAmount §Token."
 }
 
-type chooseFromEffect struct {
-	Effects effects
+type ChooseFromEffect struct {
+	Effects Effects
 }
 
-func (c chooseFromEffect) Validate() error {
+func (c ChooseFromEffect) Validate() error {
 	return c.ValidateStruct()
 }
 
-func (c chooseFromEffect) ValidateStruct() error {
+func (c ChooseFromEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(c)
 }
 
-func (c chooseFromEffect) GetInteractionText() string {
+func (c ChooseFromEffect) GetInteractionText() string {
 	return "Do one of §Effects."
 }
 
-type targetEffect struct {
-	ActionTargetEffect    *actionTargetEffect    `json:",omitempty"`
-	EntityTargetEffect    *entityTargetEffect    `json:",omitempty"`
-	PlaceTargetEffect     *placeTargetEffect     `json:",omitempty"`
-	ExtractorTargetEffect *extractorTargetEffect `json:",omitempty"`
+type TargetEffect struct {
+	ActionTargetEffect    *ActionTargetEffect    `json:",omitempty"`
+	EntityTargetEffect    *EntityTargetEffect    `json:",omitempty"`
+	PlaceTargetEffect     *PlaceTargetEffect     `json:",omitempty"`
+	ExtractorTargetEffect *ExtractorTargetEffect `json:",omitempty"`
 }
 
-func (t targetEffect) Validate() error {
+func (t TargetEffect) Validate() error {
 	return t.ValidateInterface()
 }
 
-func (t targetEffect) ValidateInterface() error {
+func (t TargetEffect) ValidateInterface() error {
 	return jsonschema.ValidateInterface(t)
 }
 
-type actionTargetEffect struct {
-	ActionSelector      *actionSelector
-	ActionManipulations *actionManipulations
+type ActionTargetEffect struct {
+	ActionSelector      *ActionSelector
+	ActionManipulations *ActionManipulations
 }
 
-func (a actionTargetEffect) Validate() error {
+func (a ActionTargetEffect) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionTargetEffect) ValidateStruct() error {
+func (a ActionTargetEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionTargetEffect) GetInteractionText() string {
+func (a ActionTargetEffect) GetInteractionText() string {
 	return "§ActionSelector §ActionManipulations"
 }
 
-type entityTargetEffect struct {
-	EntitySelector      *entitySelector
-	EntityManipulations *entityManipulations
+type EntityTargetEffect struct {
+	EntitySelector      *EntitySelector
+	EntityManipulations *EntityManipulations
 }
 
-func (e entityTargetEffect) Validate() error {
+func (e EntityTargetEffect) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityTargetEffect) ValidateStruct() error {
+func (e EntityTargetEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityTargetEffect) GetInteractionText() string {
+func (e EntityTargetEffect) GetInteractionText() string {
 	return "§EntitySelector §EntityManipulations"
 }
 
-type placeTargetEffect struct {
-	PlaceSelector      *placeSelector
-	PlaceManipulations *placeManipulations
+type PlaceTargetEffect struct {
+	PlaceSelector      *PlaceSelector
+	PlaceManipulations *PlaceManipulations
 }
 
-func (p placeTargetEffect) Validate() error {
+func (p PlaceTargetEffect) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeTargetEffect) ValidateStruct() error {
+func (p PlaceTargetEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeTargetEffect) GetInteractionText() string {
+func (p PlaceTargetEffect) GetInteractionText() string {
 	return "§PlaceSelector §PlaceManipulations"
 }
 
-type extractorTargetEffect struct {
-	TargetVariable targetVariableName
-	Manipulations  *manipulations
+type ExtractorTargetEffect struct {
+	TargetVariable TargetVariableName
+	Manipulations  *Manipulations
 }
 
-func (e extractorTargetEffect) Validate() error {
+func (e ExtractorTargetEffect) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e extractorTargetEffect) ValidateStruct() error {
+func (e ExtractorTargetEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e extractorTargetEffect) GetInteractionText() string {
+func (e ExtractorTargetEffect) GetInteractionText() string {
 	return "Choose §TargetVariable. §Manipulations"
 }

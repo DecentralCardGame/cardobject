@@ -2,27 +2,27 @@ package cardobject
 
 import "github.com/DecentralCardGame/jsonschema"
 
-type manipulations struct {
-	ActionManipulations *actionManipulations `json:",omitempty"`
-	EntityManipulations *entityManipulations `json:",omitempty"`
-	PlaceManipulations  *placeManipulations  `json:",omitempty"`
+type Manipulations struct {
+	ActionManipulations *ActionManipulations `json:",omitempty"`
+	EntityManipulations *EntityManipulations `json:",omitempty"`
+	PlaceManipulations  *PlaceManipulations  `json:",omitempty"`
 }
 
-func (m manipulations) Validate() error {
+func (m Manipulations) Validate() error {
 	return m.ValidateInterface()
 }
 
-func (m manipulations) ValidateInterface() error {
+func (m Manipulations) ValidateInterface() error {
 	return jsonschema.ValidateInterface(m)
 }
 
-type actionManipulations []actionManipulation
+type ActionManipulations []ActionManipulation
 
-func (a actionManipulations) Validate() error {
+func (a ActionManipulations) Validate() error {
 	return a.ValidateArray()
 }
 
-func (a actionManipulations) ValidateArray() error {
+func (a ActionManipulations) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range a {
 		err := v.Validate()
@@ -33,21 +33,21 @@ func (a actionManipulations) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (a actionManipulations) GetMinMaxItems() (int, int) {
+func (a ActionManipulations) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (a actionManipulations) GetItemName() string {
+func (a ActionManipulations) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(a)
 }
 
-type entityManipulations []entityManipulation
+type EntityManipulations []EntityManipulation
 
-func (e entityManipulations) Validate() error {
+func (e EntityManipulations) Validate() error {
 	return e.ValidateArray()
 }
 
-func (e entityManipulations) ValidateArray() error {
+func (e EntityManipulations) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range e {
 		err := v.Validate()
@@ -58,21 +58,21 @@ func (e entityManipulations) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (e entityManipulations) GetMinMaxItems() (int, int) {
+func (e EntityManipulations) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (e entityManipulations) GetItemName() string {
+func (e EntityManipulations) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(e)
 }
 
-type placeManipulations []placeManipulation
+type PlaceManipulations []PlaceManipulation
 
-func (p placeManipulations) Validate() error {
+func (p PlaceManipulations) Validate() error {
 	return p.ValidateArray()
 }
 
-func (p placeManipulations) ValidateArray() error {
+func (p PlaceManipulations) ValidateArray() error {
 	errorRange := []error{}
 	for _, v := range p {
 		err := v.Validate()
@@ -83,268 +83,268 @@ func (p placeManipulations) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (p placeManipulations) GetMinMaxItems() (int, int) {
+func (p PlaceManipulations) GetMinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (p placeManipulations) GetItemName() string {
+func (p PlaceManipulations) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(p)
 }
 
-type actionManipulation struct {
-	ActionEffectManipulation *actionEffectManipulation `json:",omitempty"`
-	ActionIntManipulation    *actionIntManipulation    `json:",omitempty"`
-	ActionStringManipulation *actionStringManipulation `json:",omitempty"`
-	ActionTagManipulation    *actionTagManipulation    `json:",omitempty"`
-	ActionZoneChange         *actionZoneChange         `json:",omitempty"`
+type ActionManipulation struct {
+	ActionEffectManipulation *ActionEffectManipulation `json:",omitempty"`
+	ActionIntManipulation    *ActionIntManipulation    `json:",omitempty"`
+	ActionStringManipulation *ActionStringManipulation `json:",omitempty"`
+	ActionTagManipulation    *ActionTagManipulation    `json:",omitempty"`
+	ActionZoneChange         *ActionZoneChange         `json:",omitempty"`
 }
 
-func (a actionManipulation) Validate() error {
+func (a ActionManipulation) Validate() error {
 	return a.ValidateInterface()
 }
 
-func (a actionManipulation) ValidateInterface() error {
+func (a ActionManipulation) ValidateInterface() error {
 	return jsonschema.ValidateInterface(a)
 }
 
-type entityManipulation struct {
-	EntityAbilityManipulation *entityAbilityManipulation `json:",omitempty"`
-	EntityIntManipulation     *entityIntManipulation     `json:",omitempty"`
-	EntityStringManipulation  *entityStringManipulation  `json:",omitempty"`
-	EntityTagManipulation     *entityTagManipulation     `json:",omitempty"`
-	EntityZoneChange          *entityZoneChange          `json:",omitempty"`
+type EntityManipulation struct {
+	EntityAbilityManipulation *EntityAbilityManipulation `json:",omitempty"`
+	EntityIntManipulation     *EntityIntManipulation     `json:",omitempty"`
+	EntityStringManipulation  *EntityStringManipulation  `json:",omitempty"`
+	EntityTagManipulation     *EntityTagManipulation     `json:",omitempty"`
+	EntityZoneChange          *EntityZoneChange          `json:",omitempty"`
 }
 
-func (e entityManipulation) Validate() error {
+func (e EntityManipulation) Validate() error {
 	return e.ValidateInterface()
 }
 
-func (e entityManipulation) ValidateInterface() error {
+func (e EntityManipulation) ValidateInterface() error {
 	return jsonschema.ValidateInterface(e)
 }
 
-type placeManipulation struct {
-	PlaceAbilityManipulation *placeAbilityManipulation `json:",omitempty"`
-	PlaceIntManipulation     *placeIntManipulation     `json:",omitempty"`
-	PlaceStringManipulation  *placeStringManipulation  `json:",omitempty"`
-	PlaceTagManipulation     *placeTagManipulation     `json:",omitempty"`
-	PlaceZoneChange          *placeZoneChange          `json:",omitempty"`
+type PlaceManipulation struct {
+	PlaceAbilityManipulation *PlaceAbilityManipulation `json:",omitempty"`
+	PlaceIntManipulation     *PlaceIntManipulation     `json:",omitempty"`
+	PlaceStringManipulation  *PlaceStringManipulation  `json:",omitempty"`
+	PlaceTagManipulation     *PlaceTagManipulation     `json:",omitempty"`
+	PlaceZoneChange          *PlaceZoneChange          `json:",omitempty"`
 }
 
-func (p placeManipulation) Validate() error {
+func (p PlaceManipulation) Validate() error {
 	return p.ValidateInterface()
 }
 
-func (p placeManipulation) ValidateInterface() error {
+func (p PlaceManipulation) ValidateInterface() error {
 	return jsonschema.ValidateInterface(p)
 }
 
-type actionEffectManipulation struct {
-	Effect         effect
-	EffectOperator abilityEffectOperator
+type ActionEffectManipulation struct {
+	Effect         Effect
+	EffectOperator AbilityEffectOperator
 }
 
-func (a actionEffectManipulation) Validate() error {
+func (a ActionEffectManipulation) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionEffectManipulation) ValidateStruct() error {
+func (a ActionEffectManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionEffectManipulation) GetInteractionText() string {
+func (a ActionEffectManipulation) GetInteractionText() string {
 	return "It §EffectOperator §Effect."
 }
 
-type actionIntManipulation struct {
-	IntProperty actionIntProperty
-	IntOperator intOperator
-	IntValue    intValue
+type ActionIntManipulation struct {
+	IntProperty ActionIntProperty
+	IntOperator IntOperator
+	IntValue    IntValue
 }
 
-func (a actionIntManipulation) Validate() error {
+func (a ActionIntManipulation) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionIntManipulation) ValidateStruct() error {
+func (a ActionIntManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionIntManipulation) GetInteractionText() string {
+func (a ActionIntManipulation) GetInteractionText() string {
 	return "§IntOperator §IntProperty §IntValue."
 }
 
-type actionStringManipulation struct {
-	StringProperty actionStringProperty
-	StringOperator stringOperator
-	StringValue    simpleStringValue
+type ActionStringManipulation struct {
+	StringProperty ActionStringProperty
+	StringOperator StringOperator
+	StringValue    SimpleStringValue
 }
 
-func (a actionStringManipulation) Validate() error {
+func (a ActionStringManipulation) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionStringManipulation) ValidateStruct() error {
+func (a ActionStringManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionStringManipulation) GetInteractionText() string {
+func (a ActionStringManipulation) GetInteractionText() string {
 	return "§StringOperator §StringProperty §StringValue."
 }
 
-type actionTagManipulation struct {
-	TagValue    tag
-	TagOperator stringOperator
+type ActionTagManipulation struct {
+	TagValue    Tag
+	TagOperator StringOperator
 }
 
-func (a actionTagManipulation) Validate() error {
+func (a ActionTagManipulation) Validate() error {
 	return a.ValidateStruct()
 }
 
-func (a actionTagManipulation) ValidateStruct() error {
+func (a ActionTagManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a actionTagManipulation) GetInteractionText() string {
+func (a ActionTagManipulation) GetInteractionText() string {
 	return "§TagOperator tag §TagValue."
 }
 
-type entityAbilityManipulation struct {
-	Ability         ability
-	AbilityOperator abilityEffectOperator
+type EntityAbilityManipulation struct {
+	Ability         Ability
+	AbilityOperator AbilityEffectOperator
 }
 
-func (e entityAbilityManipulation) Validate() error {
+func (e EntityAbilityManipulation) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityAbilityManipulation) ValidateStruct() error {
+func (e EntityAbilityManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityAbilityManipulation) GetInteractionText() string {
+func (e EntityAbilityManipulation) GetInteractionText() string {
 	return "It §AbilityOperator §Ability."
 }
 
-type entityIntManipulation struct {
-	IntProperty entityIntProperty
-	IntOperator intOperator
-	IntValue    intValue
+type EntityIntManipulation struct {
+	IntProperty EntityIntProperty
+	IntOperator IntOperator
+	IntValue    IntValue
 }
 
-func (e entityIntManipulation) Validate() error {
+func (e EntityIntManipulation) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityIntManipulation) ValidateStruct() error {
+func (e EntityIntManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityIntManipulation) GetInteractionText() string {
+func (e EntityIntManipulation) GetInteractionText() string {
 	return "§IntOperator §IntProperty §IntValue"
 }
 
-type entityStringManipulation struct {
-	StringProperty entityStringProperty
-	StringOperator stringOperator
-	StringValue    simpleStringValue
+type EntityStringManipulation struct {
+	StringProperty EntityStringProperty
+	StringOperator StringOperator
+	StringValue    SimpleStringValue
 }
 
-func (e entityStringManipulation) Validate() error {
+func (e EntityStringManipulation) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityStringManipulation) ValidateStruct() error {
+func (e EntityStringManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityStringManipulation) GetInteractionText() string {
+func (e EntityStringManipulation) GetInteractionText() string {
 	return "§StringOperator §StringProperty §StringValue."
 }
 
-type entityTagManipulation struct {
-	TagValue    tag
-	TagOperator stringOperator
+type EntityTagManipulation struct {
+	TagValue    Tag
+	TagOperator StringOperator
 }
 
-func (e entityTagManipulation) Validate() error {
+func (e EntityTagManipulation) Validate() error {
 	return e.ValidateStruct()
 }
 
-func (e entityTagManipulation) ValidateStruct() error {
+func (e EntityTagManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e entityTagManipulation) GetInteractionText() string {
+func (e EntityTagManipulation) GetInteractionText() string {
 	return "It §TagOperator §TagValue."
 }
 
-type placeAbilityManipulation struct {
-	Ability         ability
-	AbilityOperator abilityEffectOperator
+type PlaceAbilityManipulation struct {
+	Ability         Ability
+	AbilityOperator AbilityEffectOperator
 }
 
-func (p placeAbilityManipulation) Validate() error {
+func (p PlaceAbilityManipulation) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeAbilityManipulation) ValidateStruct() error {
+func (p PlaceAbilityManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeAbilityManipulation) GetInteractionText() string {
+func (p PlaceAbilityManipulation) GetInteractionText() string {
 	return "It §AbilityOperator §Ability."
 }
 
-type placeIntManipulation struct {
-	IntProperty placeIntProperty
-	IntOperator intOperator
-	IntValue    intValue
+type PlaceIntManipulation struct {
+	IntProperty PlaceIntProperty
+	IntOperator IntOperator
+	IntValue    IntValue
 }
 
-func (p placeIntManipulation) Validate() error {
+func (p PlaceIntManipulation) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeIntManipulation) ValidateStruct() error {
+func (p PlaceIntManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeIntManipulation) GetInteractionText() string {
+func (p PlaceIntManipulation) GetInteractionText() string {
 	return "§IntOperator §IntProperty §IntValue."
 }
 
-type placeStringManipulation struct {
-	StringProperty placeStringProperty
-	StringOperator stringOperator
-	StringValue    simpleStringValue
+type PlaceStringManipulation struct {
+	StringProperty PlaceStringProperty
+	StringOperator StringOperator
+	StringValue    SimpleStringValue
 }
 
-func (p placeStringManipulation) Validate() error {
+func (p PlaceStringManipulation) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeStringManipulation) ValidateStruct() error {
+func (p PlaceStringManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeStringManipulation) GetInteractionText() string {
+func (p PlaceStringManipulation) GetInteractionText() string {
 	return "§StringOperator §StringProperty §StringValue."
 }
 
-type placeTagManipulation struct {
-	TagValue    tag
-	TagOperator stringOperator
+type PlaceTagManipulation struct {
+	TagValue    Tag
+	TagOperator StringOperator
 }
 
-func (p placeTagManipulation) Validate() error {
+func (p PlaceTagManipulation) Validate() error {
 	return p.ValidateStruct()
 }
 
-func (p placeTagManipulation) ValidateStruct() error {
+func (p PlaceTagManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p placeTagManipulation) GetInteractionText() string {
+func (p PlaceTagManipulation) GetInteractionText() string {
 	return "It §TagOperator §TagValue."
 }

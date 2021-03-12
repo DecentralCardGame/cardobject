@@ -35,49 +35,49 @@ const minTagCount int = 1
 const maxWisdom int = 32
 const minWisdom int = 0
 
-type attack jsonschema.BasicInt
+type Attack jsonschema.BasicInt
 
-func (a attack) Validate() error {
+func (a Attack) Validate() error {
 	return a.ValidateInt()
 }
 
-func (a attack) ValidateInt() error {
+func (a Attack) ValidateInt() error {
 	min, max := a.GetMinMax()
-	if a < attack(min) || a > attack(max) {
+	if a < Attack(min) || a > Attack(max) {
 		return errors.New("")
 	}
 	return nil
 }
 
-func (a attack) GetMinMax() (int, int) {
+func (a Attack) GetMinMax() (int, int) {
 	return minAttack, maxAttack
 }
 
-type basicAmount jsonschema.BasicInt
+type BasicAmount jsonschema.BasicInt
 
-func (b basicAmount) Validate() error {
+func (b BasicAmount) Validate() error {
 	return b.ValidateInt()
 }
 
-func (b basicAmount) ValidateInt() error {
+func (b BasicAmount) ValidateInt() error {
 	min, max := b.GetMinMax()
-	if b < basicAmount(min) || b > basicAmount(max) {
+	if b < BasicAmount(min) || b > BasicAmount(max) {
 		return errors.New("")
 	}
 	return nil
 }
 
-func (b basicAmount) GetMinMax() (int, int) {
+func (b BasicAmount) GetMinMax() (int, int) {
 	return minBasicAmount, maxBasicAmount
 }
 
-type cardName jsonschema.BasicString
+type CardName jsonschema.BasicString
 
-func (c cardName) Validate() error {
+func (c CardName) Validate() error {
 	return c.ValidateString()
 }
 
-func (c cardName) ValidateString() error {
+func (c CardName) ValidateString() error {
 	minLength, maxLength := c.GetMinMaxLength()
 	length := len(string(c))
 	if length < minLength || length > maxLength {
@@ -86,35 +86,35 @@ func (c cardName) ValidateString() error {
 	return nil
 }
 
-func (c cardName) GetMinMaxLength() (int, int) {
+func (c CardName) GetMinMaxLength() (int, int) {
 	return minCardNameLength, maxCardNameLength
 }
 
-type castingCost jsonschema.BasicInt
+type CastingCost jsonschema.BasicInt
 
-func (c castingCost) Validate() error {
+func (c CastingCost) Validate() error {
 	return c.ValidateInt()
 }
 
-func (c castingCost) ValidateInt() error {
+func (c CastingCost) ValidateInt() error {
 	min, max := c.GetMinMax()
-	if c < castingCost(min) || c > castingCost(max) {
+	if c < CastingCost(min) || c > CastingCost(max) {
 		return errors.New("")
 	}
 	return nil
 }
 
-func (c castingCost) GetMinMax() (int, int) {
+func (c CastingCost) GetMinMax() (int, int) {
 	return minCastingCost, maxCastingCost
 }
 
-type flavourText jsonschema.BasicString
+type FlavourText jsonschema.BasicString
 
-func (f flavourText) Validate() error {
+func (f FlavourText) Validate() error {
 	return f.ValidateString()
 }
 
-func (f flavourText) ValidateString() error {
+func (f FlavourText) ValidateString() error {
 	minLength, maxLength := f.GetMinMaxLength()
 	length := len(string(f))
 	if length < minLength || length > maxLength {
@@ -123,107 +123,107 @@ func (f flavourText) ValidateString() error {
 	return nil
 }
 
-func (f flavourText) GetMinMaxLength() (int, int) {
+func (f FlavourText) GetMinMaxLength() (int, int) {
 	return minFlavourTextLength, maxFlavourTextLength
 }
 
-type growth jsonschema.BasicInt
+type Growth jsonschema.BasicInt
 
-func (g growth) Validate() error {
+func (g Growth) Validate() error {
 	return g.ValidateInt()
 }
 
-func (g growth) ValidateInt() error {
+func (g Growth) ValidateInt() error {
 	min, max := g.GetMinMax()
-	if g < growth(min) || g > growth(max) {
+	if g < Growth(min) || g > Growth(max) {
 		return errors.New("")
 	}
 	return nil
 }
 
-func (g growth) GetMinMax() (int, int) {
+func (g Growth) GetMinMax() (int, int) {
 	return minGrowth, maxGrowth
 }
 
-type health jsonschema.BasicInt
+type Health jsonschema.BasicInt
 
-func (h health) Validate() error {
+func (h Health) Validate() error {
 	return h.ValidateInt()
 }
 
-func (h health) ValidateInt() error {
+func (h Health) ValidateInt() error {
 	min, max := h.GetMinMax()
-	if h < health(min) || h > health(max) {
+	if h < Health(min) || h > Health(max) {
 		return errors.New("")
 	}
 	return nil
 }
 
-func (h health) GetMinMax() (int, int) {
+func (h Health) GetMinMax() (int, int) {
 	return minHealth, maxHealth
 }
 
-type startingHandsize jsonschema.BasicInt
+type StartingHandsize jsonschema.BasicInt
 
-func (s startingHandsize) Validate() error {
+func (s StartingHandsize) Validate() error {
 	return s.ValidateInt()
 }
 
-func (s startingHandsize) ValidateInt() error {
+func (s StartingHandsize) ValidateInt() error {
 	min, max := s.GetMinMax()
-	if s < startingHandsize(min) || s > startingHandsize(max) {
+	if s < StartingHandsize(min) || s > StartingHandsize(max) {
 		return errors.New("")
 	}
 	return nil
 }
 
-func (s startingHandsize) GetMinMax() (int, int) {
+func (s StartingHandsize) GetMinMax() (int, int) {
 	return minStartingHandSize, maxStartingHandSize
 }
 
-type wisdom jsonschema.BasicInt
+type Wisdom jsonschema.BasicInt
 
-func (w wisdom) Validate() error {
+func (w Wisdom) Validate() error {
 	return w.ValidateInt()
 }
 
-func (w wisdom) ValidateInt() error {
+func (w Wisdom) ValidateInt() error {
 	min, max := w.GetMinMax()
-	if w < wisdom(min) || w > wisdom(max) {
+	if w < Wisdom(min) || w > Wisdom(max) {
 		return errors.New("")
 	}
 	return nil
 }
 
-func (w wisdom) GetMinMax() (int, int) {
+func (w Wisdom) GetMinMax() (int, int) {
 	return minWisdom, maxWisdom
 }
 
-type simpleIntValue jsonschema.BasicInt
+type SimpleIntValue jsonschema.BasicInt
 
-func (s simpleIntValue) Validate() error {
+func (s SimpleIntValue) Validate() error {
 	return s.ValidateInt()
 }
 
-func (s simpleIntValue) ValidateInt() error {
+func (s SimpleIntValue) ValidateInt() error {
 	min, max := s.GetMinMax()
-	if s < simpleIntValue(min) || s > simpleIntValue(max) {
+	if s < SimpleIntValue(min) || s > SimpleIntValue(max) {
 		return errors.New("")
 	}
 	return nil
 }
 
-func (s simpleIntValue) GetMinMax() (int, int) {
+func (s SimpleIntValue) GetMinMax() (int, int) {
 	return minSimpleInt, maxSimpleInt
 }
 
-type simpleStringValue jsonschema.BasicString
+type SimpleStringValue jsonschema.BasicString
 
-func (s simpleStringValue) Validate() error {
+func (s SimpleStringValue) Validate() error {
 	return s.ValidateString()
 }
 
-func (s simpleStringValue) ValidateString() error {
+func (s SimpleStringValue) ValidateString() error {
 	minLength, maxLength := s.GetMinMaxLength()
 	length := len(string(s))
 	if length < minLength || length > maxLength {
@@ -232,6 +232,6 @@ func (s simpleStringValue) ValidateString() error {
 	return nil
 }
 
-func (s simpleStringValue) GetMinMaxLength() (int, int) {
+func (s SimpleStringValue) GetMinMaxLength() (int, int) {
 	return minSimpleStringLength, maxSimpleStringLength
 }
