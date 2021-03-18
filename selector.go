@@ -46,6 +46,28 @@ func (e EntitySelector) GetInteractionText() string {
 	return "Choose §CardMode entity §EntityConditions in the §Zone of §PlayerMode player §PlayerCondition. §EntityExtractors §AmountExtractor"
 }
 
+type HeadquarterSelector struct {
+	PlayerMode            PlayerMode
+	PlayerCondition       *PlayerCondition `json:",omitempty"`
+	CardMode              CardMode
+	HeadquarterConditions *HeadquarterConditions `json:",omitempty"`
+	Zone                  ActionZone
+	HeadquarterExtractors *HeadquarterExtractors `json:",omitempty"`
+	AmountExtractor       *IntExtractor          `json:",omitempty"`
+}
+
+func (h HeadquarterSelector) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h HeadquarterSelector) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
+}
+
+func (h HeadquarterSelector) GetInteractionText() string {
+	return "Choose §CardMode action §HeadquarterConditions in the §Zone of §PlayerMode player §PlayerCondition. §HeadquarterExtractors §AmountExtractor"
+}
+
 type PlaceSelector struct {
 	PlayerMode      PlayerMode
 	PlayerCondition *PlayerCondition `json:",omitempty"`

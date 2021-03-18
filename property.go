@@ -10,6 +10,8 @@ var actionIntProperties []string = []string{"COSTSUM"}
 var actionStringProperties []string = []string{"NAME", "TEXT"}
 var entityIntProperties []string = []string{"ATTACK", "COSTSUM", "HEALTH", "BASEHEALTH"}
 var entityStringProperties []string = []string{"NAME", "TEXT"}
+var headquarterIntProperties []string = []string{"HEALTH", "BASEHEALTH"}
+var headquarterStringProperties []string = []string{"NAME", "TEXT"}
 var placeIntProperties []string = []string{"COSTSUM", "HEALTH", "BASEHEALTH"}
 var placeStringProperties []string = []string{"NAME", "TEXT"}
 
@@ -98,6 +100,46 @@ func (e EntityStringProperty) GetEnumValues() []string {
 	return entityStringProperties
 }
 
+type HeadquarterIntProperty jsonschema.BasicEnum
+
+func (h HeadquarterIntProperty) Validate() error {
+	return h.ValidateEnum()
+}
+
+func (h HeadquarterIntProperty) ValidateEnum() error {
+	values := h.GetEnumValues()
+	for _, v := range values {
+		if v == string(h) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (h HeadquarterIntProperty) GetEnumValues() []string {
+	return headquarterIntProperties
+}
+
+type HeadquarterStringProperty jsonschema.BasicEnum
+
+func (h HeadquarterStringProperty) Validate() error {
+	return h.ValidateEnum()
+}
+
+func (h HeadquarterStringProperty) ValidateEnum() error {
+	values := h.GetEnumValues()
+	for _, v := range values {
+		if v == string(h) {
+			return nil
+		}
+	}
+	return errors.New("")
+}
+
+func (h HeadquarterStringProperty) GetEnumValues() []string {
+	return headquarterStringProperties
+}
+
 type PlaceIntProperty jsonschema.BasicEnum
 
 func (p PlaceIntProperty) Validate() error {
@@ -135,7 +177,7 @@ func (p PlaceStringProperty) ValidateEnum() error {
 }
 
 func (p PlaceStringProperty) GetEnumValues() []string {
-	return actionStringProperties
+	return placeStringProperties
 }
 
 type CardIntProperty jsonschema.BasicEnum

@@ -5,10 +5,11 @@ import (
 )
 
 type CardConditions struct {
-	ActionConditions *ActionConditions `json:",omitempty"`
-	EntityConditions *EntityConditions `json:",omitempty"`
-	PlaceConditions  *PlaceConditions  `json:",omitempty"`
-	ThisConditions   *ThisCondition    `json:",omitempty"`
+	ActionConditions      *ActionConditions      `json:",omitempty"`
+	EntityConditions      *EntityConditions      `json:",omitempty"`
+	HeadquarterConditions *HeadquarterConditions `json:",omitempty"`
+	PlaceConditions       *PlaceConditions       `json:",omitempty"`
+	ThisConditions        *ThisCondition         `json:",omitempty"`
 }
 
 func (c CardConditions) Validate() error {
@@ -67,6 +68,31 @@ func (e EntityConditions) GetMinMaxItems() (int, int) {
 
 func (e EntityConditions) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(e)
+}
+
+type HeadquarterConditions []HeadquarterCondition
+
+func (h HeadquarterConditions) Validate() error {
+	return h.ValidateArray()
+}
+
+func (h HeadquarterConditions) ValidateArray() error {
+	errorRange := []error{}
+	for _, v := range h {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
+}
+
+func (h HeadquarterConditions) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+func (h HeadquarterConditions) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(h)
 }
 
 type PlaceConditions []PlaceCondition
@@ -145,6 +171,20 @@ func (e EntityCondition) Validate() error {
 
 func (e EntityCondition) ValidateInterface() error {
 	return jsonschema.ValidateInterface(e)
+}
+
+type HeadquarterCondition struct {
+	HeadquarterIntCondition    *HeadquarterIntCondition    `json:",omitempty"`
+	HeadquarterStringCondition *HeadquarterStringCondition `json:",omitempty"`
+	HeadquarterTagCondition    *HeadquarterTagCondition    `json:",omitempty"`
+}
+
+func (h HeadquarterCondition) Validate() error {
+	return h.ValidateInterface()
+}
+
+func (h HeadquarterCondition) ValidateInterface() error {
+	return jsonschema.ValidateInterface(h)
 }
 
 type PlaceCondition struct {
@@ -290,6 +330,59 @@ func (e EntityTagCondition) ValidateStruct() error {
 }
 
 func (e EntityTagCondition) GetInteractionText() string {
+	return "with tag §StringComparator §StringValue"
+}
+
+type HeadquarterIntCondition struct {
+	HeadquarterIntProperty HeadquarterIntProperty
+	IntValue               SimpleIntValue
+	IntComparator          IntComparator
+}
+
+func (h HeadquarterIntCondition) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h HeadquarterIntCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
+}
+
+func (h HeadquarterIntCondition) GetInteractionText() string {
+	return "with §HeadquarterIntProperty §IntComparator §IntValue"
+}
+
+type HeadquarterStringCondition struct {
+	HeadquarterStringProperty HeadquarterStringProperty
+	StringValue               SimpleStringValue
+	StringComparator          StringComparator
+}
+
+func (h HeadquarterStringCondition) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h HeadquarterStringCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
+}
+
+func (h HeadquarterStringCondition) GetInteractionText() string {
+	return "with §HeadquarterStringProperty §StringComparator §StringValue"
+}
+
+type HeadquarterTagCondition struct {
+	StringValue      SimpleStringValue
+	StringComparator StringComparator
+}
+
+func (h HeadquarterTagCondition) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h HeadquarterTagCondition) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
+}
+
+func (h HeadquarterTagCondition) GetInteractionText() string {
 	return "with tag §StringComparator §StringValue"
 }
 

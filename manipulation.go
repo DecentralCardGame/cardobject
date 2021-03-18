@@ -3,9 +3,10 @@ package cardobject
 import "github.com/DecentralCardGame/jsonschema"
 
 type Manipulations struct {
-	ActionManipulations *ActionManipulations `json:",omitempty"`
-	EntityManipulations *EntityManipulations `json:",omitempty"`
-	PlaceManipulations  *PlaceManipulations  `json:",omitempty"`
+	ActionManipulations      *ActionManipulations      `json:",omitempty"`
+	EntityManipulations      *EntityManipulations      `json:",omitempty"`
+	HeadquarterManipulations *HeadquarterManipulations `json:",omitempty"`
+	PlaceManipulations       *PlaceManipulations       `json:",omitempty"`
 }
 
 func (m Manipulations) Validate() error {
@@ -66,6 +67,31 @@ func (e EntityManipulations) GetItemName() string {
 	return jsonschema.GetItemNameFromArray(e)
 }
 
+type HeadquarterManipulations []HeadquarterManipulation
+
+func (h HeadquarterManipulations) Validate() error {
+	return h.ValidateArray()
+}
+
+func (h HeadquarterManipulations) ValidateArray() error {
+	errorRange := []error{}
+	for _, v := range h {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
+}
+
+func (h HeadquarterManipulations) GetMinMaxItems() (int, int) {
+	return 0, 3
+}
+
+func (h HeadquarterManipulations) GetItemName() string {
+	return jsonschema.GetItemNameFromArray(h)
+}
+
 type PlaceManipulations []PlaceManipulation
 
 func (p PlaceManipulations) Validate() error {
@@ -121,6 +147,21 @@ func (e EntityManipulation) Validate() error {
 
 func (e EntityManipulation) ValidateInterface() error {
 	return jsonschema.ValidateInterface(e)
+}
+
+type HeadquarterManipulation struct {
+	HeadquarterEffectManipulation *HeadquarterAbilityManipulation `json:",omitempty"`
+	HeadquarterIntManipulation    *HeadquarterIntManipulation     `json:",omitempty"`
+	HeadquarterStringManipulation *HeadquarterStringManipulation  `json:",omitempty"`
+	HeadquarterTagManipulation    *HeadquarterTagManipulation     `json:",omitempty"`
+}
+
+func (h HeadquarterManipulation) Validate() error {
+	return h.ValidateInterface()
+}
+
+func (h HeadquarterManipulation) ValidateInterface() error {
+	return jsonschema.ValidateInterface(h)
 }
 
 type PlaceManipulation struct {
@@ -277,6 +318,76 @@ func (e EntityTagManipulation) ValidateStruct() error {
 
 func (e EntityTagManipulation) GetInteractionText() string {
 	return "It §TagOperator §TagValue."
+}
+
+type HeadquarterAbilityManipulation struct {
+	Ability         Ability
+	AbilityOperator AbilityEffectOperator
+}
+
+func (h HeadquarterAbilityManipulation) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h HeadquarterAbilityManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
+}
+
+func (h HeadquarterAbilityManipulation) GetInteractionText() string {
+	return "It §AbilityOperator §Effect."
+}
+
+type HeadquarterIntManipulation struct {
+	IntProperty HeadquarterIntProperty
+	IntOperator IntOperator
+	IntValue    IntValue
+}
+
+func (h HeadquarterIntManipulation) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h HeadquarterIntManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
+}
+
+func (h HeadquarterIntManipulation) GetInteractionText() string {
+	return "§IntOperator §IntProperty §IntValue."
+}
+
+type HeadquarterStringManipulation struct {
+	StringProperty HeadquarterStringProperty
+	StringOperator StringOperator
+	StringValue    SimpleStringValue
+}
+
+func (h HeadquarterStringManipulation) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h HeadquarterStringManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
+}
+
+func (h HeadquarterStringManipulation) GetInteractionText() string {
+	return "§StringOperator §StringProperty §StringValue."
+}
+
+type HeadquarterTagManipulation struct {
+	TagValue    Tag
+	TagOperator StringOperator
+}
+
+func (h HeadquarterTagManipulation) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h HeadquarterTagManipulation) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
+}
+
+func (h HeadquarterTagManipulation) GetInteractionText() string {
+	return "§TagOperator tag §TagValue."
 }
 
 type PlaceAbilityManipulation struct {

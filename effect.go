@@ -111,10 +111,11 @@ func (c ChooseFromEffect) GetInteractionText() string {
 }
 
 type TargetEffect struct {
-	ActionTargetEffect    *ActionTargetEffect    `json:",omitempty"`
-	EntityTargetEffect    *EntityTargetEffect    `json:",omitempty"`
-	PlaceTargetEffect     *PlaceTargetEffect     `json:",omitempty"`
-	ExtractorTargetEffect *ExtractorTargetEffect `json:",omitempty"`
+	ActionTargetEffect      *ActionTargetEffect      `json:",omitempty"`
+	EntityTargetEffect      *EntityTargetEffect      `json:",omitempty"`
+	HeadquarterTargetEffect *HeadquarterTargetEffect `json:",omitempty"`
+	PlaceTargetEffect       *PlaceTargetEffect       `json:",omitempty"`
+	ExtractorTargetEffect   *ExtractorTargetEffect   `json:",omitempty"`
 }
 
 func (t TargetEffect) Validate() error {
@@ -157,6 +158,23 @@ func (e EntityTargetEffect) ValidateStruct() error {
 
 func (e EntityTargetEffect) GetInteractionText() string {
 	return "§EntitySelector §EntityManipulations"
+}
+
+type HeadquarterTargetEffect struct {
+	HeadquarterSelector      *HeadquarterSelector
+	HeadquarterManipulations *HeadquarterManipulations
+}
+
+func (h HeadquarterTargetEffect) Validate() error {
+	return h.ValidateStruct()
+}
+
+func (h HeadquarterTargetEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(h)
+}
+
+func (h HeadquarterTargetEffect) GetInteractionText() string {
+	return "§HeadquarterSelector §HeadquarterManipulations"
 }
 
 type PlaceTargetEffect struct {
