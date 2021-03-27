@@ -1,1 +1,40 @@
-{"Action":{"CardName":"Name","Tags":["SPIRITUAL"],"FlavourText":"-.-","CostType":{"Lumber":true,"Energy":false,"Food":false,"Iron":false,"Mana":false},"CastingCost":13,"Effects":[{"ProductionEffect":{"path":["children","Action","children","Effects","children","Effect","children"],"Amount":{"SimpleIntValue":1}}}]}}
+{
+  "Action":{
+    "CardName":"Name",
+    "Tags":["SPIRITUAL"],
+    "FlavourText":"-.-",
+    "CostType":{
+      "Lumber":true,
+      "Energy":false,
+      "Food":false,
+      "Iron":false,
+      "Mana":false
+    },
+    "CastingCost":13,
+    "Effects":[
+      {
+        "TargetEffect":{
+          "EntityTargetEffect":{
+            "EntitySelector":{
+              "PlayerMode":"ALL",
+              "CardMode":"ALL",
+              "EntityZone":"FIELD"
+            },
+            "EntityManipulations":[
+              {
+                  "EntityIntManipulation":{
+                    "IntProperty": "ATTACK",
+                    "IntOperator": "ADD",
+                    "IntValue": {
+                      "SimpleIntValue": 5
+                    }
+                  }
+                
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
