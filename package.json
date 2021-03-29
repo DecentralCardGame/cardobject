@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/DecentralCardGame/cardobject.git"
   },
-  "author": "",
+  "author": "Marius Faust",
   "license": "NONE",
   "bugs": {
     "url": "https://github.com/DecentralCardGame/cardobject/issues"

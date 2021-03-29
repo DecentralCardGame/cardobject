@@ -2,6 +2,7 @@ package cardobject
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/DecentralCardGame/jsonschema"
 )
@@ -25,7 +26,7 @@ func (a AbilityEffectOperator) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("AbilityEffectOperator must be one of: " + strings.Join(abilityEffectOperators, ","))
 }
 
 func (a AbilityEffectOperator) GetEnumValues() []string {
@@ -45,7 +46,7 @@ func (i IntOperator) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("IntOperator must be one of: " + strings.Join(intOperators, ","))
 }
 
 func (i IntOperator) GetEnumValues() []string {
@@ -65,7 +66,7 @@ func (s StringOperator) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("StringOperator must be one of: " + strings.Join(stringComparators, ","))
 }
 
 func (s StringOperator) GetEnumValues() []string {
@@ -85,7 +86,7 @@ func (a ArithOperator) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("ArithOperator must be one of: " + strings.Join(arithOperators, ","))
 }
 
 func (a ArithOperator) GetEnumValues() []string {

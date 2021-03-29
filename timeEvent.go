@@ -2,6 +2,7 @@ package cardobject
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/DecentralCardGame/jsonschema"
 )
@@ -21,7 +22,7 @@ func (t TimeEvent) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("TimeEvent must be one of: " + strings.Join(timeEvents, ","))
 }
 
 func (t TimeEvent) GetEnumValues() []string {

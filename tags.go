@@ -2,6 +2,7 @@ package cardobject
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/DecentralCardGame/jsonschema"
 )
@@ -62,7 +63,7 @@ func (t Tag) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("Tag must be one of: " + strings.Join(possibleTags, ","))
 }
 
 func (t Tag) GetEnumValues() []string {

@@ -2,6 +2,7 @@ package cardobject
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/DecentralCardGame/jsonschema"
 )
@@ -23,7 +24,7 @@ func (i IntVariableName) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("IntVariableName must be on of " + strings.Join(intVariableNames, ","))
 }
 
 func (i IntVariableName) GetEnumValues() []string {
@@ -43,7 +44,7 @@ func (s StringVariableName) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("StringVariableName must be on of " + strings.Join(stringVariableNames, ","))
 }
 
 func (s StringVariableName) GetEnumValues() []string {
@@ -63,7 +64,7 @@ func (t TargetVariableName) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("TargetVariableName must be on of " + strings.Join(targetVariableNames, ","))
 }
 
 func (t TargetVariableName) GetEnumValues() []string {

@@ -7,7 +7,7 @@ type ActionSelector struct {
 	PlayerCondition  *PlayerCondition `json:",omitempty"`
 	CardMode         CardMode
 	ActionConditions *ActionConditions `json:",omitempty"`
-	Zone             ActionZone
+	ActionZone       ActionZone
 	ActionExtractors *ActionExtractors `json:",omitempty"`
 	AmountExtractor  *IntExtractor     `json:",omitempty"`
 }
@@ -21,7 +21,7 @@ func (a ActionSelector) ValidateStruct() error {
 }
 
 func (a ActionSelector) GetInteractionText() string {
-	return "Choose §CardMode action §ActionConditions in the §Zone of §PlayerMode player §PlayerCondition. §ActionExtractors §AmountExtractor"
+	return "Choose §CardMode action §ActionConditions in the §ActionZone of §PlayerMode player §PlayerCondition. §ActionExtractors §AmountExtractor"
 }
 
 type EntitySelector struct {
@@ -29,7 +29,7 @@ type EntitySelector struct {
 	PlayerCondition  *PlayerCondition `json:",omitempty"`
 	CardMode         CardMode
 	EntityConditions *EntityConditions `json:",omitempty"`
-	Zone             EntityZone
+	EntityZone       EntityZone
 	EntityExtractors *EntityExtractors `json:",omitempty"`
 	AmountExtractor  *IntExtractor     `json:",omitempty"`
 }
@@ -43,7 +43,7 @@ func (e EntitySelector) ValidateStruct() error {
 }
 
 func (e EntitySelector) GetInteractionText() string {
-	return "Choose §CardMode entity §EntityConditions in the §Zone of §PlayerMode player §PlayerCondition. §EntityExtractors §AmountExtractor"
+	return "Choose §CardMode entity §EntityConditions in the §EntityZone of §PlayerMode player §PlayerCondition. §EntityExtractors §AmountExtractor"
 }
 
 type HeadquarterSelector struct {
@@ -51,7 +51,7 @@ type HeadquarterSelector struct {
 	PlayerCondition       *PlayerCondition `json:",omitempty"`
 	CardMode              CardMode
 	HeadquarterConditions *HeadquarterConditions `json:",omitempty"`
-	Zone                  ActionZone
+	HeadquarterZone       ActionZone
 	HeadquarterExtractors *HeadquarterExtractors `json:",omitempty"`
 	AmountExtractor       *IntExtractor          `json:",omitempty"`
 }
@@ -65,7 +65,7 @@ func (h HeadquarterSelector) ValidateStruct() error {
 }
 
 func (h HeadquarterSelector) GetInteractionText() string {
-	return "Choose §CardMode action §HeadquarterConditions in the §Zone of §PlayerMode player §PlayerCondition. §HeadquarterExtractors §AmountExtractor"
+	return "Choose §CardMode action §HeadquarterConditions in the §HeadquarterZone of §PlayerMode player §PlayerCondition. §HeadquarterExtractors §AmountExtractor"
 }
 
 type PlaceSelector struct {
@@ -73,7 +73,7 @@ type PlaceSelector struct {
 	PlayerCondition *PlayerCondition `json:",omitempty"`
 	CardMode        CardMode
 	PlaceConditions *PlaceConditions `json:",omitempty"`
-	Zone            PlaceZone
+	PlaceZone       PlaceZone
 	PlaceExtractors *PlaceExtractors `json:",omitempty"`
 	AmountExtractor *IntExtractor    `json:",omitempty"`
 }
@@ -87,5 +87,5 @@ func (p PlaceSelector) ValidateStruct() error {
 }
 
 func (p PlaceSelector) GetInteractionText() string {
-	return "Choose §CardMode place §PlaceConditions in the §Zone of §PlayerMode player §PlayerCondition. §PlaceExtractors §AmountExtractor"
+	return "Choose §CardMode place §PlaceConditions in the §PlaceZone of §PlayerMode player §PlayerCondition. §PlaceExtractors §AmountExtractor"
 }

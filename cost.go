@@ -104,7 +104,7 @@ func (e Energy) ValidateBool() error {
 	if b || !b {
 		return nil
 	}
-	return errors.New("")
+	return errors.New("Energy must be true or false")
 }
 
 type Food jsonschema.BasicBool
@@ -118,7 +118,7 @@ func (f Food) ValidateBool() error {
 	if b || !b {
 		return nil
 	}
-	return errors.New("")
+	return errors.New("Food must be true or false")
 }
 
 type Lumber jsonschema.BasicBool
@@ -132,7 +132,7 @@ func (l Lumber) ValidateBool() error {
 	if b || !b {
 		return nil
 	}
-	return errors.New("")
+	return errors.New("Lumber must be true or false")
 }
 
 type Mana jsonschema.BasicBool
@@ -146,7 +146,7 @@ func (m Mana) ValidateBool() error {
 	if b || !b {
 		return nil
 	}
-	return errors.New("")
+	return errors.New("Mana must be true or false")
 }
 
 type Iron jsonschema.BasicBool
@@ -160,5 +160,5 @@ func (i Iron) ValidateBool() error {
 	if b || !b {
 		return nil
 	}
-	return errors.New("")
+	return errors.New("Iron must be true or false")
 }

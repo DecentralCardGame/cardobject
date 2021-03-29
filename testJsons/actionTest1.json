@@ -16,7 +16,7 @@
         "TargetEffect":{
           "EntityTargetEffect":{
             "EntitySelector":{
-              "PlayerMode":"ALL",
+              "PlayerMode":"YOU",
               "CardMode":"ALL",
               "EntityZone":"FIELD"
             },
@@ -29,7 +29,7 @@
                       "SimpleIntValue": 5
                     }
                   }
-                
+
               }
             ]
           }

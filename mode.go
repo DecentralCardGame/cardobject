@@ -2,6 +2,7 @@ package cardobject
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/DecentralCardGame/jsonschema"
 )
@@ -26,7 +27,7 @@ func (i IntChangeMode) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("IntChangeMode must be one of: " + strings.Join(intChangeModes, ","))
 }
 
 func (i IntChangeMode) GetEnumValues() []string {
@@ -46,7 +47,7 @@ func (s StringChangeMode) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("StringComparator must be one of: " + strings.Join(stringComparators, ","))
 }
 
 func (s StringChangeMode) GetEnumValues() []string {
@@ -66,7 +67,7 @@ func (p PlayerMode) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("PlayerModes must be one of: " + strings.Join(playerModes, ","))
 }
 
 func (p PlayerMode) GetEnumValues() []string {
@@ -86,7 +87,7 @@ func (c CardMode) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("CardModes must be one of: " + strings.Join(cardModes, ","))
 }
 
 func (c CardMode) GetEnumValues() []string {
@@ -106,7 +107,7 @@ func (o OwnerMode) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("OwnerModes must be one of: " + strings.Join(ownerModes, ","))
 }
 
 func (o OwnerMode) GetEnumValues() []string {

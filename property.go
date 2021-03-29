@@ -2,6 +2,7 @@ package cardobject
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/DecentralCardGame/jsonschema"
 )
@@ -33,7 +34,7 @@ func (a ActionIntProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("ActionIntProperty must be one of: " + strings.Join(actionIntProperties, ","))
 }
 
 func (a ActionIntProperty) GetEnumValues() []string {
@@ -53,7 +54,7 @@ func (a ActionStringProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("ActionStringProperty must be one of: " + strings.Join(actionStringProperties, ","))
 }
 
 func (a ActionStringProperty) GetEnumValues() []string {
@@ -73,7 +74,7 @@ func (e EntityIntProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("EntityIntProperty must be one of: " + strings.Join(entityIntProperties, ","))
 }
 
 func (e EntityIntProperty) GetEnumValues() []string {
@@ -93,7 +94,7 @@ func (e EntityStringProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("EntityStringProperty must be one of: " + strings.Join(entityStringProperties, ","))
 }
 
 func (e EntityStringProperty) GetEnumValues() []string {
@@ -113,7 +114,7 @@ func (h HeadquarterIntProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("HeadquarterIntProperty must be one of: " + strings.Join(headquarterIntProperties, ","))
 }
 
 func (h HeadquarterIntProperty) GetEnumValues() []string {
@@ -133,7 +134,7 @@ func (h HeadquarterStringProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("HeadquarterStringProperty must be one of: " + strings.Join(headquarterStringProperties, ","))
 }
 
 func (h HeadquarterStringProperty) GetEnumValues() []string {
@@ -153,7 +154,7 @@ func (p PlaceIntProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("PlaceIntProperty must be one of: " + strings.Join(placeIntProperties, ","))
 }
 
 func (p PlaceIntProperty) GetEnumValues() []string {
@@ -173,7 +174,7 @@ func (p PlaceStringProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("PlaceStringProperty must be one of: " + strings.Join(placeStringProperties, ","))
 }
 
 func (p PlaceStringProperty) GetEnumValues() []string {
@@ -193,7 +194,7 @@ func (c CardIntProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("CardIntProperty must be one of: " + strings.Join(cardIntProperties, ","))
 }
 
 func (c CardIntProperty) GetEnumValues() []string {
@@ -213,7 +214,7 @@ func (c CardStringProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("CardStringProperty must be one of: " + strings.Join(cardStringProperties, ","))
 }
 
 func (c CardStringProperty) GetEnumValues() []string {
@@ -233,7 +234,7 @@ func (p PlayerIntProperty) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("PlayerIntProperty must be one of: " + strings.Join(playerIntProperties, ","))
 }
 
 func (p PlayerIntProperty) GetEnumValues() []string {

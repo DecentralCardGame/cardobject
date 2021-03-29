@@ -2,6 +2,7 @@ package cardobject
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/DecentralCardGame/jsonschema"
 )
@@ -26,7 +27,7 @@ func (d DynamicZone) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("DynamicZone must be on of " + strings.Join(dynamicZones, ","))
 }
 
 func (d DynamicZone) GetEnumValues() []string {
@@ -46,7 +47,7 @@ func (z Zone) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("Zone must be on of " + strings.Join(zones, ","))
 }
 
 func (z Zone) GetEnumValues() []string {
@@ -66,7 +67,7 @@ func (a ActionZone) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("ActionZone must be on of " + strings.Join(actionZones, ","))
 }
 
 func (a ActionZone) GetEnumValues() []string {
@@ -86,7 +87,7 @@ func (e EntityZone) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("EntityZone must be on of " + strings.Join(entityZones, ","))
 }
 
 func (e EntityZone) GetEnumValues() []string {
@@ -106,7 +107,7 @@ func (p PlaceZone) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("PlaceZone must be on of " + strings.Join(placeZones, ","))
 }
 
 func (p PlaceZone) GetEnumValues() []string {

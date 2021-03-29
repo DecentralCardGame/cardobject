@@ -2,6 +2,7 @@ package cardobject
 
 import (
 	"errors"
+	"strconv"
 
 	"github.com/DecentralCardGame/jsonschema"
 )
@@ -44,7 +45,7 @@ func (a Attack) Validate() error {
 func (a Attack) ValidateInt() error {
 	min, max := a.GetMinMax()
 	if a < Attack(min) || a > Attack(max) {
-		return errors.New("")
+		return errors.New("Attack must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
 	}
 	return nil
 }
@@ -62,7 +63,7 @@ func (b BasicAmount) Validate() error {
 func (b BasicAmount) ValidateInt() error {
 	min, max := b.GetMinMax()
 	if b < BasicAmount(min) || b > BasicAmount(max) {
-		return errors.New("")
+		return errors.New("BasicAmount must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
 	}
 	return nil
 }
@@ -81,7 +82,7 @@ func (c CardName) ValidateString() error {
 	minLength, maxLength := c.GetMinMaxLength()
 	length := len(string(c))
 	if length < minLength || length > maxLength {
-		return errors.New("")
+		return errors.New("CardName must be between " + strconv.Itoa(minLength) + " and " + strconv.Itoa(maxLength) + " characters long")
 	}
 	return nil
 }
@@ -99,7 +100,7 @@ func (c CastingCost) Validate() error {
 func (c CastingCost) ValidateInt() error {
 	min, max := c.GetMinMax()
 	if c < CastingCost(min) || c > CastingCost(max) {
-		return errors.New("")
+		return errors.New("CastingCost must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
 	}
 	return nil
 }
@@ -118,7 +119,7 @@ func (f FlavourText) ValidateString() error {
 	minLength, maxLength := f.GetMinMaxLength()
 	length := len(string(f))
 	if length < minLength || length > maxLength {
-		return errors.New("")
+		return errors.New("FlavourText must be between " + strconv.Itoa(minLength) + " and " + strconv.Itoa(maxLength) + " characters long")
 	}
 	return nil
 }
@@ -136,7 +137,7 @@ func (g Growth) Validate() error {
 func (g Growth) ValidateInt() error {
 	min, max := g.GetMinMax()
 	if g < Growth(min) || g > Growth(max) {
-		return errors.New("")
+		return errors.New("Growth must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
 	}
 	return nil
 }
@@ -154,7 +155,7 @@ func (h Health) Validate() error {
 func (h Health) ValidateInt() error {
 	min, max := h.GetMinMax()
 	if h < Health(min) || h > Health(max) {
-		return errors.New("")
+		return errors.New("Health must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
 	}
 	return nil
 }
@@ -172,7 +173,7 @@ func (s StartingHandsize) Validate() error {
 func (s StartingHandsize) ValidateInt() error {
 	min, max := s.GetMinMax()
 	if s < StartingHandsize(min) || s > StartingHandsize(max) {
-		return errors.New("")
+		return errors.New("StartingHandsize must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
 	}
 	return nil
 }
@@ -190,7 +191,7 @@ func (w Wisdom) Validate() error {
 func (w Wisdom) ValidateInt() error {
 	min, max := w.GetMinMax()
 	if w < Wisdom(min) || w > Wisdom(max) {
-		return errors.New("")
+		return errors.New("Wisdom must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
 	}
 	return nil
 }
@@ -208,7 +209,7 @@ func (s SimpleIntValue) Validate() error {
 func (s SimpleIntValue) ValidateInt() error {
 	min, max := s.GetMinMax()
 	if s < SimpleIntValue(min) || s > SimpleIntValue(max) {
-		return errors.New("")
+		return errors.New("SimpleIntValue must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
 	}
 	return nil
 }
@@ -227,7 +228,7 @@ func (s SimpleStringValue) ValidateString() error {
 	minLength, maxLength := s.GetMinMaxLength()
 	length := len(string(s))
 	if length < minLength || length > maxLength {
-		return errors.New("")
+		return errors.New("CardName must be between " + strconv.Itoa(minLength) + " and " + strconv.Itoa(maxLength) + " characters long")
 	}
 	return nil
 }

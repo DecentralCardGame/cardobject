@@ -2,6 +2,7 @@ package cardobject
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/DecentralCardGame/jsonschema"
 )
@@ -22,7 +23,7 @@ func (i IntComparator) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("IntComparator must be one of: " + strings.Join(intComparators, ","))
 }
 
 func (i IntComparator) GetEnumValues() []string {
@@ -42,7 +43,7 @@ func (s StringComparator) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("")
+	return errors.New("StringComparator must be one of: " + strings.Join(stringComparators, ","))
 }
 
 func (s StringComparator) GetEnumValues() []string {
