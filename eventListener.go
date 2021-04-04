@@ -141,8 +141,8 @@ func (t TimeEventListener) GetInteractionText() string {
 }
 
 type ZoneChangeEventListener struct {
-	Source              DynamicZone     `json:",omitempty"`
-	Destination         Zone            `json:",omitempty"`
+	Source              *DynamicZone    `json:",omitempty"`
+	Destination         *Zone           `json:",omitempty"`
 	CardCondition       *CardConditions `json:",omitempty"`
 	MovedCardExtractors *CardExtractors `json:",omitempty"`
 }
