@@ -61,7 +61,7 @@ func (a ActivatedAbility) GetInteractionText() string {
 
 type TriggeredAbility struct {
 	Cause   *EventListener
-	Cost    *Cost
+	Cost    *Cost `json:",omitempty"`
 	Effects Effects
 }
 
