@@ -18,7 +18,7 @@ func (i IntVariableName) Validate() error {
 }
 
 func (i IntVariableName) ValidateEnum() error {
-	values := i.GetEnumValues()
+	values := i.EnumValues()
 	for _, v := range values {
 		if v == string(i) {
 			return nil
@@ -27,7 +27,7 @@ func (i IntVariableName) ValidateEnum() error {
 	return errors.New("IntVariableName must be on of " + strings.Join(intVariableNames, ","))
 }
 
-func (i IntVariableName) GetEnumValues() []string {
+func (i IntVariableName) EnumValues() []string {
 	return intVariableNames
 }
 
@@ -38,7 +38,7 @@ func (s StringVariableName) Validate() error {
 }
 
 func (s StringVariableName) ValidateEnum() error {
-	values := s.GetEnumValues()
+	values := s.EnumValues()
 	for _, v := range values {
 		if v == string(s) {
 			return nil
@@ -47,7 +47,7 @@ func (s StringVariableName) ValidateEnum() error {
 	return errors.New("StringVariableName must be on of " + strings.Join(stringVariableNames, ","))
 }
 
-func (s StringVariableName) GetEnumValues() []string {
+func (s StringVariableName) EnumValues() []string {
 	return stringVariableNames
 }
 
@@ -58,7 +58,7 @@ func (t TargetVariableName) Validate() error {
 }
 
 func (t TargetVariableName) ValidateEnum() error {
-	values := t.GetEnumValues()
+	values := t.EnumValues()
 	for _, v := range values {
 		if v == string(t) {
 			return nil
@@ -67,6 +67,6 @@ func (t TargetVariableName) ValidateEnum() error {
 	return errors.New("TargetVariableName must be on of " + strings.Join(targetVariableNames, ","))
 }
 
-func (t TargetVariableName) GetEnumValues() []string {
+func (t TargetVariableName) EnumValues() []string {
 	return targetVariableNames
 }

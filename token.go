@@ -17,6 +17,6 @@ func (t Token) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (t Token) GetInteractionText() string {
+func (t Token) InteractionText() string {
 	return "§Attack / §Health token named §Name tagged §Tags"
 }

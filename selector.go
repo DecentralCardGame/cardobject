@@ -20,7 +20,7 @@ func (a ActionSelector) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionSelector) GetInteractionText() string {
+func (a ActionSelector) InteractionText() string {
 	return "Choose §CardMode action §ActionConditions in the §ActionZone of §PlayerMode player §PlayerCondition. §ActionExtractors §AmountExtractor"
 }
 
@@ -42,7 +42,7 @@ func (e EntitySelector) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntitySelector) GetInteractionText() string {
+func (e EntitySelector) InteractionText() string {
 	return "Choose §CardMode entity §EntityConditions in the §EntityZone of §PlayerMode player §PlayerCondition. §EntityExtractors §AmountExtractor"
 }
 
@@ -64,7 +64,7 @@ func (h HeadquarterSelector) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterSelector) GetInteractionText() string {
+func (h HeadquarterSelector) InteractionText() string {
 	return "Choose §CardMode action §HeadquarterConditions in the §HeadquarterZone of §PlayerMode player §PlayerCondition. §HeadquarterExtractors §AmountExtractor"
 }
 
@@ -86,6 +86,6 @@ func (p PlaceSelector) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceSelector) GetInteractionText() string {
+func (p PlaceSelector) InteractionText() string {
 	return "Choose §CardMode place §PlaceConditions in the §PlaceZone of §PlayerMode player §PlayerCondition. §PlaceExtractors §AmountExtractor"
 }

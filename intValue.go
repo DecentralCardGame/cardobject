@@ -30,6 +30,6 @@ func (c ComplexIntValue) ValidateStruct() error {
 	return jsonschema.ValidateStruct(c)
 }
 
-func (c ComplexIntValue) GetInteractionText() string {
+func (c ComplexIntValue) InteractionText() string {
 	return "§FirstValue §ArithOperator §SecondValue"
 }

@@ -36,12 +36,12 @@ func (a ActionExtractors) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (a ActionExtractors) GetMinMaxItems() (int, int) {
+func (a ActionExtractors) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (a ActionExtractors) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(a)
+func (a ActionExtractors) ItemName() string {
+	return jsonschema.ItemNameFromArray(a)
 }
 
 type EntityExtractors []EntityExtractor
@@ -61,12 +61,12 @@ func (e EntityExtractors) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (e EntityExtractors) GetMinMaxItems() (int, int) {
+func (e EntityExtractors) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (e EntityExtractors) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(e)
+func (e EntityExtractors) ItemName() string {
+	return jsonschema.ItemNameFromArray(e)
 }
 
 type HeadquarterExtractors []HeadquarterExtractor
@@ -86,12 +86,12 @@ func (h HeadquarterExtractors) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (h HeadquarterExtractors) GetMinMaxItems() (int, int) {
+func (h HeadquarterExtractors) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (h HeadquarterExtractors) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(h)
+func (h HeadquarterExtractors) ItemName() string {
+	return jsonschema.ItemNameFromArray(h)
 }
 
 type PlaceExtractors []PlaceExtractor
@@ -111,12 +111,12 @@ func (p PlaceExtractors) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (p PlaceExtractors) GetMinMaxItems() (int, int) {
+func (p PlaceExtractors) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (p PlaceExtractors) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(p)
+func (p PlaceExtractors) ItemName() string {
+	return jsonschema.ItemNameFromArray(p)
 }
 
 type ActionExtractor struct {
@@ -188,7 +188,7 @@ func (a ActionIntExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionIntExtractor) GetInteractionText() string {
+func (a ActionIntExtractor) InteractionText() string {
 	return "Set §IntVariableName to the actions §ExtractIntProperty."
 }
 
@@ -205,7 +205,7 @@ func (a ActionStringExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionStringExtractor) GetInteractionText() string {
+func (a ActionStringExtractor) InteractionText() string {
 	return "Set §StringVariableName to the actions §ExtractStringProperty."
 }
 
@@ -222,7 +222,7 @@ func (e EntityIntExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityIntExtractor) GetInteractionText() string {
+func (e EntityIntExtractor) InteractionText() string {
 	return "Set §IntVariableName to the entities §ExtractIntProperty."
 }
 
@@ -239,7 +239,7 @@ func (e EntityStringExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityStringExtractor) GetInteractionText() string {
+func (e EntityStringExtractor) InteractionText() string {
 	return "Set §StringVariableName to the entities §ExtractStringProperty."
 }
 
@@ -256,7 +256,7 @@ func (h HeadquarterIntExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterIntExtractor) GetInteractionText() string {
+func (h HeadquarterIntExtractor) InteractionText() string {
 	return "Set §IntVariableName to the actions §ExtractIntProperty."
 }
 
@@ -273,7 +273,7 @@ func (h HeadquarterStringExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterStringExtractor) GetInteractionText() string {
+func (h HeadquarterStringExtractor) InteractionText() string {
 	return "Set §StringVariableName to the actions §ExtractStringProperty."
 }
 
@@ -290,7 +290,7 @@ func (p PlaceIntExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceIntExtractor) GetInteractionText() string {
+func (p PlaceIntExtractor) InteractionText() string {
 	return "Set §IntVariableName to the places §ExtractIntProperty."
 }
 
@@ -307,7 +307,7 @@ func (p PlaceStringExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceStringExtractor) GetInteractionText() string {
+func (p PlaceStringExtractor) InteractionText() string {
 	return "Set §StringVariableName to the places §ExtractStringProperty."
 }
 
@@ -323,7 +323,7 @@ func (t TargetExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (t TargetExtractor) GetInteractionText() string {
+func (t TargetExtractor) InteractionText() string {
 	return "That card is marked as §TargetVariableName."
 }
 
@@ -339,7 +339,7 @@ func (i IntExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(i)
 }
 
-func (i IntExtractor) GetInteractionText() string {
+func (i IntExtractor) InteractionText() string {
 	return "Set §IntVariableName."
 }
 
@@ -355,6 +355,6 @@ func (s StringExtractor) ValidateStruct() error {
 	return jsonschema.ValidateStruct(s)
 }
 
-func (s StringExtractor) GetInteractionText() string {
+func (s StringExtractor) InteractionText() string {
 	return "Set §StringVariableName."
 }

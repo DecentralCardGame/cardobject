@@ -34,12 +34,12 @@ func (a ActionManipulations) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (a ActionManipulations) GetMinMaxItems() (int, int) {
+func (a ActionManipulations) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (a ActionManipulations) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(a)
+func (a ActionManipulations) ItemName() string {
+	return jsonschema.ItemNameFromArray(a)
 }
 
 type EntityManipulations []EntityManipulation
@@ -59,12 +59,12 @@ func (e EntityManipulations) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (e EntityManipulations) GetMinMaxItems() (int, int) {
+func (e EntityManipulations) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (e EntityManipulations) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(e)
+func (e EntityManipulations) ItemName() string {
+	return jsonschema.ItemNameFromArray(e)
 }
 
 type HeadquarterManipulations []HeadquarterManipulation
@@ -84,12 +84,12 @@ func (h HeadquarterManipulations) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (h HeadquarterManipulations) GetMinMaxItems() (int, int) {
+func (h HeadquarterManipulations) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (h HeadquarterManipulations) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(h)
+func (h HeadquarterManipulations) ItemName() string {
+	return jsonschema.ItemNameFromArray(h)
 }
 
 type PlaceManipulations []PlaceManipulation
@@ -109,12 +109,12 @@ func (p PlaceManipulations) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (p PlaceManipulations) GetMinMaxItems() (int, int) {
+func (p PlaceManipulations) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (p PlaceManipulations) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(p)
+func (p PlaceManipulations) ItemName() string {
+	return jsonschema.ItemNameFromArray(p)
 }
 
 type ActionManipulation struct {
@@ -193,7 +193,7 @@ func (a ActionEffectManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionEffectManipulation) GetInteractionText() string {
+func (a ActionEffectManipulation) InteractionText() string {
 	return "It §EffectOperator §Effect."
 }
 
@@ -211,7 +211,7 @@ func (a ActionIntManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionIntManipulation) GetInteractionText() string {
+func (a ActionIntManipulation) InteractionText() string {
 	return "§IntOperator §IntProperty §IntValue."
 }
 
@@ -229,7 +229,7 @@ func (a ActionStringManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionStringManipulation) GetInteractionText() string {
+func (a ActionStringManipulation) InteractionText() string {
 	return "§StringOperator §StringProperty §StringValue."
 }
 
@@ -246,7 +246,7 @@ func (a ActionTagManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionTagManipulation) GetInteractionText() string {
+func (a ActionTagManipulation) InteractionText() string {
 	return "§TagOperator tag §TagValue."
 }
 
@@ -263,7 +263,7 @@ func (e EntityAbilityManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityAbilityManipulation) GetInteractionText() string {
+func (e EntityAbilityManipulation) InteractionText() string {
 	return "It §AbilityOperator §Ability."
 }
 
@@ -281,7 +281,7 @@ func (e EntityIntManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityIntManipulation) GetInteractionText() string {
+func (e EntityIntManipulation) InteractionText() string {
 	return "§IntOperator §IntProperty §IntValue"
 }
 
@@ -299,7 +299,7 @@ func (e EntityStringManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityStringManipulation) GetInteractionText() string {
+func (e EntityStringManipulation) InteractionText() string {
 	return "§StringOperator §StringProperty §StringValue."
 }
 
@@ -316,7 +316,7 @@ func (e EntityTagManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityTagManipulation) GetInteractionText() string {
+func (e EntityTagManipulation) InteractionText() string {
 	return "It §TagOperator §TagValue."
 }
 
@@ -333,7 +333,7 @@ func (h HeadquarterAbilityManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterAbilityManipulation) GetInteractionText() string {
+func (h HeadquarterAbilityManipulation) InteractionText() string {
 	return "It §AbilityOperator §Effect."
 }
 
@@ -351,7 +351,7 @@ func (h HeadquarterIntManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterIntManipulation) GetInteractionText() string {
+func (h HeadquarterIntManipulation) InteractionText() string {
 	return "§IntOperator §IntProperty §IntValue."
 }
 
@@ -369,7 +369,7 @@ func (h HeadquarterStringManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterStringManipulation) GetInteractionText() string {
+func (h HeadquarterStringManipulation) InteractionText() string {
 	return "§StringOperator §StringProperty §StringValue."
 }
 
@@ -386,7 +386,7 @@ func (h HeadquarterTagManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterTagManipulation) GetInteractionText() string {
+func (h HeadquarterTagManipulation) InteractionText() string {
 	return "§TagOperator tag §TagValue."
 }
 
@@ -403,7 +403,7 @@ func (p PlaceAbilityManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceAbilityManipulation) GetInteractionText() string {
+func (p PlaceAbilityManipulation) InteractionText() string {
 	return "It §AbilityOperator §Ability."
 }
 
@@ -421,7 +421,7 @@ func (p PlaceIntManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceIntManipulation) GetInteractionText() string {
+func (p PlaceIntManipulation) InteractionText() string {
 	return "§IntOperator §IntProperty §IntValue."
 }
 
@@ -439,7 +439,7 @@ func (p PlaceStringManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceStringManipulation) GetInteractionText() string {
+func (p PlaceStringManipulation) InteractionText() string {
 	return "§StringOperator §StringProperty §StringValue."
 }
 
@@ -456,6 +456,6 @@ func (p PlaceTagManipulation) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceTagManipulation) GetInteractionText() string {
+func (p PlaceTagManipulation) InteractionText() string {
 	return "It §TagOperator §TagValue."
 }

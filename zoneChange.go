@@ -15,7 +15,7 @@ func (a ActionZoneChange) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionZoneChange) GetInteractionText() string {
+func (a ActionZoneChange) InteractionText() string {
 	return "Put it into §Player §Zone."
 }
 
@@ -32,7 +32,7 @@ func (e EntityZoneChange) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityZoneChange) GetInteractionText() string {
+func (e EntityZoneChange) InteractionText() string {
 	return "Put it into §Player §Zone."
 }
 
@@ -49,6 +49,6 @@ func (p PlaceZoneChange) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceZoneChange) GetInteractionText() string {
+func (p PlaceZoneChange) InteractionText() string {
 	return "Put it into §Player §Zone."
 }

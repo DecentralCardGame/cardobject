@@ -16,7 +16,7 @@ func (t TimeEvent) Validate() error {
 }
 
 func (t TimeEvent) ValidateEnum() error {
-	values := t.GetEnumValues()
+	values := t.EnumValues()
 	for _, v := range values {
 		if v == string(t) {
 			return nil
@@ -25,6 +25,6 @@ func (t TimeEvent) ValidateEnum() error {
 	return errors.New("TimeEvent must be one of: " + strings.Join(timeEvents, ","))
 }
 
-func (t TimeEvent) GetEnumValues() []string {
+func (t TimeEvent) EnumValues() []string {
 	return timeEvents
 }

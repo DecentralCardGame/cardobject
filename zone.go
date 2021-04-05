@@ -21,7 +21,7 @@ func (d DynamicZone) Validate() error {
 }
 
 func (d DynamicZone) ValidateEnum() error {
-	values := d.GetEnumValues()
+	values := d.EnumValues()
 	for _, v := range values {
 		if v == string(d) {
 			return nil
@@ -30,7 +30,7 @@ func (d DynamicZone) ValidateEnum() error {
 	return errors.New("DynamicZone must be on of " + strings.Join(dynamicZones, ","))
 }
 
-func (d DynamicZone) GetEnumValues() []string {
+func (d DynamicZone) EnumValues() []string {
 	return dynamicZones
 }
 
@@ -41,7 +41,7 @@ func (z Zone) Validate() error {
 }
 
 func (z Zone) ValidateEnum() error {
-	values := z.GetEnumValues()
+	values := z.EnumValues()
 	for _, v := range values {
 		if v == string(z) {
 			return nil
@@ -50,7 +50,7 @@ func (z Zone) ValidateEnum() error {
 	return errors.New("Zone must be on of " + strings.Join(zones, ","))
 }
 
-func (z Zone) GetEnumValues() []string {
+func (z Zone) EnumValues() []string {
 	return zones
 }
 
@@ -61,7 +61,7 @@ func (a ActionZone) Validate() error {
 }
 
 func (a ActionZone) ValidateEnum() error {
-	values := a.GetEnumValues()
+	values := a.EnumValues()
 	for _, v := range values {
 		if v == string(a) {
 			return nil
@@ -70,7 +70,7 @@ func (a ActionZone) ValidateEnum() error {
 	return errors.New("ActionZone must be on of " + strings.Join(actionZones, ","))
 }
 
-func (a ActionZone) GetEnumValues() []string {
+func (a ActionZone) EnumValues() []string {
 	return actionZones
 }
 
@@ -81,7 +81,7 @@ func (e EntityZone) Validate() error {
 }
 
 func (e EntityZone) ValidateEnum() error {
-	values := e.GetEnumValues()
+	values := e.EnumValues()
 	for _, v := range values {
 		if v == string(e) {
 			return nil
@@ -90,7 +90,7 @@ func (e EntityZone) ValidateEnum() error {
 	return errors.New("EntityZone must be on of " + strings.Join(entityZones, ","))
 }
 
-func (e EntityZone) GetEnumValues() []string {
+func (e EntityZone) EnumValues() []string {
 	return entityZones
 }
 
@@ -101,7 +101,7 @@ func (p PlaceZone) Validate() error {
 }
 
 func (p PlaceZone) ValidateEnum() error {
-	values := p.GetEnumValues()
+	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {
 			return nil
@@ -110,6 +110,6 @@ func (p PlaceZone) ValidateEnum() error {
 	return errors.New("PlaceZone must be on of " + strings.Join(placeZones, ","))
 }
 
-func (p PlaceZone) GetEnumValues() []string {
+func (p PlaceZone) EnumValues() []string {
 	return placeZones
 }

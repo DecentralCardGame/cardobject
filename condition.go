@@ -37,11 +37,11 @@ func (a ActionConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (a ActionConditions) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(a)
+func (a ActionConditions) ItemName() string {
+	return jsonschema.ItemNameFromArray(a)
 }
 
-func (a ActionConditions) GetMinMaxItems() (int, int) {
+func (a ActionConditions) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
@@ -62,12 +62,12 @@ func (e EntityConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (e EntityConditions) GetMinMaxItems() (int, int) {
+func (e EntityConditions) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (e EntityConditions) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(e)
+func (e EntityConditions) ItemName() string {
+	return jsonschema.ItemNameFromArray(e)
 }
 
 type HeadquarterConditions []HeadquarterCondition
@@ -87,12 +87,12 @@ func (h HeadquarterConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (h HeadquarterConditions) GetMinMaxItems() (int, int) {
+func (h HeadquarterConditions) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (h HeadquarterConditions) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(h)
+func (h HeadquarterConditions) ItemName() string {
+	return jsonschema.ItemNameFromArray(h)
 }
 
 type PlaceConditions []PlaceCondition
@@ -112,12 +112,12 @@ func (p PlaceConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (p PlaceConditions) GetMinMaxItems() (int, int) {
+func (p PlaceConditions) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (p PlaceConditions) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(p)
+func (p PlaceConditions) ItemName() string {
+	return jsonschema.ItemNameFromArray(p)
 }
 
 type PlayerConditions []PlayerCondition
@@ -137,12 +137,12 @@ func (p PlayerConditions) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (p PlayerConditions) GetMinMaxItems() (int, int) {
+func (p PlayerConditions) MinMaxItems() (int, int) {
 	return 0, 3
 }
 
-func (p PlayerConditions) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(p)
+func (p PlayerConditions) ItemName() string {
+	return jsonschema.ItemNameFromArray(p)
 }
 
 type ActionCondition struct {
@@ -223,7 +223,7 @@ func (t ThisCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (t ThisCondition) GetInteractionText() string {
+func (t ThisCondition) InteractionText() string {
 	return "this"
 }
 
@@ -241,7 +241,7 @@ func (a ActionIntCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionIntCondition) GetInteractionText() string {
+func (a ActionIntCondition) InteractionText() string {
 	return "with §ActionIntProperty §IntComparator §IntValue"
 }
 
@@ -259,7 +259,7 @@ func (a ActionStringCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionStringCondition) GetInteractionText() string {
+func (a ActionStringCondition) InteractionText() string {
 	return "with §ActionStringProperty §StringComparator §StringValue"
 }
 
@@ -276,7 +276,7 @@ func (a ActionTagCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionTagCondition) GetInteractionText() string {
+func (a ActionTagCondition) InteractionText() string {
 	return "with tag §StringComparator §StringValue"
 }
 
@@ -294,7 +294,7 @@ func (e EntityIntCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityIntCondition) GetInteractionText() string {
+func (e EntityIntCondition) InteractionText() string {
 	return "with §EntityIntProperty §IntComparator §IntValue"
 }
 
@@ -312,7 +312,7 @@ func (e EntityStringCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityStringCondition) GetInteractionText() string {
+func (e EntityStringCondition) InteractionText() string {
 	return "with §EntityStringProperty §StringComparator §StringValue"
 }
 
@@ -329,7 +329,7 @@ func (e EntityTagCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityTagCondition) GetInteractionText() string {
+func (e EntityTagCondition) InteractionText() string {
 	return "with tag §StringComparator §StringValue"
 }
 
@@ -347,7 +347,7 @@ func (h HeadquarterIntCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterIntCondition) GetInteractionText() string {
+func (h HeadquarterIntCondition) InteractionText() string {
 	return "with §HeadquarterIntProperty §IntComparator §IntValue"
 }
 
@@ -365,7 +365,7 @@ func (h HeadquarterStringCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterStringCondition) GetInteractionText() string {
+func (h HeadquarterStringCondition) InteractionText() string {
 	return "with §HeadquarterStringProperty §StringComparator §StringValue"
 }
 
@@ -382,7 +382,7 @@ func (h HeadquarterTagCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterTagCondition) GetInteractionText() string {
+func (h HeadquarterTagCondition) InteractionText() string {
 	return "with tag §StringComparator §StringValue"
 }
 
@@ -400,7 +400,7 @@ func (p PlaceIntCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceIntCondition) GetInteractionText() string {
+func (p PlaceIntCondition) InteractionText() string {
 	return "with §PlaceIntProperty §IntComparator §IntValue"
 }
 
@@ -418,7 +418,7 @@ func (p PlaceStringCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceStringCondition) GetInteractionText() string {
+func (p PlaceStringCondition) InteractionText() string {
 	return "with §PlaceStringProperty §StringComparator §StringValue"
 }
 
@@ -435,7 +435,7 @@ func (p PlaceTagCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceTagCondition) GetInteractionText() string {
+func (p PlaceTagCondition) InteractionText() string {
 	return "with tag §StringComparator §StringValue"
 }
 
@@ -453,6 +453,6 @@ func (p PlayerIntCondition) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlayerIntCondition) GetInteractionText() string {
+func (p PlayerIntCondition) InteractionText() string {
 	return "with §PlayerIntProperty §IntComparator §IntValue"
 }

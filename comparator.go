@@ -17,7 +17,7 @@ func (i IntComparator) Validate() error {
 }
 
 func (i IntComparator) ValidateEnum() error {
-	values := i.GetEnumValues()
+	values := i.EnumValues()
 	for _, v := range values {
 		if v == string(i) {
 			return nil
@@ -26,7 +26,7 @@ func (i IntComparator) ValidateEnum() error {
 	return errors.New("IntComparator must be one of: " + strings.Join(intComparators, ","))
 }
 
-func (i IntComparator) GetEnumValues() []string {
+func (i IntComparator) EnumValues() []string {
 	return intComparators
 }
 
@@ -37,7 +37,7 @@ func (s StringComparator) Validate() error {
 }
 
 func (s StringComparator) ValidateEnum() error {
-	values := s.GetEnumValues()
+	values := s.EnumValues()
 	for _, v := range values {
 		if v == string(s) {
 			return nil
@@ -46,6 +46,6 @@ func (s StringComparator) ValidateEnum() error {
 	return errors.New("StringComparator must be one of: " + strings.Join(stringComparators, ","))
 }
 
-func (s StringComparator) GetEnumValues() []string {
+func (s StringComparator) EnumValues() []string {
 	return stringComparators
 }

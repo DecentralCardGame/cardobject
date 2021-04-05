@@ -21,12 +21,12 @@ func (e Effects) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (e Effects) GetMinMaxItems() (int, int) {
+func (e Effects) MinMaxItems() (int, int) {
 	return 0, maxAbilityEffectCount
 }
 
-func (e Effects) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(e)
+func (e Effects) ItemName() string {
+	return jsonschema.ItemNameFromArray(e)
 }
 
 type Effect struct {
@@ -57,7 +57,7 @@ func (p ProductionEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p ProductionEffect) GetInteractionText() string {
+func (p ProductionEffect) InteractionText() string {
 	return "Produce §Amount."
 }
 
@@ -73,7 +73,7 @@ func (d WisdomEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(d)
 }
 
-func (d WisdomEffect) GetInteractionText() string {
+func (d WisdomEffect) InteractionText() string {
 	return "Gain §WisdomAmount wisdom."
 }
 
@@ -90,7 +90,7 @@ func (t TokenEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (t TokenEffect) GetInteractionText() string {
+func (t TokenEffect) InteractionText() string {
 	return "Create §TokenAmount §Token."
 }
 
@@ -106,7 +106,7 @@ func (c ChooseFromEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(c)
 }
 
-func (c ChooseFromEffect) GetInteractionText() string {
+func (c ChooseFromEffect) InteractionText() string {
 	return "Do one of §Effects."
 }
 
@@ -139,7 +139,7 @@ func (a ActionTargetEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActionTargetEffect) GetInteractionText() string {
+func (a ActionTargetEffect) InteractionText() string {
 	return "§ActionSelector §ActionManipulations"
 }
 
@@ -156,7 +156,7 @@ func (e EntityTargetEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e EntityTargetEffect) GetInteractionText() string {
+func (e EntityTargetEffect) InteractionText() string {
 	return "§EntitySelector §EntityManipulations"
 }
 
@@ -173,7 +173,7 @@ func (h HeadquarterTargetEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (h HeadquarterTargetEffect) GetInteractionText() string {
+func (h HeadquarterTargetEffect) InteractionText() string {
 	return "§HeadquarterSelector §HeadquarterManipulations"
 }
 
@@ -190,7 +190,7 @@ func (p PlaceTargetEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p PlaceTargetEffect) GetInteractionText() string {
+func (p PlaceTargetEffect) InteractionText() string {
 	return "§PlaceSelector §PlaceManipulations"
 }
 
@@ -207,6 +207,6 @@ func (e ExtractorTargetEffect) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (e ExtractorTargetEffect) GetInteractionText() string {
+func (e ExtractorTargetEffect) InteractionText() string {
 	return "Choose §TargetVariable. §Manipulations"
 }

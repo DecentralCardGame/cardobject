@@ -21,11 +21,11 @@ func (a Abilities) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (a Abilities) GetMinMaxItems() (int, int) {
+func (a Abilities) MinMaxItems() (int, int) {
 	return 0, maxAbilityEffectCount
 }
 
-func (a Abilities) GetItemName() string {
+func (a Abilities) ItemName() string {
 	return "Ability"
 }
 
@@ -55,7 +55,7 @@ func (a ActivatedAbility) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a ActivatedAbility) GetInteractionText() string {
+func (a ActivatedAbility) InteractionText() string {
 	return "Pay §AbilityCost: §Effects \n"
 }
 
@@ -73,6 +73,6 @@ func (t TriggeredAbility) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (a TriggeredAbility) GetInteractionText() string {
+func (a TriggeredAbility) InteractionText() string {
 	return "§Cause , §Cost : §Effects \n"
 }

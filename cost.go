@@ -32,7 +32,7 @@ func (r RessourceCost) ValidateStruct() error {
 	return jsonschema.ValidateStruct(r)
 }
 
-func (r RessourceCost) GetInteractionText() string {
+func (r RessourceCost) InteractionText() string {
 	return "§CostAmount ressources"
 }
 
@@ -49,7 +49,7 @@ func (s SacrificeCost) ValidateStruct() error {
 	return jsonschema.ValidateStruct(s)
 }
 
-func (s SacrificeCost) GetInteractionText() string {
+func (s SacrificeCost) InteractionText() string {
 	return "Sacrifice §Amount card §Conditions"
 }
 
@@ -66,7 +66,7 @@ func (d DiscardCost) ValidateStruct() error {
 	return jsonschema.ValidateStruct(d)
 }
 
-func (d DiscardCost) GetInteractionText() string {
+func (d DiscardCost) InteractionText() string {
 	return "Discard §Amount card §Conditions"
 }
 
@@ -89,7 +89,7 @@ func (r RessourceCostType) ValidateStruct() error {
 	return jsonschema.ValidateStruct(r)
 }
 
-func (r RessourceCostType) GetInteractionText() string {
+func (r RessourceCostType) InteractionText() string {
 	return "§Energy §Food §Lumber §Mana §Iron"
 }
 

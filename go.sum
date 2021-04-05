@@ -2,6 +2,8 @@ github.com/DecentralCardGame/jsonschema v0.1.8 h1:1y6WRPDTALwytzGqu9LMkzZXsozQwS
 github.com/DecentralCardGame/jsonschema v0.1.8/go.mod h1:WFluvM5HO5vI+hadOuaZknLBNyRBfMDe5abh7tOaSKg=
 github.com/DecentralCardGame/jsonschema v0.1.10 h1:QVrewygEIVgqmH9qM20dNriWnsolD8JxHQV185ZkP8w=
 github.com/DecentralCardGame/jsonschema v0.1.10/go.mod h1:tZq1ww7rFIsadDqqful0xv0wevCpXXQLPOE2AoMMs6U=
+github.com/DecentralCardGame/jsonschema v0.1.11 h1:34s/aiR5pg380tBgIoJswIrJ/Bae7hJ2UK5MCvnHVIo=
+github.com/DecentralCardGame/jsonschema v0.1.11/go.mod h1:tZq1ww7rFIsadDqqful0xv0wevCpXXQLPOE2AoMMs6U=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/fatih/camelcase v1.0.0 h1:hxNvNX/xYBp0ovncs8WyWZrOrpBNub/JfaMvbURyft8=
 github.com/fatih/camelcase v1.0.0/go.mod h1:yN2Sb0lFhZJUdVvtELVWefmrXpuZESvPmqwoZc+/fpc=

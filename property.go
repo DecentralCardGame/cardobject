@@ -28,7 +28,7 @@ func (a ActionIntProperty) Validate() error {
 }
 
 func (a ActionIntProperty) ValidateEnum() error {
-	values := a.GetEnumValues()
+	values := a.EnumValues()
 	for _, v := range values {
 		if v == string(a) {
 			return nil
@@ -37,7 +37,7 @@ func (a ActionIntProperty) ValidateEnum() error {
 	return errors.New("ActionIntProperty must be one of: " + strings.Join(actionIntProperties, ","))
 }
 
-func (a ActionIntProperty) GetEnumValues() []string {
+func (a ActionIntProperty) EnumValues() []string {
 	return actionIntProperties
 }
 
@@ -48,7 +48,7 @@ func (a ActionStringProperty) Validate() error {
 }
 
 func (a ActionStringProperty) ValidateEnum() error {
-	values := a.GetEnumValues()
+	values := a.EnumValues()
 	for _, v := range values {
 		if v == string(a) {
 			return nil
@@ -57,7 +57,7 @@ func (a ActionStringProperty) ValidateEnum() error {
 	return errors.New("ActionStringProperty must be one of: " + strings.Join(actionStringProperties, ","))
 }
 
-func (a ActionStringProperty) GetEnumValues() []string {
+func (a ActionStringProperty) EnumValues() []string {
 	return actionStringProperties
 }
 
@@ -68,7 +68,7 @@ func (e EntityIntProperty) Validate() error {
 }
 
 func (e EntityIntProperty) ValidateEnum() error {
-	values := e.GetEnumValues()
+	values := e.EnumValues()
 	for _, v := range values {
 		if v == string(e) {
 			return nil
@@ -77,7 +77,7 @@ func (e EntityIntProperty) ValidateEnum() error {
 	return errors.New("EntityIntProperty must be one of: " + strings.Join(entityIntProperties, ","))
 }
 
-func (e EntityIntProperty) GetEnumValues() []string {
+func (e EntityIntProperty) EnumValues() []string {
 	return entityIntProperties
 }
 
@@ -88,7 +88,7 @@ func (e EntityStringProperty) Validate() error {
 }
 
 func (e EntityStringProperty) ValidateEnum() error {
-	values := e.GetEnumValues()
+	values := e.EnumValues()
 	for _, v := range values {
 		if v == string(e) {
 			return nil
@@ -97,7 +97,7 @@ func (e EntityStringProperty) ValidateEnum() error {
 	return errors.New("EntityStringProperty must be one of: " + strings.Join(entityStringProperties, ","))
 }
 
-func (e EntityStringProperty) GetEnumValues() []string {
+func (e EntityStringProperty) EnumValues() []string {
 	return entityStringProperties
 }
 
@@ -108,7 +108,7 @@ func (h HeadquarterIntProperty) Validate() error {
 }
 
 func (h HeadquarterIntProperty) ValidateEnum() error {
-	values := h.GetEnumValues()
+	values := h.EnumValues()
 	for _, v := range values {
 		if v == string(h) {
 			return nil
@@ -117,7 +117,7 @@ func (h HeadquarterIntProperty) ValidateEnum() error {
 	return errors.New("HeadquarterIntProperty must be one of: " + strings.Join(headquarterIntProperties, ","))
 }
 
-func (h HeadquarterIntProperty) GetEnumValues() []string {
+func (h HeadquarterIntProperty) EnumValues() []string {
 	return headquarterIntProperties
 }
 
@@ -128,7 +128,7 @@ func (h HeadquarterStringProperty) Validate() error {
 }
 
 func (h HeadquarterStringProperty) ValidateEnum() error {
-	values := h.GetEnumValues()
+	values := h.EnumValues()
 	for _, v := range values {
 		if v == string(h) {
 			return nil
@@ -137,7 +137,7 @@ func (h HeadquarterStringProperty) ValidateEnum() error {
 	return errors.New("HeadquarterStringProperty must be one of: " + strings.Join(headquarterStringProperties, ","))
 }
 
-func (h HeadquarterStringProperty) GetEnumValues() []string {
+func (h HeadquarterStringProperty) EnumValues() []string {
 	return headquarterStringProperties
 }
 
@@ -148,7 +148,7 @@ func (p PlaceIntProperty) Validate() error {
 }
 
 func (p PlaceIntProperty) ValidateEnum() error {
-	values := p.GetEnumValues()
+	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {
 			return nil
@@ -157,7 +157,7 @@ func (p PlaceIntProperty) ValidateEnum() error {
 	return errors.New("PlaceIntProperty must be one of: " + strings.Join(placeIntProperties, ","))
 }
 
-func (p PlaceIntProperty) GetEnumValues() []string {
+func (p PlaceIntProperty) EnumValues() []string {
 	return placeIntProperties
 }
 
@@ -168,7 +168,7 @@ func (p PlaceStringProperty) Validate() error {
 }
 
 func (p PlaceStringProperty) ValidateEnum() error {
-	values := p.GetEnumValues()
+	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {
 			return nil
@@ -177,7 +177,7 @@ func (p PlaceStringProperty) ValidateEnum() error {
 	return errors.New("PlaceStringProperty must be one of: " + strings.Join(placeStringProperties, ","))
 }
 
-func (p PlaceStringProperty) GetEnumValues() []string {
+func (p PlaceStringProperty) EnumValues() []string {
 	return placeStringProperties
 }
 
@@ -188,7 +188,7 @@ func (c CardIntProperty) Validate() error {
 }
 
 func (c CardIntProperty) ValidateEnum() error {
-	values := c.GetEnumValues()
+	values := c.EnumValues()
 	for _, v := range values {
 		if v == string(c) {
 			return nil
@@ -197,7 +197,7 @@ func (c CardIntProperty) ValidateEnum() error {
 	return errors.New("CardIntProperty must be one of: " + strings.Join(cardIntProperties, ","))
 }
 
-func (c CardIntProperty) GetEnumValues() []string {
+func (c CardIntProperty) EnumValues() []string {
 	return cardIntProperties
 }
 
@@ -208,7 +208,7 @@ func (c CardStringProperty) Validate() error {
 }
 
 func (c CardStringProperty) ValidateEnum() error {
-	values := c.GetEnumValues()
+	values := c.EnumValues()
 	for _, v := range values {
 		if v == string(c) {
 			return nil
@@ -217,7 +217,7 @@ func (c CardStringProperty) ValidateEnum() error {
 	return errors.New("CardStringProperty must be one of: " + strings.Join(cardStringProperties, ","))
 }
 
-func (c CardStringProperty) GetEnumValues() []string {
+func (c CardStringProperty) EnumValues() []string {
 	return cardStringProperties
 }
 
@@ -228,7 +228,7 @@ func (p PlayerIntProperty) Validate() error {
 }
 
 func (p PlayerIntProperty) ValidateEnum() error {
-	values := p.GetEnumValues()
+	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {
 			return nil
@@ -237,6 +237,6 @@ func (p PlayerIntProperty) ValidateEnum() error {
 	return errors.New("PlayerIntProperty must be one of: " + strings.Join(playerIntProperties, ","))
 }
 
-func (p PlayerIntProperty) GetEnumValues() []string {
+func (p PlayerIntProperty) EnumValues() []string {
 	return playerIntProperties
 }

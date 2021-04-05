@@ -36,7 +36,7 @@ func (a Action) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a Action) GetInteractionText() string {
+func (a Action) InteractionText() string {
 	return "§CardName §CastingCost §CostType §Effects §FlavourText §Tags"
 }
 
@@ -59,7 +59,7 @@ func (e Entity) ValidateStruct() error {
 	return jsonschema.ValidateStruct(e)
 }
 
-func (a Entity) GetInteractionText() string {
+func (a Entity) InteractionText() string {
 	return "§CardName §CastingCost §CostType §Abilities §Attack §Health §FlavourText §Tags"
 }
 
@@ -81,7 +81,7 @@ func (p Place) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (a Place) GetInteractionText() string {
+func (a Place) InteractionText() string {
 	return "§CardName §CastingCost §CostType §Abilities §Health §FlavourText §Tags"
 }
 
@@ -105,6 +105,6 @@ func (h Headquarter) ValidateStruct() error {
 	return jsonschema.ValidateStruct(h)
 }
 
-func (a Headquarter) GetInteractionText() string {
+func (a Headquarter) InteractionText() string {
 	return "§CardName §CostType §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags"
 }

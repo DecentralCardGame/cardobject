@@ -21,7 +21,7 @@ func (i IntChangeMode) Validate() error {
 }
 
 func (i IntChangeMode) ValidateEnum() error {
-	values := i.GetEnumValues()
+	values := i.EnumValues()
 	for _, v := range values {
 		if v == string(i) {
 			return nil
@@ -30,7 +30,7 @@ func (i IntChangeMode) ValidateEnum() error {
 	return errors.New("IntChangeMode must be one of: " + strings.Join(intChangeModes, ","))
 }
 
-func (i IntChangeMode) GetEnumValues() []string {
+func (i IntChangeMode) EnumValues() []string {
 	return intChangeModes
 }
 
@@ -41,7 +41,7 @@ func (s StringChangeMode) Validate() error {
 }
 
 func (s StringChangeMode) ValidateEnum() error {
-	values := s.GetEnumValues()
+	values := s.EnumValues()
 	for _, v := range values {
 		if v == string(s) {
 			return nil
@@ -50,7 +50,7 @@ func (s StringChangeMode) ValidateEnum() error {
 	return errors.New("StringComparator must be one of: " + strings.Join(stringComparators, ","))
 }
 
-func (s StringChangeMode) GetEnumValues() []string {
+func (s StringChangeMode) EnumValues() []string {
 	return stringChangeModes
 }
 
@@ -61,7 +61,7 @@ func (p PlayerMode) Validate() error {
 }
 
 func (p PlayerMode) ValidateEnum() error {
-	values := p.GetEnumValues()
+	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {
 			return nil
@@ -70,7 +70,7 @@ func (p PlayerMode) ValidateEnum() error {
 	return errors.New("PlayerModes must be one of: " + strings.Join(playerModes, ","))
 }
 
-func (p PlayerMode) GetEnumValues() []string {
+func (p PlayerMode) EnumValues() []string {
 	return playerModes
 }
 
@@ -81,7 +81,7 @@ func (c CardMode) Validate() error {
 }
 
 func (c CardMode) ValidateEnum() error {
-	values := c.GetEnumValues()
+	values := c.EnumValues()
 	for _, v := range values {
 		if v == string(c) {
 			return nil
@@ -90,7 +90,7 @@ func (c CardMode) ValidateEnum() error {
 	return errors.New("CardModes must be one of: " + strings.Join(cardModes, ","))
 }
 
-func (c CardMode) GetEnumValues() []string {
+func (c CardMode) EnumValues() []string {
 	return cardModes
 }
 
@@ -101,7 +101,7 @@ func (o OwnerMode) Validate() error {
 }
 
 func (o OwnerMode) ValidateEnum() error {
-	values := o.GetEnumValues()
+	values := o.EnumValues()
 	for _, v := range values {
 		if v == string(o) {
 			return nil
@@ -110,6 +110,6 @@ func (o OwnerMode) ValidateEnum() error {
 	return errors.New("OwnerModes must be one of: " + strings.Join(ownerModes, ","))
 }
 
-func (o OwnerMode) GetEnumValues() []string {
+func (o OwnerMode) EnumValues() []string {
 	return ownerModes
 }

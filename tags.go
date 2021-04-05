@@ -42,12 +42,12 @@ func (t Tags) ValidateArray() error {
 	return jsonschema.CombineErrors(errorRange)
 }
 
-func (t Tags) GetMinMaxItems() (int, int) {
+func (t Tags) MinMaxItems() (int, int) {
 	return 1, 3
 }
 
-func (t Tags) GetItemName() string {
-	return jsonschema.GetItemNameFromArray(t)
+func (t Tags) ItemName() string {
+	return jsonschema.ItemNameFromArray(t)
 }
 
 type Tag jsonschema.BasicEnum
@@ -57,7 +57,7 @@ func (t Tag) Validate() error {
 }
 
 func (t Tag) ValidateEnum() error {
-	values := t.GetEnumValues()
+	values := t.EnumValues()
 	for _, v := range values {
 		if v == string(t) {
 			return nil
@@ -66,6 +66,6 @@ func (t Tag) ValidateEnum() error {
 	return errors.New("Tag must be one of: " + strings.Join(possibleTags, ","))
 }
 
-func (t Tag) GetEnumValues() []string {
+func (t Tag) EnumValues() []string {
 	return possibleTags
 }

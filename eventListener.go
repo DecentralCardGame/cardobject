@@ -32,7 +32,7 @@ func (a AttackEventListener) ValidateStruct() error {
 	return jsonschema.ValidateStruct(a)
 }
 
-func (a AttackEventListener) GetInteractionText() string {
+func (a AttackEventListener) InteractionText() string {
 	return "Whenever an entity §EntityCondition attacks. §AttackEntityExtractors"
 }
 
@@ -50,7 +50,7 @@ func (b BlockEventListener) ValidateStruct() error {
 	return jsonschema.ValidateStruct(b)
 }
 
-func (b BlockEventListener) GetInteractionText() string {
+func (b BlockEventListener) InteractionText() string {
 	return "Whenever an entity §EntityCondition blocks. §BlockingEntityExtractors §BlockedEntityExtractors"
 }
 
@@ -83,7 +83,7 @@ func (i IntManipulationEventListener) ValidateStruct() error {
 	return jsonschema.ValidateStruct(i)
 }
 
-func (i IntManipulationEventListener) GetInteractionText() string {
+func (i IntManipulationEventListener) InteractionText() string {
 	return "Whenever §IntProperty on card §CardCondition §IntChangeMode. §ManipulatedCardExtractors §ManipulationValueExtractor"
 }
 
@@ -103,7 +103,7 @@ func (s StringManipulationEventListener) ValidateStruct() error {
 	return jsonschema.ValidateStruct(s)
 }
 
-func (s StringManipulationEventListener) GetInteractionText() string {
+func (s StringManipulationEventListener) InteractionText() string {
 	return "Whenever §StringProperty §StringChangeMode on a card §CardCondition. §ManipulatedCardExtractors §ManipulationValueExtractor"
 }
 
@@ -120,7 +120,7 @@ func (p ProductionEventListener) ValidateStruct() error {
 	return jsonschema.ValidateStruct(p)
 }
 
-func (p ProductionEventListener) GetInteractionText() string {
+func (p ProductionEventListener) InteractionText() string {
 	return "Whenever one or more §RessourceTypeCondition ressources is produced. §ProductionAmountExtractor"
 }
 
@@ -136,7 +136,7 @@ func (t TimeEventListener) ValidateStruct() error {
 	return jsonschema.ValidateStruct(t)
 }
 
-func (t TimeEventListener) GetInteractionText() string {
+func (t TimeEventListener) InteractionText() string {
 	return "Every §TimeEvent"
 }
 
@@ -155,6 +155,6 @@ func (z ZoneChangeEventListener) ValidateStruct() error {
 	return jsonschema.ValidateStruct(z)
 }
 
-func (z ZoneChangeEventListener) GetInteractionText() string {
+func (z ZoneChangeEventListener) InteractionText() string {
 	return "Whenever a card §CardCondition gets put from §Source to §Destination. §MovedCardExtractors"
 }

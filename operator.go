@@ -20,7 +20,7 @@ func (a AbilityEffectOperator) Validate() error {
 }
 
 func (a AbilityEffectOperator) ValidateEnum() error {
-	values := a.GetEnumValues()
+	values := a.EnumValues()
 	for _, v := range values {
 		if v == string(a) {
 			return nil
@@ -29,7 +29,7 @@ func (a AbilityEffectOperator) ValidateEnum() error {
 	return errors.New("AbilityEffectOperator must be one of: " + strings.Join(abilityEffectOperators, ","))
 }
 
-func (a AbilityEffectOperator) GetEnumValues() []string {
+func (a AbilityEffectOperator) EnumValues() []string {
 	return abilityEffectOperators
 }
 
@@ -40,7 +40,7 @@ func (i IntOperator) Validate() error {
 }
 
 func (i IntOperator) ValidateEnum() error {
-	values := i.GetEnumValues()
+	values := i.EnumValues()
 	for _, v := range values {
 		if v == string(i) {
 			return nil
@@ -49,7 +49,7 @@ func (i IntOperator) ValidateEnum() error {
 	return errors.New("IntOperator must be one of: " + strings.Join(intOperators, ","))
 }
 
-func (i IntOperator) GetEnumValues() []string {
+func (i IntOperator) EnumValues() []string {
 	return intOperators
 }
 
@@ -60,7 +60,7 @@ func (s StringOperator) Validate() error {
 }
 
 func (s StringOperator) ValidateEnum() error {
-	values := s.GetEnumValues()
+	values := s.EnumValues()
 	for _, v := range values {
 		if v == string(s) {
 			return nil
@@ -69,7 +69,7 @@ func (s StringOperator) ValidateEnum() error {
 	return errors.New("StringOperator must be one of: " + strings.Join(stringComparators, ","))
 }
 
-func (s StringOperator) GetEnumValues() []string {
+func (s StringOperator) EnumValues() []string {
 	return stringOperators
 }
 
@@ -80,7 +80,7 @@ func (a ArithOperator) Validate() error {
 }
 
 func (a ArithOperator) ValidateEnum() error {
-	values := a.GetEnumValues()
+	values := a.EnumValues()
 	for _, v := range values {
 		if v == string(a) {
 			return nil
@@ -89,6 +89,6 @@ func (a ArithOperator) ValidateEnum() error {
 	return errors.New("ArithOperator must be one of: " + strings.Join(arithOperators, ","))
 }
 
-func (a ArithOperator) GetEnumValues() []string {
+func (a ArithOperator) EnumValues() []string {
 	return arithOperators
 }
