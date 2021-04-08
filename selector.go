@@ -51,7 +51,6 @@ type HeadquarterSelector struct {
 	PlayerCondition       *PlayerCondition `json:",omitempty"`
 	CardMode              CardMode
 	HeadquarterConditions *HeadquarterConditions `json:",omitempty"`
-	HeadquarterZone       ActionZone
 	HeadquarterExtractors *HeadquarterExtractors `json:",omitempty"`
 	AmountExtractor       *IntExtractor          `json:",omitempty"`
 }
