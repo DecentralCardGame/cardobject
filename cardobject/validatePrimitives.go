@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/DecentralCardGame/jsonschema"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 const maxAttack int = 32

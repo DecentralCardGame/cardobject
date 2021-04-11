@@ -1,6 +1,6 @@
 package cardobject
 
-import "github.com/DecentralCardGame/jsonschema"
+import "github.com/DecentralCardGame/cardobject/jsonschema"
 
 type ActionZoneChange struct {
 	Zone   ActionZone

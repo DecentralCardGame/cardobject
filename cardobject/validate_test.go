@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/DecentralCardGame/jsonschema"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 func writeToFile(schema string) {

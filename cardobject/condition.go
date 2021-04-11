@@ -1,7 +1,7 @@
 package cardobject
 
 import (
-	"github.com/DecentralCardGame/jsonschema"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 type CardConditions struct {
