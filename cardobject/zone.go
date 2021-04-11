@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/DecentralCardGame/cardobject/jsonschema"
+	"cardobject/jsonschema"
 )
 
 var dynamicZones []string = []string{"DECK", "DUSTPILE", "FIELD", "HAND"}

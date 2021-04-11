@@ -1,6 +1,6 @@
 package cardobject
 
-import "github.com/DecentralCardGame/cardobject/jsonschema"
+import "cardobject/jsonschema"
 
 type IntValue struct {
 	ComplexIntValue *ComplexIntValue `json:",omitempty"`

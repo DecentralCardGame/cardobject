@@ -1,6 +1,6 @@
 package cardobject
 
-import "github.com/DecentralCardGame/cardobject/jsonschema"
+import "cardobject/jsonschema"
 
 type Token struct {
 	Name   CardName `json:",omitempty"`

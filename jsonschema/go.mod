@@ -1,4 +1,4 @@
-module github.com/DecentralCardGame/jsonschema
+module github.com/DecentralCardGame/cardobject/jsonschema
 
 go 1.12
 
