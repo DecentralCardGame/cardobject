@@ -1,5 +1,5 @@
 # Keywords
-Keywords are shortcuts that allow to blackbox complex effects/ablities of a [card](https://github.com/DecentralCardGame/cardobject/cardobject) behind a simpler description.
+Keywords are shortcuts that allow to blackbox complex effects/ablities of a [cardobject.Card](https://github.com/DecentralCardGame/cardobject/tree/master/cardobject) behind a simpler description.
 Example:
 > Arm:{Amount:X}
 
@@ -37,17 +37,17 @@ resolves to
 
 # Usage
 1. An instruction on how to build a keyworded card is provided in form of a json-schema.
-2. A keyworded card-json can be unmarshaled and validated to a [KeywordedCard](https://github.com/DecentralCardGame/cardobject/keywords/card.go) by the [Unmarshal()](unmarshal.go)-method.
-3. The [KeywordedCard](https://github.com/DecentralCardGame/cardobject/keywords/card.go) provides a [Resolve()](https://github.com/DecentralCardGame/cardobject/keywords/card.go)-method which returns a [cardobject.Card](https://github.com/DecentralCardGame/cardobject/cardobject).
+2. A keyworded card-json can be unmarshaled and validated to a [KeywordedCard](card.go) by the [Unmarshal()](unmarshal.go)-method.
+3. The [KeywordedCard](card.go) provides a [Resolve()](card.go)-method which returns a [cardobject.Card](https://github.com/DecentralCardGame/cardobject/tree/master/cardobject).
 
 ## Schema
 1. The schema describes to a frontend how to build a keyworded card.
 2. It is found [here](schema.json).
 
 ## Resolve keyworded card
-1. The [Unmarshal()](unmarshal.go)-method takes a keyworded card in form of a json and returns a [KeywordedCard](https://github.com/DecentralCardGame/cardobject/keywords/card.go) or an error.
+1. The [Unmarshal()](unmarshal.go)-method takes a keyworded card in form of a json and returns a [KeywordedCard](card.go) or an error.
 2. This process involves validating the keyworded card.
-3. The [KeywordedCard](https://github.com/DecentralCardGame/cardobject/keywords/card.go) then can be resolved to a [cardobject.Card](https://github.com/DecentralCardGame/cardobject/cardobject).
+3. The [KeywordedCard](card.go) then can be resolved to a [cardobject.Card](https://github.com/DecentralCardGame/cardobject/tree/master/cardobject).
 4. Example:
 ```golang
 import "github.com/DecentralCardGame/keywords"
