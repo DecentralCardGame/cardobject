@@ -1,0 +1,31 @@
+{
+  "Entity":{
+    "CardName":"Name",
+    "Tags":["SPIRITUAL"],
+    "FlavourText":"-.-",
+    "CostType":{
+      "Lumber":true,
+      "Energy":false,
+      "Food":false,
+      "Iron":false,
+      "Mana":false
+    },
+    "CastingCost":13,
+    "Attack":10,
+    "Health":10,
+    "Abilities":[
+      {
+        "Pay":{
+          "RessourceAmount":2,
+          "Effects":[
+            {
+              "Arm": {
+                "Amount":2
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

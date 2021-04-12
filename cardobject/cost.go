@@ -3,7 +3,7 @@ package cardobject
 import (
 	"errors"
 
-	"cardobject/jsonschema"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 type Cost struct {

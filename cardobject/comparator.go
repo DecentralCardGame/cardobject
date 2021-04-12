@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"cardobject/jsonschema"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 var intComparators []string = []string{"EQUAL", "GREATER", "LESSER"}

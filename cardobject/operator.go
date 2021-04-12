@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"cardobject/jsonschema"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 var abilityEffectOperators []string = []string{"GAIN", "LOSE"}

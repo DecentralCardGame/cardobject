@@ -1,7 +1,7 @@
 package cardobject
 
 import (
-	"cardobject/jsonschema"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 type Abilities []Ability

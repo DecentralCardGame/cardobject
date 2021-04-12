@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"cardobject/jsonschema"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 func writeToFile(schema string) {
@@ -47,7 +47,7 @@ func TestValidateAction(t *testing.T) {
 		t.Error(readErr)
 	}
 
-	_, err := NewCardFromJson(string(dat))
+	_, err := Unmarshal(dat)
 
 	if err != nil {
 		t.Error(err)
@@ -60,7 +60,7 @@ func TestValidateEntity(t *testing.T) {
 		t.Error(readErr)
 	}
 
-	_, err := NewCardFromJson(string(dat))
+	_, err := Unmarshal(dat)
 
 	if err != nil {
 		t.Error(err)
@@ -73,7 +73,7 @@ func TestValidatePlace(t *testing.T) {
 		t.Error(readErr)
 	}
 
-	_, err := NewCardFromJson(string(dat))
+	_, err := Unmarshal(dat)
 
 	if err != nil {
 		t.Error(err)

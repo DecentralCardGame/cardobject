@@ -1,6 +1,6 @@
 package cardobject
 
-import "cardobject/jsonschema"
+import "github.com/DecentralCardGame/cardobject/jsonschema"
 
 type EventListener struct {
 	AttackEventListener       *AttackEventListener       `json:",omitempty"`
