@@ -42,7 +42,7 @@ resolves to
 
 ## Schema
 1. The schema describes to a frontend how to build a keyworded card.
-2. It is found [here](schema.json).
+2. It is provided by the [Schema()](schema.go#L7)-function.
 
 ## Resolve keyworded card
 1. The [Unmarshal()](unmarshal.go#L10)-method takes a keyworded card in form of a json and returns a [KeywordedCard](card.go#L12) or an error.
@@ -54,6 +54,6 @@ import "github.com/DecentralCardGame/keywords"
 
 data, _ := ioutil.ReadFile("keywordedCard.json")
   
-keywordedCard, unmarshalErr := keywords.Unmarshal(data)
-card, resolveErr := keywordedCard.Reslove()
+keywordedCard, err := keywords.Unmarshal(data)
+resolvedCard := keywordedCard.Resolve()
 ```
