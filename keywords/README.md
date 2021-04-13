@@ -50,7 +50,7 @@ resolves to
 3. The [KeywordedCard](card.go#L12) then can be resolved to a [cardobject.Card](https://github.com/DecentralCardGame/cardobject/tree/master/cardobject).
 4. Example:
 ```golang
-import "github.com/DecentralCardGame/keywords"
+import "github.com/DecentralCardGame/cardobject/keywords"
 
 data, _ := ioutil.ReadFile("keywordedCard.json")
   
