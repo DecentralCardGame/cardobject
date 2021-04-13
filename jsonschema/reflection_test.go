@@ -37,7 +37,7 @@ func (a action) ValidateStruct() error {
 	return ValidateStruct(a)
 }
 
-func (c action) InteractionText() string {
+func (a action) InteractionText() string {
 	return "§Name §Costs §Time §MultipleUse"
 }
 

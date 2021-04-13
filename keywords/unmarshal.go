@@ -5,7 +5,7 @@ import (
 )
 
 /*Unmarshal takes card that contains keywords as json-file and
-returns a validated keyworded card
+returns a validated keyworded card.
 */
 func Unmarshal(data []byte) (KeywordedCard, error) {
 	var card card

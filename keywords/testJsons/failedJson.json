@@ -1,1 +1,0 @@
-{"Entity":{"CardName":"Name","Tags":["DWARF"],"FlavourText":"yes you like?","CostType":{"Lumber":false,"Energy":true,"Food":false,"Iron":false,"Mana":false},"CastingCost":4,"Abilities":[{"Pay":{"path":["children","Entity","children","Abilities","children","Ability","children"],"Effects":[{"Arm":{"Amount":1}}],"RessourceAmount":1}}],"Health":10,"Attack":14}}

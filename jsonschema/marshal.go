@@ -24,15 +24,14 @@ func (s *Schema) MarshalJSONForJS(name string) ([]byte, error) {
 	}
 	if len(b) == 2 {
 		return d, nil
-	} else {
-		b[len(b)-1] = ','
-		return append(b, d[1:]...), nil
 	}
+	b[len(b)-1] = ','
+	return append(b, d[1:]...), nil
 }
 
 func (t *Type) MarshalJSON() ([]byte, error) {
-	type Type_ Type
-	b, err := json.Marshal((*Type_)(t))
+	type marshalType Type
+	b, err := json.Marshal((*marshalType)(t))
 	if err != nil {
 		return nil, err
 	}
@@ -45,8 +44,7 @@ func (t *Type) MarshalJSON() ([]byte, error) {
 	}
 	if len(b) == 2 {
 		return m, nil
-	} else {
-		b[len(b)-1] = ','
-		return append(b, m[1:]...), nil
 	}
+	b[len(b)-1] = ','
+	return append(b, m[1:]...), nil
 }
