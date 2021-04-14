@@ -12,10 +12,6 @@ func UnmarshalRaw(data []byte) (*cardobject.Card, error) {
 	if err != nil {
 		return card, err
 	}
-	err = card.Validate()
-	if err != nil {
-		return card, err
-	}
 	return card, err
 }
 
