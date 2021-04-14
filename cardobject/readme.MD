@@ -11,7 +11,7 @@ Addidtional functions provided allow to retrieve a build-instruction, an unmarsh
 1. The schema describes to a frontend how to build a keyworded card.
 2. It is provided by the [Schema()](schema.go#L7)-function.
 
-## Resolve keyworded card
+## Unmarshal and validate a card
 1. The [Unmarshal()](unmarshal.go#L5)-method takes a keyworded card in form of a json and returns a [Card](card.go#L7) or an error.
 2. This process involves validating the [Card](card.go#L7).
 4. Example:
