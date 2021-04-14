@@ -16,26 +16,26 @@ func (r repair) Resolve() cardobject.Effect {
 		TargetEffect: &cardobject.TargetEffect{
 			PlaceTargetEffect: &cardobject.PlaceTargetEffect{
 				PlaceSelector: &cardobject.PlaceSelector{
-					PlayerMode: cardobject.PlayerMode("YOU"),
-					CardMode:   cardobject.CardMode("TARGET"),
-					PlaceZone:  cardobject.PlaceZone("FIELD")},
+					PlayerMode: cardobject.PlayerMode(cardobject.You),
+					CardMode:   cardobject.CardMode(cardobject.Target),
+					PlaceZone:  cardobject.PlaceZone(cardobject.Field)},
 				PlaceManipulations: &cardobject.PlaceManipulations{
 					cardobject.PlaceManipulation{
 						PlaceIntManipulation: &cardobject.PlaceIntManipulation{
-							IntProperty: cardobject.PlaceIntProperty("HEALTH"),
-							IntOperator: cardobject.IntOperator("ADD"),
+							IntProperty: cardobject.PlaceIntProperty(cardobject.CurrentHealth),
+							IntOperator: cardobject.IntOperator(cardobject.Add),
 							IntValue:    xvalue}}}}}}
 	headquarterEffect := cardobject.Effect{
 		TargetEffect: &cardobject.TargetEffect{
 			HeadquarterTargetEffect: &cardobject.HeadquarterTargetEffect{
 				HeadquarterSelector: &cardobject.HeadquarterSelector{
-					PlayerMode: cardobject.PlayerMode("YOU"),
-					CardMode:   cardobject.CardMode("TARGET")},
+					PlayerMode: cardobject.PlayerMode(cardobject.You),
+					CardMode:   cardobject.CardMode(cardobject.Target)},
 				HeadquarterManipulations: &cardobject.HeadquarterManipulations{
 					cardobject.HeadquarterManipulation{
 						HeadquarterIntManipulation: &cardobject.HeadquarterIntManipulation{
-							IntProperty: cardobject.HeadquarterIntProperty("HEALTH"),
-							IntOperator: cardobject.IntOperator("ADD"),
+							IntProperty: cardobject.HeadquarterIntProperty(cardobject.CurrentHealth),
+							IntOperator: cardobject.IntOperator(cardobject.Add),
 							IntValue:    xvalue}}}}}}
 	effect := cardobject.Effect{
 		ChooseFromEffect: &cardobject.ChooseFromEffect{

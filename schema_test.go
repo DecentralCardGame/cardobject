@@ -29,3 +29,7 @@ func writeToFile(fileName string, schema string) {
 func TestKeywordedSchema(t *testing.T) {
 	writeToFile("keywordedSchema.json", string(KeywordedSchema()))
 }
+
+func TestCardSchema(t *testing.T) {
+	writeToFile("cardSchema.json", string(CardSchema()))
+}

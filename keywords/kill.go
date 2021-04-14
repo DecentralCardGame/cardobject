@@ -9,15 +9,15 @@ type kill struct{}
 
 func (k kill) Resolve() cardobject.Effect {
 	zoneChange := &cardobject.EntityZoneChange{
-		Zone:   cardobject.EntityZone("DUSTPILE"),
-		Player: cardobject.PlayerMode("OPPONENT")}
+		Zone:   cardobject.EntityZone(cardobject.Dustpile),
+		Player: cardobject.PlayerMode(cardobject.Opponent)}
 	manipulations := &cardobject.EntityManipulations{
 		cardobject.EntityManipulation{
 			EntityZoneChange: zoneChange}}
 	selector := cardobject.EntitySelector{
-		PlayerMode: cardobject.PlayerMode("OPPONENT"),
-		CardMode:   cardobject.CardMode("TARGET"),
-		EntityZone: cardobject.EntityZone("FIELD")}
+		PlayerMode: cardobject.PlayerMode(cardobject.Opponent),
+		CardMode:   cardobject.CardMode(cardobject.Target),
+		EntityZone: cardobject.EntityZone(cardobject.Field)}
 	effect := cardobject.Effect{
 		TargetEffect: &cardobject.TargetEffect{
 			EntityTargetEffect: &cardobject.EntityTargetEffect{

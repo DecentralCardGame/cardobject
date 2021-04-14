@@ -11,8 +11,8 @@ type onDeath struct {
 
 func (o onDeath) Resolve() cardobject.Ability {
 	effects := o.Effects.Resolve()
-	field := cardobject.DynamicZone("FIELD")
-	dustpile := cardobject.Zone("DUSTPILE")
+	field := cardobject.DynamicZone(cardobject.Field)
+	dustpile := cardobject.Zone(cardobject.Dustpile)
 	ability := cardobject.Ability{
 		TriggeredAbility: &cardobject.TriggeredAbility{
 			Cause: &cardobject.EventListener{

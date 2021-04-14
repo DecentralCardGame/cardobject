@@ -7,9 +7,33 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-var intVariableNames []string = []string{"X", "Y", "Z"}
-var stringVariableNames []string = []string{"A", "B", "C"}
-var targetVariableNames []string = []string{"M", "T"}
+//XVar VariableName
+const XVar = "X"
+
+//YVar VariableName
+const YVar = "Y"
+
+//ZVar VariableName
+const ZVar = "Z"
+
+//AVar VariableName
+const AVar = "A"
+
+//BVar VariableName
+const BVar = "B"
+
+//CVar VariableName
+const CVar = "C"
+
+//MVar VariableName
+const MVar = "M"
+
+//TVar VariableName
+const TVar = "T"
+
+var intVariableNames []string = []string{XVar, YVar, ZVar}
+var stringVariableNames []string = []string{AVar, BVar, CVar}
+var targetVariableNames []string = []string{MVar, TVar}
 
 type IntVariableName jsonschema.BasicEnum
 

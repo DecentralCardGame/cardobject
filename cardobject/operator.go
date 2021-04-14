@@ -7,11 +7,26 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-var abilityEffectOperators []string = []string{"GAIN", "LOSE"}
-var intOperators []string = []string{"SET", "ADD", "SUBTRACT"}
-var stringOperators []string = []string{"SET"}
+//Add Operator
+const Add = "ADD"
 
-var arithOperators []string = []string{"ADD", "SUBTRACT"}
+//Gain Operator
+const Gain = "GAIN"
+
+//Lose Operator
+const Lose = "LOSE"
+
+//Set Operator
+const Set = "SET"
+
+//Subtract Operator
+const Subtract = "SUBTRACT"
+
+var abilityEffectOperators []string = []string{Gain}
+var intOperators []string = []string{Set, Add, Subtract}
+var stringOperators []string = []string{Set}
+
+var arithOperators []string = []string{Add, Subtract}
 
 type AbilityEffectOperator jsonschema.BasicEnum
 

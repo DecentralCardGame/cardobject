@@ -7,14 +7,38 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-var actionIntProperties []string = []string{"COSTSUM"}
-var actionStringProperties []string = []string{"NAME", "TEXT"}
-var entityIntProperties []string = []string{"ATTACK", "COSTSUM", "HEALTH", "BASEHEALTH"}
-var entityStringProperties []string = []string{"NAME", "TEXT"}
-var headquarterIntProperties []string = []string{"HEALTH", "BASEHEALTH"}
-var headquarterStringProperties []string = []string{"NAME", "TEXT"}
-var placeIntProperties []string = []string{"COSTSUM", "HEALTH", "BASEHEALTH"}
-var placeStringProperties []string = []string{"NAME", "TEXT"}
+//BaseAttack Property
+const BaseAttack = "BASEATTACK"
+
+//BaseCostSum Property
+const BaseCostSum = "BASECOSTSUM"
+
+//BaseHealth Property
+const BaseHealth = "BASEHEALTH"
+
+//CurrentAttack Property
+const CurrentAttack = "ATTACK"
+
+//CurrentCostSum Property
+const CurrentCostSum = "COSTSUM"
+
+//CurrentHealth Property
+const CurrentHealth = "HEALTH"
+
+//Name Property
+const Name = "NAME"
+
+//Text Property
+const Text = "TEXT"
+
+var actionIntProperties []string = []string{BaseCostSum, CurrentCostSum}
+var actionStringProperties []string = []string{Name, Text}
+var entityIntProperties []string = []string{CurrentAttack, BaseAttack, BaseCostSum, BaseHealth, CurrentCostSum, CurrentHealth}
+var entityStringProperties []string = []string{Name, Text}
+var headquarterIntProperties []string = []string{BaseHealth, CurrentHealth}
+var headquarterStringProperties []string = []string{Name, Text}
+var placeIntProperties []string = []string{BaseCostSum, BaseHealth, CurrentCostSum, CurrentHealth}
+var placeStringProperties []string = []string{Name, Text}
 
 var cardIntProperties []string = []string{"ATTACK", "COSTSUM", "HEALTH"}
 var cardStringProperties []string = []string{"NAME", "TEXT"}

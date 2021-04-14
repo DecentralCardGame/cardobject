@@ -7,12 +7,33 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-var dynamicZones []string = []string{"DECK", "DUSTPILE", "FIELD", "HAND"}
-var zones []string = []string{"DECK", "DUSTPILE", "FIELD", "HAND", "VOID"}
+//AttackLane Zone
+const AttackLane = "ATTACKLANE"
 
-var actionZones []string = []string{"DECK", "DUSTPILE", "HAND", "VOID"}
-var entityZones []string = []string{"ATTACKLANE", "BLOCKLANE", "DECK", "DUSTPILE", "FIELD", "HAND", "VOID"}
-var placeZones []string = []string{"DECK", "DUSTPILE", "FIELD", "HAND", "VOID"}
+//BlockLane Zone
+const BlockLane = "BLOCKLANE"
+
+//Deck Zone
+const Deck = "DECK"
+
+//Dustpile Zone
+const Dustpile = "DUSTPILE"
+
+//Field Zone
+const Field = "FIELD"
+
+//Hand Zone
+const Hand = "HAND"
+
+//Void Zone
+const Void = "VOID"
+
+var dynamicZones []string = []string{Deck, Dustpile, Field, Hand}
+var zones []string = []string{Deck, Dustpile, Field, Hand, Void}
+
+var actionZones []string = []string{Deck, Dustpile, Hand, Void}
+var entityZones []string = []string{AttackLane, BlockLane, Deck, Dustpile, Field, Hand, Void}
+var placeZones []string = []string{Deck, Dustpile, Field, Hand, Void}
 
 type DynamicZone jsonschema.BasicEnum
 

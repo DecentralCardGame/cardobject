@@ -15,7 +15,7 @@ func (p periodic) Resolve() cardobject.Ability {
 		TriggeredAbility: &cardobject.TriggeredAbility{
 			Cause: &cardobject.EventListener{
 				TimeEventListener: &cardobject.TimeEventListener{
-					TimeEvent: cardobject.TimeEvent("TICKSTART")}},
+					TimeEvent: cardobject.TimeEvent(cardobject.Tickstart)}},
 			Effects: effects}}
 	return ability
 }

@@ -11,7 +11,7 @@ type onSpawn struct {
 
 func (o onSpawn) Resolve() cardobject.Ability {
 	effects := o.Effects.Resolve()
-	field := cardobject.Zone("FIELD")
+	field := cardobject.Zone(cardobject.Field)
 	ability := cardobject.Ability{
 		TriggeredAbility: &cardobject.TriggeredAbility{
 			Cause: &cardobject.EventListener{

@@ -14,12 +14,12 @@ func (a anthem) Resolve() cardobject.Effect {
 	intValue := cardobject.IntValue{
 		SimpleIntValue: &simpleInt}
 	defBuff := &cardobject.EntityIntManipulation{
-		IntProperty: cardobject.EntityIntProperty("HEALTH"),
-		IntOperator: cardobject.IntOperator("ADD"),
+		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentHealth),
+		IntOperator: cardobject.IntOperator(cardobject.Add),
 		IntValue:    intValue}
 	attBuff := &cardobject.EntityIntManipulation{
-		IntProperty: cardobject.EntityIntProperty("ATTACK"),
-		IntOperator: cardobject.IntOperator("ADD"),
+		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentAttack),
+		IntOperator: cardobject.IntOperator(cardobject.Add),
 		IntValue:    intValue}
 	manipulations := &cardobject.EntityManipulations{
 		cardobject.EntityManipulation{
@@ -27,14 +27,14 @@ func (a anthem) Resolve() cardobject.Effect {
 		cardobject.EntityManipulation{
 			EntityIntManipulation: attBuff}}
 	selector := cardobject.EntitySelector{
-		PlayerMode: cardobject.PlayerMode("YOU"),
-		CardMode:   cardobject.CardMode("ALL"),
+		PlayerMode: cardobject.PlayerMode(cardobject.You),
+		CardMode:   cardobject.CardMode(cardobject.All),
 		EntityConditions: &cardobject.EntityConditions{
 			cardobject.EntityCondition{
 				EntityTagCondition: &cardobject.EntityTagCondition{
 					StringValue:      cardobject.SimpleStringValue(a.Tag),
-					StringComparator: cardobject.StringComparator("CONTAINS")}}},
-		EntityZone: cardobject.EntityZone("FIELD")}
+					StringComparator: cardobject.StringComparator(cardobject.Contains)}}},
+		EntityZone: cardobject.EntityZone(cardobject.Field)}
 	effect := cardobject.Effect{
 		TargetEffect: &cardobject.TargetEffect{
 			EntityTargetEffect: &cardobject.EntityTargetEffect{

@@ -13,16 +13,16 @@ func (h harm) Resolve() cardobject.Effect {
 	xvalue := cardobject.IntValue{
 		SimpleIntValue: &h.Amount}
 	healthReduce := &cardobject.EntityIntManipulation{
-		IntProperty: cardobject.EntityIntProperty("HEALTH"),
-		IntOperator: cardobject.IntOperator("SUBTRACT"),
+		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentHealth),
+		IntOperator: cardobject.IntOperator(cardobject.Subtract),
 		IntValue:    xvalue}
 	manipulations := &cardobject.EntityManipulations{
 		cardobject.EntityManipulation{
 			EntityIntManipulation: healthReduce}}
 	selector := cardobject.EntitySelector{
-		PlayerMode: cardobject.PlayerMode("OPPONENT"),
-		CardMode:   cardobject.CardMode("TARGET"),
-		EntityZone: cardobject.EntityZone("FIELD")}
+		PlayerMode: cardobject.PlayerMode(cardobject.Opponent),
+		CardMode:   cardobject.CardMode(cardobject.Target),
+		EntityZone: cardobject.EntityZone(cardobject.Field)}
 	effect := cardobject.Effect{
 		TargetEffect: &cardobject.TargetEffect{
 			EntityTargetEffect: &cardobject.EntityTargetEffect{

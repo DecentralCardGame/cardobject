@@ -7,12 +7,48 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-var intChangeModes []string = []string{"INCREASES", "DECREASES", "CHANGES"}
-var stringChangeModes []string = []string{"CHANGES"}
+//All Mode
+const All = "ALL"
 
-var playerModes []string = []string{"YOU", "OPPONENT"}
-var cardModes []string = []string{"ALL", "OPPONENTSCHOICE", "RANDOM", "TARGET"}
-var ownerModes []string = []string{"YOUR", "OPPONENTS", "OWNERS"}
+//Changes Mode
+const Changes = "CHANGES"
+
+//Decreases Mode
+const Decreases = "DECREASES"
+
+//Increases Mode
+const Increases = "INCREASES"
+
+//Opponent Mode
+const Opponent = "OPPONENT"
+
+//Opponents Mode
+const Opponents = "OPPONENTS"
+
+//OpponentsChoice Mode
+const OpponentsChoice = "OPPONENTSCHOICE"
+
+//Owners Mode
+const Owners = "OWNERS"
+
+//Random Mode
+const Random = "RANDOM"
+
+//Target Mode
+const Target = "TARGET"
+
+//You Mode
+const You = "YOU"
+
+//Your Mode
+const Your = "YOUR"
+
+var intChangeModes []string = []string{Increases, Decreases, Changes}
+var stringChangeModes []string = []string{Changes}
+
+var playerModes []string = []string{You, Opponent}
+var cardModes []string = []string{All, OpponentsChoice, Random, Target}
+var ownerModes []string = []string{Your, Opponents, Owners}
 
 type IntChangeMode jsonschema.BasicEnum
 

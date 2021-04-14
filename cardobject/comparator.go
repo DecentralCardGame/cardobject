@@ -7,8 +7,26 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-var intComparators []string = []string{"EQUAL", "GREATER", "LESSER"}
-var stringComparators []string = []string{"EQUAL", "CONTAINS", "UNEQUAL", "CONTAINSNOT"}
+//Contains Comparator
+const Contains = "CONTAINS"
+
+//ContainsNot Comparator
+const ContainsNot = "CONTAINSNOT"
+
+//Equal Comparator
+const Equal = "EQUAL"
+
+//Greater Comparator
+const Greater = "GREATER"
+
+//Lesser Comparator
+const Lesser = "LESSER"
+
+//Uneaqual Comparator
+const Uneaqual = "UNEQUAL"
+
+var intComparators []string = []string{Equal, Greater, Lesser}
+var stringComparators []string = []string{Equal, Contains, Uneaqual, ContainsNot}
 
 type IntComparator jsonschema.BasicEnum
 

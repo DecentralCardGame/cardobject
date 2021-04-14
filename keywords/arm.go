@@ -13,12 +13,12 @@ func (a arm) Resolve() cardobject.Effect {
 	xvalue := cardobject.IntValue{
 		SimpleIntValue: &a.Amount}
 	defBuff := &cardobject.EntityIntManipulation{
-		IntProperty: cardobject.EntityIntProperty("HEALTH"),
-		IntOperator: cardobject.IntOperator("ADD"),
+		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentHealth),
+		IntOperator: cardobject.IntOperator(cardobject.Add),
 		IntValue:    xvalue}
 	attBuff := &cardobject.EntityIntManipulation{
-		IntProperty: cardobject.EntityIntProperty("ATTACK"),
-		IntOperator: cardobject.IntOperator("ADD"),
+		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentAttack),
+		IntOperator: cardobject.IntOperator(cardobject.Add),
 		IntValue:    xvalue}
 	manipulations := &cardobject.EntityManipulations{
 		cardobject.EntityManipulation{
@@ -26,9 +26,9 @@ func (a arm) Resolve() cardobject.Effect {
 		cardobject.EntityManipulation{
 			EntityIntManipulation: attBuff}}
 	selector := cardobject.EntitySelector{
-		PlayerMode: cardobject.PlayerMode("YOU"),
-		CardMode:   cardobject.CardMode("TARGET"),
-		EntityZone: cardobject.EntityZone("FIELD")}
+		PlayerMode: cardobject.PlayerMode(cardobject.You),
+		CardMode:   cardobject.CardMode(cardobject.Target),
+		EntityZone: cardobject.EntityZone(cardobject.Field)}
 	effect := cardobject.Effect{
 		TargetEffect: &cardobject.TargetEffect{
 			EntityTargetEffect: &cardobject.EntityTargetEffect{

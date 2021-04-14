@@ -15,7 +15,7 @@ func (b battlecry) Resolve() cardobject.Ability {
 		TriggeredAbility: &cardobject.TriggeredAbility{
 			Cause: &cardobject.EventListener{
 				TimeEventListener: &cardobject.TimeEventListener{
-					TimeEvent: cardobject.TimeEvent("COMBAT")}},
+					TimeEvent: cardobject.TimeEvent(cardobject.Combat)}},
 			Effects: effects}}
 	return ability
 }

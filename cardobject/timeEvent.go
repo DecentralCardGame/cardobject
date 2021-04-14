@@ -7,7 +7,13 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-var timeEvents []string = []string{"TICKSTART", "COMBAT"}
+//Combat TimeEvent
+const Combat = "COMBAT"
+
+//Tickstart TimeEvent
+const Tickstart = "TICKSTART"
+
+var timeEvents []string = []string{Combat, Tickstart}
 
 type TimeEvent jsonschema.BasicEnum
 
