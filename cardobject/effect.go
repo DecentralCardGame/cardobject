@@ -30,6 +30,7 @@ func (e Effects) ItemName() string {
 }
 
 type Effect struct {
+	GrowthEffect     *GrowthEffect     `json:",omitempty"`
 	ProductionEffect *ProductionEffect `json:",omitempty"`
 	WisdomEffect     *WisdomEffect     `json:",omitempty"`
 	TokenEffect      *TokenEffect      `json:",omitempty"`
@@ -43,6 +44,22 @@ func (e Effect) Validate() error {
 
 func (e Effect) ValidateInterface() error {
 	return jsonschema.ValidateInterface(e)
+}
+
+type GrowthEffect struct {
+	growthAmount IntValue
+}
+
+func (g GrowthEffect) Validate() error {
+	return g.ValidateStruct()
+}
+
+func (g GrowthEffect) ValidateStruct() error {
+	return jsonschema.ValidateStruct(g)
+}
+
+func (g GrowthEffect) InteractionText() string {
+	return "Gain §GrowthAmount growth."
 }
 
 type ProductionEffect struct {
