@@ -10,14 +10,19 @@ type Cost struct {
 	ManaCost      *ManaCost      `json:",omitempty"`
 	SacrificeCost *SacrificeCost `json:",omitempty"`
 	DiscardCost   *DiscardCost   `json:",omitempty"`
+	VoidCost      *VoidCost      `json:",omitempty"`
 }
 
 func (c Cost) Validate() error {
-	return c.ValidateInterface()
+	return c.ValidateStruct()
 }
 
-func (c Cost) ValidateInterface() error {
-	return jsonschema.ValidateInterface(c)
+func (c Cost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(c)
+}
+
+func (c Cost) InteractionText() string {
+	return "§ManaCost §SacrificeCost §DiscardCost §VoidCost"
 }
 
 type ManaCost struct {
@@ -68,6 +73,23 @@ func (d DiscardCost) ValidateStruct() error {
 
 func (d DiscardCost) InteractionText() string {
 	return "Discard §Amount card §Conditions"
+}
+
+type VoidCost struct {
+	Amount     BasicAmount
+	Conditions *CardConditions
+}
+
+func (v VoidCost) Validate() error {
+	return v.ValidateStruct()
+}
+
+func (v VoidCost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(v)
+}
+
+func (v VoidCost) InteractionText() string {
+	return "Void §Amount card §Conditions"
 }
 
 type RessourceCostType struct {
