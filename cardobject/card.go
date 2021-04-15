@@ -88,6 +88,7 @@ func (a Place) InteractionText() string {
 type Headquarter struct {
 	CardName    CardName
 	Class       Class
+	Delay       Delay
 	Abilities   Abilities
 	Health      Health
 	FlavourText FlavourText
@@ -103,5 +104,5 @@ func (h Headquarter) ValidateStruct() error {
 }
 
 func (a Headquarter) InteractionText() string {
-	return "§CardName §Class §Abilities §Health §FlavourText §Tags"
+	return "§CardName §Class §Delay §Abilities §Health §FlavourText §Tags"
 }

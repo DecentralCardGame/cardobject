@@ -16,6 +16,8 @@ const minCardNameLength int = 1
 const maxCastingCost int = 32
 const minCastingCost int = 0
 const maxConditionCount int = 3
+const maxDelay int = 32
+const minDelay int = 0
 const maxExtractorCount int = 3
 const maxAbilityEffectCount int = 3
 const maxManipulationCount int = 3
@@ -107,6 +109,24 @@ func (c CastingCost) ValidateInt() error {
 
 func (c CastingCost) MinMax() (int, int) {
 	return minCastingCost, maxCastingCost
+}
+
+type Delay jsonschema.BasicInt
+
+func (d Delay) Validate() error {
+	return d.ValidateInt()
+}
+
+func (d Delay) ValidateInt() error {
+	min, max := d.MinMax()
+	if d < Delay(min) || d > Delay(max) {
+		return errors.New("Delay must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
+	}
+	return nil
+}
+
+func (d Delay) MinMax() (int, int) {
+	return minDelay, maxDelay
 }
 
 type FlavourText jsonschema.BasicString
