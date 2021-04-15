@@ -1,8 +1,6 @@
 package cardobject
 
 import (
-	"errors"
-
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
@@ -90,97 +88,4 @@ func (v VoidCost) ValidateStruct() error {
 
 func (v VoidCost) InteractionText() string {
 	return "Void §Amount card §Conditions"
-}
-
-type RessourceCostType struct {
-	Energy Energy
-	Food   Food
-	Lumber Lumber
-	Mana   Mana
-	Iron   Iron
-}
-
-func (r RessourceCostType) Validate() error {
-	if !(bool(r.Energy) || bool(r.Food) || bool(r.Lumber) || bool(r.Mana) || bool(r.Iron)) {
-		return errors.New("At least one Costtype Must be selected for a card.")
-	}
-	return r.ValidateStruct()
-}
-
-func (r RessourceCostType) ValidateStruct() error {
-	return jsonschema.ValidateStruct(r)
-}
-
-func (r RessourceCostType) InteractionText() string {
-	return "§Energy §Food §Lumber §Mana §Iron"
-}
-
-type Energy jsonschema.BasicBool
-
-func (e Energy) Validate() error {
-	return e.ValidateBool()
-}
-
-func (e Energy) ValidateBool() error {
-	b := bool(e)
-	if b || !b {
-		return nil
-	}
-	return errors.New("Energy must be true or false")
-}
-
-type Food jsonschema.BasicBool
-
-func (f Food) Validate() error {
-	return f.ValidateBool()
-}
-
-func (f Food) ValidateBool() error {
-	b := bool(f)
-	if b || !b {
-		return nil
-	}
-	return errors.New("Food must be true or false")
-}
-
-type Lumber jsonschema.BasicBool
-
-func (l Lumber) Validate() error {
-	return l.ValidateBool()
-}
-
-func (l Lumber) ValidateBool() error {
-	b := bool(l)
-	if b || !b {
-		return nil
-	}
-	return errors.New("Lumber must be true or false")
-}
-
-type Mana jsonschema.BasicBool
-
-func (m Mana) Validate() error {
-	return m.ValidateBool()
-}
-
-func (m Mana) ValidateBool() error {
-	b := bool(m)
-	if b || !b {
-		return nil
-	}
-	return errors.New("Mana must be true or false")
-}
-
-type Iron jsonschema.BasicBool
-
-func (i Iron) Validate() error {
-	return i.ValidateBool()
-}
-
-func (i Iron) ValidateBool() error {
-	b := bool(i)
-	if b || !b {
-		return nil
-	}
-	return errors.New("Iron must be true or false")
 }

@@ -4,10 +4,10 @@
     "Tags":["SPIRITUAL"],
     "FlavourText":"-.-",
     "CostType":{
-      "Lumber":true,
-      "Energy":false,
-      "Food":false,
-      "Iron":false,
+      "Technology":true,
+      "Nature":false,
+      "Mysticism":false,
+      "Culture":false,
       "Mana":false
     },
     "CastingCost":13,

@@ -22,7 +22,7 @@ func (c Card) ValidateInterface() error {
 type Action struct {
 	CardName    CardName
 	CastingCost CastingCost
-	CostType    RessourceCostType
+	Class       Class
 	Effects     Effects
 	FlavourText FlavourText
 	Tags        Tags
@@ -37,13 +37,13 @@ func (a Action) ValidateStruct() error {
 }
 
 func (a Action) InteractionText() string {
-	return "§CardName §CastingCost §CostType §Effects §FlavourText §Tags"
+	return "§CardName §CastingCost §Class §Effects §FlavourText §Tags"
 }
 
 type Entity struct {
 	CardName    CardName
 	CastingCost CastingCost
-	CostType    RessourceCostType
+	Class       Class
 	Abilities   Abilities
 	Attack      Attack
 	Health      Health
@@ -60,13 +60,13 @@ func (e Entity) ValidateStruct() error {
 }
 
 func (a Entity) InteractionText() string {
-	return "§CardName §CastingCost §CostType §Abilities §Attack §Health §FlavourText §Tags"
+	return "§CardName §CastingCost §Class §Abilities §Attack §Health §FlavourText §Tags"
 }
 
 type Place struct {
 	CardName    CardName
 	CastingCost CastingCost
-	CostType    RessourceCostType
+	Class       Class
 	Abilities   Abilities
 	Health      Health
 	FlavourText FlavourText
@@ -82,12 +82,12 @@ func (p Place) ValidateStruct() error {
 }
 
 func (a Place) InteractionText() string {
-	return "§CardName §CastingCost §CostType §Abilities §Health §FlavourText §Tags"
+	return "§CardName §CastingCost §Class §Abilities §Health §FlavourText §Tags"
 }
 
 type Headquarter struct {
 	CardName    CardName
-	CostType    RessourceCostType
+	Class       Class
 	Abilities   Abilities
 	Health      Health
 	FlavourText FlavourText
@@ -103,5 +103,5 @@ func (h Headquarter) ValidateStruct() error {
 }
 
 func (a Headquarter) InteractionText() string {
-	return "§CardName §CostType §Abilities §Health §FlavourText §Tags"
+	return "§CardName §Class §Abilities §Health §FlavourText §Tags"
 }

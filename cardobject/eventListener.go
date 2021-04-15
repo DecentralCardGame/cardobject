@@ -108,8 +108,8 @@ func (s StringManipulationEventListener) InteractionText() string {
 }
 
 type ProductionEventListener struct {
-	RessourceTypeCondition    *RessourceCostType `json:",omitempty"`
-	ProductionAmountExtractor *IntExtractor      `json:",omitempty"`
+	ClassCondition            *Class        `json:",omitempty"`
+	ProductionAmountExtractor *IntExtractor `json:",omitempty"`
 }
 
 func (p ProductionEventListener) Validate() error {
@@ -121,7 +121,7 @@ func (p ProductionEventListener) ValidateStruct() error {
 }
 
 func (p ProductionEventListener) InteractionText() string {
-	return "Whenever one or more §RessourceTypeCondition mana is produced. §ProductionAmountExtractor"
+	return "Whenever one or more §ClassCondition mana is produced. §ProductionAmountExtractor"
 }
 
 type TimeEventListener struct {

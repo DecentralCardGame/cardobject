@@ -6,8 +6,8 @@ import (
 )
 
 type pay struct {
-	RessourceAmount cardobject.SimpleIntValue
-	Effects         effects
+	ManaAmount cardobject.SimpleIntValue
+	Effects    effects
 }
 
 func (p pay) Resolve() cardobject.Ability {
@@ -16,7 +16,7 @@ func (p pay) Resolve() cardobject.Ability {
 		ActivatedAbility: &cardobject.ActivatedAbility{
 			AbilityCost: &cardobject.Cost{
 				ManaCost: &cardobject.ManaCost{
-					CostAmount: cardobject.BasicAmount(p.RessourceAmount)}},
+					CostAmount: cardobject.BasicAmount(p.ManaAmount)}},
 			Effects: effects}}
 	return ability
 }
@@ -30,5 +30,5 @@ func (p pay) ValidateStruct() error {
 }
 
 func (p pay) InteractionText() string {
-	return "Pay §RessourceAmount to activate: §Effects."
+	return "Pay §ManaAmount to activate: §Effects."
 }

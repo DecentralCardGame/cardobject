@@ -48,7 +48,7 @@ func (c card) ValidateInterface() error {
 type action struct {
 	CardName    cardobject.CardName
 	CastingCost cardobject.CastingCost
-	CostType    cardobject.RessourceCostType
+	Class       cardobject.Class
 	Effects     effects
 	FlavourText cardobject.FlavourText
 	Tags        cardobject.Tags
@@ -60,7 +60,7 @@ func (a action) Resolve() cardobject.Card {
 		Action: &cardobject.Action{
 			CardName:    a.CardName,
 			CastingCost: a.CastingCost,
-			CostType:    a.CostType,
+			Class:       a.Class,
 			Effects:     effects,
 			FlavourText: a.FlavourText,
 			Tags:        a.Tags}}
@@ -76,13 +76,13 @@ func (a action) ValidateStruct() error {
 }
 
 func (a action) InteractionText() string {
-	return "§CardName §CastingCost §CostType §Effects §FlavourText §Tags"
+	return "§CardName §CastingCost §Class §Effects §FlavourText §Tags"
 }
 
 type entity struct {
 	CardName    cardobject.CardName
 	CastingCost cardobject.CastingCost
-	CostType    cardobject.RessourceCostType
+	Class       cardobject.Class
 	Abilities   abilities
 	Attack      cardobject.Attack
 	Health      cardobject.Health
@@ -96,7 +96,7 @@ func (e entity) Resolve() cardobject.Card {
 		Entity: &cardobject.Entity{
 			CardName:    e.CardName,
 			CastingCost: e.CastingCost,
-			CostType:    e.CostType,
+			Class:       e.Class,
 			Abilities:   abilities,
 			Attack:      e.Attack,
 			Health:      e.Health,
@@ -114,13 +114,13 @@ func (e entity) ValidateStruct() error {
 }
 
 func (e entity) InteractionText() string {
-	return "§CardName §CastingCost §CostType §Abilities §Attack §Health §FlavourText §Tags"
+	return "§CardName §CastingCost §Class §Abilities §Attack §Health §FlavourText §Tags"
 }
 
 type place struct {
 	CardName    cardobject.CardName
 	CastingCost cardobject.CastingCost
-	CostType    cardobject.RessourceCostType
+	Class       cardobject.Class
 	Abilities   abilities
 	Health      cardobject.Health
 	FlavourText cardobject.FlavourText
@@ -133,7 +133,7 @@ func (p place) Resolve() cardobject.Card {
 		Place: &cardobject.Place{
 			CardName:    p.CardName,
 			CastingCost: p.CastingCost,
-			CostType:    p.CostType,
+			Class:       p.Class,
 			Abilities:   abilities,
 			Health:      p.Health,
 			FlavourText: p.FlavourText,
@@ -150,12 +150,12 @@ func (p place) ValidateStruct() error {
 }
 
 func (p place) InteractionText() string {
-	return "§CardName §CastingCost §CostType §Abilities §Health §FlavourText §Tags"
+	return "§CardName §CastingCost §Class §Abilities §Health §FlavourText §Tags"
 }
 
 type headquarter struct {
 	CardName    cardobject.CardName
-	CostType    cardobject.RessourceCostType
+	Class       cardobject.Class
 	Abilities   abilities
 	Health      cardobject.Health
 	FlavourText cardobject.FlavourText
@@ -167,7 +167,7 @@ func (h headquarter) Resolve() cardobject.Card {
 	card := cardobject.Card{
 		Headquarter: &cardobject.Headquarter{
 			CardName:    h.CardName,
-			CostType:    h.CostType,
+			Class:       h.Class,
 			Abilities:   abilities,
 			Health:      h.Health,
 			FlavourText: h.FlavourText,
@@ -184,5 +184,5 @@ func (h headquarter) ValidateStruct() error {
 }
 
 func (h headquarter) InteractionText() string {
-	return "§CardName §CostType §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags"
+	return "§CardName §Class §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags"
 }

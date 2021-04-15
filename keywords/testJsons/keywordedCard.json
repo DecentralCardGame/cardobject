@@ -3,11 +3,11 @@
     "CardName":"Name",
     "Tags":["SPIRITUAL"],
     "FlavourText":"-.-",
-    "CostType":{
-      "Lumber":true,
-      "Energy":false,
-      "Food":false,
-      "Iron":false,
+    "Class":{
+      "Technology":true,
+      "Nature":false,
+      "Mysticism":false,
+      "Culture":false,
       "Mana":false
     },
     "CastingCost":13,
@@ -16,7 +16,7 @@
     "Abilities":[
       {
         "Pay":{
-          "RessourceAmount":2,
+          "ManaAmount":2,
           "Effects":[
             {
               "Arm": {

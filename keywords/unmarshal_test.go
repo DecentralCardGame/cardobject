@@ -16,12 +16,14 @@ func TestUnmarshaling(t *testing.T) {
 		t.Error(err)
 	}
 
-	cardJSON, _ := json.Marshal(card)
+	resolvedCard := card.Resolve()
+
+	cardJSON, _ := json.Marshal(resolvedCard)
 	cardString := string(cardJSON)
 
 	groundTruthString := string(groundTruth)
 
 	if cardString != groundTruthString {
-		t.Error(errors.New("RedolvedCard doesn't match the ground truth: " + cardString + " is not " + groundTruthString))
+		t.Error(errors.New("ResolvedCard doesn't match the ground truth: " + cardString + " is not " + groundTruthString))
 	}
 }
