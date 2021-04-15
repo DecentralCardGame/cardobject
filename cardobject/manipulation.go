@@ -181,7 +181,7 @@ func (p PlaceManipulation) ValidateInterface() error {
 }
 
 type ActionEffectManipulation struct {
-	Effect         Effect
+	Effect         *Effect `json:",omitempty"`
 	EffectOperator AbilityEffectOperator
 }
 
@@ -251,7 +251,7 @@ func (a ActionTagManipulation) InteractionText() string {
 }
 
 type EntityAbilityManipulation struct {
-	Ability         Ability
+	Ability         *Ability `json:",omitempty"`
 	AbilityOperator AbilityEffectOperator
 }
 
@@ -321,7 +321,7 @@ func (e EntityTagManipulation) InteractionText() string {
 }
 
 type HeadquarterAbilityManipulation struct {
-	Ability         Ability
+	Ability         *Ability `json:",omitempty"`
 	AbilityOperator AbilityEffectOperator
 }
 
@@ -391,7 +391,7 @@ func (h HeadquarterTagManipulation) InteractionText() string {
 }
 
 type PlaceAbilityManipulation struct {
-	Ability         Ability
+	Ability         *Ability `json:",omitempty"`
 	AbilityOperator AbilityEffectOperator
 }
 
