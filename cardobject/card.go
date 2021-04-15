@@ -86,15 +86,12 @@ func (a Place) InteractionText() string {
 }
 
 type Headquarter struct {
-	CardName         CardName
-	CostType         RessourceCostType
-	Abilities        Abilities
-	Health           Health
-	Growth           Growth
-	StartingHandSize StartingHandsize
-	Wisdom           Wisdom
-	FlavourText      FlavourText
-	Tags             Tags
+	CardName    CardName
+	CostType    RessourceCostType
+	Abilities   Abilities
+	Health      Health
+	FlavourText FlavourText
+	Tags        Tags
 }
 
 func (h Headquarter) Validate() error {
@@ -106,5 +103,5 @@ func (h Headquarter) ValidateStruct() error {
 }
 
 func (a Headquarter) InteractionText() string {
-	return "§CardName §CostType §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags"
+	return "§CardName §CostType §Abilities §Health §FlavourText §Tags"
 }

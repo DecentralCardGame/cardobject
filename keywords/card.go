@@ -154,30 +154,24 @@ func (p place) InteractionText() string {
 }
 
 type headquarter struct {
-	CardName         cardobject.CardName
-	CostType         cardobject.RessourceCostType
-	Abilities        abilities
-	Health           cardobject.Health
-	Growth           cardobject.Growth
-	StartingHandSize cardobject.StartingHandsize
-	Wisdom           cardobject.Wisdom
-	FlavourText      cardobject.FlavourText
-	Tags             cardobject.Tags
+	CardName    cardobject.CardName
+	CostType    cardobject.RessourceCostType
+	Abilities   abilities
+	Health      cardobject.Health
+	FlavourText cardobject.FlavourText
+	Tags        cardobject.Tags
 }
 
 func (h headquarter) Resolve() cardobject.Card {
 	abilities := h.Abilities.Resolve()
 	card := cardobject.Card{
 		Headquarter: &cardobject.Headquarter{
-			CardName:         h.CardName,
-			CostType:         h.CostType,
-			Abilities:        abilities,
-			Health:           h.Health,
-			Growth:           h.Growth,
-			StartingHandSize: h.StartingHandSize,
-			Wisdom:           h.Wisdom,
-			FlavourText:      h.FlavourText,
-			Tags:             h.Tags}}
+			CardName:    h.CardName,
+			CostType:    h.CostType,
+			Abilities:   abilities,
+			Health:      h.Health,
+			FlavourText: h.FlavourText,
+			Tags:        h.Tags}}
 	return card
 }
 
