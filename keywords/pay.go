@@ -15,7 +15,7 @@ func (p pay) Resolve() cardobject.Ability {
 	ability := cardobject.Ability{
 		ActivatedAbility: &cardobject.ActivatedAbility{
 			AbilityCost: &cardobject.Cost{
-				RessourceCost: &cardobject.RessourceCost{
+				ManaCost: &cardobject.ManaCost{
 					CostAmount: cardobject.BasicAmount(p.RessourceAmount)}},
 			Effects: effects}}
 	return ability

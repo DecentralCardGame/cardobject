@@ -121,7 +121,7 @@ func (p ProductionEventListener) ValidateStruct() error {
 }
 
 func (p ProductionEventListener) InteractionText() string {
-	return "Whenever one or more §RessourceTypeCondition ressources is produced. §ProductionAmountExtractor"
+	return "Whenever one or more §RessourceTypeCondition mana is produced. §ProductionAmountExtractor"
 }
 
 type TimeEventListener struct {

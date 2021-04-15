@@ -7,7 +7,7 @@ import (
 )
 
 type Cost struct {
-	RessourceCost *RessourceCost `json:",omitempty"`
+	ManaCost      *ManaCost      `json:",omitempty"`
 	SacrificeCost *SacrificeCost `json:",omitempty"`
 	DiscardCost   *DiscardCost   `json:",omitempty"`
 }
@@ -20,20 +20,20 @@ func (c Cost) ValidateInterface() error {
 	return jsonschema.ValidateInterface(c)
 }
 
-type RessourceCost struct {
+type ManaCost struct {
 	CostAmount BasicAmount
 }
 
-func (r RessourceCost) Validate() error {
-	return r.ValidateStruct()
+func (m ManaCost) Validate() error {
+	return m.ValidateStruct()
 }
 
-func (r RessourceCost) ValidateStruct() error {
-	return jsonschema.ValidateStruct(r)
+func (m ManaCost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(m)
 }
 
-func (r RessourceCost) InteractionText() string {
-	return "§CostAmount ressources"
+func (m ManaCost) InteractionText() string {
+	return "§CostAmount mana"
 }
 
 type SacrificeCost struct {

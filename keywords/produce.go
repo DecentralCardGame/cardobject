@@ -6,11 +6,11 @@ import (
 )
 
 type produce struct {
-	RessourceAmount cardobject.SimpleIntValue
+	ManaAmount cardobject.SimpleIntValue
 }
 
 func (p produce) Resolve() cardobject.Effect {
-	simpleInt := cardobject.SimpleIntValue(p.RessourceAmount)
+	simpleInt := cardobject.SimpleIntValue(p.ManaAmount)
 	intValue := cardobject.IntValue{
 		SimpleIntValue: &simpleInt}
 	effect := cardobject.Effect{
@@ -28,5 +28,5 @@ func (p produce) ValidateStruct() error {
 }
 
 func (p produce) InteractionText() string {
-	return "Produce §RessourceAmount ressources."
+	return "Produce §ManaAmount mana."
 }
