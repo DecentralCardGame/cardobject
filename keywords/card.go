@@ -156,6 +156,7 @@ func (p place) InteractionText() string {
 type headquarter struct {
 	CardName    cardobject.CardName
 	Class       cardobject.Class
+	Delay       cardobject.Delay
 	Abilities   abilities
 	Health      cardobject.Health
 	FlavourText cardobject.FlavourText
@@ -168,6 +169,7 @@ func (h headquarter) Resolve() cardobject.Card {
 		Headquarter: &cardobject.Headquarter{
 			CardName:    h.CardName,
 			Class:       h.Class,
+			Delay:       h.Delay,
 			Abilities:   abilities,
 			Health:      h.Health,
 			FlavourText: h.FlavourText,
@@ -184,5 +186,5 @@ func (h headquarter) ValidateStruct() error {
 }
 
 func (h headquarter) InteractionText() string {
-	return "§CardName §Class §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags"
+	return "§CardName §Class §Delay §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags"
 }
