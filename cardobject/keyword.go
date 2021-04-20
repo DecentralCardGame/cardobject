@@ -52,6 +52,31 @@ const Tribute = "TRIBUTE"
 var possibleKeywords []string = []string{
 	Anthem, Arm, Arrival, Battlecry, Harm, Kill, OnConstruction, OnDeath, OnSpawn, Pay, Periodic, Produce, Repair, Tribute}
 
+type Keywords []Keyword
+
+func (k Keywords) Validate() error {
+	return k.ValidateArray()
+}
+
+func (k Keywords) ValidateArray() error {
+	errorRange := []error{}
+	for _, v := range k {
+		err := v.Validate()
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return jsonschema.CombineErrors(errorRange)
+}
+
+func (k Keywords) MinMaxItems() (int, int) {
+	return 1, 3
+}
+
+func (k Keywords) ItemName() string {
+	return jsonschema.ItemNameFromArray(k)
+}
+
 type Keyword jsonschema.BasicString
 
 func (k Keyword) Validate() error {
