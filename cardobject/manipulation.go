@@ -183,6 +183,7 @@ func (p PlaceManipulation) ValidateInterface() error {
 type ActionEffectManipulation struct {
 	Effect         *Effect `json:",omitempty"`
 	EffectOperator AbilityEffectOperator
+	Keyword        *Keyword `json:",omitempty"`
 }
 
 func (a ActionEffectManipulation) Validate() error {
@@ -194,13 +195,14 @@ func (a ActionEffectManipulation) ValidateStruct() error {
 }
 
 func (a ActionEffectManipulation) InteractionText() string {
-	return "It §EffectOperator §Effect."
+	return "It §EffectOperator §Effect.(§Keyword)"
 }
 
 type ActionIntManipulation struct {
 	IntProperty ActionIntProperty
 	IntOperator IntOperator
 	IntValue    IntValue
+	Keyword     *Keyword `json:",omitempty"`
 }
 
 func (a ActionIntManipulation) Validate() error {
@@ -212,13 +214,14 @@ func (a ActionIntManipulation) ValidateStruct() error {
 }
 
 func (a ActionIntManipulation) InteractionText() string {
-	return "§IntOperator §IntProperty §IntValue."
+	return "§IntOperator §IntProperty §IntValue.(§Keyword)"
 }
 
 type ActionStringManipulation struct {
 	StringProperty ActionStringProperty
 	StringOperator StringOperator
 	StringValue    SimpleStringValue
+	Keyword        *Keyword `json:",omitempty"`
 }
 
 func (a ActionStringManipulation) Validate() error {
@@ -230,12 +233,13 @@ func (a ActionStringManipulation) ValidateStruct() error {
 }
 
 func (a ActionStringManipulation) InteractionText() string {
-	return "§StringOperator §StringProperty §StringValue."
+	return "§StringOperator §StringProperty §StringValue.(§Keyword)"
 }
 
 type ActionTagManipulation struct {
 	TagValue    Tag
 	TagOperator StringOperator
+	Keyword     *Keyword `json:",omitempty"`
 }
 
 func (a ActionTagManipulation) Validate() error {
@@ -247,12 +251,13 @@ func (a ActionTagManipulation) ValidateStruct() error {
 }
 
 func (a ActionTagManipulation) InteractionText() string {
-	return "§TagOperator tag §TagValue."
+	return "§TagOperator tag §TagValue.(§Keyword)"
 }
 
 type EntityAbilityManipulation struct {
 	Ability         *Ability `json:",omitempty"`
 	AbilityOperator AbilityEffectOperator
+	Keyword         *Keyword `json:",omitempty"`
 }
 
 func (e EntityAbilityManipulation) Validate() error {
@@ -264,13 +269,14 @@ func (e EntityAbilityManipulation) ValidateStruct() error {
 }
 
 func (e EntityAbilityManipulation) InteractionText() string {
-	return "It §AbilityOperator §Ability."
+	return "It §AbilityOperator §Ability.(§Keyword)"
 }
 
 type EntityIntManipulation struct {
 	IntProperty EntityIntProperty
 	IntOperator IntOperator
 	IntValue    IntValue
+	Keyword     *Keyword `json:",omitempty"`
 }
 
 func (e EntityIntManipulation) Validate() error {
@@ -282,13 +288,14 @@ func (e EntityIntManipulation) ValidateStruct() error {
 }
 
 func (e EntityIntManipulation) InteractionText() string {
-	return "§IntOperator §IntProperty §IntValue"
+	return "§IntOperator §IntProperty §IntValue.(§Keyword)"
 }
 
 type EntityStringManipulation struct {
 	StringProperty EntityStringProperty
 	StringOperator StringOperator
 	StringValue    SimpleStringValue
+	Keyword        *Keyword `json:",omitempty"`
 }
 
 func (e EntityStringManipulation) Validate() error {
@@ -300,12 +307,13 @@ func (e EntityStringManipulation) ValidateStruct() error {
 }
 
 func (e EntityStringManipulation) InteractionText() string {
-	return "§StringOperator §StringProperty §StringValue."
+	return "§StringOperator §StringProperty §StringValue.(§Keyword)"
 }
 
 type EntityTagManipulation struct {
 	TagValue    Tag
 	TagOperator StringOperator
+	Keyword     *Keyword `json:",omitempty"`
 }
 
 func (e EntityTagManipulation) Validate() error {
@@ -317,12 +325,13 @@ func (e EntityTagManipulation) ValidateStruct() error {
 }
 
 func (e EntityTagManipulation) InteractionText() string {
-	return "It §TagOperator §TagValue."
+	return "It §TagOperator §TagValue.(§Keyword)"
 }
 
 type HeadquarterAbilityManipulation struct {
 	Ability         *Ability `json:",omitempty"`
 	AbilityOperator AbilityEffectOperator
+	Keyword         *Keyword `json:",omitempty"`
 }
 
 func (h HeadquarterAbilityManipulation) Validate() error {
@@ -334,13 +343,14 @@ func (h HeadquarterAbilityManipulation) ValidateStruct() error {
 }
 
 func (h HeadquarterAbilityManipulation) InteractionText() string {
-	return "It §AbilityOperator §Effect."
+	return "It §AbilityOperator §Effect.(§Keyword)"
 }
 
 type HeadquarterIntManipulation struct {
 	IntProperty HeadquarterIntProperty
 	IntOperator IntOperator
 	IntValue    IntValue
+	Keyword     *Keyword `json:",omitempty"`
 }
 
 func (h HeadquarterIntManipulation) Validate() error {
@@ -352,13 +362,14 @@ func (h HeadquarterIntManipulation) ValidateStruct() error {
 }
 
 func (h HeadquarterIntManipulation) InteractionText() string {
-	return "§IntOperator §IntProperty §IntValue."
+	return "§IntOperator §IntProperty §IntValue.(§Keyword)"
 }
 
 type HeadquarterStringManipulation struct {
 	StringProperty HeadquarterStringProperty
 	StringOperator StringOperator
 	StringValue    SimpleStringValue
+	Keyword        *Keyword `json:",omitempty"`
 }
 
 func (h HeadquarterStringManipulation) Validate() error {
@@ -370,12 +381,13 @@ func (h HeadquarterStringManipulation) ValidateStruct() error {
 }
 
 func (h HeadquarterStringManipulation) InteractionText() string {
-	return "§StringOperator §StringProperty §StringValue."
+	return "§StringOperator §StringProperty §StringValue.(§Keyword)"
 }
 
 type HeadquarterTagManipulation struct {
 	TagValue    Tag
 	TagOperator StringOperator
+	Keyword     *Keyword `json:",omitempty"`
 }
 
 func (h HeadquarterTagManipulation) Validate() error {
@@ -387,12 +399,13 @@ func (h HeadquarterTagManipulation) ValidateStruct() error {
 }
 
 func (h HeadquarterTagManipulation) InteractionText() string {
-	return "§TagOperator tag §TagValue."
+	return "§TagOperator tag §TagValue.(§Keyword)"
 }
 
 type PlaceAbilityManipulation struct {
 	Ability         *Ability `json:",omitempty"`
 	AbilityOperator AbilityEffectOperator
+	Keyword         *Keyword `json:",omitempty"`
 }
 
 func (p PlaceAbilityManipulation) Validate() error {
@@ -404,13 +417,14 @@ func (p PlaceAbilityManipulation) ValidateStruct() error {
 }
 
 func (p PlaceAbilityManipulation) InteractionText() string {
-	return "It §AbilityOperator §Ability."
+	return "It §AbilityOperator §Ability.(§Keyword)"
 }
 
 type PlaceIntManipulation struct {
 	IntProperty PlaceIntProperty
 	IntOperator IntOperator
 	IntValue    IntValue
+	Keyword     *Keyword `json:",omitempty"`
 }
 
 func (p PlaceIntManipulation) Validate() error {
@@ -422,13 +436,14 @@ func (p PlaceIntManipulation) ValidateStruct() error {
 }
 
 func (p PlaceIntManipulation) InteractionText() string {
-	return "§IntOperator §IntProperty §IntValue."
+	return "§IntOperator §IntProperty §IntValue.(§Keyword)"
 }
 
 type PlaceStringManipulation struct {
 	StringProperty PlaceStringProperty
 	StringOperator StringOperator
 	StringValue    SimpleStringValue
+	Keyword        *Keyword `json:",omitempty"`
 }
 
 func (p PlaceStringManipulation) Validate() error {
@@ -440,12 +455,13 @@ func (p PlaceStringManipulation) ValidateStruct() error {
 }
 
 func (p PlaceStringManipulation) InteractionText() string {
-	return "§StringOperator §StringProperty §StringValue."
+	return "§StringOperator §StringProperty §StringValue.(§Keyword)"
 }
 
 type PlaceTagManipulation struct {
 	TagValue    Tag
 	TagOperator StringOperator
+	Keyword     *Keyword `json:",omitempty"`
 }
 
 func (p PlaceTagManipulation) Validate() error {
@@ -457,5 +473,5 @@ func (p PlaceTagManipulation) ValidateStruct() error {
 }
 
 func (p PlaceTagManipulation) InteractionText() string {
-	return "It §TagOperator §TagValue."
+	return "It §TagOperator §TagValue.(§Keyword)"
 }

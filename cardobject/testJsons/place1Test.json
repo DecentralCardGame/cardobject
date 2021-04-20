@@ -1,1 +1,1 @@
-{"Place":{"CardName":"Mühle","CastingCost":2,"CostType":{"Nature":false,"Mysticism":false,"Technology":true,"Culture":false,"Mana":false},"Abilities":[],"Health":3,"FlavourText":"lulul","Tags":["PRIMITIVE"]}}
+{"Place":{"CardName":"Mühle","CastingCost":2,"Class":{"Nature":false,"Mysticism":false,"Technology":true,"Culture":false},"Abilities":[],"Health":3,"FlavourText":"lulul","Tags":["PRIMITIVE"]}}

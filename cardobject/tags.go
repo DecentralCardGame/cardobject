@@ -63,7 +63,7 @@ func (t Tag) ValidateEnum() error {
 			return nil
 		}
 	}
-	return errors.New("Tag must be one of: " + strings.Join(possibleTags, ","))
+	return errors.New("Tag must be one of: " + strings.Join(t.EnumValues(), ","))
 }
 
 func (t Tag) EnumValues() []string {

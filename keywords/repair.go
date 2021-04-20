@@ -10,6 +10,7 @@ type repair struct {
 }
 
 func (r repair) Resolve() cardobject.Effect {
+	keyword := cardobject.Keyword(cardobject.Repair)
 	xvalue := cardobject.IntValue{
 		SimpleIntValue: &r.Amount}
 	placeEffect := cardobject.Effect{
@@ -24,7 +25,8 @@ func (r repair) Resolve() cardobject.Effect {
 						PlaceIntManipulation: &cardobject.PlaceIntManipulation{
 							IntProperty: cardobject.PlaceIntProperty(cardobject.CurrentHealth),
 							IntOperator: cardobject.IntOperator(cardobject.Add),
-							IntValue:    xvalue}}}}}}
+							IntValue:    xvalue,
+							Keyword:     &keyword}}}}}}
 	headquarterEffect := cardobject.Effect{
 		TargetEffect: &cardobject.TargetEffect{
 			HeadquarterTargetEffect: &cardobject.HeadquarterTargetEffect{
@@ -36,7 +38,8 @@ func (r repair) Resolve() cardobject.Effect {
 						HeadquarterIntManipulation: &cardobject.HeadquarterIntManipulation{
 							IntProperty: cardobject.HeadquarterIntProperty(cardobject.CurrentHealth),
 							IntOperator: cardobject.IntOperator(cardobject.Add),
-							IntValue:    xvalue}}}}}}
+							IntValue:    xvalue,
+							Keyword:     &keyword}}}}}}
 	effect := cardobject.Effect{
 		ChooseFromEffect: &cardobject.ChooseFromEffect{
 			Effects: cardobject.Effects{

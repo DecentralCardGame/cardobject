@@ -10,16 +10,19 @@ type arm struct {
 }
 
 func (a arm) Resolve() cardobject.Effect {
+	keyword := cardobject.Keyword(cardobject.Arm)
 	xvalue := cardobject.IntValue{
 		SimpleIntValue: &a.Amount}
 	defBuff := &cardobject.EntityIntManipulation{
 		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentHealth),
 		IntOperator: cardobject.IntOperator(cardobject.Add),
-		IntValue:    xvalue}
+		IntValue:    xvalue,
+		Keyword:     &keyword}
 	attBuff := &cardobject.EntityIntManipulation{
 		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentAttack),
 		IntOperator: cardobject.IntOperator(cardobject.Add),
-		IntValue:    xvalue}
+		IntValue:    xvalue,
+		Keyword:     &keyword}
 	manipulations := &cardobject.EntityManipulations{
 		cardobject.EntityManipulation{
 			EntityIntManipulation: defBuff},

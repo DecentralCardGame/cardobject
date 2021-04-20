@@ -10,17 +10,20 @@ type anthem struct {
 }
 
 func (a anthem) Resolve() cardobject.Effect {
+	keyword := cardobject.Keyword(cardobject.Anthem)
 	simpleInt := cardobject.SimpleIntValue(1)
 	intValue := cardobject.IntValue{
 		SimpleIntValue: &simpleInt}
 	defBuff := &cardobject.EntityIntManipulation{
 		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentHealth),
 		IntOperator: cardobject.IntOperator(cardobject.Add),
-		IntValue:    intValue}
+		IntValue:    intValue,
+		Keyword:     &keyword}
 	attBuff := &cardobject.EntityIntManipulation{
 		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentAttack),
 		IntOperator: cardobject.IntOperator(cardobject.Add),
-		IntValue:    intValue}
+		IntValue:    intValue,
+		Keyword:     &keyword}
 	manipulations := &cardobject.EntityManipulations{
 		cardobject.EntityManipulation{
 			EntityIntManipulation: defBuff},

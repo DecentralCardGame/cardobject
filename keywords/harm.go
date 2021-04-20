@@ -10,12 +10,14 @@ type harm struct {
 }
 
 func (h harm) Resolve() cardobject.Effect {
+	keyword := cardobject.Keyword(cardobject.Harm)
 	xvalue := cardobject.IntValue{
 		SimpleIntValue: &h.Amount}
 	healthReduce := &cardobject.EntityIntManipulation{
 		IntProperty: cardobject.EntityIntProperty(cardobject.CurrentHealth),
 		IntOperator: cardobject.IntOperator(cardobject.Subtract),
-		IntValue:    xvalue}
+		IntValue:    xvalue,
+		Keyword:     &keyword}
 	manipulations := &cardobject.EntityManipulations{
 		cardobject.EntityManipulation{
 			EntityIntManipulation: healthReduce}}

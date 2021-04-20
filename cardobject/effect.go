@@ -47,7 +47,8 @@ func (e Effect) ValidateInterface() error {
 }
 
 type GrowthEffect struct {
-	growthAmount IntValue
+	Keyword      *Keyword `json:",omitempty"`
+	GrowthAmount IntValue
 }
 
 func (g GrowthEffect) Validate() error {
@@ -59,11 +60,12 @@ func (g GrowthEffect) ValidateStruct() error {
 }
 
 func (g GrowthEffect) InteractionText() string {
-	return "Gain §GrowthAmount growth."
+	return "Gain §GrowthAmount growth. (§Keyword)"
 }
 
 type ProductionEffect struct {
-	Amount IntValue
+	Keyword *Keyword `json:",omitempty"`
+	Amount  IntValue
 }
 
 func (p ProductionEffect) Validate() error {
@@ -75,10 +77,11 @@ func (p ProductionEffect) ValidateStruct() error {
 }
 
 func (p ProductionEffect) InteractionText() string {
-	return "Produce §Amount."
+	return "Produce §Amount. (§Keyword)"
 }
 
 type WisdomEffect struct {
+	Keyword      *Keyword `json:",omitempty"`
 	wisdomAmount IntValue
 }
 
@@ -91,10 +94,11 @@ func (d WisdomEffect) ValidateStruct() error {
 }
 
 func (d WisdomEffect) InteractionText() string {
-	return "Gain §WisdomAmount wisdom."
+	return "Gain §WisdomAmount wisdom. (§Keyword)"
 }
 
 type TokenEffect struct {
+	Keyword     *Keyword `json:",omitempty"`
 	TokenAmount IntValue
 	Token       Token
 }
@@ -108,7 +112,7 @@ func (t TokenEffect) ValidateStruct() error {
 }
 
 func (t TokenEffect) InteractionText() string {
-	return "Create §TokenAmount §Token."
+	return "Create §TokenAmount §Token. (§Keyword)"
 }
 
 type ChooseFromEffect struct {

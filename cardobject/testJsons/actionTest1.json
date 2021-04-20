@@ -3,12 +3,11 @@
     "CardName":"Name",
     "Tags":["SPIRITUAL"],
     "FlavourText":"-.-",
-    "CostType":{
+    "Class":{
       "Technology":true,
       "Nature":false,
       "Mysticism":false,
-      "Culture":false,
-      "Mana":false
+      "Culture":false
     },
     "CastingCost":13,
     "Effects":[

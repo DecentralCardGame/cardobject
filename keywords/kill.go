@@ -8,9 +8,11 @@ import (
 type kill struct{}
 
 func (k kill) Resolve() cardobject.Effect {
+	keyword := cardobject.Keyword(cardobject.Kill)
 	zoneChange := &cardobject.EntityZoneChange{
-		Zone:   cardobject.EntityZone(cardobject.Dustpile),
-		Player: cardobject.PlayerMode(cardobject.Opponent)}
+		Zone:    cardobject.EntityZone(cardobject.Dustpile),
+		Player:  cardobject.PlayerMode(cardobject.Opponent),
+		Keyword: &keyword}
 	manipulations := &cardobject.EntityManipulations{
 		cardobject.EntityManipulation{
 			EntityZoneChange: zoneChange}}
