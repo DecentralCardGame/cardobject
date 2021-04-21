@@ -2,10 +2,13 @@ package cardobject
 
 import (
 	"errors"
-	"strings"
+	"strconv"
 
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
+
+const maxKeywordLength int = 10000
+const minKeywordLength int = 0
 
 //Anthem Keyword
 const Anthem = "ANTHEM"
@@ -49,9 +52,6 @@ const Repair = "REPAIR"
 //Tribute Keyword
 const Tribute = "TRIBUTE"
 
-var possibleKeywords []string = []string{
-	Anthem, Arm, Arrival, Battlecry, Harm, Kill, OnConstruction, OnDeath, OnSpawn, Pay, Periodic, Produce, Repair, Tribute}
-
 type Keywords []Keyword
 
 func (k Keywords) Validate() error {
@@ -80,19 +80,18 @@ func (k Keywords) ItemName() string {
 type Keyword jsonschema.BasicString
 
 func (k Keyword) Validate() error {
-	return k.ValidateEnum()
+	return k.ValidateString()
 }
 
-func (k Keyword) ValidateEnum() error {
-	values := k.EnumValues()
-	for _, v := range values {
-		if v == string(k) {
-			return nil
-		}
+func (k Keyword) ValidateString() error {
+	minLength, maxLength := k.MinMaxLength()
+	length := len(string(k))
+	if length < minLength || length > maxLength {
+		return errors.New("FlavourText must be between " + strconv.Itoa(minLength) + " and " + strconv.Itoa(maxLength) + " characters long")
 	}
-	return errors.New("Keyword must be one of: " + strings.Join(k.EnumValues(), ","))
+	return nil
 }
 
-func (k Keyword) EnumValues() []string {
-	return possibleKeywords
+func (k Keyword) MinMaxLength() (int, int) {
+	return minKeywordLength, maxKeywordLength
 }
