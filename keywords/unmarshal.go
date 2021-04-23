@@ -7,8 +7,8 @@ import (
 /*Unmarshal takes card that contains keywords as json-file and
 returns a validated keyworded card.
 */
-func Unmarshal(data []byte) (KeywordedCard, error) {
-	var card card
+func Unmarshal(data []byte) (*Card, error) {
+	var card Card
 	err := json.Unmarshal(data, &card)
 	if err != nil {
 		return nil, err
@@ -17,5 +17,5 @@ func Unmarshal(data []byte) (KeywordedCard, error) {
 	if err != nil {
 		return nil, err
 	}
-	return card, nil
+	return &card, nil
 }

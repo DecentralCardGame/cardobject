@@ -13,14 +13,14 @@ type KeywordedCard interface {
 	Resolve() cardobject.Card
 }
 
-type card struct {
+type Card struct {
 	Action      *action      `json:",omitempty"`
 	Entity      *entity      `json:",omitempty"`
 	Place       *place       `json:",omitempty"`
 	Headquarter *headquarter `json:",omitempty"`
 }
 
-func (c card) Resolve() cardobject.Card {
+func (c Card) Resolve() cardobject.Card {
 	valueOfB := reflect.ValueOf(c)
 	typeOfB := reflect.TypeOf(c)
 	possibleImplementer := []KeywordedCard{}
@@ -37,11 +37,11 @@ func (c card) Resolve() cardobject.Card {
 	return cardobject.Card{}
 }
 
-func (c card) Validate() error {
+func (c Card) Validate() error {
 	return c.ValidateInterface()
 }
 
-func (c card) ValidateInterface() error {
+func (c Card) ValidateInterface() error {
 	return jsonschema.ValidateInterface(c)
 }
 
