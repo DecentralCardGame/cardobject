@@ -34,6 +34,7 @@ type effect struct {
 	Arm       *arm       `json:",omitempty"`
 	Discount  *discount  `json:",omitempty"`
 	Dismantle *dismantle `json:",omitempty"`
+	Grow      *grow      `json:",omitempty"`
 	Harm      *harm      `json:",omitempty"`
 	Kill      *kill      `json:",omitempty"`
 	Insight   *insight   `json:",omitempty"`
