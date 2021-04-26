@@ -41,6 +41,7 @@ type effect struct {
 	Mill      *mill      `json:",omitempty"`
 	Produce   *produce   `json:",omitempty"`
 	Repair    *repair    `json:",omitempty"`
+	Withdraw  *withdraw  `json:",omitempty"`
 }
 
 func (e effect) Validate() error {
