@@ -43,6 +43,7 @@ type effect struct {
 	Mill      *mill      `json:",omitempty"`
 	Produce   *produce   `json:",omitempty"`
 	Repair    *repair    `json:",omitempty"`
+	Void      *void      `json:",omitempty"`
 	Withdraw  *withdraw  `json:",omitempty"`
 }
 
