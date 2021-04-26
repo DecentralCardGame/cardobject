@@ -10,9 +10,4 @@ func TestTribute(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	ability := tribute.Resolve()
-	err = ability.Validate()
-	if err != nil {
-		t.Error(err)
-	}
 }

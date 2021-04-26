@@ -10,9 +10,4 @@ func TestArrival(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	ability := arrival.Resolve()
-	err = ability.Validate()
-	if err != nil {
-		t.Error(err)
-	}
 }

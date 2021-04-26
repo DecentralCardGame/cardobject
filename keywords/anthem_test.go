@@ -10,9 +10,4 @@ func TestAnthem(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	effect := anthem.Resolve()
-	err = effect.Validate()
-	if err != nil {
-		t.Error(err)
-	}
 }

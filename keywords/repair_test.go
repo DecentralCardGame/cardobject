@@ -10,9 +10,4 @@ func TestRepair(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	effect := repair.Resolve()
-	err = effect.Validate()
-	if err != nil {
-		t.Error(err)
-	}
 }

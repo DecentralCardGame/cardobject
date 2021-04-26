@@ -9,18 +9,6 @@ type produce struct {
 	ManaAmount cardobject.SimpleIntValue
 }
 
-func (p produce) Resolve() cardobject.Effect {
-	keyword := cardobject.Keyword(cardobject.Produce)
-	simpleInt := cardobject.SimpleIntValue(p.ManaAmount)
-	intValue := cardobject.IntValue{
-		SimpleIntValue: &simpleInt}
-	effect := cardobject.Effect{
-		ProductionEffect: &cardobject.ProductionEffect{
-			Amount:  intValue,
-			Keyword: &keyword}}
-	return effect
-}
-
 func (p produce) Validate() error {
 	return p.ValidateStruct()
 }

@@ -10,9 +10,4 @@ func TestHarm(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	effect := harm.Resolve()
-	err = effect.Validate()
-	if err != nil {
-		t.Error(err)
-	}
 }

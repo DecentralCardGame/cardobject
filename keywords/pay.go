@@ -10,17 +10,6 @@ type pay struct {
 	Effects    effects
 }
 
-func (p pay) Resolve() cardobject.Ability {
-	effects := p.Effects.Resolve()
-	ability := cardobject.Ability{
-		ActivatedAbility: &cardobject.ActivatedAbility{
-			AbilityCost: &cardobject.Cost{
-				ManaCost: &cardobject.ManaCost{
-					CostAmount: cardobject.BasicAmount(p.ManaAmount)}},
-			Effects: effects}}
-	return ability
-}
-
 func (p pay) Validate() error {
 	return p.ValidateStruct()
 }

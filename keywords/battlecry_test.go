@@ -10,9 +10,4 @@ func TestBattlecry(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	ability := battlecry.Resolve()
-	err = ability.Validate()
-	if err != nil {
-		t.Error(err)
-	}
 }

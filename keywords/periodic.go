@@ -1,23 +1,11 @@
 package keywords
 
 import (
-	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 type periodic struct {
 	Effects effects
-}
-
-func (p periodic) Resolve() cardobject.Ability {
-	effects := p.Effects.Resolve()
-	ability := cardobject.Ability{
-		TriggeredAbility: &cardobject.TriggeredAbility{
-			Cause: &cardobject.EventListener{
-				TimeEventListener: &cardobject.TimeEventListener{
-					TimeEvent: cardobject.TimeEvent(cardobject.Tickstart)}},
-			Effects: effects}}
-	return ability
 }
 
 func (p periodic) Validate() error {

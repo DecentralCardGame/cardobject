@@ -10,9 +10,4 @@ func TestArm(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	effect := arm.Resolve()
-	err = effect.Validate()
-	if err != nil {
-		t.Error(err)
-	}
 }
