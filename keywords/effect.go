@@ -36,6 +36,7 @@ type effect struct {
 	Dismantle *dismantle `json:",omitempty"`
 	Harm      *harm      `json:",omitempty"`
 	Kill      *kill      `json:",omitempty"`
+	Mill      *mill      `json:",omitempty"`
 	Produce   *produce   `json:",omitempty"`
 	Repair    *repair    `json:",omitempty"`
 }
