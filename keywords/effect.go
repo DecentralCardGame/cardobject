@@ -33,6 +33,7 @@ type effect struct {
 	Anthem    *anthem    `json:",omitempty"`
 	Arm       *arm       `json:",omitempty"`
 	Bounce    *bounce    `json:",omitempty"`
+	Burn      *burn      `json:",omitempty"`
 	Discount  *discount  `json:",omitempty"`
 	Dismantle *dismantle `json:",omitempty"`
 	Dissolve  *dissolve  `json:",omitempty"`
