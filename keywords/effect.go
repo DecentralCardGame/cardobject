@@ -30,13 +30,14 @@ func (e effects) ItemName() string {
 }
 
 type effect struct {
-	Anthem   *anthem   `json:",omitempty"`
-	Arm      *arm      `json:",omitempty"`
-	Discount *discount `json:",omitempty"`
-	Harm     *harm     `json:",omitempty"`
-	Kill     *kill     `json:",omitempty"`
-	Produce  *produce  `json:",omitempty"`
-	Repair   *repair   `json:",omitempty"`
+	Anthem    *anthem    `json:",omitempty"`
+	Arm       *arm       `json:",omitempty"`
+	Discount  *discount  `json:",omitempty"`
+	Dismantle *dismantle `json:",omitempty"`
+	Harm      *harm      `json:",omitempty"`
+	Kill      *kill      `json:",omitempty"`
+	Produce   *produce   `json:",omitempty"`
+	Repair    *repair    `json:",omitempty"`
 }
 
 func (e effect) Validate() error {

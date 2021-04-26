@@ -19,7 +19,7 @@ func (d discount) ValidateStruct() error {
 }
 
 func (d discount) InteractionText() string {
-	return "Discount §Amount."
+	return "Discount [§Type] §Amount."
 }
 
 func (d discount) Description() string {
