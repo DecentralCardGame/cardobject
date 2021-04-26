@@ -27,8 +27,6 @@ const maxGrowth = 32
 const minGrowth = 0
 const maxHealth int = 32
 const minHealth int = 0
-const maxRulesTextLength int = 1000
-const minRulesTextLength int = 0
 const maxSimpleInt int = 32
 const minSimpleInt int = 0
 const maxSimpleStringLength = 32
@@ -184,25 +182,6 @@ func (h Health) ValidateInt() error {
 
 func (h Health) MinMax() (int, int) {
 	return minHealth, maxHealth
-}
-
-type RulesText jsonschema.BasicString
-
-func (r RulesText) Validate() error {
-	return r.ValidateString()
-}
-
-func (r RulesText) ValidateString() error {
-	minLength, maxLength := r.MinMaxLength()
-	length := len(string(r))
-	if length < minLength || length > maxLength {
-		return errors.New("RulesText must be between " + strconv.Itoa(minLength) + " and " + strconv.Itoa(maxLength) + " characters long")
-	}
-	return nil
-}
-
-func (r RulesText) MinMaxLength() (int, int) {
-	return minRulesTextLength, maxRulesTextLength
 }
 
 type StartingHandsize jsonschema.BasicInt

@@ -53,7 +53,7 @@ type action struct {
 	FlavourText cardobject.FlavourText
 	Tags        cardobject.Tags
 	Keywords    cardobject.Keywords
-	RulesText   cardobject.RulesText
+	RulesTexts  cardobject.RulesTexts
 }
 
 func (a action) Resolve() cardobject.Card {
@@ -67,7 +67,7 @@ func (a action) Resolve() cardobject.Card {
 			FlavourText: a.FlavourText,
 			Tags:        a.Tags,
 			Keywords:    a.Keywords,
-			RulesText:   a.RulesText}}
+			RulesTexts:  a.RulesTexts}}
 	return card
 }
 
@@ -80,7 +80,7 @@ func (a action) ValidateStruct() error {
 }
 
 func (a action) InteractionText() string {
-	return "§CardName §CastingCost §Class §Effects §FlavourText §Tags §Keywords §RulesText"
+	return "§CardName §CastingCost §Class §Effects §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type entity struct {
@@ -93,7 +93,7 @@ type entity struct {
 	FlavourText cardobject.FlavourText
 	Tags        cardobject.Tags
 	Keywords    cardobject.Keywords
-	RulesText   cardobject.RulesText
+	RulesTexts  cardobject.RulesTexts
 }
 
 func (e entity) Resolve() cardobject.Card {
@@ -109,7 +109,7 @@ func (e entity) Resolve() cardobject.Card {
 			FlavourText: e.FlavourText,
 			Tags:        e.Tags,
 			Keywords:    e.Keywords,
-			RulesText:   e.RulesText}}
+			RulesTexts:  e.RulesTexts}}
 	return card
 }
 
@@ -122,7 +122,7 @@ func (e entity) ValidateStruct() error {
 }
 
 func (e entity) InteractionText() string {
-	return "§CardName §CastingCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesText"
+	return "§CardName §CastingCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type place struct {
@@ -134,7 +134,7 @@ type place struct {
 	FlavourText cardobject.FlavourText
 	Tags        cardobject.Tags
 	Keywords    cardobject.Keywords
-	RulesText   cardobject.RulesText
+	RulesTexts  cardobject.RulesTexts
 }
 
 func (p place) Resolve() cardobject.Card {
@@ -149,7 +149,7 @@ func (p place) Resolve() cardobject.Card {
 			FlavourText: p.FlavourText,
 			Tags:        p.Tags,
 			Keywords:    p.Keywords,
-			RulesText:   p.RulesText}}
+			RulesTexts:  p.RulesTexts}}
 	return card
 }
 
@@ -162,7 +162,7 @@ func (p place) ValidateStruct() error {
 }
 
 func (p place) InteractionText() string {
-	return "§CardName §CastingCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesText"
+	return "§CardName §CastingCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type headquarter struct {
@@ -174,7 +174,7 @@ type headquarter struct {
 	FlavourText cardobject.FlavourText
 	Tags        cardobject.Tags
 	Keywords    cardobject.Keywords
-	RulesText   cardobject.RulesText
+	RulesTexts  cardobject.RulesTexts
 }
 
 func (h headquarter) Resolve() cardobject.Card {
@@ -189,7 +189,7 @@ func (h headquarter) Resolve() cardobject.Card {
 			FlavourText: h.FlavourText,
 			Tags:        h.Tags,
 			Keywords:    h.Keywords,
-			RulesText:   h.RulesText}}
+			RulesTexts:  h.RulesTexts}}
 	return card
 }
 
@@ -202,5 +202,5 @@ func (h headquarter) ValidateStruct() error {
 }
 
 func (h headquarter) InteractionText() string {
-	return "§CardName §Class §Delay §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags §Keywords §RulesText"
+	return "§CardName §Class §Delay §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags §Keywords §RulesTexts"
 }

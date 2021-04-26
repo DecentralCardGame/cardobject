@@ -10,7 +10,7 @@
       "Culture":false
     },
     "CastingCost":13,
-    "RulesText": "This could be your RulesText",
+    "RulesTexts": ["This could be your RulesText",""],
     "Effects":[
       {
         "TargetEffect":{

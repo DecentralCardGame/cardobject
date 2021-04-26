@@ -27,7 +27,7 @@ type Action struct {
 	FlavourText FlavourText
 	Tags        Tags
 	Keywords    Keywords
-	RulesText   RulesText
+	RulesTexts  RulesTexts
 }
 
 func (a Action) Validate() error {
@@ -39,7 +39,7 @@ func (a Action) ValidateStruct() error {
 }
 
 func (a Action) InteractionText() string {
-	return "§CardName §CastingCost §Class §Effects §FlavourText §Tags §Keywords §RulesText"
+	return "§CardName §CastingCost §Class §Effects §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type Entity struct {
@@ -52,7 +52,7 @@ type Entity struct {
 	FlavourText FlavourText
 	Tags        Tags
 	Keywords    Keywords
-	RulesText   RulesText
+	RulesTexts  RulesTexts
 }
 
 func (e Entity) Validate() error {
@@ -64,7 +64,7 @@ func (e Entity) ValidateStruct() error {
 }
 
 func (a Entity) InteractionText() string {
-	return "§CardName §CastingCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesText"
+	return "§CardName §CastingCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type Place struct {
@@ -76,7 +76,7 @@ type Place struct {
 	FlavourText FlavourText
 	Tags        Tags
 	Keywords    Keywords
-	RulesText   RulesText
+	RulesTexts  RulesTexts
 }
 
 func (p Place) Validate() error {
@@ -88,7 +88,7 @@ func (p Place) ValidateStruct() error {
 }
 
 func (a Place) InteractionText() string {
-	return "§CardName §CastingCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesText"
+	return "§CardName §CastingCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type Headquarter struct {
@@ -100,7 +100,7 @@ type Headquarter struct {
 	FlavourText FlavourText
 	Tags        Tags
 	Keywords    Keywords
-	RulesText   RulesText
+	RulesTexts  RulesTexts
 }
 
 func (h Headquarter) Validate() error {
@@ -112,5 +112,5 @@ func (h Headquarter) ValidateStruct() error {
 }
 
 func (a Headquarter) InteractionText() string {
-	return "§CardName §Class §Delay §Abilities §Health §FlavourText §Tags §Keywords §RulesText"
+	return "§CardName §Class §Delay §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts"
 }

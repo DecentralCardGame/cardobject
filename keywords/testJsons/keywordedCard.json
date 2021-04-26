@@ -14,7 +14,7 @@
     "Attack":10,
     "Health":10,
     "Keywords":["ARM", "PAY"],
-    "RulesText":"This could be your RulesText",
+    "RulesTexts":["This could be your RulesText",""],
     "Abilities":[
       {
         "Pay":{
