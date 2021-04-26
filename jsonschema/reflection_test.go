@@ -41,6 +41,10 @@ func (a action) InteractionText() string {
 	return "§Name §Costs §Time §MultipleUse"
 }
 
+func (a action) Description() string {
+	return "This allows you to build an Action-card"
+}
+
 type costs []cost
 
 func (c costs) Validate() error {

@@ -145,11 +145,18 @@ func (r *Reflector) reflectStruct(definitions Definitions, t reflect.Type) (*Typ
 
 	interactionText := reflect.New(t).MethodByName("InteractionText").Call(dummyInputs)[0].String()
 
+	descriptionMethod := reflect.New(t).MethodByName("Description")
+
+	description := "Build a " + name
+	if descriptionMethod.IsValid() {
+		description = descriptionMethod.Call(dummyInputs)[0].String()
+	}
+
 	st := &Type{
 		Name:            name,
 		Type:            defType,
 		Properties:      orderedmap.New(),
-		Description:     "Build a " + name,
+		Description:     description,
 		InteractionText: interactionText,
 	}
 	definitions[r.typeName(t)] = st
