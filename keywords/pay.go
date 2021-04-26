@@ -30,5 +30,9 @@ func (p pay) ValidateStruct() error {
 }
 
 func (p pay) InteractionText() string {
-	return "Pay §ManaAmount to activate: §Effects."
+	return "Pay §ManaAmount: §Effects."
+}
+
+func (p pay) Description() string {
+	return "Pay Mana to activate Effects."
 }

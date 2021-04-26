@@ -51,3 +51,7 @@ func (a arm) ValidateStruct() error {
 func (a arm) InteractionText() string {
 	return "Arm §Amount."
 }
+
+func (a arm) Description() string {
+	return "Arm gives a friendly entity +X/+X."
+}

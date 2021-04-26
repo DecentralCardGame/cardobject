@@ -31,5 +31,9 @@ func (t tribute) ValidateStruct() error {
 }
 
 func (t tribute) InteractionText() string {
-	return "Sacrifice an entity to activate: §Effects."
+	return "Tribute: §Effects."
+}
+
+func (t tribute) Description() string {
+	return "Sacrifice a friendly entity to activate Effects."
 }

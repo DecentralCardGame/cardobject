@@ -29,5 +29,9 @@ func (p periodic) ValidateStruct() error {
 }
 
 func (p periodic) InteractionText() string {
-	return "At the beginning of each tick activate: §Effects."
+	return "Periodic: §Effects."
+}
+
+func (p periodic) Description() string {
+	return "At the beginning of each tick activate Effects."
 }

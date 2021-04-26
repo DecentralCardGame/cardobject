@@ -29,5 +29,9 @@ func (b battlecry) ValidateStruct() error {
 }
 
 func (b battlecry) InteractionText() string {
-	return "At the beginning of each combat activate: §Effects."
+	return "Battlecry: §Effects."
+}
+
+func (b battlecry) Description() string {
+	return "At the beginning of each combat activate Effects."
 }

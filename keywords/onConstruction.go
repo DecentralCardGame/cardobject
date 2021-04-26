@@ -32,5 +32,9 @@ func (o onConstruction) ValidateStruct() error {
 }
 
 func (o onConstruction) InteractionText() string {
-	return "When another places spawns activate: §Effects."
+	return "OnConstruction: §Effects."
+}
+
+func (o onConstruction) Description() string {
+	return "When a friendly place spawns activate Effects."
 }

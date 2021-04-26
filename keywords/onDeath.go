@@ -34,5 +34,9 @@ func (o onDeath) ValidateStruct() error {
 }
 
 func (o onDeath) InteractionText() string {
-	return "When this dies activate: §Effects."
+	return "OnDeath: §Effects."
+}
+
+func (o onDeath) Description() string {
+	return "When this dies activate Effects."
 }

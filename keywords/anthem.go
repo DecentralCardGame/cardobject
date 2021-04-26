@@ -57,3 +57,7 @@ func (a anthem) ValidateStruct() error {
 func (a anthem) InteractionText() string {
 	return "Anthem §Tag."
 }
+
+func (a anthem) Description() string {
+	return "Anthem gives all friendly entities with a certain tag +1/+1."
+}

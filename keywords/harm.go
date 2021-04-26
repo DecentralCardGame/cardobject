@@ -44,3 +44,7 @@ func (h harm) ValidateStruct() error {
 func (h harm) InteractionText() string {
 	return "Harm §Amount."
 }
+
+func (h harm) Description() string {
+	return "Deal X damage to an opposing entity."
+}

@@ -32,5 +32,9 @@ func (o onSpawn) ValidateStruct() error {
 }
 
 func (o onSpawn) InteractionText() string {
-	return "When this spawns activate: §Effects."
+	return "OnSpawn: §Effects."
+}
+
+func (o onSpawn) description() string {
+	return "When this spawns activate Effects."
 }

@@ -32,5 +32,9 @@ func (a arrival) ValidateStruct() error {
 }
 
 func (a arrival) InteractionText() string {
-	return "When another entity spawns activate: §Effects."
+	return "Arrival: §Effects."
+}
+
+func (a arrival) Description() string {
+	return "When a friendly entity spawns activate Effects"
 }

@@ -30,5 +30,9 @@ func (p produce) ValidateStruct() error {
 }
 
 func (p produce) InteractionText() string {
-	return "Produce §ManaAmount mana."
+	return "Produce §ManaAmount."
+}
+
+func (p produce) Description() string {
+	return "Produce mana."
 }

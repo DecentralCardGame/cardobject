@@ -37,5 +37,9 @@ func (k kill) ValidateStruct() error {
 }
 
 func (k kill) InteractionText() string {
-	return "Kill an entity."
+	return "Kill"
+}
+
+func (k kill) Description() string {
+	return "Put an opposing entity from the field in the dustpile."
 }
