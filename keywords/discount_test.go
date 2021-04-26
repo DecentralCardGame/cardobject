@@ -5,7 +5,7 @@ import (
 )
 
 func TestDiscount(t *testing.T) {
-	discount := discount{3}
+	discount := discount{3, nil}
 	err := discount.Validate()
 	if err != nil {
 		t.Error(err)

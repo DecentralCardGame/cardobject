@@ -7,6 +7,7 @@ import (
 
 type discount struct {
 	Amount cardobject.SimpleIntValue
+	Type   *cardobject.CardType `json:",omitempty"`
 }
 
 func (d discount) Validate() error {
@@ -22,5 +23,5 @@ func (d discount) InteractionText() string {
 }
 
 func (d discount) Description() string {
-	return "Reduce manacost of all cards in your hand."
+	return "Reduce manacost of all cards of a type in your hand."
 }
