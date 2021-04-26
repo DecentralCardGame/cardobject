@@ -35,6 +35,7 @@ type effect struct {
 	Bounce    *bounce    `json:",omitempty"`
 	Discount  *discount  `json:",omitempty"`
 	Dismantle *dismantle `json:",omitempty"`
+	Dissolve  *dissolve  `json:",omitempty"`
 	Grow      *grow      `json:",omitempty"`
 	Harm      *harm      `json:",omitempty"`
 	Kill      *kill      `json:",omitempty"`
