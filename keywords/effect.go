@@ -30,22 +30,20 @@ func (e effects) ItemName() string {
 }
 
 type effect struct {
-	Anthem    *anthem    `json:",omitempty"`
-	Arm       *arm       `json:",omitempty"`
-	Bounce    *bounce    `json:",omitempty"`
-	Burn      *burn      `json:",omitempty"`
-	Discount  *discount  `json:",omitempty"`
-	Dismantle *dismantle `json:",omitempty"`
-	Dissolve  *dissolve  `json:",omitempty"`
-	Grow      *grow      `json:",omitempty"`
-	Harm      *harm      `json:",omitempty"`
-	Kill      *kill      `json:",omitempty"`
-	Insight   *insight   `json:",omitempty"`
-	Mill      *mill      `json:",omitempty"`
-	Produce   *produce   `json:",omitempty"`
-	Repair    *repair    `json:",omitempty"`
-	Void      *void      `json:",omitempty"`
-	Withdraw  *withdraw  `json:",omitempty"`
+	Anthem   *anthem   `json:",omitempty"`
+	Arm      *arm      `json:",omitempty"`
+	Bounce   *bounce   `json:",omitempty"`
+	Burn     *burn     `json:",omitempty"`
+	Discount *discount `json:",omitempty"`
+	Grow     *grow     `json:",omitempty"`
+	Harm     *harm     `json:",omitempty"`
+	Kill     *kill     `json:",omitempty"`
+	Insight  *insight  `json:",omitempty"`
+	Mill     *mill     `json:",omitempty"`
+	Produce  *produce  `json:",omitempty"`
+	Repair   *repair   `json:",omitempty"`
+	Void     *void     `json:",omitempty"`
+	Withdraw *withdraw `json:",omitempty"`
 }
 
 func (e effect) Validate() error {
