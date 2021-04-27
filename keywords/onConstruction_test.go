@@ -5,7 +5,7 @@ import (
 )
 
 func TestOnConstruction(t *testing.T) {
-	onConstruction := onConstruction{}
+	onConstruction := onConstruction{nil}
 	err := onConstruction.Validate()
 	if err != nil {
 		t.Error(err)
