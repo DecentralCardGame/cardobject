@@ -37,6 +37,7 @@ type effect struct {
 	Discount   *discount   `json:",omitempty"`
 	DrawAction *drawAction `json:",omitempty"`
 	DrawEntity *drawEntity `json:",omitempty"`
+	DrawPlace  *drawPlace  `json:",omitempty"`
 	Grow       *grow       `json:",omitempty"`
 	Harm       *harm       `json:",omitempty"`
 	Heal       *heal       `json:",omitempty"`
