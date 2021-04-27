@@ -50,6 +50,7 @@ type effect struct {
 	Reassemble    *reassemble    `json:",omitempty"`
 	RecoverAction *recoverAction `json:",omitempty"`
 	RecoverEntity *recoverEntity `json:",omitempty"`
+	RecoverPlace  *recoverPlace  `json:",omitempty"`
 	Resurrect     *resurrect     `json:",omitempty"`
 	Repair        *repair        `json:",omitempty"`
 	Silence       *silence       `json:",omitempty"`
