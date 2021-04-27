@@ -30,29 +30,30 @@ func (e effects) ItemName() string {
 }
 
 type effect struct {
-	Anthem     *anthem     `json:",omitempty"`
-	Arm        *arm        `json:",omitempty"`
-	Bounce     *bounce     `json:",omitempty"`
-	Burn       *burn       `json:",omitempty"`
-	CountPower *countPower `json:",omitempty"`
-	Discount   *discount   `json:",omitempty"`
-	DrawAction *drawAction `json:",omitempty"`
-	DrawEntity *drawEntity `json:",omitempty"`
-	DrawPlace  *drawPlace  `json:",omitempty"`
-	Grow       *grow       `json:",omitempty"`
-	Harm       *harm       `json:",omitempty"`
-	Heal       *heal       `json:",omitempty"`
-	Kill       *kill       `json:",omitempty"`
-	Insight    *insight    `json:",omitempty"`
-	Mill       *mill       `json:",omitempty"`
-	Produce    *produce    `json:",omitempty"`
-	Ravage     *ravage     `json:",omitempty"`
-	Reassemble *reassemble `json:",omitempty"`
-	Resurrect  *resurrect  `json:",omitempty"`
-	Repair     *repair     `json:",omitempty"`
-	Silence    *silence    `json:",omitempty"`
-	Void       *void       `json:",omitempty"`
-	Withdraw   *withdraw   `json:",omitempty"`
+	Anthem        *anthem        `json:",omitempty"`
+	Arm           *arm           `json:",omitempty"`
+	Bounce        *bounce        `json:",omitempty"`
+	Burn          *burn          `json:",omitempty"`
+	CountPower    *countPower    `json:",omitempty"`
+	Discount      *discount      `json:",omitempty"`
+	DrawAction    *drawAction    `json:",omitempty"`
+	DrawEntity    *drawEntity    `json:",omitempty"`
+	DrawPlace     *drawPlace     `json:",omitempty"`
+	Grow          *grow          `json:",omitempty"`
+	Harm          *harm          `json:",omitempty"`
+	Heal          *heal          `json:",omitempty"`
+	Kill          *kill          `json:",omitempty"`
+	Insight       *insight       `json:",omitempty"`
+	Mill          *mill          `json:",omitempty"`
+	Produce       *produce       `json:",omitempty"`
+	Ravage        *ravage        `json:",omitempty"`
+	Reassemble    *reassemble    `json:",omitempty"`
+	RecoverAction *recoverAction `json:",omitempty"`
+	Resurrect     *resurrect     `json:",omitempty"`
+	Repair        *repair        `json:",omitempty"`
+	Silence       *silence       `json:",omitempty"`
+	Void          *void          `json:",omitempty"`
+	Withdraw      *withdraw      `json:",omitempty"`
 }
 
 func (e effect) Validate() error {
