@@ -36,6 +36,7 @@ type ability struct {
 	DiscardPay     *discardPay     `json:",omitempty"`
 	Dismantle      *dismantle      `json:",omitempty"`
 	Dissolve       *dissolve       `json:",omitempty"`
+	Loot           *loot           `json:",omitempty"`
 	OnConstruction *onConstruction `json:",omitempty"`
 	OnDeath        *onDeath        `json:",omitempty"`
 	OnSpawn        *onSpawn        `json:",omitempty"`
