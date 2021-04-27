@@ -49,6 +49,7 @@ type effect struct {
 	Ravage        *ravage        `json:",omitempty"`
 	Reassemble    *reassemble    `json:",omitempty"`
 	RecoverAction *recoverAction `json:",omitempty"`
+	RecoverEntity *recoverEntity `json:",omitempty"`
 	Resurrect     *resurrect     `json:",omitempty"`
 	Repair        *repair        `json:",omitempty"`
 	Silence       *silence       `json:",omitempty"`
