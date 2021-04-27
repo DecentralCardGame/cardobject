@@ -46,6 +46,7 @@ type effect struct {
 	Mill       *mill       `json:",omitempty"`
 	Produce    *produce    `json:",omitempty"`
 	Reassemble *reassemble `json:",omitempty"`
+	Resurrect  *resurrect  `json:",omitempty"`
 	Repair     *repair     `json:",omitempty"`
 	Silence    *silence    `json:",omitempty"`
 	Void       *void       `json:",omitempty"`
