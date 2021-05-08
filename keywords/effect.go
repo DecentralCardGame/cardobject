@@ -30,6 +30,7 @@ func (e effects) ItemName() string {
 }
 
 type effect struct {
+	Ambush        *ambush        `json:",omitempty"`
 	Anthem        *anthem        `json:",omitempty"`
 	Arm           *arm           `json:",omitempty"`
 	Armor         *armor         `json:",omitempty"`
