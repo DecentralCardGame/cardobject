@@ -56,6 +56,7 @@ type effect struct {
 	Resurrect     *resurrect     `json:",omitempty"`
 	Repair        *repair        `json:",omitempty"`
 	Silence       *silence       `json:",omitempty"`
+	Spawn         *spawn         `json:",omitempty"`
 	Strengthen    *strengthen    `json:",omitempty"`
 	Void          *void          `json:",omitempty"`
 	Withdraw      *withdraw      `json:",omitempty"`
