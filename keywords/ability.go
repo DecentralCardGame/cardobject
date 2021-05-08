@@ -42,7 +42,6 @@ type ability struct {
 	OnSpawn        *onSpawn        `json:",omitempty"`
 	Pay            *pay            `json:",omitempty"`
 	Periodic       *periodic       `json:",omitempty"`
-	Regenerate     *regenerate     `json:",omitempty"`
 	Tribute        *tribute        `json:",omitempty"`
 }
 
