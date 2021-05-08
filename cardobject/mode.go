@@ -37,6 +37,9 @@ const Random = "RANDOM"
 //Target Mode
 const Target = "TARGET"
 
+//This Mode
+const This = "THIS"
+
 //You Mode
 const You = "YOU"
 
@@ -47,7 +50,7 @@ var intChangeModes []string = []string{Increases, Decreases, Changes}
 var stringChangeModes []string = []string{Changes}
 
 var playerModes []string = []string{You, Opponent}
-var cardModes []string = []string{All, OpponentsChoice, Random, Target}
+var cardModes []string = []string{All, This, Random, Target}
 var ownerModes []string = []string{Your, Opponents, Owners}
 
 type IntChangeMode jsonschema.BasicEnum
