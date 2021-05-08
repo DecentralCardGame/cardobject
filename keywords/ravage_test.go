@@ -5,7 +5,7 @@ import (
 )
 
 func TestRavage(t *testing.T) {
-	ravage := ravage{3}
+	ravage := ravage{"RANDOM", 3}
 	err := ravage.Validate()
 	if err != nil {
 		t.Error(err)

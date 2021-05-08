@@ -5,7 +5,7 @@ import (
 )
 
 func TestArm(t *testing.T) {
-	arm := arm{3}
+	arm := arm{"THIS", 3}
 	err := arm.Validate()
 	if err != nil {
 		t.Error(err)

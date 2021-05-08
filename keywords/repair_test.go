@@ -5,7 +5,7 @@ import (
 )
 
 func TestRepair(t *testing.T) {
-	repair := repair{3}
+	repair := repair{"ALL", 3}
 	err := repair.Validate()
 	if err != nil {
 		t.Error(err)

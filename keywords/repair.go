@@ -6,6 +6,7 @@ import (
 )
 
 type repair struct {
+	Target cardobject.CardMode
 	Amount cardobject.SimpleIntValue
 }
 
@@ -18,7 +19,7 @@ func (r repair) ValidateStruct() error {
 }
 
 func (r repair) InteractionText() string {
-	return "Repair §Amount."
+	return "Repair §Target §Amount."
 }
 
 func (r repair) Description() string {

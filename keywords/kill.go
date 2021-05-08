@@ -1,10 +1,13 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-type kill struct{}
+type kill struct {
+	Target cardobject.CardMode
+}
 
 func (k kill) Validate() error {
 	return k.ValidateStruct()
@@ -15,7 +18,7 @@ func (k kill) ValidateStruct() error {
 }
 
 func (k kill) InteractionText() string {
-	return "Kill"
+	return "Kill §Target"
 }
 
 func (k kill) Description() string {

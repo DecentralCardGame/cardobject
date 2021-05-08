@@ -6,6 +6,7 @@ import (
 )
 
 type ravage struct {
+	Target cardobject.CardMode
 	Amount cardobject.SimpleIntValue
 }
 
@@ -18,7 +19,7 @@ func (r ravage) ValidateStruct() error {
 }
 
 func (r ravage) InteractionText() string {
-	return "Ravage §Amount."
+	return "Ravage §Target §Amount."
 }
 
 func (r ravage) Description() string {

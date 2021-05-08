@@ -1,10 +1,13 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-type heal struct{}
+type heal struct {
+	Target cardobject.CardMode
+}
 
 func (h heal) Validate() error {
 	return h.ValidateStruct()
@@ -15,7 +18,7 @@ func (h heal) ValidateStruct() error {
 }
 
 func (h heal) InteractionText() string {
-	return "Heal"
+	return "Heal §Target"
 }
 
 func (h heal) Description() string {

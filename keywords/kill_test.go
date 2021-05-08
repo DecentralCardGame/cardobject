@@ -5,7 +5,7 @@ import (
 )
 
 func TestKill(t *testing.T) {
-	kill := kill{}
+	kill := kill{"TARGET"}
 	err := kill.Validate()
 	if err != nil {
 		t.Error(err)

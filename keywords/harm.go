@@ -6,6 +6,7 @@ import (
 )
 
 type harm struct {
+	Target cardobject.CardMode
 	Amount cardobject.SimpleIntValue
 }
 
@@ -18,7 +19,7 @@ func (h harm) ValidateStruct() error {
 }
 
 func (h harm) InteractionText() string {
-	return "Harm §Amount."
+	return "Harm §Target §Amount."
 }
 
 func (h harm) Description() string {

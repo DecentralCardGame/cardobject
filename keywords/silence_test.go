@@ -5,7 +5,7 @@ import (
 )
 
 func TestSilence(t *testing.T) {
-	silence := silence{"YOU"}
+	silence := silence{"ALL", "YOU"}
 	err := silence.Validate()
 	if err != nil {
 		t.Error(err)
