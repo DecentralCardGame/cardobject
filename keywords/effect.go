@@ -37,6 +37,7 @@ type effect struct {
 	Bounce        *bounce        `json:",omitempty"`
 	Burn          *burn          `json:",omitempty"`
 	CountPower    *countPower    `json:",omitempty"`
+	Dice          *dice          `json:",omitempty"`
 	Discount      *discount      `json:",omitempty"`
 	DrawAction    *drawAction    `json:",omitempty"`
 	DrawEntity    *drawEntity    `json:",omitempty"`
