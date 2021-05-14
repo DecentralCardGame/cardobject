@@ -23,5 +23,5 @@ func (d discardPay) InteractionText() string {
 }
 
 func (d discardPay) Description() string {
-	return "Pay Mana and discard a card to activate Effects."
+	return "Discard a card and pay Mana(optional) to activate Effects."
 }
