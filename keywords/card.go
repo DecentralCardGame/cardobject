@@ -21,14 +21,15 @@ func (c Card) ValidateInterface() error {
 }
 
 type action struct {
-	CardName    cardobject.CardName
-	CastingCost cardobject.CastingCost
-	Class       cardobject.Class
-	Effects     effects
-	FlavourText cardobject.FlavourText
-	Tags        cardobject.Tags
-	Keywords    cardobject.Keywords
-	RulesTexts  cardobject.RulesTexts
+	CardName       cardobject.CardName
+	CastingCost    cardobject.CastingCost
+	AdditionalCost *cardobject.AdditionalCost `json:",omitempty"`
+	Class          cardobject.Class
+	Effects        effects
+	FlavourText    cardobject.FlavourText
+	Tags           cardobject.Tags
+	Keywords       cardobject.Keywords
+	RulesTexts     cardobject.RulesTexts
 }
 
 func (a action) Validate() error {
@@ -40,20 +41,21 @@ func (a action) ValidateStruct() error {
 }
 
 func (a action) InteractionText() string {
-	return "§CardName §CastingCost §Class §Effects §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §CastingCost §AdditionalCost §Class §Effects §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type entity struct {
-	CardName    cardobject.CardName
-	CastingCost cardobject.CastingCost
-	Class       cardobject.Class
-	Abilities   abilities
-	Attack      cardobject.Attack
-	Health      cardobject.Health
-	FlavourText cardobject.FlavourText
-	Tags        cardobject.Tags
-	Keywords    cardobject.Keywords
-	RulesTexts  cardobject.RulesTexts
+	CardName       cardobject.CardName
+	CastingCost    cardobject.CastingCost
+	AdditionalCost *cardobject.AdditionalCost `json:",omitempty"`
+	Class          cardobject.Class
+	Abilities      abilities
+	Attack         cardobject.Attack
+	Health         cardobject.Health
+	FlavourText    cardobject.FlavourText
+	Tags           cardobject.Tags
+	Keywords       cardobject.Keywords
+	RulesTexts     cardobject.RulesTexts
 }
 
 func (e entity) Validate() error {
@@ -65,19 +67,20 @@ func (e entity) ValidateStruct() error {
 }
 
 func (e entity) InteractionText() string {
-	return "§CardName §CastingCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type place struct {
-	CardName    cardobject.CardName
-	CastingCost cardobject.CastingCost
-	Class       cardobject.Class
-	Abilities   abilities
-	Health      cardobject.Health
-	FlavourText cardobject.FlavourText
-	Tags        cardobject.Tags
-	Keywords    cardobject.Keywords
-	RulesTexts  cardobject.RulesTexts
+	CardName       cardobject.CardName
+	CastingCost    cardobject.CastingCost
+	AdditionalCost *cardobject.AdditionalCost `json:",omitempty"`
+	Class          cardobject.Class
+	Abilities      abilities
+	Health         cardobject.Health
+	FlavourText    cardobject.FlavourText
+	Tags           cardobject.Tags
+	Keywords       cardobject.Keywords
+	RulesTexts     cardobject.RulesTexts
 }
 
 func (p place) Validate() error {
@@ -89,7 +92,7 @@ func (p place) ValidateStruct() error {
 }
 
 func (p place) InteractionText() string {
-	return "§CardName §CastingCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type headquarter struct {

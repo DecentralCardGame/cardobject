@@ -23,6 +23,24 @@ func (c Cost) InteractionText() string {
 	return "§ManaCost §SacrificeCost §DiscardCost §VoidCost"
 }
 
+type AdditionalCost struct {
+	SacrificeCost *SacrificeCost `json:",omitempty"`
+	DiscardCost   *DiscardCost   `json:",omitempty"`
+	VoidCost      *VoidCost      `json:",omitempty"`
+}
+
+func (a AdditionalCost) Validate() error {
+	return a.ValidateStruct()
+}
+
+func (a AdditionalCost) ValidateStruct() error {
+	return jsonschema.ValidateStruct(a)
+}
+
+func (a AdditionalCost) InteractionText() string {
+	return "§SacrificeCost §DiscardCost §VoidCost"
+}
+
 type ManaCost struct {
 	CostAmount BasicAmount
 }

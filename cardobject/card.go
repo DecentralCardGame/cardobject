@@ -20,14 +20,15 @@ func (c Card) ValidateInterface() error {
 }
 
 type Action struct {
-	CardName    CardName
-	CastingCost CastingCost
-	Class       Class
-	Effects     Effects
-	FlavourText FlavourText
-	Tags        Tags
-	Keywords    Keywords
-	RulesTexts  RulesTexts
+	CardName       CardName
+	CastingCost    CastingCost
+	AdditionalCost *AdditionalCost `json:",omitempty"`
+	Class          Class
+	Effects        Effects
+	FlavourText    FlavourText
+	Tags           Tags
+	Keywords       Keywords
+	RulesTexts     RulesTexts
 }
 
 func (a Action) Validate() error {
@@ -39,20 +40,21 @@ func (a Action) ValidateStruct() error {
 }
 
 func (a Action) InteractionText() string {
-	return "§CardName §CastingCost §Class §Effects §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §CastingCost §AdditionalCost §Class §Effects §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type Entity struct {
-	CardName    CardName
-	CastingCost CastingCost
-	Class       Class
-	Abilities   Abilities
-	Attack      Attack
-	Health      Health
-	FlavourText FlavourText
-	Tags        Tags
-	Keywords    Keywords
-	RulesTexts  RulesTexts
+	CardName       CardName
+	CastingCost    CastingCost
+	AdditionalCost *AdditionalCost `json:",omitempty"`
+	Class          Class
+	Abilities      Abilities
+	Attack         Attack
+	Health         Health
+	FlavourText    FlavourText
+	Tags           Tags
+	Keywords       Keywords
+	RulesTexts     RulesTexts
 }
 
 func (e Entity) Validate() error {
@@ -64,19 +66,20 @@ func (e Entity) ValidateStruct() error {
 }
 
 func (a Entity) InteractionText() string {
-	return "§CardName §CastingCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type Place struct {
-	CardName    CardName
-	CastingCost CastingCost
-	Class       Class
-	Abilities   Abilities
-	Health      Health
-	FlavourText FlavourText
-	Tags        Tags
-	Keywords    Keywords
-	RulesTexts  RulesTexts
+	CardName       CardName
+	CastingCost    CastingCost
+	AdditionalCost *AdditionalCost `json:",omitempty"`
+	Class          Class
+	Abilities      Abilities
+	Health         Health
+	FlavourText    FlavourText
+	Tags           Tags
+	Keywords       Keywords
+	RulesTexts     RulesTexts
 }
 
 func (p Place) Validate() error {
@@ -88,7 +91,7 @@ func (p Place) ValidateStruct() error {
 }
 
 func (a Place) InteractionText() string {
-	return "§CardName §CastingCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts"
 }
 
 type Headquarter struct {
