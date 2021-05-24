@@ -6,6 +6,18 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
+//CULTURE Class
+const CULTURE = "CULTURE"
+
+//NATURE Class
+const NATURE = "NATURE"
+
+//MYSTICISM Class
+const MYSTICISM = "MYSTICISM"
+
+//TECHNOLOGY Class
+const TECHNOLOGY = "TECHNOLOGY"
+
 type Class struct {
 	Nature     Nature
 	Mysticism  Mysticism
