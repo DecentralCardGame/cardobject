@@ -3,9 +3,8 @@ package cardobject
 import "github.com/DecentralCardGame/cardobject/jsonschema"
 
 type IntValue struct {
-	ComplexIntValue *ComplexIntValue `json:",omitempty"`
-	SimpleIntValue  *SimpleIntValue  `json:",omitempty"`
-	IntVariable     *IntVariableName `json:",omitempty"`
+	SimpleIntValue *SimpleIntValue  `json:",omitempty"`
+	IntVariable    *IntVariableName `json:",omitempty"`
 }
 
 func (i IntValue) Validate() error {
