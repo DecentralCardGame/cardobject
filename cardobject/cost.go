@@ -58,8 +58,7 @@ func (m ManaCost) InteractionText() string {
 }
 
 type SacrificeCost struct {
-	Amount     BasicAmount
-	Conditions *CardConditions
+	Amount BasicAmount
 }
 
 func (s SacrificeCost) Validate() error {
@@ -71,12 +70,11 @@ func (s SacrificeCost) ValidateStruct() error {
 }
 
 func (s SacrificeCost) InteractionText() string {
-	return "Sacrifice §Amount card §Conditions"
+	return "Sacrifice §Amount card"
 }
 
 type DiscardCost struct {
-	Amount     BasicAmount
-	Conditions *CardConditions
+	Amount BasicAmount
 }
 
 func (d DiscardCost) Validate() error {
@@ -88,12 +86,11 @@ func (d DiscardCost) ValidateStruct() error {
 }
 
 func (d DiscardCost) InteractionText() string {
-	return "Discard §Amount card §Conditions"
+	return "Discard §Amount card"
 }
 
 type VoidCost struct {
-	Amount     BasicAmount
-	Conditions *CardConditions
+	Amount BasicAmount
 }
 
 func (v VoidCost) Validate() error {
@@ -105,5 +102,5 @@ func (v VoidCost) ValidateStruct() error {
 }
 
 func (v VoidCost) InteractionText() string {
-	return "Void §Amount card §Conditions"
+	return "Void §Amount card"
 }
