@@ -2,10 +2,14 @@ package keywords
 
 import (
 	"testing"
+
+	"github.com/DecentralCardGame/cardobject/cardobject"
 )
 
 func TestProduce(t *testing.T) {
-	produce := produce{4}
+	simpleIntValue := cardobject.SimpleIntValue(3)
+	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
+	produce := produce{intValue}
 	err := produce.Validate()
 	if err != nil {
 		t.Error(err)

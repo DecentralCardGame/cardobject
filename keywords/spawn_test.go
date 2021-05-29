@@ -2,10 +2,14 @@ package keywords
 
 import (
 	"testing"
+
+	"github.com/DecentralCardGame/cardobject/cardobject"
 )
 
 func TestSpawn(t *testing.T) {
-	spawn := spawn{"2/2 Bot", 5}
+	intVariable := cardobject.IntVariableName("X")
+	intValue := cardobject.IntValue{SimpleIntValue: nil, IntVariable: &intVariable}
+	spawn := spawn{"2/2 Bot", intValue}
 	err := spawn.Validate()
 	if err != nil {
 		t.Error(err)

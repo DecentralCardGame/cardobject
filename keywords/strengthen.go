@@ -7,7 +7,7 @@ import (
 
 type strengthen struct {
 	Target cardobject.CardMode
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 }
 
 func (s strengthen) Validate() error {

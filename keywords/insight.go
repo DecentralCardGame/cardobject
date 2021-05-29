@@ -6,7 +6,7 @@ import (
 )
 
 type insight struct {
-	WisdomAmount cardobject.SimpleIntValue
+	WisdomAmount cardobject.IntValue
 }
 
 func (i insight) Validate() error {

@@ -6,7 +6,7 @@ import (
 )
 
 type dice struct {
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 }
 
 func (d dice) Validate() error {

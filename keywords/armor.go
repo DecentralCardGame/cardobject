@@ -6,7 +6,7 @@ import (
 )
 
 type armor struct {
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 }
 
 func (a armor) Validate() error {

@@ -6,7 +6,7 @@ import (
 )
 
 type discount struct {
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 	Type   *cardobject.CardType `json:",omitempty"`
 }
 

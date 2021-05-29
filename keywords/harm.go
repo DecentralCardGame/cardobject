@@ -7,7 +7,7 @@ import (
 
 type harm struct {
 	Target cardobject.CardMode
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 }
 
 func (h harm) Validate() error {

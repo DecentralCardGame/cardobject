@@ -7,7 +7,7 @@ import (
 
 type ravage struct {
 	Target cardobject.CardMode
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 }
 
 func (r ravage) Validate() error {

@@ -2,10 +2,14 @@ package keywords
 
 import (
 	"testing"
+
+	"github.com/DecentralCardGame/cardobject/cardobject"
 )
 
 func TestHarm(t *testing.T) {
-	harm := harm{"RANDOM", 3}
+	simpleIntValue := cardobject.SimpleIntValue(3)
+	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
+	harm := harm{"RANDOM", intValue}
 	err := harm.Validate()
 	if err != nil {
 		t.Error(err)

@@ -7,7 +7,7 @@ import (
 
 type arm struct {
 	Target cardobject.CardMode
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 }
 
 func (a arm) Validate() error {

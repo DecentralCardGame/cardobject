@@ -6,7 +6,7 @@ import (
 )
 
 type selfBurn struct {
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 }
 
 func (s selfBurn) Validate() error {

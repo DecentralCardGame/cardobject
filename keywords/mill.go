@@ -6,7 +6,7 @@ import (
 )
 
 type mill struct {
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 	Player *cardobject.PlayerMode `json:",omitempty"`
 }
 

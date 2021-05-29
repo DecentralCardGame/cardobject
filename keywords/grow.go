@@ -6,7 +6,7 @@ import (
 )
 
 type grow struct {
-	GrowthAmount cardobject.SimpleIntValue
+	GrowthAmount cardobject.IntValue
 }
 
 func (g grow) Validate() error {

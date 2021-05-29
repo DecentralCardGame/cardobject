@@ -6,7 +6,7 @@ import (
 )
 
 type burn struct {
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 }
 
 func (b burn) Validate() error {

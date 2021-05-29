@@ -2,10 +2,14 @@ package keywords
 
 import (
 	"testing"
+
+	"github.com/DecentralCardGame/cardobject/cardobject"
 )
 
 func TestSelfBurn(t *testing.T) {
-	selfBurn := selfBurn{3}
+	intVariable := cardobject.IntVariableName("X")
+	intValue := cardobject.IntValue{SimpleIntValue: nil, IntVariable: &intVariable}
+	selfBurn := selfBurn{intValue}
 	err := selfBurn.Validate()
 	if err != nil {
 		t.Error(err)

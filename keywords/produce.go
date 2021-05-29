@@ -6,7 +6,7 @@ import (
 )
 
 type produce struct {
-	ManaAmount cardobject.SimpleIntValue
+	ManaAmount cardobject.IntValue
 }
 
 func (p produce) Validate() error {

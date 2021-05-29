@@ -7,7 +7,7 @@ import (
 
 type spawn struct {
 	TokenType cardobject.TokenType
-	Amount    cardobject.SimpleIntValue
+	Amount    cardobject.IntValue
 }
 
 func (s spawn) Validate() error {

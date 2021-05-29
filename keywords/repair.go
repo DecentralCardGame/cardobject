@@ -7,7 +7,7 @@ import (
 
 type repair struct {
 	Target cardobject.CardMode
-	Amount cardobject.SimpleIntValue
+	Amount cardobject.IntValue
 }
 
 func (r repair) Validate() error {

@@ -2,10 +2,14 @@ package keywords
 
 import (
 	"testing"
+
+	"github.com/DecentralCardGame/cardobject/cardobject"
 )
 
 func TestStrengthen(t *testing.T) {
-	strengthen := strengthen{"ALL", 3}
+	intVariable := cardobject.IntVariableName("X")
+	intValue := cardobject.IntValue{SimpleIntValue: nil, IntVariable: &intVariable}
+	strengthen := strengthen{"ALL", intValue}
 	err := strengthen.Validate()
 	if err != nil {
 		t.Error(err)
