@@ -10,12 +10,24 @@ type cardObject struct {
 	Action *action
 }
 
-func (c cardObject) Validate() error {
-	return c.ValidateInterface()
+func (c cardObject) CheckRootRequirements(s []string) error {
+	return nil
 }
 
-func (c cardObject) ValidateInterface() error {
-	return ValidateInterface(c)
+func (c cardObject) ValidateRoot() error {
+	return c.Validate(c)
+}
+
+func (c cardObject) Validate(r RootElement) error {
+	implementer, err := c.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
+}
+
+func (c cardObject) FindImplementer() (Validateable, error) {
+	return FindImplementer(c)
 }
 
 type action struct {
@@ -29,12 +41,8 @@ func (a action) Classes() []string {
 	return []string{"Technology", "Nature"}
 }
 
-func (a action) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a action) ValidateStruct() error {
-	return ValidateStruct(a)
+func (a action) Validate(r RootElement) error {
+	return ValidateStruct(a, r)
 }
 
 func (a action) InteractionText() string {
@@ -47,14 +55,10 @@ func (a action) Description() string {
 
 type costs []cost
 
-func (c costs) Validate() error {
-	return c.ValidateArray()
-}
-
-func (c costs) ValidateArray() error {
+func (c costs) Validate(r RootElement) error {
 	errorRange := []error{}
 	for _, v := range c {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -72,11 +76,7 @@ func (c costs) ItemName() string {
 
 type cost BasicEnum
 
-func (c cost) Validate() error {
-	return c.ValidateEnum()
-}
-
-func (c cost) ValidateEnum() error {
+func (c cost) Validate(r RootElement) error {
 	return nil
 }
 
@@ -86,11 +86,7 @@ func (c cost) EnumValues() []string {
 
 type name BasicString
 
-func (n name) Validate() error {
-	return n.ValidateString()
-}
-
-func (n name) ValidateString() error {
+func (n name) Validate(r RootElement) error {
 	return nil
 }
 
@@ -100,11 +96,7 @@ func (n name) MinMaxLength() (int, int) {
 
 type time BasicInt
 
-func (t time) Validate() error {
-	return t.ValidateInt()
-}
-
-func (t time) ValidateInt() error {
+func (t time) Validate(r RootElement) error {
 	return nil
 }
 
@@ -114,12 +106,12 @@ func (t time) MinMax() (int, int) {
 
 type multipleUse BasicBool
 
-func (m multipleUse) Validate() error {
-	return m.ValidateBool()
+func (m multipleUse) Validate(r RootElement) error {
+	return nil
 }
 
-func (m multipleUse) ValidateBool() error {
-	return nil
+func (m multipleUse) Default() bool {
+	return false
 }
 
 func TestReflect(t *testing.T) {
@@ -149,7 +141,7 @@ func TestValidate(t *testing.T) {
 
 	//println(c.Action.Name)
 	//validateErr := c.Action.Time.Validate
-	validateErr := c.Validate()
+	validateErr := c.ValidateRoot()
 	if validateErr != nil {
 		t.Error(validateErr)
 	}

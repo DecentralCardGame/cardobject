@@ -6,14 +6,10 @@ import (
 
 type abilities []ability
 
-func (a abilities) Validate() error {
-	return a.ValidateArray()
-}
-
-func (a abilities) ValidateArray() error {
+func (a abilities) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range a {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -45,10 +41,14 @@ type ability struct {
 	Tribute        *tribute        `json:",omitempty"`
 }
 
-func (a ability) Validate() error {
-	return a.ValidateInterface()
+func (a ability) Validate(r jsonschema.RootElement) error {
+	implementer, err := a.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (a ability) ValidateInterface() error {
-	return jsonschema.ValidateInterface(a)
+func (a ability) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(a)
 }

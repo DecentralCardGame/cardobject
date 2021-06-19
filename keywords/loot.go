@@ -8,12 +8,8 @@ type loot struct {
 	Effects effects
 }
 
-func (l loot) Validate() error {
-	return l.ValidateStruct()
-}
-
-func (l loot) ValidateStruct() error {
-	return jsonschema.ValidateStruct(l)
+func (l loot) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(l, r)
 }
 
 func (l loot) InteractionText() string {

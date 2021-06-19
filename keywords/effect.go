@@ -6,14 +6,10 @@ import (
 
 type effects []effect
 
-func (e effects) Validate() error {
-	return e.ValidateArray()
-}
-
-func (e effects) ValidateArray() error {
+func (e effects) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range e {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -65,10 +61,14 @@ type effect struct {
 	Withdraw      *withdraw      `json:",omitempty"`
 }
 
-func (e effect) Validate() error {
-	return e.ValidateInterface()
+func (e effect) Validate(r jsonschema.RootElement) error {
+	implementer, err := e.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (e effect) ValidateInterface() error {
-	return jsonschema.ValidateInterface(e)
+func (e effect) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(e)
 }

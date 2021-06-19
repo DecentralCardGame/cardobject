@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func ValidateStruct(s structType) error {
+func ValidateStruct(s structType, r RootElement) error {
 	errorRange := []error{}
 	v := reflect.ValueOf(s)
 	t := reflect.TypeOf(s)
@@ -14,8 +14,8 @@ func ValidateStruct(s structType) error {
 		field := v.Field(i)
 
 		if field.Kind() != reflect.Ptr || !field.IsNil() {
-			fieldValue := field.Interface().(validateable)
-			errorRange = append(errorRange, fieldValue.Validate())
+			fieldValue := field.Interface().(Validateable)
+			errorRange = append(errorRange, fieldValue.Validate(r))
 		} else {
 			fieldType := t.Field(i)
 			tags, exists := fieldType.Tag.Lookup("json")
@@ -29,24 +29,24 @@ func ValidateStruct(s structType) error {
 	return CombineErrors(errorRange)
 }
 
-func ValidateInterface(i interfaceType) error {
+func FindImplementer(i interfaceType) (Validateable, error) {
 	valueOfB := reflect.ValueOf(i)
 	typeOfB := reflect.TypeOf(i)
-	possibleImplementer := []validateable{}
+	possibleImplementer := []Validateable{}
 	for k := 0; k < valueOfB.NumField(); k++ {
 		if !typeOfB.Field(k).Anonymous {
-			possibleImplementer = append(possibleImplementer, valueOfB.Field(k).Interface().(validateable))
+			possibleImplementer = append(possibleImplementer, valueOfB.Field(k).Interface().(Validateable))
 		}
 	}
-	implementer, error := xorInterface(possibleImplementer)
+	implementer, error := getDefinedValidateable(possibleImplementer)
 	if implementer == nil || error != nil {
-		return errors.New(typeOfB.Name() + " implemented by not exactly one option")
+		return nil, errors.New(typeOfB.Name() + " implemented by not exactly one option")
 	}
-	return implementer.Validate()
+	return implementer, nil
 }
 
-func xorInterface(possibleImplementer []validateable) (validateable, error) {
-	var implementer validateable
+func getDefinedValidateable(possibleImplementer []Validateable) (Validateable, error) {
+	var implementer Validateable
 	implementerFound := false
 	for _, b := range possibleImplementer {
 		if !reflect.ValueOf(b).IsNil() {

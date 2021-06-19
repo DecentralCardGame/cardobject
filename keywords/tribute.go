@@ -8,12 +8,8 @@ type tribute struct {
 	Effects effects
 }
 
-func (t tribute) Validate() error {
-	return t.ValidateStruct()
-}
-
-func (t tribute) ValidateStruct() error {
-	return jsonschema.ValidateStruct(t)
+func (t tribute) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(t, r)
 }
 
 func (t tribute) InteractionText() string {

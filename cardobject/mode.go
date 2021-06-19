@@ -55,11 +55,7 @@ var ownerModes []string = []string{Your, Opponents, Owners}
 
 type IntChangeMode jsonschema.BasicEnum
 
-func (i IntChangeMode) Validate() error {
-	return i.ValidateEnum()
-}
-
-func (i IntChangeMode) ValidateEnum() error {
+func (i IntChangeMode) Validate(r jsonschema.RootElement) error {
 	values := i.EnumValues()
 	for _, v := range values {
 		if v == string(i) {
@@ -75,11 +71,7 @@ func (i IntChangeMode) EnumValues() []string {
 
 type StringChangeMode jsonschema.BasicEnum
 
-func (s StringChangeMode) Validate() error {
-	return s.ValidateEnum()
-}
-
-func (s StringChangeMode) ValidateEnum() error {
+func (s StringChangeMode) Validate(r jsonschema.RootElement) error {
 	values := s.EnumValues()
 	for _, v := range values {
 		if v == string(s) {
@@ -95,11 +87,7 @@ func (s StringChangeMode) EnumValues() []string {
 
 type PlayerMode jsonschema.BasicEnum
 
-func (p PlayerMode) Validate() error {
-	return p.ValidateEnum()
-}
-
-func (p PlayerMode) ValidateEnum() error {
+func (p PlayerMode) Validate(r jsonschema.RootElement) error {
 	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {
@@ -115,11 +103,7 @@ func (p PlayerMode) EnumValues() []string {
 
 type CardMode jsonschema.BasicEnum
 
-func (c CardMode) Validate() error {
-	return c.ValidateEnum()
-}
-
-func (c CardMode) ValidateEnum() error {
+func (c CardMode) Validate(r jsonschema.RootElement) error {
 	values := c.EnumValues()
 	for _, v := range values {
 		if v == string(c) {
@@ -135,11 +119,7 @@ func (c CardMode) EnumValues() []string {
 
 type OwnerMode jsonschema.BasicEnum
 
-func (o OwnerMode) Validate() error {
-	return o.ValidateEnum()
-}
-
-func (o OwnerMode) ValidateEnum() error {
+func (o OwnerMode) Validate(r jsonschema.RootElement) error {
 	values := o.EnumValues()
 	for _, v := range values {
 		if v == string(o) {

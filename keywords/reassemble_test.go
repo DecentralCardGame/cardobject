@@ -6,7 +6,7 @@ import (
 
 func TestReassemble(t *testing.T) {
 	reassemble := reassemble{}
-	err := reassemble.Validate()
+	err := reassemble.Validate(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

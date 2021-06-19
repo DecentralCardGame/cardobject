@@ -9,12 +9,8 @@ type bounce struct {
 	Target cardobject.CardMode
 }
 
-func (b bounce) Validate() error {
-	return b.ValidateStruct()
-}
-
-func (b bounce) ValidateStruct() error {
-	return jsonschema.ValidateStruct(b)
+func (b bounce) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(b, r)
 }
 
 func (b bounce) InteractionText() string {

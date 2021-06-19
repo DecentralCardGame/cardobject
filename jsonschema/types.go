@@ -1,7 +1,12 @@
 package jsonschema
 
-type validateable interface {
-	Validate() error
+type Validateable interface {
+	Validate(RootElement) error
+}
+
+type RootElement interface {
+	ValidateRoot() error
+	CheckRootRequirements([]string) error
 }
 
 type classBound interface {
@@ -9,42 +14,37 @@ type classBound interface {
 }
 
 type structType interface {
-	validateable
-	ValidateStruct() error
+	Validateable
 	InteractionText() string
 }
 
 type interfaceType interface {
-	validateable
-	ValidateInterface() error
+	Validateable
+	FindImplementer() (Validateable, error)
 }
 
 type arrayType interface {
-	validateable
-	ValidateArray() error
+	Validateable
 	MinMaxItems() (int, int)
 	ItemName() string
 }
 
 type enumType interface {
-	validateable
-	ValidateEnum() error
+	Validateable
 	EnumValues() []string
 }
 
 type stringType interface {
-	validateable
-	ValidateString() error
+	Validateable
 	MinMaxLength() (int, int)
 }
 
 type intType interface {
-	validateable
-	ValidateInt() error
+	Validateable
 	MinMax() (int, int)
 }
 
 type boolType interface {
-	validateable
-	ValidateBool() error
+	Validateable
+	Default() bool
 }

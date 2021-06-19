@@ -12,14 +12,10 @@ const minRulesTextLength int = 0
 
 type RulesTexts []RulesText
 
-func (r RulesTexts) Validate() error {
-	return r.ValidateArray()
-}
-
-func (r RulesTexts) ValidateArray() error {
+func (rt RulesTexts) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
-	for _, v := range r {
-		err := v.Validate()
+	for _, v := range rt {
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -37,13 +33,9 @@ func (r RulesTexts) ItemName() string {
 
 type RulesText jsonschema.BasicString
 
-func (r RulesText) Validate() error {
-	return r.ValidateString()
-}
-
-func (r RulesText) ValidateString() error {
-	minLength, maxLength := r.MinMaxLength()
-	length := len(string(r))
+func (rt RulesText) Validate(r jsonschema.RootElement) error {
+	minLength, maxLength := rt.MinMaxLength()
+	length := len(string(rt))
 	if length < minLength || length > maxLength {
 		return errors.New("RulesText must be between " + strconv.Itoa(minLength) + " and " + strconv.Itoa(maxLength) + " characters long")
 	}

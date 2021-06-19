@@ -10,12 +10,8 @@ type arm struct {
 	Amount cardobject.IntValue
 }
 
-func (a arm) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a arm) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a arm) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a arm) InteractionText() string {

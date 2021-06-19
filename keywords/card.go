@@ -12,12 +12,24 @@ type Card struct {
 	Headquarter *headquarter `json:",omitempty"`
 }
 
-func (c Card) Validate() error {
-	return c.ValidateInterface()
+func (c Card) ValidateRoot() error {
+	return c.Validate(c)
 }
 
-func (c Card) ValidateInterface() error {
-	return jsonschema.ValidateInterface(c)
+func (c Card) CheckRootRequirements(s []string) error {
+	return nil
+}
+
+func (c Card) Validate(r jsonschema.RootElement) error {
+	implementer, err := c.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
+}
+
+func (c Card) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(c)
 }
 
 type action struct {
@@ -32,12 +44,8 @@ type action struct {
 	RulesTexts     cardobject.RulesTexts
 }
 
-func (a action) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a action) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a action) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a action) InteractionText() string {
@@ -58,12 +66,8 @@ type entity struct {
 	RulesTexts     cardobject.RulesTexts
 }
 
-func (e entity) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e entity) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e entity) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e entity) InteractionText() string {
@@ -83,12 +87,8 @@ type place struct {
 	RulesTexts     cardobject.RulesTexts
 }
 
-func (p place) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p place) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p place) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p place) InteractionText() string {
@@ -107,12 +107,8 @@ type headquarter struct {
 	RulesTexts  cardobject.RulesTexts
 }
 
-func (h headquarter) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h headquarter) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h headquarter) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h headquarter) InteractionText() string {

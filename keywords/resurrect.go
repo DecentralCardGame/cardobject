@@ -6,18 +6,14 @@ import (
 
 type resurrect struct{}
 
-func (r resurrect) Validate() error {
-	return r.ValidateStruct()
+func (re resurrect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(re, r)
 }
 
-func (r resurrect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(r)
-}
-
-func (r resurrect) InteractionText() string {
+func (re resurrect) InteractionText() string {
 	return "Resurrect."
 }
 
-func (r resurrect) Description() string {
+func (re resurrect) Description() string {
 	return "Return target Entity from a dustpile to your field."
 }

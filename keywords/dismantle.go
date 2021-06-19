@@ -8,12 +8,8 @@ type dismantle struct {
 	Effects effects
 }
 
-func (d dismantle) Validate() error {
-	return d.ValidateStruct()
-}
-
-func (d dismantle) ValidateStruct() error {
-	return jsonschema.ValidateStruct(d)
+func (d dismantle) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d dismantle) InteractionText() string {

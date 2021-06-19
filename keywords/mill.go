@@ -10,12 +10,8 @@ type mill struct {
 	Player *cardobject.PlayerMode `json:",omitempty"`
 }
 
-func (m mill) Validate() error {
-	return m.ValidateStruct()
-}
-
-func (m mill) ValidateStruct() error {
-	return jsonschema.ValidateStruct(m)
+func (m mill) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(m, r)
 }
 
 func (m mill) InteractionText() string {

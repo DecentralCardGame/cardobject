@@ -8,12 +8,8 @@ type battlecry struct {
 	Effects effects
 }
 
-func (b battlecry) Validate() error {
-	return b.ValidateStruct()
-}
-
-func (b battlecry) ValidateStruct() error {
-	return jsonschema.ValidateStruct(b)
+func (b battlecry) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(b, r)
 }
 
 func (b battlecry) InteractionText() string {

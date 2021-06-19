@@ -47,11 +47,7 @@ var playerIntProperties []string = []string{"HANDSIZE", "BOARDSIZE", "DECKSIZE"}
 
 type ActionIntProperty jsonschema.BasicEnum
 
-func (a ActionIntProperty) Validate() error {
-	return a.ValidateEnum()
-}
-
-func (a ActionIntProperty) ValidateEnum() error {
+func (a ActionIntProperty) Validate(r jsonschema.RootElement) error {
 	values := a.EnumValues()
 	for _, v := range values {
 		if v == string(a) {
@@ -67,11 +63,7 @@ func (a ActionIntProperty) EnumValues() []string {
 
 type ActionStringProperty jsonschema.BasicEnum
 
-func (a ActionStringProperty) Validate() error {
-	return a.ValidateEnum()
-}
-
-func (a ActionStringProperty) ValidateEnum() error {
+func (a ActionStringProperty) Validate(r jsonschema.RootElement) error {
 	values := a.EnumValues()
 	for _, v := range values {
 		if v == string(a) {
@@ -87,11 +79,7 @@ func (a ActionStringProperty) EnumValues() []string {
 
 type EntityIntProperty jsonschema.BasicEnum
 
-func (e EntityIntProperty) Validate() error {
-	return e.ValidateEnum()
-}
-
-func (e EntityIntProperty) ValidateEnum() error {
+func (e EntityIntProperty) Validate(r jsonschema.RootElement) error {
 	values := e.EnumValues()
 	for _, v := range values {
 		if v == string(e) {
@@ -107,11 +95,7 @@ func (e EntityIntProperty) EnumValues() []string {
 
 type EntityStringProperty jsonschema.BasicEnum
 
-func (e EntityStringProperty) Validate() error {
-	return e.ValidateEnum()
-}
-
-func (e EntityStringProperty) ValidateEnum() error {
+func (e EntityStringProperty) Validate(r jsonschema.RootElement) error {
 	values := e.EnumValues()
 	for _, v := range values {
 		if v == string(e) {
@@ -127,11 +111,7 @@ func (e EntityStringProperty) EnumValues() []string {
 
 type HeadquarterIntProperty jsonschema.BasicEnum
 
-func (h HeadquarterIntProperty) Validate() error {
-	return h.ValidateEnum()
-}
-
-func (h HeadquarterIntProperty) ValidateEnum() error {
+func (h HeadquarterIntProperty) Validate(r jsonschema.RootElement) error {
 	values := h.EnumValues()
 	for _, v := range values {
 		if v == string(h) {
@@ -147,11 +127,7 @@ func (h HeadquarterIntProperty) EnumValues() []string {
 
 type HeadquarterStringProperty jsonschema.BasicEnum
 
-func (h HeadquarterStringProperty) Validate() error {
-	return h.ValidateEnum()
-}
-
-func (h HeadquarterStringProperty) ValidateEnum() error {
+func (h HeadquarterStringProperty) Validate(r jsonschema.RootElement) error {
 	values := h.EnumValues()
 	for _, v := range values {
 		if v == string(h) {
@@ -167,11 +143,7 @@ func (h HeadquarterStringProperty) EnumValues() []string {
 
 type PlaceIntProperty jsonschema.BasicEnum
 
-func (p PlaceIntProperty) Validate() error {
-	return p.ValidateEnum()
-}
-
-func (p PlaceIntProperty) ValidateEnum() error {
+func (p PlaceIntProperty) Validate(r jsonschema.RootElement) error {
 	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {
@@ -187,11 +159,7 @@ func (p PlaceIntProperty) EnumValues() []string {
 
 type PlaceStringProperty jsonschema.BasicEnum
 
-func (p PlaceStringProperty) Validate() error {
-	return p.ValidateEnum()
-}
-
-func (p PlaceStringProperty) ValidateEnum() error {
+func (p PlaceStringProperty) Validate(r jsonschema.RootElement) error {
 	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {
@@ -207,11 +175,7 @@ func (p PlaceStringProperty) EnumValues() []string {
 
 type CardIntProperty jsonschema.BasicEnum
 
-func (c CardIntProperty) Validate() error {
-	return c.ValidateEnum()
-}
-
-func (c CardIntProperty) ValidateEnum() error {
+func (c CardIntProperty) Validate(r jsonschema.RootElement) error {
 	values := c.EnumValues()
 	for _, v := range values {
 		if v == string(c) {
@@ -227,11 +191,7 @@ func (c CardIntProperty) EnumValues() []string {
 
 type CardStringProperty jsonschema.BasicEnum
 
-func (c CardStringProperty) Validate() error {
-	return c.ValidateEnum()
-}
-
-func (c CardStringProperty) ValidateEnum() error {
+func (c CardStringProperty) Validate(r jsonschema.RootElement) error {
 	values := c.EnumValues()
 	for _, v := range values {
 		if v == string(c) {
@@ -247,11 +207,7 @@ func (c CardStringProperty) EnumValues() []string {
 
 type PlayerIntProperty jsonschema.BasicEnum
 
-func (p PlayerIntProperty) Validate() error {
-	return p.ValidateEnum()
-}
-
-func (p PlayerIntProperty) ValidateEnum() error {
+func (p PlayerIntProperty) Validate(r jsonschema.RootElement) error {
 	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {

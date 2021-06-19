@@ -8,12 +8,8 @@ type periodic struct {
 	Effects effects
 }
 
-func (p periodic) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p periodic) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p periodic) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p periodic) InteractionText() string {

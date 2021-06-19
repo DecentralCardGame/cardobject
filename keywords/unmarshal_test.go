@@ -7,6 +7,10 @@ import (
 	"testing"
 )
 
+func emptyTestCard() Card {
+	return Card{}
+}
+
 func TestUnmarshaling(t *testing.T) {
 	dat, _ := ioutil.ReadFile("testJsons/keywordedCard.json")
 

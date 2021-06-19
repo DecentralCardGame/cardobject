@@ -6,14 +6,10 @@ import (
 
 type Effects []Effect
 
-func (e Effects) Validate() error {
-	return e.ValidateArray()
-}
-
-func (e Effects) ValidateArray() error {
+func (e Effects) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range e {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -38,12 +34,16 @@ type Effect struct {
 	ChooseFromEffect *ChooseFromEffect `json:",omitempty"`
 }
 
-func (e Effect) Validate() error {
-	return e.ValidateInterface()
+func (e Effect) Validate(r jsonschema.RootElement) error {
+	implementer, err := e.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (e Effect) ValidateInterface() error {
-	return jsonschema.ValidateInterface(e)
+func (e Effect) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(e)
 }
 
 type GrowthEffect struct {
@@ -51,12 +51,8 @@ type GrowthEffect struct {
 	GrowthAmount IntValue
 }
 
-func (g GrowthEffect) Validate() error {
-	return g.ValidateStruct()
-}
-
-func (g GrowthEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(g)
+func (g GrowthEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(g, r)
 }
 
 func (g GrowthEffect) InteractionText() string {
@@ -68,12 +64,8 @@ type ProductionEffect struct {
 	Amount  IntValue
 }
 
-func (p ProductionEffect) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p ProductionEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p ProductionEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p ProductionEffect) InteractionText() string {
@@ -85,12 +77,8 @@ type WisdomEffect struct {
 	wisdomAmount IntValue
 }
 
-func (d WisdomEffect) Validate() error {
-	return d.ValidateStruct()
-}
-
-func (d WisdomEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(d)
+func (d WisdomEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d WisdomEffect) InteractionText() string {
@@ -103,12 +91,8 @@ type TokenEffect struct {
 	Token       Token
 }
 
-func (t TokenEffect) Validate() error {
-	return t.ValidateStruct()
-}
-
-func (t TokenEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(t)
+func (t TokenEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(t, r)
 }
 
 func (t TokenEffect) InteractionText() string {
@@ -119,12 +103,8 @@ type ChooseFromEffect struct {
 	Effects Effects
 }
 
-func (c ChooseFromEffect) Validate() error {
-	return c.ValidateStruct()
-}
-
-func (c ChooseFromEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(c)
+func (c ChooseFromEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(c, r)
 }
 
 func (c ChooseFromEffect) InteractionText() string {
@@ -139,12 +119,16 @@ type TargetEffect struct {
 	ExtractorTargetEffect   *ExtractorTargetEffect   `json:",omitempty"`
 }
 
-func (t TargetEffect) Validate() error {
-	return t.ValidateInterface()
+func (t TargetEffect) Validate(r jsonschema.RootElement) error {
+	implementer, err := t.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (t TargetEffect) ValidateInterface() error {
-	return jsonschema.ValidateInterface(t)
+func (t TargetEffect) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(t)
 }
 
 type ActionTargetEffect struct {
@@ -152,12 +136,8 @@ type ActionTargetEffect struct {
 	ActionManipulations *ActionManipulations
 }
 
-func (a ActionTargetEffect) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionTargetEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionTargetEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionTargetEffect) InteractionText() string {
@@ -169,12 +149,8 @@ type EntityTargetEffect struct {
 	EntityManipulations *EntityManipulations
 }
 
-func (e EntityTargetEffect) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityTargetEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityTargetEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityTargetEffect) InteractionText() string {
@@ -186,12 +162,8 @@ type HeadquarterTargetEffect struct {
 	HeadquarterManipulations *HeadquarterManipulations
 }
 
-func (h HeadquarterTargetEffect) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterTargetEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterTargetEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterTargetEffect) InteractionText() string {
@@ -203,12 +175,8 @@ type PlaceTargetEffect struct {
 	PlaceManipulations *PlaceManipulations
 }
 
-func (p PlaceTargetEffect) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceTargetEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceTargetEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceTargetEffect) InteractionText() string {
@@ -220,12 +188,8 @@ type ExtractorTargetEffect struct {
 	Manipulations  *Manipulations
 }
 
-func (e ExtractorTargetEffect) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e ExtractorTargetEffect) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e ExtractorTargetEffect) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e ExtractorTargetEffect) InteractionText() string {

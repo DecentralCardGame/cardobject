@@ -9,12 +9,8 @@ type void struct {
 	Target cardobject.CardMode
 }
 
-func (v void) Validate() error {
-	return v.ValidateStruct()
-}
-
-func (v void) ValidateStruct() error {
-	return jsonschema.ValidateStruct(v)
+func (v void) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(v, r)
 }
 
 func (v void) InteractionText() string {

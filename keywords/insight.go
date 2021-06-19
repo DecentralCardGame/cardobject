@@ -9,12 +9,8 @@ type insight struct {
 	WisdomAmount cardobject.IntValue
 }
 
-func (i insight) Validate() error {
-	return i.ValidateStruct()
-}
-
-func (i insight) ValidateStruct() error {
-	return jsonschema.ValidateStruct(i)
+func (i insight) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(i, r)
 }
 
 func (i insight) InteractionText() string {

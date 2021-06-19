@@ -6,7 +6,7 @@ import (
 
 func TestDrawAction(t *testing.T) {
 	drawAction := drawAction{nil}
-	err := drawAction.Validate()
+	err := drawAction.Validate(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

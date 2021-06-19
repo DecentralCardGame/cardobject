@@ -12,12 +12,8 @@ type ActionSelector struct {
 	AmountExtractor  *IntExtractor     `json:",omitempty"`
 }
 
-func (a ActionSelector) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionSelector) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionSelector) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionSelector) InteractionText() string {
@@ -34,12 +30,8 @@ type EntitySelector struct {
 	AmountExtractor  *IntExtractor     `json:",omitempty"`
 }
 
-func (e EntitySelector) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntitySelector) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntitySelector) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntitySelector) InteractionText() string {
@@ -55,12 +47,8 @@ type HeadquarterSelector struct {
 	AmountExtractor       *IntExtractor          `json:",omitempty"`
 }
 
-func (h HeadquarterSelector) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterSelector) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterSelector) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterSelector) InteractionText() string {
@@ -77,12 +65,8 @@ type PlaceSelector struct {
 	AmountExtractor *IntExtractor    `json:",omitempty"`
 }
 
-func (p PlaceSelector) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceSelector) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceSelector) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceSelector) InteractionText() string {

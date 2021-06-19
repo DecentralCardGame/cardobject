@@ -8,12 +8,8 @@ type onConstruction struct {
 	Effects effects
 }
 
-func (o onConstruction) Validate() error {
-	return o.ValidateStruct()
-}
-
-func (o onConstruction) ValidateStruct() error {
-	return jsonschema.ValidateStruct(o)
+func (o onConstruction) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(o, r)
 }
 
 func (o onConstruction) InteractionText() string {

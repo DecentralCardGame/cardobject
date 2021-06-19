@@ -10,12 +10,8 @@ type spawn struct {
 	Amount    cardobject.IntValue
 }
 
-func (s spawn) Validate() error {
-	return s.ValidateStruct()
-}
-
-func (s spawn) ValidateStruct() error {
-	return jsonschema.ValidateStruct(s)
+func (s spawn) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(s, r)
 }
 
 func (s spawn) InteractionText() string {

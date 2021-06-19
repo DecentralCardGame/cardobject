@@ -10,12 +10,8 @@ type dissolve struct {
 	Effects    effects
 }
 
-func (d dissolve) Validate() error {
-	return d.ValidateStruct()
-}
-
-func (d dissolve) ValidateStruct() error {
-	return jsonschema.ValidateStruct(d)
+func (d dissolve) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d dissolve) InteractionText() string {

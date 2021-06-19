@@ -9,12 +9,8 @@ type withdraw struct {
 	Target cardobject.CardMode
 }
 
-func (w withdraw) Validate() error {
-	return w.ValidateStruct()
-}
-
-func (w withdraw) ValidateStruct() error {
-	return jsonschema.ValidateStruct(w)
+func (w withdraw) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(w, r)
 }
 
 func (w withdraw) InteractionText() string {

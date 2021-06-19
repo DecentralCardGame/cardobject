@@ -10,18 +10,14 @@ type ravage struct {
 	Amount cardobject.IntValue
 }
 
-func (r ravage) Validate() error {
-	return r.ValidateStruct()
+func (ra ravage) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(ra, r)
 }
 
-func (r ravage) ValidateStruct() error {
-	return jsonschema.ValidateStruct(r)
-}
-
-func (r ravage) InteractionText() string {
+func (ra ravage) InteractionText() string {
 	return "Ravage §Target §Amount."
 }
 
-func (r ravage) Description() string {
+func (ra ravage) Description() string {
 	return "Deal X damage to an opposing place."
 }

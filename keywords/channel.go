@@ -8,12 +8,8 @@ type channel struct {
 	Effects effects
 }
 
-func (c channel) Validate() error {
-	return c.ValidateStruct()
-}
-
-func (c channel) ValidateStruct() error {
-	return jsonschema.ValidateStruct(c)
+func (c channel) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(c, r)
 }
 
 func (c channel) InteractionText() string {

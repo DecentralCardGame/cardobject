@@ -37,11 +37,7 @@ var placeZones []string = []string{Deck, Dustpile, Field, Hand, Void}
 
 type DynamicZone jsonschema.BasicEnum
 
-func (d DynamicZone) Validate() error {
-	return d.ValidateEnum()
-}
-
-func (d DynamicZone) ValidateEnum() error {
+func (d DynamicZone) Validate(r jsonschema.RootElement) error {
 	values := d.EnumValues()
 	for _, v := range values {
 		if v == string(d) {
@@ -57,11 +53,7 @@ func (d DynamicZone) EnumValues() []string {
 
 type Zone jsonschema.BasicEnum
 
-func (z Zone) Validate() error {
-	return z.ValidateEnum()
-}
-
-func (z Zone) ValidateEnum() error {
+func (z Zone) Validate(r jsonschema.RootElement) error {
 	values := z.EnumValues()
 	for _, v := range values {
 		if v == string(z) {
@@ -77,11 +69,7 @@ func (z Zone) EnumValues() []string {
 
 type ActionZone jsonschema.BasicEnum
 
-func (a ActionZone) Validate() error {
-	return a.ValidateEnum()
-}
-
-func (a ActionZone) ValidateEnum() error {
+func (a ActionZone) Validate(r jsonschema.RootElement) error {
 	values := a.EnumValues()
 	for _, v := range values {
 		if v == string(a) {
@@ -97,11 +85,7 @@ func (a ActionZone) EnumValues() []string {
 
 type EntityZone jsonschema.BasicEnum
 
-func (e EntityZone) Validate() error {
-	return e.ValidateEnum()
-}
-
-func (e EntityZone) ValidateEnum() error {
+func (e EntityZone) Validate(r jsonschema.RootElement) error {
 	values := e.EnumValues()
 	for _, v := range values {
 		if v == string(e) {
@@ -117,11 +101,7 @@ func (e EntityZone) EnumValues() []string {
 
 type PlaceZone jsonschema.BasicEnum
 
-func (p PlaceZone) Validate() error {
-	return p.ValidateEnum()
-}
-
-func (p PlaceZone) ValidateEnum() error {
+func (p PlaceZone) Validate(r jsonschema.RootElement) error {
 	values := p.EnumValues()
 	for _, v := range values {
 		if v == string(p) {

@@ -10,7 +10,7 @@ func TestRepair(t *testing.T) {
 	intVaraiable := cardobject.IntVariableName("X")
 	intValue := cardobject.IntValue{SimpleIntValue: nil, IntVariable: &intVaraiable}
 	repair := repair{"ALL", intValue}
-	err := repair.Validate()
+	err := repair.Validate(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

@@ -25,15 +25,11 @@ type Class struct {
 	Culture    Culture
 }
 
-func (c Class) Validate() error {
+func (c Class) Validate(r jsonschema.RootElement) error {
 	if !(bool(c.Nature) || bool(c.Mysticism) || bool(c.Technology) || bool(c.Culture)) {
 		return errors.New("At least one Class Must be selected for a card.")
 	}
-	return c.ValidateStruct()
-}
-
-func (c Class) ValidateStruct() error {
-	return jsonschema.ValidateStruct(c)
+	return jsonschema.ValidateStruct(c, r)
 }
 
 func (c Class) InteractionText() string {
@@ -42,11 +38,7 @@ func (c Class) InteractionText() string {
 
 type Nature jsonschema.BasicBool
 
-func (n Nature) Validate() error {
-	return n.ValidateBool()
-}
-
-func (n Nature) ValidateBool() error {
+func (n Nature) Validate(r jsonschema.RootElement) error {
 	b := bool(n)
 	if b || !b {
 		return nil
@@ -54,13 +46,13 @@ func (n Nature) ValidateBool() error {
 	return errors.New("Nature must be true or false")
 }
 
-type Mysticism jsonschema.BasicBool
-
-func (m Mysticism) Validate() error {
-	return m.ValidateBool()
+func (n Nature) Default() bool {
+	return false
 }
 
-func (m Mysticism) ValidateBool() error {
+type Mysticism jsonschema.BasicBool
+
+func (m Mysticism) Validate(r jsonschema.RootElement) error {
 	b := bool(m)
 	if b || !b {
 		return nil
@@ -68,13 +60,13 @@ func (m Mysticism) ValidateBool() error {
 	return errors.New("Mysticism must be true or false")
 }
 
-type Technology jsonschema.BasicBool
-
-func (t Technology) Validate() error {
-	return t.ValidateBool()
+func (m Mysticism) Default() bool {
+	return false
 }
 
-func (t Technology) ValidateBool() error {
+type Technology jsonschema.BasicBool
+
+func (t Technology) Validate(r jsonschema.RootElement) error {
 	b := bool(t)
 	if b || !b {
 		return nil
@@ -82,16 +74,20 @@ func (t Technology) ValidateBool() error {
 	return errors.New("Technology must be true or false")
 }
 
-type Culture jsonschema.BasicBool
-
-func (c Culture) Validate() error {
-	return c.ValidateBool()
+func (t Technology) Default() bool {
+	return false
 }
 
-func (c Culture) ValidateBool() error {
+type Culture jsonschema.BasicBool
+
+func (c Culture) Validate(r jsonschema.RootElement) error {
 	b := bool(c)
 	if b || !b {
 		return nil
 	}
 	return errors.New("Culture must be true or false")
+}
+
+func (c Culture) Default() bool {
+	return false
 }

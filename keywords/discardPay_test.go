@@ -6,7 +6,7 @@ import (
 
 func TestDiscardPay(t *testing.T) {
 	discardPay := discardPay{3, nil}
-	err := discardPay.Validate()
+	err := discardPay.Validate(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

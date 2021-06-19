@@ -54,14 +54,10 @@ const Tribute = "TRIBUTE"
 
 type Keywords []Keyword
 
-func (k Keywords) Validate() error {
-	return k.ValidateArray()
-}
-
-func (k Keywords) ValidateArray() error {
+func (k Keywords) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range k {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -79,11 +75,7 @@ func (k Keywords) ItemName() string {
 
 type Keyword jsonschema.BasicString
 
-func (k Keyword) Validate() error {
-	return k.ValidateString()
-}
-
-func (k Keyword) ValidateString() error {
+func (k Keyword) Validate(r jsonschema.RootElement) error {
 	minLength, maxLength := k.MinMaxLength()
 	length := len(string(k))
 	if length < minLength || length > maxLength {

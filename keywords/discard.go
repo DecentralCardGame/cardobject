@@ -6,12 +6,8 @@ import (
 
 type discard struct{}
 
-func (d discard) Validate() error {
-	return d.ValidateStruct()
-}
-
-func (d discard) ValidateStruct() error {
-	return jsonschema.ValidateStruct(d)
+func (d discard) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d discard) InteractionText() string {

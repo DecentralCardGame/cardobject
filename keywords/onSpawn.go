@@ -8,12 +8,8 @@ type onSpawn struct {
 	Effects effects
 }
 
-func (o onSpawn) Validate() error {
-	return o.ValidateStruct()
-}
-
-func (o onSpawn) ValidateStruct() error {
-	return jsonschema.ValidateStruct(o)
+func (o onSpawn) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(o, r)
 }
 
 func (o onSpawn) InteractionText() string {

@@ -9,12 +9,8 @@ type dice struct {
 	Amount cardobject.IntValue
 }
 
-func (d dice) Validate() error {
-	return d.ValidateStruct()
-}
-
-func (d dice) ValidateStruct() error {
-	return jsonschema.ValidateStruct(d)
+func (d dice) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d dice) InteractionText() string {

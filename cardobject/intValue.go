@@ -7,12 +7,16 @@ type IntValue struct {
 	IntVariable    *IntVariableName `json:",omitempty"`
 }
 
-func (i IntValue) Validate() error {
-	return i.ValidateInterface()
+func (i IntValue) Validate(r jsonschema.RootElement) error {
+	implementer, err := i.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (i IntValue) ValidateInterface() error {
-	return jsonschema.ValidateInterface(i)
+func (i IntValue) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(i)
 }
 
 type ComplexIntValue struct {
@@ -21,12 +25,8 @@ type ComplexIntValue struct {
 	ArithOperator ArithOperator
 }
 
-func (c ComplexIntValue) Validate() error {
-	return c.ValidateStruct()
-}
-
-func (c ComplexIntValue) ValidateStruct() error {
-	return jsonschema.ValidateStruct(c)
+func (c ComplexIntValue) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(c, r)
 }
 
 func (c ComplexIntValue) InteractionText() string {

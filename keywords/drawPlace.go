@@ -9,12 +9,8 @@ type drawPlace struct {
 	Tag *cardobject.Tag `json:",omitempty"`
 }
 
-func (d drawPlace) Validate() error {
-	return d.ValidateStruct()
-}
-
-func (d drawPlace) ValidateStruct() error {
-	return jsonschema.ValidateStruct(d)
+func (d drawPlace) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d drawPlace) InteractionText() string {

@@ -10,7 +10,7 @@ func TestStrengthen(t *testing.T) {
 	intVariable := cardobject.IntVariableName("X")
 	intValue := cardobject.IntValue{SimpleIntValue: nil, IntVariable: &intVariable}
 	strengthen := strengthen{"ALL", intValue}
-	err := strengthen.Validate()
+	err := strengthen.Validate(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

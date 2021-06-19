@@ -15,11 +15,7 @@ var possibleCardTypes []string = []string{
 
 type CardType jsonschema.BasicEnum
 
-func (c CardType) Validate() error {
-	return c.ValidateEnum()
-}
-
-func (c CardType) ValidateEnum() error {
+func (c CardType) Validate(r jsonschema.RootElement) error {
 	values := c.EnumValues()
 	for _, v := range values {
 		if v == string(c) {

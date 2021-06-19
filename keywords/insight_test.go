@@ -10,7 +10,7 @@ func TestInsight(t *testing.T) {
 	simpleIntValue := cardobject.SimpleIntValue(3)
 	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
 	insight := insight{intValue}
-	err := insight.Validate()
+	err := insight.Validate(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

@@ -9,12 +9,8 @@ type heal struct {
 	Target cardobject.CardMode
 }
 
-func (h heal) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h heal) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h heal) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h heal) InteractionText() string {

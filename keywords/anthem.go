@@ -9,12 +9,8 @@ type anthem struct {
 	Tag cardobject.Tag
 }
 
-func (a anthem) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a anthem) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a anthem) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a anthem) InteractionText() string {

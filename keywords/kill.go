@@ -9,12 +9,8 @@ type kill struct {
 	Target cardobject.CardMode
 }
 
-func (k kill) Validate() error {
-	return k.ValidateStruct()
-}
-
-func (k kill) ValidateStruct() error {
-	return jsonschema.ValidateStruct(k)
+func (k kill) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(k, r)
 }
 
 func (k kill) InteractionText() string {

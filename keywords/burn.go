@@ -9,12 +9,8 @@ type burn struct {
 	Amount cardobject.IntValue
 }
 
-func (b burn) Validate() error {
-	return b.ValidateStruct()
-}
-
-func (b burn) ValidateStruct() error {
-	return jsonschema.ValidateStruct(b)
+func (b burn) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(b, r)
 }
 
 func (b burn) InteractionText() string {

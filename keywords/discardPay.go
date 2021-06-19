@@ -10,12 +10,8 @@ type discardPay struct {
 	Effects    effects
 }
 
-func (d discardPay) Validate() error {
-	return d.ValidateStruct()
-}
-
-func (d discardPay) ValidateStruct() error {
-	return jsonschema.ValidateStruct(d)
+func (d discardPay) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d discardPay) InteractionText() string {

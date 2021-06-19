@@ -8,12 +8,8 @@ type ActionZoneChange struct {
 	Keyword *Keyword `json:",omitempty"`
 }
 
-func (a ActionZoneChange) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionZoneChange) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionZoneChange) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionZoneChange) InteractionText() string {
@@ -26,12 +22,8 @@ type EntityZoneChange struct {
 	Keyword *Keyword `json:",omitempty"`
 }
 
-func (e EntityZoneChange) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityZoneChange) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityZoneChange) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityZoneChange) InteractionText() string {
@@ -44,12 +36,8 @@ type PlaceZoneChange struct {
 	Keyword *Keyword `json:",omitempty"`
 }
 
-func (p PlaceZoneChange) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceZoneChange) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceZoneChange) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceZoneChange) InteractionText() string {

@@ -20,11 +20,7 @@ var tokenTypes []string = []string{Recruit, Bot, Beast}
 
 type TokenType jsonschema.BasicEnum
 
-func (t TokenType) Validate() error {
-	return t.ValidateEnum()
-}
-
-func (t TokenType) ValidateEnum() error {
+func (t TokenType) Validate(r jsonschema.RootElement) error {
 	values := t.EnumValues()
 	for _, t := range values {
 		if t == string(t) {
@@ -45,12 +41,8 @@ type Token struct {
 	Tags   Tags `json:",omitempty"`
 }
 
-func (t Token) Validate() error {
-	return t.ValidateStruct()
-}
-
-func (t Token) ValidateStruct() error {
-	return jsonschema.ValidateStruct(t)
+func (t Token) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(t, r)
 }
 
 func (t Token) InteractionText() string {

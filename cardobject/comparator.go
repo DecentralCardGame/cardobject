@@ -30,11 +30,7 @@ var stringComparators []string = []string{Equal, Contains, Uneaqual, ContainsNot
 
 type IntComparator jsonschema.BasicEnum
 
-func (i IntComparator) Validate() error {
-	return i.ValidateEnum()
-}
-
-func (i IntComparator) ValidateEnum() error {
+func (i IntComparator) Validate(r jsonschema.RootElement) error {
 	values := i.EnumValues()
 	for _, v := range values {
 		if v == string(i) {
@@ -50,11 +46,7 @@ func (i IntComparator) EnumValues() []string {
 
 type StringComparator jsonschema.BasicEnum
 
-func (s StringComparator) Validate() error {
-	return s.ValidateEnum()
-}
-
-func (s StringComparator) ValidateEnum() error {
+func (s StringComparator) Validate(r jsonschema.RootElement) error {
 	values := s.EnumValues()
 	for _, v := range values {
 		if v == string(s) {

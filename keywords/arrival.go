@@ -8,12 +8,8 @@ type arrival struct {
 	Effects effects
 }
 
-func (a arrival) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a arrival) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a arrival) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a arrival) InteractionText() string {

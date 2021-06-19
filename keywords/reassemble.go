@@ -6,18 +6,14 @@ import (
 
 type reassemble struct{}
 
-func (r reassemble) Validate() error {
-	return r.ValidateStruct()
+func (re reassemble) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(re, r)
 }
 
-func (r reassemble) ValidateStruct() error {
-	return jsonschema.ValidateStruct(r)
-}
-
-func (r reassemble) InteractionText() string {
+func (re reassemble) InteractionText() string {
 	return "Reassemle."
 }
 
-func (r reassemble) Description() string {
+func (re reassemble) Description() string {
 	return "Return target Place from a dustpile to your field."
 }

@@ -11,24 +11,24 @@ type CardExtractors struct {
 	PlaceExtractors       *PlaceExtractors       `json:",omitempty"`
 }
 
-func (c CardExtractors) Validate() error {
-	return c.ValidateInterface()
+func (c CardExtractors) Validate(r jsonschema.RootElement) error {
+	implementer, err := c.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (c CardExtractors) ValidateInterface() error {
-	return jsonschema.ValidateInterface(c)
+func (c CardExtractors) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(c)
 }
 
 type ActionExtractors []ActionExtractor
 
-func (a ActionExtractors) Validate() error {
-	return a.ValidateArray()
-}
-
-func (a ActionExtractors) ValidateArray() error {
+func (a ActionExtractors) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range a {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -46,14 +46,10 @@ func (a ActionExtractors) ItemName() string {
 
 type EntityExtractors []EntityExtractor
 
-func (e EntityExtractors) Validate() error {
-	return e.ValidateArray()
-}
-
-func (e EntityExtractors) ValidateArray() error {
+func (e EntityExtractors) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range e {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -71,14 +67,10 @@ func (e EntityExtractors) ItemName() string {
 
 type HeadquarterExtractors []HeadquarterExtractor
 
-func (h HeadquarterExtractors) Validate() error {
-	return h.ValidateArray()
-}
-
-func (h HeadquarterExtractors) ValidateArray() error {
+func (h HeadquarterExtractors) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range h {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -96,14 +88,10 @@ func (h HeadquarterExtractors) ItemName() string {
 
 type PlaceExtractors []PlaceExtractor
 
-func (p PlaceExtractors) Validate() error {
-	return p.ValidateArray()
-}
-
-func (p PlaceExtractors) ValidateArray() error {
+func (p PlaceExtractors) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range p {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -125,12 +113,16 @@ type ActionExtractor struct {
 	ActionTargetExtractor *TargetExtractor       `json:",omitempty"`
 }
 
-func (a ActionExtractor) Validate() error {
-	return a.ValidateInterface()
+func (a ActionExtractor) Validate(r jsonschema.RootElement) error {
+	implementer, err := a.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (a ActionExtractor) ValidateInterface() error {
-	return jsonschema.ValidateInterface(a)
+func (a ActionExtractor) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(a)
 }
 
 type EntityExtractor struct {
@@ -139,12 +131,16 @@ type EntityExtractor struct {
 	EntityTargetExtractor *TargetExtractor       `json:",omitempty"`
 }
 
-func (e EntityExtractor) Validate() error {
-	return e.ValidateInterface()
+func (e EntityExtractor) Validate(r jsonschema.RootElement) error {
+	implementer, err := e.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (e EntityExtractor) ValidateInterface() error {
-	return jsonschema.ValidateInterface(e)
+func (e EntityExtractor) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(e)
 }
 
 type HeadquarterExtractor struct {
@@ -153,12 +149,16 @@ type HeadquarterExtractor struct {
 	HeadquarterTargetExtractor *TargetExtractor            `json:",omitempty"`
 }
 
-func (h HeadquarterExtractor) Validate() error {
-	return h.ValidateInterface()
+func (h HeadquarterExtractor) Validate(r jsonschema.RootElement) error {
+	implementer, err := h.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (h HeadquarterExtractor) ValidateInterface() error {
-	return jsonschema.ValidateInterface(h)
+func (h HeadquarterExtractor) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(h)
 }
 
 type PlaceExtractor struct {
@@ -167,12 +167,16 @@ type PlaceExtractor struct {
 	PlaceTargetExtractor *TargetExtractor      `json:",omitempty"`
 }
 
-func (p PlaceExtractor) Validate() error {
-	return p.ValidateInterface()
+func (p PlaceExtractor) Validate(r jsonschema.RootElement) error {
+	implementer, err := p.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (p PlaceExtractor) ValidateInterface() error {
-	return jsonschema.ValidateInterface(p)
+func (p PlaceExtractor) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(p)
 }
 
 type ActionIntExtractor struct {
@@ -180,12 +184,8 @@ type ActionIntExtractor struct {
 	IntVariableName    IntVariableName
 }
 
-func (a ActionIntExtractor) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionIntExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionIntExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionIntExtractor) InteractionText() string {
@@ -197,12 +197,8 @@ type ActionStringExtractor struct {
 	StringVariableName    StringVariableName
 }
 
-func (a ActionStringExtractor) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionStringExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionStringExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionStringExtractor) InteractionText() string {
@@ -214,12 +210,8 @@ type EntityIntExtractor struct {
 	IntVariableName    IntVariableName
 }
 
-func (e EntityIntExtractor) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityIntExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityIntExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityIntExtractor) InteractionText() string {
@@ -231,12 +223,8 @@ type EntityStringExtractor struct {
 	StringVariableName    StringVariableName
 }
 
-func (e EntityStringExtractor) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityStringExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityStringExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityStringExtractor) InteractionText() string {
@@ -248,12 +236,8 @@ type HeadquarterIntExtractor struct {
 	IntVariableName    IntVariableName
 }
 
-func (h HeadquarterIntExtractor) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterIntExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterIntExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterIntExtractor) InteractionText() string {
@@ -265,12 +249,8 @@ type HeadquarterStringExtractor struct {
 	StringVariableName    StringVariableName
 }
 
-func (h HeadquarterStringExtractor) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterStringExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterStringExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterStringExtractor) InteractionText() string {
@@ -282,12 +262,8 @@ type PlaceIntExtractor struct {
 	IntVariableName    IntVariableName
 }
 
-func (p PlaceIntExtractor) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceIntExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceIntExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceIntExtractor) InteractionText() string {
@@ -299,12 +275,8 @@ type PlaceStringExtractor struct {
 	StringVariableName    StringVariableName
 }
 
-func (p PlaceStringExtractor) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceStringExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceStringExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceStringExtractor) InteractionText() string {
@@ -315,12 +287,8 @@ type TargetExtractor struct {
 	TargetVariableName TargetVariableName
 }
 
-func (t TargetExtractor) Validate() error {
-	return t.ValidateStruct()
-}
-
-func (t TargetExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(t)
+func (t TargetExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(t, r)
 }
 
 func (t TargetExtractor) InteractionText() string {
@@ -331,12 +299,8 @@ type IntExtractor struct {
 	IntVariableName IntVariableName
 }
 
-func (i IntExtractor) Validate() error {
-	return i.ValidateStruct()
-}
-
-func (i IntExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(i)
+func (i IntExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(i, r)
 }
 
 func (i IntExtractor) InteractionText() string {
@@ -347,12 +311,8 @@ type StringExtractor struct {
 	StringVariableName StringVariableName
 }
 
-func (s StringExtractor) Validate() error {
-	return s.ValidateStruct()
-}
-
-func (s StringExtractor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(s)
+func (s StringExtractor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(s, r)
 }
 
 func (s StringExtractor) InteractionText() string {

@@ -9,12 +9,8 @@ type selfBurn struct {
 	Amount cardobject.IntValue
 }
 
-func (s selfBurn) Validate() error {
-	return s.ValidateStruct()
-}
-
-func (s selfBurn) ValidateStruct() error {
-	return jsonschema.ValidateStruct(s)
+func (s selfBurn) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(s, r)
 }
 
 func (s selfBurn) InteractionText() string {

@@ -11,12 +11,16 @@ type EventListener struct {
 	ZoneChangeEventListener   *ZoneChangeEventListener   `json:",omitempty"`
 }
 
-func (e EventListener) Validate() error {
-	return e.ValidateInterface()
+func (e EventListener) Validate(r jsonschema.RootElement) error {
+	implementer, err := e.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (e EventListener) ValidateInterface() error {
-	return jsonschema.ValidateInterface(e)
+func (e EventListener) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(e)
 }
 
 type AttackEventListener struct {
@@ -24,12 +28,8 @@ type AttackEventListener struct {
 	AttackEntityExtractors *EntityExtractors `json:",omitempty"`
 }
 
-func (a AttackEventListener) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a AttackEventListener) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a AttackEventListener) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a AttackEventListener) InteractionText() string {
@@ -42,12 +42,8 @@ type BlockEventListener struct {
 	BlockedEntityExtractors  *EntityExtractors `json:",omitempty"`
 }
 
-func (b BlockEventListener) Validate() error {
-	return b.ValidateStruct()
-}
-
-func (b BlockEventListener) ValidateStruct() error {
-	return jsonschema.ValidateStruct(b)
+func (b BlockEventListener) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(b, r)
 }
 
 func (b BlockEventListener) InteractionText() string {
@@ -59,12 +55,16 @@ type ManipulationEventListener struct {
 	StringManipulationEventListener *StringManipulationEventListener `json:",omitempty"`
 }
 
-func (m ManipulationEventListener) Validate() error {
-	return m.ValidateInterface()
+func (m ManipulationEventListener) Validate(r jsonschema.RootElement) error {
+	implementer, err := m.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (m ManipulationEventListener) ValidateInterface() error {
-	return jsonschema.ValidateInterface(m)
+func (m ManipulationEventListener) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(m)
 }
 
 type IntManipulationEventListener struct {
@@ -75,12 +75,8 @@ type IntManipulationEventListener struct {
 	ManipulationValueExtractor *IntExtractor   `json:",omitempty"`
 }
 
-func (i IntManipulationEventListener) Validate() error {
-	return i.ValidateStruct()
-}
-
-func (i IntManipulationEventListener) ValidateStruct() error {
-	return jsonschema.ValidateStruct(i)
+func (i IntManipulationEventListener) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(i, r)
 }
 
 func (i IntManipulationEventListener) InteractionText() string {
@@ -95,12 +91,8 @@ type StringManipulationEventListener struct {
 	ManipulationValueExtractor *StringExtractor `json:",omitempty"`
 }
 
-func (s StringManipulationEventListener) Validate() error {
-	return s.ValidateStruct()
-}
-
-func (s StringManipulationEventListener) ValidateStruct() error {
-	return jsonschema.ValidateStruct(s)
+func (s StringManipulationEventListener) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(s, r)
 }
 
 func (s StringManipulationEventListener) InteractionText() string {
@@ -112,12 +104,8 @@ type ProductionEventListener struct {
 	ProductionAmountExtractor *IntExtractor `json:",omitempty"`
 }
 
-func (p ProductionEventListener) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p ProductionEventListener) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p ProductionEventListener) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p ProductionEventListener) InteractionText() string {
@@ -128,12 +116,8 @@ type TimeEventListener struct {
 	TimeEvent TimeEvent
 }
 
-func (t TimeEventListener) Validate() error {
-	return t.ValidateStruct()
-}
-
-func (t TimeEventListener) ValidateStruct() error {
-	return jsonschema.ValidateStruct(t)
+func (t TimeEventListener) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(t, r)
 }
 
 func (t TimeEventListener) InteractionText() string {
@@ -147,12 +131,8 @@ type ZoneChangeEventListener struct {
 	MovedCardExtractors *CardExtractors `json:",omitempty"`
 }
 
-func (z ZoneChangeEventListener) Validate() error {
-	return z.ValidateStruct()
-}
-
-func (z ZoneChangeEventListener) ValidateStruct() error {
-	return jsonschema.ValidateStruct(z)
+func (z ZoneChangeEventListener) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(z, r)
 }
 
 func (z ZoneChangeEventListener) InteractionText() string {

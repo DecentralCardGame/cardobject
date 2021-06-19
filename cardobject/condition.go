@@ -12,24 +12,24 @@ type CardConditions struct {
 	ThisConditions        *ThisCondition         `json:",omitempty"`
 }
 
-func (c CardConditions) Validate() error {
-	return c.ValidateInterface()
+func (c CardConditions) Validate(r jsonschema.RootElement) error {
+	implementer, err := c.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (c CardConditions) ValidateInterface() error {
-	return jsonschema.ValidateInterface(c)
+func (c CardConditions) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(c)
 }
 
 type ActionConditions []ActionCondition
 
-func (a ActionConditions) Validate() error {
-	return a.ValidateArray()
-}
-
-func (a ActionConditions) ValidateArray() error {
+func (a ActionConditions) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range a {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -47,14 +47,10 @@ func (a ActionConditions) MinMaxItems() (int, int) {
 
 type EntityConditions []EntityCondition
 
-func (e EntityConditions) Validate() error {
-	return e.ValidateArray()
-}
-
-func (e EntityConditions) ValidateArray() error {
+func (e EntityConditions) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range e {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -72,14 +68,10 @@ func (e EntityConditions) ItemName() string {
 
 type HeadquarterConditions []HeadquarterCondition
 
-func (h HeadquarterConditions) Validate() error {
-	return h.ValidateArray()
-}
-
-func (h HeadquarterConditions) ValidateArray() error {
+func (h HeadquarterConditions) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range h {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -97,14 +89,10 @@ func (h HeadquarterConditions) ItemName() string {
 
 type PlaceConditions []PlaceCondition
 
-func (p PlaceConditions) Validate() error {
-	return p.ValidateArray()
-}
-
-func (p PlaceConditions) ValidateArray() error {
+func (p PlaceConditions) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range p {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -122,14 +110,10 @@ func (p PlaceConditions) ItemName() string {
 
 type PlayerConditions []PlayerCondition
 
-func (p PlayerConditions) Validate() error {
-	return p.ValidateArray()
-}
-
-func (p PlayerConditions) ValidateArray() error {
+func (p PlayerConditions) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range p {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -151,12 +135,16 @@ type ActionCondition struct {
 	ActionTagCondition    *ActionTagCondition    `json:",omitempty"`
 }
 
-func (a ActionCondition) Validate() error {
-	return a.ValidateInterface()
+func (a ActionCondition) Validate(r jsonschema.RootElement) error {
+	implementer, err := a.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (a ActionCondition) ValidateInterface() error {
-	return jsonschema.ValidateInterface(a)
+func (a ActionCondition) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(a)
 }
 
 type EntityCondition struct {
@@ -165,12 +153,16 @@ type EntityCondition struct {
 	EntityTagCondition    *EntityTagCondition    `json:",omitempty"`
 }
 
-func (e EntityCondition) Validate() error {
-	return e.ValidateInterface()
+func (e EntityCondition) Validate(r jsonschema.RootElement) error {
+	implementer, err := e.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (e EntityCondition) ValidateInterface() error {
-	return jsonschema.ValidateInterface(e)
+func (e EntityCondition) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(e)
 }
 
 type HeadquarterCondition struct {
@@ -179,12 +171,16 @@ type HeadquarterCondition struct {
 	HeadquarterTagCondition    *HeadquarterTagCondition    `json:",omitempty"`
 }
 
-func (h HeadquarterCondition) Validate() error {
-	return h.ValidateInterface()
+func (h HeadquarterCondition) Validate(r jsonschema.RootElement) error {
+	implementer, err := h.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (h HeadquarterCondition) ValidateInterface() error {
-	return jsonschema.ValidateInterface(h)
+func (h HeadquarterCondition) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(h)
 }
 
 type PlaceCondition struct {
@@ -193,34 +189,38 @@ type PlaceCondition struct {
 	PlaceTagCondition    *PlaceTagCondition    `json:",omitempty"`
 }
 
-func (p PlaceCondition) Validate() error {
-	return p.ValidateInterface()
+func (p PlaceCondition) Validate(r jsonschema.RootElement) error {
+	implementer, err := p.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (p PlaceCondition) ValidateInterface() error {
-	return jsonschema.ValidateInterface(p)
+func (p PlaceCondition) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(p)
 }
 
 type PlayerCondition struct {
 	PlayerIntCondition *PlayerIntCondition `json:",omitempty"`
 }
 
-func (p PlayerCondition) Validate() error {
-	return p.ValidateInterface()
+func (p PlayerCondition) Validate(r jsonschema.RootElement) error {
+	implementer, err := p.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (p PlayerCondition) ValidateInterface() error {
-	return jsonschema.ValidateInterface(p)
+func (p PlayerCondition) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(p)
 }
 
 type ThisCondition struct{}
 
-func (t ThisCondition) Validate() error {
-	return t.ValidateStruct()
-}
-
-func (t ThisCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(t)
+func (t ThisCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(t, r)
 }
 
 func (t ThisCondition) InteractionText() string {
@@ -233,12 +233,8 @@ type ActionIntCondition struct {
 	IntComparator     IntComparator
 }
 
-func (a ActionIntCondition) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionIntCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionIntCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionIntCondition) InteractionText() string {
@@ -251,12 +247,8 @@ type ActionStringCondition struct {
 	StringComparator     StringComparator
 }
 
-func (a ActionStringCondition) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionStringCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionStringCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionStringCondition) InteractionText() string {
@@ -268,12 +260,8 @@ type ActionTagCondition struct {
 	StringComparator StringComparator
 }
 
-func (a ActionTagCondition) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionTagCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionTagCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionTagCondition) InteractionText() string {
@@ -286,12 +274,8 @@ type EntityIntCondition struct {
 	IntComparator     IntComparator
 }
 
-func (e EntityIntCondition) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityIntCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityIntCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityIntCondition) InteractionText() string {
@@ -304,12 +288,8 @@ type EntityStringCondition struct {
 	StringComparator     StringComparator
 }
 
-func (e EntityStringCondition) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityStringCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityStringCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityStringCondition) InteractionText() string {
@@ -321,12 +301,8 @@ type EntityTagCondition struct {
 	StringComparator StringComparator
 }
 
-func (e EntityTagCondition) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityTagCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityTagCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityTagCondition) InteractionText() string {
@@ -339,12 +315,8 @@ type HeadquarterIntCondition struct {
 	IntComparator          IntComparator
 }
 
-func (h HeadquarterIntCondition) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterIntCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterIntCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterIntCondition) InteractionText() string {
@@ -357,12 +329,8 @@ type HeadquarterStringCondition struct {
 	StringComparator          StringComparator
 }
 
-func (h HeadquarterStringCondition) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterStringCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterStringCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterStringCondition) InteractionText() string {
@@ -374,12 +342,8 @@ type HeadquarterTagCondition struct {
 	StringComparator StringComparator
 }
 
-func (h HeadquarterTagCondition) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterTagCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterTagCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterTagCondition) InteractionText() string {
@@ -392,12 +356,8 @@ type PlaceIntCondition struct {
 	IntComparator    IntComparator
 }
 
-func (p PlaceIntCondition) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceIntCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceIntCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceIntCondition) InteractionText() string {
@@ -410,12 +370,8 @@ type PlaceStringCondition struct {
 	StringComparator    StringComparator
 }
 
-func (p PlaceStringCondition) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceStringCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceStringCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceStringCondition) InteractionText() string {
@@ -427,12 +383,8 @@ type PlaceTagCondition struct {
 	StringComparator StringComparator
 }
 
-func (p PlaceTagCondition) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceTagCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceTagCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceTagCondition) InteractionText() string {
@@ -445,12 +397,8 @@ type PlayerIntCondition struct {
 	IntComparator     IntComparator
 }
 
-func (p PlayerIntCondition) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlayerIntCondition) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlayerIntCondition) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlayerIntCondition) InteractionText() string {

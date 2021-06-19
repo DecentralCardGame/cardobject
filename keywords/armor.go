@@ -9,12 +9,8 @@ type armor struct {
 	Amount cardobject.IntValue
 }
 
-func (a armor) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a armor) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a armor) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a armor) InteractionText() string {

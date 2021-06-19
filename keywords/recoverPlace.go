@@ -6,18 +6,14 @@ import (
 
 type recoverPlace struct{}
 
-func (r recoverPlace) Validate() error {
-	return r.ValidateStruct()
+func (re recoverPlace) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(re, r)
 }
 
-func (r recoverPlace) ValidateStruct() error {
-	return jsonschema.ValidateStruct(r)
-}
-
-func (r recoverPlace) InteractionText() string {
+func (re recoverPlace) InteractionText() string {
 	return "Recover Place."
 }
 
-func (r recoverPlace) Description() string {
+func (re recoverPlace) Description() string {
 	return "Return a place from your dustpile to your hand."
 }

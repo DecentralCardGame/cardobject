@@ -10,12 +10,8 @@ type harm struct {
 	Amount cardobject.IntValue
 }
 
-func (h harm) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h harm) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h harm) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h harm) InteractionText() string {

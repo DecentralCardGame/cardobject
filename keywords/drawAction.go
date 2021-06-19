@@ -9,12 +9,8 @@ type drawAction struct {
 	Tag *cardobject.Tag `json:",omitempty"`
 }
 
-func (d drawAction) Validate() error {
-	return d.ValidateStruct()
-}
-
-func (d drawAction) ValidateStruct() error {
-	return jsonschema.ValidateStruct(d)
+func (d drawAction) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d drawAction) InteractionText() string {

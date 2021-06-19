@@ -9,12 +9,8 @@ type grow struct {
 	GrowthAmount cardobject.IntValue
 }
 
-func (g grow) Validate() error {
-	return g.ValidateStruct()
-}
-
-func (g grow) ValidateStruct() error {
-	return jsonschema.ValidateStruct(g)
+func (g grow) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(g, r)
 }
 
 func (g grow) InteractionText() string {

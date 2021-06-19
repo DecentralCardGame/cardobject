@@ -10,12 +10,8 @@ type silence struct {
 	Player cardobject.PlayerMode
 }
 
-func (s silence) Validate() error {
-	return s.ValidateStruct()
-}
-
-func (s silence) ValidateStruct() error {
-	return jsonschema.ValidateStruct(s)
+func (s silence) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(s, r)
 }
 
 func (s silence) InteractionText() string {

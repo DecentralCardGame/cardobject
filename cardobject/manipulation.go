@@ -9,24 +9,24 @@ type Manipulations struct {
 	PlaceManipulations       *PlaceManipulations       `json:",omitempty"`
 }
 
-func (m Manipulations) Validate() error {
-	return m.ValidateInterface()
+func (m Manipulations) Validate(r jsonschema.RootElement) error {
+	implementer, err := m.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (m Manipulations) ValidateInterface() error {
-	return jsonschema.ValidateInterface(m)
+func (m Manipulations) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(m)
 }
 
 type ActionManipulations []ActionManipulation
 
-func (a ActionManipulations) Validate() error {
-	return a.ValidateArray()
-}
-
-func (a ActionManipulations) ValidateArray() error {
+func (a ActionManipulations) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range a {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -44,14 +44,10 @@ func (a ActionManipulations) ItemName() string {
 
 type EntityManipulations []EntityManipulation
 
-func (e EntityManipulations) Validate() error {
-	return e.ValidateArray()
-}
-
-func (e EntityManipulations) ValidateArray() error {
+func (e EntityManipulations) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range e {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -69,14 +65,10 @@ func (e EntityManipulations) ItemName() string {
 
 type HeadquarterManipulations []HeadquarterManipulation
 
-func (h HeadquarterManipulations) Validate() error {
-	return h.ValidateArray()
-}
-
-func (h HeadquarterManipulations) ValidateArray() error {
+func (h HeadquarterManipulations) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range h {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -94,14 +86,10 @@ func (h HeadquarterManipulations) ItemName() string {
 
 type PlaceManipulations []PlaceManipulation
 
-func (p PlaceManipulations) Validate() error {
-	return p.ValidateArray()
-}
-
-func (p PlaceManipulations) ValidateArray() error {
+func (p PlaceManipulations) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range p {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -125,12 +113,16 @@ type ActionManipulation struct {
 	ActionZoneChange         *ActionZoneChange         `json:",omitempty"`
 }
 
-func (a ActionManipulation) Validate() error {
-	return a.ValidateInterface()
+func (a ActionManipulation) Validate(r jsonschema.RootElement) error {
+	implementer, err := a.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (a ActionManipulation) ValidateInterface() error {
-	return jsonschema.ValidateInterface(a)
+func (a ActionManipulation) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(a)
 }
 
 type EntityManipulation struct {
@@ -141,12 +133,16 @@ type EntityManipulation struct {
 	EntityZoneChange          *EntityZoneChange          `json:",omitempty"`
 }
 
-func (e EntityManipulation) Validate() error {
-	return e.ValidateInterface()
+func (e EntityManipulation) Validate(r jsonschema.RootElement) error {
+	implementer, err := e.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (e EntityManipulation) ValidateInterface() error {
-	return jsonschema.ValidateInterface(e)
+func (e EntityManipulation) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(e)
 }
 
 type HeadquarterManipulation struct {
@@ -156,12 +152,16 @@ type HeadquarterManipulation struct {
 	HeadquarterTagManipulation    *HeadquarterTagManipulation     `json:",omitempty"`
 }
 
-func (h HeadquarterManipulation) Validate() error {
-	return h.ValidateInterface()
+func (h HeadquarterManipulation) Validate(r jsonschema.RootElement) error {
+	implementer, err := h.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (h HeadquarterManipulation) ValidateInterface() error {
-	return jsonschema.ValidateInterface(h)
+func (h HeadquarterManipulation) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(h)
 }
 
 type PlaceManipulation struct {
@@ -172,12 +172,16 @@ type PlaceManipulation struct {
 	PlaceZoneChange          *PlaceZoneChange          `json:",omitempty"`
 }
 
-func (p PlaceManipulation) Validate() error {
-	return p.ValidateInterface()
+func (p PlaceManipulation) Validate(r jsonschema.RootElement) error {
+	implementer, err := p.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (p PlaceManipulation) ValidateInterface() error {
-	return jsonschema.ValidateInterface(p)
+func (p PlaceManipulation) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(p)
 }
 
 type ActionEffectManipulation struct {
@@ -186,12 +190,8 @@ type ActionEffectManipulation struct {
 	Keyword        *Keyword `json:",omitempty"`
 }
 
-func (a ActionEffectManipulation) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionEffectManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionEffectManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionEffectManipulation) InteractionText() string {
@@ -205,12 +205,8 @@ type ActionIntManipulation struct {
 	Keyword     *Keyword `json:",omitempty"`
 }
 
-func (a ActionIntManipulation) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionIntManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionIntManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionIntManipulation) InteractionText() string {
@@ -224,12 +220,8 @@ type ActionStringManipulation struct {
 	Keyword        *Keyword `json:",omitempty"`
 }
 
-func (a ActionStringManipulation) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionStringManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionStringManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionStringManipulation) InteractionText() string {
@@ -242,12 +234,8 @@ type ActionTagManipulation struct {
 	Keyword     *Keyword `json:",omitempty"`
 }
 
-func (a ActionTagManipulation) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActionTagManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActionTagManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActionTagManipulation) InteractionText() string {
@@ -260,12 +248,8 @@ type EntityAbilityManipulation struct {
 	Keyword         *Keyword `json:",omitempty"`
 }
 
-func (e EntityAbilityManipulation) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityAbilityManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityAbilityManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityAbilityManipulation) InteractionText() string {
@@ -279,12 +263,8 @@ type EntityIntManipulation struct {
 	Keyword     *Keyword `json:",omitempty"`
 }
 
-func (e EntityIntManipulation) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityIntManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityIntManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityIntManipulation) InteractionText() string {
@@ -298,12 +278,8 @@ type EntityStringManipulation struct {
 	Keyword        *Keyword `json:",omitempty"`
 }
 
-func (e EntityStringManipulation) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityStringManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityStringManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityStringManipulation) InteractionText() string {
@@ -316,12 +292,8 @@ type EntityTagManipulation struct {
 	Keyword     *Keyword `json:",omitempty"`
 }
 
-func (e EntityTagManipulation) Validate() error {
-	return e.ValidateStruct()
-}
-
-func (e EntityTagManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(e)
+func (e EntityTagManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(e, r)
 }
 
 func (e EntityTagManipulation) InteractionText() string {
@@ -334,12 +306,8 @@ type HeadquarterAbilityManipulation struct {
 	Keyword         *Keyword `json:",omitempty"`
 }
 
-func (h HeadquarterAbilityManipulation) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterAbilityManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterAbilityManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterAbilityManipulation) InteractionText() string {
@@ -353,12 +321,8 @@ type HeadquarterIntManipulation struct {
 	Keyword     *Keyword `json:",omitempty"`
 }
 
-func (h HeadquarterIntManipulation) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterIntManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterIntManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterIntManipulation) InteractionText() string {
@@ -372,12 +336,8 @@ type HeadquarterStringManipulation struct {
 	Keyword        *Keyword `json:",omitempty"`
 }
 
-func (h HeadquarterStringManipulation) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterStringManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterStringManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterStringManipulation) InteractionText() string {
@@ -390,12 +350,8 @@ type HeadquarterTagManipulation struct {
 	Keyword     *Keyword `json:",omitempty"`
 }
 
-func (h HeadquarterTagManipulation) Validate() error {
-	return h.ValidateStruct()
-}
-
-func (h HeadquarterTagManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(h)
+func (h HeadquarterTagManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(h, r)
 }
 
 func (h HeadquarterTagManipulation) InteractionText() string {
@@ -408,12 +364,8 @@ type PlaceAbilityManipulation struct {
 	Keyword         *Keyword `json:",omitempty"`
 }
 
-func (p PlaceAbilityManipulation) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceAbilityManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceAbilityManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceAbilityManipulation) InteractionText() string {
@@ -427,12 +379,8 @@ type PlaceIntManipulation struct {
 	Keyword     *Keyword `json:",omitempty"`
 }
 
-func (p PlaceIntManipulation) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceIntManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceIntManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceIntManipulation) InteractionText() string {
@@ -446,12 +394,8 @@ type PlaceStringManipulation struct {
 	Keyword        *Keyword `json:",omitempty"`
 }
 
-func (p PlaceStringManipulation) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceStringManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceStringManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceStringManipulation) InteractionText() string {
@@ -464,12 +408,8 @@ type PlaceTagManipulation struct {
 	Keyword     *Keyword `json:",omitempty"`
 }
 
-func (p PlaceTagManipulation) Validate() error {
-	return p.ValidateStruct()
-}
-
-func (p PlaceTagManipulation) ValidateStruct() error {
-	return jsonschema.ValidateStruct(p)
+func (p PlaceTagManipulation) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(p, r)
 }
 
 func (p PlaceTagManipulation) InteractionText() string {

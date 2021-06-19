@@ -8,7 +8,7 @@ func Unmarshal(data []byte) (*Card, error) {
 	if err != nil {
 		return nil, err
 	}
-	err = card.Validate()
+	err = card.ValidateRoot()
 	if err != nil {
 		return nil, err
 	}

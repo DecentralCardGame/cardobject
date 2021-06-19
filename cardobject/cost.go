@@ -11,16 +11,16 @@ type Cost struct {
 	VoidCost      *VoidCost      `json:",omitempty"`
 }
 
-func (c Cost) Validate() error {
-	return c.ValidateStruct()
+func (c Cost) Validate(r jsonschema.RootElement) error {
+	implementer, err := c.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (c Cost) ValidateStruct() error {
-	return jsonschema.ValidateStruct(c)
-}
-
-func (c Cost) InteractionText() string {
-	return "§ManaCost §SacrificeCost §DiscardCost §VoidCost"
+func (c Cost) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(c)
 }
 
 type AdditionalCost struct {
@@ -29,28 +29,24 @@ type AdditionalCost struct {
 	VoidCost      *VoidCost      `json:",omitempty"`
 }
 
-func (a AdditionalCost) Validate() error {
-	return a.ValidateStruct()
+func (a AdditionalCost) Validate(r jsonschema.RootElement) error {
+	implementer, err := a.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (a AdditionalCost) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
-}
-
-func (a AdditionalCost) InteractionText() string {
-	return "§SacrificeCost §DiscardCost §VoidCost"
+func (a AdditionalCost) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(a)
 }
 
 type ManaCost struct {
 	CostAmount BasicAmount
 }
 
-func (m ManaCost) Validate() error {
-	return m.ValidateStruct()
-}
-
-func (m ManaCost) ValidateStruct() error {
-	return jsonschema.ValidateStruct(m)
+func (m ManaCost) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(m, r)
 }
 
 func (m ManaCost) InteractionText() string {
@@ -61,12 +57,8 @@ type SacrificeCost struct {
 	Amount BasicAmount
 }
 
-func (s SacrificeCost) Validate() error {
-	return s.ValidateStruct()
-}
-
-func (s SacrificeCost) ValidateStruct() error {
-	return jsonschema.ValidateStruct(s)
+func (s SacrificeCost) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(s, r)
 }
 
 func (s SacrificeCost) InteractionText() string {
@@ -77,12 +69,8 @@ type DiscardCost struct {
 	Amount BasicAmount
 }
 
-func (d DiscardCost) Validate() error {
-	return d.ValidateStruct()
-}
-
-func (d DiscardCost) ValidateStruct() error {
-	return jsonschema.ValidateStruct(d)
+func (d DiscardCost) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d DiscardCost) InteractionText() string {
@@ -93,12 +81,8 @@ type VoidCost struct {
 	Amount BasicAmount
 }
 
-func (v VoidCost) Validate() error {
-	return v.ValidateStruct()
-}
-
-func (v VoidCost) ValidateStruct() error {
-	return jsonschema.ValidateStruct(v)
+func (v VoidCost) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(v, r)
 }
 
 func (v VoidCost) InteractionText() string {

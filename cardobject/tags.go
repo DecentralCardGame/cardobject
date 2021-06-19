@@ -27,14 +27,10 @@ var possibleTags []string = []string{
 
 type Tags []Tag
 
-func (t Tags) Validate() error {
-	return t.ValidateArray()
-}
-
-func (t Tags) ValidateArray() error {
+func (t Tags) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range t {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -52,11 +48,7 @@ func (t Tags) ItemName() string {
 
 type Tag jsonschema.BasicEnum
 
-func (t Tag) Validate() error {
-	return t.ValidateEnum()
-}
-
-func (t Tag) ValidateEnum() error {
+func (t Tag) Validate(r jsonschema.RootElement) error {
 	values := t.EnumValues()
 	for _, v := range values {
 		if v == string(t) {

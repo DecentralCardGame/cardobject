@@ -10,18 +10,14 @@ type repair struct {
 	Amount cardobject.IntValue
 }
 
-func (r repair) Validate() error {
-	return r.ValidateStruct()
+func (re repair) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(re, r)
 }
 
-func (r repair) ValidateStruct() error {
-	return jsonschema.ValidateStruct(r)
-}
-
-func (r repair) InteractionText() string {
+func (re repair) InteractionText() string {
 	return "Repair §Target §Amount."
 }
 
-func (r repair) Description() string {
+func (re repair) Description() string {
 	return "Restore lost health of a friendly place or HQ."
 }

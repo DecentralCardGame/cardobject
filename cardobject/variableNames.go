@@ -37,11 +37,7 @@ var targetVariableNames []string = []string{MVar, TVar}
 
 type IntVariableName jsonschema.BasicEnum
 
-func (i IntVariableName) Validate() error {
-	return i.ValidateEnum()
-}
-
-func (i IntVariableName) ValidateEnum() error {
+func (i IntVariableName) Validate(r jsonschema.RootElement) error {
 	values := i.EnumValues()
 	for _, v := range values {
 		if v == string(i) {
@@ -57,11 +53,7 @@ func (i IntVariableName) EnumValues() []string {
 
 type StringVariableName jsonschema.BasicEnum
 
-func (s StringVariableName) Validate() error {
-	return s.ValidateEnum()
-}
-
-func (s StringVariableName) ValidateEnum() error {
+func (s StringVariableName) Validate(r jsonschema.RootElement) error {
 	values := s.EnumValues()
 	for _, v := range values {
 		if v == string(s) {
@@ -77,11 +69,7 @@ func (s StringVariableName) EnumValues() []string {
 
 type TargetVariableName jsonschema.BasicEnum
 
-func (t TargetVariableName) Validate() error {
-	return t.ValidateEnum()
-}
-
-func (t TargetVariableName) ValidateEnum() error {
+func (t TargetVariableName) Validate(r jsonschema.RootElement) error {
 	values := t.EnumValues()
 	for _, v := range values {
 		if v == string(t) {

@@ -6,14 +6,10 @@ import (
 
 type Abilities []Ability
 
-func (a Abilities) Validate() error {
-	return a.ValidateArray()
-}
-
-func (a Abilities) ValidateArray() error {
+func (a Abilities) Validate(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range a {
-		err := v.Validate()
+		err := v.Validate(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -34,12 +30,16 @@ type Ability struct {
 	TriggeredAbility *TriggeredAbility `json:",omitempty"`
 }
 
-func (a Ability) Validate() error {
-	return a.ValidateInterface()
+func (a Ability) Validate(r jsonschema.RootElement) error {
+	implementer, err := a.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return implementer.Validate(r)
 }
 
-func (a Ability) ValidateInterface() error {
-	return jsonschema.ValidateInterface(a)
+func (a Ability) FindImplementer() (jsonschema.Validateable, error) {
+	return jsonschema.FindImplementer(a)
 }
 
 type ActivatedAbility struct {
@@ -47,12 +47,8 @@ type ActivatedAbility struct {
 	Effects     Effects
 }
 
-func (a ActivatedAbility) Validate() error {
-	return a.ValidateStruct()
-}
-
-func (a ActivatedAbility) ValidateStruct() error {
-	return jsonschema.ValidateStruct(a)
+func (a ActivatedAbility) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(a, r)
 }
 
 func (a ActivatedAbility) InteractionText() string {
@@ -65,12 +61,8 @@ type TriggeredAbility struct {
 	Effects Effects
 }
 
-func (t TriggeredAbility) Validate() error {
-	return t.ValidateStruct()
-}
-
-func (t TriggeredAbility) ValidateStruct() error {
-	return jsonschema.ValidateStruct(t)
+func (t TriggeredAbility) Validate(r jsonschema.RootElement) error {
+	return jsonschema.ValidateStruct(t, r)
 }
 
 func (a TriggeredAbility) InteractionText() string {
