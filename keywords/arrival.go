@@ -8,7 +8,7 @@ type arrival struct {
 	Effects effects
 }
 
-func (a arrival) Validate(r jsonschema.RootElement) error {
+func (a arrival) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 

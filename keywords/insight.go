@@ -9,7 +9,7 @@ type insight struct {
 	WisdomAmount cardobject.IntValue
 }
 
-func (i insight) Validate(r jsonschema.RootElement) error {
+func (i insight) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(i, r)
 }
 

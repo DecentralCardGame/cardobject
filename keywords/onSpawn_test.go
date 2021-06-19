@@ -6,7 +6,7 @@ import (
 
 func TestOnSpawn(t *testing.T) {
 	onSpawn := onSpawn{}
-	err := onSpawn.Validate(emptyTestCard())
+	err := onSpawn.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

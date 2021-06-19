@@ -6,7 +6,7 @@ import (
 
 type discard struct{}
 
-func (d discard) Validate(r jsonschema.RootElement) error {
+func (d discard) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 

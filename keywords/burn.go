@@ -9,7 +9,7 @@ type burn struct {
 	Amount cardobject.IntValue
 }
 
-func (b burn) Validate(r jsonschema.RootElement) error {
+func (b burn) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(b, r)
 }
 

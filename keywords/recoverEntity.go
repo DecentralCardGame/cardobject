@@ -6,7 +6,7 @@ import (
 
 type recoverEntity struct{}
 
-func (re recoverEntity) Validate(r jsonschema.RootElement) error {
+func (re recoverEntity) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(re, r)
 }
 

@@ -9,7 +9,7 @@ type withdraw struct {
 	Target cardobject.CardMode
 }
 
-func (w withdraw) Validate(r jsonschema.RootElement) error {
+func (w withdraw) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(w, r)
 }
 

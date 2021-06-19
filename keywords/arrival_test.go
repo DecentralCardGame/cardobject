@@ -6,7 +6,7 @@ import (
 
 func TestArrival(t *testing.T) {
 	arrival := arrival{}
-	err := arrival.Validate(emptyTestCard())
+	err := arrival.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

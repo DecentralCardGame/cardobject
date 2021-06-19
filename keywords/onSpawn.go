@@ -8,7 +8,7 @@ type onSpawn struct {
 	Effects effects
 }
 
-func (o onSpawn) Validate(r jsonschema.RootElement) error {
+func (o onSpawn) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(o, r)
 }
 

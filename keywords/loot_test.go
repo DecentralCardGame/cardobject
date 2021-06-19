@@ -6,7 +6,7 @@ import (
 
 func TestLoot(t *testing.T) {
 	loot := loot{nil}
-	err := loot.Validate(emptyTestCard())
+	err := loot.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

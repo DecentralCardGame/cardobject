@@ -6,7 +6,7 @@ import (
 
 func TestPay(t *testing.T) {
 	pay := pay{3, nil}
-	err := pay.Validate(emptyTestCard())
+	err := pay.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

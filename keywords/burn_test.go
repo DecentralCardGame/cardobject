@@ -10,7 +10,7 @@ func TestBurn(t *testing.T) {
 	simpleIntValue := cardobject.SimpleIntValue(3)
 	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
 	burn := burn{intValue}
-	err := burn.Validate(emptyTestCard())
+	err := burn.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

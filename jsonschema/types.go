@@ -1,11 +1,11 @@
 package jsonschema
 
 type Validateable interface {
-	Validate(RootElement) error
+	ValidateType(RootElement) error
 }
 
 type RootElement interface {
-	ValidateRoot() error
+	Validate() error
 	CheckRootRequirements([]string) error
 }
 

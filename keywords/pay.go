@@ -10,7 +10,7 @@ type pay struct {
 	Effects    effects
 }
 
-func (p pay) Validate(r jsonschema.RootElement) error {
+func (p pay) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 

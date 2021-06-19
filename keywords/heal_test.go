@@ -6,7 +6,7 @@ import (
 
 func TestHeal(t *testing.T) {
 	heal := heal{"TARGET"}
-	err := heal.Validate(emptyTestCard())
+	err := heal.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

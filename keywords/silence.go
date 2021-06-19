@@ -10,7 +10,7 @@ type silence struct {
 	Player cardobject.PlayerMode
 }
 
-func (s silence) Validate(r jsonschema.RootElement) error {
+func (s silence) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(s, r)
 }
 

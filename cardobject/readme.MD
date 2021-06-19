@@ -5,7 +5,7 @@ Addidtional functions provided allow to retrieve a build-instruction, an unmarsh
 # Usage
 1. An instruction on how to build a card is provided in form of a json-schema.
 2. A card-json can be unmarshaled and validated to a [Card](card.go#L7) by the [Unmarshal()](unmarshal.go#L5)-method.
-3. The [Card](card.go#L7) provides a [Validate()](card.go#L14)-method which checks if the [Card](card.go#L7) is built correctly.
+3. The [Card](card.go#L7) provides a [ValidateType()](card.go#L14)-method which checks if the [Card](card.go#L7) is built correctly.
 
 ## Schema
 1. The schema describes to a frontend how to build a keyworded card.

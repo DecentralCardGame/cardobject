@@ -9,7 +9,7 @@ type heal struct {
 	Target cardobject.CardMode
 }
 
-func (h heal) Validate(r jsonschema.RootElement) error {
+func (h heal) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(h, r)
 }
 

@@ -6,7 +6,7 @@ import (
 
 type resurrect struct{}
 
-func (re resurrect) Validate(r jsonschema.RootElement) error {
+func (re resurrect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(re, r)
 }
 

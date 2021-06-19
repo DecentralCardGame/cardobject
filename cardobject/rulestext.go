@@ -12,10 +12,10 @@ const minRulesTextLength int = 0
 
 type RulesTexts []RulesText
 
-func (rt RulesTexts) Validate(r jsonschema.RootElement) error {
+func (rt RulesTexts) ValidateType(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range rt {
-		err := v.Validate(r)
+		err := v.ValidateType(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -33,7 +33,7 @@ func (r RulesTexts) ItemName() string {
 
 type RulesText jsonschema.BasicString
 
-func (rt RulesText) Validate(r jsonschema.RootElement) error {
+func (rt RulesText) ValidateType(r jsonschema.RootElement) error {
 	minLength, maxLength := rt.MinMaxLength()
 	length := len(string(rt))
 	if length < minLength || length > maxLength {

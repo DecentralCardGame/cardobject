@@ -10,7 +10,7 @@ type arm struct {
 	Amount cardobject.IntValue
 }
 
-func (a arm) Validate(r jsonschema.RootElement) error {
+func (a arm) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 

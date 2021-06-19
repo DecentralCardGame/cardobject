@@ -25,7 +25,7 @@ type Class struct {
 	Culture    Culture
 }
 
-func (c Class) Validate(r jsonschema.RootElement) error {
+func (c Class) ValidateType(r jsonschema.RootElement) error {
 	if !(bool(c.Nature) || bool(c.Mysticism) || bool(c.Technology) || bool(c.Culture)) {
 		return errors.New("At least one Class Must be selected for a card.")
 	}
@@ -38,7 +38,7 @@ func (c Class) InteractionText() string {
 
 type Nature jsonschema.BasicBool
 
-func (n Nature) Validate(r jsonschema.RootElement) error {
+func (n Nature) ValidateType(r jsonschema.RootElement) error {
 	b := bool(n)
 	if b || !b {
 		return nil
@@ -52,7 +52,7 @@ func (n Nature) Default() bool {
 
 type Mysticism jsonschema.BasicBool
 
-func (m Mysticism) Validate(r jsonschema.RootElement) error {
+func (m Mysticism) ValidateType(r jsonschema.RootElement) error {
 	b := bool(m)
 	if b || !b {
 		return nil
@@ -66,7 +66,7 @@ func (m Mysticism) Default() bool {
 
 type Technology jsonschema.BasicBool
 
-func (t Technology) Validate(r jsonschema.RootElement) error {
+func (t Technology) ValidateType(r jsonschema.RootElement) error {
 	b := bool(t)
 	if b || !b {
 		return nil
@@ -80,7 +80,7 @@ func (t Technology) Default() bool {
 
 type Culture jsonschema.BasicBool
 
-func (c Culture) Validate(r jsonschema.RootElement) error {
+func (c Culture) ValidateType(r jsonschema.RootElement) error {
 	b := bool(c)
 	if b || !b {
 		return nil

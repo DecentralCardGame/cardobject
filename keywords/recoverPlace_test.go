@@ -6,7 +6,7 @@ import (
 
 func TestRecoverPlace(t *testing.T) {
 	recoverPlace := recoverPlace{}
-	err := recoverPlace.Validate(emptyTestCard())
+	err := recoverPlace.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

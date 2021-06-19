@@ -11,12 +11,12 @@ type EventListener struct {
 	ZoneChangeEventListener   *ZoneChangeEventListener   `json:",omitempty"`
 }
 
-func (e EventListener) Validate(r jsonschema.RootElement) error {
+func (e EventListener) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := e.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (e EventListener) FindImplementer() (jsonschema.Validateable, error) {
@@ -28,7 +28,7 @@ type AttackEventListener struct {
 	AttackEntityExtractors *EntityExtractors `json:",omitempty"`
 }
 
-func (a AttackEventListener) Validate(r jsonschema.RootElement) error {
+func (a AttackEventListener) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 
@@ -42,7 +42,7 @@ type BlockEventListener struct {
 	BlockedEntityExtractors  *EntityExtractors `json:",omitempty"`
 }
 
-func (b BlockEventListener) Validate(r jsonschema.RootElement) error {
+func (b BlockEventListener) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(b, r)
 }
 
@@ -55,12 +55,12 @@ type ManipulationEventListener struct {
 	StringManipulationEventListener *StringManipulationEventListener `json:",omitempty"`
 }
 
-func (m ManipulationEventListener) Validate(r jsonschema.RootElement) error {
+func (m ManipulationEventListener) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := m.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (m ManipulationEventListener) FindImplementer() (jsonschema.Validateable, error) {
@@ -75,7 +75,7 @@ type IntManipulationEventListener struct {
 	ManipulationValueExtractor *IntExtractor   `json:",omitempty"`
 }
 
-func (i IntManipulationEventListener) Validate(r jsonschema.RootElement) error {
+func (i IntManipulationEventListener) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(i, r)
 }
 
@@ -91,7 +91,7 @@ type StringManipulationEventListener struct {
 	ManipulationValueExtractor *StringExtractor `json:",omitempty"`
 }
 
-func (s StringManipulationEventListener) Validate(r jsonschema.RootElement) error {
+func (s StringManipulationEventListener) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(s, r)
 }
 
@@ -104,7 +104,7 @@ type ProductionEventListener struct {
 	ProductionAmountExtractor *IntExtractor `json:",omitempty"`
 }
 
-func (p ProductionEventListener) Validate(r jsonschema.RootElement) error {
+func (p ProductionEventListener) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 
@@ -116,7 +116,7 @@ type TimeEventListener struct {
 	TimeEvent TimeEvent
 }
 
-func (t TimeEventListener) Validate(r jsonschema.RootElement) error {
+func (t TimeEventListener) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(t, r)
 }
 
@@ -131,7 +131,7 @@ type ZoneChangeEventListener struct {
 	MovedCardExtractors *CardExtractors `json:",omitempty"`
 }
 
-func (z ZoneChangeEventListener) Validate(r jsonschema.RootElement) error {
+func (z ZoneChangeEventListener) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(z, r)
 }
 

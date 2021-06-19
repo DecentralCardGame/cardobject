@@ -8,7 +8,7 @@ type dismantle struct {
 	Effects effects
 }
 
-func (d dismantle) Validate(r jsonschema.RootElement) error {
+func (d dismantle) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 

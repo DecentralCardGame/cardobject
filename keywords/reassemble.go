@@ -6,7 +6,7 @@ import (
 
 type reassemble struct{}
 
-func (re reassemble) Validate(r jsonschema.RootElement) error {
+func (re reassemble) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(re, r)
 }
 

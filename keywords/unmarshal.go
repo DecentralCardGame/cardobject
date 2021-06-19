@@ -13,7 +13,7 @@ func Unmarshal(data []byte) (*Card, error) {
 	if err != nil {
 		return nil, err
 	}
-	err = card.ValidateRoot()
+	err = card.Validate()
 	if err != nil {
 		return nil, err
 	}

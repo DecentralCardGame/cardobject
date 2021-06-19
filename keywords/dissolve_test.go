@@ -6,7 +6,7 @@ import (
 
 func TestDissolve(t *testing.T) {
 	dissolve := dissolve{3, nil}
-	err := dissolve.Validate(emptyTestCard())
+	err := dissolve.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

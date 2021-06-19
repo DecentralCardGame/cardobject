@@ -8,7 +8,7 @@ type periodic struct {
 	Effects effects
 }
 
-func (p periodic) Validate(r jsonschema.RootElement) error {
+func (p periodic) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 

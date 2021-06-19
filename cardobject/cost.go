@@ -11,12 +11,12 @@ type Cost struct {
 	VoidCost      *VoidCost      `json:",omitempty"`
 }
 
-func (c Cost) Validate(r jsonschema.RootElement) error {
+func (c Cost) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := c.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (c Cost) FindImplementer() (jsonschema.Validateable, error) {
@@ -29,12 +29,12 @@ type AdditionalCost struct {
 	VoidCost      *VoidCost      `json:",omitempty"`
 }
 
-func (a AdditionalCost) Validate(r jsonschema.RootElement) error {
+func (a AdditionalCost) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := a.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (a AdditionalCost) FindImplementer() (jsonschema.Validateable, error) {
@@ -45,7 +45,7 @@ type ManaCost struct {
 	CostAmount BasicAmount
 }
 
-func (m ManaCost) Validate(r jsonschema.RootElement) error {
+func (m ManaCost) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(m, r)
 }
 
@@ -57,7 +57,7 @@ type SacrificeCost struct {
 	Amount BasicAmount
 }
 
-func (s SacrificeCost) Validate(r jsonschema.RootElement) error {
+func (s SacrificeCost) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(s, r)
 }
 
@@ -69,7 +69,7 @@ type DiscardCost struct {
 	Amount BasicAmount
 }
 
-func (d DiscardCost) Validate(r jsonschema.RootElement) error {
+func (d DiscardCost) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 
@@ -81,7 +81,7 @@ type VoidCost struct {
 	Amount BasicAmount
 }
 
-func (v VoidCost) Validate(r jsonschema.RootElement) error {
+func (v VoidCost) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(v, r)
 }
 

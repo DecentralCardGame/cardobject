@@ -9,7 +9,7 @@ type grow struct {
 	GrowthAmount cardobject.IntValue
 }
 
-func (g grow) Validate(r jsonschema.RootElement) error {
+func (g grow) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(g, r)
 }
 

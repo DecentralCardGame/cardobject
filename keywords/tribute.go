@@ -8,7 +8,7 @@ type tribute struct {
 	Effects effects
 }
 
-func (t tribute) Validate(r jsonschema.RootElement) error {
+func (t tribute) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(t, r)
 }
 

@@ -9,7 +9,7 @@ type void struct {
 	Target cardobject.CardMode
 }
 
-func (v void) Validate(r jsonschema.RootElement) error {
+func (v void) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(v, r)
 }
 

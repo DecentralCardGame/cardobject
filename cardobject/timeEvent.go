@@ -17,7 +17,7 @@ var timeEvents []string = []string{Combat, Tickstart}
 
 type TimeEvent jsonschema.BasicEnum
 
-func (t TimeEvent) Validate(r jsonschema.RootElement) error {
+func (t TimeEvent) ValidateType(r jsonschema.RootElement) error {
 	values := t.EnumValues()
 	for _, v := range values {
 		if v == string(t) {

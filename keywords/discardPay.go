@@ -10,7 +10,7 @@ type discardPay struct {
 	Effects    effects
 }
 
-func (d discardPay) Validate(r jsonschema.RootElement) error {
+func (d discardPay) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 

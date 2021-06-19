@@ -40,7 +40,7 @@ const minWisdom int = 0
 
 type Attack jsonschema.BasicInt
 
-func (a Attack) Validate(r jsonschema.RootElement) error {
+func (a Attack) ValidateType(r jsonschema.RootElement) error {
 	min, max := a.MinMax()
 	if a < Attack(min) || a > Attack(max) {
 		return errors.New("Attack must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
@@ -54,7 +54,7 @@ func (a Attack) MinMax() (int, int) {
 
 type BasicAmount jsonschema.BasicInt
 
-func (b BasicAmount) Validate(r jsonschema.RootElement) error {
+func (b BasicAmount) ValidateType(r jsonschema.RootElement) error {
 	min, max := b.MinMax()
 	if b < BasicAmount(min) || b > BasicAmount(max) {
 		return errors.New("BasicAmount must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
@@ -68,7 +68,7 @@ func (b BasicAmount) MinMax() (int, int) {
 
 type CardName jsonschema.BasicString
 
-func (c CardName) Validate(r jsonschema.RootElement) error {
+func (c CardName) ValidateType(r jsonschema.RootElement) error {
 	minLength, maxLength := c.MinMaxLength()
 	length := len(string(c))
 	if length < minLength || length > maxLength {
@@ -83,7 +83,7 @@ func (c CardName) MinMaxLength() (int, int) {
 
 type CastingCost jsonschema.BasicInt
 
-func (c CastingCost) Validate(r jsonschema.RootElement) error {
+func (c CastingCost) ValidateType(r jsonschema.RootElement) error {
 	min, max := c.MinMax()
 	if c < CastingCost(min) || c > CastingCost(max) {
 		return errors.New("CastingCost must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
@@ -97,7 +97,7 @@ func (c CastingCost) MinMax() (int, int) {
 
 type Delay jsonschema.BasicInt
 
-func (d Delay) Validate(r jsonschema.RootElement) error {
+func (d Delay) ValidateType(r jsonschema.RootElement) error {
 	min, max := d.MinMax()
 	if d < Delay(min) || d > Delay(max) {
 		return errors.New("Delay must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
@@ -111,7 +111,7 @@ func (d Delay) MinMax() (int, int) {
 
 type FlavourText jsonschema.BasicString
 
-func (f FlavourText) Validate(r jsonschema.RootElement) error {
+func (f FlavourText) ValidateType(r jsonschema.RootElement) error {
 	minLength, maxLength := f.MinMaxLength()
 	length := len(string(f))
 	if length < minLength || length > maxLength {
@@ -126,7 +126,7 @@ func (f FlavourText) MinMaxLength() (int, int) {
 
 type Growth jsonschema.BasicInt
 
-func (g Growth) Validate(r jsonschema.RootElement) error {
+func (g Growth) ValidateType(r jsonschema.RootElement) error {
 	min, max := g.MinMax()
 	if g < Growth(min) || g > Growth(max) {
 		return errors.New("Growth must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
@@ -140,7 +140,7 @@ func (g Growth) MinMax() (int, int) {
 
 type Health jsonschema.BasicInt
 
-func (h Health) Validate(r jsonschema.RootElement) error {
+func (h Health) ValidateType(r jsonschema.RootElement) error {
 	min, max := h.MinMax()
 	if h < Health(min) || h > Health(max) {
 		return errors.New("Health must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
@@ -154,7 +154,7 @@ func (h Health) MinMax() (int, int) {
 
 type StartingHandsize jsonschema.BasicInt
 
-func (s StartingHandsize) Validate(r jsonschema.RootElement) error {
+func (s StartingHandsize) ValidateType(r jsonschema.RootElement) error {
 	min, max := s.MinMax()
 	if s < StartingHandsize(min) || s > StartingHandsize(max) {
 		return errors.New("StartingHandsize must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
@@ -168,7 +168,7 @@ func (s StartingHandsize) MinMax() (int, int) {
 
 type Wisdom jsonschema.BasicInt
 
-func (w Wisdom) Validate(r jsonschema.RootElement) error {
+func (w Wisdom) ValidateType(r jsonschema.RootElement) error {
 	min, max := w.MinMax()
 	if w < Wisdom(min) || w > Wisdom(max) {
 		return errors.New("Wisdom must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
@@ -182,7 +182,7 @@ func (w Wisdom) MinMax() (int, int) {
 
 type SimpleIntValue jsonschema.BasicInt
 
-func (s SimpleIntValue) Validate(r jsonschema.RootElement) error {
+func (s SimpleIntValue) ValidateType(r jsonschema.RootElement) error {
 	min, max := s.MinMax()
 	if s < SimpleIntValue(min) || s > SimpleIntValue(max) {
 		return errors.New("SimpleIntValue must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
@@ -196,7 +196,7 @@ func (s SimpleIntValue) MinMax() (int, int) {
 
 type SimpleStringValue jsonschema.BasicString
 
-func (s SimpleStringValue) Validate(r jsonschema.RootElement) error {
+func (s SimpleStringValue) ValidateType(r jsonschema.RootElement) error {
 	minLength, maxLength := s.MinMaxLength()
 	length := len(string(s))
 	if length < minLength || length > maxLength {

@@ -9,7 +9,7 @@ type kill struct {
 	Target cardobject.CardMode
 }
 
-func (k kill) Validate(r jsonschema.RootElement) error {
+func (k kill) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(k, r)
 }
 

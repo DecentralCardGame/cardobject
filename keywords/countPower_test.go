@@ -6,7 +6,7 @@ import (
 
 func TestCountPower(t *testing.T) {
 	countPower := countPower{3}
-	err := countPower.Validate(emptyTestCard())
+	err := countPower.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

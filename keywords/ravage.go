@@ -10,7 +10,7 @@ type ravage struct {
 	Amount cardobject.IntValue
 }
 
-func (ra ravage) Validate(r jsonschema.RootElement) error {
+func (ra ravage) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(ra, r)
 }
 

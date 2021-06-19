@@ -10,7 +10,7 @@ type dissolve struct {
 	Effects    effects
 }
 
-func (d dissolve) Validate(r jsonschema.RootElement) error {
+func (d dissolve) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 

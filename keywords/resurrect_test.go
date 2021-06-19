@@ -6,7 +6,7 @@ import (
 
 func TestResurrect(t *testing.T) {
 	resurrect := resurrect{}
-	err := resurrect.Validate(emptyTestCard())
+	err := resurrect.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

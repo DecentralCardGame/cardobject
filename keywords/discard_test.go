@@ -6,7 +6,7 @@ import (
 
 func TestDiscard(t *testing.T) {
 	discard := discard{}
-	err := discard.Validate(emptyTestCard())
+	err := discard.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

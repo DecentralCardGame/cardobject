@@ -6,10 +6,10 @@ import (
 
 type Abilities []Ability
 
-func (a Abilities) Validate(r jsonschema.RootElement) error {
+func (a Abilities) ValidateType(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range a {
-		err := v.Validate(r)
+		err := v.ValidateType(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -30,12 +30,12 @@ type Ability struct {
 	TriggeredAbility *TriggeredAbility `json:",omitempty"`
 }
 
-func (a Ability) Validate(r jsonschema.RootElement) error {
+func (a Ability) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := a.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (a Ability) FindImplementer() (jsonschema.Validateable, error) {
@@ -47,7 +47,7 @@ type ActivatedAbility struct {
 	Effects     Effects
 }
 
-func (a ActivatedAbility) Validate(r jsonschema.RootElement) error {
+func (a ActivatedAbility) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 
@@ -61,7 +61,7 @@ type TriggeredAbility struct {
 	Effects Effects
 }
 
-func (t TriggeredAbility) Validate(r jsonschema.RootElement) error {
+func (t TriggeredAbility) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(t, r)
 }
 

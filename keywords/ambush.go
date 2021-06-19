@@ -9,7 +9,7 @@ type ambush struct {
 	Target cardobject.CardMode
 }
 
-func (a ambush) Validate(r jsonschema.RootElement) error {
+func (a ambush) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 

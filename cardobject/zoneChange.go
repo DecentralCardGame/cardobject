@@ -8,7 +8,7 @@ type ActionZoneChange struct {
 	Keyword *Keyword `json:",omitempty"`
 }
 
-func (a ActionZoneChange) Validate(r jsonschema.RootElement) error {
+func (a ActionZoneChange) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 
@@ -22,7 +22,7 @@ type EntityZoneChange struct {
 	Keyword *Keyword `json:",omitempty"`
 }
 
-func (e EntityZoneChange) Validate(r jsonschema.RootElement) error {
+func (e EntityZoneChange) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(e, r)
 }
 
@@ -36,7 +36,7 @@ type PlaceZoneChange struct {
 	Keyword *Keyword `json:",omitempty"`
 }
 
-func (p PlaceZoneChange) Validate(r jsonschema.RootElement) error {
+func (p PlaceZoneChange) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 

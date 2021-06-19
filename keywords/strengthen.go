@@ -10,7 +10,7 @@ type strengthen struct {
 	Amount cardobject.IntValue
 }
 
-func (s strengthen) Validate(r jsonschema.RootElement) error {
+func (s strengthen) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(s, r)
 }
 

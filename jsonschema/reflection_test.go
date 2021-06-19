@@ -14,16 +14,16 @@ func (c cardObject) CheckRootRequirements(s []string) error {
 	return nil
 }
 
-func (c cardObject) ValidateRoot() error {
-	return c.Validate(c)
+func (c cardObject) Validate() error {
+	return c.ValidateType(c)
 }
 
-func (c cardObject) Validate(r RootElement) error {
+func (c cardObject) ValidateType(r RootElement) error {
 	implementer, err := c.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (c cardObject) FindImplementer() (Validateable, error) {
@@ -41,7 +41,7 @@ func (a action) Classes() []string {
 	return []string{"Technology", "Nature"}
 }
 
-func (a action) Validate(r RootElement) error {
+func (a action) ValidateType(r RootElement) error {
 	return ValidateStruct(a, r)
 }
 
@@ -55,10 +55,10 @@ func (a action) Description() string {
 
 type costs []cost
 
-func (c costs) Validate(r RootElement) error {
+func (c costs) ValidateType(r RootElement) error {
 	errorRange := []error{}
 	for _, v := range c {
-		err := v.Validate(r)
+		err := v.ValidateType(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -76,7 +76,7 @@ func (c costs) ItemName() string {
 
 type cost BasicEnum
 
-func (c cost) Validate(r RootElement) error {
+func (c cost) ValidateType(r RootElement) error {
 	return nil
 }
 
@@ -86,7 +86,7 @@ func (c cost) EnumValues() []string {
 
 type name BasicString
 
-func (n name) Validate(r RootElement) error {
+func (n name) ValidateType(r RootElement) error {
 	return nil
 }
 
@@ -96,7 +96,7 @@ func (n name) MinMaxLength() (int, int) {
 
 type time BasicInt
 
-func (t time) Validate(r RootElement) error {
+func (t time) ValidateType(r RootElement) error {
 	return nil
 }
 
@@ -106,7 +106,7 @@ func (t time) MinMax() (int, int) {
 
 type multipleUse BasicBool
 
-func (m multipleUse) Validate(r RootElement) error {
+func (m multipleUse) ValidateType(r RootElement) error {
 	return nil
 }
 
@@ -127,7 +127,7 @@ func TestReflect(t *testing.T) {
 	}
 }
 
-func TestValidate(t *testing.T) {
+func TestValidateType(t *testing.T) {
 	var c cardObject
 	dat, readErr := ioutil.ReadFile("testJsons/testCard.json")
 	if readErr != nil {
@@ -141,7 +141,7 @@ func TestValidate(t *testing.T) {
 
 	//println(c.Action.Name)
 	//validateErr := c.Action.Time.Validate
-	validateErr := c.ValidateRoot()
+	validateErr := c.Validate()
 	if validateErr != nil {
 		t.Error(validateErr)
 	}

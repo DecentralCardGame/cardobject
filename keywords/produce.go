@@ -9,7 +9,7 @@ type produce struct {
 	ManaAmount cardobject.IntValue
 }
 
-func (p produce) Validate(r jsonschema.RootElement) error {
+func (p produce) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 

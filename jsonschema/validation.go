@@ -15,7 +15,7 @@ func ValidateStruct(s structType, r RootElement) error {
 
 		if field.Kind() != reflect.Ptr || !field.IsNil() {
 			fieldValue := field.Interface().(Validateable)
-			errorRange = append(errorRange, fieldValue.Validate(r))
+			errorRange = append(errorRange, fieldValue.ValidateType(r))
 		} else {
 			fieldType := t.Field(i)
 			tags, exists := fieldType.Tag.Lookup("json")

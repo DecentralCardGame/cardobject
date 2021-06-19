@@ -9,7 +9,7 @@ type anthem struct {
 	Tag cardobject.Tag
 }
 
-func (a anthem) Validate(r jsonschema.RootElement) error {
+func (a anthem) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 

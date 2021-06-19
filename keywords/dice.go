@@ -9,7 +9,7 @@ type dice struct {
 	Amount cardobject.IntValue
 }
 
-func (d dice) Validate(r jsonschema.RootElement) error {
+func (d dice) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 

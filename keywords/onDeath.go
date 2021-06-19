@@ -8,7 +8,7 @@ type onDeath struct {
 	Effects effects
 }
 
-func (o onDeath) Validate(r jsonschema.RootElement) error {
+func (o onDeath) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(o, r)
 }
 

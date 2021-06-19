@@ -9,7 +9,7 @@ type bounce struct {
 	Target cardobject.CardMode
 }
 
-func (b bounce) Validate(r jsonschema.RootElement) error {
+func (b bounce) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(b, r)
 }
 

@@ -9,7 +9,7 @@ type countPower struct {
 	Power cardobject.SimpleIntValue
 }
 
-func (c countPower) Validate(r jsonschema.RootElement) error {
+func (c countPower) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(c, r)
 }
 

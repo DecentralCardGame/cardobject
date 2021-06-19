@@ -6,7 +6,7 @@ import (
 
 func TestDrawEntity(t *testing.T) {
 	drawEntity := drawEntity{nil}
-	err := drawEntity.Validate(emptyTestCard())
+	err := drawEntity.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

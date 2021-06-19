@@ -6,10 +6,10 @@ import (
 
 type Effects []Effect
 
-func (e Effects) Validate(r jsonschema.RootElement) error {
+func (e Effects) ValidateType(r jsonschema.RootElement) error {
 	errorRange := []error{}
 	for _, v := range e {
-		err := v.Validate(r)
+		err := v.ValidateType(r)
 		if err != nil {
 			errorRange = append(errorRange, err)
 		}
@@ -34,12 +34,12 @@ type Effect struct {
 	ChooseFromEffect *ChooseFromEffect `json:",omitempty"`
 }
 
-func (e Effect) Validate(r jsonschema.RootElement) error {
+func (e Effect) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := e.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (e Effect) FindImplementer() (jsonschema.Validateable, error) {
@@ -51,7 +51,7 @@ type GrowthEffect struct {
 	GrowthAmount IntValue
 }
 
-func (g GrowthEffect) Validate(r jsonschema.RootElement) error {
+func (g GrowthEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(g, r)
 }
 
@@ -64,7 +64,7 @@ type ProductionEffect struct {
 	Amount  IntValue
 }
 
-func (p ProductionEffect) Validate(r jsonschema.RootElement) error {
+func (p ProductionEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 
@@ -77,7 +77,7 @@ type WisdomEffect struct {
 	wisdomAmount IntValue
 }
 
-func (d WisdomEffect) Validate(r jsonschema.RootElement) error {
+func (d WisdomEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 
@@ -91,7 +91,7 @@ type TokenEffect struct {
 	Token       Token
 }
 
-func (t TokenEffect) Validate(r jsonschema.RootElement) error {
+func (t TokenEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(t, r)
 }
 
@@ -103,7 +103,7 @@ type ChooseFromEffect struct {
 	Effects Effects
 }
 
-func (c ChooseFromEffect) Validate(r jsonschema.RootElement) error {
+func (c ChooseFromEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(c, r)
 }
 
@@ -119,12 +119,12 @@ type TargetEffect struct {
 	ExtractorTargetEffect   *ExtractorTargetEffect   `json:",omitempty"`
 }
 
-func (t TargetEffect) Validate(r jsonschema.RootElement) error {
+func (t TargetEffect) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := t.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (t TargetEffect) FindImplementer() (jsonschema.Validateable, error) {
@@ -136,7 +136,7 @@ type ActionTargetEffect struct {
 	ActionManipulations *ActionManipulations
 }
 
-func (a ActionTargetEffect) Validate(r jsonschema.RootElement) error {
+func (a ActionTargetEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 
@@ -149,7 +149,7 @@ type EntityTargetEffect struct {
 	EntityManipulations *EntityManipulations
 }
 
-func (e EntityTargetEffect) Validate(r jsonschema.RootElement) error {
+func (e EntityTargetEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(e, r)
 }
 
@@ -162,7 +162,7 @@ type HeadquarterTargetEffect struct {
 	HeadquarterManipulations *HeadquarterManipulations
 }
 
-func (h HeadquarterTargetEffect) Validate(r jsonschema.RootElement) error {
+func (h HeadquarterTargetEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(h, r)
 }
 
@@ -175,7 +175,7 @@ type PlaceTargetEffect struct {
 	PlaceManipulations *PlaceManipulations
 }
 
-func (p PlaceTargetEffect) Validate(r jsonschema.RootElement) error {
+func (p PlaceTargetEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 
@@ -188,7 +188,7 @@ type ExtractorTargetEffect struct {
 	Manipulations  *Manipulations
 }
 
-func (e ExtractorTargetEffect) Validate(r jsonschema.RootElement) error {
+func (e ExtractorTargetEffect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(e, r)
 }
 

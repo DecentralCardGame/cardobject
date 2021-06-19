@@ -6,7 +6,7 @@ import (
 
 func TestRecoverAction(t *testing.T) {
 	recoverAction := recoverAction{}
-	err := recoverAction.Validate(emptyTestCard())
+	err := recoverAction.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

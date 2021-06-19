@@ -10,7 +10,7 @@ type repair struct {
 	Amount cardobject.IntValue
 }
 
-func (re repair) Validate(r jsonschema.RootElement) error {
+func (re repair) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(re, r)
 }
 

@@ -15,16 +15,16 @@ func (c Card) CheckRootRequirements(s []string) error {
 	return nil
 }
 
-func (c Card) ValidateRoot() error {
-	return c.Validate(c)
+func (c Card) Validate() error {
+	return c.ValidateType(c)
 }
 
-func (c Card) Validate(r jsonschema.RootElement) error {
+func (c Card) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := c.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (c Card) FindImplementer() (jsonschema.Validateable, error) {
@@ -43,7 +43,7 @@ type Action struct {
 	RulesTexts     RulesTexts
 }
 
-func (a Action) Validate(r jsonschema.RootElement) error {
+func (a Action) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 
@@ -65,7 +65,7 @@ type Entity struct {
 	RulesTexts     RulesTexts
 }
 
-func (e Entity) Validate(r jsonschema.RootElement) error {
+func (e Entity) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(e, r)
 }
 
@@ -86,7 +86,7 @@ type Place struct {
 	RulesTexts     RulesTexts
 }
 
-func (p Place) Validate(r jsonschema.RootElement) error {
+func (p Place) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 
@@ -106,7 +106,7 @@ type Headquarter struct {
 	RulesTexts  RulesTexts
 }
 
-func (h Headquarter) Validate(r jsonschema.RootElement) error {
+func (h Headquarter) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(h, r)
 }
 

@@ -8,7 +8,7 @@ type battlecry struct {
 	Effects effects
 }
 
-func (b battlecry) Validate(r jsonschema.RootElement) error {
+func (b battlecry) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(b, r)
 }
 

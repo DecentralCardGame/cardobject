@@ -8,7 +8,7 @@ type loot struct {
 	Effects effects
 }
 
-func (l loot) Validate(r jsonschema.RootElement) error {
+func (l loot) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(l, r)
 }
 

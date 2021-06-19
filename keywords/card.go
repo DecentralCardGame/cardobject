@@ -12,20 +12,20 @@ type Card struct {
 	Headquarter *headquarter `json:",omitempty"`
 }
 
-func (c Card) ValidateRoot() error {
-	return c.Validate(c)
+func (c Card) Validate() error {
+	return c.ValidateType(c)
 }
 
 func (c Card) CheckRootRequirements(s []string) error {
 	return nil
 }
 
-func (c Card) Validate(r jsonschema.RootElement) error {
+func (c Card) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := c.FindImplementer()
 	if err != nil {
 		return err
 	}
-	return implementer.Validate(r)
+	return implementer.ValidateType(r)
 }
 
 func (c Card) FindImplementer() (jsonschema.Validateable, error) {
@@ -44,7 +44,7 @@ type action struct {
 	RulesTexts     cardobject.RulesTexts
 }
 
-func (a action) Validate(r jsonschema.RootElement) error {
+func (a action) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 
@@ -66,7 +66,7 @@ type entity struct {
 	RulesTexts     cardobject.RulesTexts
 }
 
-func (e entity) Validate(r jsonschema.RootElement) error {
+func (e entity) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(e, r)
 }
 
@@ -87,7 +87,7 @@ type place struct {
 	RulesTexts     cardobject.RulesTexts
 }
 
-func (p place) Validate(r jsonschema.RootElement) error {
+func (p place) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 
@@ -107,7 +107,7 @@ type headquarter struct {
 	RulesTexts  cardobject.RulesTexts
 }
 
-func (h headquarter) Validate(r jsonschema.RootElement) error {
+func (h headquarter) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(h, r)
 }
 

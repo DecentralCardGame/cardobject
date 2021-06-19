@@ -10,7 +10,7 @@ type discount struct {
 	Type   *cardobject.CardType `json:",omitempty"`
 }
 
-func (d discount) Validate(r jsonschema.RootElement) error {
+func (d discount) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 

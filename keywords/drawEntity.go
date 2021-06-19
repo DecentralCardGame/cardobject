@@ -9,7 +9,7 @@ type drawEntity struct {
 	Tag *cardobject.Tag `json:",omitempty"`
 }
 
-func (d drawEntity) Validate(r jsonschema.RootElement) error {
+func (d drawEntity) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 

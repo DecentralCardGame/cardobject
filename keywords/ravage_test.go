@@ -10,7 +10,7 @@ func TestRavage(t *testing.T) {
 	intVariable := cardobject.IntVariableName("X")
 	intValue := cardobject.IntValue{SimpleIntValue: nil, IntVariable: &intVariable}
 	ravage := ravage{"RANDOM", intValue}
-	err := ravage.Validate(emptyTestCard())
+	err := ravage.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

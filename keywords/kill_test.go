@@ -6,7 +6,7 @@ import (
 
 func TestKill(t *testing.T) {
 	kill := kill{"TARGET"}
-	err := kill.Validate(emptyTestCard())
+	err := kill.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

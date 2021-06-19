@@ -12,7 +12,7 @@ type ActionSelector struct {
 	AmountExtractor  *IntExtractor     `json:",omitempty"`
 }
 
-func (a ActionSelector) Validate(r jsonschema.RootElement) error {
+func (a ActionSelector) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
 
@@ -30,7 +30,7 @@ type EntitySelector struct {
 	AmountExtractor  *IntExtractor     `json:",omitempty"`
 }
 
-func (e EntitySelector) Validate(r jsonschema.RootElement) error {
+func (e EntitySelector) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(e, r)
 }
 
@@ -47,7 +47,7 @@ type HeadquarterSelector struct {
 	AmountExtractor       *IntExtractor          `json:",omitempty"`
 }
 
-func (h HeadquarterSelector) Validate(r jsonschema.RootElement) error {
+func (h HeadquarterSelector) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(h, r)
 }
 
@@ -65,7 +65,7 @@ type PlaceSelector struct {
 	AmountExtractor *IntExtractor    `json:",omitempty"`
 }
 
-func (p PlaceSelector) Validate(r jsonschema.RootElement) error {
+func (p PlaceSelector) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
 

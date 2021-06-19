@@ -6,7 +6,7 @@ import (
 
 func TestBattlecry(t *testing.T) {
 	battlecry := battlecry{}
-	err := battlecry.Validate(emptyTestCard())
+	err := battlecry.ValidateType(emptyTestCard())
 	if err != nil {
 		t.Error(err)
 	}

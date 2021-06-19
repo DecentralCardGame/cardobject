@@ -8,7 +8,7 @@ type channel struct {
 	Effects effects
 }
 
-func (c channel) Validate(r jsonschema.RootElement) error {
+func (c channel) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(c, r)
 }
 
