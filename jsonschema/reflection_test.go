@@ -2,6 +2,7 @@ package jsonschema
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"testing"
 )
@@ -11,7 +12,12 @@ type cardObject struct {
 }
 
 func (c cardObject) ValidateClasses(s []string) error {
-	return nil
+	for _, v := range s {
+		if v == "Technology" {
+			return nil
+		}
+	}
+	return errors.New("Failed class validation")
 }
 
 func (c cardObject) Validate() error {

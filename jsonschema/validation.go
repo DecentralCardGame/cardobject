@@ -6,10 +6,18 @@ import (
 	"strings"
 )
 
+var classBoundElem = reflect.TypeOf((*classBound)(nil)).Elem()
+
 func ValidateStruct(s structType, r RootElement) error {
 	errorRange := []error{}
 	v := reflect.ValueOf(s)
 	t := reflect.TypeOf(s)
+
+	if t.Implements(classBoundElem) {
+		classes := s.(classBound).Classes()
+		errorRange = append(errorRange, r.ValidateClasses(classes))
+	}
+
 	for i := 0; i < v.NumField(); i++ {
 		field := v.Field(i)
 
