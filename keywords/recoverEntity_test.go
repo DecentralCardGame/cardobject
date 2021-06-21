@@ -6,7 +6,7 @@ import (
 
 func TestRecoverEntity(t *testing.T) {
 	recoverEntity := recoverEntity{}
-	err := recoverEntity.ValidateType(emptyTestCard())
+	err := recoverEntity.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

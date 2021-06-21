@@ -10,7 +10,7 @@ func TestProduce(t *testing.T) {
 	simpleIntValue := cardobject.SimpleIntValue(3)
 	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
 	produce := produce{intValue}
-	err := produce.ValidateType(emptyTestCard())
+	err := produce.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

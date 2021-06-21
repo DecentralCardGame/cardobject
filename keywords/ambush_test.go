@@ -6,7 +6,7 @@ import (
 
 func TestAmbush(t *testing.T) {
 	ambush := bounce{"THIS"}
-	err := ambush.ValidateType(emptyTestCard())
+	err := ambush.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

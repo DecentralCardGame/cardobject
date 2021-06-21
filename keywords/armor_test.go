@@ -10,7 +10,7 @@ func TestArmor(t *testing.T) {
 	simpleIntValue := cardobject.SimpleIntValue(3)
 	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
 	armor := armor{intValue}
-	err := armor.ValidateType(emptyTestCard())
+	err := armor.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

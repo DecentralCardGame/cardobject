@@ -6,7 +6,7 @@ import (
 
 func TestWithdraw(t *testing.T) {
 	withdraw := withdraw{"ALL"}
-	err := withdraw.ValidateType(emptyTestCard())
+	err := withdraw.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

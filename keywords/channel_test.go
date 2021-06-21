@@ -6,7 +6,7 @@ import (
 
 func TestChannel(t *testing.T) {
 	channel := channel{nil}
-	err := channel.ValidateType(emptyTestCard())
+	err := channel.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

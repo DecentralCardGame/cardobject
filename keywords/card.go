@@ -16,7 +16,9 @@ func (c Card) Validate() error {
 	return c.ValidateType(c)
 }
 
-func (c Card) ValidateClasses(s []jsonschema.Class) error {
+func (c Card) ValidateClasses(cl []jsonschema.Class) error {
+	i, _ := c.FindImplementer()
+	i.(cardobject.ClassProvider).ClassRestriction().Contains(cl)
 	return nil
 }
 
@@ -44,6 +46,10 @@ type action struct {
 	RulesTexts     cardobject.RulesTexts
 }
 
+func (a action) ClassRestriction() cardobject.Class {
+	return a.Class
+}
+
 func (a action) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(a, r)
 }
@@ -64,6 +70,10 @@ type entity struct {
 	Tags           cardobject.Tags
 	Keywords       cardobject.Keywords
 	RulesTexts     cardobject.RulesTexts
+}
+
+func (e entity) ClassRestriction() cardobject.Class {
+	return e.Class
 }
 
 func (e entity) ValidateType(r jsonschema.RootElement) error {
@@ -87,6 +97,10 @@ type place struct {
 	RulesTexts     cardobject.RulesTexts
 }
 
+func (p place) ClassRestriction() cardobject.Class {
+	return p.Class
+}
+
 func (p place) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(p, r)
 }
@@ -105,6 +119,10 @@ type headquarter struct {
 	Tags        cardobject.Tags
 	Keywords    cardobject.Keywords
 	RulesTexts  cardobject.RulesTexts
+}
+
+func (h headquarter) ClassRestriction() cardobject.Class {
+	return h.Class
 }
 
 func (h headquarter) ValidateType(r jsonschema.RootElement) error {

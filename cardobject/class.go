@@ -6,6 +6,10 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
+type ClassProvider interface {
+	ClassRestriction() Class
+}
+
 //CULTURE Class
 const CULTURE jsonschema.Class = "CULTURE"
 
@@ -36,7 +40,7 @@ func (c Class) InteractionText() string {
 	return "§Nature §Mysticism §Technology §Culture"
 }
 
-func (c Class) contains(s []jsonschema.Class) bool {
+func (c Class) Contains(s []jsonschema.Class) bool {
 	for _, v := range s {
 		if bool(c.Culture) && (v == CULTURE) || bool(c.Mysticism) && (v == MYSTICISM) ||
 			bool(c.Nature) && (v == NATURE) || bool(c.Technology) && (v == TECHNOLOGY) {

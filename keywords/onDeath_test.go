@@ -6,7 +6,7 @@ import (
 
 func TestOnDeath(t *testing.T) {
 	onDeath := onDeath{}
-	err := onDeath.ValidateType(emptyTestCard())
+	err := onDeath.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

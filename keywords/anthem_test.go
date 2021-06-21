@@ -6,7 +6,7 @@ import (
 
 func TestAnthem(t *testing.T) {
 	anthem := anthem{"DWARF"}
-	err := anthem.ValidateType(emptyTestCard())
+	err := anthem.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

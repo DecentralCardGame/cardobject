@@ -6,7 +6,7 @@ import (
 
 func TestOnConstruction(t *testing.T) {
 	onConstruction := onConstruction{nil}
-	err := onConstruction.ValidateType(emptyTestCard())
+	err := onConstruction.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

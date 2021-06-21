@@ -6,7 +6,7 @@ import (
 
 func TestVoid(t *testing.T) {
 	void := void{"TARGET"}
-	err := void.ValidateType(emptyTestCard())
+	err := void.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

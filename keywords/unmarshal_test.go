@@ -5,10 +5,27 @@ import (
 	"errors"
 	"io/ioutil"
 	"testing"
+
+	"github.com/DecentralCardGame/cardobject/cardobject"
 )
 
-func emptyTestCard() Card {
-	return Card{}
+func allClassesTestCard() Card {
+	return Card{
+		&action{
+			CardName:       "",
+			CastingCost:    3,
+			AdditionalCost: nil,
+			Class: cardobject.Class{
+				Nature:     true,
+				Mysticism:  true,
+				Technology: true,
+				Culture:    true},
+			Effects:     nil,
+			FlavourText: "",
+			Tags:        nil,
+			Keywords:    nil,
+			RulesTexts:  nil},
+		nil, nil, nil}
 }
 
 func TestUnmarshaling(t *testing.T) {

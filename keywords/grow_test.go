@@ -10,7 +10,7 @@ func TestGrow(t *testing.T) {
 	simpleIntValue := cardobject.SimpleIntValue(3)
 	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
 	grow := grow{intValue}
-	err := grow.ValidateType(emptyTestCard())
+	err := grow.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

@@ -6,7 +6,7 @@ import (
 
 func TestDismantle(t *testing.T) {
 	dismantle := dismantle{nil}
-	err := dismantle.ValidateType(emptyTestCard())
+	err := dismantle.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}
