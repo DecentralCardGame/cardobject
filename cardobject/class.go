@@ -7,16 +7,16 @@ import (
 )
 
 //CULTURE Class
-const CULTURE = "CULTURE"
+const CULTURE jsonschema.Class = "CULTURE"
 
 //NATURE Class
-const NATURE = "NATURE"
+const NATURE jsonschema.Class = "NATURE"
 
 //MYSTICISM Class
-const MYSTICISM = "MYSTICISM"
+const MYSTICISM jsonschema.Class = "MYSTICISM"
 
 //TECHNOLOGY Class
-const TECHNOLOGY = "TECHNOLOGY"
+const TECHNOLOGY jsonschema.Class = "TECHNOLOGY"
 
 type Class struct {
 	Nature     Nature
@@ -36,10 +36,14 @@ func (c Class) InteractionText() string {
 	return "§Nature §Mysticism §Technology §Culture"
 }
 
-func (c Class) Contains(s string) bool {
-	b := bool(c.Culture) && (s == CULTURE) || bool(c.Mysticism) && (s == MYSTICISM) ||
-		bool(c.Nature) && (s == NATURE) || bool(c.Technology) && (s == TECHNOLOGY)
-	return b
+func (c Class) contains(s []jsonschema.Class) bool {
+	for _, v := range s {
+		if bool(c.Culture) && (v == CULTURE) || bool(c.Mysticism) && (v == MYSTICISM) ||
+			bool(c.Nature) && (v == NATURE) || bool(c.Technology) && (v == TECHNOLOGY) {
+			return true
+		}
+	}
+	return false
 }
 
 type Nature jsonschema.BasicBool

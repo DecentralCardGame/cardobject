@@ -22,6 +22,6 @@ func (p pay) Description() string {
 	return "Pay Mana to activate Effects."
 }
 
-func (p pay) Classes() []string {
-	return []string{cardobject.CULTURE}
+func (p pay) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE}
 }
