@@ -10,7 +10,7 @@ type cardObject struct {
 	Action *action
 }
 
-func (c cardObject) CheckRootRequirements(s []string) error {
+func (c cardObject) ValidateClasses(s []string) error {
 	return nil
 }
 
