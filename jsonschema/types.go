@@ -6,11 +6,11 @@ type Validateable interface {
 
 type RootElement interface {
 	Validate() error
-	ValidateClasses([]string) error
+	ValidateClasses([]Class) error
 }
 
 type classBound interface {
-	Classes() []string
+	Classes() []Class
 }
 
 type structType interface {

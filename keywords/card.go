@@ -16,7 +16,7 @@ func (c Card) Validate() error {
 	return c.ValidateType(c)
 }
 
-func (c Card) ValidateClasses(s []string) error {
+func (c Card) ValidateClasses(s []jsonschema.Class) error {
 	return nil
 }
 

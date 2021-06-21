@@ -7,13 +7,15 @@ import (
 	"testing"
 )
 
+const Technology Class = "Technology"
+
 type cardObject struct {
 	Action *action
 }
 
-func (c cardObject) ValidateClasses(s []string) error {
+func (c cardObject) ValidateClasses(s []Class) error {
 	for _, v := range s {
-		if v == "Technology" {
+		if v == Technology {
 			return nil
 		}
 	}
@@ -43,8 +45,8 @@ type action struct {
 	MultipleUse multipleUse
 }
 
-func (a action) Classes() []string {
-	return []string{"Technology", "Nature"}
+func (a action) Classes() []Class {
+	return []Class{Technology}
 }
 
 func (a action) ValidateType(r RootElement) error {

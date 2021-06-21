@@ -36,6 +36,12 @@ func (c Class) InteractionText() string {
 	return "§Nature §Mysticism §Technology §Culture"
 }
 
+func (c Class) Contains(s string) bool {
+	b := bool(c.Culture) && (s == CULTURE) || bool(c.Mysticism) && (s == MYSTICISM) ||
+		bool(c.Nature) && (s == NATURE) || bool(c.Technology) && (s == TECHNOLOGY)
+	return b
+}
+
 type Nature jsonschema.BasicBool
 
 func (n Nature) ValidateType(r jsonschema.RootElement) error {

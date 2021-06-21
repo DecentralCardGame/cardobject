@@ -85,6 +85,8 @@ type BasicInt int
 
 type BasicBool bool
 
+type Class string
+
 func CombineErrors(errorRange []error) error {
 	isError := false
 	errorString := ""
