@@ -1,6 +1,8 @@
 package keywords
 
 import (
+	"errors"
+
 	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
@@ -18,8 +20,10 @@ func (c Card) Validate() error {
 
 func (c Card) ValidateClasses(cl []jsonschema.Class) error {
 	i, _ := c.FindImplementer()
-	i.(cardobject.ClassProvider).ClassRestriction().Contains(cl)
-	return nil
+	if i.(cardobject.ClassProvider).ClassRestriction().Contains(cl) {
+		return nil
+	}
+	return errors.New("Class Validation failed!")
 }
 
 func (c Card) ValidateType(r jsonschema.RootElement) error {
