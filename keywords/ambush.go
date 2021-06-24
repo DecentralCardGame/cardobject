@@ -20,3 +20,7 @@ func (a ambush) InteractionText() string {
 func (a ambush) Description() string {
 	return "Your Entities deal damage to target opposing entity."
 }
+
+func (a ambush) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.NATURE}
+}

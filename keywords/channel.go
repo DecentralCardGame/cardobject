@@ -1,6 +1,7 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
@@ -18,4 +19,8 @@ func (c channel) InteractionText() string {
 
 func (c channel) Description() string {
 	return "When you play an action activate Effects."
+}
+
+func (c channel) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.TECHNOLOGY}
 }

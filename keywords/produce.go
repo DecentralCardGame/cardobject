@@ -20,3 +20,7 @@ func (p produce) InteractionText() string {
 func (p produce) Description() string {
 	return "Produce mana."
 }
+
+func (p produce) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.NATURE, cardobject.TECHNOLOGY}
+}

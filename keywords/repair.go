@@ -21,3 +21,7 @@ func (re repair) InteractionText() string {
 func (re repair) Description() string {
 	return "Restore lost health of a friendly place or HQ."
 }
+
+func (re repair) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.TECHNOLOGY}
+}

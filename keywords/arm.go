@@ -21,3 +21,7 @@ func (a arm) InteractionText() string {
 func (a arm) Description() string {
 	return "Arm gives a friendly entity +X/+X."
 }
+
+func (a arm) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.MYSTICISM}
+}

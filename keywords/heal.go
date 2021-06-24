@@ -20,3 +20,7 @@ func (h heal) InteractionText() string {
 func (h heal) Description() string {
 	return "Restore a friendly entities health to full life."
 }
+
+func (h heal) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE}
+}

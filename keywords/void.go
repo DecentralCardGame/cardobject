@@ -20,3 +20,7 @@ func (v void) InteractionText() string {
 func (v void) Description() string {
 	return "Put opposing cards from the dustpile in the void."
 }
+
+func (v void) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE}
+}

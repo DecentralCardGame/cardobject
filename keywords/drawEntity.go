@@ -20,3 +20,7 @@ func (d drawEntity) InteractionText() string {
 func (d drawEntity) Description() string {
 	return "Draw an entity from your deck."
 }
+
+func (d drawEntity) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.NATURE}
+}

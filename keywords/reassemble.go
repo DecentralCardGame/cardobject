@@ -1,6 +1,7 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
@@ -16,4 +17,8 @@ func (re reassemble) InteractionText() string {
 
 func (re reassemble) Description() string {
 	return "Return target Place from a dustpile to your field."
+}
+
+func (re reassemble) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.TECHNOLOGY}
 }

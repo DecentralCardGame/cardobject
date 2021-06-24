@@ -20,3 +20,7 @@ func (k kill) InteractionText() string {
 func (k kill) Description() string {
 	return "Put an opposing entity from the field in the dustpile."
 }
+
+func (k kill) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM}
+}

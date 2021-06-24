@@ -20,3 +20,7 @@ func (g grow) InteractionText() string {
 func (g grow) Description() string {
 	return "Grow your HQ."
 }
+
+func (g grow) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.NATURE}
+}

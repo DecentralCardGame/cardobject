@@ -1,6 +1,7 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
@@ -18,4 +19,8 @@ func (d dismantle) InteractionText() string {
 
 func (d dismantle) Description() string {
 	return "Sacrifice a friendly place to activate Effects."
+}
+
+func (d dismantle) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.TECHNOLOGY}
 }

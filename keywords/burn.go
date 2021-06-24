@@ -20,3 +20,7 @@ func (b burn) InteractionText() string {
 func (b burn) Description() string {
 	return "Deal X damage to the opposing HQ."
 }
+
+func (b burn) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.CULTURE}
+}

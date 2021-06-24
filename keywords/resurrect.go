@@ -1,6 +1,7 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
@@ -16,4 +17,8 @@ func (re resurrect) InteractionText() string {
 
 func (re resurrect) Description() string {
 	return "Return target Entity from a dustpile to your field."
+}
+
+func (re resurrect) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM}
 }

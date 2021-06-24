@@ -21,3 +21,7 @@ func (d discount) InteractionText() string {
 func (d discount) Description() string {
 	return "Reduce manacost of all cards of a type in your hand."
 }
+
+func (d discount) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.TECHNOLOGY, cardobject.MYSTICISM}
+}

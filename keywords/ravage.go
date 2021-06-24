@@ -21,3 +21,7 @@ func (ra ravage) InteractionText() string {
 func (ra ravage) Description() string {
 	return "Deal X damage to an opposing place."
 }
+
+func (ra ravage) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.NATURE}
+}

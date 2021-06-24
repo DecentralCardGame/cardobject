@@ -20,3 +20,7 @@ func (c countPower) InteractionText() string {
 func (c countPower) Description() string {
 	return "Count your entities with more or equal to Power."
 }
+
+func (c countPower) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.NATURE}
+}

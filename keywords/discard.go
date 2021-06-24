@@ -1,6 +1,7 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
@@ -16,4 +17,8 @@ func (d discard) InteractionText() string {
 
 func (d discard) Description() string {
 	return "You have to discard a card."
+}
+
+func (d discard) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM}
 }

@@ -21,3 +21,7 @@ func (m mill) InteractionText() string {
 func (m mill) Description() string {
 	return "Put cards from a player deck in the dustpile."
 }
+
+func (m mill) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.TECHNOLOGY}
+}

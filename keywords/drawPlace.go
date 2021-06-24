@@ -20,3 +20,7 @@ func (d drawPlace) InteractionText() string {
 func (d drawPlace) Description() string {
 	return "Draw a place from your deck."
 }
+
+func (d drawPlace) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.TECHNOLOGY}
+}

@@ -21,3 +21,7 @@ func (s strengthen) InteractionText() string {
 func (s strengthen) Description() string {
 	return "Strengthen gives a friendly entity +X max attack and attack."
 }
+
+func (s strengthen) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.NATURE}
+}

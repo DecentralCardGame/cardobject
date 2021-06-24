@@ -21,7 +21,3 @@ func (p pay) InteractionText() string {
 func (p pay) Description() string {
 	return "Pay Mana to activate Effects."
 }
-
-func (p pay) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.CULTURE}
-}

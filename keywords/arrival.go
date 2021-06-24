@@ -1,6 +1,7 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
@@ -18,4 +19,8 @@ func (a arrival) InteractionText() string {
 
 func (a arrival) Description() string {
 	return "When a friendly entity spawns activate Effects"
+}
+
+func (a arrival) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.NATURE}
 }

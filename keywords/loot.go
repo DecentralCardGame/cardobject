@@ -1,6 +1,7 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
@@ -18,4 +19,8 @@ func (l loot) InteractionText() string {
 
 func (l loot) Description() string {
 	return "When an opposing place is destroyed activate Effects."
+}
+
+func (l loot) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.NATURE}
 }
