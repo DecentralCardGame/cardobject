@@ -6,14 +6,14 @@ import (
 	"strings"
 )
 
-var ClassBoundElem = reflect.TypeOf((*ClassBound)(nil)).Elem()
+var classBoundElem = reflect.TypeOf((*ClassBound)(nil)).Elem()
 
 func ValidateStruct(s structType, r RootElement) error {
 	errorRange := []error{}
 	v := reflect.ValueOf(s)
 	t := reflect.TypeOf(s)
 
-	if t.Implements(ClassBoundElem) {
+	if t.Implements(classBoundElem) {
 		ClassBound := s.(ClassBound)
 		errorRange = append(errorRange, r.ValidateClasses(ClassBound))
 	}
@@ -37,6 +37,7 @@ func ValidateStruct(s structType, r RootElement) error {
 	return CombineErrors(errorRange)
 }
 
+//FindImplementer returns the non-nil field of a struct if it has exactly one
 func FindImplementer(i interfaceType) (Validateable, error) {
 	valueOfB := reflect.ValueOf(i)
 	typeOfB := reflect.TypeOf(i)
@@ -77,14 +78,19 @@ func ItemNameFromArray(array arrayType) string {
 	return itemName
 }
 
+//BasicEnum EnumTypes should be derived from BasicEnum
 type BasicEnum string
 
+//BasicString StringTypes should be derived from BasicString
 type BasicString string
 
+//BasicInt IntTypes should be derived from BasicInt
 type BasicInt int
 
+//BasicBool BoolTypes should be derived from BasicBool
 type BasicBool bool
 
+//Class ClassTypes should be derived from Class
 type Class string
 
 func CombineErrors(errorRange []error) error {

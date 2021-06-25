@@ -1,14 +1,17 @@
 package jsonschema
 
+//Validateable Every Type of the struct tree must be Validateable
 type Validateable interface {
 	ValidateType(RootElement) error
 }
 
+//RootElement Root of the struct tree and entrypoint of the schema
 type RootElement interface {
 	Validate() error
 	ValidateClasses(ClassBound) error
 }
 
+//ClassBound A Type that has a class restriction
 type ClassBound interface {
 	Classes() []Class
 }
