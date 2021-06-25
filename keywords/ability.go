@@ -27,6 +27,7 @@ func (a abilities) ItemName() string {
 
 type ability struct {
 	Arrival        *arrival        `json:",omitempty"`
+	Avenge         *avenge         `json:",omitempty"`
 	Battlecry      *battlecry      `json:",omitempty"`
 	Channel        *channel        `json:",omitempty"`
 	DiscardPay     *discardPay     `json:",omitempty"`
