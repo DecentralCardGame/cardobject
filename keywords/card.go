@@ -26,7 +26,7 @@ func (c Card) ValidateClasses(cb jsonschema.ClassBound) error {
 	if i.(cardobject.ClassProvider).ClassRestriction().Contains(cb.Classes()) {
 		return nil
 	}
-	return errors.New("Class Validation failed!")
+	return errors.New("Classes are not covered by the cards classes")
 }
 
 //ValidateType Ensures that the type "Card" is build correctly in the context of the RootElement
