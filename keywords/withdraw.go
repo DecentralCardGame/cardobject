@@ -20,3 +20,7 @@ func (w withdraw) InteractionText() string {
 func (w withdraw) Description() string {
 	return "Return entities to your hand."
 }
+
+func (w withdraw) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM}
+}

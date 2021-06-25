@@ -20,3 +20,7 @@ func (b bounce) InteractionText() string {
 func (b bounce) Description() string {
 	return "Return entities to your opponents hand."
 }
+
+func (b bounce) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.TECHNOLOGY}
+}
