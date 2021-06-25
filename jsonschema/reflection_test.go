@@ -13,7 +13,8 @@ type cardObject struct {
 	Action *action
 }
 
-func (c cardObject) ValidateClasses(s []Class) error {
+func (c cardObject) ValidateClasses(cb ClassBound) error {
+	s := cb.Classes()
 	for _, v := range s {
 		if v == Technology {
 			return nil

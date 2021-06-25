@@ -11,7 +11,7 @@ type Card struct {
 	Headquarter *Headquarter `json:",omitempty"`
 }
 
-func (c Card) ValidateClasses(s []jsonschema.Class) error {
+func (c Card) ValidateClasses(cb jsonschema.ClassBound) error {
 	return nil
 }
 

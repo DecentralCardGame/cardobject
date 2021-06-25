@@ -162,9 +162,9 @@ func (r *Reflector) reflectStruct(definitions Definitions, t reflect.Type) (*Typ
 	definitions[r.typeName(t)] = st
 	err := r.reflectStructFields(st, definitions, t)
 
-	var classBoundElem = reflect.TypeOf((*classBound)(nil)).Elem()
+	var ClassBoundElem = reflect.TypeOf((*ClassBound)(nil)).Elem()
 
-	if t.Implements(classBoundElem) {
+	if t.Implements(ClassBoundElem) {
 		classValues := reflect.New(t).MethodByName("Classes").Call(dummyInputs)[0]
 		var classes, _ = classValues.Interface().([]Class)
 

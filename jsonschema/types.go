@@ -6,10 +6,10 @@ type Validateable interface {
 
 type RootElement interface {
 	Validate() error
-	ValidateClasses([]Class) error
+	ValidateClasses(ClassBound) error
 }
 
-type classBound interface {
+type ClassBound interface {
 	Classes() []Class
 }
 

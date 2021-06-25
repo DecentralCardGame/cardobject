@@ -7,6 +7,7 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
+//Card Represents the data-structure of a crowd control card in the blockchain
 type Card struct {
 	Action      *action      `json:",omitempty"`
 	Entity      *entity      `json:",omitempty"`
@@ -14,18 +15,21 @@ type Card struct {
 	Headquarter *headquarter `json:",omitempty"`
 }
 
+//Validate Ensures that the card was built correctly and returns errors otherwise
 func (c Card) Validate() error {
 	return c.ValidateType(c)
 }
 
-func (c Card) ValidateClasses(cl []jsonschema.Class) error {
+//ValidateClasses Checks if the given classes are covered by the card
+func (c Card) ValidateClasses(cb jsonschema.ClassBound) error {
 	i, _ := c.FindImplementer()
-	if i.(cardobject.ClassProvider).ClassRestriction().Contains(cl) {
+	if i.(cardobject.ClassProvider).ClassRestriction().Contains(cb.Classes()) {
 		return nil
 	}
 	return errors.New("Class Validation failed!")
 }
 
+//ValidateType Ensures that the type "Card" is build correctly in the context of the RootElement
 func (c Card) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := c.FindImplementer()
 	if err != nil {
@@ -34,6 +38,7 @@ func (c Card) ValidateType(r jsonschema.RootElement) error {
 	return implementer.ValidateType(r)
 }
 
+//FindImplementer Returns which of its children "implement" the type "Card"
 func (c Card) FindImplementer() (jsonschema.Validateable, error) {
 	return jsonschema.FindImplementer(c)
 }
