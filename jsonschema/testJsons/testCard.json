@@ -1,6 +1,6 @@
 {"Action": {
-  "Name": "TestName",
-  "Costs": ["eins"],
-  "Time": 2,
+  "Name": "",
+  "Costs": ["einss"],
+  "Time": 50,
   "MultipleUse": true
   }}

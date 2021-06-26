@@ -89,6 +89,10 @@ func (c cost) ValidateType(r RootElement) error {
 	return nil
 }
 
+func (c cost) String() string {
+	return string(c)
+}
+
 func (c cost) EnumValues() []string {
 	return []string{"eins", "zwei"}
 }
@@ -97,6 +101,10 @@ type name BasicString
 
 func (n name) ValidateType(r RootElement) error {
 	return nil
+}
+
+func (n name) String() string {
+	return string(n)
 }
 
 func (n name) MinMaxLength() (int, int) {
@@ -109,6 +117,10 @@ func (t time) ValidateType(r RootElement) error {
 	return nil
 }
 
+func (t time) Int() int {
+	return int(t)
+}
+
 func (t time) MinMax() (int, int) {
 	return 1, 32
 }
@@ -117,6 +129,10 @@ type multipleUse BasicBool
 
 func (m multipleUse) ValidateType(r RootElement) error {
 	return nil
+}
+
+func (m multipleUse) Bool() bool {
+	return bool(m)
 }
 
 func (m multipleUse) Default() bool {
@@ -147,6 +163,8 @@ func TestValidateType(t *testing.T) {
 	if marshalErr != nil {
 		t.Error(marshalErr)
 	}
+
+	validate(c, c)
 
 	//println(c.Action.Name)
 	//validateErr := c.Action.Time.Validate

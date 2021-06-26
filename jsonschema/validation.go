@@ -3,15 +3,48 @@ package jsonschema
 import (
 	"errors"
 	"reflect"
+	"strconv"
 	"strings"
 )
 
 var classBoundElem = reflect.TypeOf((*ClassBound)(nil)).Elem()
 
+func validate(i interface{}, r RootElement) error {
+	t := reflect.TypeOf(i)
+
+	if t.Implements(structTypeElem) {
+		return ValidateStruct(i.(structType), r)
+	}
+	if t.Implements(interfaceTypeElem) {
+		return validateInterface(i.(interfaceType), r)
+	}
+	if t.Implements(arrayTypeElem) {
+		return validateArray(i.(arrayType), r)
+	}
+	if t.Implements(enumTypeElem) {
+		return validateEnum(i.(enumType), r)
+	}
+	if t.Implements(stringTypeElem) {
+		return validateString(i.(stringType), r)
+	}
+	if t.Implements(intTypeElem) {
+		return validateInt(i.(intType), r)
+	}
+	if t.Implements(boolTypeElem) {
+		return validateBool(i.(boolType), r)
+	}
+
+	return errors.New("Unknown Type " + t.Name())
+}
+
 func ValidateStruct(s structType, r RootElement) error {
 	errorRange := []error{}
 	v := reflect.ValueOf(s)
 	t := reflect.TypeOf(s)
+
+	if v.Kind() == reflect.Ptr {
+		v = v.Elem()
+	}
 
 	if t.Implements(classBoundElem) {
 		ClassBound := s.(ClassBound)
@@ -23,7 +56,7 @@ func ValidateStruct(s structType, r RootElement) error {
 
 		if field.Kind() != reflect.Ptr || !field.IsNil() {
 			fieldValue := field.Interface().(Validateable)
-			errorRange = append(errorRange, fieldValue.ValidateType(r))
+			errorRange = append(errorRange, validate(fieldValue, r)) //fieldValue.ValidateType(r))
 		} else {
 			fieldType := t.Field(i)
 			tags, exists := fieldType.Tag.Lookup("json")
@@ -35,6 +68,62 @@ func ValidateStruct(s structType, r RootElement) error {
 		}
 	}
 	return CombineErrors(errorRange)
+}
+
+func validateInterface(i interfaceType, r RootElement) error {
+	implementer, err := i.FindImplementer()
+	if err != nil {
+		return err
+	}
+	return validate(implementer, r)
+}
+
+func validateArray(a arrayType, r RootElement) error {
+	array := reflect.ValueOf(a)
+	arrayLenght := array.Len()
+	errorRange := []error{}
+	for i := 0; i < arrayLenght; i++ {
+		err := validate(array.Index(i), r)
+		if err != nil {
+			errorRange = append(errorRange, err)
+		}
+	}
+	return CombineErrors(errorRange)
+}
+
+func validateEnum(e enumType, r RootElement) error {
+	values := e.EnumValues()
+	name := reflect.TypeOf(e).Name()
+	s := e.String()
+	for _, v := range values {
+		if v == s {
+			return nil
+		}
+	}
+	return errors.New(name + " must be one of: " + strings.Join(values, ","))
+}
+
+func validateString(s stringType, r RootElement) error {
+	minLength, maxLength := s.MinMaxLength()
+	name := reflect.TypeOf(s).Name()
+	length := len(s.String())
+	if length < minLength || length > maxLength {
+		return errors.New(name + " must be between " + strconv.Itoa(minLength) + " and " + strconv.Itoa(maxLength) + " characters long")
+	}
+	return nil
+}
+
+func validateInt(i intType, r RootElement) error {
+	min, max := i.MinMax()
+	name := reflect.TypeOf(i).Name()
+	if i.Int() < min || i.Int() > max {
+		return errors.New(name + " must be between " + strconv.Itoa(min) + " and " + strconv.Itoa(max))
+	}
+	return nil
+}
+
+func validateBool(b boolType, r RootElement) error {
+	return nil
 }
 
 //FindImplementer returns the non-nil field of a struct if it has exactly one

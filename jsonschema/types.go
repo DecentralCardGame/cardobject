@@ -34,20 +34,24 @@ type arrayType interface {
 
 type enumType interface {
 	Validateable
+	String() string
 	EnumValues() []string
 }
 
 type stringType interface {
 	Validateable
+	String() string
 	MinMaxLength() (int, int)
 }
 
 type intType interface {
 	Validateable
+	Int() int
 	MinMax() (int, int)
 }
 
 type boolType interface {
 	Validateable
+	Bool() bool
 	Default() bool
 }
