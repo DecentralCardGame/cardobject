@@ -23,5 +23,5 @@ func (a arm) Description() string {
 }
 
 func (a arm) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.CULTURE, cardobject.MYSTICISM, cardobject.TECHNOLOGY}
+	return []jsonschema.Class{cardobject.CULTURE, cardobject.TECHNOLOGY}
 }
