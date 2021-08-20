@@ -22,5 +22,5 @@ func (w withdraw) Description() string {
 }
 
 func (w withdraw) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.MYSTICISM}
+	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.CULTURE}
 }
