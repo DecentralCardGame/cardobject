@@ -5,7 +5,7 @@ import (
 )
 
 func TestTag(t *testing.T) {
-	tag := tag{"DWARF", nil}
+	tag := tag{"TACTIC", nil}
 	err := tag.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
