@@ -6,6 +6,7 @@ import (
 )
 
 type armor struct {
+	Target cardobject.CardMode
 	Amount cardobject.IntValue
 }
 
@@ -14,7 +15,7 @@ func (a armor) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (a armor) InteractionText() string {
-	return "Armor §Amount."
+	return "Armor §Target §Amount."
 }
 
 func (a armor) Description() string {
