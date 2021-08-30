@@ -61,6 +61,7 @@ type effect struct {
 	Spawn         *spawn         `json:",omitempty"`
 	Strengthen    *strengthen    `json:",omitempty"`
 	Tag           *tag           `json:",omitempty"`
+	Train         *train         `json:",omitempty"`
 	Void          *void          `json:",omitempty"`
 	Withdraw      *withdraw      `json:",omitempty"`
 }
