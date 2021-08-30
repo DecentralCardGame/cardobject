@@ -18,7 +18,7 @@ func (k kill) InteractionText() string {
 }
 
 func (k kill) Description() string {
-	return "Put an opposing entity from the field in the dustpile."
+	return "Put an opposing Entity from the Field in the Dustpile."
 }
 
 func (k kill) Classes() []jsonschema.Class {

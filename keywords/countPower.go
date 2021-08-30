@@ -18,7 +18,7 @@ func (c countPower) InteractionText() string {
 }
 
 func (c countPower) Description() string {
-	return "Count your entities with more or equal to Power."
+	return "Count your Entities with Attack greater or equal to selected Attack."
 }
 
 func (c countPower) Classes() []jsonschema.Class {

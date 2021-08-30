@@ -18,5 +18,5 @@ func (a anthem) InteractionText() string {
 }
 
 func (a anthem) Description() string {
-	return "Anthem gives all friendly entities with a certain tag +1/+1."
+	return "Anthem gives all friendly Entities with selected tag +1/+1."
 }

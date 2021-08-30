@@ -16,7 +16,7 @@ func (re reassemble) InteractionText() string {
 }
 
 func (re reassemble) Description() string {
-	return "Return target Place from a dustpile to your field."
+	return "Return target Place from a Dustpile to your Field."
 }
 
 func (re reassemble) Classes() []jsonschema.Class {

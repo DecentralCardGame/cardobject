@@ -18,7 +18,7 @@ func (o onConstruction) InteractionText() string {
 }
 
 func (o onConstruction) Description() string {
-	return "When a friendly place spawns activate Effects."
+	return "Whenever another friendly Place is spawned, activate Effects."
 }
 
 func (o onConstruction) Classes() []jsonschema.Class {

@@ -19,7 +19,7 @@ func (a arm) InteractionText() string {
 }
 
 func (a arm) Description() string {
-	return "Arm gives a friendly entity +X/+X."
+	return "Arm gives a friendly Entity +X/+X."
 }
 
 func (a arm) Classes() []jsonschema.Class {

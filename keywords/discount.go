@@ -19,7 +19,7 @@ func (d discount) InteractionText() string {
 }
 
 func (d discount) Description() string {
-	return "Reduce manacost of all cards of a type in your hand."
+	return "Reduce Mana Cost of all cards wit selected type in your hand."
 }
 
 func (d discount) Classes() []jsonschema.Class {

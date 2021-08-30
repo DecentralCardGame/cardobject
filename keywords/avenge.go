@@ -17,5 +17,5 @@ func (a avenge) InteractionText() string {
 }
 
 func (a avenge) Description() string {
-	return "When another of your entity dies activate Effects."
+	return "Whenever another of your Entity dies, activate Effects."
 }

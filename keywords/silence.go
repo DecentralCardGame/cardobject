@@ -19,7 +19,7 @@ func (s silence) InteractionText() string {
 }
 
 func (s silence) Description() string {
-	return "Target entity loses its abilities."
+	return "Target Entity loses its abilities."
 }
 
 func (s silence) Classes() []jsonschema.Class {

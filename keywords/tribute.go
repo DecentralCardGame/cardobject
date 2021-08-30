@@ -17,5 +17,5 @@ func (t tribute) InteractionText() string {
 }
 
 func (t tribute) Description() string {
-	return "Sacrifice a friendly entity to activate Effects."
+	return "Sacrifice a friendly Entity to activate Effects."
 }

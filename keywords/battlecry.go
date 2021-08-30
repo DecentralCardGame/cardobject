@@ -17,5 +17,5 @@ func (b battlecry) InteractionText() string {
 }
 
 func (b battlecry) Description() string {
-	return "At the beginning of each combat activate Effects."
+	return "At the beginning of each Combat activate Effects."
 }

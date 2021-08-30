@@ -18,5 +18,5 @@ func (i insight) InteractionText() string {
 }
 
 func (i insight) Description() string {
-	return "Gain wisdom."
+	return "Gain Wisdom. 4 Wisdom draws you a card."
 }

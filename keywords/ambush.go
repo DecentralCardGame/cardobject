@@ -18,7 +18,7 @@ func (a ambush) InteractionText() string {
 }
 
 func (a ambush) Description() string {
-	return "Your Entities deal damage to target opposing entity."
+	return "The selected Entities deal damage equal to their attack to target opposing Entity."
 }
 
 func (a ambush) Classes() []jsonschema.Class {

@@ -16,7 +16,7 @@ func (re recoverEntity) InteractionText() string {
 }
 
 func (re recoverEntity) Description() string {
-	return "Return an entity from your dustpile to your hand."
+	return "Return target Entity from your Dustpile to your Hand."
 }
 
 func (re recoverEntity) Classes() []jsonschema.Class {

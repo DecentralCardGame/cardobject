@@ -18,5 +18,5 @@ func (f flip) InteractionText() string {
 }
 
 func (f flip) Description() string {
-	return "Randomly chose one of two effects."
+	return "Randomly choose one of two effects."
 }

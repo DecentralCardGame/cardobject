@@ -18,7 +18,7 @@ func (a arrival) InteractionText() string {
 }
 
 func (a arrival) Description() string {
-	return "When a friendly entity spawns activate Effects"
+	return "When a friendly Entity is spawned, activate Effects"
 }
 
 func (a arrival) Classes() []jsonschema.Class {

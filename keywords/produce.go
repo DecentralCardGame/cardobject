@@ -18,7 +18,7 @@ func (p produce) InteractionText() string {
 }
 
 func (p produce) Description() string {
-	return "Produce mana."
+	return "Produce Mana."
 }
 
 func (p produce) Classes() []jsonschema.Class {

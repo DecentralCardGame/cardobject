@@ -19,5 +19,5 @@ func (s spawn) InteractionText() string {
 }
 
 func (s spawn) Description() string {
-	return "Spawns in a number of Tokens."
+	return "Spawns a number of selected Tokens."
 }

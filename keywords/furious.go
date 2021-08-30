@@ -17,5 +17,5 @@ func (f furious) InteractionText() string {
 }
 
 func (f furious) Description() string {
-	return "When this takes damage activate effects."
+	return "Whenever this takes damage, activate effects."
 }

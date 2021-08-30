@@ -18,7 +18,7 @@ func (b bounce) InteractionText() string {
 }
 
 func (b bounce) Description() string {
-	return "Return entities to your opponents hand."
+	return "Return selected Entities to your opponent's hand."
 }
 
 func (b bounce) Classes() []jsonschema.Class {

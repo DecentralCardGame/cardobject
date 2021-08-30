@@ -19,5 +19,5 @@ func (tag) InteractionText() string {
 }
 
 func (t tag) Description() string {
-	return "Tag gives a targeted card of a player a new tag."
+	return "Tag adds a selected Tag to target card."
 }

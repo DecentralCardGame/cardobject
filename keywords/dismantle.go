@@ -18,7 +18,7 @@ func (d dismantle) InteractionText() string {
 }
 
 func (d dismantle) Description() string {
-	return "Sacrifice a friendly place to activate Effects."
+	return "Sacrifice a friendly Place to activate Effects."
 }
 
 func (d dismantle) Classes() []jsonschema.Class {

@@ -19,7 +19,7 @@ func (s strengthen) InteractionText() string {
 }
 
 func (s strengthen) Description() string {
-	return "Strengthen gives a friendly entity +X max attack and attack."
+	return "Strengthen gives a friendly Entity +X attack permanently."
 }
 
 func (s strengthen) Classes() []jsonschema.Class {

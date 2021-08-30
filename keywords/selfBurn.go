@@ -18,7 +18,7 @@ func (s selfBurn) InteractionText() string {
 }
 
 func (s selfBurn) Description() string {
-	return "Deal X damage to the your HQ."
+	return "Deal X damage to your HQ."
 }
 
 func (s selfBurn) Classes() []jsonschema.Class {

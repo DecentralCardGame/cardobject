@@ -19,7 +19,7 @@ func (d dissolve) InteractionText() string {
 }
 
 func (d dissolve) Description() string {
-	return "Put cards from your dustpile to the voids to activate Effects."
+	return "Put cards from your Dustpile to the Void to activate Effects."
 }
 
 func (d dissolve) Classes() []jsonschema.Class {

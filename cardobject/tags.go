@@ -35,6 +35,7 @@ var possibleTags []string = []string{
 	"SHRINE",
 	"SPIRIT",
 	"TACTIC",
+	"TECHNOCRAT",
 	"UNDEAD",
 	"VEHICLE",
 	"WARRIOR",

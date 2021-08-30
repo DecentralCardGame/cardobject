@@ -18,7 +18,7 @@ func (d drawAction) InteractionText() string {
 }
 
 func (d drawAction) Description() string {
-	return "Draw an action from your deck."
+	return "Draw an Action from your deck."
 }
 
 func (d drawAction) Classes() []jsonschema.Class {

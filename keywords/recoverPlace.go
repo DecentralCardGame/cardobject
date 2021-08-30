@@ -16,7 +16,7 @@ func (re recoverPlace) InteractionText() string {
 }
 
 func (re recoverPlace) Description() string {
-	return "Return a place from your dustpile to your hand."
+	return "Return target Place from your Dustpile to your Hand."
 }
 
 func (re recoverPlace) Classes() []jsonschema.Class {

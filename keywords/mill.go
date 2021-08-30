@@ -19,7 +19,7 @@ func (m mill) InteractionText() string {
 }
 
 func (m mill) Description() string {
-	return "Put cards from a player deck in the dustpile."
+	return "Put cards from a player's Deck in the Dustpile."
 }
 
 func (m mill) Classes() []jsonschema.Class {

@@ -18,7 +18,7 @@ func (c channel) InteractionText() string {
 }
 
 func (c channel) Description() string {
-	return "When you play an action activate Effects."
+	return "Whenever you play an Action, activate Effects."
 }
 
 func (c channel) Classes() []jsonschema.Class {

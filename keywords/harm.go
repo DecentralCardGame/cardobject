@@ -19,5 +19,5 @@ func (h harm) InteractionText() string {
 }
 
 func (h harm) Description() string {
-	return "Deal X damage to an opposing entity."
+	return "Deal X damage to an opposing Entity."
 }

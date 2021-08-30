@@ -19,7 +19,7 @@ func (ra ravage) InteractionText() string {
 }
 
 func (ra ravage) Description() string {
-	return "Deal X damage to an opposing place."
+	return "Deal X damage to an opposing Place."
 }
 
 func (ra ravage) Classes() []jsonschema.Class {

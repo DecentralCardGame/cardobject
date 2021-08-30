@@ -18,7 +18,7 @@ func (l loot) InteractionText() string {
 }
 
 func (l loot) Description() string {
-	return "When an opposing place is destroyed activate Effects."
+	return "Whenever an opposing Place is destroyed, activate Effects."
 }
 
 func (l loot) Classes() []jsonschema.Class {

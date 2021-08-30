@@ -18,5 +18,5 @@ func (c count) InteractionText() string {
 }
 
 func (c count) Description() string {
-	return "Count counts up all cards on your board with a certain tag and assigns this number to X."
+	return "Count all cards on your board with a selected tag and save this number to X."
 }

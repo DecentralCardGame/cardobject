@@ -17,5 +17,5 @@ func (o onDeath) InteractionText() string {
 }
 
 func (o onDeath) Description() string {
-	return "When this dies activate Effects."
+	return "When this dies, activate Effects."
 }

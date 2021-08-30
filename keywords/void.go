@@ -18,7 +18,7 @@ func (v void) InteractionText() string {
 }
 
 func (v void) Description() string {
-	return "Put opposing cards from the dustpile in the void."
+	return "Put opposing cards from the Dustpile in the Void."
 }
 
 func (v void) Classes() []jsonschema.Class {

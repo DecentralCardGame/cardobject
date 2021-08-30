@@ -16,7 +16,7 @@ func (re resurrect) InteractionText() string {
 }
 
 func (re resurrect) Description() string {
-	return "Return target Entity from a dustpile to your field."
+	return "Return target Entity from a Dustpile to your Field."
 }
 
 func (re resurrect) Classes() []jsonschema.Class {

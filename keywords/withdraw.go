@@ -18,7 +18,7 @@ func (w withdraw) InteractionText() string {
 }
 
 func (w withdraw) Description() string {
-	return "Return entities to your hand."
+	return "Return Entities from the Field to your Hand."
 }
 
 func (w withdraw) Classes() []jsonschema.Class {

@@ -19,7 +19,7 @@ func (t train) InteractionText() string {
 }
 
 func (t train) Description() string {
-	return "Train gives a friendly entity in your hand +X/+X."
+	return "Train gives a friendly Entity in your Hand +X/+X."
 }
 
 func (t train) Classes() []jsonschema.Class {

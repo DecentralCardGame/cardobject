@@ -18,5 +18,5 @@ func (s sacrifice) InteractionText() string {
 }
 
 func (s sacrifice) Description() string {
-	return "Put a friendly entity from the field in the dustpile."
+	return "Put a friendly Entity from the Field in the Dustpile."
 }
