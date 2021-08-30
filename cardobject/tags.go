@@ -12,7 +12,7 @@ var possibleTags []string = []string{
 	"ALCHEMIST",
 	"ANIMAL",
 	"ARTIFACT",
-	"ASSASINE",
+	"ASSASSIN",
 	"BEAST",
 	"BELIEVER",
 	"BOT",
