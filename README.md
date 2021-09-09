@@ -35,3 +35,11 @@ data, _ := ioutil.ReadFile("KeywordedCard.json")
   
 card, err := cardobject.UnmarshalKeyworded(data)
 ```
+## Marshal a Card
+1. Cards can be marshaled using the go-json package.
+2. Example:
+```golang
+import "encoding/json"
+
+cardJSON, error := json.Marshal(card)
+```
