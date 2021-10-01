@@ -15,7 +15,7 @@ func (s strengthen) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (s strengthen) InteractionText() string {
-	return "Strenghten §Target §Amount."
+	return "Strengthen §Target §Amount."
 }
 
 func (s strengthen) Description() string {
