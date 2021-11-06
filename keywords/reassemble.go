@@ -12,7 +12,7 @@ func (re reassemble) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (re reassemble) InteractionText() string {
-	return "Reassemle."
+	return "Reassemble."
 }
 
 func (re reassemble) Description() string {
