@@ -24,7 +24,7 @@ func (rt RulesTexts) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (r RulesTexts) MinMaxItems() (int, int) {
-	return 0, 3
+	return 0, 4
 }
 
 func (r RulesTexts) ItemName() string {
