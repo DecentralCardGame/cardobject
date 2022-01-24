@@ -18,7 +18,7 @@ var possibleTags []string = []string{
 	"BOT",
 	"BUILDING",
 	"COLOSSUS",
-	"DESASTER",
+	"DISASTER",
 	"DOMESTIC",
 	"DRAGON",
 	"EARTH",
