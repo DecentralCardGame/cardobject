@@ -19,7 +19,7 @@ func (a armor) InteractionText() string {
 }
 
 func (a armor) Description() string {
-	return "Arm gives a friendly Entity +X Health permanently."
+	return "Armor gives a friendly Entity +X Health permanently."
 }
 
 func (a armor) Classes() []jsonschema.Class {
