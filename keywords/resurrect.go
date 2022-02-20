@@ -5,14 +5,16 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-type resurrect struct{}
+type resurrect struct {
+	Amount cardobject.IntValue
+}
 
 func (re resurrect) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(re, r)
 }
 
 func (re resurrect) InteractionText() string {
-	return "Resurrect."
+	return "Resurrect lvl §Amount."
 }
 
 func (re resurrect) Description() string {
