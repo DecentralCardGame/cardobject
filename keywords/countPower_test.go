@@ -5,8 +5,8 @@ import (
 )
 
 func TestAmbush(t *testing.T) {
-	ambush := bounce{"THIS"}
-	err := ambush.ValidateType(allClassesTestCard())
+	countPower := countPower{"THIS"}
+	err := countPower.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}
