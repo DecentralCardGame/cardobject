@@ -53,6 +53,7 @@ type action struct {
 	Tags           cardobject.Tags
 	Keywords       cardobject.Keywords
 	RulesTexts     cardobject.RulesTexts
+	Rarity         *cardobject.Rarity `json:",omitempty"`
 }
 
 func (a action) ClassRestriction() cardobject.Class {
@@ -64,7 +65,7 @@ func (a action) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (a action) InteractionText() string {
-	return "§CardName §CastingCost §AdditionalCost §Class §Effects §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §CastingCost §AdditionalCost §Class §Effects §FlavourText §Tags §Keywords §RulesTexts §Rarity"
 }
 
 type entity struct {
@@ -79,6 +80,7 @@ type entity struct {
 	Tags           cardobject.Tags
 	Keywords       cardobject.Keywords
 	RulesTexts     cardobject.RulesTexts
+	Rarity         *cardobject.Rarity `json:",omitempty"`
 }
 
 func (e entity) ClassRestriction() cardobject.Class {
@@ -90,7 +92,7 @@ func (e entity) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (e entity) InteractionText() string {
-	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesTexts §Rarity"
 }
 
 type place struct {
@@ -104,6 +106,7 @@ type place struct {
 	Tags           cardobject.Tags
 	Keywords       cardobject.Keywords
 	RulesTexts     cardobject.RulesTexts
+	Rarity         *cardobject.Rarity `json:",omitempty"`
 }
 
 func (p place) ClassRestriction() cardobject.Class {
@@ -115,7 +118,7 @@ func (p place) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (p place) InteractionText() string {
-	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts §Rarity"
 }
 
 type headquarter struct {
@@ -128,6 +131,7 @@ type headquarter struct {
 	Tags        cardobject.Tags
 	Keywords    cardobject.Keywords
 	RulesTexts  cardobject.RulesTexts
+	Rarity      *cardobject.Rarity `json:",omitempty"`
 }
 
 func (h headquarter) ClassRestriction() cardobject.Class {
@@ -139,5 +143,5 @@ func (h headquarter) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (h headquarter) InteractionText() string {
-	return "§CardName §Class §Delay §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags §Keywords §RulesTexts"
+	return "§CardName §Class §Delay §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags §Keywords §RulesTexts §Rarity"
 }
