@@ -1,10 +1,12 @@
 package keywords
 
 import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
 type tribute struct {
+	Target  cardobject.CardMode
 	Effects effects
 }
 
@@ -13,7 +15,7 @@ func (t tribute) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (t tribute) InteractionText() string {
-	return "Tribute: §Effects."
+	return "Tribute §Target: §Effects."
 }
 
 func (t tribute) Description() string {

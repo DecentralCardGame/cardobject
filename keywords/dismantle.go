@@ -6,6 +6,7 @@ import (
 )
 
 type dismantle struct {
+	Target  cardobject.CardMode
 	Effects effects
 }
 
@@ -14,7 +15,7 @@ func (d dismantle) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (d dismantle) InteractionText() string {
-	return "Dismantle: §Effects."
+	return "Dismantle §Target: §Effects."
 }
 
 func (d dismantle) Description() string {

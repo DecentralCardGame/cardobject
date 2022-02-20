@@ -5,7 +5,7 @@ import (
 )
 
 func TestTribute(t *testing.T) {
-	tribute := tribute{}
+	tribute := tribute{"RANDOM", nil}
 	err := tribute.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
