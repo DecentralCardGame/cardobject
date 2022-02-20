@@ -5,8 +5,8 @@ import (
 )
 
 func TestCountPower(t *testing.T) {
-	countPower := countPower{3}
-	err := countPower.ValidateType(allClassesTestCard())
+	countForces := countForces{3}
+	err := countForces.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}

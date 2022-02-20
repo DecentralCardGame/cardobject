@@ -5,22 +5,22 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-type countPower struct {
+type countForces struct {
 	Power cardobject.SimpleIntValue
 }
 
-func (c countPower) ValidateType(r jsonschema.RootElement) error {
+func (c countForces) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(c, r)
 }
 
-func (c countPower) InteractionText() string {
-	return "Count Power §Power."
+func (c countForces) InteractionText() string {
+	return "Count Forces §Power."
 }
 
-func (c countPower) Description() string {
+func (c countForces) Description() string {
 	return "Count your Entities with Attack greater or equal to selected Attack."
 }
 
-func (c countPower) Classes() []jsonschema.Class {
+func (c countForces) Classes() []jsonschema.Class {
 	return []jsonschema.Class{cardobject.CULTURE, cardobject.NATURE}
 }
