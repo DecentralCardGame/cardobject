@@ -18,7 +18,7 @@ func (f fortify) InteractionText() string {
 }
 
 func (f fortify) Description() string {
-	return "Armor gives the friendly HQ +X Health permanently."
+	return "Fortify adds X Health to friendly HQ."
 }
 
 func (f fortify) Classes() []jsonschema.Class {

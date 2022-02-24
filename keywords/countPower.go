@@ -14,11 +14,11 @@ func (c countPower) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (c countPower) InteractionText() string {
-	return "Ambush with §Target."
+	return "CountPower of §Target."
 }
 
 func (c countPower) Description() string {
-	return "Count the Attack of a friendly entity."
+	return "Count the Attack of a friendly entity and save this number to X."
 }
 
 func (c countPower) Classes() []jsonschema.Class {

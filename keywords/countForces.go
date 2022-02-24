@@ -18,7 +18,7 @@ func (c countForces) InteractionText() string {
 }
 
 func (c countForces) Description() string {
-	return "Count your Entities with Attack greater or equal to selected Attack."
+	return "Count your Entities with Attack greater or equal to selected Attack and save this number to X."
 }
 
 func (c countForces) Classes() []jsonschema.Class {
