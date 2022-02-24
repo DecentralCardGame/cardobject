@@ -5,7 +5,7 @@ import (
 )
 
 func TestAmbush(t *testing.T) {
-	countPower := countPower{"THIS"}
+	countPower := countPower{"THS"}
 	err := countPower.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
