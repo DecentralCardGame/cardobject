@@ -59,6 +59,7 @@ type effect struct {
 	SelfBurn      *selfBurn      `json:",omitempty"`
 	Silence       *silence       `json:",omitempty"`
 	Spawn         *spawn         `json:",omitempty"`
+	Suffer        *suffer        `json:",omitempty"`
 	Strengthen    *strengthen    `json:",omitempty"`
 	Train         *train         `json:",omitempty"`
 	Void          *void          `json:",omitempty"`
