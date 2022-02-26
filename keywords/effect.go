@@ -44,6 +44,7 @@ type effect struct {
 	Grind         *grind         `json:",omitempty"`
 	Grow          *grow          `json:",omitempty"`
 	Harm          *harm          `json:",omitempty"`
+	Hasten        *hasten        `json:",omitempty"`
 	Heal          *heal          `json:",omitempty"`
 	Kill          *kill          `json:",omitempty"`
 	Insight       *insight       `json:",omitempty"`
