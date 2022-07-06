@@ -50,7 +50,6 @@ type effect struct {
 	Insight       *insight       `json:",omitempty"`
 	Mill          *mill          `json:",omitempty"`
 	Produce       *produce       `json:",omitempty"`
-	Ravage        *ravage        `json:",omitempty"`
 	Reassemble    *reassemble    `json:",omitempty"`
 	RecoverAction *recoverAction `json:",omitempty"`
 	RecoverEntity *recoverEntity `json:",omitempty"`
