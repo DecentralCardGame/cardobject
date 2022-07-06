@@ -21,7 +21,3 @@ func (g grind) InteractionText() string {
 func (g grind) Description() string {
 	return "Deal X damage to a friendly place/HQ."
 }
-
-func (g grind) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.TECHNOLOGY, cardobject.CULTURE}
-}
