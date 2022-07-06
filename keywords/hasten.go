@@ -20,7 +20,3 @@ func (h hasten) InteractionText() string {
 func (h hasten) Description() string {
 	return "Allow a friendly Entity's to attack the turn it is played."
 }
-
-func (h hasten) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.CULTURE}
-}

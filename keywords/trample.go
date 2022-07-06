@@ -1,7 +1,6 @@
 package keywords
 
 import (
-	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
@@ -17,8 +16,4 @@ func (t trample) InteractionText() string {
 
 func (t trample) Description() string {
 	return "Deals excess damage to enemy places/HQ."
-}
-
-func (t trample) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.TECHNOLOGY, cardobject.NATURE}
 }
