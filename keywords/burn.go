@@ -6,6 +6,7 @@ import (
 )
 
 type burn struct {
+	Target cardobject.CardMode
 	Amount cardobject.IntValue
 }
 
@@ -14,13 +15,9 @@ func (b burn) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (b burn) InteractionText() string {
-	return "Burn §Amount."
+	return "Burn §Target §Amount."
 }
 
 func (b burn) Description() string {
-	return "Deal X damage to the opposing HQ."
-}
-
-func (b burn) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.CULTURE}
+	return "Deal X damage to the opposing HQ or an opposing Place."
 }

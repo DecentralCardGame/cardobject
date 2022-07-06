@@ -9,7 +9,7 @@ import (
 func TestBurn(t *testing.T) {
 	simpleIntValue := cardobject.SimpleIntValue(3)
 	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
-	burn := burn{intValue}
+	burn := burn{"ALL", intValue}
 	err := burn.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
