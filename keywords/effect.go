@@ -58,7 +58,6 @@ type effect struct {
 	Resurrect     *resurrect     `json:",omitempty"`
 	Repair        *repair        `json:",omitempty"`
 	Sacrifice     *sacrifice     `json:",omitempty"`
-	SelfBurn      *selfBurn      `json:",omitempty"`
 	Silence       *silence       `json:",omitempty"`
 	Spawn         *spawn         `json:",omitempty"`
 	Suffer        *suffer        `json:",omitempty"`
