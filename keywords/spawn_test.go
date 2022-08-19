@@ -9,7 +9,8 @@ import (
 func TestSpawn(t *testing.T) {
 	intVariable := cardobject.IntVariableName("X")
 	intValue := cardobject.IntValue{SimpleIntValue: nil, IntVariable: &intVariable}
-	spawn := spawn{"2/2 Bot", intValue}
+	token := token{nil, nil, &recruit{}, nil}
+	spawn := spawn{token, intValue}
 	err := spawn.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)

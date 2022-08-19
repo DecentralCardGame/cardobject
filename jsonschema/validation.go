@@ -48,8 +48,11 @@ func FindImplementer(i interfaceType) (Validateable, error) {
 		}
 	}
 	implementer, error := getDefinedValidateable(possibleImplementer)
-	if implementer == nil || error != nil {
-		return nil, errors.New(typeOfB.Name() + " implemented by not exactly one option")
+	if implementer == nil {
+		return nil, errors.New(typeOfB.Name() + " not implemented")
+	}
+	if error != nil {
+		return nil, error
 	}
 	return implementer, nil
 }

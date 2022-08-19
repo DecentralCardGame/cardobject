@@ -6,8 +6,8 @@ import (
 )
 
 type spawn struct {
-	TokenType cardobject.TokenType
-	Amount    cardobject.IntValue
+	Token  token
+	Amount cardobject.IntValue
 }
 
 func (s spawn) ValidateType(r jsonschema.RootElement) error {
@@ -15,7 +15,7 @@ func (s spawn) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (s spawn) InteractionText() string {
-	return "Spawn §Amount §TokenType."
+	return "Spawn §Amount §Token."
 }
 
 func (s spawn) Description() string {
