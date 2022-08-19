@@ -16,6 +16,6 @@ func (o onSpawn) InteractionText() string {
 	return "OnSpawn: §Effects."
 }
 
-func (o onSpawn) description() string {
+func (o onSpawn) Description() string {
 	return "When this card is spawned, activate Effects."
 }
