@@ -5,14 +5,16 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-type reassemble struct{}
+type reassemble struct {
+	Amount cardobject.IntValue
+}
 
 func (re reassemble) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(re, r)
 }
 
 func (re reassemble) InteractionText() string {
-	return "Reassemble."
+	return "Reassemble lvl §Amount."
 }
 
 func (re reassemble) Description() string {
