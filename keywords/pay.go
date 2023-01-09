@@ -6,7 +6,7 @@ import (
 )
 
 type pay struct {
-	ManaAmount cardobject.SimpleIntValue
+	ManaAmount cardobject.IntValue
 	Effects    effects
 }
 
