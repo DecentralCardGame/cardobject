@@ -17,5 +17,5 @@ func (p periodic) InteractionText() string {
 }
 
 func (p periodic) Description() string {
-	return "At the beginning of each tick activate Effects."
+	return "At the beginning of each round activate Effects."
 }
