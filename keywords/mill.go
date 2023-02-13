@@ -7,7 +7,7 @@ import (
 
 type mill struct {
 	Amount cardobject.IntValue
-	Player *cardobject.PlayerMode `json:",omitempty"`
+	Player cardobject.PlayerMode
 }
 
 func (m mill) ValidateType(r jsonschema.RootElement) error {
@@ -15,7 +15,7 @@ func (m mill) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (m mill) InteractionText() string {
-	return "Mill [§Player] §Amount."
+	return "Mill §Player §Amount."
 }
 
 func (m mill) Description() string {
