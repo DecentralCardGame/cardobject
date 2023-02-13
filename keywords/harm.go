@@ -6,7 +6,7 @@ import (
 )
 
 type harm struct {
-	Target cardobject.CardMode
+	Target cardobject.CardOppMode
 	Amount cardobject.IntValue
 }
 

@@ -6,7 +6,7 @@ import (
 )
 
 type kill struct {
-	Target cardobject.CardMode
+	Target cardobject.CardOppMode
 }
 
 func (k kill) ValidateType(r jsonschema.RootElement) error {

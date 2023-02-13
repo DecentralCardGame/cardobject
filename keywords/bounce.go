@@ -6,7 +6,7 @@ import (
 )
 
 type bounce struct {
-	Target cardobject.CardMode
+	Target cardobject.CardOppMode
 }
 
 func (b bounce) ValidateType(r jsonschema.RootElement) error {
