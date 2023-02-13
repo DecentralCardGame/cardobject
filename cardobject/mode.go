@@ -51,6 +51,7 @@ var stringChangeModes []string = []string{Changes}
 
 var playerModes []string = []string{You, Opponent}
 var cardModes []string = []string{All, This, Random, Target}
+var cardOppModes []string = []string{All, Random, Target}
 var ownerModes []string = []string{Your, Opponents, Owners}
 
 type IntChangeMode jsonschema.BasicEnum
@@ -115,6 +116,22 @@ func (c CardMode) ValidateType(r jsonschema.RootElement) error {
 
 func (c CardMode) EnumValues() []string {
 	return cardModes
+}
+
+type CardOppMode jsonschema.TargetMode
+
+func (c CardOppMode) ValidateType(r jsonschema.RootElement) error {
+	values := c.EnumValues()
+	for _, v := range values {
+		if v == string(c) {
+			return nil
+		}
+	}
+	return errors.New("CardOppModes must be one of: " + strings.Join(cardOppModes, ","))
+}
+
+func (c CardOppMode) EnumValues() []string {
+	return cardOppModes
 }
 
 type OwnerMode jsonschema.BasicEnum
