@@ -18,7 +18,7 @@ func (l loot) InteractionText() string {
 }
 
 func (l loot) Description() string {
-	return "Whenever an opposing Place is destroyed, activate Effects."
+	return "Whenever opposing place or HQ is damaged by 1 or more Entities in combat activate effects."
 }
 
 func (l loot) Classes() []jsonschema.Class {
