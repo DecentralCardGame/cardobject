@@ -20,3 +20,7 @@ func (s sacrifice) InteractionText() string {
 func (s sacrifice) Description() string {
 	return "Put a friendly Entity from the Field in the Dustpile."
 }
+
+func (s sacrifice) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(s.Target)
+}

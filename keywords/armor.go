@@ -25,3 +25,7 @@ func (a armor) Description() string {
 func (a armor) Classes() []jsonschema.Class {
 	return []jsonschema.Class{cardobject.NATURE, cardobject.TECHNOLOGY}
 }
+
+func (a armor) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(a.Target)
+}

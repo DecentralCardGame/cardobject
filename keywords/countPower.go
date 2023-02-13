@@ -24,3 +24,7 @@ func (c countPower) Description() string {
 func (c countPower) Classes() []jsonschema.Class {
 	return []jsonschema.Class{cardobject.NATURE}
 }
+
+func (c countPower) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(c.Target)
+}

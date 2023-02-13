@@ -7,6 +7,7 @@ import (
 )
 
 var classBoundElem = reflect.TypeOf((*ClassBound)(nil)).Elem()
+var targetingElem = reflect.TypeOf((*Targeting)(nil)).Elem()
 
 func ValidateStruct(s structType, r RootElement) error {
 	errorRange := []error{}
@@ -16,6 +17,11 @@ func ValidateStruct(s structType, r RootElement) error {
 	if t.Implements(classBoundElem) {
 		ClassBound := s.(ClassBound)
 		errorRange = append(errorRange, r.ValidateClasses(ClassBound))
+	}
+
+	if t.Implements(targetingElem) {
+		Targeting := s.(Targeting)
+		errorRange = append(errorRange, r.ValidateTarget(Targeting))
 	}
 
 	for i := 0; i < v.NumField(); i++ {
@@ -95,6 +101,9 @@ type BasicBool bool
 
 //Class ClassTypes should be derived from Class
 type Class string
+
+//TargetMode targeting modes should be derived from this class
+type TargetMode BasicEnum
 
 func CombineErrors(errorRange []error) error {
 	isError := false

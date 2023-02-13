@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"io/ioutil"
+	"reflect"
 	"testing"
 )
 
@@ -21,6 +22,20 @@ func (c cardObject) ValidateClasses(cb ClassBound) error {
 		}
 	}
 	return errors.New("Failed class validation")
+}
+
+func (c cardObject) ValidateTarget(t Targeting) error {
+	ty, tm := t.Targets()
+	if tm == "THIS" {
+		for _, v := range ty {
+			if v == reflect.TypeOf(c).Name() {
+				return nil
+			}
+		}
+		return errors.New("Failed target validation")
+	} else {
+		return nil
+	}
 }
 
 func (c cardObject) Validate() error {
@@ -52,6 +67,10 @@ func (a action) Classes() []Class {
 
 func (a action) ValidateType(r RootElement) error {
 	return ValidateStruct(a, r)
+}
+
+func (a action) Targets() ([]string, TargetMode) {
+	return []string{"cardObject"}, "THIS"
 }
 
 func (a action) InteractionText() string {

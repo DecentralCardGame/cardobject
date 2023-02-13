@@ -25,3 +25,7 @@ func (re repair) Description() string {
 func (re repair) Classes() []jsonschema.Class {
 	return []jsonschema.Class{cardobject.CULTURE, cardobject.TECHNOLOGY}
 }
+
+func (re repair) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.PLACETYPE, cardobject.HEADQUARTERTYPE}, jsonschema.TargetMode(re.Target)
+}

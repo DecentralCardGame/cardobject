@@ -15,6 +15,10 @@ func (c Card) ValidateClasses(cb jsonschema.ClassBound) error {
 	return nil
 }
 
+func (c Card) ValidateTarget(t jsonschema.Targeting) error {
+	return nil
+}
+
 func (c Card) Validate() error {
 	return c.ValidateType(c)
 }

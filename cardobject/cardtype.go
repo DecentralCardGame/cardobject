@@ -7,11 +7,16 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
+const ACTIONTYPE string = "ACTION"
+const ENTITYTYPE string = "ENTITY"
+const PLACETYPE string = "PLACE"
+const HEADQUARTERTYPE string = "HQ"
+
 var possibleCardTypes []string = []string{
-	"ACTION",
-	"ENTITY",
-	"PLACE",
-	"HQ"}
+	ACTIONTYPE,
+	ENTITYTYPE,
+	PLACETYPE,
+	HEADQUARTERTYPE}
 
 type CardType jsonschema.BasicEnum
 

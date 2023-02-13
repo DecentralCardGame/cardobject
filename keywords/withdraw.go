@@ -24,3 +24,7 @@ func (w withdraw) Description() string {
 func (w withdraw) Classes() []jsonschema.Class {
 	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.CULTURE}
 }
+
+func (w withdraw) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(w.Target)
+}

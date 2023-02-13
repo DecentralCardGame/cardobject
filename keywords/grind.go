@@ -21,3 +21,7 @@ func (g grind) InteractionText() string {
 func (g grind) Description() string {
 	return "Deal X damage to a friendly place/HQ."
 }
+
+func (g grind) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.PLACETYPE, cardobject.HEADQUARTERTYPE}, jsonschema.TargetMode(g.Target)
+}

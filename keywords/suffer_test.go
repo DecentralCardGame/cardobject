@@ -9,7 +9,7 @@ import (
 func TestSuffer(t *testing.T) {
 	simpleIntValue := cardobject.SimpleIntValue(3)
 	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
-	suffer := suffer{"THIS", intValue}
+	suffer := suffer{"ALL", intValue}
 	err := suffer.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)

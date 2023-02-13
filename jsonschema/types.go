@@ -9,11 +9,17 @@ type Validateable interface {
 type RootElement interface {
 	Validate() error
 	ValidateClasses(ClassBound) error
+	ValidateTarget(Targeting) error
 }
 
 //ClassBound A Type that has a class restriction
 type ClassBound interface {
 	Classes() []Class
+}
+
+//Targeting A type that has limitations on its affected types
+type Targeting interface {
+	Targets() ([]string, TargetMode)
 }
 
 type structType interface {

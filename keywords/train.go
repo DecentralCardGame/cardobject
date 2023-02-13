@@ -25,3 +25,7 @@ func (t train) Description() string {
 func (t train) Classes() []jsonschema.Class {
 	return []jsonschema.Class{cardobject.CULTURE}
 }
+
+func (t train) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(t.Target)
+}

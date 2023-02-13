@@ -25,3 +25,7 @@ func (s strengthen) Description() string {
 func (s strengthen) Classes() []jsonschema.Class {
 	return []jsonschema.Class{cardobject.CULTURE, cardobject.NATURE}
 }
+
+func (s strengthen) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(s.Target)
+}

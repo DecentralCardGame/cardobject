@@ -29,6 +29,21 @@ func (c Card) ValidateClasses(cb jsonschema.ClassBound) error {
 	return errors.New("Classes are not covered by the cards classes")
 }
 
+//ValidateTarget Checks if the given classes are covered by the card
+func (c Card) ValidateTarget(t jsonschema.Targeting) error {
+	ty, tm := t.Targets()
+	if tm == "THIS" {
+		for _, v := range ty {
+			if v == c.GetType() {
+				return nil
+			}
+		}
+		return errors.New("Class " + c.GetType() + " is not covered by the target classes")
+	} else {
+		return nil
+	}
+}
+
 //ValidateType Ensures that the type "Card" is build correctly in the context of the RootElement
 func (c Card) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := c.FindImplementer()
@@ -41,6 +56,19 @@ func (c Card) ValidateType(r jsonschema.RootElement) error {
 //FindImplementer Returns which of its children "implement" the type "Card"
 func (c Card) FindImplementer() (jsonschema.Validateable, error) {
 	return jsonschema.FindImplementer(c)
+}
+
+func (c Card) GetType() string {
+	if c.Action != nil {
+		return cardobject.ACTIONTYPE
+	}
+	if c.Entity != nil {
+		return cardobject.ENTITYTYPE
+	}
+	if c.Place != nil {
+		return cardobject.PLACETYPE
+	}
+	return cardobject.HEADQUARTERTYPE
 }
 
 type action struct {

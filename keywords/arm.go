@@ -25,3 +25,7 @@ func (a arm) Description() string {
 func (a arm) Classes() []jsonschema.Class {
 	return []jsonschema.Class{cardobject.CULTURE, cardobject.TECHNOLOGY}
 }
+
+func (a arm) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(a.Target)
+}

@@ -9,7 +9,7 @@ import (
 func TestArm(t *testing.T) {
 	simpleIntValue := cardobject.SimpleIntValue(3)
 	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
-	arm := arm{"THIS", intValue}
+	arm := arm{"RANDOM", intValue}
 	err := arm.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)

@@ -101,7 +101,7 @@ func (p PlayerMode) EnumValues() []string {
 	return playerModes
 }
 
-type CardMode jsonschema.BasicEnum
+type CardMode jsonschema.TargetMode
 
 func (c CardMode) ValidateType(r jsonschema.RootElement) error {
 	values := c.EnumValues()

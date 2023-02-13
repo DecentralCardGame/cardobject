@@ -21,3 +21,7 @@ func (s suffer) InteractionText() string {
 func (s suffer) Description() string {
 	return "Deal X damage to a friendly Entity."
 }
+
+func (s suffer) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(s.Target)
+}

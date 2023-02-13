@@ -24,3 +24,7 @@ func (h heal) Description() string {
 func (h heal) Classes() []jsonschema.Class {
 	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE}
 }
+
+func (h heal) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(h.Target)
+}

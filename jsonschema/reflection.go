@@ -25,6 +25,7 @@ type Type struct {
 	Description string                 `json:"description,omitempty"`
 	Properties  *orderedmap.OrderedMap `json:"children,omitempty"`
 	Classes     []Class                `json:"classes,omitempty"`
+	TargetTypes []string               `json:"types,omitempty"`
 	Extras      map[string]interface{} `json:"-"`
 
 	//exclusive for structs
@@ -169,6 +170,15 @@ func (r *Reflector) reflectStruct(definitions Definitions, t reflect.Type) (*Typ
 		var classes, _ = classValues.Interface().([]Class)
 
 		st.Classes = classes
+	}
+
+	var targetingElem = reflect.TypeOf((*Targeting)(nil)).Elem()
+
+	if t.Implements(targetingElem) {
+		targetsValues := reflect.New(t).MethodByName("Targets").Call(dummyInputs)[0]
+		var targets, _ = targetsValues.Interface().([]string)
+
+		st.TargetTypes = targets
 	}
 
 	if err != nil {

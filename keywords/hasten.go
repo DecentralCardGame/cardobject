@@ -20,3 +20,7 @@ func (h hasten) InteractionText() string {
 func (h hasten) Description() string {
 	return "Allow a friendly Entity's to attack the turn it is played."
 }
+
+func (h hasten) Targets() ([]string, jsonschema.TargetMode) {
+	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(h.Target)
+}
