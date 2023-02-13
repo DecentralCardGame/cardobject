@@ -41,7 +41,6 @@ type ability struct {
 	Pay            *pay            `json:",omitempty"`
 	Periodic       *periodic       `json:",omitempty"`
 	Tribute        *tribute        `json:",omitempty"`
-	Trample        *trample        `json:",omitempty"`
 }
 
 func (a ability) ValidateType(r jsonschema.RootElement) error {
