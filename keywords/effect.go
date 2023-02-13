@@ -40,6 +40,7 @@ type effect struct {
 	DrawAction    *drawAction    `json:",omitempty"`
 	DrawEntity    *drawEntity    `json:",omitempty"`
 	DrawPlace     *drawPlace     `json:",omitempty"`
+	Enrage        *enrage        `json:",omitempty"`
 	Fortify       *fortify       `json:",omitempty"`
 	Grind         *grind         `json:",omitempty"`
 	Grow          *grow          `json:",omitempty"`
