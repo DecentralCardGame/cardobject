@@ -18,7 +18,7 @@ func (g grow) InteractionText() string {
 }
 
 func (g grow) Description() string {
-	return "Grow your HQ. 4 Growth increases its size by 1."
+	return "Grow your HQ. 4 Growth increases its size by 1. The size of the HQ determines how much Mana you get at the beginning of a turn."
 }
 
 func (g grow) Classes() []jsonschema.Class {
