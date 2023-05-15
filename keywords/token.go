@@ -5,10 +5,12 @@ import (
 )
 
 type token struct {
-	Beast   *beast   `json:",omitempty"`
-	Bot     *bot     `json:",omitempty"`
-	Recruit *recruit `json:",omitempty"`
-	Spirit  *spirit  `json:",omitempty"`
+	Avatar     *avatar     `json:",omitempty"`
+	Beast      *beast      `json:",omitempty"`
+	Bot        *bot        `json:",omitempty"`
+	Powerstone *powerstone `json:",omitempty"`
+	Recruit    *recruit    `json:",omitempty"`
+	Spirit     *spirit     `json:",omitempty"`
 }
 
 func (t token) ValidateType(r jsonschema.RootElement) error {
