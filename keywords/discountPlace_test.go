@@ -6,11 +6,11 @@ import (
 	"github.com/DecentralCardGame/cardobject/cardobject"
 )
 
-func TestDiscount(t *testing.T) {
+func TestDiscountPlace(t *testing.T) {
 	simpleIntValue := cardobject.SimpleIntValue(3)
 	intValue := cardobject.IntValue{SimpleIntValue: &simpleIntValue, IntVariable: nil}
-	discount := discount{intValue, nil}
-	err := discount.ValidateType(allClassesTestCard())
+	discountPlace := discountPlace{intValue}
+	err := discountPlace.ValidateType(allClassesTestCard())
 	if err != nil {
 		t.Error(err)
 	}
