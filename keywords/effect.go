@@ -50,6 +50,7 @@ type effect struct {
 	Hasten         *hasten         `json:",omitempty"`
 	Heal           *heal           `json:",omitempty"`
 	Kill           *kill           `json:",omitempty"`
+	Laneswap       *laneswap       `json:",omitempty"`
 	Insight        *insight        `json:",omitempty"`
 	Mill           *mill           `json:",omitempty"`
 	Produce        *produce        `json:",omitempty"`
