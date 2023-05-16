@@ -31,6 +31,7 @@ type effect struct {
 	Armor          *armor          `json:",omitempty"`
 	Bounce         *bounce         `json:",omitempty"`
 	Burn           *burn           `json:",omitempty"`
+	Choose         *choose         `json:",omitempty"`
 	Count          *count          `json:",omitempty"`
 	CountForces    *countForces    `json:",omitempty"`
 	CountPower     *countPower     `json:",omitempty"`
