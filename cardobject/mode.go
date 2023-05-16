@@ -13,6 +13,15 @@ const All = "ALL"
 //Changes Mode
 const Changes = "CHANGES"
 
+//Chosen Action
+const ChosenAction = "CHOSEN ACTION"
+
+//Chosen Entity
+const ChosenEntity = "CHOSEN ENTITY"
+
+//Chosen Place
+const ChosenPlace = "CHOSEN PLACE"
+
 //Decreases Mode
 const Decreases = "DECREASES"
 
@@ -52,6 +61,9 @@ var stringChangeModes []string = []string{Changes}
 var playerModes []string = []string{You, Opponent}
 var cardModes []string = []string{All, This, Random, Target}
 var cardOppModes []string = []string{All, Random, Target}
+var actionModes []string = []string{All, This, Random, Target, ChosenAction}
+var entityModes []string = []string{All, This, Random, Target, ChosenEntity}
+var placeModes []string = []string{All, This, Random, Target, ChosenPlace}
 var ownerModes []string = []string{Your, Opponents, Owners}
 
 type IntChangeMode jsonschema.BasicEnum
@@ -132,6 +144,54 @@ func (c CardOppMode) ValidateType(r jsonschema.RootElement) error {
 
 func (c CardOppMode) EnumValues() []string {
 	return cardOppModes
+}
+
+type ActionMode jsonschema.TargetMode
+
+func (a ActionMode) ValidateType(r jsonschema.RootElement) error {
+	values := a.EnumValues()
+	for _, v := range values {
+		if v == string(a) {
+			return nil
+		}
+	}
+	return errors.New("ActionModes must be one of: " + strings.Join(actionModes, ","))
+}
+
+func (a ActionMode) EnumValues() []string {
+	return actionModes
+}
+
+type EntityMode jsonschema.TargetMode
+
+func (e EntityMode) ValidateType(r jsonschema.RootElement) error {
+	values := e.EnumValues()
+	for _, v := range values {
+		if v == string(e) {
+			return nil
+		}
+	}
+	return errors.New("EntityModes must be one of: " + strings.Join(entityModes, ","))
+}
+
+func (e EntityMode) EnumValues() []string {
+	return entityModes
+}
+
+type PlaceMode jsonschema.TargetMode
+
+func (p PlaceMode) ValidateType(r jsonschema.RootElement) error {
+	values := p.EnumValues()
+	for _, v := range values {
+		if v == string(p) {
+			return nil
+		}
+	}
+	return errors.New("PlaceModes must be one of: " + strings.Join(placeModes, ","))
+}
+
+func (p PlaceMode) EnumValues() []string {
+	return placeModes
 }
 
 type OwnerMode jsonschema.BasicEnum
