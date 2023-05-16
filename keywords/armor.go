@@ -6,7 +6,7 @@ import (
 )
 
 type armor struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 	Amount cardobject.IntValue
 }
 

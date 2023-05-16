@@ -6,7 +6,7 @@ import (
 )
 
 type withdraw struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 }
 
 func (w withdraw) ValidateType(r jsonschema.RootElement) error {

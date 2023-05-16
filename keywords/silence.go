@@ -6,7 +6,7 @@ import (
 )
 
 type silence struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 	Player cardobject.PlayerMode
 }
 

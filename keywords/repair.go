@@ -6,7 +6,7 @@ import (
 )
 
 type repair struct {
-	Target cardobject.CardMode
+	Target cardobject.PlaceMode
 	Amount cardobject.IntValue
 }
 

@@ -6,7 +6,7 @@ import (
 )
 
 type burn struct {
-	Target cardobject.CardOppMode
+	Target cardobject.PlaceOppMode
 	Amount cardobject.IntValue
 }
 

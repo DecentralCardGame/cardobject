@@ -64,6 +64,9 @@ var cardOppModes []string = []string{All, Random, Target}
 var actionModes []string = []string{All, This, Random, Target, ChosenAction}
 var entityModes []string = []string{All, This, Random, Target, ChosenEntity}
 var placeModes []string = []string{All, This, Random, Target, ChosenPlace}
+var actionOppModes []string = []string{All, Random, Target, ChosenAction}
+var entityOppModes []string = []string{All, Random, Target, ChosenEntity}
+var placeOppModes []string = []string{All, Random, Target, ChosenPlace}
 var ownerModes []string = []string{Your, Opponents, Owners}
 
 type IntChangeMode jsonschema.BasicEnum
@@ -192,6 +195,54 @@ func (p PlaceMode) ValidateType(r jsonschema.RootElement) error {
 
 func (p PlaceMode) EnumValues() []string {
 	return placeModes
+}
+
+type ActionOppMode jsonschema.TargetMode
+
+func (a ActionOppMode) ValidateType(r jsonschema.RootElement) error {
+	values := a.EnumValues()
+	for _, v := range values {
+		if v == string(a) {
+			return nil
+		}
+	}
+	return errors.New("ActionOppModes must be one of: " + strings.Join(actionOppModes, ","))
+}
+
+func (a ActionOppMode) EnumValues() []string {
+	return actionOppModes
+}
+
+type EntityOppMode jsonschema.TargetMode
+
+func (e EntityOppMode) ValidateType(r jsonschema.RootElement) error {
+	values := e.EnumValues()
+	for _, v := range values {
+		if v == string(e) {
+			return nil
+		}
+	}
+	return errors.New("EntityOppModes must be one of: " + strings.Join(entityOppModes, ","))
+}
+
+func (e EntityOppMode) EnumValues() []string {
+	return entityOppModes
+}
+
+type PlaceOppMode jsonschema.TargetMode
+
+func (p PlaceOppMode) ValidateType(r jsonschema.RootElement) error {
+	values := p.EnumValues()
+	for _, v := range values {
+		if v == string(p) {
+			return nil
+		}
+	}
+	return errors.New("PlaceOppModes must be one of: " + strings.Join(placeOppModes, ","))
+}
+
+func (p PlaceOppMode) EnumValues() []string {
+	return placeOppModes
 }
 
 type OwnerMode jsonschema.BasicEnum

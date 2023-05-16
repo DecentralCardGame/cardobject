@@ -6,7 +6,7 @@ import (
 )
 
 type hasten struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 }
 
 func (h hasten) ValidateType(r jsonschema.RootElement) error {

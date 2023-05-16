@@ -6,7 +6,7 @@ import (
 )
 
 type strengthen struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 	Amount cardobject.IntValue
 }
 

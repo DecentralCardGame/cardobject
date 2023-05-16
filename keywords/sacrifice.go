@@ -6,7 +6,7 @@ import (
 )
 
 type sacrifice struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 }
 
 func (s sacrifice) ValidateType(r jsonschema.RootElement) error {

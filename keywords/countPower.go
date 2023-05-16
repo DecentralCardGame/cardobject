@@ -6,7 +6,7 @@ import (
 )
 
 type countPower struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 }
 
 func (c countPower) ValidateType(r jsonschema.RootElement) error {

@@ -6,7 +6,7 @@ import (
 )
 
 type laneswap struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 }
 
 func (l laneswap) ValidateType(r jsonschema.RootElement) error {

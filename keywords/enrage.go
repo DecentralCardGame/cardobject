@@ -6,7 +6,7 @@ import (
 )
 
 type enrage struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 }
 
 func (e enrage) ValidateType(r jsonschema.RootElement) error {

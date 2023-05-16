@@ -6,7 +6,7 @@ import (
 )
 
 type heal struct {
-	Target cardobject.CardMode
+	Target cardobject.EntityMode
 }
 
 func (h heal) ValidateType(r jsonschema.RootElement) error {
