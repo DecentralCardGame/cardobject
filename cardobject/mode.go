@@ -14,13 +14,13 @@ const All = "ALL"
 const Changes = "CHANGES"
 
 //Chosen Action
-const ChosenAction = "CHOSEN ACTION"
+const ChosenAction = "CHOSENACTION"
 
 //Chosen Entity
-const ChosenEntity = "CHOSEN ENTITY"
+const ChosenEntity = "CHOSENENTITY"
 
 //Chosen Place
-const ChosenPlace = "CHOSEN PLACE"
+const ChosenPlace = "CHOSENPLACE"
 
 //Decreases Mode
 const Decreases = "DECREASES"
