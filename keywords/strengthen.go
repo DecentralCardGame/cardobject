@@ -23,7 +23,7 @@ func (s strengthen) Description() string {
 }
 
 func (s strengthen) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.CULTURE, cardobject.NATURE}
+	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE}
 }
 
 func (s strengthen) Targets() ([]string, jsonschema.TargetMode) {
