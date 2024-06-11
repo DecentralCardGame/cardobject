@@ -80,7 +80,6 @@ type action struct {
 	FlavourText    cardobject.FlavourText
 	Tags           cardobject.Tags
 	Keywords       cardobject.Keywords
-	RulesTexts     cardobject.RulesTexts
 	Rarity         *cardobject.Rarity `json:",omitempty"`
 }
 
@@ -107,7 +106,6 @@ type entity struct {
 	FlavourText    cardobject.FlavourText
 	Tags           cardobject.Tags
 	Keywords       cardobject.Keywords
-	RulesTexts     cardobject.RulesTexts
 	Rarity         *cardobject.Rarity `json:",omitempty"`
 }
 
@@ -133,7 +131,6 @@ type place struct {
 	FlavourText    cardobject.FlavourText
 	Tags           cardobject.Tags
 	Keywords       cardobject.Keywords
-	RulesTexts     cardobject.RulesTexts
 	Rarity         *cardobject.Rarity `json:",omitempty"`
 }
 
@@ -158,7 +155,6 @@ type headquarter struct {
 	FlavourText cardobject.FlavourText
 	Tags        cardobject.Tags
 	Keywords    cardobject.Keywords
-	RulesTexts  cardobject.RulesTexts
 	Rarity      *cardobject.Rarity `json:",omitempty"`
 }
 

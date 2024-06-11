@@ -23,8 +23,7 @@ func allClassesTestCard() Card {
 			Effects:     nil,
 			FlavourText: "",
 			Tags:        nil,
-			Keywords:    nil,
-			RulesTexts:  nil},
+			Keywords:    nil},
 		nil, nil, nil}
 }
 
