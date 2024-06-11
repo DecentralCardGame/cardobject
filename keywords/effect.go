@@ -34,7 +34,6 @@ type effect struct {
 	Choose         *choose         `json:",omitempty"`
 	Count          *count          `json:",omitempty"`
 	CountPower     *countPower     `json:",omitempty"`
-	Dice           *dice           `json:",omitempty"`
 	Discard        *discard        `json:",omitempty"`
 	DiscountAction *discountAction `json:",omitempty"`
 	DiscountEntity *discountEntity `json:",omitempty"`
