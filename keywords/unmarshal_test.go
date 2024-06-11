@@ -22,8 +22,7 @@ func allClassesTestCard() *CardRootValidator {
 			Culture:    true},
 		Effects:     nil,
 		FlavourText: "",
-		Tags:        nil,
-		Keywords:    nil}, "ACTION"}
+		Tags:        nil}, "ACTION"}
 }
 
 func TestUnmarshaling(t *testing.T) {

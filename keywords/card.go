@@ -102,7 +102,6 @@ type action struct {
 	Effects        effects
 	FlavourText    cardobject.FlavourText
 	Tags           cardobject.Tags
-	Keywords       cardobject.Keywords
 	Rarity         *cardobject.Rarity `json:",omitempty"`
 }
 
@@ -128,7 +127,6 @@ type entity struct {
 	Health         cardobject.Health
 	FlavourText    cardobject.FlavourText
 	Tags           cardobject.Tags
-	Keywords       cardobject.Keywords
 	Rarity         *cardobject.Rarity `json:",omitempty"`
 }
 
@@ -153,7 +151,6 @@ type place struct {
 	Health         cardobject.Health
 	FlavourText    cardobject.FlavourText
 	Tags           cardobject.Tags
-	Keywords       cardobject.Keywords
 	Rarity         *cardobject.Rarity `json:",omitempty"`
 }
 
@@ -177,7 +174,6 @@ type headquarter struct {
 	Health      cardobject.Health
 	FlavourText cardobject.FlavourText
 	Tags        cardobject.Tags
-	Keywords    cardobject.Keywords
 	Rarity      *cardobject.Rarity `json:",omitempty"`
 }
 
