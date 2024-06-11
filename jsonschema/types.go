@@ -10,6 +10,7 @@ type RootElement interface {
 	Validate() error
 	ValidateClasses(ClassBound) error
 	ValidateTarget(Targeting) error
+	ValidateKeywordCount() error
 }
 
 //ClassBound A Type that has a class restriction

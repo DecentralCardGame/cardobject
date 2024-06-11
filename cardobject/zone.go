@@ -7,25 +7,25 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-//AttackLane Zone
+// AttackLane Zone
 const AttackLane = "ATTACKLANE"
 
-//BlockLane Zone
+// BlockLane Zone
 const BlockLane = "BLOCKLANE"
 
-//Deck Zone
+// Deck Zone
 const Deck = "DECK"
 
-//Dustpile Zone
+// Dustpile Zone
 const Dustpile = "DUSTPILE"
 
-//Field Zone
+// Field Zone
 const Field = "FIELD"
 
-//Hand Zone
+// Hand Zone
 const Hand = "HAND"
 
-//Void Zone
+// Void Zone
 const Void = "VOID"
 
 var dynamicZones []string = []string{Deck, Dustpile, Field, Hand}

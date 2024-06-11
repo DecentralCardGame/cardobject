@@ -9,9 +9,9 @@ import (
 	"github.com/DecentralCardGame/cardobject/cardobject"
 )
 
-func allClassesTestCard() CardRootValidator {
+func allClassesTestCard() *CardRootValidator {
 
-	return CardRootValidator{9, &action{
+	return &CardRootValidator{9, &action{
 		CardName:       "",
 		CastingCost:    3,
 		AdditionalCost: nil,

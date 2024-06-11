@@ -4,17 +4,19 @@ import (
 	"encoding/json"
 	"errors"
 	"io/ioutil"
-	"reflect"
 	"testing"
 )
 
 const Technology Class = "Technology"
 
+type rootElem struct {
+}
+
 type cardObject struct {
 	Action *action
 }
 
-func (c cardObject) ValidateClasses(cb ClassBound) error {
+func (r rootElem) ValidateClasses(cb ClassBound) error {
 	s := cb.Classes()
 	for _, v := range s {
 		if v == Technology {
@@ -24,22 +26,21 @@ func (c cardObject) ValidateClasses(cb ClassBound) error {
 	return errors.New("Failed class validation")
 }
 
-func (c cardObject) ValidateTarget(t Targeting) error {
-	ty, tm := t.Targets()
-	if tm == "THIS" {
-		for _, v := range ty {
-			if v == reflect.TypeOf(c).Name() {
-				return nil
-			}
-		}
-		return errors.New("Failed target validation")
-	} else {
-		return nil
-	}
+func (r rootElem) ValidateKeywordCount() error {
+	return nil
+}
+
+func (r rootElem) ValidateTarget(t Targeting) error {
+	return nil
+}
+
+func (r rootElem) Validate() error {
+	return nil
 }
 
 func (c cardObject) Validate() error {
-	return c.ValidateType(c)
+	root := &rootElem{}
+	return c.ValidateType(root)
 }
 
 func (c cardObject) ValidateType(r RootElement) error {

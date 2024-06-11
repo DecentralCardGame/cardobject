@@ -7,28 +7,28 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-//XVar VariableName
+// XVar VariableName
 const XVar = "X"
 
-//YVar VariableName
+// YVar VariableName
 const YVar = "Y"
 
-//ZVar VariableName
+// ZVar VariableName
 const ZVar = "Z"
 
-//AVar VariableName
+// AVar VariableName
 const AVar = "A"
 
-//BVar VariableName
+// BVar VariableName
 const BVar = "B"
 
-//CVar VariableName
+// CVar VariableName
 const CVar = "C"
 
-//MVar VariableName
+// MVar VariableName
 const MVar = "M"
 
-//TVar VariableName
+// TVar VariableName
 const TVar = "T"
 
 var intVariableNames []string = []string{XVar, YVar, ZVar}

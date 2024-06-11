@@ -18,7 +18,7 @@ func (e effects) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (e effects) MinMaxItems() (int, int) {
-	return 0, 3
+	return 0, maxKeywords
 }
 
 func (e effects) ItemName() string {
@@ -33,7 +33,7 @@ type effect struct {
 	Burn           *burn           `json:",omitempty"`
 	Choose         *choose         `json:",omitempty"`
 	Count          *count          `json:",omitempty"`
-	CountDust	   *countDust      `json:",omitempty"`
+	CountDust      *countDust      `json:",omitempty"`
 	CountPower     *countPower     `json:",omitempty"`
 	Discard        *discard        `json:",omitempty"`
 	DiscountAction *discountAction `json:",omitempty"`
@@ -72,6 +72,10 @@ type effect struct {
 
 func (e effect) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := e.FindImplementer()
+	if err != nil {
+		return err
+	}
+	err = r.ValidateKeywordCount()
 	if err != nil {
 		return err
 	}

@@ -10,16 +10,16 @@ type ClassProvider interface {
 	ClassRestriction() Class
 }
 
-//CULTURE Class
+// CULTURE Class
 const CULTURE jsonschema.Class = "CULTURE"
 
-//NATURE Class
+// NATURE Class
 const NATURE jsonschema.Class = "NATURE"
 
-//MYSTICISM Class
+// MYSTICISM Class
 const MYSTICISM jsonschema.Class = "MYSTICISM"
 
-//TECHNOLOGY Class
+// TECHNOLOGY Class
 const TECHNOLOGY jsonschema.Class = "TECHNOLOGY"
 
 type Class struct {

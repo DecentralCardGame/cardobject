@@ -48,6 +48,10 @@ func (a ability) ValidateType(r jsonschema.RootElement) error {
 	if err != nil {
 		return err
 	}
+	err = r.ValidateKeywordCount()
+	if err != nil {
+		return err
+	}
 	return implementer.ValidateType(r)
 }
 

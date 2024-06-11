@@ -43,7 +43,7 @@ func ValidateStruct(s structType, r RootElement) error {
 	return CombineErrors(errorRange)
 }
 
-//FindImplementer returns the non-nil field of a struct if it has exactly one
+// FindImplementer returns the non-nil field of a struct if it has exactly one
 func FindImplementer(i interfaceType) (Validateable, error) {
 	valueOfB := reflect.ValueOf(i)
 	typeOfB := reflect.TypeOf(i)
@@ -87,22 +87,22 @@ func ItemNameFromArray(array arrayType) string {
 	return itemName
 }
 
-//BasicEnum EnumTypes should be derived from BasicEnum
+// BasicEnum EnumTypes should be derived from BasicEnum
 type BasicEnum string
 
-//BasicString StringTypes should be derived from BasicString
+// BasicString StringTypes should be derived from BasicString
 type BasicString string
 
-//BasicInt IntTypes should be derived from BasicInt
+// BasicInt IntTypes should be derived from BasicInt
 type BasicInt int
 
-//BasicBool BoolTypes should be derived from BasicBool
+// BasicBool BoolTypes should be derived from BasicBool
 type BasicBool bool
 
-//Class ClassTypes should be derived from Class
+// Class ClassTypes should be derived from Class
 type Class string
 
-//TargetMode targeting modes should be derived from this class
+// TargetMode targeting modes should be derived from this class
 type TargetMode BasicEnum
 
 func CombineErrors(errorRange []error) error {

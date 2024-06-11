@@ -7,13 +7,13 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-//Recruit Token
+// Recruit Token
 const Recruit = "1/1 human Recruit"
 
-//Bot Token
+// Bot Token
 const Bot = "2/2 Bot"
 
-//Beast Token
+// Beast Token
 const Beast = "3/3 animal Beast"
 
 var tokenTypes []string = []string{Recruit, Bot, Beast}

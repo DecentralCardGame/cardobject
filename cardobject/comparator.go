@@ -7,22 +7,22 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-//Contains Comparator
+// Contains Comparator
 const Contains = "CONTAINS"
 
-//ContainsNot Comparator
+// ContainsNot Comparator
 const ContainsNot = "CONTAINSNOT"
 
-//Equal Comparator
+// Equal Comparator
 const Equal = "EQUAL"
 
-//Greater Comparator
+// Greater Comparator
 const Greater = "GREATER"
 
-//Lesser Comparator
+// Lesser Comparator
 const Lesser = "LESSER"
 
-//Uneaqual Comparator
+// Uneaqual Comparator
 const Uneaqual = "UNEQUAL"
 
 var intComparators []string = []string{Equal, Greater, Lesser}

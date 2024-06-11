@@ -10,46 +10,46 @@ import (
 const maxKeywordLength int = 10000
 const minKeywordLength int = 0
 
-//Anthem Keyword
+// Anthem Keyword
 const Anthem = "ANTHEM"
 
-//Arm Keyword
+// Arm Keyword
 const Arm = "ARM"
 
-//Arrival Keyword
+// Arrival Keyword
 const Arrival = "ARRIVAL"
 
-//Battlecry Keyword
+// Battlecry Keyword
 const Battlecry = "BATTLECRY"
 
-//Harm Keyword
+// Harm Keyword
 const Harm = "HARM"
 
-//Kill Keyword
+// Kill Keyword
 const Kill = "KILL"
 
-//OnConstruction Keyword
+// OnConstruction Keyword
 const OnConstruction = "ONCONSTRUCTION"
 
-//OnDeath Keyword
+// OnDeath Keyword
 const OnDeath = "ONDEATH"
 
-//OnSpawn Keyword
+// OnSpawn Keyword
 const OnSpawn = "ONSPAWN"
 
-//Pay Keyword
+// Pay Keyword
 const Pay = "PAY"
 
-//Periodic Keyword
+// Periodic Keyword
 const Periodic = "PERIODIC"
 
-//Produce Keyword
+// Produce Keyword
 const Produce = "PRODUCE"
 
-//Repair Keyword
+// Repair Keyword
 const Repair = "REPAIR"
 
-//Tribute Keyword
+// Tribute Keyword
 const Tribute = "TRIBUTE"
 
 type Keywords []Keyword

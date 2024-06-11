@@ -7,10 +7,10 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-//Combat TimeEvent
+// Combat TimeEvent
 const Combat = "COMBAT"
 
-//Tickstart TimeEvent
+// Tickstart TimeEvent
 const Tickstart = "TICKSTART"
 
 var timeEvents []string = []string{Combat, Tickstart}

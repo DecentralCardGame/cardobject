@@ -7,19 +7,19 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-//Add Operator
+// Add Operator
 const Add = "ADD"
 
-//Gain Operator
+// Gain Operator
 const Gain = "GAIN"
 
-//Lose Operator
+// Lose Operator
 const Lose = "LOSE"
 
-//Set Operator
+// Set Operator
 const Set = "SET"
 
-//Subtract Operator
+// Subtract Operator
 const Subtract = "SUBTRACT"
 
 var abilityEffectOperators []string = []string{Gain}

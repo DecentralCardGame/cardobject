@@ -7,28 +7,28 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-//BaseAttack Property
+// BaseAttack Property
 const BaseAttack = "BASEATTACK"
 
-//BaseCostSum Property
+// BaseCostSum Property
 const BaseCostSum = "BASECOSTSUM"
 
-//BaseHealth Property
+// BaseHealth Property
 const BaseHealth = "BASEHEALTH"
 
-//CurrentAttack Property
+// CurrentAttack Property
 const CurrentAttack = "ATTACK"
 
-//CurrentCostSum Property
+// CurrentCostSum Property
 const CurrentCostSum = "COSTSUM"
 
-//CurrentHealth Property
+// CurrentHealth Property
 const CurrentHealth = "HEALTH"
 
-//Name Property
+// Name Property
 const Name = "NAME"
 
-//Text Property
+// Text Property
 const Text = "TEXT"
 
 var actionIntProperties []string = []string{BaseCostSum, CurrentCostSum}

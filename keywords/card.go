@@ -29,8 +29,8 @@ func (c CardRootValidator) ValidateClasses(cb jsonschema.ClassBound) error {
 	return errors.New("Classes are not covered by the cards classes")
 }
 
-func (c CardRootValidator) ValidateKeywordCount() error {
-	c.Keywords++
+func (c *CardRootValidator) ValidateKeywordCount() error {
+	c.Keywords = c.Keywords + 1
 	if c.Keywords <= maxKeywords {
 		return nil
 	}
@@ -64,7 +64,7 @@ type Card struct {
 func (c Card) Validate() error {
 	classProvider, _ := c.FindImplementer()
 	cardRoot := CardRootValidator{0, classProvider.(cardobject.ClassProvider), c.GetType()}
-	return c.ValidateType(cardRoot)
+	return c.ValidateType(&cardRoot)
 }
 
 // ValidateType Ensures that the type "Card" is build correctly in the context of the RootElement

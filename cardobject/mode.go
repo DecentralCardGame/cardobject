@@ -7,52 +7,52 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-//All Mode
+// All Mode
 const All = "ALL"
 
-//Changes Mode
+// Changes Mode
 const Changes = "CHANGES"
 
-//Chosen Action
+// Chosen Action
 const ChosenAction = "CHOSENACTION"
 
-//Chosen Entity
+// Chosen Entity
 const ChosenEntity = "CHOSENENTITY"
 
-//Chosen Place
+// Chosen Place
 const ChosenPlace = "CHOSENPLACE"
 
-//Decreases Mode
+// Decreases Mode
 const Decreases = "DECREASES"
 
-//Increases Mode
+// Increases Mode
 const Increases = "INCREASES"
 
-//Opponent Mode
+// Opponent Mode
 const Opponent = "OPPONENT"
 
-//Opponents Mode
+// Opponents Mode
 const Opponents = "OPPONENTS"
 
-//OpponentsChoice Mode
+// OpponentsChoice Mode
 const OpponentsChoice = "OPPONENTSCHOICE"
 
-//Owners Mode
+// Owners Mode
 const Owners = "OWNERS"
 
-//Random Mode
+// Random Mode
 const Random = "RANDOM"
 
-//Target Mode
+// Target Mode
 const Target = "TARGET"
 
-//This Mode
+// This Mode
 const This = "THIS"
 
-//You Mode
+// You Mode
 const You = "YOU"
 
-//Your Mode
+// Your Mode
 const Your = "YOUR"
 
 var intChangeModes []string = []string{Increases, Decreases, Changes}
