@@ -9,22 +9,21 @@ import (
 	"github.com/DecentralCardGame/cardobject/cardobject"
 )
 
-func allClassesTestCard() Card {
-	return Card{
-		&action{
-			CardName:       "",
-			CastingCost:    3,
-			AdditionalCost: nil,
-			Class: cardobject.Class{
-				Nature:     true,
-				Mysticism:  true,
-				Technology: true,
-				Culture:    true},
-			Effects:     nil,
-			FlavourText: "",
-			Tags:        nil,
-			Keywords:    nil},
-		nil, nil, nil}
+func allClassesTestCard() CardRootValidator {
+
+	return CardRootValidator{9, &action{
+		CardName:       "",
+		CastingCost:    3,
+		AdditionalCost: nil,
+		Class: cardobject.Class{
+			Nature:     true,
+			Mysticism:  true,
+			Technology: true,
+			Culture:    true},
+		Effects:     nil,
+		FlavourText: "",
+		Tags:        nil,
+		Keywords:    nil}, "ACTION"}
 }
 
 func TestUnmarshaling(t *testing.T) {

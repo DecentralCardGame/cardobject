@@ -37,6 +37,7 @@ const maxTagCount int = 3
 const minTagCount int = 1
 const maxWisdom int = 32
 const minWisdom int = 0
+const maxKeywords int = 9
 
 type Attack jsonschema.BasicInt
 

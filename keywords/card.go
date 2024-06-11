@@ -2,12 +2,57 @@ package keywords
 
 import (
 	"errors"
+	"strconv"
 
 	"github.com/DecentralCardGame/cardobject/cardobject"
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-//Card Represents the data-structure of a crowd control card in the blockchain
+const maxKeywords int = 8
+
+type CardRootValidator struct {
+	Keywords      int
+	ClassProvider cardobject.ClassProvider
+	Type          string
+}
+
+// Validate Ensures that the card was built correctly and returns errors otherwise
+func (c CardRootValidator) Validate() error {
+	return nil
+}
+
+// ValidateClasses Checks if the given classes are covered by the card
+func (c CardRootValidator) ValidateClasses(cb jsonschema.ClassBound) error {
+	if c.ClassProvider.ClassRestriction().Contains(cb.Classes()) {
+		return nil
+	}
+	return errors.New("Classes are not covered by the cards classes")
+}
+
+func (c CardRootValidator) ValidateKeywordCount() error {
+	c.Keywords++
+	if c.Keywords <= maxKeywords {
+		return nil
+	}
+	return errors.New("too many keywords, max is " + strconv.Itoa(maxKeywords))
+}
+
+// ValidateTarget Checks if the given classes are covered by the card
+func (c CardRootValidator) ValidateTarget(t jsonschema.Targeting) error {
+	ty, tm := t.Targets()
+	if tm == "THIS" {
+		for _, v := range ty {
+			if v == c.Type {
+				return nil
+			}
+		}
+		return errors.New("Class " + c.Type + " is not covered by the target classes")
+	} else {
+		return nil
+	}
+}
+
+// Card Represents the data-structure of a crowd control card in the blockchain
 type Card struct {
 	Action      *action      `json:",omitempty"`
 	Entity      *entity      `json:",omitempty"`
@@ -15,36 +60,14 @@ type Card struct {
 	Headquarter *headquarter `json:",omitempty"`
 }
 
-//Validate Ensures that the card was built correctly and returns errors otherwise
+// Validate Ensures that the card was built correctly and returns errors otherwise
 func (c Card) Validate() error {
-	return c.ValidateType(c)
+	classProvider, _ := c.FindImplementer()
+	cardRoot := CardRootValidator{0, classProvider.(cardobject.ClassProvider), c.GetType()}
+	return c.ValidateType(cardRoot)
 }
 
-//ValidateClasses Checks if the given classes are covered by the card
-func (c Card) ValidateClasses(cb jsonschema.ClassBound) error {
-	i, _ := c.FindImplementer()
-	if i.(cardobject.ClassProvider).ClassRestriction().Contains(cb.Classes()) {
-		return nil
-	}
-	return errors.New("Classes are not covered by the cards classes")
-}
-
-//ValidateTarget Checks if the given classes are covered by the card
-func (c Card) ValidateTarget(t jsonschema.Targeting) error {
-	ty, tm := t.Targets()
-	if tm == "THIS" {
-		for _, v := range ty {
-			if v == c.GetType() {
-				return nil
-			}
-		}
-		return errors.New("Class " + c.GetType() + " is not covered by the target classes")
-	} else {
-		return nil
-	}
-}
-
-//ValidateType Ensures that the type "Card" is build correctly in the context of the RootElement
+// ValidateType Ensures that the type "Card" is build correctly in the context of the RootElement
 func (c Card) ValidateType(r jsonschema.RootElement) error {
 	implementer, err := c.FindImplementer()
 	if err != nil {
@@ -53,7 +76,7 @@ func (c Card) ValidateType(r jsonschema.RootElement) error {
 	return implementer.ValidateType(r)
 }
 
-//FindImplementer Returns which of its children "implement" the type "Card"
+// FindImplementer Returns which of its children "implement" the type "Card"
 func (c Card) FindImplementer() (jsonschema.Validateable, error) {
 	return jsonschema.FindImplementer(c)
 }
