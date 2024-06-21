@@ -11,7 +11,7 @@ func (a avatar) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (a avatar) InteractionText() string {
-	return "X/X avatar"
+	return "X/X Avatar"
 }
 
 func (a avatar) Description() string {
