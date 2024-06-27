@@ -25,6 +25,10 @@ func (a abilities) ItemName() string {
 	return "Ability"
 }
 
+func (a *abilities) Clear() {
+    *a = abilities{}
+}
+
 type ability struct {
 	Arrival        *arrival        `json:",omitempty"`
 	Avenge         *avenge         `json:",omitempty"`
