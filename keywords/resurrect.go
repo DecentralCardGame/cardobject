@@ -18,7 +18,7 @@ func (re resurrect) InteractionText() string {
 }
 
 func (re resurrect) Description() string {
-	return "Return target Entity from a Dustpile to your Field."
+	return "Return target Entity from a Dustpile to your Field. The mana cost of the Entity must not be greater than the level of the Resurrect."
 }
 
 func (re resurrect) Classes() []jsonschema.Class {
