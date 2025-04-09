@@ -14,7 +14,7 @@ func (c countDust) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (c countDust) InteractionText() string {
-	return "Count §CardType."
+	return "Count §CardType Dust."
 }
 
 func (c countDust) Description() string {
