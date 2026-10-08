@@ -298,7 +298,7 @@ func TestCountingAssignmentText(t *testing.T) {
 			t.Errorf("missing X assignment: %q", value.InteractionText())
 		}
 	}
-	for _, value := range []foundationDefinition{incrementX{}, resetX{}, sacrifice{Target: cardobject.Target}} {
+	for _, value := range []foundationDefinition{incrementX{}, resetX{}, sacrifice{}} {
 		if strings.Contains(value.InteractionText(), "-> X") {
 			t.Errorf("unexpected assignment arrow: %q", value.InteractionText())
 		}
