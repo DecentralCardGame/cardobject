@@ -18,7 +18,7 @@ func (s sacrifice) InteractionText() string {
 }
 
 func (s sacrifice) Description() string {
-	return "Put a friendly Entity from the Field in the Dustpile."
+	return "Put a friendly Entity from the Field in the Dustpile and set X to the sacrificed Entity's mana cost."
 }
 
 func (s sacrifice) Targets() ([]string, jsonschema.TargetMode) {

@@ -17,6 +17,10 @@ func (h harden) InteractionText() string {
 	return "Harden §Amount."
 }
 
+func (h harden) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.NATURE, cardobject.TECHNOLOGY}
+}
+
 func (h harden) Description() string {
 	return "Select one friendly Entity (TARGET). Deal N damage to it and give that same Entity Armor N, using the same Amount for both."
 }

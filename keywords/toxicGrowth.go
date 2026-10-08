@@ -17,6 +17,10 @@ func (t toxicGrowth) InteractionText() string {
 	return "Toxic Growth §Amount."
 }
 
+func (t toxicGrowth) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.NATURE}
+}
+
 func (t toxicGrowth) Description() string {
 	return "Select one friendly Entity (TARGET). Deal N damage to it and give that same Entity Strengthen N, using the same Amount for both."
 }

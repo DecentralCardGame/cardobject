@@ -30,6 +30,7 @@ type ability struct {
 	Avenge         *avenge         `json:",omitempty"`
 	Battlecry      *battlecry      `json:",omitempty"`
 	Channel        *channel        `json:",omitempty"`
+	Criticality    *criticality    `json:",omitempty"`
 	DiscardPay     *discardPay     `json:",omitempty"`
 	Dismantle      *dismantle      `json:",omitempty"`
 	Dissolve       *dissolve       `json:",omitempty"`

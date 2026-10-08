@@ -17,6 +17,10 @@ func (s salvage) InteractionText() string {
 	return "Salvage §Amount."
 }
 
+func (s salvage) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.TECHNOLOGY}
+}
+
 func (s salvage) Description() string {
 	return "Deal N damage to one selected friendly Place (TARGET) and produce N mana, using the same Amount for both."
 }

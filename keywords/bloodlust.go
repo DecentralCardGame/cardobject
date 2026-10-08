@@ -17,6 +17,10 @@ func (b bloodlust) InteractionText() string {
 	return "Bloodlust §Amount."
 }
 
+func (b bloodlust) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE}
+}
+
 func (b bloodlust) Description() string {
 	return "Deal N damage to one selected friendly Entity (TARGET) and N damage to one random opposing Entity (RANDOM), using the same Amount for both."
 }

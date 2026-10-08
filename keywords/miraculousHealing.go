@@ -1,6 +1,9 @@
 package keywords
 
-import "github.com/DecentralCardGame/cardobject/jsonschema"
+import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
+)
 
 type miraculousHealing struct{}
 
@@ -10,6 +13,10 @@ func (m miraculousHealing) ValidateType(r jsonschema.RootElement) error {
 
 func (m miraculousHealing) InteractionText() string {
 	return "Miraculous Healing."
+}
+
+func (m miraculousHealing) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.NATURE}
 }
 
 func (m miraculousHealing) Description() string {

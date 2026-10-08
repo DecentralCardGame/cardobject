@@ -14,7 +14,7 @@ func (c count) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (c count) InteractionText() string {
-	return "Count §Tag."
+	return "Count §Tag -> X."
 }
 
 func (c count) Description() string {

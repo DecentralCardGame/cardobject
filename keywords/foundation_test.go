@@ -33,70 +33,70 @@ func TestFoundationEffects(t *testing.T) {
 			`{"ToxicGrowth":{"Amount":{"SimpleIntValue":3}}}`,
 			"Toxic Growth §Amount.",
 			"Select one friendly Entity (TARGET). Deal N damage to it and give that same Entity Strengthen N, using the same Amount for both.",
-			map[string]string{"Amount": "IntValue"}, nil,
+			map[string]string{"Amount": "IntValue"}, []jsonschema.Class{cardobject.NATURE},
 		},
 		{
 			"Harden", effect{Harden: &harden{Amount: value}},
 			`{"Harden":{"Amount":{"SimpleIntValue":3}}}`,
 			"Harden §Amount.",
 			"Select one friendly Entity (TARGET). Deal N damage to it and give that same Entity Armor N, using the same Amount for both.",
-			map[string]string{"Amount": "IntValue"}, nil,
+			map[string]string{"Amount": "IntValue"}, []jsonschema.Class{cardobject.NATURE, cardobject.TECHNOLOGY},
 		},
 		{
 			"Bloodlust", effect{Bloodlust: &bloodlust{Amount: value}},
 			`{"Bloodlust":{"Amount":{"SimpleIntValue":3}}}`,
 			"Bloodlust §Amount.",
 			"Deal N damage to one selected friendly Entity (TARGET) and N damage to one random opposing Entity (RANDOM), using the same Amount for both.",
-			map[string]string{"Amount": "IntValue"}, nil,
+			map[string]string{"Amount": "IntValue"}, []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE},
 		},
 		{
 			"Salvage", effect{Salvage: &salvage{Amount: value}},
 			`{"Salvage":{"Amount":{"SimpleIntValue":3}}}`,
 			"Salvage §Amount.",
 			"Deal N damage to one selected friendly Place (TARGET) and produce N mana, using the same Amount for both.",
-			map[string]string{"Amount": "IntValue"}, nil,
+			map[string]string{"Amount": "IntValue"}, []jsonschema.Class{cardobject.TECHNOLOGY},
 		},
 		{
 			"MiraculousHealing", effect{MiraculousHealing: &miraculousHealing{}},
 			`{"MiraculousHealing":{}}`,
 			"Miraculous Healing.",
 			"Select one friendly Entity (TARGET), heal it fully, and give that same Entity Strengthen equal to the health actually restored. A full-health Entity gains zero attack.",
-			nil, nil,
+			nil, []jsonschema.Class{cardobject.NATURE},
 		},
 		{
 			"Ambush", effect{Ambush: &ambush{Target: cardobject.All}},
 			`{"Ambush":{"Target":"ALL"}}`,
 			"Ambush §Target.",
 			"Select one friendly Entity (TARGET). Deal its attack as one-sided damage to opposing Entities selected by Target (TARGET, RANDOM, ALL, or CHOSENENTITY). There is no return damage.",
-			map[string]string{"Target": "EntityOppMode"}, nil,
+			map[string]string{"Target": "EntityOppMode"}, []jsonschema.Class{cardobject.NATURE, cardobject.CULTURE},
 		},
 		{
 			"Fight", effect{Fight: &fight{Target: cardobject.All}},
 			`{"Fight":{"Target":"ALL"}}`,
 			"Fight §Target.",
 			"Select one friendly Entity (TARGET) and opposing Entities via Target (TARGET, RANDOM, ALL, or CHOSENENTITY). Both sides deal damage equal to their respective attack values, sampled before damage and applied simultaneously. For ALL, every opposing Entity receives the friendly Entity's attack, and the friendly Entity receives every opposing Entity's attack. Lethally hit participants still deal damage.",
-			map[string]string{"Target": "EntityOppMode"}, nil,
+			map[string]string{"Target": "EntityOppMode"}, []jsonschema.Class{cardobject.TECHNOLOGY, cardobject.CULTURE},
 		},
 		{
 			"Ravage", effect{Ravage: &ravage{}},
 			`{"Ravage":{}}`,
 			"Ravage.",
 			"Select one friendly Entity (TARGET) and deal its attack as damage to one random opposing Place or HQ (RANDOM).",
-			nil, nil,
+			nil, []jsonschema.Class{cardobject.NATURE},
 		},
 		{
 			"BodyCount", effect{BodyCount: &bodyCount{}},
 			`{"BodyCount":{}}`,
-			"Body Count.",
+			"Body Count -> X.",
 			"Set X to the number of Entities in your Dustpile.",
-			nil, nil,
+			nil, []jsonschema.Class{cardobject.MYSTICISM},
 		},
 		{
 			"Ascension", effect{Ascension: &ascension{}},
 			`{"Ascension":{}}`,
 			"Ascension.",
 			"Select one friendly Entity card in your Dustpile (TARGET), move it to Void, and create one Avatar with X/X, where X is the voided card's mana cost, not its attack.",
-			nil, nil,
+			nil, []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE},
 		},
 		{
 			"Void", effect{Void: &void{Target: cardobject.Target}},
@@ -106,11 +106,11 @@ func TestFoundationEffects(t *testing.T) {
 			map[string]string{"Target": "CardOppMode"}, []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE},
 		},
 		{
-			"Cleanse", effect{Cleanse: &cleanse{Target: cardobject.Target}},
-			`{"Cleanse":{"Target":"TARGET"}}`,
-			"Cleanse §Target.",
-			"Put selected cards from the opposing Dustpile in the Void.",
-			map[string]string{"Target": "CardOppMode"}, nil,
+			"Cleanse", effect{Cleanse: &cleanse{Amount: value}},
+			`{"Cleanse":{"Amount":{"SimpleIntValue":3}}}`,
+			"Cleanse §Amount.",
+			"Put N random cards from the opposing Dustpile in the Void. Selection is always RANDOM, using Amount for N.",
+			map[string]string{"Amount": "IntValue"}, []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE},
 		},
 		{
 			"DiscountAction", effect{DiscountAction: &discountAction{}},
@@ -182,18 +182,21 @@ func TestFoundationTriggers(t *testing.T) {
 		serialized  string
 		interaction string
 		description string
+		classes     []jsonschema.Class
 	}{
 		{
 			"OnDestruction", ability{OnDestruction: &onDestruction{Effects: nested}},
 			`{"OnDestruction":{"Effects":[{"BodyCount":{}}]}}`,
 			"OnDestruction: §Effects.",
 			"Whenever another friendly Place is destroyed, including by Dismantle, activate Effects. Like Avenge, this listens for external events and never triggers on the ability bearer's own destruction.",
+			[]jsonschema.Class{cardobject.TECHNOLOGY},
 		},
 		{
 			"OnDiscard", ability{OnDiscard: &onDiscard{Effects: nested}},
 			`{"OnDiscard":{"Effects":[{"BodyCount":{}}]}}`,
 			"OnDiscard: §Effects.",
 			"While this ability bearer is an active listener, whenever any of your cards is discarded from Hand to Dustpile, including by Discard effects or costs, activate Effects. Mill and destruction do not count. This is not a self-discard trigger.",
+			[]jsonschema.Class{cardobject.MYSTICISM},
 		},
 	}
 	schema, err := jsonschema.Reflect(&Card{})
@@ -221,9 +224,9 @@ func TestFoundationTriggers(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			assertFoundationDefinition(t, schema, "ability", tc.name, definition, tc.interaction, tc.description, map[string]string{"Effects": "effects"}, nil)
+			assertFoundationDefinition(t, schema, "ability", tc.name, definition, tc.interaction, tc.description, map[string]string{"Effects": "effects"}, tc.classes)
 			card := Card{Entity: &entity{
-				CardName: "Listener", Class: cardobject.Class{Nature: true},
+				CardName: "Listener", Class: foundationRoot().ClassProvider.ClassRestriction(),
 				Abilities: abilities{decoded}, Attack: 1, Health: 1, Tags: cardobject.Tags{"ELF"},
 			}}
 			data, err := json.Marshal(card)
@@ -295,6 +298,7 @@ func TestFoundationAmounts(t *testing.T) {
 		"Harden":      func(v cardobject.IntValue) effect { return effect{Harden: &harden{Amount: v}} },
 		"Bloodlust":   func(v cardobject.IntValue) effect { return effect{Bloodlust: &bloodlust{Amount: v}} },
 		"Salvage":     func(v cardobject.IntValue) effect { return effect{Salvage: &salvage{Amount: v}} },
+		"Cleanse":     func(v cardobject.IntValue) effect { return effect{Cleanse: &cleanse{Amount: v}} },
 	}
 	for name, build := range constructors {
 		t.Run(name, func(t *testing.T) {
@@ -334,7 +338,7 @@ func TestFoundationSelectors(t *testing.T) {
 	}
 	for _, mode := range []cardobject.CardOppMode{cardobject.Target, cardobject.Random, cardobject.All, cardobject.This, "", "INVALID"} {
 		valid := mode != cardobject.This && mode != "" && mode != "INVALID"
-		for _, value := range []effect{{Void: &void{Target: mode}}, {Cleanse: &cleanse{Target: mode}}} {
+		for _, value := range []effect{{Void: &void{Target: mode}}} {
 			if err := value.ValidateType(foundationRoot()); (err == nil) != valid {
 				t.Errorf("Dustpile selector %q: %v", mode, err)
 			}

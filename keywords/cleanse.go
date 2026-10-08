@@ -6,7 +6,7 @@ import (
 )
 
 type cleanse struct {
-	Target cardobject.CardOppMode
+	Amount cardobject.IntValue
 }
 
 func (c cleanse) ValidateType(r jsonschema.RootElement) error {
@@ -14,9 +14,13 @@ func (c cleanse) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (c cleanse) InteractionText() string {
-	return "Cleanse §Target."
+	return "Cleanse §Amount."
 }
 
 func (c cleanse) Description() string {
-	return "Put selected cards from the opposing Dustpile in the Void."
+	return "Put N random cards from the opposing Dustpile in the Void. Selection is always RANDOM, using Amount for N."
+}
+
+func (c cleanse) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE}
 }

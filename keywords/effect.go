@@ -31,15 +31,18 @@ type effect struct {
 	Arm               *arm               `json:",omitempty"`
 	Armor             *armor             `json:",omitempty"`
 	Ascension         *ascension         `json:",omitempty"`
+	Autopsy           *autopsy           `json:",omitempty"`
 	Bloodlust         *bloodlust         `json:",omitempty"`
 	BodyCount         *bodyCount         `json:",omitempty"`
 	Bounce            *bounce            `json:",omitempty"`
 	Burn              *burn              `json:",omitempty"`
 	Choose            *choose            `json:",omitempty"`
 	Cleanse           *cleanse           `json:",omitempty"`
+	CorpseExplosion   *corpseExplosion   `json:",omitempty"`
 	Count             *count             `json:",omitempty"`
 	CountDust         *countDust         `json:",omitempty"`
 	CountPower        *countPower        `json:",omitempty"`
+	CountScrap        *countScrap        `json:",omitempty"`
 	Discard           *discard           `json:",omitempty"`
 	DiscountAction    *discountAction    `json:",omitempty"`
 	DiscountEntity    *discountEntity    `json:",omitempty"`
@@ -58,10 +61,12 @@ type effect struct {
 	Heal              *heal              `json:",omitempty"`
 	Kill              *kill              `json:",omitempty"`
 	Laneswap          *laneswap          `json:",omitempty"`
+	IncrementX        *incrementX        `json:",omitempty"`
 	Insight           *insight           `json:",omitempty"`
 	Mill              *mill              `json:",omitempty"`
 	MiraculousHealing *miraculousHealing `json:",omitempty"`
 	Produce           *produce           `json:",omitempty"`
+	Rally             *rally             `json:",omitempty"`
 	Ravage            *ravage            `json:",omitempty"`
 	Reassemble        *reassemble        `json:",omitempty"`
 	RecoverAction     *recoverAction     `json:",omitempty"`
@@ -69,6 +74,9 @@ type effect struct {
 	RecoverPlace      *recoverPlace      `json:",omitempty"`
 	Resurrect         *resurrect         `json:",omitempty"`
 	Repair            *repair            `json:",omitempty"`
+	Reprogram         *reprogram         `json:",omitempty"`
+	Requiem           *requiem           `json:",omitempty"`
+	ResetX            *resetX            `json:",omitempty"`
 	Sacrifice         *sacrifice         `json:",omitempty"`
 	Salvage           *salvage           `json:",omitempty"`
 	Silence           *silence           `json:",omitempty"`

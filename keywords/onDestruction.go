@@ -1,6 +1,9 @@
 package keywords
 
-import "github.com/DecentralCardGame/cardobject/jsonschema"
+import (
+	"github.com/DecentralCardGame/cardobject/cardobject"
+	"github.com/DecentralCardGame/cardobject/jsonschema"
+)
 
 type onDestruction struct {
 	Effects effects
@@ -12,6 +15,10 @@ func (o onDestruction) ValidateType(r jsonschema.RootElement) error {
 
 func (o onDestruction) InteractionText() string {
 	return "OnDestruction: §Effects."
+}
+
+func (o onDestruction) Classes() []jsonschema.Class {
+	return []jsonschema.Class{cardobject.TECHNOLOGY}
 }
 
 func (o onDestruction) Description() string {
