@@ -34,6 +34,7 @@ type ability struct {
 	Avenge         *avenge         `json:",omitempty"`
 	Battlecry      *battlecry      `json:",omitempty"`
 	Channel        *channel        `json:",omitempty"`
+	Criticality    *criticality    `json:",omitempty"`
 	DiscardPay     *discardPay     `json:",omitempty"`
 	Dismantle      *dismantle      `json:",omitempty"`
 	Dissolve       *dissolve       `json:",omitempty"`
@@ -41,6 +42,8 @@ type ability struct {
 	Loot           *loot           `json:",omitempty"`
 	OnConstruction *onConstruction `json:",omitempty"`
 	OnDeath        *onDeath        `json:",omitempty"`
+	OnDestruction  *onDestruction  `json:",omitempty"`
+	OnDiscard      *onDiscard      `json:",omitempty"`
 	OnSpawn        *onSpawn        `json:",omitempty"`
 	Pay            *pay            `json:",omitempty"`
 	Periodic       *periodic       `json:",omitempty"`

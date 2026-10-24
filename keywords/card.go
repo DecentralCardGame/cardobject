@@ -114,7 +114,7 @@ func (a action) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (a action) InteractionText() string {
-	return "§CardName §CastingCost §AdditionalCost §Class §Effects §FlavourText §Tags §Keywords §RulesTexts §Rarity"
+	return "§CardName §CastingCost §AdditionalCost §Class §Effects §FlavourText §Tags §Rarity"
 }
 
 type entity struct {
@@ -139,7 +139,7 @@ func (e entity) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (e entity) InteractionText() string {
-	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Attack §Health §FlavourText §Tags §Keywords §RulesTexts §Rarity"
+	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Attack §Health §FlavourText §Tags §Rarity"
 }
 
 type place struct {
@@ -163,7 +163,7 @@ func (p place) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (p place) InteractionText() string {
-	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Health §FlavourText §Tags §Keywords §RulesTexts §Rarity"
+	return "§CardName §CastingCost §AdditionalCost §Class §Abilities §Health §FlavourText §Tags §Rarity"
 }
 
 type headquarter struct {
@@ -186,5 +186,5 @@ func (h headquarter) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (h headquarter) InteractionText() string {
-	return "§CardName §Class §Delay §Abilities §Health §Growth §StartingHandSize §Wisdom §FlavourText §Tags §Keywords §RulesTexts §Rarity"
+	return "§CardName §Class §Delay §Abilities §Health §FlavourText §Tags §Rarity"
 }

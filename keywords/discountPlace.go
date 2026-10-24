@@ -5,20 +5,18 @@ import (
 	"github.com/DecentralCardGame/cardobject/jsonschema"
 )
 
-type discountPlace struct {
-	Amount cardobject.IntValue
-}
+type discountPlace struct{}
 
 func (d discountPlace) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(d, r)
 }
 
 func (d discountPlace) InteractionText() string {
-	return "Discount Place §Amount."
+	return "Discount Place."
 }
 
 func (d discountPlace) Description() string {
-	return "Reduce Mana Cost of up to X Places in your hand by 1."
+	return "Reduce the mana cost of exactly one random eligible Place card in your own hand by 1."
 }
 
 func (d discountPlace) Classes() []jsonschema.Class {

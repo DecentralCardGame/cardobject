@@ -14,11 +14,11 @@ func (c countDust) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (c countDust) InteractionText() string {
-	return "Count §CardType Dust."
+	return "Count §CardType Dust -> X."
 }
 
 func (c countDust) Description() string {
-	return "Count all cards of a given type in your Dustpile."
+	return "Count all cards of a given type in your Dustpile and save this number to X."
 }
 
 func (c countDust) Classes() []jsonschema.Class {

@@ -14,7 +14,7 @@ func (c countPower) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (c countPower) InteractionText() string {
-	return "CountPower of §Target."
+	return "CountPower of §Target -> X."
 }
 
 func (c countPower) Description() string {

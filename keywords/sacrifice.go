@@ -1,26 +1,17 @@
 package keywords
 
-import (
-	"github.com/DecentralCardGame/cardobject/cardobject"
-	"github.com/DecentralCardGame/cardobject/jsonschema"
-)
+import "github.com/DecentralCardGame/cardobject/jsonschema"
 
-type sacrifice struct {
-	Target cardobject.EntityMode
-}
+type sacrifice struct{}
 
 func (s sacrifice) ValidateType(r jsonschema.RootElement) error {
 	return jsonschema.ValidateStruct(s, r)
 }
 
 func (s sacrifice) InteractionText() string {
-	return "Sacrifice §Target"
+	return "Sacrifice."
 }
 
 func (s sacrifice) Description() string {
-	return "Put a friendly Entity from the Field in the Dustpile."
-}
-
-func (s sacrifice) Targets() ([]string, jsonschema.TargetMode) {
-	return []string{cardobject.ENTITYTYPE}, jsonschema.TargetMode(s.Target)
+	return "Select exactly one friendly Entity on the Field (TARGET), put it in the Dustpile, and set X to the sacrificed Entity's mana cost."
 }
