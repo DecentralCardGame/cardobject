@@ -18,7 +18,7 @@ func (re reassemble) InteractionText() string {
 }
 
 func (re reassemble) Description() string {
-	return "Return target Place from a Dustpile to your Field."
+	return "Return target Place from a Dustpile to your Field. The mana cost of the Place must not be greater than the level of the Reassemble."
 }
 
 func (re reassemble) Classes() []jsonschema.Class {

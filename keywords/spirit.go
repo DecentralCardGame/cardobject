@@ -12,7 +12,7 @@ func (s spirit) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (s spirit) InteractionText() string {
-	return "1/1 spirit"
+	return "1/1 Spirit"
 }
 
 func (s spirit) Description() string {

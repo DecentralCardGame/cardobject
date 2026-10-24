@@ -12,7 +12,7 @@ func (b beast) ValidateType(r jsonschema.RootElement) error {
 }
 
 func (b beast) InteractionText() string {
-	return "3/3 beast"
+	return "3/3 Beast"
 }
 
 func (b beast) Description() string {

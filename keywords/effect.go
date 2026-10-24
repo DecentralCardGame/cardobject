@@ -25,6 +25,10 @@ func (e effects) ItemName() string {
 	return "Effect"
 }
 
+func (e *effects) Clear() {
+    *e = effects{}
+}
+
 type effect struct {
 	Ambush            *ambush            `json:",omitempty"`
 	Anthem            *anthem            `json:",omitempty"`
