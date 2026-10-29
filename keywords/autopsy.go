@@ -20,5 +20,5 @@ func (a autopsy) Description() string {
 }
 
 func (a autopsy) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.TECHNOLOGY}
+	return []jsonschema.Class{cardobject.TECHNOLOGY, cardobject.MYSTICISM}
 }

@@ -43,7 +43,7 @@ func TestExtendedFoundationEffects(t *testing.T) {
 			"Autopsy", effect{Autopsy: &autopsy{}}, `{"Autopsy":{}}`,
 			"Autopsy -> X.",
 			"Select one friendly Entity card in your Dustpile (TARGET), move it to Void, and set X to its health. Actions and Places cannot be selected.",
-			nil, []jsonschema.Class{cardobject.TECHNOLOGY},
+			nil, []jsonschema.Class{cardobject.TECHNOLOGY, cardobject.MYSTICISM},
 		},
 		{
 			"IncrementX", effect{IncrementX: &incrementX{}}, `{"IncrementX":{}}`,
@@ -161,7 +161,7 @@ func TestApprovedFoundationClasses(t *testing.T) {
 		{"Fight", effect{Fight: &fight{Target: cardobject.Target}}, []jsonschema.Class{cardobject.TECHNOLOGY, cardobject.CULTURE}},
 		{"Ravage", effect{Ravage: &ravage{}}, []jsonschema.Class{cardobject.NATURE}},
 		{"CorpseExplosion", effect{CorpseExplosion: &corpseExplosion{Target: cardobject.Target, Amount: value}}, []jsonschema.Class{cardobject.MYSTICISM}},
-		{"BodyCount", effect{BodyCount: &bodyCount{}}, []jsonschema.Class{cardobject.MYSTICISM}},
+		{"BodyCount", effect{BodyCount: &bodyCount{}}, []jsonschema.Class{cardobject.NATURE, cardobject.MYSTICISM, cardobject.TECHNOLOGY, cardobject.CULTURE}},
 		{"CountScrap", effect{CountScrap: &countScrap{}}, []jsonschema.Class{cardobject.TECHNOLOGY}},
 		{"Ascension", effect{Ascension: &ascension{}}, []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE}},
 		{"Cleanse", effect{Cleanse: &cleanse{Amount: value}}, []jsonschema.Class{cardobject.MYSTICISM, cardobject.NATURE}},
@@ -169,7 +169,7 @@ func TestApprovedFoundationClasses(t *testing.T) {
 		{"OnDiscard", ability{OnDiscard: &onDiscard{}}, []jsonschema.Class{cardobject.MYSTICISM}},
 		{"Rally", effect{Rally: &rally{}}, []jsonschema.Class{cardobject.CULTURE}},
 		{"Requiem", effect{Requiem: &requiem{}}, []jsonschema.Class{cardobject.CULTURE}},
-		{"Autopsy", effect{Autopsy: &autopsy{}}, []jsonschema.Class{cardobject.TECHNOLOGY}},
+		{"Autopsy", effect{Autopsy: &autopsy{}}, []jsonschema.Class{cardobject.TECHNOLOGY, cardobject.MYSTICISM}},
 		{"Reprogram", effect{Reprogram: &reprogram{Effect: effect{ResetX: &resetX{}}}}, []jsonschema.Class{cardobject.TECHNOLOGY}},
 		{"Criticality", ability{Criticality: &criticality{}}, nil},
 		{"IncrementX", effect{IncrementX: &incrementX{}}, nil},
@@ -276,7 +276,7 @@ func TestNestedFoundationValidation(t *testing.T) {
 	}
 	for _, value := range []jsonschema.Validateable{
 		effect{Reprogram: &reprogram{Effect: effect{Rally: &rally{}}}},
-		ability{Criticality: &criticality{Effects: effects{{BodyCount: &bodyCount{}}}}},
+		ability{Criticality: &criticality{Effects: effects{{Rally: &rally{}}}}},
 	} {
 		root := foundationRoot()
 		root.ClassProvider = &action{Class: cardobject.Class{Technology: true}}

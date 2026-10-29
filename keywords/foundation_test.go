@@ -89,7 +89,7 @@ func TestFoundationEffects(t *testing.T) {
 			`{"BodyCount":{}}`,
 			"Body Count -> X.",
 			"Set X to the number of Entities in your Dustpile.",
-			nil, []jsonschema.Class{cardobject.MYSTICISM},
+			nil, []jsonschema.Class{cardobject.NATURE, cardobject.MYSTICISM, cardobject.TECHNOLOGY, cardobject.CULTURE},
 		},
 		{
 			"Ascension", effect{Ascension: &ascension{}},
