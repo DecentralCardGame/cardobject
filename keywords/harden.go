@@ -22,5 +22,5 @@ func (h harden) Classes() []jsonschema.Class {
 }
 
 func (h harden) Description() string {
-	return "Select one friendly Entity (TARGET). Deal N damage to it and give that same Entity Armor N, using the same Amount for both."
+	return "Deal X damage and give +X health permanently to a friendly Entity."
 }

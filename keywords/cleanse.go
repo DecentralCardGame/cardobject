@@ -18,7 +18,7 @@ func (c cleanse) InteractionText() string {
 }
 
 func (c cleanse) Description() string {
-	return "Put N random cards from the opposing Dustpile in the Void. Selection is always RANDOM, using Amount for N."
+	return "N random cards from the opposing Dustpile are moved into the Void."
 }
 
 func (c cleanse) Classes() []jsonschema.Class {

@@ -19,7 +19,7 @@ func (r requiem) InteractionText() string {
 }
 
 func (r requiem) Description() string {
-	return "When resolving this effect, activate Effects only if at least N Entity cards in your own Dustpile share a tag with this card, using Amount for N. Count each matching Entity once; Actions and Places do not count."
+	return "If at least N Entities in your Dustpile share a tag with this card, activate Effects."
 }
 
 func (r requiem) Classes() []jsonschema.Class {

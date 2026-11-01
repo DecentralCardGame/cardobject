@@ -18,7 +18,7 @@ func (r reprogram) InteractionText() string {
 }
 
 func (r reprogram) Description() string {
-	return "Choose one Action card in your own hand (TARGET). Replace one randomly selected effect on that Action with the contained Effect, rather than adding another effect."
+	return "Replace a random effect on an Action card in your hand with a specified Effect."
 }
 
 func (r reprogram) Classes() []jsonschema.Class {

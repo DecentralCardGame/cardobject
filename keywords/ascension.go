@@ -20,5 +20,5 @@ func (a ascension) Classes() []jsonschema.Class {
 }
 
 func (a ascension) Description() string {
-	return "Select one friendly Entity card in your Dustpile (TARGET), move it to Void, and create one Avatar with X/X, where X is the voided card's mana cost, not its attack."
+	return "Move a friendly Entity from the Dustpile into the Void and create an X/X Avatar with X being the voided card's mana cost."
 }

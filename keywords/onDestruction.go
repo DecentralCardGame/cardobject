@@ -22,5 +22,5 @@ func (o onDestruction) Classes() []jsonschema.Class {
 }
 
 func (o onDestruction) Description() string {
-	return "Whenever another friendly Place is destroyed, including by Dismantle, activate Effects. Like Avenge, this listens for external events and never triggers on the ability bearer's own destruction."
+	return "Whenever another friendly Place is destroyed, activate Effects."
 }

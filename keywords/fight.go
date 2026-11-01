@@ -22,5 +22,5 @@ func (f fight) Classes() []jsonschema.Class {
 }
 
 func (f fight) Description() string {
-	return "Select one friendly Entity (TARGET) and opposing Entities via Target (TARGET, RANDOM, ALL, or CHOSENENTITY). Both sides deal damage equal to their respective attack values, sampled before damage and applied simultaneously. For ALL, every opposing Entity receives the friendly Entity's attack, and the friendly Entity receives every opposing Entity's attack. Lethally hit participants still deal damage."
+	return "A friendly Entity and the selected opposing Entities deal their attack damage to each other simultaneously."
 }

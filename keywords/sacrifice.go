@@ -13,5 +13,5 @@ func (s sacrifice) InteractionText() string {
 }
 
 func (s sacrifice) Description() string {
-	return "Select exactly one friendly Entity on the Field (TARGET), put it in the Dustpile, and set X to the sacrificed Entity's mana cost."
+	return "Select a friendly Entity, it dies. Set X to its mana cost."
 }

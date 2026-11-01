@@ -22,5 +22,5 @@ func (b bloodlust) Classes() []jsonschema.Class {
 }
 
 func (b bloodlust) Description() string {
-	return "Deal N damage to one selected friendly Entity (TARGET) and N damage to one random opposing Entity (RANDOM), using the same Amount for both."
+	return "Deal X damage to a friendly Entity and X damage to a random opposing Entity."
 }

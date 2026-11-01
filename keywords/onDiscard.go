@@ -22,5 +22,5 @@ func (o onDiscard) Classes() []jsonschema.Class {
 }
 
 func (o onDiscard) Description() string {
-	return "While this ability bearer is an active listener, whenever any of your cards is discarded from Hand to Dustpile, including by Discard effects or costs, activate Effects. Mill and destruction do not count. This is not a self-discard trigger."
+	return "Whenever you discard a card, activate Effects."
 }

@@ -22,5 +22,5 @@ func (a ambush) Classes() []jsonschema.Class {
 }
 
 func (a ambush) Description() string {
-	return "Select one friendly Entity (TARGET). Deal its attack as one-sided damage to opposing Entities selected by Target (TARGET, RANDOM, ALL, or CHOSENENTITY). There is no return damage."
+	return "A friendly Entity deals its attack damage to an opposing Entity."
 }

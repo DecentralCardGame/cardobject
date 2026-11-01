@@ -25,7 +25,7 @@ func TestExtendedFoundationEffects(t *testing.T) {
 			"CorpseExplosion", effect{CorpseExplosion: &corpseExplosion{Target: cardobject.All, Amount: cardobject.IntValue{SimpleIntValue: &amount}}},
 			`{"CorpseExplosion":{"Target":"ALL","Amount":{"SimpleIntValue":3}}}`,
 			"Corpse Explosion §Target §Amount.",
-			"Select one friendly Entity card in your Dustpile (TARGET), move it to Void, and deal N damage to opposing Entities selected by Target, using Amount for N.",
+			"Move a friendly Entity from your Dustpile into the Void and deal X damage to the selected opposing Entities.",
 			map[string]string{"Target": "EntityOppMode", "Amount": "IntValue"}, []jsonschema.Class{cardobject.MYSTICISM},
 		},
 		{
@@ -36,13 +36,13 @@ func TestExtendedFoundationEffects(t *testing.T) {
 		{
 			"Rally", effect{Rally: &rally{}}, `{"Rally":{}}`,
 			"Rally -> X.",
-			"Set X to the number of friendly Entities on the Field that share at least one tag with this card. Count each matching Entity once, including this card if it is a friendly Entity on the Field.",
+			"Set X to the number of friendly Entities on the Field that share a tag with this card.",
 			nil, []jsonschema.Class{cardobject.CULTURE},
 		},
 		{
 			"Autopsy", effect{Autopsy: &autopsy{}}, `{"Autopsy":{}}`,
 			"Autopsy -> X.",
-			"Select one friendly Entity card in your Dustpile (TARGET), move it to Void, and set X to its health. Actions and Places cannot be selected.",
+			"Move a friendly Entity from your Dustpile into the Void and set X to its health.",
 			nil, []jsonschema.Class{cardobject.TECHNOLOGY, cardobject.MYSTICISM},
 		},
 		{
@@ -57,14 +57,14 @@ func TestExtendedFoundationEffects(t *testing.T) {
 			"Reprogram", effect{Reprogram: &reprogram{Effect: effect{IncrementX: &incrementX{}}}},
 			`{"Reprogram":{"Effect":{"IncrementX":{}}}}`,
 			"Reprogram: §Effect.",
-			"Choose one Action card in your own hand (TARGET). Replace one randomly selected effect on that Action with the contained Effect, rather than adding another effect.",
+			"Replace a random effect on an Action card in your hand with a specified Effect.",
 			map[string]string{"Effect": "effect"}, []jsonschema.Class{cardobject.TECHNOLOGY},
 		},
 		{
 			"Requiem", effect{Requiem: &requiem{Amount: 3, Effects: effects{{ResetX: &resetX{}}}}},
 			`{"Requiem":{"Amount":3,"Effects":[{"ResetX":{}}]}}`,
 			"Requiem §Amount: §Effects.",
-			"When resolving this effect, activate Effects only if at least N Entity cards in your own Dustpile share a tag with this card, using Amount for N. Count each matching Entity once; Actions and Places do not count.",
+			"If at least N Entities in your Dustpile share a tag with this card, activate Effects.",
 			map[string]string{"Amount": "BasicAmount", "Effects": "effects"}, []jsonschema.Class{cardobject.CULTURE},
 		},
 	}
@@ -129,7 +129,7 @@ func TestCriticalityDefinition(t *testing.T) {
 	}
 	assertFoundationDefinition(t, schema, "ability", "Criticality", decoded.Criticality,
 		"Criticality §Amount: §Effects.",
-		"At the beginning of each of your turns, if X is greater than or equal to N, activate Effects, using Amount for N. This can trigger again every turn and does not itself reset or otherwise change X.",
+		"At the beginning of your turn, if X is at least N, activate Effects.",
 		map[string]string{"Amount": "BasicAmount", "Effects": "effects"}, nil)
 	card := Card{Entity: &entity{
 		CardName: "Criticality", Class: cardobject.Class{Culture: true},
