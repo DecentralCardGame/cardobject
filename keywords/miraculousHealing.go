@@ -20,5 +20,5 @@ func (m miraculousHealing) Classes() []jsonschema.Class {
 }
 
 func (m miraculousHealing) Description() string {
-	return "Select one friendly Entity (TARGET), heal it fully, and give that same Entity Strengthen equal to the health actually restored. A full-health Entity gains zero attack."
+	return "Heal a friendly Entity and increase the attack of this Entity by the amount healed."
 }

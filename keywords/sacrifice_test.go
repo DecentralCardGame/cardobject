@@ -20,7 +20,7 @@ func TestSacrifice(t *testing.T) {
 	}
 	assertFoundationDefinition(t, schema, "effect", "Sacrifice", sacrifice,
 		"Sacrifice.",
-		"Select exactly one friendly Entity on the Field (TARGET), put it in the Dustpile, and set X to the sacrificed Entity's mana cost.",
+		"Select a friendly Entity, it dies. Set X to its mana cost.",
 		nil, nil)
 	assertFoundationJSON(t, effect{Sacrifice: &sacrifice}, `{"Sacrifice":{}}`)
 	var decoded effect

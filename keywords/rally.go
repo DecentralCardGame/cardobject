@@ -16,7 +16,7 @@ func (r rally) InteractionText() string {
 }
 
 func (r rally) Description() string {
-	return "Set X to the number of friendly Entities on the Field that share at least one tag with this card. Count each matching Entity once, including this card if it is a friendly Entity on the Field."
+	return "Set X to the number of friendly Entities on the Field that share a tag with this card."
 }
 
 func (r rally) Classes() []jsonschema.Class {

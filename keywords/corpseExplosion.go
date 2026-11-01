@@ -19,7 +19,7 @@ func (c corpseExplosion) InteractionText() string {
 }
 
 func (c corpseExplosion) Description() string {
-	return "Select one friendly Entity card in your Dustpile (TARGET), move it to Void, and deal N damage to opposing Entities selected by Target, using Amount for N."
+	return "Move a friendly Entity from your Dustpile into the Void and deal X damage to the selected opposing Entities."
 }
 
 func (c corpseExplosion) Classes() []jsonschema.Class {

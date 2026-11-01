@@ -20,5 +20,5 @@ func (r ravage) Classes() []jsonschema.Class {
 }
 
 func (r ravage) Description() string {
-	return "Select one friendly Entity (TARGET) and deal its attack as damage to one random opposing Place or HQ (RANDOM)."
+	return "Select a friendly Entity to deal its attack as damage to a random opposing Place or HQ."
 }

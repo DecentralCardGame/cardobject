@@ -16,7 +16,7 @@ func (b bodyCount) InteractionText() string {
 }
 
 func (b bodyCount) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.MYSTICISM}
+	return []jsonschema.Class{cardobject.NATURE, cardobject.MYSTICISM, cardobject.TECHNOLOGY, cardobject.CULTURE}
 }
 
 func (b bodyCount) Description() string {

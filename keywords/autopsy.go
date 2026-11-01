@@ -16,9 +16,9 @@ func (a autopsy) InteractionText() string {
 }
 
 func (a autopsy) Description() string {
-	return "Select one friendly Entity card in your Dustpile (TARGET), move it to Void, and set X to its health. Actions and Places cannot be selected."
+	return "Move a friendly Entity from your Dustpile into the Void and set X to its health."
 }
 
 func (a autopsy) Classes() []jsonschema.Class {
-	return []jsonschema.Class{cardobject.TECHNOLOGY}
+	return []jsonschema.Class{cardobject.TECHNOLOGY, cardobject.MYSTICISM}
 }

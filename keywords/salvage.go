@@ -22,5 +22,5 @@ func (s salvage) Classes() []jsonschema.Class {
 }
 
 func (s salvage) Description() string {
-	return "Deal N damage to one selected friendly Place (TARGET) and produce N mana, using the same Amount for both."
+	return "Deal X damage to a friendly Place and produce X mana."
 }

@@ -19,5 +19,5 @@ func (c criticality) InteractionText() string {
 }
 
 func (c criticality) Description() string {
-	return "At the beginning of each of your turns, if X is greater than or equal to N, activate Effects, using Amount for N. This can trigger again every turn and does not itself reset or otherwise change X."
+	return "At the beginning of your turn, if X is at least N, activate Effects."
 }

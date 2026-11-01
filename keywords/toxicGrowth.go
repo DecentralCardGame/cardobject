@@ -22,5 +22,5 @@ func (t toxicGrowth) Classes() []jsonschema.Class {
 }
 
 func (t toxicGrowth) Description() string {
-	return "Select one friendly Entity (TARGET). Deal N damage to it and give that same Entity Strengthen N, using the same Amount for both."
+	return "Deal X damage and give +X attack permanently to a friendly Entity."
 }
